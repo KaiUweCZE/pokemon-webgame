@@ -1,0 +1,31 @@
+@import "../../assets/styles/addons/variables",
+  "../../assets/styles/addons/mixins";
+
+@include set-up;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0.5rem;
+  background-color: $dark-violet;
+  height: 4rem;
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  gap: 0.5rem;
+}
+
+a {
+  color: white;
+}
+
+.button-signout {
+  @include button-clasic;
+  background-color: darken($new-light, 20);
+  &:hover {
+    background-color: $new-light;
+  }
+}
