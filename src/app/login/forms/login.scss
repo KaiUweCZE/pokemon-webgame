@@ -1,12 +1,52 @@
+$form-background: #f1f2f8;
+$form-border: #424e88;
+
 .container-login-form {
   display: flex;
   flex-direction: column;
+  width: 20rem;
   max-width: 30%;
   margin: 0 auto;
   margin-top: 3rem;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
+  background-color: $form-background;
+  gap: 0.5rem;
+  padding: 1rem;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    font-weight: bold;
+  }
+  input {
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid #404040;
+    padding: 0.25rem;
+    font-size: 1rem;
+  }
+  input:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.type-changer {
+  border-left: 2px solid $form-border;
+  border-bottom: 2px solid $form-border;
+  width: fit-content;
+  padding: 0.35rem;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: $form-border;
+    color: white;
+  }
 }

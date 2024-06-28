@@ -3,7 +3,7 @@ import { signUp } from "./action";
 
 const SignUpForm = () => {
   return (
-    <form>
+    <form className="login-form">
       <div className="login-form-box">
         <label htmlFor="name">Username:</label>
         <input id="name" name="name" type="text" required />
@@ -13,7 +13,7 @@ const SignUpForm = () => {
         <input id="password" name="password" type="password" required />
       </div>
       <div className="login-form-box-button">
-        <button className="primary-button" formAction={signUp}>
+        <button className="button-primary" formAction={signUp}>
           Sign up
         </button>
       </div>

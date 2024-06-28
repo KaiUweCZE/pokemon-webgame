@@ -1,14 +1,20 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { getCsrfToken, getSession, useSession } from "next-auth/react";
+import { getUser } from "./api/action";
 
 const Home = () => {
-  const { data, status } = useSession();
+  //const { data: session, status, update } = useSession();
 
-  console.log(data);
+  const loger = async () => {
+    const session = await getSession();
+    const csrfToken = await getCsrfToken();
+    console.log(session, csrfToken);
+  };
 
   return (
     <main className="container-home">
-      <p>{JSON.stringify(data?.user?.name)}</p>
+      <p>{/*JSON.stringify(session?.user?.name)*/}</p>
+      <button onClick={loger}>click</button>
     </main>
   );
 };

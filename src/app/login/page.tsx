@@ -7,6 +7,8 @@ import SignUpForm from "./forms/SignUpForm";
 const LoginPage = () => {
   const [formType, setFormType] = useState("login");
 
+  const formText =
+    formType === "login" ? "create account" : "already have an account";
   const handlerChangeForm = () => {
     if (formType === "login") {
       setFormType("register");
@@ -17,8 +19,8 @@ const LoginPage = () => {
   return (
     <div className="container-login-form">
       {formType === "login" ? <LoginForm /> : <SignUpForm />}
-      <div>
-        <p onClick={handlerChangeForm}>need to register?</p>
+      <div className="type-changer">
+        <span onClick={handlerChangeForm}>{formText}</span>
       </div>
     </div>
   );

@@ -21,6 +21,9 @@ const Menu = () => {
       <nav className="navigation">
         <ul className="menu">
           <MenuItem name="Home" link="/" />
+          {status === "authenticated" && (
+            <MenuItem name="Profile" link="/profile" />
+          )}
         </ul>
       </nav>
       {status === "authenticated" ? (
