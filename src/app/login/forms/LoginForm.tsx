@@ -9,7 +9,7 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await signIn("credentials", {
-      username,
+      name: username,
       password,
       redirect: true,
       callbackUrl: "/",

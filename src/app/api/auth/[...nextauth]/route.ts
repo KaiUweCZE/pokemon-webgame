@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
           await connectToDatabase();
           console.log("Database connected");
 
-          const user = await prisma.user.findFirst({
+          const user = await prisma.user.findUnique({
             where: { name: credentials.name },
           });
 

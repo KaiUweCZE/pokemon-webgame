@@ -22,7 +22,10 @@ const Menu = () => {
         <ul className="menu">
           <MenuItem name="Home" link="/" />
           {status === "authenticated" && (
+            <>
             <MenuItem name="Profile" link="/profile" />
+            <MenuItem name="Intro" link="/intro" />
+            </>
           )}
         </ul>
       </nav>

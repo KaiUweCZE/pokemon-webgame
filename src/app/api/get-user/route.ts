@@ -1,8 +1,6 @@
 import { connectToDatabase } from "@/utils/server-helpers";
 import prisma from "../../../../prisma";
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
 
 export const POST = async (req: Request) => {
   try {
