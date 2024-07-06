@@ -1,4 +1,10 @@
 import pikachuBack from "@/assets/images/pokemons/backside/pikachu-back.png";
+import raichuBack from "@/assets/images/pokemons/backside/raichu-back.webp";
+import teddiursaBack from "@/assets/images/pokemons/backside/teddiursa-back.webp";
+import eeveeBack from "@/assets/images/pokemons/backside/eevee-back.webp";
+import raichuIcon from "@/assets/images/pokemons/pokemon-icons/raichu-icon.png";
+import teddiursaIcon from "@/assets/images/pokemons/pokemon-icons/teddiursa-icon.png";
+import eeveeIcon from "@/assets/images/pokemons/pokemon-icons/eevee-icon.png";
 
 // webdata from pokemon.com
 
@@ -158,6 +164,8 @@ export const pokemonsData = [
     Id: "0026",
     name: "Raichu",
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/026.png",
+    backImg: raichuBack,
+    icon: raichuIcon,
     type: ["Electric"],
   },
   {
@@ -800,6 +808,8 @@ export const pokemonsData = [
     Id: "0133",
     name: "Eevee",
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/133.png",
+    backImg: eeveeBack,
+    icon: eeveeIcon,
     type: ["Normal"],
   },
   {
@@ -1298,6 +1308,8 @@ export const pokemonsData = [
     Id: "0216",
     name: "Teddiursa",
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/216.png",
+    backImg: teddiursaBack,
+    icon: teddiursaIcon,
     type: ["Normal"],
   },
   {

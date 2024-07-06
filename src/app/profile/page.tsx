@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { getProfile, getUserPokemons } from "./action";
+import { getProfile, getSix, getUserPokemons } from "./action";
 import { useSession } from "next-auth/react";
 import { UserContext } from "@/contexts/UserContext";
 import UserPokemon from "./UserPokemon";
@@ -36,17 +36,24 @@ const ProfilePage = () => {
     if (currentUser) {
       handlePokemons();
     }
-  }, []);
+    if (pokemonContext) {
+      console.log("pokemoni z contextu: ", pokemonContext.userPokemons);
+    }
+    console.log("user is: ", currentUser?.userSix);
+  }, [currentUser]);
 
   const handlePokemons = async () => {
     if (currentUser) {
       const pokemons = await getUserPokemons(currentUser.id);
+      const pokemonSix = await getSix(currentUser.name);
+
       if (pokemons) {
         setPokemons(pokemons);
         console.log("pokemons are set");
       }
       if (setUserPokemons) {
         setUserPokemons(pokemons);
+        pokemonContext.setPokemonsFromSix(pokemonSix);
       }
       setLoading(true);
       console.log("pokemons", pokemons);

@@ -32,13 +32,14 @@ const Home = () => {
 
     setCheckPokemon(generatedPokemon);
     battleContext.setEnemyPokemon(generatedPokemon);
-    if (pokemonContext.userPokemons) {
-      battleContext.setUserPokemon(pokemonContext.userPokemons[0]);
+    if (pokemonContext.pokemonsFromSix) {
+      battleContext.setUserPokemon(pokemonContext.pokemonsFromSix[1]);
     }
 
     console.log("user first pokemon ", pokemonContext.userPokemons);
     console.log("enemy pokemon: ", battleContext.enemyPokemon);
     console.log("user pokemon: ", battleContext.userPokemon);
+    console.log("USER SIX: ", pokemonContext.pokemonsFromSix);
   };
 
   const pokemonImage =

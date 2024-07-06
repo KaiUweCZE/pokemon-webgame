@@ -13,32 +13,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name String @unique
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String    @unique
   hashedPassword String?
-  profileImg String?
-  level Int @default(1)
-  pokemonIds String[] @db.ObjectId
-  pokemons Pokemon[] @relation
-  userSix String[] @default([])
-  location String @default("home")
-  chapter Int?
-  day Int @default(0)
-  partOfDay Int @default(0)
+  profileImg     String?
+  level          Int       @default(1)
+  pokemonIds     String[]  @db.ObjectId
+  pokemons       Pokemon[] @relation
+  userSix        String[]  @default([])
+  location       String    @default("home")
+  chapter        Int       @default(0)
+  day            Int       @default(0)
+  partOfDay      Int       @default(0)
 }
 
-model Pokemon{
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  level Int @default(1)
+model Pokemon {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  level   Int      @default(1)
   attacks String[] @default([])
-  speed Int @default(1)
-  hp Int @default(10)
-  energy Int @default(5)
-  damage Int @default(0)
-  defense Int @default(0)
-  userId String? @db.ObjectId
-  user User? @relation(fields: [userId], references: [id])
+  speed   Int      @default(1)
+  hp      Int      @default(10)
+  energy  Int      @default(5)
+  damage  Int      @default(0)
+  defense Int      @default(0)
+  userId  String?  @db.ObjectId
+  user    User?    @relation(fields: [userId], references: [id])
 }

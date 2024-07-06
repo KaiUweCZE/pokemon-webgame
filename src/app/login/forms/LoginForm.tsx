@@ -21,7 +21,7 @@ const LoginForm = () => {
       name: username,
       password,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "/profile",
     });
   };
 

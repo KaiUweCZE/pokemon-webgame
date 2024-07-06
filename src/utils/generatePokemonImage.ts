@@ -15,3 +15,11 @@ export const generatePokemonImageBack = (pokemonName: string) => {
   )?.backImg;
   return pokemonImg;
 };
+
+export const generatePokemonIcon = (pokemonName: string) => {
+  const pokemonImg = pokemonsData.find(
+    (pokemon) =>
+      pokemon.name.toLocaleLowerCase() === pokemonName.toLocaleLowerCase()
+  )?.icon;
+  return pokemonImg;
+};
