@@ -1,13 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { signIn } from "next-auth/react";
 import "./login.css";
+import { UserContext } from "@/contexts/UserContext";
+import { getUser } from "./action";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const context = useContext(UserContext);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const newUser = await getUser(username);
+
+    if (newUser) {
+      context?.setCurrentUser(newUser);
+    }
+
     await signIn("credentials", {
       name: username,
       password,

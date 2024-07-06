@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
-import { getProfile } from "./action";
+import { useContext, useEffect, useState } from "react";
+import { getProfile, getUserPokemons } from "./action";
 import { useSession } from "next-auth/react";
-
-interface User {
-  id: string;
-  name: string;
-  hashedPassword: string | null;
-  level: number;
-  pokemonIds: string[];
-  location: string;
-}
+import { UserContext } from "@/contexts/UserContext";
+import UserPokemon from "./UserPokemon";
+import { User } from "@/types/user";
+import UserProfile from "./UserProfile";
+import { Pokemon } from "@/types/pokemon";
+import "./profile.css";
+import { PokemonContext } from "@/contexts/PokemonContext";
+import Loader from "@/components/Loader";
+import UserSix from "./UserSix";
 
 interface ErrorResponse {
   error: string;
@@ -19,25 +19,70 @@ interface ErrorResponse {
 type UserResponse = User | ErrorResponse | null;
 
 const ProfilePage = () => {
-  const [user, setUser] = useState<UserResponse>(null);
-  const {data} = useSession()
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [activeUserSix, setActiveUserSix] = useState("");
+  const context = useContext(UserContext);
+  const pokemonContext = useContext(PokemonContext);
 
-  const handleUser = async (e: any) => {
-    e.preventDefault();
-    const username = data?.user?.name as string
-    const newUser = await getProfile(username);
-    setUser(newUser);
-    console.log(user);
-    console.log(data);
-       
+  if (!context && pokemonContext) {
+    console.log("there is not context");
+  }
+
+  const currentUser = context?.currentUser;
+  const setUserPokemons = pokemonContext?.setUserPokemons;
+
+  useEffect(() => {
+    if (currentUser) {
+      handlePokemons();
+    }
+  }, []);
+
+  const handlePokemons = async () => {
+    if (currentUser) {
+      const pokemons = await getUserPokemons(currentUser.id);
+      if (pokemons) {
+        setPokemons(pokemons);
+        console.log("pokemons are set");
+      }
+      if (setUserPokemons) {
+        setUserPokemons(pokemons);
+      }
+      setLoading(true);
+      console.log("pokemons", pokemons);
+    } else {
+      console.log("user have any pokemon", currentUser);
+    }
   };
+
   return (
-    <div>
-      <h2>Hi bro</h2>
-      <button className="button-primary" onClick={handleUser}>
-        get user{" "}
-      </button>
-    </div>
+    <main className="container-profile">
+      {currentUser && <UserProfile user={currentUser} />}
+      {currentUser?.userSix ? (
+        <section className="profile-six">
+          {currentUser.userSix.map((pokemonId) => (
+            <UserSix
+              key={pokemonId}
+              pokemonId={pokemonId}
+              active={activeUserSix}
+              setActive={setActiveUserSix}
+            />
+          ))}
+        </section>
+      ) : (
+        <h2>Nothing here</h2>
+      )}
+      {loading ? (
+        <section className="profile-pokemons">
+          {pokemons &&
+            pokemons.map((pokemon, index) => (
+              <UserPokemon key={index} pokemon={pokemon} />
+            ))}
+        </section>
+      ) : (
+        <Loader />
+      )}
+    </main>
   );
 };
 

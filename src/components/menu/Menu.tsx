@@ -18,26 +18,28 @@ const Menu = () => {
 
   return (
     <header>
-      <nav className="navigation">
-        <ul className="menu">
-          <MenuItem name="Home" link="/" />
-          {status === "authenticated" && (
-            <>
-            <MenuItem name="Profile" link="/profile" />
-            <MenuItem name="Intro" link="/intro" />
-            </>
-          )}
-        </ul>
-      </nav>
-      {status === "authenticated" ? (
-        <button className="button-signout" onClick={handlerSignOut}>
-          sign out
-        </button>
-      ) : (
-        <button className="button-signout" onClick={handleRoute}>
-          sign in
-        </button>
-      )}
+      <div className="container-menu">
+        <nav className="navigation">
+          <ul className="menu">
+            <MenuItem name="Home" link="/" />
+            {status === "authenticated" && (
+              <>
+                <MenuItem name="Profile" link="/profile" />
+                <MenuItem name="Intro" link="/intro" />
+              </>
+            )}
+          </ul>
+        </nav>
+        {status === "authenticated" ? (
+          <button className="button-signout" onClick={handlerSignOut}>
+            sign out
+          </button>
+        ) : (
+          <button className="button-signout" onClick={handleRoute}>
+            sign in
+          </button>
+        )}
+      </div>
     </header>
   );
 };

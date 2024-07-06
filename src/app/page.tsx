@@ -1,31 +1,58 @@
 "use client";
+import HpBar from "@/components/HpBar";
+import { PokemonContext } from "@/contexts/PokemonContext";
 import { UserContext } from "@/contexts/UserContext";
-import { useContext } from "react";
-import { json } from "stream/consumers";
+import { PokemonBattle } from "@/types/pokemonBattle";
+import { generatePokemon } from "@/utils/generatePokemon";
+import { useContext, useState } from "react";
+import Image from "next/image";
+import { pokemonsData } from "@/data/pokemonData";
+import { generatePokemonImage } from "@/utils/generatePokemonImage";
+import EnemyPokemon from "@/components/EnemyPokemon";
+import { BattleContext } from "@/contexts/BattleContext";
+import Battlefield from "@/components/Battlefield";
 
 const Home = () => {
-  //const { data: session, status, update } = useSession();
-  const context = useContext(UserContext)
-  if (context === undefined) {
+  const [checkPokemon, setCheckPokemon] = useState<PokemonBattle>();
+  const context = useContext(UserContext);
+  const pokemonContext = useContext(PokemonContext);
+  const battleContext = useContext(BattleContext);
+  if (!context || !battleContext) {
     throw new Error("useUserContext must be used within a UserProvider");
   }
+  if (pokemonContext === undefined) {
+    throw new Error("useUserContext must be used within a UserProvider");
+  }
+
   const loger = () => {
-    /*const storedUser = localStorage.getItem("currentUser");
-    if (storedUser) {
-      context.setCurrentUser(JSON.parse(storedUser))
-    }*/
-    
-    console.log("context", context.currentUser);
+    const generatedPokemon = generatePokemon(1);
+    if (!generatePokemon) {
+      throw new Error("useUserContext must be used within a UserProvider");
+    }
+
+    setCheckPokemon(generatedPokemon);
+    battleContext.setEnemyPokemon(generatedPokemon);
+    if (pokemonContext.userPokemons) {
+      battleContext.setUserPokemon(pokemonContext.userPokemons[0]);
+    }
+
+    console.log("user first pokemon ", pokemonContext.userPokemons);
+    console.log("enemy pokemon: ", battleContext.enemyPokemon);
+    console.log("user pokemon: ", battleContext.userPokemon);
   };
 
+  const pokemonImage =
+    checkPokemon?.name !== undefined &&
+    generatePokemonImage(checkPokemon?.name);
 
   return (
     <main className="container-home">
-      <p>{/*JSON.stringify(session?.user?.name)*/}</p>
-      <button onClick={loger}>click</button>
-      {
-        context?.currentUser ? <p>{context.currentUser.name}</p> : <p>nothing</p>
-      }
+      <button className="button-primary" onClick={loger}>
+        click
+      </button>
+      {battleContext.userPokemon && battleContext.enemyPokemon && (
+        <Battlefield />
+      )}
     </main>
   );
 };

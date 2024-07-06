@@ -33,3 +33,78 @@ export const getProfile = async (username: string) => {
     console.log("Disconnected from the database.");
   }
 };
+
+export const getUserPokemons = async (userId: string) => {
+  try {
+    console.log("trying to connect to database");
+    await connectToDatabase();
+    console.log("succesfful connect to database");
+
+    const pokemons = await prisma.pokemon.findMany({
+      where: { userId: userId },
+    });
+
+    console.log("Pokemons retrieved:", pokemons);
+    return pokemons;
+  } catch (error) {
+    console.error("Error in getUserPokemons function:", error);
+    throw new Error("Server error: Unable to fetch user profile");
+  } finally {
+    console.log("Disconnecting from the database...");
+    await prisma.$disconnect();
+    console.log("Disconnected from the database.");
+  }
+};
+
+export const addPokemonToSix = async (username: string, pokemonId: string) => {
+  try {
+    await connectToDatabase();
+
+    const user = await prisma.user.findUnique({
+      where: { name: username },
+    });
+
+    if (
+      user?.userSix &&
+      user.userSix.length < 6 &&
+      !user.userSix.includes(pokemonId)
+    ) {
+      const updateUser = await prisma.user.update({
+        where: { name: username },
+        data: {
+          userSix: { push: pokemonId },
+        },
+      });
+      return updateUser;
+    }
+    console.error(
+      `error occurs: ${user?.userSix.length} is not valid to adding`
+    );
+    return null;
+  } catch (error) {
+    console.error("Error in addPokemonToSix function", error);
+    throw new Error("Server error: Unable to add pokemon to user's six");
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+export const getPokemon = async (pokemonId: string) => {
+  try {
+    await connectToDatabase();
+
+    const pokemon = await prisma.pokemon.findUnique({
+      where: { id: pokemonId },
+    });
+
+    if (!pokemon) {
+      console.error("pokemon is not found");
+      return null;
+    }
+
+    return pokemon;
+  } catch (error) {
+  } finally {
+    await prisma.$disconnect();
+  }
+};

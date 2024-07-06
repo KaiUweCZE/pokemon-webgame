@@ -1,0 +1,113 @@
+//dynamic color
+$primary-color: #303030;
+$secondary-color: white;
+$primary-bgc: #442952;
+$new-light: #b4a5c6;
+
+// specific colors
+$lightest-indigo: #c5ceff;
+$light-indigo: #7a84ba;
+$pale-indigo: #4c5897;
+$darker-indigo: #424e88;
+$darkest-indigo: #364379;
+$dark-violet: #24255a;
+
+.container-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.section-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: fit-content;
+  img {
+    place-self: end end;
+  }
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-self: end start;
+  background-color: darken($light-indigo, 20);
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 0 6px rgba($color: black, $alpha: 0.4);
+  color: white;
+}
+
+.profile-pokemons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  background-color: $lightest-indigo;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  max-height: 50vh;
+  overflow-y: scroll;
+  scrollbar-color: rgba(black, 0.2) transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable both-edges;
+}
+
+.pokemon-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: fit-content;
+  img {
+    cursor: pointer;
+  }
+}
+
+.profile-six {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  width: 16rem;
+  background-color: rgba(darken($light-indigo, 20), 0.2);
+  place-items: center center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  position: relative;
+}
+
+.pokemon-from-six {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(darken($light-indigo, 20), 0.3);
+  border-radius: 0.35rem;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.about-pokemon {
+  display: none;
+  width: 20rem;
+  background-color: rgba($color: white, $alpha: 0.75);
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.527);
+  border-radius: 0.35rem;
+  padding: 1rem;
+  position: absolute;
+  top: 5rem;
+  left: 4rem;
+  transition: 0.5s;
+  &.active {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    translate: 0 0;
+    @starting-style {
+      opacity: 0;
+      translate: 0 -4rem;
+    }
+  }
+}

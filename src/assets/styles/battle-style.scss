@@ -1,0 +1,215 @@
+@import "./addons/variables", "./addons/mixins";
+
+$border-size: 4px;
+
+.container-battlefield {
+  display: grid;
+  //grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "enemy-pokemon"
+    "user-pokemon"
+    "menu";
+  border: $border-size solid black;
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.user-battle {
+  grid-area: menu;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  height: 10rem;
+  width: 100%;
+  border-top: $border-size solid black;
+}
+
+.user-battle-menu {
+  grid-column: 2;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  place-self: center end;
+  border-left: $border-size solid black;
+  position: relative;
+  ul {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    place-self: end end;
+    background-color: $new-light;
+    background-color: $light-indigo;
+    color: white;
+  }
+  li {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    //font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: rgba(black, 0.1);
+    }
+    &:hover span::before {
+      opacity: 1;
+    }
+  }
+  span {
+    display: flex;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: flex;
+      position: absolute;
+      left: -1.25rem;
+      top: 0.5rem;
+      height: 1rem;
+      width: 1rem;
+      background-color: #303030;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%);
+      opacity: 0;
+      transition: 0.3s;
+    }
+  }
+}
+
+.user-pokemon {
+  grid-area: user-pokemon;
+  display: grid;
+  grid-template-areas: "user-pokemon user-pokemon-stats";
+  place-items: end;
+  img {
+    grid-area: user-pokemon;
+    place-self: start start;
+  }
+  .box-bar {
+    display: flex;
+    flex-direction: column;
+    place-self: center;
+    padding: 0.5rem;
+    border: $border-size solid black;
+    border-radius: 1rem;
+  }
+  span {
+    font-weight: bold;
+  }
+}
+
+.enemy-pokemon {
+  grid-area: enemy-pokemon;
+  display: grid;
+  grid-template-areas: "enemy-stats enemy-pokemon";
+  place-self: end end;
+  width: 100%;
+  .enemy-pokemon-info {
+    grid-area: enemy-stats;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: $border-size solid black;
+    border-radius: 1rem;
+    span {
+      font-weight: bold;
+    }
+    .bar {
+      margin-left: 2rem;
+    }
+  }
+  img {
+    place-self: end;
+  }
+}
+.box-attacks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  gap: 0.25rem;
+  background-color: rgb(255, 239, 205);
+  background-color: $light-indigo;
+}
+
+.attack-item {
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(black, 0.1);
+  }
+}
+
+.switch-box {
+  display: flex;
+  flex-direction: column;
+  border: $border-size solid black;
+  height: 75%;
+  width: 34%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: beige;
+  z-index: 1;
+}
+
+.battle-bag {
+  display: flex;
+  flex-direction: column;
+  border: $border-size solid black;
+  height: 75%;
+  width: 34%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(209, 255, 182);
+  z-index: 1;
+}
+
+.battle-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.hp-animation {
+  display: flex;
+  color: red;
+  font-size: 1rem;
+  font-weight: bold;
+  translate: 0 5rem;
+  opacity: 1;
+  transition: 1s;
+  transition-timing-function: linear;
+  animation: go-out 1s linear 0s forwards;
+  position: absolute;
+  right: 12%;
+  @starting-style {
+    translate: 0 10rem;
+    opacity: 0;
+  }
+}
+
+@keyframes go-out {
+  from {
+    translate: 0 5rem;
+    opacity: 1;
+  }
+  to {
+    translate: 0 1rem;
+    opacity: 0;
+  }
+}

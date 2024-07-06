@@ -1,5 +1,14 @@
 @import "./addons/variables", "./addons/mixins";
 
+$bar-height: 0.5rem;
+
+.container-home {
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
 .button-primary {
   width: fit-content;
   padding: 0.25rem;
@@ -17,4 +26,65 @@
     background-color: #101010;
     background-color: $darkest-indigo;
   }
+}
+
+.container-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 10rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+  color: #514b82;
+  border: 2px solid;
+  position: relative;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  margin: 2px;
+  inset: 0 100% 0 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: l6 2s infinite;
+}
+@keyframes l6 {
+  100% {
+    inset: 0;
+  }
+}
+
+.box-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bar {
+  display: flex;
+  background-color: #303030;
+  width: 10rem;
+  height: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.hp-bar {
+  display: flex;
+  width: 100%;
+  height: $bar-height;
+  background-color: rgb(255, 63, 63);
+  transition: 0.5s;
+}
+
+.energy-bar {
+  display: flex;
+  width: 100%;
+  height: $bar-height;
+  background-color: rgb(63, 255, 165);
+  transition: 0.5s;
 }

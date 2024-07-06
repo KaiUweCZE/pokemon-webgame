@@ -4,6 +4,9 @@ import "@/assets/styles/global.css";
 import Menu from "@/components/menu/Menu";
 import AuthProvider from "@/components/AuthProvider";
 import { UserProvider } from "@/contexts/UserContext";
+import Timeline from "@/components/footer/Timeline";
+import { PokemonProvider } from "@/contexts/PokemonContext";
+import { BattleProvider } from "@/contexts/BattleContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +25,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <UserProvider>
-            <Menu />
-            {children}
+            <PokemonProvider>
+              <BattleProvider>
+                <Menu />
+                {children}
+                <Timeline />
+              </BattleProvider>
+            </PokemonProvider>
           </UserProvider>
         </AuthProvider>
       </body>

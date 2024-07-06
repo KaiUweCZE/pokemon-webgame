@@ -13,6 +13,14 @@ header {
   width: 100%;
 }
 
+.container-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
 .menu {
   display: flex;
   gap: 0.5rem;
