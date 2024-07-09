@@ -28,7 +28,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [userPokemons, setUserPokemons] = useState<Pokemon[]>([]);
   const [pokemonsFromSix, setPokemonsFromSix] = useState<Pokemon[]>([]);
 
-  if (pokemonsFromSix.length >= 6) {
+  if (pokemonsFromSix?.length >= 6) {
     console.log("you cannot add next pokemon");
   }
 

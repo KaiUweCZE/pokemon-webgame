@@ -5,10 +5,12 @@ import { addPokemon, chapterDone } from "./action";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/contexts/UserContext";
+import { generatePokemon } from "@/utils/generatePokemon";
 
 interface PokemonItemProps {
   img: string | StaticImport;
   pokemonName: string;
+  pokemonDataId: number;
   pokemonInfro: string;
 }
 
@@ -32,12 +34,23 @@ const PokemonItem = (props: PokemonItemProps) => {
     console.log("error occurs");
   };
 
-  const handleAddPokemon = async (pokemonName: string) => {
+  const handleAddPokemon = async (
+    pokemonName: string,
+    pokemonDataId: number
+  ) => {
+    const pokemon = generatePokemon(pokemonDataId);
     if (context.currentUser?.name) {
       const newUser = await addPokemon({
         username: context.currentUser?.name,
-        pokemonName: pokemonName,
+        pokemonName: pokemon.name,
         pokemonLevel: 5,
+        type: pokemon.type,
+        hp: pokemon.hp,
+        defense: pokemon.defense,
+        damage: pokemon.damage,
+        speed: pokemon.speed,
+        energy: pokemon.energy,
+        expToLevel: pokemon.expToLevel,
       });
       console.log(newUser);
     }
@@ -45,7 +58,7 @@ const PokemonItem = (props: PokemonItemProps) => {
   };
 
   const introDone = async (pokemonName: string) => {
-    await handleAddPokemon(pokemonName);
+    await handleAddPokemon(pokemonName, props.pokemonDataId);
     const updatedUser = await nextChapter();
     if (updatedUser) {
       context.setCurrentUser(updatedUser);

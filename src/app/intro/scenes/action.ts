@@ -7,6 +7,13 @@ interface AddPokemonProps {
   username: string;
   pokemonName: string;
   pokemonLevel: number;
+  type: string[];
+  energy: number;
+  hp: number;
+  damage: number;
+  speed: number;
+  defense: number;
+  expToLevel: number;
 }
 
 interface AddImageProps {
@@ -33,6 +40,14 @@ export const addPokemon = async (props: AddPokemonProps) => {
         name: props.pokemonName,
         level: props.pokemonLevel,
         userId: user.id,
+        energy: props.energy,
+        actualEnergy: props.energy,
+        hp: props.hp,
+        actualHp: props.hp,
+        speed: props.speed,
+        damage: props.damage,
+        defense: props.defense,
+        expToLevel: props.expToLevel,
       },
     });
 

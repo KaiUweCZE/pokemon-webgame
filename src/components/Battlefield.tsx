@@ -1,47 +1,30 @@
 "use client";
 import EnemyPokemon from "./EnemyPokemon";
-import { PokemonBattle } from "@/types/pokemonBattle";
 import UserPokemonBattle from "./UserPokemonBattle";
-import { useContext, useEffect, useState } from "react";
-import { BattleContext } from "@/contexts/BattleContext";
 import "@/assets/styles/battle-style.css";
-import { makeDamage } from "@/utils/battle-function/makeDamage";
 import BoxAttacks from "./BoxAttacks";
 import UserBattleMenu from "./UserBattleMenu";
 import SwitchBox from "./SwitchBox";
 import BattleBag from "./BattleBag";
+import useBattle from "@/hooks/useBattle";
+import useNewLevel from "@/hooks/useNewLevel";
+import NewLevel from "./NewLevel";
 
 const Battlefield = () => {
-  const [damage, setDamage] = useState(0);
-  const [change, setChange] = useState(0);
-  const [menuChoice, setMenuChoice] = useState("");
-  const [animationTime, setAnimationTime] = useState(false);
-  const context = useContext(BattleContext);
-  if (!context) {
-    throw new Error("missing context");
-  }
-  const enemyPokemon = context.enemyPokemon;
-  const setEnemyPokemon = context.setEnemyPokemon;
-  const userPokemon = context.userPokemon;
+  const {
+    damage,
+    setDamage,
+    change,
+    setChange,
+    menuChoice,
+    setMenuChoice,
+    animationTime,
+    enemyPokemon,
+    userPokemon,
+  } = useBattle();
 
-  useEffect(() => {
-    if (enemyPokemon) {
-      const newHp = enemyPokemon && makeDamage(damage, enemyPokemon?.actualHp);
-      setEnemyPokemon({
-        ...enemyPokemon,
-        actualHp: newHp <= 0 ? 0 : newHp,
-      });
-    }
-    if (damage > 0) {
-      setAnimationTime(true);
-      const timeout = setTimeout(() => {
-        setAnimationTime(false);
-      }, 1000);
+  const newLevel = useNewLevel(change);
 
-      // Cleanup timeout
-      return () => clearTimeout(timeout);
-    }
-  }, [change]);
   return (
     <section className="container-battlefield">
       {userPokemon && (
@@ -72,6 +55,7 @@ const Battlefield = () => {
           )}
           {menuChoice === "bag" && <BattleBag setMenuChoice={setMenuChoice} />}
           <UserBattleMenu setMenuChoice={setMenuChoice} />
+          {newLevel && <NewLevel />}
         </div>
       )}
     </section>

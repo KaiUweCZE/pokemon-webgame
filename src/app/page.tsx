@@ -11,6 +11,7 @@ import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import EnemyPokemon from "@/components/EnemyPokemon";
 import { BattleContext } from "@/contexts/BattleContext";
 import Battlefield from "@/components/Battlefield";
+import { generatePokemonsRate } from "@/utils/generatePokemonsRate";
 
 const Home = () => {
   const [checkPokemon, setCheckPokemon] = useState<PokemonBattle>();
@@ -24,6 +25,11 @@ const Home = () => {
     throw new Error("useUserContext must be used within a UserProvider");
   }
 
+  const checkRates = () => {
+    const potentional = generatePokemonsRate();
+
+    console.log("pokemon potentional", potentional);
+  };
   const loger = () => {
     const generatedPokemon = generatePokemon(1);
     if (!generatePokemon) {
@@ -33,7 +39,7 @@ const Home = () => {
     setCheckPokemon(generatedPokemon);
     battleContext.setEnemyPokemon(generatedPokemon);
     if (pokemonContext.pokemonsFromSix) {
-      battleContext.setUserPokemon(pokemonContext.pokemonsFromSix[1]);
+      battleContext.setUserPokemon(pokemonContext.pokemonsFromSix[0]);
     }
 
     console.log("user first pokemon ", pokemonContext.userPokemons);
@@ -54,6 +60,10 @@ const Home = () => {
       {battleContext.userPokemon && battleContext.enemyPokemon && (
         <Battlefield />
       )}
+
+      <button className="button-primary" onClick={checkRates}>
+        generate skills
+      </button>
     </main>
   );
 };

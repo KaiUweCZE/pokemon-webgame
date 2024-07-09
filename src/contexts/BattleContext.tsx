@@ -1,4 +1,5 @@
 "use client";
+import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import {
   createContext,
@@ -9,8 +10,8 @@ import {
 } from "react";
 
 interface BattleContextType {
-  userPokemon: PokemonBattle | null;
-  setUserPokemon: Dispatch<SetStateAction<PokemonBattle | null>>;
+  userPokemon: Pokemon | null;
+  setUserPokemon: Dispatch<SetStateAction<Pokemon | null>>;
   enemyPokemon: PokemonBattle | null;
   setEnemyPokemon: Dispatch<SetStateAction<PokemonBattle | null>>;
 }
@@ -23,7 +24,7 @@ export const BattleContext = createContext<BattleContextType | undefined>(
 );
 
 export const BattleProvider = ({ children }: BattleProviderProps) => {
-  const [userPokemon, setUserPokemon] = useState<PokemonBattle | null>(null);
+  const [userPokemon, setUserPokemon] = useState<Pokemon | null>(null);
   const [enemyPokemon, setEnemyPokemon] = useState<PokemonBattle | null>(null);
   const [step, setStep] = useState(0);
 

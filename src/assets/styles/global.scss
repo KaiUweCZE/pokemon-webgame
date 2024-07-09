@@ -71,6 +71,10 @@ $bar-height: 0.5rem;
   height: 1rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
+  &:has(.exp-bar) {
+    height: 0.5rem;
+    padding: 0.1rem;
+  }
 }
 
 .hp-bar {
@@ -86,5 +90,11 @@ $bar-height: 0.5rem;
   width: 100%;
   height: $bar-height;
   background-color: rgb(63, 255, 165);
+  transition: 0.5s;
+}
+
+.exp-bar {
+  width: 100%;
+  background-color: blue;
   transition: 0.5s;
 }

@@ -23,6 +23,7 @@ $border-size: 4px;
   height: 10rem;
   width: 100%;
   border-top: $border-size solid black;
+  //position: relative;
 }
 
 .user-battle-menu {
@@ -212,4 +213,15 @@ $border-size: 4px;
     translate: 0 1rem;
     opacity: 0;
   }
+}
+
+.new-level {
+  background-color: white;
+  border-left: $border-size solid black;
+  border-top: $border-size solid black;
+  width: 25%;
+  aspect-ratio: 7/8;
+  position: absolute;
+  top: 6rem;
+  right: 0;
 }
