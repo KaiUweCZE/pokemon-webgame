@@ -4,10 +4,10 @@ import {
   generatePokemonImageBack,
 } from "@/utils/generatePokemonImage";
 import Image from "next/image";
-import HpBar from "./HpBar";
+import HpBar from "../HpBar";
 import { Dispatch, SetStateAction } from "react";
-import EnergyBar from "./EnergyBar";
-import ExpBar from "./ExpBar";
+import EnergyBar from "../EnergyBar";
+import ExpBar from "../ExpBar";
 import { Pokemon } from "@/types/pokemon";
 
 interface UserPokemonBattleProps {

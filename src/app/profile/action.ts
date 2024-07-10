@@ -64,23 +64,26 @@ export const addPokemonToSix = async (username: string, pokemonId: string) => {
       where: { name: username },
     });
 
-    if (
-      user?.userSix &&
-      user.userSix.length < 6 &&
-      !user.userSix.includes(pokemonId)
-    ) {
-      const updateUser = await prisma.user.update({
-        where: { name: username },
-        data: {
-          userSix: { push: pokemonId },
-        },
-      });
-      return updateUser;
+    if (!user) {
+      throw new Error("User not found");
     }
-    console.error(
-      `error occurs: ${user?.userSix.length} is not valid to adding`
-    );
-    return null;
+
+    if (user.userSix && user.userSix.length >= 6) {
+      throw new Error("User's six is already full");
+    }
+
+    if (user.userSix && user.userSix.includes(pokemonId)) {
+      throw new Error("Pokemon is already in the user's six");
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { name: username },
+      data: {
+        userSix: { push: pokemonId },
+      },
+    });
+
+    return updatedUser;
   } catch (error) {
     console.error("Error in addPokemonToSix function", error);
     throw new Error("Server error: Unable to add pokemon to user's six");

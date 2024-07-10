@@ -42,7 +42,8 @@ $dark-violet: #24255a;
 .profile-pokemons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  background-color: $lightest-indigo;
+  background-color: rgba($lightest-indigo, 0.5);
+  background-color: rgba($dark-violet, 0.85);
   border-radius: 1rem;
   margin-top: 1rem;
   padding: 1rem;
@@ -51,6 +52,7 @@ $dark-violet: #24255a;
   scrollbar-color: rgba(black, 0.2) transparent;
   scrollbar-width: thin;
   scrollbar-gutter: stable both-edges;
+  color: white;
 }
 
 .pokemon-box {
@@ -64,14 +66,16 @@ $dark-violet: #24255a;
 
 .profile-six {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16%, 1fr));
   width: 16rem;
   background-color: rgba(darken($light-indigo, 20), 0.2);
+  background-color: rgba($dark-violet, 0.85);
   place-items: center center;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.35rem;
   position: relative;
+  transition: 0.5s;
 }
 
 .pokemon-from-six {
@@ -80,11 +84,12 @@ $dark-violet: #24255a;
   justify-content: center;
   align-items: center;
   background-color: rgba(darken($light-indigo, 20), 0.3);
-  background-color: red;
+  background-color: rgb(211, 69, 69);
   border: 1px solid black;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+  transition: 0.5s;
   &::before {
     content: "";
     width: 100%;

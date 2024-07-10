@@ -19,6 +19,7 @@ interface ErrorResponse {
 type UserResponse = User | ErrorResponse | null;
 
 const ProfilePage = () => {
+  const [sixBoxOpen, setSixBoxOpen] = useState(false);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
   const [activeUserSix, setActiveUserSix] = useState("");
@@ -53,7 +54,9 @@ const ProfilePage = () => {
       }
       if (setUserPokemons) {
         setUserPokemons(pokemons);
-        pokemonContext.setPokemonsFromSix(pokemonSix);
+        if (pokemonSix) {
+          pokemonContext.setPokemonsFromSix(pokemonSix);
+        }
       }
       setLoading(true);
       console.log("pokemons", pokemons);

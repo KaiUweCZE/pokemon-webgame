@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/assets/styles/global.css";
 import Menu from "@/components/menu/Menu";
-import AuthProvider from "@/components/AuthProvider";
+import AuthProvider from "@/components/providers/AuthProvider";
 import { UserProvider } from "@/contexts/UserContext";
 import Timeline from "@/components/footer/Timeline";
 import { PokemonProvider } from "@/contexts/PokemonContext";

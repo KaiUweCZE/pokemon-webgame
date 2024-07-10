@@ -1,5 +1,4 @@
 "use client";
-import UserPokemon from "@/app/profile/UserPokemon";
 import { Pokemon } from "@/types/pokemon";
 import {
   Dispatch,

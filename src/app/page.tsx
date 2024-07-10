@@ -8,10 +8,11 @@ import { useContext, useState } from "react";
 import Image from "next/image";
 import { pokemonsData } from "@/data/pokemonData";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
-import EnemyPokemon from "@/components/EnemyPokemon";
+import EnemyPokemon from "@/components/battle-components/EnemyPokemon";
 import { BattleContext } from "@/contexts/BattleContext";
-import Battlefield from "@/components/Battlefield";
+import Battlefield from "@/components/battle-components/Battlefield";
 import { generatePokemonsRate } from "@/utils/generatePokemonsRate";
+import { addPokemon } from "./intro/scenes/action";
 
 const Home = () => {
   const [checkPokemon, setCheckPokemon] = useState<PokemonBattle>();
@@ -25,11 +26,6 @@ const Home = () => {
     throw new Error("useUserContext must be used within a UserProvider");
   }
 
-  const checkRates = () => {
-    const potentional = generatePokemonsRate();
-
-    console.log("pokemon potentional", potentional);
-  };
   const loger = () => {
     const generatedPokemon = generatePokemon(1);
     if (!generatePokemon) {
@@ -60,10 +56,6 @@ const Home = () => {
       {battleContext.userPokemon && battleContext.enemyPokemon && (
         <Battlefield />
       )}
-
-      <button className="button-primary" onClick={checkRates}>
-        generate skills
-      </button>
     </main>
   );
 };

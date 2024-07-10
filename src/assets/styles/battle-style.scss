@@ -89,14 +89,16 @@ $border-size: 4px;
   img {
     grid-area: user-pokemon;
     place-self: start start;
+    margin-left: 5rem;
   }
   .box-bar {
     display: flex;
     flex-direction: column;
-    place-self: center;
+    place-self: center end;
     padding: 0.5rem;
     border: $border-size solid black;
     border-radius: 1rem;
+    margin-right: 2rem;
   }
   span {
     font-weight: bold;
@@ -109,6 +111,18 @@ $border-size: 4px;
   grid-template-areas: "enemy-stats enemy-pokemon";
   place-self: end end;
   width: 100%;
+  overflow: hidden;
+  transition: 1s;
+  &.done {
+    img {
+      transition: 1s;
+      translate: 10rem;
+    }
+    .enemy-pokemon-info {
+      transition: 1s;
+      translate: -15rem;
+    }
+  }
   .enemy-pokemon-info {
     grid-area: enemy-stats;
     display: flex;
@@ -128,6 +142,7 @@ $border-size: 4px;
   }
   img {
     place-self: end;
+    margin-right: 2rem;
   }
 }
 .box-attacks {

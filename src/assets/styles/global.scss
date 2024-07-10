@@ -2,6 +2,11 @@
 
 $bar-height: 0.5rem;
 
+li:has(.bar) {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
 .container-home {
   display: flex;
   flex-direction: column;
@@ -68,6 +73,7 @@ $bar-height: 0.5rem;
   display: flex;
   background-color: #303030;
   width: 10rem;
+  max-width: 100%;
   height: 1rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
@@ -97,4 +103,43 @@ $bar-height: 0.5rem;
   width: 100%;
   background-color: blue;
   transition: 0.5s;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba($dark-violet, 0.9);
+  box-shadow: 0 0 8px black;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  position: fixed;
+  inset: 0px;
+  width: 16rem;
+  height: 8rem;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
+  text-align: center;
+  translate: 0;
+  opacity: 1;
+  transition: 0.3s;
+  animation: go-out 0.3s linear 1s forwards;
+  p {
+    font-weight: bold;
+  }
+  @starting-style {
+    translate: 0 2rem;
+    opacity: 0;
+  }
+}
+
+@keyframes go-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    translate: 0 -2rem;
+  }
 }

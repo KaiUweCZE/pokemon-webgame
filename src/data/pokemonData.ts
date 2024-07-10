@@ -2,9 +2,11 @@ import pikachuBack from "@/assets/images/pokemons/backside/pikachu-back.png";
 import raichuBack from "@/assets/images/pokemons/backside/raichu-back.webp";
 import teddiursaBack from "@/assets/images/pokemons/backside/teddiursa-back.webp";
 import eeveeBack from "@/assets/images/pokemons/backside/eevee-back.webp";
+import hitmonchanBack from "@/assets/images/pokemons/backside/hitmonchan-back.webp";
 import raichuIcon from "@/assets/images/pokemons/pokemon-icons/raichu-icon.png";
 import teddiursaIcon from "@/assets/images/pokemons/pokemon-icons/teddiursa-icon.png";
 import eeveeIcon from "@/assets/images/pokemons/pokemon-icons/eevee-icon.png";
+import hitmonchanIcon from "@/assets/images/pokemons/pokemon-icons/hitmonchan-icon.png";
 
 // webdata from pokemon.com
 
@@ -652,6 +654,8 @@ export const pokemonsData = [
     Id: "0107",
     name: "Hitmonchan",
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/107.png",
+    backImg: hitmonchanBack,
+    icon: hitmonchanIcon,
     type: ["Fighting"],
   },
   {

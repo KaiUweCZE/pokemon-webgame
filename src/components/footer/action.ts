@@ -10,7 +10,7 @@ export const nextDay = async (username: string) => {
       return null;
     }
 
-    const newUser = await prisma.user.update({
+    const updatedUser = await prisma.user.update({
       where: { name: username },
       data: {
         day: {
@@ -18,9 +18,27 @@ export const nextDay = async (username: string) => {
         },
       },
     });
+
+    const pokemons = await prisma.pokemon.findMany({
+      where: { userId: updatedUser.id },
+    });
     console.log("day is succesfully updated");
 
-    return newUser;
+    const updatedPokemons = pokemons.map((pokemon) =>
+      prisma.pokemon.update({
+        where: { id: pokemon.id },
+        data: {
+          actualHp: pokemon.hp,
+          actualEnergy: pokemon.energy,
+        },
+      })
+    );
+
+    await Promise.all(updatedPokemons);
+
+    console.log(`updated pokemons: ${updatedPokemons}`);
+
+    return updatedUser;
   } catch (error) {
     console.error("Error updating user day:", error);
   } finally {

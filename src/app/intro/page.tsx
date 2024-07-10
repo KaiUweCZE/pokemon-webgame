@@ -1,11 +1,12 @@
 "use client";
 import "./intro.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ThirdScene from "./scenes/ThirdScene";
 import SecondScene from "./scenes/SecondScene";
 import FirstScene from "./scenes/FirstScene";
 import { UserContext } from "@/contexts/UserContext";
 import ChapterDone from "@/components/ChapterDone";
+import { useRouter } from "next/navigation";
 
 const IntroPage = () => {
   const [step, setStep] = useState(0);

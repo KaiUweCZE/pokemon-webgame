@@ -34,10 +34,7 @@ const PokemonItem = (props: PokemonItemProps) => {
     console.log("error occurs");
   };
 
-  const handleAddPokemon = async (
-    pokemonName: string,
-    pokemonDataId: number
-  ) => {
+  const handleAddPokemon = async (pokemonDataId: number) => {
     const pokemon = generatePokemon(pokemonDataId);
     if (context.currentUser?.name) {
       const newUser = await addPokemon({
@@ -57,8 +54,8 @@ const PokemonItem = (props: PokemonItemProps) => {
     console.log("done");
   };
 
-  const introDone = async (pokemonName: string) => {
-    await handleAddPokemon(pokemonName, props.pokemonDataId);
+  const introDone = async () => {
+    await handleAddPokemon(props.pokemonDataId);
     const updatedUser = await nextChapter();
     if (updatedUser) {
       context.setCurrentUser(updatedUser);
@@ -74,7 +71,7 @@ const PokemonItem = (props: PokemonItemProps) => {
         alt="pokemon image"
         width={180}
         height={180}
-        onClick={() => introDone(props.pokemonName)}
+        onClick={introDone}
       />
       <article className="pokemon-info">
         <div className="pokemon-box">

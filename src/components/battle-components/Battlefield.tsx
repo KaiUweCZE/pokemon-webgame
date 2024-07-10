@@ -9,6 +9,7 @@ import BattleBag from "./BattleBag";
 import useBattle from "@/hooks/useBattle";
 import useNewLevel from "@/hooks/useNewLevel";
 import NewLevel from "./NewLevel";
+import BattleText from "./BattleText";
 
 const Battlefield = () => {
   const {
@@ -39,9 +40,7 @@ const Battlefield = () => {
       {userPokemon && (
         <div className="user-battle">
           {enemyPokemon && menuChoice === "" && (
-            <div className="battle-text">
-              <p>{`oh man, that looks like a ${enemyPokemon.name}!`}</p>
-            </div>
+            <BattleText pokemonName={enemyPokemon.name} />
           )}
           {menuChoice === "fight" && (
             <BoxAttacks
