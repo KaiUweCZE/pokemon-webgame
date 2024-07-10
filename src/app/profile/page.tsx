@@ -19,6 +19,7 @@ interface ErrorResponse {
 type UserResponse = User | ErrorResponse | null;
 
 const ProfilePage = () => {
+  const { data } = useSession();
   const [sixBoxOpen, setSixBoxOpen] = useState(false);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,10 @@ const ProfilePage = () => {
   const context = useContext(UserContext);
   const pokemonContext = useContext(PokemonContext);
 
+  if (!data) {
+    throw new Error("data is missing");
+  }
+  const user = data.user;
   if (!context && pokemonContext) {
     console.log("there is not context");
   }
@@ -67,7 +72,7 @@ const ProfilePage = () => {
 
   return (
     <main className="container-profile">
-      {currentUser && <UserProfile user={currentUser} />}
+      {user && <UserProfile user={user} />}
       {currentUser?.userSix ? (
         <section className="profile-six">
           {currentUser.userSix.map((pokemonId) => (

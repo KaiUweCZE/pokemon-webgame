@@ -1,7 +1,6 @@
 export interface User {
   id: string;
   name: string;
-  hashedPassword: string | null;
   profileImg: string | null;
   level: number;
   pokemonIds: string[];

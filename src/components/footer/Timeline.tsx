@@ -5,8 +5,10 @@ import Image from "next/image";
 import clockIcon from "@/assets/images/icons/clock.svg";
 import "./footer.css";
 import { nextDay } from "./action";
+import { useSession } from "next-auth/react";
 
 const Timeline = () => {
+  const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(false);
   const context = useContext(UserContext);
 
@@ -22,6 +24,13 @@ const Timeline = () => {
       const updatedUser = await nextDay(currentUser.name);
       if (updatedUser) {
         context.setCurrentUser(updatedUser);
+        // update session
+        update({
+          ...data?.user,
+          day: updatedUser.day,
+          partOfDay: 0,
+        });
+        console.log("updated session: ", data);
       }
 
       console.log("updated user: ", updatedUser);

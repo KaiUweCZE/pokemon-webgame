@@ -7,8 +7,11 @@ import FirstScene from "./scenes/FirstScene";
 import { UserContext } from "@/contexts/UserContext";
 import ChapterDone from "@/components/ChapterDone";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const IntroPage = () => {
+  const { data } = useSession();
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const context = useContext(UserContext);
 

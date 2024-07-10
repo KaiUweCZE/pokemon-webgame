@@ -20,6 +20,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
         <ul>
           <li>username: {user.name}</li>
           <li>location: {user.location}</li>
+          <li>day: {user.day}</li>
         </ul>
       </div>
     </section>

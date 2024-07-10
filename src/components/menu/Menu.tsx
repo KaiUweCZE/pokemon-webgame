@@ -9,7 +9,7 @@ const Menu = () => {
   const router = useRouter();
 
   const handlerSignOut = async () => {
-    await signOut();
+    await signOut({ redirect: true, callbackUrl: "/" });
   };
 
   const handleRoute = () => {
@@ -25,7 +25,6 @@ const Menu = () => {
             {status === "authenticated" && (
               <>
                 <MenuItem name="Profile" link="/profile" />
-                <MenuItem name="Intro" link="/intro" />
               </>
             )}
           </ul>

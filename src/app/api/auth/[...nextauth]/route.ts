@@ -1,8 +1,10 @@
 import { connectToDatabase } from "@/utils/server-helpers";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import NextAuth, { User, Session, NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../../prisma";
 import bcrypt from "bcrypt";
+//import { User } from "@/types/user";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -49,8 +51,8 @@ export const authOptions: NextAuthOptions = {
 
           if (isPasswordCorrect) {
             console.log("Returning user:", {
-              id: user.id,
               username: user.name,
+              ...user,
             });
             return user;
           }
@@ -68,20 +70,34 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
-        return true;
-      } else {
-        // Return false to display a default error message
-        return false;
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.profileImg = user.profileImg;
+        token.level = user.level;
+        token.pokemonIds = user.pokemonIds;
+        token.userSix = user.userSix;
+        token.location = user.location;
+        token.chapter = user.chapter;
+        token.day = user.day;
+        token.partOfDay = user.partOfDay;
       }
+      return token;
     },
-  },
-  session: {
-    strategy: "jwt",
+    async session({ session, token }) {
+      session.user.id = token.id;
+      session.user.name = token.name;
+      session.user.profileImg = token.profileImg;
+      session.user.level = token.level;
+      session.user.pokemonIds = token.pokemonIds;
+      session.user.userSix = token.userSix;
+      session.user.location = token.location;
+      session.user.chapter = token.chapter;
+      session.user.day = token.day;
+      session.user.partOfDay = token.partOfDay;
+      return session;
+    },
   },
   pages: {
     signIn: "/login",

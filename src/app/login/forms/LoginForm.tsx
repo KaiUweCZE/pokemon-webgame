@@ -4,25 +4,39 @@ import { signIn } from "next-auth/react";
 import "./login.css";
 import { UserContext } from "@/contexts/UserContext";
 import { getUser } from "./action";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
   const context = useContext(UserContext);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newUser = await getUser(username);
 
     if (newUser) {
       context?.setCurrentUser(newUser);
-    }
 
-    await signIn("credentials", {
-      name: username,
-      password,
-      redirect: true,
-      callbackUrl: "/profile",
-    });
+      if ("error" in newUser) {
+        console.error("Error:", newUser.error);
+        return;
+      }
+
+      await signIn("credentials", {
+        name: username,
+        password,
+        redirect: false,
+      });
+
+      // Check user's chapter and redirect accordingly
+      if (newUser.chapter > 0) {
+        router.push("/profile");
+      } else {
+        router.push("/intro");
+      }
+    }
   };
 
   return (
