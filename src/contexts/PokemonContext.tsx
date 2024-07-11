@@ -12,10 +12,10 @@ interface PokemonProviderProps {
   children: ReactNode;
 }
 
-interface PokemonContextType {
-  userPokemons: Pokemon[] | null;
+export interface PokemonContextType {
+  userPokemons: Pokemon[];
   setUserPokemons: Dispatch<SetStateAction<Pokemon[]>>;
-  pokemonsFromSix: Pokemon[] | null;
+  pokemonsFromSix: Pokemon[];
   setPokemonsFromSix: Dispatch<SetStateAction<Pokemon[]>>;
 }
 

@@ -61,6 +61,8 @@ const useBattle = () => {
         pokemonLevel: enemyPokemon.level,
       });
 
+      setMenuChoice("");
+
       if (exp && userPokemon) {
         addExp({ pokemonId: userPokemon.id, newExps: exp }).then(
           (updatedPokemon) => {

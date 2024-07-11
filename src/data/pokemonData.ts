@@ -3,11 +3,14 @@ import raichuBack from "@/assets/images/pokemons/backside/raichu-back.webp";
 import teddiursaBack from "@/assets/images/pokemons/backside/teddiursa-back.webp";
 import eeveeBack from "@/assets/images/pokemons/backside/eevee-back.webp";
 import hitmonchanBack from "@/assets/images/pokemons/backside/hitmonchan-back.webp";
+import geodudeBack from "@/assets/images/pokemons/backside/geodude-back.webp";
+import sandshrewBack from "@/assets/images/pokemons/backside/sandshrew-back.webp";
 import raichuIcon from "@/assets/images/pokemons/pokemon-icons/raichu-icon.png";
 import teddiursaIcon from "@/assets/images/pokemons/pokemon-icons/teddiursa-icon.png";
 import eeveeIcon from "@/assets/images/pokemons/pokemon-icons/eevee-icon.png";
 import hitmonchanIcon from "@/assets/images/pokemons/pokemon-icons/hitmonchan-icon.png";
-
+import geodudeIcon from "@/assets/images/pokemons/pokemon-icons/geodude-icon.png";
+import sandshrewIcon from "@/assets/images/pokemons/pokemon-icons/sandshrew-icon.png";
 // webdata from pokemon.com
 
 export const pokemonsData = [
@@ -173,6 +176,8 @@ export const pokemonsData = [
   {
     Id: "0027",
     name: "Sandshrew",
+    icon: sandshrewIcon,
+    backImg: sandshrewBack,
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png",
     type: ["Ground"],
   },
@@ -456,6 +461,8 @@ export const pokemonsData = [
     Id: "0074",
     name: "Geodude",
     img: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/074.png",
+    backImg: geodudeBack,
+    icon: geodudeIcon,
     type: ["Rock", "Ground"],
   },
   {

@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 
-interface BattleContextType {
+export interface BattleContextType {
   userPokemon: Pokemon | null;
   setUserPokemon: Dispatch<SetStateAction<Pokemon | null>>;
   enemyPokemon: PokemonBattle | null;

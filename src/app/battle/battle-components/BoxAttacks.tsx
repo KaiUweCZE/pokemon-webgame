@@ -24,10 +24,14 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
 
   // increment pokemon energy
   const incrementEnergy = async (energyCost: number) => {
+    if (!context.userPokemon) {
+      return null;
+    }
     const updatedPokemon = await changeEnergy({
-      pokemonId: "668ceccb959eed5c42bc69f9",
+      pokemonId: context.userPokemon?.id,
       energyCost: energyCost,
     });
+    console.log("enemy pokemon: ", enemyPokemon);
 
     return updatedPokemon;
   };

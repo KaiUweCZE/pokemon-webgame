@@ -1,10 +1,9 @@
 import { PokemonBattle } from "@/types/pokemonBattle";
-import HpBar from "../HpBar";
+import HpBar from "../../../components/HpBar";
 import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import { useContext } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
-import { generatePokemon } from "@/utils/generatePokemon";
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;
@@ -13,10 +12,6 @@ interface EnemyPokemonProps {
 const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
 
-  const handleNextPokemon = () => {
-    const newEnemy = generatePokemon(2);
-    context?.setEnemyPokemon(newEnemy);
-  };
   const pokemonImg = generatePokemonImage(enemyPokemon.name);
   return (
     <div
@@ -24,9 +19,8 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
         enemyPokemon.actualHp === 0 ? "enemy-pokemon done" : "enemy-pokemon"
       }
     >
-      {enemyPokemon.actualHp !== 0 ? (
+      {enemyPokemon.actualHp !== undefined ? (
         <>
-          {" "}
           {pokemonImg && (
             <Image
               src={pokemonImg}
@@ -36,7 +30,7 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
             />
           )}
           <div className="enemy-pokemon-info">
-            <span>{enemyPokemon.name}</span>
+            <span>{`${enemyPokemon.name} lvl.${enemyPokemon.level}`}</span>
             <HpBar
               maximumHp={enemyPokemon.hp}
               actualHp={enemyPokemon.actualHp}
@@ -44,9 +38,7 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
           </div>
         </>
       ) : (
-        <button className="button-primary" onClick={handleNextPokemon}>
-          next pokemon
-        </button>
+        <p>where he is?</p>
       )}
     </div>
   );

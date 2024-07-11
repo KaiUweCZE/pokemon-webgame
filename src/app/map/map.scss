@@ -1,0 +1,35 @@
+$primary-bgc: #442952;
+
+.container-map {
+  display: flex;
+  max-width: 80rem;
+  margin: 0 auto;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .map-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba($primary-bgc, 0.85);
+    border-radius: 0.5rem;
+    color: white;
+    width: 15rem;
+    height: 10rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    li {
+      padding-inline: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(black, 0.2);
+      }
+    }
+  }
+}

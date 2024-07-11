@@ -1,13 +1,19 @@
 import { pokemonBattleData } from "@/data/pokemonBattleData";
 import { generatePokemonsRate } from "./generatePokemonsRate";
 
-export const randomLevel = () => {
-  return Math.floor(Math.random() * 21);
+/**
+ * Generates a random number within the specified range.
+ * @param {number[]} levelRange - An array with two numbers representing the range [min, max].
+ * @returns {number} - A random number within the specified range.
+ */
+export const randomLevel = (levelRange: number[]) => {
+  const [min, max] = levelRange;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const generatePokemon = (pokemonId: number) => {
+export const generatePokemon = (pokemonId: number, levelRange: number[]) => {
   const data = pokemonBattleData.find((pokemon) => pokemon.id === pokemonId);
-  const level = randomLevel();
+  const level = randomLevel(levelRange);
   console.log("data: ", data);
   console.log("level: ", level);
 
@@ -16,14 +22,14 @@ export const generatePokemon = (pokemonId: number) => {
     generatePokemonsRate();
 
   if (!data) {
-    throw new Error("Pokemon not found");
+    throw new Error(`pokemon not found ${pokemonId}`);
   }
 
   const pokemon = {
     //...data,
     name: data.name,
     type: data.type,
-    level: parseFloat(level.toFixed(2)),
+    level: level,
     damage: parseFloat(
       (data.damage * Math.pow(1.05, level) * dmgRate).toFixed(2)
     ),

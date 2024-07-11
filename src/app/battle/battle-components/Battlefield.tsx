@@ -10,8 +10,14 @@ import useBattle from "@/hooks/useBattle";
 import useNewLevel from "@/hooks/useNewLevel";
 import NewLevel from "./NewLevel";
 import BattleText from "./BattleText";
+import { Dispatch, SetStateAction } from "react";
 
-const Battlefield = () => {
+interface BattlefieldProps {
+  round: number;
+  setRound: Dispatch<SetStateAction<number>>;
+}
+
+const Battlefield = ({ round, setRound }: BattlefieldProps) => {
   const {
     damage,
     setDamage,
@@ -26,6 +32,9 @@ const Battlefield = () => {
 
   const newLevel = useNewLevel(change);
 
+  const textCondition =
+    enemyPokemon && enemyPokemon.actualHp !== 0 && menuChoice === "";
+
   return (
     <section className="container-battlefield">
       {userPokemon && (
@@ -39,8 +48,21 @@ const Battlefield = () => {
       {animationTime && <span className="hp-animation">-{damage}</span>}
       {userPokemon && (
         <div className="user-battle">
-          {enemyPokemon && menuChoice === "" && (
-            <BattleText pokemonName={enemyPokemon.name} />
+          {textCondition && (
+            <BattleText
+              text={`hey man! It looks like a ${enemyPokemon.name}`}
+              button={false}
+              setRound={setRound}
+              round={round}
+            />
+          )}
+          {enemyPokemon?.actualHp === 0 && menuChoice === "" && (
+            <BattleText
+              text="Do you want to continue?"
+              button={true}
+              setRound={setRound}
+              round={round}
+            />
           )}
           {menuChoice === "fight" && (
             <BoxAttacks

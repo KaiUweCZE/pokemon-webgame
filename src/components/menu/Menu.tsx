@@ -25,6 +25,7 @@ const Menu = () => {
             {status === "authenticated" && (
               <>
                 <MenuItem name="Profile" link="/profile" />
+                <MenuItem name="Map" link="/map" />
               </>
             )}
           </ul>

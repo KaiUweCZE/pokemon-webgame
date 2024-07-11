@@ -18,6 +18,7 @@ export const nextDay = async (username: string) => {
         day: {
           increment: 1,
         },
+        partOfDay: 0,
       },
     });
 
@@ -38,7 +39,7 @@ export const nextDay = async (username: string) => {
 
     await Promise.all(updatedPokemons);
 
-    console.log(`updated pokemons: ${updatedPokemons}`);
+    console.log(`updated user: ${updatedUser.day}`);
 
     return updatedUser;
   } catch (error) {

@@ -24,34 +24,29 @@ const ProfilePage = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
   const [activeUserSix, setActiveUserSix] = useState("");
-  const context = useContext(UserContext);
   const pokemonContext = useContext(PokemonContext);
 
-  if (!data) {
-    throw new Error("data is missing");
-  }
-  const user = data.user;
-  if (!context && pokemonContext) {
-    console.log("there is not context");
+  const user = data?.user;
+  if (!pokemonContext) {
+    throw new Error("pokemon context is missing");
   }
 
-  const currentUser = context?.currentUser;
   const setUserPokemons = pokemonContext?.setUserPokemons;
 
   useEffect(() => {
-    if (currentUser) {
+    if (user) {
       handlePokemons();
     }
     if (pokemonContext) {
       console.log("pokemoni z contextu: ", pokemonContext.userPokemons);
     }
-    console.log("user is: ", currentUser?.userSix);
-  }, [currentUser]);
+    console.log("user is: ", user?.userSix);
+  }, [user?.pokemonIds]);
 
   const handlePokemons = async () => {
-    if (currentUser) {
-      const pokemons = await getUserPokemons(currentUser.id);
-      const pokemonSix = await getSix(currentUser.name);
+    if (user) {
+      const pokemons = await getUserPokemons(user.id);
+      const pokemonSix = await getSix(user.name);
 
       if (pokemons) {
         setPokemons(pokemons);
@@ -66,16 +61,16 @@ const ProfilePage = () => {
       setLoading(true);
       console.log("pokemons", pokemons);
     } else {
-      console.log("user have any pokemon", currentUser);
+      console.log("user have any pokemon", user);
     }
   };
 
   return (
     <main className="container-profile">
       {user && <UserProfile user={user} />}
-      {currentUser?.userSix ? (
+      {user?.userSix ? (
         <section className="profile-six">
-          {currentUser.userSix.map((pokemonId) => (
+          {user.userSix.map((pokemonId) => (
             <UserSix
               key={pokemonId}
               pokemonId={pokemonId}
