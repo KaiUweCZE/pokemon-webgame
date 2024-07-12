@@ -169,6 +169,58 @@ header {
     grid-column: 18;
     grid-row: 19;
   }
+  &.ninth {
+    grid-column: 16;
+    grid-row: 23;
+  }
+  &.tenth {
+    grid-column: 13;
+    grid-row: 17;
+  }
+  &.eleventh {
+    grid-column: 10;
+    grid-row: 12;
+  }
+  &.twelfth {
+    grid-column: 23;
+    grid-row: 9;
+  }
+  &.thirteenth {
+    grid-column: 28;
+    grid-row: 13;
+  }
+  &.fourteenth {
+    grid-column: 34;
+    grid-row: 11;
+  }
+  &.fifteenth {
+    left: 0.25rem;
+    grid-column: 38;
+    grid-row: 6;
+  }
+  &.sixteenth {
+    grid-column: 45;
+    grid-row: 7;
+  }
+  &.seventeenth {
+    grid-column: 38;
+    grid-row: 15;
+  }
+  &.eighteenth {
+    right: 0.25rem;
+    top: -0.25rem;
+    grid-column: 46;
+    grid-row: 16;
+  }
+  &.nineteenth {
+    top: 0.25rem;
+    grid-column: 44;
+    grid-row: 14;
+  }
+  &.twentieth {
+    grid-column: 49;
+    grid-row: 21;
+  }
 }
 
 .menu-item {

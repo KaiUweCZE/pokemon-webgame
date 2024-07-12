@@ -19,6 +19,7 @@ model User {
   hashedPassword String?
   profileImg     String?
   level          Int       @default(1)
+  badges String[] @default([])
   pokemonIds     String[]  @db.ObjectId
   pokemons       Pokemon[] @relation
   userSix        String[]  @default([])

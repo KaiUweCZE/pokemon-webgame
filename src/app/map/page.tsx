@@ -4,8 +4,13 @@ import "./map.css";
 import { useSession } from "next-auth/react";
 import { mapData } from "./mapData";
 import MapMenu from "./MapMenu";
+import { useState } from "react";
+import MapLoader from "./MapLoader";
+import MapError from "./MapError";
 
 const MapPage = () => {
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
   const { data } = useSession();
 
   if (!data) {
@@ -26,8 +31,16 @@ const MapPage = () => {
         />
       )}
       {locationData?.routes && (
-        <MapMenu routes={locationData?.routes} fight={locationData.fight} />
+        <MapMenu
+          routes={locationData?.routes}
+          fight={locationData.fight}
+          setLoader={setLoader}
+          setError={setError}
+        />
       )}
+      <h2>{location}</h2>
+      {loader && <MapLoader />}
+      {error && <MapError setError={setError} />}
     </main>
   );
 };

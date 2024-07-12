@@ -1,10 +1,14 @@
 import { pokemonsData } from "@/data/pokemonData";
 import { useState } from "react";
 import Image from "next/image";
+import { pokemonBattleData } from "@/data/pokemonBattleData";
 
 const PokedexMenu = () => {
   const pokemons = pokemonsData;
-  const pokemonI = pokemonsData.find((poke) => poke.Id === "0")?.img;
+  const filterPokemons = pokemonsData.filter((poke) =>
+    pokemonBattleData.some((pokeB) => pokeB.name === poke.name)
+  );
+  const pokemonI = filterPokemons.find((poke) => poke.Id === "0")?.img;
   const [pokemonImg, setPokemonImg] = useState(pokemonI);
 
   return (
@@ -18,7 +22,7 @@ const PokedexMenu = () => {
         />
       )}
       <ul>
-        {pokemons.map((pokemon) => (
+        {filterPokemons.map((pokemon) => (
           <li
             className="pokedex-item"
             key={pokemon.Id}

@@ -1,35 +1,144 @@
-$primary-bgc: #442952;
+@import "../../assets/styles/addons/variables";
 
 .container-map {
-  display: flex;
-  max-width: 80rem;
+  display: grid;
+  //max-width: 80rem;
+  width: fit-content;
   margin: 0 auto;
   position: relative;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  .map-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba($primary-bgc, 0.85);
-    border-radius: 0.5rem;
+  h3 {
+    font-size: 1.75rem;
     color: white;
-    width: 15rem;
-    height: 10rem;
+  }
+  h2 {
+    bottom: 10%;
+    place-self: end center;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    li {
-      padding-inline: 1rem;
-      cursor: pointer;
-      &:hover {
-        background-color: rgba(black, 0.2);
-      }
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.75rem;
+    background-color: rgba($blue-one, 0.5);
+    padding: 0.5rem;
+    padding-inline: 1.5rem;
+    box-shadow: 0 0 8px rgba(245, 245, 245, 0.425);
+    border-radius: 0.15rem;
+  }
+  img {
+    max-width: 100%;
+    width: 165vh;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+
+.map-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba($primary-bgc, 0.85);
+  background-color: rgba($darker-blue, 1);
+  background-color: rgba(darken($color: $dark-violet, $amount: 10), 0.9);
+  border-radius: 0.5rem;
+  color: white;
+  width: 30%;
+  aspect-ratio: 3/2;
+  min-width: 15rem;
+  min-height: 10rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  li {
+    text-transform: capitalize;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(rgb(255, 255, 255), 0.2);
     }
+  }
+}
+
+.map-menu-section {
+  padding-inline: 1rem;
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.map-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  gap: 1rem;
+  position: absolute;
+  place-self: center;
+  background-color: darken($dark-violet, 10);
+  box-shadow: 0 0 8px $darker-blue;
+  color: white;
+  transition: 0.5s;
+  opacity: 1;
+  translate: 0 0;
+  @starting-style {
+    opacity: 0;
+    translate: 0 5rem;
+  }
+}
+
+.loader-pika {
+  display: flex;
+  flex-direction: column;
+  width: 80;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  place-self: center;
+  .loader-background {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-image: url("https://cdn.midjourney.com/f0d6e775-1558-4049-b329-3ba36cde0011/0_1.png");
+    background-position: bottom left;
+    height: 20em;
+    width: 40em;
+    position: relative;
+    animation: translateBg 5s linear infinite;
+    overflow: hidden;
+    border-radius: 2em;
+    box-shadow: 0 0 10px black;
+    span {
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 0 0 5px black;
+      position: absolute;
+      z-index: 2;
+    }
+    img {
+      width: 40%;
+      height: auto;
+      position: absolute;
+      z-index: 1;
+      animation: run 5s ease infinite;
+    }
+  }
+}
+
+@keyframes run {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(180%);
+  }
+}
+
+@keyframes translateBg {
+  from {
+    background-position: left bottom;
+  }
+  to {
+    background-position: right bottom;
   }
 }
