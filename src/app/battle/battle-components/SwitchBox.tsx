@@ -6,6 +6,8 @@ import { PokemonBattle } from "@/types/pokemonBattle";
 import { getSix } from "@/utils/battle-function/getSix";
 import { generatePokemonIcon } from "@/utils/generatePokemonImage";
 import Image from "next/image";
+import closeIcon from "@/assets/images/icons/close.svg";
+
 import {
   Dispatch,
   SetStateAction,
@@ -42,9 +44,14 @@ const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
           <SwitchBoxItems key={pokemon.id} pokemon={pokemon} />
         ))}
       </ul>
-      <button className="button-primary" onClick={() => setMenuChoice("")}>
-        close
-      </button>
+      <Image
+        className="close-icon"
+        src={closeIcon}
+        alt="close icon"
+        width={16}
+        height={16}
+        onClick={() => setMenuChoice("")}
+      />
     </div>
   );
 };

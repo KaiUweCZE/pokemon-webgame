@@ -7,6 +7,7 @@ import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import HpBar from "@/components/HpBar";
 import EnergyBar from "@/components/EnergyBar";
 import ErrorMessage from "@/components/ErrorMessage";
+import { generatePokemonTypes } from "@/utils/generatePokemonTypes";
 
 interface UserPokemonProps {
   pokemon: Pokemon;
@@ -16,6 +17,7 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
   const context = useContext(UserContext);
   const [error, setError] = useState(false);
   const img = generatePokemonImage(pokemon.name);
+  const types = generatePokemonTypes(pokemon.name);
 
   if (!context) {
     console.log("context is missing");
@@ -63,6 +65,13 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
           <li>
             {pokemon.name} lvl. {pokemon.level}
           </li>
+
+          {pokemon.type &&
+            pokemon.type.map((type) => (
+              <li key={pokemon.id} className={`pokemon-type ${type}`}>
+                {type}
+              </li>
+            ))}
           <li>
             hp: <HpBar maximumHp={pokemon.hp} actualHp={pokemon.actualHp} />
           </li>

@@ -1,11 +1,14 @@
 "use client";
+import { useState } from "react";
 import MenuItem from "./MenuItem";
+import SecondaryMenu from "./SecondaryMenu";
 import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Menu = () => {
-  const { status } = useSession();
+  const [active, setActive] = useState({ index: 0, isActive: true });
+  const { data, status } = useSession();
   const router = useRouter();
 
   const handlerSignOut = async () => {
@@ -21,11 +24,29 @@ const Menu = () => {
       <div className="container-menu">
         <nav className="navigation">
           <ul className="menu">
-            <MenuItem name="Home" link="/" />
+            <MenuItem
+              name="Home"
+              link="/"
+              index={0}
+              active={active}
+              setActive={setActive}
+            />
             {status === "authenticated" && (
               <>
-                <MenuItem name="Profile" link="/profile" />
-                <MenuItem name="Map" link="/map" />
+                <MenuItem
+                  name="Profile"
+                  link="/profile"
+                  index={1}
+                  active={active}
+                  setActive={setActive}
+                />
+                <MenuItem
+                  name="Map"
+                  link="/map"
+                  index={2}
+                  active={active}
+                  setActive={setActive}
+                />
               </>
             )}
           </ul>
@@ -40,6 +61,7 @@ const Menu = () => {
           </button>
         )}
       </div>
+      <SecondaryMenu location={data?.user.location ? data.user.location : ""} />
     </header>
   );
 };

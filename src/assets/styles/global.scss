@@ -143,3 +143,87 @@ li:has(.bar) {
     translate: 0 -2rem;
   }
 }
+
+.pokemon-type {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  padding: 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+}
+
+.normal {
+  background-color: $normal-type;
+  border: 1px solid darken($normal-type, 20);
+}
+.fire {
+  background-color: $fire-type;
+  border: 1px solid darken($fire-type, 20);
+}
+.water {
+  background-color: $water-type;
+  border: 1px solid darken($water-type, 20);
+}
+.electric {
+  background-color: $electric-type;
+  border: 1px solid darken($electric-type, 20);
+}
+.grass {
+  background-color: $grass-type;
+  border: 1px solid darken($grass-type, 20);
+}
+.ice {
+  background-color: $ice-type;
+  border: 1px solid darken($ice-type, 20);
+}
+.fighting {
+  background-color: $fighting-type;
+  border: 1px solid darken($fighting-type, 20);
+}
+.poison {
+  background-color: $poison-type;
+  border: 1px solid darken($poison-type, 20);
+}
+.ground {
+  background-color: $ground-type;
+  border: 1px solid darken($ground-type, 20);
+}
+.flying {
+  background-color: $flying-type;
+  border: 1px solid darken($flying-type, 20);
+}
+.psychic {
+  background-color: $psychic-type;
+  border: 1px solid darken($psychic-type, 20);
+}
+.bug {
+  background-color: $bug-type;
+  border: 1px solid darken($bug-type, 20);
+}
+.rock {
+  background-color: $rock-type;
+  border: 1px solid darken($rock-type, 20);
+}
+.ghost {
+  background-color: $ghost-type;
+  border: 1px solid darken($normal-type, 20);
+}
+.dragon {
+  background-color: $dragon-type;
+  border: 1px solid darken($ghost-type, 20);
+}
+.dark {
+  background-color: $dark-type;
+  border: 1px solid darken($dark-type, 20);
+}
+.steel {
+  background-color: $steel-type;
+  border: 1px solid darken($steel-type, 20);
+}
+.fairy {
+  background-color: $fairy-type;
+  border: 1px solid darken($fairy-type, 20);
+}

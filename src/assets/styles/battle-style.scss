@@ -169,16 +169,44 @@ $border-size: 4px;
 }
 
 .switch-box {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
   border: $border-size solid black;
   height: 75%;
   width: 34%;
   position: absolute;
   bottom: 0;
   right: 0;
+  padding-inline: 1rem;
   background-color: beige;
   z-index: 1;
+}
+
+.switch-box-item {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  div {
+    .bar {
+      height: 0.5rem;
+      padding: 0.1rem;
+    }
+    .hp-bar {
+      height: 0.25rem;
+    }
+  }
+}
+
+.switch-info {
+  display: flex;
+  background-color: #303030;
+}
+
+.close-icon {
+  background-color: rgb(252, 78, 78);
+  position: absolute;
+  right: 0;
+  cursor: pointer;
 }
 
 .battle-bag {

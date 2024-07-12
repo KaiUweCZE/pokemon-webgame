@@ -3,15 +3,50 @@
 
 @include set-up;
 
+$dark-violet: #24255a;
+$blue-one: #02142c;
+$light-blue: #0a224f;
+$darker-blue: #01070f;
+
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0.5rem;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
   background-color: $dark-violet;
-  height: 4rem;
+  height: 5rem;
   width: 100%;
   position: relative;
+  box-shadow: 0 0 4px $darker-blue;
+}
+
+.secondary-menu {
+  background-color: #365980b9;
+  background-color: $darker-blue;
+}
+
+.secondary-menu-img {
+  transition: 0.5s;
+  filter: brightness(0.7);
+  cursor: pointer;
+  &:hover {
+    scale: 1.2;
+    filter: brightness(1.2);
+  }
+}
+
+.container-secondary-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.icon-box {
+  display: flex;
+  padding-top: 0.15rem;
+  margin-right: 0.5rem;
+  gap: 0.5rem;
 }
 
 .container-menu {
@@ -22,9 +57,129 @@ header {
   max-width: 80rem;
   margin: 0 auto;
 }
+
 .menu {
   display: flex;
   gap: 0.5rem;
+}
+
+.pokedex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 32rem;
+  height: 18rem;
+  background-color: darken($dark-violet, 10);
+  border: 2px solid $darker-blue;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px $darker-blue;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+  overflow-y: scroll;
+  z-index: 1;
+  ul {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 1rem;
+  }
+  img {
+    grid-column: 2;
+  }
+  .pokedex-item {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.menu-map {
+  display: grid;
+  place-items: center;
+  width: 32rem;
+  height: 18rem;
+  grid-template-columns: repeat(64, 1fr);
+  grid-template-rows: repeat(36, 1fr);
+  background-color: $dark-violet;
+  border: 2px solid $darker-blue;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px $darker-blue;
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+  opacity: 1;
+  transition: 1s;
+  z-index: 1;
+  @starting-style {
+    opacity: 0;
+    top: 0;
+    right: 5rem;
+  }
+  img {
+    display: flex;
+    padding: 0.15rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.map-item {
+  position: relative;
+  width: 150%;
+  height: 150%;
+  background-color: rgb(133, 36, 36);
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  cursor: pointer;
+  z-index: 1;
+  &.active {
+    background-color: rgb(224, 102, 102);
+  }
+  &.first {
+    left: 0.25rem;
+    grid-column: 44;
+    grid-row: 27;
+  }
+  &.second {
+    right: 0.25rem;
+    grid-column: 40;
+    grid-row: 25;
+  }
+  &.third {
+    grid-column: 29;
+    grid-row: 28;
+  }
+  &.fourth {
+    grid-column: 29;
+    grid-row: 31;
+  }
+  &.fiveth {
+    top: -0.25rem;
+    grid-column: 31;
+    grid-row: 24;
+  }
+  &.sixth {
+    left: 0.25rem;
+    grid-column: 29;
+    grid-row: 21;
+  }
+  &.seventh {
+    grid-column: 25;
+    grid-row: 19;
+  }
+  &.eigth {
+    left: 0.25rem;
+    grid-column: 18;
+    grid-row: 19;
+  }
+}
+
+.menu-item {
+  padding-inline: 0.5rem;
+  padding-top: 0.25rem;
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+
+.menu-item.active {
+  background-color: $darker-blue;
+  box-shadow: 0 0 8px #020c1f;
 }
 
 a {
@@ -34,7 +189,11 @@ a {
 .button-signout {
   @include button-clasic;
   background-color: darken($new-light, 20);
+  background-color: $darker-blue;
+  box-shadow: 0 0 4px $darker-blue;
   &:hover {
-    background-color: $new-light;
+    background-color: lighten($color: $darker-blue, $amount: 10);
+    background-color: $darker-blue;
+    background-color: transparent;
   }
 }
