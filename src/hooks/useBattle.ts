@@ -23,6 +23,7 @@ const useBattle = () => {
   // display user's dame for a while
   const [animationTime, setAnimationTime] = useState(false);
   const [newLevel, setNewLevel] = useState(true);
+  const [exp, setExp] = useState(0);
   const context = useContext(BattleContext);
   if (!context) {
     throw new Error("missing context");
@@ -55,16 +56,17 @@ const useBattle = () => {
   useEffect(() => {
     // If the enemy Pokemon's HP reaches 0, calculate and add exps
     if (enemyPokemon?.actualHp === 0 && damage > 0) {
-      const exp = getExp({
+      const newExp = getExp({
         pokemonHp: 0,
         pokemonName: enemyPokemon.name,
         pokemonLevel: enemyPokemon.level,
       });
+      setExp(newExp);
 
       setMenuChoice("");
 
-      if (exp && userPokemon) {
-        addExp({ pokemonId: userPokemon.id, newExps: exp }).then(
+      if (newExp && userPokemon) {
+        addExp({ pokemonId: userPokemon.id, newExps: newExp }).then(
           (updatedPokemon) => {
             if (updatedPokemon) {
               setUserPokemon({
@@ -104,6 +106,7 @@ const useBattle = () => {
     animationTime,
     enemyPokemon,
     userPokemon,
+    exp,
   };
 };
 

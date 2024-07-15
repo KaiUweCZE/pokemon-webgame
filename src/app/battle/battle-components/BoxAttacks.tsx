@@ -2,9 +2,10 @@
 import { BattleContext } from "@/contexts/BattleContext";
 import { attacksData } from "@/data/attacksData";
 import { Pokemon } from "@/types/pokemon";
-import { PokemonBattle } from "@/types/pokemonBattle";
 import { changeEnergy } from "@/utils/battle-function/changeEnergy";
-import { Dispatch, SetStateAction, useContext } from "react";
+import { restEng } from "@/utils/battle-function/restEng";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
+import AttackCountdown from "./AttackCountdown";
 
 interface BoxAttacksProps {
   userPokemon: Pokemon;
@@ -14,13 +15,13 @@ interface BoxAttacksProps {
 
 const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
   const context = useContext(BattleContext);
+  const [time, setTime] = useState(0);
 
   if (!context) {
     throw new Error("context is missing");
   }
 
-  const setUserPokemon = context.setUserPokemon;
-  const enemyPokemon = context.enemyPokemon;
+  const { setUserPokemon, enemyPokemon } = context;
 
   // increment pokemon energy
   const incrementEnergy = async (energyCost: number) => {
@@ -43,6 +44,10 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     if (!attackData) {
       throw new Error(`${attackName} does not exist`);
     }
+
+    console.log("attack data: ", attackData.recoveryTime);
+
+    setTime(attackData.recoveryTime);
     if (userPokemon.actualEnergy - attackData?.energyCost < 0) {
       console.log("attack can not be used");
       return null;
@@ -61,6 +66,18 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     }
   };
 
+  const handleRest = async (pokemonId: string) => {
+    setTime(4);
+    const updatedPokemon = await restEng(pokemonId);
+    if (updatedPokemon) {
+      setUserPokemon({
+        ...userPokemon,
+        actualEnergy: updatedPokemon?.actualEnergy,
+      });
+    }
+    console.log("actual energy: ", updatedPokemon?.actualEnergy);
+  };
+
   return (
     <ul className="box-attacks">
       <li className="attack-item" onClick={() => handleAttack("quick attack")}>
@@ -75,6 +92,12 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
       <li className="attack-item" onClick={() => handleAttack("thunderbolt")}>
         thunderbolt
       </li>
+      <li className="attack-item" onClick={() => handleRest(userPokemon.id)}>
+        rest{" "}
+      </li>
+      <li className="attack-item">avoid</li>
+
+      {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>
   );
 };

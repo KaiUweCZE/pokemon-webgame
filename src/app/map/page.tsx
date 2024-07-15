@@ -28,6 +28,7 @@ const MapPage = () => {
           alt="cross road img"
           width={1456}
           height={816}
+          priority={true}
         />
       )}
       {locationData?.routes && (

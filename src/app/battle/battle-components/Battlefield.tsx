@@ -28,6 +28,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
     animationTime,
     enemyPokemon,
     userPokemon,
+    exp,
   } = useBattle();
 
   const newLevel = useNewLevel(change);
@@ -58,7 +59,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
           )}
           {enemyPokemon?.actualHp === 0 && menuChoice === "" && (
             <BattleText
-              text="Do you want to continue?"
+              text={`You get: ${exp} exp. Do you want to continue?`}
               button={true}
               setRound={setRound}
               round={round}

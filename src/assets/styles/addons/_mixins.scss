@@ -36,3 +36,15 @@
   transition: 0.35s;
   cursor: pointer;
 }
+
+@mixin battle-startup {
+  transition: 0.5s;
+  opacity: 1;
+  translate: 0 0;
+  filter: brightness(1);
+  @starting-style {
+    opacity: 0;
+    translate: -10rem 0;
+    filter: brightness(0.2);
+  }
+}

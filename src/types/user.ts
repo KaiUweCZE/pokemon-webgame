@@ -4,6 +4,7 @@ export interface User {
   profileImg: string | null;
   level: number;
   pokemonIds: string[];
+  badges: number[];
   userSix: string[];
   location: string;
   day: number;

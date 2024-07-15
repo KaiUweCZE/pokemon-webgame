@@ -85,6 +85,7 @@ export const authOptions: NextAuthOptions = {
         token.chapter = user.chapter;
         token.day = user.day;
         token.partOfDay = user.partOfDay;
+        token.badges = user.badges;
       }
       return token;
     },
@@ -102,6 +103,7 @@ export const authOptions: NextAuthOptions = {
       session.user.chapter = token.chapter;
       session.user.day = token.day;
       session.user.partOfDay = token.partOfDay;
+      session.user.badges = token.badges;
       return session;
     },
   },

@@ -4,7 +4,9 @@ import { useSession } from "next-auth/react";
 const Home = () => {
   const { data } = useSession();
 
-  const loger = () => {};
+  const loger = () => {
+    console.log("data: ", data?.user);
+  };
 
   return (
     <main className="container-home">
