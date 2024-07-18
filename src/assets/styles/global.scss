@@ -227,3 +227,8 @@ li:has(.bar) {
   background-color: $fairy-type;
   border: 1px solid darken($fairy-type, 20);
 }
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

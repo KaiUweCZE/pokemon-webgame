@@ -10,4 +10,6 @@ export interface User {
   day: number;
   partOfDay: number;
   chapter: number;
+  items: { item: string; count: number }[];
+  contacts: string[];
 }

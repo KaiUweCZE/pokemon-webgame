@@ -3,18 +3,41 @@
 
 @include set-up;
 
+@mixin menu-mixin {
+  position: absolute;
+  top: 3rem;
+  right: 5rem;
+  opacity: 1;
+  transition: 1s;
+  z-index: 1;
+  @starting-style {
+    opacity: 0;
+    top: 0;
+    right: 5rem;
+  }
+}
+
 $dark-violet: #24255a;
 $blue-one: #02142c;
 $light-blue: #0a224f;
 $darker-blue: #01070f;
 
-header {
+header:has(.secondary-menu) {
   display: grid;
   grid-template-rows: 1fr 0.5fr;
   background-color: $dark-violet;
   height: 5rem;
   width: 100%;
   position: relative;
+  box-shadow: 0 0 4px $darker-blue;
+}
+
+header {
+  display: grid;
+  height: 4rem;
+  background-color: $dark-violet;
+  position: relative;
+  margin-bottom: 1rem;
   box-shadow: 0 0 4px $darker-blue;
 }
 
@@ -72,11 +95,8 @@ header {
   border: 2px solid $darker-blue;
   border-radius: 0.5rem;
   box-shadow: 0 0 8px $darker-blue;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
+  @include menu-mixin;
   overflow-y: scroll;
-  z-index: 1;
   ul {
     grid-row: 1;
     grid-column: 1;
@@ -91,6 +111,76 @@ header {
   }
 }
 
+.container-contacts {
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
+  color: white;
+  background-color: $light-blue;
+  width: 15rem;
+  height: 20rem;
+  @include menu-mixin;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ul {
+    width: 100%;
+  }
+}
+
+.call {
+  background-color: rgba($pale-indigo, 0.3);
+  border: 2px solid $darker-blue;
+}
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0.5rem;
+  img {
+    filter: brightness(1);
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  img:hover {
+    transition: 0.5s;
+    filter: invert(47%) sepia(9%) saturate(2827%) hue-rotate(87deg)
+      brightness(112%) contrast(98%);
+    scale: 1.2;
+  }
+}
+
+.bag {
+  display: grid;
+  width: 15rem;
+  height: 20rem;
+  background-color: darken($dark-violet, 10);
+  color: white;
+  @include menu-mixin;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  ul {
+    width: 100%;
+  }
+}
+
+.bag-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  padding-inline: 0.5rem;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba($pale-indigo, 0.6);
+  }
+}
+
 .menu-map {
   display: grid;
   place-items: center;
@@ -102,17 +192,7 @@ header {
   border: 2px solid $darker-blue;
   border-radius: 0.5rem;
   box-shadow: 0 0 8px $darker-blue;
-  position: absolute;
-  top: 3rem;
-  right: 5rem;
-  opacity: 1;
-  transition: 1s;
-  z-index: 1;
-  @starting-style {
-    opacity: 0;
-    top: 0;
-    right: 5rem;
-  }
+  @include menu-mixin;
   img {
     display: flex;
     padding: 0.15rem;

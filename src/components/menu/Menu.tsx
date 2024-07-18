@@ -4,12 +4,12 @@ import MenuItem from "./MenuItem";
 import SecondaryMenu from "./SecondaryMenu";
 import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Menu = () => {
-  const [active, setActive] = useState({ index: 0, isActive: true });
   const { data, status } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handlerSignOut = async () => {
     await signOut({ redirect: true, callbackUrl: "/" });
@@ -27,25 +27,19 @@ const Menu = () => {
             <MenuItem
               name="Home"
               link="/"
-              index={0}
-              active={active}
-              setActive={setActive}
+              active={pathname === "/" ? true : false}
             />
             {status === "authenticated" && (
               <>
                 <MenuItem
                   name="Profile"
                   link="/profile"
-                  index={1}
-                  active={active}
-                  setActive={setActive}
+                  active={pathname === "/profile" ? true : false}
                 />
                 <MenuItem
                   name="Map"
                   link="/map"
-                  index={2}
-                  active={active}
-                  setActive={setActive}
+                  active={pathname === "/map" ? true : false}
                 />
               </>
             )}
@@ -61,7 +55,11 @@ const Menu = () => {
           </button>
         )}
       </div>
-      <SecondaryMenu location={data?.user.location ? data.user.location : ""} />
+      {status === "authenticated" && (
+        <SecondaryMenu
+          location={data?.user.location ? data.user.location : ""}
+        />
+      )}
     </header>
   );
 };

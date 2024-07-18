@@ -50,11 +50,23 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (isPasswordCorrect) {
-            console.log("Returning user:", {
-              username: user.name,
-              ...user,
-            });
-            return user;
+            const returnUser: User = {
+              id: user.id,
+              name: user.name,
+              profileImg: user.profileImg,
+              level: user.level,
+              pokemonIds: user.pokemonIds,
+              userSix: user.userSix,
+              location: user.location,
+              chapter: user.chapter,
+              day: user.day,
+              partOfDay: user.partOfDay,
+              badges: user.badges,
+              items: (user.items as any) ?? [], // Ensure items is not null
+              contacts: user.contacts,
+            };
+            console.log("Returning user:", returnUser);
+            return returnUser;
           }
 
           console.log("Password verification result:", isPasswordCorrect);
@@ -86,6 +98,8 @@ export const authOptions: NextAuthOptions = {
         token.day = user.day;
         token.partOfDay = user.partOfDay;
         token.badges = user.badges;
+        token.items = user.items;
+        token.contacts = user.contacts;
       }
       return token;
     },
@@ -104,6 +118,8 @@ export const authOptions: NextAuthOptions = {
       session.user.day = token.day;
       session.user.partOfDay = token.partOfDay;
       session.user.badges = token.badges;
+      session.user.items = token.items;
+      session.user.contacts = token.contacts;
       return session;
     },
   },

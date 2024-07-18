@@ -21,7 +21,7 @@ $dark-violet: #24255a;
 
 .section-profile {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: max-content 1fr;
   width: fit-content;
   img {
     place-self: end end;
@@ -32,6 +32,7 @@ $dark-violet: #24255a;
   display: grid;
   grid-template-columns: 1fr;
   place-self: end start;
+  width: 15rem;
   background-color: darken($light-indigo, 20);
   padding: 0.5rem;
   border-radius: 0.35rem;
@@ -127,4 +128,9 @@ $dark-violet: #24255a;
       translate: 0 -4rem;
     }
   }
+}
+
+.box-badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
 }

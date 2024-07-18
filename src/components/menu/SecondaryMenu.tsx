@@ -8,33 +8,23 @@ import { useState } from "react";
 import MenuMap from "./MenuMap";
 import PokedexMenu from "./PokedexMenu";
 import BagMenu from "./BagMenu";
+import ContactsMenu from "./ContactsMenu";
 
 interface LocationProps {
   location: string;
 }
 
 const SecondaryMenu = ({ location }: LocationProps) => {
-  const [activeMap, setActiveMap] = useState(false);
-  const [activePokedex, setActivePokedex] = useState(false);
-  const [activeBag, setActiveBag] = useState(false);
+  const [active, setActive] = useState("");
 
-  const handleMap = () => {
-    setActivePokedex(false);
-    setActiveBag(false);
-    setActiveMap(!activeMap);
+  const handleOptions = (e: string) => {
+    if (active === e) {
+      setActive("");
+    } else {
+      setActive(e);
+    }
   };
 
-  const handlePokedex = () => {
-    setActiveMap(false);
-    setActiveBag(false);
-    setActivePokedex(!activePokedex);
-  };
-
-  const handleBag = () => {
-    setActiveMap(false);
-    setActivePokedex(false);
-    setActiveBag(!activeBag);
-  };
   return (
     <div className="secondary-menu">
       <div className="container-secondary-menu">
@@ -44,33 +34,34 @@ const SecondaryMenu = ({ location }: LocationProps) => {
             src={contactIcon}
             alt="icon of pokedex"
             width={24}
-            onClick={handlePokedex}
+            onClick={() => handleOptions("contacts")}
           />
           <Image
             className="secondary-menu-img"
             src={bagIcon}
             alt="icon of bag"
             width={24}
-            onClick={handleBag}
+            onClick={() => handleOptions("bag")}
           />
           <Image
             className="secondary-menu-img"
             src={mapIcon}
             alt="icon of map"
             width={24}
-            onClick={handleMap}
+            onClick={() => handleOptions("map")}
           />
           <Image
             className="secondary-menu-img"
             src={pokedexIcon}
             alt="icon of pokedex"
             width={24}
-            onClick={handlePokedex}
+            onClick={() => handleOptions("pokedex")}
           />
         </div>
-        {activeMap && <MenuMap location={location} />}
-        {activePokedex && <PokedexMenu />}
-        {activeBag && <BagMenu />}
+        {active === "map" && <MenuMap location={location} />}
+        {active === "pokedex" && <PokedexMenu />}
+        {active === "bag" && <BagMenu />}
+        {active === "contacts" && <ContactsMenu />}
       </div>
     </div>
   );

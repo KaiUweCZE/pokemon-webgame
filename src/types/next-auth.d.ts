@@ -10,10 +10,13 @@ declare module "next-auth" {
       level: number;
       pokemonIds: string[];
       userSix: string[];
+      badges: number[];
       location: string;
       chapter: number;
       day: number;
       partOfDay: number;
+      items: { item: string; count: number }[];
+      contacts: string[];
     } & DefaultSession["user"];
   }
 
@@ -28,6 +31,9 @@ declare module "next-auth" {
     chapter: number;
     day: number;
     partOfDay: number;
+    badges: number[];
+    items: { item: string; count: number }[];
+    contacts: string[];
   }
 }
 
@@ -43,5 +49,8 @@ declare module "next-auth/jwt" {
     chapter: number;
     day: number;
     partOfDay: number;
+    badges: number[];
+    items: { item: string; count: number }[];
+    contacts: string[];
   }
 }

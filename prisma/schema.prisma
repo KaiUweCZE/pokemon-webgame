@@ -27,6 +27,8 @@ model User {
   chapter        Int       @default(0)
   day            Int       @default(0)
   partOfDay      Int       @default(0)
+  items          Json      @default("[]")
+  contacts       String[]  @default(["prof. Bloom"])
 }
 
 model Pokemon {

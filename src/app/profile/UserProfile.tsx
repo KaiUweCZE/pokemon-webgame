@@ -21,23 +21,32 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
         priority={false}
       />
       <div className="profile-info">
-        <ul>
-          <li>username: {user.name}</li>
-          <li>location: {user.location}</li>
-          <li>day: {user.day}</li>
-        </ul>
+        <div className="flex-column">
+          <h3>info:</h3>
+          <ul className="info">
+            <li>username: {user.name}</li>
+            <li>location: {user.location}</li>
+            <li>day: {user.day}</li>
+            <li>pokemons: {user.pokemonIds.length}</li>
+          </ul>
+        </div>
+        <div className="flex-column">
+          <h3>{`${user.name} badges:`}</h3>
+          <ul className="box-badges">
+            {badges &&
+              badges.map((badge) => (
+                <li key={badge.id}>
+                  <Image
+                    src={badge.img}
+                    alt="image of badge"
+                    width={32}
+                    height={32}
+                  />
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
-      <ul>
-        {badges &&
-          badges.map((badge) => (
-            <Image
-              key={badge.id}
-              src={badge.img}
-              alt="image of badge"
-              width={50}
-            />
-          ))}
-      </ul>
     </section>
   );
 };
