@@ -44,6 +44,11 @@ export const generatePokemon = (pokemonId: number, levelRange: number[]) => {
     energy: parseFloat(
       (data.energy * Math.pow(1.05, level) * energyRate).toFixed(2)
     ),
+    actualEnergy: parseFloat(
+      (data.energy * Math.pow(1.05, level) * energyRate).toFixed(2)
+    ),
+    attacks: ["tackle"],
+    abilities: [],
     expToLevel: Math.ceil(data.expToLevel * Math.pow(1.5, level)),
     expForKill: Math.ceil(data.expForKill * Math.pow(1.5, level)),
   };
