@@ -1,4 +1,5 @@
-@import "../../assets/styles/addons/variables";
+@import "../../assets/styles/addons/variables",
+  "../../assets/styles/addons/mixins";
 
 .container-map {
   display: grid;
@@ -34,7 +35,6 @@
 .map-menu {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background-color: rgba($primary-bgc, 0.85);
   background-color: rgba($darker-blue, 1);
   background-color: rgba(darken($color: $dark-violet, $amount: 10), 0.9);
@@ -55,6 +55,28 @@
     cursor: pointer;
     &:hover {
       background-color: rgba(rgb(255, 255, 255), 0.2);
+    }
+  }
+
+  .menu-navigation {
+    display: flex;
+    background-color: $pale-indigo;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(max-content, 1fr));
+      width: 100%;
+    }
+    @media (width < 60rem) {
+      ul {
+        grid-template-columns: repeat(3, minmax(max-content, 1fr));
+      }
+    }
+    li {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding-inline: 0.5rem;
+      padding-block: 0.25rem;
     }
   }
 }
@@ -123,6 +145,10 @@
       animation: run 5s ease infinite;
     }
   }
+}
+
+.container-location {
+  @include scroll-primary;
 }
 
 @keyframes run {

@@ -26,6 +26,12 @@ export const mapData = [
   {
     id: 0,
     name: "shire",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["cave", "mountains"],
     img: shireImg,
     rounds: [
@@ -55,6 +61,12 @@ export const mapData = [
   {
     id: 1,
     name: "large farm",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["shire", "bridge", "mountains"],
     img: largeFarmImg,
     rounds: [
@@ -84,6 +96,12 @@ export const mapData = [
   {
     id: 2,
     name: "mountains",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["large farm", "cave", "bridge"],
     img: gmountainImg,
     rounds: [
@@ -113,6 +131,12 @@ export const mapData = [
   {
     id: 3,
     name: "cave",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["mountain", "large farm"],
     img: caveImg,
     rounds: [
@@ -142,6 +166,12 @@ export const mapData = [
   {
     id: 4,
     name: "bridge",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["mountain", "large farm", "lovely"],
     img: bridgeImg,
     rounds: [
@@ -171,6 +201,12 @@ export const mapData = [
   {
     id: 5,
     name: "lovely",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["bridge", "willy's barn"],
     img: lovelyImg,
     rounds: [
@@ -200,6 +236,12 @@ export const mapData = [
   {
     id: 6,
     name: "willy's barn",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["lake", "deep mine", "futurome", "waterfalls", "lovely"],
     img: barnImg,
     rounds: [
@@ -229,6 +271,12 @@ export const mapData = [
   {
     id: 7,
     name: "lake",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["willy's barn", "deep mine", "gastly tower"],
     img: lakeImg,
     rounds: [
@@ -258,6 +306,12 @@ export const mapData = [
   {
     id: 8,
     name: "deep mine",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["lake", "gastly tower"],
     img: deepmineImg,
     rounds: [
@@ -287,6 +341,12 @@ export const mapData = [
   {
     id: 9,
     name: "gastly tower",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion", "energy drink"],
     routes: ["lake", "deep mine", "magical forest"],
     img: gastlytowerImg,
     rounds: [
@@ -316,6 +376,12 @@ export const mapData = [
   {
     id: 10,
     name: "magical forst",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "gastly tower"],
     img: magicalForestImg,
     rounds: [
@@ -345,6 +411,12 @@ export const mapData = [
   {
     id: 11,
     name: "ice scream",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["gastly tower"],
     img: iceScreamImg,
     rounds: [
@@ -374,6 +446,12 @@ export const mapData = [
   {
     id: 12,
     name: "waterfalls",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "monastry", "willy's barn"],
     img: waterfallsImg,
     rounds: [
@@ -403,6 +481,12 @@ export const mapData = [
   {
     id: 13,
     name: "monastry",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["waterfalls", "ice sream", "northmandic", "chatot castle"],
     img: monastryImg,
     rounds: [
@@ -432,6 +516,12 @@ export const mapData = [
   {
     id: 14,
     name: "northmandic",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["teleport", "monastry", "chatot castle"],
     img: northmandicImg,
     rounds: [
@@ -461,6 +551,12 @@ export const mapData = [
   {
     id: 15,
     name: "teleport",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["northmandic", "chatot castle"],
     img: teleportImg,
     rounds: [
@@ -490,6 +586,12 @@ export const mapData = [
   {
     id: 16,
     name: "chatot castle",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["northmandic", "lovely", "monastry", "jungle"],
     img: chatotcastleImg,
     rounds: [
@@ -519,6 +621,12 @@ export const mapData = [
   {
     id: 17,
     name: "jungle",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["macho pichu", "chatot castle"],
     img: jungleImg,
     rounds: [
@@ -548,6 +656,12 @@ export const mapData = [
   {
     id: 18,
     name: "macho pichu",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["redwoods", "jungle"],
     img: machoPichuImg,
     rounds: [
@@ -577,6 +691,12 @@ export const mapData = [
   {
     id: 19,
     name: "redwoods",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["macho pichu", "yummy desert"],
     img: redwoodsImg,
     rounds: [
@@ -606,6 +726,12 @@ export const mapData = [
   {
     id: 20,
     name: "yummy desert",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    marketItems: ["pokeball", "potion"],
     routes: ["redwoods"],
     img: yummyImg,
     rounds: [

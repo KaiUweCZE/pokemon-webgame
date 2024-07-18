@@ -209,6 +209,9 @@ header {
   border: 1px solid white;
   cursor: pointer;
   z-index: 1;
+  &:hover .tag {
+    display: flex;
+  }
   &.active {
     background-color: rgb(224, 102, 102);
   }
@@ -328,4 +331,12 @@ a {
     background-color: $darker-blue;
     background-color: transparent;
   }
+}
+
+.tag {
+  display: none;
+  color: white;
+  background-color: rgba($light-blue, 0.7);
+  position: absolute;
+  top: 0.5rem;
 }

@@ -7,6 +7,7 @@ import { UserProvider } from "@/contexts/UserContext";
 import Timeline from "@/components/footer/Timeline";
 import { PokemonProvider } from "@/contexts/PokemonContext";
 import { BattleProvider } from "@/contexts/BattleContext";
+import { MapProvider } from "./map/MapContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,7 @@ export default function RootLayout({
             <PokemonProvider>
               <BattleProvider>
                 <Menu />
-                {children}
+                <MapProvider>{children}</MapProvider>
                 <Timeline />
               </BattleProvider>
             </PokemonProvider>

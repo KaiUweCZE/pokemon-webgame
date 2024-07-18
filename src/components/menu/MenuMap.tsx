@@ -18,128 +18,169 @@ const MenuMap = ({ location }: LocationProps) => {
         className={
           location === "shire" ? "map-item first active" : "map-item first"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "large farm"
             ? "map-item second active"
             : "map-item second"
         }
-      ></div>
+      >
+        <span className="tag">farm</span>
+      </div>
       <div
         className={
           location === "mountains" ? "map-item third active" : "map-item third"
         }
-      ></div>
+      >
+        <span className="tag">mountains</span>
+      </div>
       <div
         className={
           location === "cave" ? "map-item fourth active" : "map-item fourth"
         }
-      ></div>
+      >
+        <span className="tag">cave</span>
+      </div>
       <div
         className={
           location === "bridge" ? "map-item fiveth active" : "map-item fiveth"
         }
-      ></div>
+      >
+        <span className="tag">bridge</span>
+      </div>
       <div
         className={
           location === "lovely" ? "map-item sixth active" : "map-item sixth"
         }
-      ></div>
+      >
+        <span className="tag">lovely</span>
+      </div>
       <div
         className={
           location === "willy's barn"
             ? "map-item seventh active"
             : "map-item seventh"
         }
-      ></div>
+      >
+        <span className="tag">willy's barn</span>
+      </div>
       <div
         className={
           location === "lake" ? "map-item eigth active" : "map-item eigth"
         }
-      ></div>
+      >
+        <span className="tag">lake</span>
+      </div>
       <div
         className={
           location === "deep mine" ? "map-item ninth active" : "map-item ninth"
         }
-      ></div>
+      >
+        <span className="tag">deep mine</span>
+      </div>
       <div
         className={
           location === "gastly tower"
             ? "map-item tenth active"
             : "map-item tenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "magical forest"
             ? "map-item eleventh active"
             : "map-item eleventh"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "ice scream"
             ? "map-item twelfth active"
             : "map-item twelfth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "waterfalls"
             ? "map-item thirteenth active"
             : "map-item thirteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "monastry"
             ? "map-item fourteenth active"
             : "map-item fourteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "northmandic"
             ? "map-item fifteenth active"
             : "map-item fifteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "teleport"
             ? "map-item sixteenth active"
             : "map-item sixteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "castle"
             ? "map-item seventeenth active"
             : "map-item seventeenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "jungle"
             ? "map-item eighteenth active"
             : "map-item eighteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "macho pichu"
             ? "map-item nineteenth active"
             : "map-item nineteenth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
       <div
         className={
           location === "redwood"
             ? "map-item twentieth active"
             : "map-item twentieth"
         }
-      ></div>
+      >
+        <span className="tag">shire</span>
+      </div>
+      <span className="tag">shire</span>
     </div>
   );
 };

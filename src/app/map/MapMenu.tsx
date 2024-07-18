@@ -1,75 +1,59 @@
 "use client";
-import { useSession } from "next-auth/react";
-import { changeLocation } from "./action";
+import { useState } from "react";
+import MapRoutes from "./MapRoutes";
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
+import Market from "@/components/market/Market";
+import AboutLocation from "./AboutLocation";
 
 interface MapProps {
   routes: string[];
   fight: boolean;
-  setError: Dispatch<SetStateAction<boolean>>;
-  setLoader: Dispatch<SetStateAction<boolean>>;
+  options: string[];
+  location: string;
 }
 
-const MapMenu = ({ routes, fight, setError, setLoader }: MapProps) => {
-  const { data: session, update } = useSession();
+const MapMenu = ({ location, routes, options }: MapProps) => {
+  const [active, setActive] = useState("");
   const router = useRouter();
 
-  if (!session) {
-    throw new Error("data is missing");
-  }
-  const user = session.user;
+  const handleOption = () => {
+    switch (active) {
+      case "Routes":
+        return <MapRoutes routes={routes} />;
 
-  const handleChangeLocation = async (route: string) => {
-    const updatedUser = await changeLocation(user.name, route);
+      case "NPC":
+        return <p>Sherrif</p>;
 
-    if (
-      updatedUser &&
-      "location" in updatedUser &&
-      "partOfDay" in updatedUser
-    ) {
-      setLoader(true);
-      if (user.partOfDay < 3) {
-        const newSession = {
-          ...session,
-          user: {
-            ...session?.user,
-            location: updatedUser?.location,
-            partOfDay: updatedUser?.partOfDay,
-          },
-        };
-        await update(newSession);
-      }
-    } else {
-      setError(true);
+      case "Poke Centrum":
+        return <p>Poke centrum</p>;
+
+      case "Market":
+        return <Market location={location} />;
+
+      default:
+        return <AboutLocation location={location} />;
     }
-
-    setLoader(false);
-    // Update session with new user location
-    console.log("You must wait until the next day");
-
-    console.log("updated user:", updatedUser);
-    console.log("updated session:", session);
   };
 
   return (
     <div className="map-menu">
-      <div className="map-menu-section">
-        <h3>routes:</h3>
+      <nav className="menu-navigation">
         <ul>
-          {routes.map((route) => (
-            <li key={route} onClick={() => handleChangeLocation(route)}>
-              {route}
+          {options.map((option, index) => (
+            <li key={index} onClick={() => setActive(option)}>
+              {option}
             </li>
           ))}
+          <li
+            onClick={() => {
+              router.push("/battle");
+            }}
+          >
+            fight
+          </li>
         </ul>
-      </div>
-      <div className="map-menu-section">
-        <h3>options:</h3>
-        <ul>
-          {fight && <li onClick={() => router.push("/battle")}>fight</li>}
-        </ul>
-      </div>
+      </nav>
+      {handleOption()}
     </div>
   );
 };

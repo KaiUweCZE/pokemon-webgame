@@ -4,19 +4,23 @@ import "./map.css";
 import { useSession } from "next-auth/react";
 import { mapData } from "./mapData";
 import MapMenu from "./MapMenu";
-import { useState } from "react";
 import MapLoader from "./MapLoader";
 import MapError from "./MapError";
+import { MapContext, MapProvider } from "./MapContext";
+import { useContext } from "react";
 
 const MapPage = () => {
-  const [error, setError] = useState(false);
-  const [loader, setLoader] = useState(false);
+  const context = useContext(MapContext);
   const { data } = useSession();
 
   if (!data) {
     throw new Error("data is missing");
   }
 
+  if (!context) {
+    throw new Error("context is missing");
+  }
+  const { loader, error, setError } = context;
   const location = data.user.location;
 
   const locationData = mapData.find((data) => data.name === location);
@@ -33,10 +37,10 @@ const MapPage = () => {
       )}
       {locationData?.routes && (
         <MapMenu
+          options={locationData?.options}
           routes={locationData?.routes}
           fight={locationData.fight}
-          setLoader={setLoader}
-          setError={setError}
+          location={location}
         />
       )}
       <h2>{location}</h2>
