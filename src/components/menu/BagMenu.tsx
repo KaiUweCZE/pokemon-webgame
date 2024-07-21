@@ -16,7 +16,7 @@ const BagMenu = () => {
         <h3>Bag</h3>
         <ul>
           {items.map((item, index) => (
-            <BagItem key={index} name={item.item} count={item.count} />
+            <BagItem key={index} name={item.name} count={item.count} />
           ))}
         </ul>
       </div>

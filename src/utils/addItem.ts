@@ -17,14 +17,14 @@ export const addItem = async (
 
     if (!user) return null;
 
-    let items = user.items as { item: string; count: number }[];
+    let items = user.items as { name: string; count: number }[];
 
-    const itemIndex = items.findIndex((i) => i.item === item);
+    const itemIndex = items.findIndex((i) => i.name === item);
 
     if (itemIndex !== -1) {
       items[itemIndex].count += value;
     } else {
-      items.push({ item, count: value });
+      items.push({ name: item, count: value });
     }
 
     const updateUser = await prisma.user.update({

@@ -4,7 +4,7 @@ import { connectToDatabase } from "../server-helpers";
 import { PokemonBattle } from "@/types/pokemonBattle";
 
 interface Item {
-  item: string;
+  name: string;
   count: number;
 }
 
@@ -24,7 +24,7 @@ export const catchPokemon = async (
     if (!user.items) return null;
 
     let items: Item[] = user.items as unknown as Item[];
-    let pokeball = items.find((e) => e.item === "pokeball");
+    let pokeball = items.find((e) => e.name === "pokeball");
 
     if (!pokeball || pokeball.count < 1) {
       console.log("You don't have enough pokeballs");

@@ -29,6 +29,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
     enemyPokemon,
     userPokemon,
     exp,
+    isCatching,
   } = useBattle();
 
   const newLevel = useNewLevel(change);
@@ -65,6 +66,15 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
               round={round}
             />
           )}
+          {isCatching.isSucces && (
+            <BattleText
+              text={`You catch it. Do you want to continue?`}
+              button={true}
+              setRound={setRound}
+              round={round}
+            />
+          )}
+          {}
           {menuChoice === "fight" && (
             <BoxAttacks
               userPokemon={userPokemon}

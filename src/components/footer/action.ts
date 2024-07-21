@@ -2,8 +2,6 @@
 import { connectToDatabase } from "@/utils/server-helpers";
 import prisma from "../../../prisma";
 
-import { NextApiRequest, NextApiResponse } from "next";
-
 export const nextDay = async (username: string) => {
   try {
     connectToDatabase();

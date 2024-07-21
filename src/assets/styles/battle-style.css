@@ -145,6 +145,16 @@
   transition: 1s;
   translate: -15rem;
 }
+.enemy-pokemon.catching img {
+  opacity: 0;
+}
+.enemy-pokemon.catching .pokeball {
+  position: absolute;
+  place-self: end end;
+  right: 4rem;
+  opacity: 1;
+  animation: zoomInDown 3s ease-in-out forwards, rubberBand 1s ease-in-out 3s forwards;
+}
 .enemy-pokemon .enemy-pokemon-info {
   grid-area: enemy-stats;
   display: flex;
@@ -342,6 +352,120 @@
   to {
     translate: 0 1rem;
     opacity: 0;
+  }
+}
+@keyframes bounce {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateY(-45px);
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateY(-24px);
+  }
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateY(-12px);
+  }
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6px);
+  }
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateY(-4px);
+  }
+  25%, 55%, 75%, 87% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.zoomInDown {
+  animation-name: zoomInDown;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomInDown2 {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+@keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.2, 0.24, 0) translate3d(-2500px, 1000px, 0px);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  75% {
+    opacity: 1;
+    transform: scale3d(0.5, 0.25, 0.1) translate3d(-100px, -100px, 0px);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+.bounceOut {
+  animation-name: bounceOut;
+  animation-duration: 0.75s;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounceOut {
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  50%, 55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+.rubberBand {
+  animation-name: rubberBand;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
   }
 }
 .new-level {

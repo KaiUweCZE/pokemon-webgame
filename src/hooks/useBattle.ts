@@ -29,8 +29,13 @@ const useBattle = () => {
     throw new Error("missing context");
   }
 
-  const { enemyPokemon, setEnemyPokemon, userPokemon, setUserPokemon } =
-    context;
+  const {
+    enemyPokemon,
+    setEnemyPokemon,
+    userPokemon,
+    setUserPokemon,
+    isCatching,
+  } = context;
 
   useEffect(() => {
     // Calculate new HP after the damage
@@ -107,6 +112,7 @@ const useBattle = () => {
     enemyPokemon,
     userPokemon,
     exp,
+    isCatching,
   };
 };
 

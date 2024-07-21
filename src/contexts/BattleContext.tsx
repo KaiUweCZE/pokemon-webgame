@@ -9,11 +9,18 @@ import {
   useState,
 } from "react";
 
+interface isCatch {
+  underway: boolean;
+  isSucces: boolean;
+}
+
 export interface BattleContextType {
   userPokemon: Pokemon | null;
   setUserPokemon: Dispatch<SetStateAction<Pokemon | null>>;
   enemyPokemon: PokemonBattle | null;
   setEnemyPokemon: Dispatch<SetStateAction<PokemonBattle | null>>;
+  isCatching: isCatch;
+  setIsCatching: Dispatch<SetStateAction<isCatch>>;
 }
 
 interface BattleProviderProps {
@@ -27,6 +34,10 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
   const [userPokemon, setUserPokemon] = useState<Pokemon | null>(null);
   const [enemyPokemon, setEnemyPokemon] = useState<PokemonBattle | null>(null);
   const [step, setStep] = useState(0);
+  const [isCatching, setIsCatching] = useState({
+    underway: false,
+    isSucces: false,
+  });
 
   const contextValues = {
     userPokemon,
@@ -35,6 +46,8 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
     setEnemyPokemon,
     step,
     setStep,
+    isCatching,
+    setIsCatching,
   };
   return (
     <BattleContext.Provider value={contextValues}>

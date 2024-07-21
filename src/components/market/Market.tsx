@@ -19,11 +19,11 @@ const Market = ({ location }: MarketProps) => {
     throw new Error("data is missing");
   }
 
-  const coins = data.user.items.find((item) => item.item === "coins");
+  const coins = data.user.items.find((item) => item.name === "coins");
 
   const currentItem = (itemName: string) => {
-    let item = data.user.items.find((item) => item.item === itemName);
-    let itemImg = itemData.find((i) => i.name === item?.item)?.img;
+    let item = data.user.items.find((item) => item.name === itemName);
+    let itemImg = itemData.find((i) => i.name === item?.name)?.img;
     return <span>{item?.count}</span>;
   };
 
@@ -60,7 +60,7 @@ const Market = ({ location }: MarketProps) => {
         ))}
       </ul>
       <span className="coins">
-        {coins?.item}: {coins?.count}
+        {coins?.name}: {coins?.count}
       </span>
     </div>
   );

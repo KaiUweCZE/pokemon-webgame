@@ -3,6 +3,7 @@ import { BattleContext } from "@/contexts/BattleContext";
 import { catchPokemon } from "@/utils/battle-function/catchPokemon";
 import { useSession } from "next-auth/react";
 import { Dispatch, SetStateAction, useContext } from "react";
+import BagItem from "./BagItem";
 
 interface BattleBagProps {
   setMenuChoice: Dispatch<SetStateAction<string>>;
@@ -36,14 +37,7 @@ const BattleBag = ({ setMenuChoice }: BattleBagProps) => {
     <div className="battle-bag">
       <ul>
         {items.map((item, index) => (
-          <li key={index}>
-            {item.item}: {item.count}
-            {item.item === "pokeball" && (
-              <button className="button-primary" onClick={handleCatchPokemon}>
-                catch
-              </button>
-            )}
-          </li>
+          <BagItem key={index} name={item.name} count={item.count} />
         ))}
       </ul>
       <button className="button-primary" onClick={() => setMenuChoice("")}>

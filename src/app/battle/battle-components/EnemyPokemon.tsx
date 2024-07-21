@@ -4,6 +4,7 @@ import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import { useContext } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
+import pokeball from "@/assets/images/icons/pokeball.webp";
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;
@@ -13,14 +14,30 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
 
   const pokemonImg = generatePokemonImage(enemyPokemon.name);
+
+  const getClassName = () => {
+    if (enemyPokemon.actualHp === 0) {
+      return "enemy-pokemon done";
+    }
+    if (context?.isCatching.underway) {
+      return "enemy-pokemon catching";
+    }
+    return "enemy-pokemon";
+  };
+
   return (
-    <div
-      className={
-        enemyPokemon.actualHp === 0 ? "enemy-pokemon done" : "enemy-pokemon"
-      }
-    >
+    <div className={getClassName()}>
       {enemyPokemon.actualHp !== undefined ? (
         <>
+          {context?.isCatching.underway && (
+            <Image
+              className="pokeball"
+              src={pokeball}
+              alt="pokeball"
+              width={64}
+              height={64}
+            />
+          )}
           {pokemonImg && (
             <Image
               src={pokemonImg}

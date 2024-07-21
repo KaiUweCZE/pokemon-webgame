@@ -66,8 +66,8 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
           </li>
 
           {pokemon.type &&
-            pokemon.type.map((type) => (
-              <li key={pokemon.id} className={`pokemon-type ${type}`}>
+            pokemon.type.map((type, index) => (
+              <li key={index} className={`pokemon-type ${type}`}>
                 {type}
               </li>
             ))}
@@ -81,6 +81,7 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
               actualEnergy={pokemon.actualEnergy}
             />
           </li>
+          <li>{pokemon.id}</li>
         </ul>
         {data?.user.userSix.includes(pokemon.id) && (
           <div className="sticker">6</div>

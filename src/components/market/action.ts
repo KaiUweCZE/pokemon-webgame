@@ -4,7 +4,7 @@ import { connectToDatabase } from "@/utils/server-helpers";
 import prisma from "../../../prisma";
 
 interface Item {
-  item: string;
+  name: string;
   count: number;
 }
 
@@ -30,7 +30,7 @@ export const buyItem = async (
 
     if (!Array.isArray(items)) items = [];
 
-    let coins = items.find((i) => i.item === "coins");
+    let coins = items.find((i) => i.name === "coins");
 
     if (!coins || coins.count < value * cost) {
       return { success: false, message: "Not enough coins" };
@@ -38,11 +38,11 @@ export const buyItem = async (
 
     coins.count -= value * cost;
 
-    let ownedItem = items.find((i) => i.item === item);
+    let ownedItem = items.find((i) => i.name === item);
     if (ownedItem) {
       ownedItem.count += value;
     } else {
-      items.push({ item: item, count: value });
+      items.push({ name: item, count: value });
     }
 
     const updatedUser = await prisma.user.update({

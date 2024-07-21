@@ -15,7 +15,7 @@ declare module "next-auth" {
       chapter: number;
       day: number;
       partOfDay: number;
-      items: { item: string; count: number }[];
+      items: { name: string; count: number }[];
       contacts: string[];
     } & DefaultSession["user"];
   }
@@ -32,7 +32,7 @@ declare module "next-auth" {
     day: number;
     partOfDay: number;
     badges: number[];
-    items: { item: string; count: number }[];
+    items: { name: string; count: number }[];
     contacts: string[];
   }
 }
@@ -50,7 +50,7 @@ declare module "next-auth/jwt" {
     day: number;
     partOfDay: number;
     badges: number[];
-    items: { item: string; count: number }[];
+    items: { name: string; count: number }[];
     contacts: string[];
   }
 }
