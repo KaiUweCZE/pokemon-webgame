@@ -11,6 +11,7 @@ import "./profile.css";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import Loader from "@/components/Loader";
 import UserSix from "./UserSix";
+import { log } from "console";
 
 interface ErrorResponse {
   error: string;
@@ -19,11 +20,10 @@ interface ErrorResponse {
 type UserResponse = User | ErrorResponse | null;
 
 const ProfilePage = () => {
-  const { data } = useSession();
-  const [sixBoxOpen, setSixBoxOpen] = useState(false);
+  const { data, update } = useSession();
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
-  const [activeUserSix, setActiveUserSix] = useState("");
+
   const pokemonContext = useContext(PokemonContext);
 
   const user = data?.user;
@@ -40,7 +40,7 @@ const ProfilePage = () => {
     if (pokemonContext) {
       console.log("pokemoni z contextu: ", pokemonContext.userPokemons);
     }
-    console.log("user is: ", user?.userSix);
+    console.log("user six is: ", user?.userSix);
   }, [user?.pokemonIds]);
 
   const handlePokemons = async () => {
@@ -58,8 +58,10 @@ const ProfilePage = () => {
           pokemonContext.setPokemonsFromSix(pokemonSix);
         }
       }
+      //await update(data, data.user: {...data.user, })
       setLoading(true);
       console.log("pokemons", pokemons);
+      console.log("pokemon isx: ", pokemonSix);
     } else {
       console.log("user have any pokemon", user);
     }
@@ -68,19 +70,8 @@ const ProfilePage = () => {
   return (
     <main className="container-profile">
       {user && <UserProfile user={user} />}
-      {user?.userSix ? (
-        <section className="profile-six">
-          {user.userSix.map((pokemonId) => (
-            <UserSix
-              key={pokemonId}
-              pokemonId={pokemonId}
-              active={activeUserSix}
-              setActive={setActiveUserSix}
-            />
-          ))}
-        </section>
-      ) : (
-        <h2>Nothing here</h2>
+      {user?.userSix && (
+        <UserSix username={user.name} six={pokemonContext.pokemonsFromSix} />
       )}
       {loading ? (
         <section className="profile-pokemons">

@@ -304,6 +304,21 @@ header {
     grid-column: 49;
     grid-row: 21;
   }
+  &.twenty-first {
+    grid-column: 56;
+    grid-row: 27;
+  }
+  &.twenty-second {
+    grid-column: 51;
+    grid-row: 14;
+  }
+  &.twenty-third {
+    grid-column: 40;
+    grid-row: 20;
+  }
+  &.twenty-fourth {
+    grid-area: 14/24;
+  }
 }
 
 .menu-item {

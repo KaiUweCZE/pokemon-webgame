@@ -10,7 +10,7 @@ interface RoutesProps {
 const MapRoutes = ({ routes }: RoutesProps) => {
   const { handleChangeLocation } = useChangeLocation();
   return (
-    <ul>
+    <ul className="routes-list">
       {routes.map((route, index) => (
         <li key={index} onClick={() => handleChangeLocation(route)}>
           {route}

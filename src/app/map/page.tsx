@@ -8,6 +8,7 @@ import MapLoader from "./MapLoader";
 import MapError from "./MapError";
 import { MapContext, MapProvider } from "./MapContext";
 import { useContext } from "react";
+import NpcBox from "./NpcBox";
 
 const MapPage = () => {
   const context = useContext(MapContext);
@@ -20,7 +21,7 @@ const MapPage = () => {
   if (!context) {
     throw new Error("context is missing");
   }
-  const { loader, error, setError } = context;
+  const { loader, error, setError, npc } = context;
   const location = data.user.location;
 
   const locationData = mapData.find((data) => data.name === location);
@@ -46,6 +47,7 @@ const MapPage = () => {
       <h2>{location}</h2>
       {loader && <MapLoader />}
       {error && <MapError setError={setError} />}
+      {npc !== "" && <NpcBox name={npc} />}
     </main>
   );
 };

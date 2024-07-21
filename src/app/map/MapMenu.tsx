@@ -4,6 +4,7 @@ import MapRoutes from "./MapRoutes";
 import { useRouter } from "next/navigation";
 import Market from "@/components/market/Market";
 import AboutLocation from "./AboutLocation";
+import MapNpcList from "./MapNpcList";
 
 interface MapProps {
   routes: string[];
@@ -22,7 +23,7 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
         return <MapRoutes routes={routes} />;
 
       case "NPC":
-        return <p>Sherrif</p>;
+        return <MapNpcList location={location} />;
 
       case "Poke Centrum":
         return <p>Poke centrum</p>;
@@ -53,7 +54,7 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
           </li>
         </ul>
       </nav>
-      {handleOption()}
+      <div className="box">{handleOption()}</div>
     </div>
   );
 };

@@ -79,6 +79,10 @@
       padding-block: 0.25rem;
     }
   }
+
+  .box {
+    @include scroll-primary;
+  }
 }
 
 .map-menu-section {
@@ -166,5 +170,46 @@
   }
   to {
     background-position: right bottom;
+  }
+}
+
+.container-npc {
+  display: grid;
+  position: absolute;
+  height: 75%;
+  width: 50%;
+
+  padding: 0.5rem;
+  place-self: center;
+  img {
+    position: absolute;
+    place-self: end end;
+    width: 30%;
+    aspect-ratio: 1/2;
+    bottom: -5rem;
+    right: -5rem;
+  }
+}
+
+.box-npc {
+  display: grid;
+  background-color: rgba($blue-one, 1);
+  color: white;
+  box-shadow: 0 0 5px $darker-blue;
+  @include scroll-primary;
+  max-height: 100%;
+  article {
+    font-size: 1rem;
+    padding: 1rem;
+    padding-right: 15%;
+  }
+  button {
+    place-self: center;
+  }
+}
+
+.routes-list {
+  li {
+    padding: 0.5rem;
   }
 }

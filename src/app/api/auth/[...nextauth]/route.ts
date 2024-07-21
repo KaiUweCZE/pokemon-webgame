@@ -1,6 +1,5 @@
 import { connectToDatabase } from "@/utils/server-helpers";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import NextAuth, { User, Session, NextAuthOptions } from "next-auth";
+import NextAuth, { User, NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../../prisma";
 import bcrypt from "bcrypt";
