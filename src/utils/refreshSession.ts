@@ -1,4 +1,4 @@
-"use server";
+/*"use server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "../../prisma";
@@ -26,3 +26,4 @@ export const refreshSession = async () => {
     // Save session logic here depends on your setup
   }
 };
+*/

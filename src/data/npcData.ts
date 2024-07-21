@@ -31,7 +31,7 @@ import pepeImg from "@/assets/images/characters/pepe.webp";
 import princessImg from "@/assets/images/characters/princess.webp";
 import profBloomImg from "@/assets/images/characters/profbloom.webp";
 import raphaelImg from "@/assets/images/characters/raphael.webp";
-import samuelImg from "@/assets/images/characters/samuel.webp";
+import samuelImg from "@/assets/images/characters/samuel2.webp";
 import senchaImg from "@/assets/images/characters/sencha.webp";
 import sheriffImg from "@/assets/images/characters/sheriff.webp";
 import weeImg from "@/assets/images/characters/wee.webp";

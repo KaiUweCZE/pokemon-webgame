@@ -30,7 +30,9 @@ const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
     const getPokemons = async () => {
       if (context?.currentUser?.name) {
         const newPokemons = await getSix(context.currentUser?.name);
-        setPokemons(newPokemons);
+        if (newPokemons) {
+          setPokemons(newPokemons);
+        }
       }
     };
 

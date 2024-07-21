@@ -1,7 +1,8 @@
+import { pokemonBattleData } from "@/data/pokemonBattleData";
 import { pokemonsData } from "@/data/pokemonData";
 
 export const generatePokemonImage = (pokemonName: string) => {
-  const pokemonImg = pokemonsData.find(
+  const pokemonImg = pokemonBattleData.find(
     (pokemon) =>
       pokemon.name.toLocaleLowerCase() === pokemonName.toLocaleLowerCase()
   )?.img;
@@ -9,15 +10,15 @@ export const generatePokemonImage = (pokemonName: string) => {
 };
 
 export const generatePokemonImageBack = (pokemonName: string) => {
-  const pokemonImg = pokemonsData.find(
+  const pokemonImg = pokemonBattleData.find(
     (pokemon) =>
       pokemon.name.toLocaleLowerCase() === pokemonName.toLocaleLowerCase()
-  )?.backImg;
+  )?.imgBack;
   return pokemonImg;
 };
 
 export const generatePokemonIcon = (pokemonName: string) => {
-  const pokemonImg = pokemonsData.find(
+  const pokemonImg = pokemonBattleData.find(
     (pokemon) =>
       pokemon.name.toLocaleLowerCase() === pokemonName.toLocaleLowerCase()
   )?.icon;

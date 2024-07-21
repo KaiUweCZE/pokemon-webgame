@@ -248,7 +248,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    npcs: ["Willy"],
     marketItems: ["pokeball", "potion"],
     routes: ["lake", "deep mine", "futurome", "waterfalls", "lovely"],
     img: barnImg,

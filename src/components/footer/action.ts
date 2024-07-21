@@ -1,7 +1,7 @@
 "use server";
 import { connectToDatabase } from "@/utils/server-helpers";
 import prisma from "../../../prisma";
-import { refreshSession } from "@/utils/refreshSession";
+
 import { NextApiRequest, NextApiResponse } from "next";
 
 export const nextDay = async (username: string) => {

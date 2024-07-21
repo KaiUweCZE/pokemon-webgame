@@ -35,7 +35,7 @@ const PokemonItem = (props: PokemonItemProps) => {
   };
 
   const handleAddPokemon = async (pokemonDataId: number) => {
-    const pokemon = generatePokemon(pokemonDataId);
+    const pokemon = generatePokemon(pokemonDataId, [5, 5]);
     if (context.currentUser?.name) {
       const newUser = await addPokemon({
         username: context.currentUser?.name,

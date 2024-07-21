@@ -5,7 +5,7 @@ import prisma from "../../../../../prisma";
 import bcrypt from "bcrypt";
 //import { User } from "@/types/user";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",

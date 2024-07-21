@@ -82,6 +82,9 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
             />
           </li>
         </ul>
+        {data?.user.userSix.includes(pokemon.id) && (
+          <div className="sticker">6</div>
+        )}
       </div>{" "}
       {error && <ErrorMessage />}
     </>

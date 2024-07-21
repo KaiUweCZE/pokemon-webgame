@@ -64,6 +64,7 @@
   grid-template-columns: 1fr;
   width: -moz-fit-content;
   width: fit-content;
+  position: relative;
 }
 .pokemon-box img {
   cursor: pointer;
@@ -155,4 +156,14 @@
 
 .button-primary.red {
   background-color: #f77067;
+}
+
+.sticker {
+  display: grid;
+  place-items: center center;
+  position: absolute;
+  place-self: start end;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: rgba(153, 248, 153, 0.589);
 }/*# sourceMappingURL=profile.css.map */
