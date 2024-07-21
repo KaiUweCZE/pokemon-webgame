@@ -8,34 +8,34 @@ import HpBar from "@/components/HpBar";
 import EnergyBar from "@/components/EnergyBar";
 import ErrorMessage from "@/components/ErrorMessage";
 import { generatePokemonTypes } from "@/utils/generatePokemonTypes";
+import { useSession } from "next-auth/react";
 
 interface UserPokemonProps {
   pokemon: Pokemon;
 }
 
 const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
-  const context = useContext(UserContext);
+  const { data, update } = useSession();
   const [error, setError] = useState(false);
   const img = generatePokemonImage(pokemon.name);
   const types = generatePokemonTypes(pokemon.name);
 
-  if (!context) {
-    console.log("context is missing");
-
-    throw new Error();
-  }
+  const user = data?.user;
 
   const handleAddToSix = async () => {
-    if (context.currentUser) {
+    if (user) {
       try {
-        const updatedUser = await addPokemonToSix(
-          context.currentUser?.name,
-          pokemon.id
-        );
+        const updatedUser = await addPokemonToSix(user.name, pokemon.id);
         console.log("updated user", updatedUser);
 
         if (updatedUser) {
-          context.setCurrentUser(updatedUser);
+          await update({
+            ...data,
+            user: {
+              ...data?.user,
+              userSix: updatedUser?.userSix,
+            },
+          });
           setError(false); // Clear error if update is successful
         }
       } catch (error) {
@@ -56,7 +56,6 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
             alt={`${pokemon.name} image`}
             width={150}
             height={150}
-            loading="lazy"
             onClick={handleAddToSix}
           />
         )}

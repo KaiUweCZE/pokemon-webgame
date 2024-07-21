@@ -145,3 +145,29 @@ export const getSix = async (username: string) => {
     await prisma.$disconnect();
   }
 };
+
+export const removeFromSix = async (username: string, pokemonId: string) => {
+  try {
+    connectToDatabase();
+
+    const user = await prisma.user.findUnique({
+      where: { name: username },
+      select: { userSix: true },
+    });
+
+    if (!user || user.userSix?.length <= 0) return null;
+
+    const newSix = user.userSix.filter((e) => e !== pokemonId);
+
+    const updatedUser = await prisma.user.update({
+      where: { name: username },
+      data: { userSix: newSix },
+    });
+
+    return updatedUser;
+  } catch (error) {
+    console.log("Error occurs: ", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+};

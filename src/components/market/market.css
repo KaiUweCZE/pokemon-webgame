@@ -1,0 +1,22 @@
+.container-market {
+  display: grid;
+  height: 100%;
+}
+
+.menu-market {
+  display: flex;
+  flex-direction: column;
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  div {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.coins {
+  place-self: end end;
+}

@@ -1,12 +1,9 @@
-@import "./addons/variables", "./addons/mixins";
-
-$bar-height: 0.5rem;
-
 li:has(.bar) {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
+
 .container-home {
   display: flex;
   flex-direction: column;
@@ -15,11 +12,12 @@ li:has(.bar) {
 }
 
 .button-primary {
+  width: -moz-fit-content;
   width: fit-content;
   padding: 0.25rem;
   padding-inline: 0.5rem;
   background-color: #5a5a5a;
-  background-color: $light-indigo;
+  background-color: #7a84ba;
   border: none;
   border-radius: 0.15rem;
   color: white;
@@ -27,10 +25,10 @@ li:has(.bar) {
   font-weight: bold;
   transition: 0.35s;
   cursor: pointer;
-  &:hover {
-    background-color: #101010;
-    background-color: $darkest-indigo;
-  }
+}
+.button-primary:hover {
+  background-color: #101010;
+  background-color: #364379;
 }
 
 .container-loader {
@@ -50,6 +48,7 @@ li:has(.bar) {
   border: 2px solid;
   position: relative;
 }
+
 .loader::before {
   content: "";
   position: absolute;
@@ -59,12 +58,12 @@ li:has(.bar) {
   background: currentColor;
   animation: l6 2s infinite;
 }
+
 @keyframes l6 {
   100% {
     inset: 0;
   }
 }
-
 .box-bar {
   display: flex;
   flex-direction: column;
@@ -79,16 +78,16 @@ li:has(.bar) {
   height: 1rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
-  &:has(.exp-bar) {
-    height: 0.5rem;
-    padding: 0.1rem;
-  }
+}
+.bar:has(.exp-bar) {
+  height: 0.5rem;
+  padding: 0.1rem;
 }
 
 .hp-bar {
   display: flex;
   width: 100%;
-  height: $bar-height;
+  height: 0.5rem;
   background-color: rgb(255, 63, 63);
   transition: 0.5s;
 }
@@ -96,7 +95,7 @@ li:has(.bar) {
 .energy-bar {
   display: flex;
   width: 100%;
-  height: $bar-height;
+  height: 0.5rem;
   background-color: rgb(63, 255, 165);
   transition: 0.5s;
 }
@@ -111,7 +110,7 @@ li:has(.bar) {
   display: flex;
   align-items: center;
   padding: 1rem;
-  background-color: rgba($dark-violet, 0.9);
+  background-color: rgba(36, 37, 90, 0.9);
   box-shadow: 0 0 8px black;
   border-radius: 0.5rem;
   color: #ffffff;
@@ -127,10 +126,12 @@ li:has(.bar) {
   opacity: 1;
   transition: 0.3s;
   animation: go-out 0.3s linear 1s forwards;
-  p {
-    font-weight: bold;
-  }
-  @starting-style {
+}
+.error-message p {
+  font-weight: bold;
+}
+@starting-style {
+  .error-message {
     translate: 0 2rem;
     opacity: 0;
   }
@@ -145,7 +146,6 @@ li:has(.bar) {
     translate: 0 -2rem;
   }
 }
-
 .pokemon-type {
   display: grid;
   place-items: center;
@@ -158,79 +158,96 @@ li:has(.bar) {
 }
 
 .normal {
-  background-color: $normal-type;
-  border: 1px solid darken($normal-type, 20);
+  background-color: #b6b6a8;
+  border: 1px solid #878771;
 }
+
 .fire {
-  background-color: $fire-type;
-  border: 1px solid darken($fire-type, 20);
+  background-color: #ff4422;
+  border: 1px solid #bb1d00;
 }
+
 .water {
-  background-color: $water-type;
-  border: 1px solid darken($water-type, 20);
+  background-color: #3399ff;
+  border: 1px solid #0066cc;
 }
+
 .electric {
-  background-color: $electric-type;
-  border: 1px solid darken($electric-type, 20);
+  background-color: #ffcc33;
+  border: 1px solid #cc9900;
 }
+
 .grass {
-  background-color: $grass-type;
-  border: 1px solid darken($grass-type, 20);
+  background-color: #77cc55;
+  border: 1px solid #48902b;
 }
+
 .ice {
-  background-color: $ice-type;
-  border: 1px solid darken($ice-type, 20);
+  background-color: #66ccff;
+  border: 1px solid #00aaff;
 }
+
 .fighting {
-  background-color: $fighting-type;
-  border: 1px solid darken($fighting-type, 20);
+  background-color: #bb5544;
+  border: 1px solid #703329;
 }
+
 .poison {
-  background-color: $poison-type;
-  border: 1px solid darken($poison-type, 20);
+  background-color: #aa5599;
+  border: 1px solid #66335c;
 }
+
 .ground {
-  background-color: $ground-type;
-  border: 1px solid darken($ground-type, 20);
+  background-color: #ddbb55;
+  border: 1px solid #aa8822;
 }
+
 .flying {
-  background-color: $flying-type;
-  border: 1px solid darken($flying-type, 20);
+  background-color: #8899ff;
+  border: 1px solid #2242ff;
 }
+
 .psychic {
-  background-color: $psychic-type;
-  border: 1px solid darken($psychic-type, 20);
+  background-color: #ff5599;
+  border: 1px solid #ee005f;
 }
+
 .bug {
-  background-color: $bug-type;
-  border: 1px solid darken($bug-type, 20);
+  background-color: #aabb22;
+  border: 1px solid #5c6512;
 }
+
 .rock {
-  background-color: $rock-type;
-  border: 1px solid darken($rock-type, 20);
+  background-color: #bbaa66;
+  border: 1px solid #81733a;
 }
+
 .ghost {
-  background-color: $ghost-type;
-  border: 1px solid darken($normal-type, 20);
+  background-color: #6666bb;
+  border: 1px solid #878771;
 }
+
 .dragon {
-  background-color: $dragon-type;
-  border: 1px solid darken($ghost-type, 20);
+  background-color: #7766ee;
+  border: 1px solid #3a3a81;
 }
+
 .dark {
-  background-color: $dark-type;
-  border: 1px solid darken($dark-type, 20);
+  background-color: #775544;
+  border: 1px solid #36271f;
 }
+
 .steel {
-  background-color: $steel-type;
-  border: 1px solid darken($steel-type, 20);
+  background-color: #aaaabb;
+  border: 1px solid #71718e;
 }
+
 .fairy {
-  background-color: $fairy-type;
-  border: 1px solid darken($fairy-type, 20);
+  background-color: #ee99ee;
+  border: 1px solid #df42df;
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
-}
+}/*# sourceMappingURL=global.css.map */

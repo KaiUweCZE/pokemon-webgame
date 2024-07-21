@@ -3,6 +3,9 @@ import { mapData } from "@/app/map/mapData";
 import "./market.css";
 import { buyItem } from "./action";
 import { useSession } from "next-auth/react";
+import { itemData } from "@/data/itemData";
+import Image from "next/image";
+import bagImg from "@/assets/images/icons/bagIcon.webp";
 
 interface MarketProps {
   location: string;
@@ -15,6 +18,14 @@ const Market = ({ location }: MarketProps) => {
   if (!data) {
     throw new Error("data is missing");
   }
+
+  const coins = data.user.items.find((item) => item.item === "coins");
+
+  const currentItem = (itemName: string) => {
+    let item = data.user.items.find((item) => item.item === itemName);
+    let itemImg = itemData.find((i) => i.name === item?.item)?.img;
+    return <span>{item?.count}</span>;
+  };
 
   const handleBuy = async (item: string) => {
     const updatedUser = await buyItem(data?.user.name, item, 1, 1);
@@ -43,10 +54,14 @@ const Market = ({ location }: MarketProps) => {
                 buy
               </button>
               <button className="button-primary">sell</button>
+              {currentItem(item)}
             </div>
           </li>
         ))}
       </ul>
+      <span className="coins">
+        {coins?.item}: {coins?.count}
+      </span>
     </div>
   );
 };

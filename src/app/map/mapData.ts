@@ -1,6 +1,6 @@
 import barnImg from "@/assets/images/countires/barn.webp";
 import caveImg from "@/assets/images/countires/cave.webp";
-import crossroadImg from "@/assets/images/countires/crossroad.webp";
+import swampImg from "@/assets/images/countires/swamp.webp";
 import deepmineImg from "@/assets/images/countires/deepmine.webp";
 import futuromeImg from "@/assets/images/countires/futurome.webp";
 import bridgeImg from "@/assets/images/countires/bridge.webp";
@@ -21,6 +21,7 @@ import teleportImg from "@/assets/images/countires/teleport.webp";
 import waterfallsImg from "@/assets/images/countires/waterfalls.webp";
 import yummyImg from "@/assets/images/countires/yummy.webp";
 import largeFarmImg from "@/assets/images/countires/large-farm.webp";
+import safariImg from "@/assets/images/countires/safari.webp";
 
 export const mapData = [
   {
@@ -31,6 +32,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["cave", "mountains"],
     img: shireImg,
@@ -66,6 +68,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["shire", "bridge", "mountains"],
     img: largeFarmImg,
@@ -101,6 +104,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["large farm", "cave", "bridge"],
     img: gmountainImg,
@@ -136,6 +140,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["mountain", "large farm"],
     img: caveImg,
@@ -171,8 +176,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["mountain", "large farm", "lovely"],
+    routes: ["mountain", "large farm", "lovely", "swamp"],
     img: bridgeImg,
     rounds: [
       {
@@ -206,8 +212,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["bridge", "willy's barn"],
+    routes: ["bridge", "willy's barn", "swamp"],
     img: lovelyImg,
     rounds: [
       {
@@ -241,6 +248,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["lake", "deep mine", "futurome", "waterfalls", "lovely"],
     img: barnImg,
@@ -276,8 +284,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["willy's barn", "deep mine", "gastly tower"],
+    routes: ["willy's barn", "deep mine", "gastly tower", "futurome"],
     img: lakeImg,
     rounds: [
       {
@@ -311,6 +320,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["lake", "gastly tower"],
     img: deepmineImg,
@@ -346,6 +356,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion", "energy drink"],
     routes: ["lake", "deep mine", "magical forest"],
     img: gastlytowerImg,
@@ -381,6 +392,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "gastly tower"],
     img: magicalForestImg,
@@ -416,6 +428,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["gastly tower"],
     img: iceScreamImg,
@@ -451,6 +464,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "monastry", "willy's barn"],
     img: waterfallsImg,
@@ -486,6 +500,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["waterfalls", "ice sream", "northmandic", "chatot castle"],
     img: monastryImg,
@@ -521,6 +536,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["teleport", "monastry", "chatot castle"],
     img: northmandicImg,
@@ -556,6 +572,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["northmandic", "chatot castle"],
     img: teleportImg,
@@ -591,8 +608,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["northmandic", "lovely", "monastry", "jungle"],
+    routes: ["northmandic", "lovely", "monastry", "jungle", "swamp"],
     img: chatotcastleImg,
     rounds: [
       {
@@ -626,8 +644,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["macho pichu", "chatot castle"],
+    routes: ["macho pichu", "chatot castle", "safari"],
     img: jungleImg,
     rounds: [
       {
@@ -661,8 +680,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["redwoods", "jungle"],
+    routes: ["redwoods", "jungle", "safari", "swamp"],
     img: machoPichuImg,
     rounds: [
       {
@@ -696,8 +716,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["macho pichu", "yummy desert"],
+    routes: ["macho pichu", "yummy desert", "safari", "swamp"],
     img: redwoodsImg,
     rounds: [
       {
@@ -731,9 +752,118 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["redwoods"],
     img: yummyImg,
+    rounds: [
+      {
+        id: 0,
+        pokemons: [5, 6],
+        levelRange: [5, 10],
+      },
+      {
+        id: 1,
+        pokemons: [3, 5, 6],
+        levelRange: [11, 20],
+      },
+      {
+        id: 2,
+        pokemons: [2, 4, 1],
+        levelRange: [21, 30],
+      },
+      {
+        id: 3,
+        pokemons: [1, 3],
+        levelRange: [31, 40],
+      },
+    ],
+    fight: true,
+  },
+  {
+    id: 21,
+    name: "safari",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
+    marketItems: ["pokeball", "potion"],
+    routes: ["macho pichu", "jungle", "redwood"],
+    img: safariImg,
+    rounds: [
+      {
+        id: 0,
+        pokemons: [5, 6],
+        levelRange: [5, 10],
+      },
+      {
+        id: 1,
+        pokemons: [3, 5, 6],
+        levelRange: [11, 20],
+      },
+      {
+        id: 2,
+        pokemons: [2, 4, 1],
+        levelRange: [21, 30],
+      },
+      {
+        id: 3,
+        pokemons: [1, 3],
+        levelRange: [31, 40],
+      },
+    ],
+    fight: true,
+  },
+  {
+    id: 22,
+    name: "swamp",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
+    marketItems: ["pokeball", "potion"],
+    routes: ["redwoods", "macho pichu", "castle", "lovely", "bridge"],
+    img: swampImg,
+    rounds: [
+      {
+        id: 0,
+        pokemons: [5, 6],
+        levelRange: [5, 10],
+      },
+      {
+        id: 1,
+        pokemons: [3, 5, 6],
+        levelRange: [11, 20],
+      },
+      {
+        id: 2,
+        pokemons: [2, 4, 1],
+        levelRange: [21, 30],
+      },
+      {
+        id: 3,
+        pokemons: [1, 3],
+        levelRange: [31, 40],
+      },
+    ],
+    fight: true,
+  },
+  {
+    id: 23,
+    name: "futurome",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    npcs: ["Sheriff", "Samuel", "Wee"],
+    marketItems: ["pokeball", "potion"],
+    routes: ["waterfalls", "willy's barn", "lake"],
+    img: futuromeImg,
     rounds: [
       {
         id: 0,
