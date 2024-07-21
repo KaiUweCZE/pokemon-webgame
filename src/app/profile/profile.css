@@ -1,0 +1,158 @@
+.container-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: subgrid;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+.container-profile .container-loader {
+  grid-area: 1/2;
+  place-self: center;
+}
+
+.section-profile {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.section-profile img {
+  place-self: end end;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-self: end start;
+  width: 15rem;
+  background-color: #465188;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.profile-pokemons {
+  grid-area: 1/2;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  background-color: rgba(197, 206, 255, 0.5);
+  background-color: rgba(36, 37, 90, 0.85);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  overflow-y: scroll;
+  color: white;
+}
+.profile-pokemons::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.profile-pokemons::-webkit-scrollbar-thumb {
+  background-color: rgba(76, 88, 151, 0.5);
+}
+.profile-pokemons::-webkit-scrollbar-thumb:hover {
+  background-color: #4c5897;
+}
+.profile-pokemons::-webkit-scrollbar-track {
+  margin: 0.75rem;
+}
+
+.pokemon-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.pokemon-box img {
+  cursor: pointer;
+}
+
+.profile-six {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16%, 1fr));
+  width: 16rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgba(70, 81, 136, 0.2);
+  background-color: rgba(36, 37, 90, 0.15);
+  place-items: center center;
+  margin: 0.5rem;
+  margin-left: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  position: relative;
+  transition: 0.5s;
+}
+
+.pokemon-from-six {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(70, 81, 136, 0.3);
+  background-color: rgb(211, 69, 69);
+  border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.pokemon-from-six::before {
+  content: "";
+  width: 100%;
+  height: 50%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+}
+.pokemon-from-six img {
+  cursor: pointer;
+  z-index: 1;
+}
+.pokemon-from-six:hover {
+  scale: 1.25;
+}
+
+.about-pokemon {
+  display: none;
+  width: 20rem;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.527);
+  border-radius: 0.35rem;
+  padding: 1rem;
+  position: absolute;
+  top: 5rem;
+  left: 4rem;
+  transition: 0.5s;
+}
+.about-pokemon.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  translate: 0 0;
+}
+@starting-style {
+  .about-pokemon.active {
+    opacity: 0;
+    translate: 0 -4rem;
+  }
+}
+
+.box-badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+}
+
+.box-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button-primary.red {
+  background-color: #f77067;
+}/*# sourceMappingURL=profile.css.map */
