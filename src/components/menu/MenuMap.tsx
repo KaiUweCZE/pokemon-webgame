@@ -88,7 +88,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item tenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">gastly tower</span>
       </div>
       <div
         className={
@@ -97,7 +97,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item eleventh"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">magical forest</span>
       </div>
       <div
         className={
@@ -106,7 +106,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item twelfth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">ice scream</span>
       </div>
       <div
         className={
@@ -115,7 +115,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item thirteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">waterfalls</span>
       </div>
       <div
         className={
@@ -124,7 +124,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item fourteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">monastry</span>
       </div>
       <div
         className={
@@ -133,7 +133,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item fifteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">northmandic</span>
       </div>
       <div
         className={
@@ -142,7 +142,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item sixteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">teleport</span>
       </div>
       <div
         className={
@@ -151,7 +151,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item seventeenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">castle</span>
       </div>
       <div
         className={
@@ -160,7 +160,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item eighteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">jungle</span>
       </div>
       <div
         className={
@@ -169,7 +169,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item nineteenth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">macho pichu</span>
       </div>
       <div
         className={
@@ -178,9 +178,44 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item twentieth"
         }
       >
-        <span className="tag">shire</span>
+        <span className="tag">redwood</span>
       </div>
-      <span className="tag">shire</span>
+      <div
+        className={
+          location === "yummy desert"
+            ? "map-item twenty-first active"
+            : "map-item twenty-first"
+        }
+      >
+        <span className="tag">yummy desert</span>
+      </div>
+      <div
+        className={
+          location === "safari"
+            ? "map-item twenty-second active"
+            : "map-item twenty-second"
+        }
+      >
+        <span className="tag">safari</span>
+      </div>
+      <div
+        className={
+          location === "swamp"
+            ? "map-item twenty-third active"
+            : "map-item twenty-third"
+        }
+      >
+        <span className="tag">swamp</span>
+      </div>
+      <div
+        className={
+          location === "futurome"
+            ? "map-item twenty-fourth active"
+            : "map-item twenty-fourth"
+        }
+      >
+        <span className="tag">futurome</span>
+      </div>
     </div>
   );
 };

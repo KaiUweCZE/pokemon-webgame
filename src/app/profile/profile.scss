@@ -1,3 +1,4 @@
+@import "../../assets/styles/addons/mixins";
 //dynamic color
 $primary-color: #303030;
 $secondary-color: white;
@@ -14,12 +15,18 @@ $dark-violet: #24255a;
 
 .container-profile {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: subgrid;
   margin: 0 auto;
   max-width: 80rem;
+  .container-loader {
+    grid-area: 1/2;
+    place-self: center;
+  }
 }
 
 .section-profile {
+  grid-column: 1;
   display: grid;
   grid-template-columns: max-content 1fr;
   width: fit-content;
@@ -41,19 +48,20 @@ $dark-violet: #24255a;
 }
 
 .profile-pokemons {
+  grid-area: 1/2;
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   background-color: rgba($lightest-indigo, 0.5);
   background-color: rgba($dark-violet, 0.85);
   border-radius: 1rem;
   margin-top: 1rem;
   padding: 1rem;
-  max-height: 50vh;
-  overflow-y: scroll;
-  scrollbar-color: rgba(black, 0.2) transparent;
-  scrollbar-width: thin;
-  scrollbar-gutter: stable both-edges;
+  @include scroll-primary;
   color: white;
+  &::-webkit-scrollbar-track {
+    margin: 0.75rem;
+  }
 }
 
 .pokemon-box {
@@ -66,13 +74,16 @@ $dark-violet: #24255a;
 }
 
 .profile-six {
+  grid-column: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16%, 1fr));
   width: 16rem;
+  height: fit-content;
   background-color: rgba(darken($light-indigo, 20), 0.2);
-  background-color: rgba($dark-violet, 0.85);
+  background-color: rgba($dark-violet, 0.15);
   place-items: center center;
   margin: 0.5rem;
+  margin-left: 2rem;
   padding: 0.5rem;
   border-radius: 0.35rem;
   position: relative;
@@ -90,7 +101,7 @@ $dark-violet: #24255a;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  transition: 0.5s;
+  transition: 0.2s;
   &::before {
     content: "";
     width: 100%;
@@ -102,6 +113,9 @@ $dark-violet: #24255a;
   img {
     cursor: pointer;
     z-index: 1;
+  }
+  &:hover {
+    scale: 1.25;
   }
 }
 
@@ -133,4 +147,13 @@ $dark-violet: #24255a;
 .box-badges {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+}
+
+.box-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button-primary.red {
+  background-color: #f77067;
 }
