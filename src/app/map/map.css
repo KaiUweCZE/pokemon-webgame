@@ -77,6 +77,8 @@
   padding-block: 0.25rem;
 }
 .map-menu .box {
+  height: 100%;
+  width: 100%;
   overflow-y: scroll;
 }
 .map-menu .box::-webkit-scrollbar {

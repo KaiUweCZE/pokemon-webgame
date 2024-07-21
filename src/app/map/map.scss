@@ -79,8 +79,9 @@
       padding-block: 0.25rem;
     }
   }
-
   .box {
+    height: 100%;
+    width: 100%;
     @include scroll-primary;
   }
 }

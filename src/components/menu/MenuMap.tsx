@@ -65,7 +65,7 @@ const MenuMap = ({ location }: LocationProps) => {
             : "map-item seventh"
         }
       >
-        <span className="tag">willy's barn</span>
+        <span className="tag">{`willy's barn`}</span>
       </div>
       <div
         className={
