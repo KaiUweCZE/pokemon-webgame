@@ -1,5 +1,6 @@
 "use client";
 import { User } from "@/types/user";
+import { useSession } from "next-auth/react";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface UserProviderProps {
@@ -9,6 +10,7 @@ interface UserProviderProps {
 interface UserContextType {
   currentUser: User | null;
   setCurrentUser: (user: Record<string, any> | null) => void;
+  isLog: boolean;
 }
 
 export const UserContext = createContext<UserContextType | undefined>(
@@ -18,6 +20,15 @@ export const UserContext = createContext<UserContextType | undefined>(
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isLog, setIsLog] = useState(false);
+  const { status } = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      setIsLog(false);
+    } else {
+      setIsLog(true);
+    }
+  }, [status]);
 
   useEffect(() => {
     // Load user from local storage only on initial render
@@ -43,6 +54,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const contextValue = {
     currentUser,
     setCurrentUser,
+    isLog,
   };
 
   return (

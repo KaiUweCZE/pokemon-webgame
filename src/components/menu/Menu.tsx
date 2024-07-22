@@ -1,15 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MenuItem from "./MenuItem";
 import SecondaryMenu from "./SecondaryMenu";
 import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import { UserContext } from "@/contexts/UserContext";
 
 const Menu = () => {
   const { data, status } = useSession();
   const router = useRouter();
   const pathname = usePathname();
+  const context = useContext(UserContext);
 
   const handlerSignOut = async () => {
     await signOut({ redirect: true, callbackUrl: "/" });
@@ -29,7 +31,7 @@ const Menu = () => {
               link="/"
               active={pathname === "/" ? true : false}
             />
-            {status === "authenticated" && (
+            {context?.isLog && (
               <>
                 <MenuItem
                   name="Profile"
@@ -45,7 +47,7 @@ const Menu = () => {
             )}
           </ul>
         </nav>
-        {status === "authenticated" ? (
+        {context?.isLog ? (
           <button className="button-signout" onClick={handlerSignOut}>
             sign out
           </button>
@@ -55,7 +57,7 @@ const Menu = () => {
           </button>
         )}
       </div>
-      {status === "authenticated" && (
+      {context?.isLog && (
         <SecondaryMenu
           location={data?.user.location ? data.user.location : ""}
         />

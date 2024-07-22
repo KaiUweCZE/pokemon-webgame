@@ -12,15 +12,7 @@ import NpcBox from "./NpcBox";
 
 const MapPage = () => {
   const context = useContext(MapContext);
-  const { data, status } = useSession();
-
-  if (status === "loading") {
-    return <p>Loading...</p>;
-  }
-
-  if (status === "unauthenticated") {
-    return <p>Please log in to view this page.</p>;
-  }
+  const { data } = useSession();
 
   if (!context) {
     throw new Error("context is missing");
@@ -28,10 +20,6 @@ const MapPage = () => {
 
   const { loader, error, setError, npc } = context;
   const location = data?.user.location;
-
-  if (!location) {
-    return <p>Location data is missing.</p>;
-  }
 
   const locationData = mapData.find((data) => data.name === location);
   return (
@@ -45,7 +33,7 @@ const MapPage = () => {
           priority={true}
         />
       )}
-      {locationData?.routes && (
+      {locationData?.routes && location && (
         <MapMenu
           options={locationData?.options}
           routes={locationData?.routes}
