@@ -26,11 +26,13 @@ const Menu = () => {
       <div className="container-menu">
         <nav className="navigation">
           <ul className="menu">
-            <MenuItem
-              name="Home"
-              link="/"
-              active={pathname === "/" ? true : false}
-            />
+            {!context?.isLog && (
+              <MenuItem
+                name="Home"
+                link="/"
+                active={pathname === "/" ? true : false}
+              />
+            )}
             {context?.isLog && (
               <>
                 <MenuItem

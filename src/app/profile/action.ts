@@ -171,3 +171,41 @@ export const removeFromSix = async (username: string, pokemonId: string) => {
     await prisma.$disconnect();
   }
 };
+
+export const removePokemon = async (pokemonId: string, username: string) => {
+  try {
+    await connectToDatabase();
+
+    // Start a transaction to ensure both operations succeed or fail together
+    const result = await prisma.$transaction(async (prisma) => {
+      const deletedPokemon = await prisma.pokemon.delete({
+        where: { id: pokemonId },
+      });
+
+      const user = await prisma.user.findUnique({
+        where: { name: username },
+        select: { pokemonIds: true },
+      });
+
+      if (!user) return null;
+
+      const updatedPokemonIds = user.pokemonIds.filter(
+        (id) => id !== pokemonId
+      );
+      const updatedUser = await prisma.user.update({
+        where: { name: username },
+        data: {
+          pokemonIds: updatedPokemonIds,
+        },
+      });
+
+      return { deletedPokemon, updatedUser };
+    });
+
+    return result?.updatedUser;
+  } catch (error) {
+    console.log("error occurs: ", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+};

@@ -1,11 +1,13 @@
 .container-battlefield {
   display: grid;
   grid-template-areas: "enemy-pokemon" "user-pokemon" "menu";
+  grid-template-rows: 1fr 1fr auto;
   border: 4px solid rgb(14, 14, 14);
   position: relative;
   width: 100%;
   max-width: 50rem;
   margin: 0 auto;
+  margin-top: 1rem;
   border-radius: 0.35rem;
   box-shadow: 0 0 6px #01070f;
   overflow: hidden;
@@ -135,6 +137,7 @@
   grid-template-areas: "enemy-stats enemy-pokemon";
   place-self: end end;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 .enemy-pokemon.done img {
@@ -145,15 +148,26 @@
   transition: 1s;
   translate: -15rem;
 }
+.enemy-pokemon.catching {
+  /*.pokeball {
+    position: absolute;
+    place-self: end end;
+    right: 4rem;
+    opacity: 1;
+    //animation: bounce 2s ease 0s infinite normal forwards;
+    animation: zoomInDown 3s ease-in-out forwards,
+      rubberBand 1s ease-in-out 3s forwards;
+  }*/
+}
 .enemy-pokemon.catching img {
   opacity: 0;
 }
-.enemy-pokemon.catching .pokeball {
-  position: absolute;
-  place-self: end end;
-  right: 4rem;
+.enemy-pokemon.catched img {
+  display: none;
+}
+.enemy-pokemon.catched .pokeball {
+  display: flex;
   opacity: 1;
-  animation: zoomInDown 3s ease-in-out forwards, rubberBand 1s ease-in-out 3s forwards;
 }
 .enemy-pokemon .enemy-pokemon-info {
   grid-area: enemy-stats;
@@ -284,8 +298,9 @@
 }
 
 .battle-bag {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
   border: 4px solid rgb(14, 14, 14);
   border-radius: 0.5rem 0.5rem 0 0;
   height: 75%;
@@ -294,6 +309,7 @@
   bottom: 0;
   right: 0;
   background-color: #4c5897;
+  background-color: #fbfcc2;
   z-index: 1;
   transition: 0.3s;
   opacity: 1;
@@ -305,11 +321,37 @@
     translate: 0 10rem;
   }
 }
+.battle-bag h2 {
+  place-self: start center;
+}
+.battle-bag ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.2rem;
+  gap: 0.5rem;
+}
+.battle-bag .button-primary {
+  background-color: #e09d11;
+}
+.battle-bag .button-primary:hover {
+  background-color: #f3c564;
+}
+
+.bag-item {
+  color: white;
+  color: #303030;
+  border-bottom: 2px dashed #f3c564;
+}
+.bag-item:hover {
+  background-color: #f7d793;
+}
 
 .battle-text {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   background-color: #24255a;
   color: white;
@@ -322,6 +364,10 @@
     opacity: 0;
     translate: 10rem 0;
   }
+}
+.battle-text div {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .hp-animation {

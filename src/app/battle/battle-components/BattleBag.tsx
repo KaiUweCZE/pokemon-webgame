@@ -1,9 +1,10 @@
 "use client";
 import { BattleContext } from "@/contexts/BattleContext";
-import { catchPokemon } from "@/utils/battle-function/catchPokemon";
+import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { Dispatch, SetStateAction, useContext } from "react";
 import BagItem from "./BagItem";
+import closeIcon from "@/assets/images/icons/close.svg";
 
 interface BattleBagProps {
   setMenuChoice: Dispatch<SetStateAction<string>>;
@@ -20,29 +21,23 @@ const BattleBag = ({ setMenuChoice }: BattleBagProps) => {
     throw new Error("context is missing");
   }
 
-  const user = data.user;
-
-  const { enemyPokemon } = context;
-  const handleCatchPokemon = async () => {
-    if (enemyPokemon) {
-      const updatedUser = await catchPokemon(user.name, enemyPokemon);
-      console.log(updatedUser?.pokemonIds[-1]);
-    } else {
-      console.log("there are not enemy");
-    }
-  };
-
   const items = data.user.items;
   return (
     <div className="battle-bag">
+      <h2>Bag</h2>
       <ul>
         {items.map((item, index) => (
           <BagItem key={index} name={item.name} count={item.count} />
         ))}
       </ul>
-      <button className="button-primary" onClick={() => setMenuChoice("")}>
-        close
-      </button>
+      <Image
+        className="close-icon"
+        src={closeIcon}
+        alt="close icon"
+        width={16}
+        height={16}
+        onClick={() => setMenuChoice("")}
+      />
     </div>
   );
 };

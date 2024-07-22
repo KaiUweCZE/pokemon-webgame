@@ -21,7 +21,6 @@ const BattlePage = () => {
   return (
     <RoundProvider>
       <div className="container-battle">
-        <h2>{`Welcome in ${battleData?.name}`}</h2>
         <Battlefield round={round} setRound={setRound} />
       </div>
     </RoundProvider>

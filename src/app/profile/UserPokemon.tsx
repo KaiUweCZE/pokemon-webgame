@@ -1,6 +1,6 @@
 import { Pokemon } from "@/types/pokemon";
 import Image from "next/image";
-import { addPokemonToSix } from "./action";
+import { addPokemonToSix, removePokemon } from "./action";
 import { useContext, useState } from "react";
 import { UserContext } from "@/contexts/UserContext";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
@@ -47,6 +47,27 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      if (user && !data?.user.userSix.includes(pokemon.id)) {
+        const updatedUser = await removePokemon(pokemon.id, user?.name);
+        if (updatedUser) {
+          await update({
+            ...data,
+            user: {
+              ...data?.user,
+              PokemonIds: updatedUser.pokemonIds,
+            },
+          });
+        }
+      } else {
+        console.log("you cannot delete pokemon from six");
+      }
+    } catch (err) {
+      console.error("error occurs while deleting", err);
+    }
+  };
+
   return (
     <>
       <div className="pokemon-box">
@@ -56,7 +77,6 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
             alt={`${pokemon.name} image`}
             width={150}
             height={150}
-            onClick={handleAddToSix}
           />
         )}
 
@@ -82,6 +102,14 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
             />
           </li>
           <li>{pokemon.id}</li>
+          <li>
+            <button className="button-primary" onClick={handleAddToSix}>
+              To six
+            </button>
+            <button className="button-primary" onClick={handleDelete}>
+              delete
+            </button>
+          </li>
         </ul>
         {data?.user.userSix.includes(pokemon.id) && (
           <div className="sticker">6</div>

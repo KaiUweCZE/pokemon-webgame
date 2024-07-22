@@ -1,6 +1,7 @@
 @import "./addons/variables", "./addons/mixins";
 
 $bar-height: 0.5rem;
+$con: 1;
 
 li:has(.bar) {
   display: flex;
@@ -233,4 +234,80 @@ li:has(.bar) {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.pokeball {
+  position: absolute;
+  display: flex;
+  place-self: center end;
+  top: 2rem;
+  right: 2rem;
+  width: $con * 12rem;
+  height: $con * 12rem;
+  background: radial-gradient(
+      white $con * 16px,
+      black $con * 17px $con * 18px,
+      white $con * 19px $con * 24px,
+      black $con * 25px $con * 32px,
+      transparent $con * 33px
+    ),
+    linear-gradient(
+      to bottom,
+      red 0 $con * 80px,
+      black $con * 81px $con * 97px,
+      white $con * 97px 100%
+    );
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.5s;
+  scale: 0.2;
+  border: 8px solid black;
+  box-shadow: inset -16px -8px 0 0 rgba(0, 0, 0, 0.2);
+  animation: fall 0.5s ease-in-out 1s forwards,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s 3,
+    catch 0.5s ease-out 5.25s forwards;
+}
+/* Animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  20% {
+    transform: translateX(-10px) rotate(-20deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(20deg);
+  }
+  50% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  60% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-400%);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes catch {
+  to {
+    filter: saturate(0.8) brightness(0.8);
+  }
 }

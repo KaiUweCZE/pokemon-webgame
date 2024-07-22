@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: subgrid;
   margin: 0 auto;
+  margin-top: 1rem;
   max-width: 80rem;
 }
 .container-profile .container-loader {

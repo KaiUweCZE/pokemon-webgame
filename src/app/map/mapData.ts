@@ -32,9 +32,9 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    npcs: ["Sheriff", "prof. Bloom", "Hank"],
     marketItems: ["pokeball", "potion"],
-    routes: ["cave", "mountains"],
+    routes: ["cave", "mountains", "large farm"],
     img: shireImg,
     rounds: [
       {
@@ -68,7 +68,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    npcs: ["Joel", "Lord"],
     marketItems: ["pokeball", "potion"],
     routes: ["shire", "bridge", "mountains"],
     img: largeFarmImg,
@@ -104,7 +104,7 @@ export const mapData = [
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    npcs: ["Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["large farm", "cave", "bridge"],
     img: gmountainImg,
@@ -386,7 +386,7 @@ export const mapData = [
   },
   {
     id: 10,
-    name: "magical forst",
+    name: "magical forest",
     about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo

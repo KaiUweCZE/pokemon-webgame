@@ -9,6 +9,7 @@ import MapError from "./MapError";
 import { MapContext, MapProvider } from "./MapContext";
 import { useContext } from "react";
 import NpcBox from "./NpcBox";
+import Loader from "@/components/Loader";
 
 const MapPage = () => {
   const context = useContext(MapContext);
@@ -31,6 +32,8 @@ const MapPage = () => {
           width={1456}
           height={816}
           priority={true}
+          placeholder="blur"
+          quality={15}
         />
       )}
       {locationData?.routes && location && (

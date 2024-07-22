@@ -34,9 +34,40 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
 
   const newLevel = useNewLevel(change);
 
-  const textCondition =
-    enemyPokemon && enemyPokemon.actualHp !== 0 && menuChoice === "";
-
+  // check conditions and return valid message
+  const getBattleText = () => {
+    if (enemyPokemon?.actualHp === 0 && menuChoice === "") {
+      return (
+        <BattleText
+          text={`You get: ${exp} exp. Do you want to continue?`}
+          button={true}
+          setRound={setRound}
+          round={round}
+        />
+      );
+    }
+    if (isCatching.isSucces) {
+      return (
+        <BattleText
+          text={`You catch it. Do you want to continue?`}
+          button={true}
+          setRound={setRound}
+          round={round}
+        />
+      );
+    }
+    if (menuChoice === "fight") {
+      return null;
+    }
+    return (
+      <BattleText
+        text={`hey man! It looks like a ${enemyPokemon?.name}`}
+        button={false}
+        setRound={setRound}
+        round={round}
+      />
+    );
+  };
   return (
     <section className="container-battlefield">
       {userPokemon && (
@@ -50,31 +81,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
       {animationTime && <span className="hp-animation">-{damage}</span>}
       {userPokemon && (
         <div className="user-battle">
-          {textCondition && (
-            <BattleText
-              text={`hey man! It looks like a ${enemyPokemon.name}`}
-              button={false}
-              setRound={setRound}
-              round={round}
-            />
-          )}
-          {enemyPokemon?.actualHp === 0 && menuChoice === "" && (
-            <BattleText
-              text={`You get: ${exp} exp. Do you want to continue?`}
-              button={true}
-              setRound={setRound}
-              round={round}
-            />
-          )}
-          {isCatching.isSucces && (
-            <BattleText
-              text={`You catch it. Do you want to continue?`}
-              button={true}
-              setRound={setRound}
-              round={round}
-            />
-          )}
-          {}
+          {getBattleText()}
           {menuChoice === "fight" && (
             <BoxAttacks
               userPokemon={userPokemon}

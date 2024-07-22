@@ -1,37 +1,21 @@
 import { BattleContext } from "@/contexts/BattleContext";
 import { itemData } from "@/data/itemData";
+import useCatchPokemon from "@/hooks/useCatchPokemon";
 import { Item } from "@/types/item";
 import { useContext } from "react";
 
 const BagItem = ({ name, count }: Item) => {
   const data = itemData.find((item) => item.name === name);
   const context = useContext(BattleContext);
+  const { handleCatch, user } = useCatchPokemon();
 
-  const randomCatch = () => {
-    let number = Math.ceil(Math.random() * 3);
-    console.log("numberrrr is : ", number);
-
-    return number > 1;
-  };
-
-  const handleClick = async () => {
-    if (data?.func && context?.enemyPokemon) {
-      context?.setIsCatching({ underway: true, isSucces: false });
-      const isOk = randomCatch();
-      if (isOk) {
-        await data.func("a", context?.enemyPokemon);
-        setTimeout(() => {
-          context?.setIsCatching({ underway: false, isSucces: true });
-        }, 4000);
-      } else {
-        setTimeout(() => {
-          context.setIsCatching({ underway: false, isSucces: false });
-        }, 4000);
-      }
+  const handleClick = () => {
+    if (user && context?.enemyPokemon) {
+      handleCatch(user?.name, context?.enemyPokemon);
     }
   };
   return (
-    <li>
+    <li className="bag-item">
       <span>
         {name}: {count}
       </span>

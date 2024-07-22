@@ -37,6 +37,7 @@ import sheriffImg from "@/assets/images/characters/sheriff.webp";
 import weeImg from "@/assets/images/characters/wee.webp";
 import willyImg from "@/assets/images/characters/willy.webp";
 import wingchuImg from "@/assets/images/characters/wingchu.webp";
+import lordImg from "@/assets/images/characters/lord.webp";
 
 export const npcData = [
   {
@@ -272,5 +273,11 @@ export const npcData = [
     name: "Wingchu",
     message: "Speed and agility can turn the tide of any battle.",
     img: wingchuImg,
+  },
+  {
+    id: 38,
+    name: "Lord",
+    message: "Speed and agility can turn the tide of any battle.",
+    img: lordImg,
   },
 ];

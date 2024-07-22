@@ -18,6 +18,7 @@ $dark-violet: #24255a;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: subgrid;
   margin: 0 auto;
+  margin-top: 1rem;
   max-width: 80rem;
   .container-loader {
     grid-area: 1/2;

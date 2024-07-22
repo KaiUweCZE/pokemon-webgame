@@ -37,6 +37,11 @@ const useStartBattle = (location: string, round: number) => {
     }
   }, [location]);
 
+  useEffect(() => {
+    context?.setIsCatching({ underway: false, isSucces: false });
+    console.log(`is catching is ${context?.isCatching.isSucces}`);
+  }, []);
+
   console.log("round: ", round);
 
   return pokemon;
