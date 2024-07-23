@@ -41,6 +41,14 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     // fetch attack data {dmg, energyCost, type of attack}
     const attackData = attacksData.find((attack) => attack.name === attackName);
 
+    if (attackData) {
+      context.setAttack(attackData);
+    }
+
+    context.setAttackAnimation(true);
+    setTimeout(() => {
+      context.setAttackAnimation(false);
+    }, 1000);
     if (!attackData) {
       throw new Error(`${attackName} does not exist`);
     }

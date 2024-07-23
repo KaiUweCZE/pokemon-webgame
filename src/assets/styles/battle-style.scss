@@ -532,3 +532,15 @@ $bg-battle-secondary: $pale-indigo;
     color: white;
   }
 }
+
+.flame {
+  position: absolute;
+  place-self: end end;
+  translate: -1rem 0rem;
+  z-index: 1;
+  img {
+    @starting-style {
+      translate: 0 0;
+    }
+  }
+}

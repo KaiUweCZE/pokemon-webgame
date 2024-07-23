@@ -537,4 +537,16 @@
 .countdown span {
   display: flex;
   color: white;
+}
+
+.flame {
+  position: absolute;
+  place-self: end end;
+  translate: -1rem 0rem;
+  z-index: 1;
+}
+@starting-style {
+  .flame img {
+    translate: 0 0;
+  }
 }/*# sourceMappingURL=battle-style.css.map */

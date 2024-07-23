@@ -112,7 +112,7 @@ li:has(.bar) {
   display: flex;
   align-items: center;
   padding: 1rem;
-  background-color: rgba($dark-violet, 0.9);
+  background-color: rgba($dark-violet, 1);
   box-shadow: 0 0 8px black;
   border-radius: 0.5rem;
   color: #ffffff;
@@ -128,6 +128,7 @@ li:has(.bar) {
   opacity: 1;
   transition: 0.3s;
   animation: go-out 0.3s linear 1s forwards;
+  z-index: 1;
   p {
     font-weight: bold;
   }

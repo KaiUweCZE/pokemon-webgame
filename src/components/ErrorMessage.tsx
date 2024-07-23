@@ -1,7 +1,11 @@
-const ErrorMessage = () => {
+interface MessageProps {
+  message: string;
+}
+
+const ErrorMessage = ({ message }: MessageProps) => {
   return (
     <div className="error-message">
-      <p>This pokemon is in your six already</p>
+      <p>{message}</p>
     </div>
   );
 };

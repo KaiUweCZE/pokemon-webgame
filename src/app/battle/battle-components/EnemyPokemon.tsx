@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import pokeball from "@/assets/images/icons/pokeball.webp";
 import Pokeball from "@/components/Pokeball";
+import flame from "@/assets/images/attacks/thunder.webp";
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;
@@ -26,6 +27,9 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
     if (context?.isCatching.isSucces) {
       return "enemy-pokemon catched";
     }
+    if (context?.attackAnimation) {
+      return "enemy-pokemon damage";
+    }
     return "enemy-pokemon";
   };
 
@@ -35,6 +39,11 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
         <>
           {(context?.isCatching.underway || context?.isCatching.isSucces) && (
             <Pokeball />
+          )}
+          {context?.attackAnimation && context?.attack && (
+            <div className="flame">
+              <Image src={context.attack.img} alt="flame" width={130} />
+            </div>
           )}
           {pokemonImg && (
             <Image

@@ -115,7 +115,7 @@ const UserPokemon: React.FC<UserPokemonProps> = ({ pokemon }) => {
           <div className="sticker">6</div>
         )}
       </div>{" "}
-      {error && <ErrorMessage />}
+      {error && <ErrorMessage message="This pokemon is in your six already" />}
     </>
   );
 };

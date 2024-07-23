@@ -1,4 +1,5 @@
 "use client";
+import { Attack } from "@/types/attack";
 import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import {
@@ -21,6 +22,10 @@ export interface BattleContextType {
   setEnemyPokemon: Dispatch<SetStateAction<PokemonBattle | null>>;
   isCatching: isCatch;
   setIsCatching: Dispatch<SetStateAction<isCatch>>;
+  attackAnimation: boolean;
+  setAttackAnimation: Dispatch<SetStateAction<boolean>>;
+  attack: Attack | null;
+  setAttack: Dispatch<SetStateAction<Attack | null>>;
 }
 
 interface BattleProviderProps {
@@ -38,6 +43,8 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
     underway: false,
     isSucces: false,
   });
+  const [attackAnimation, setAttackAnimation] = useState(false);
+  const [attack, setAttack] = useState<Attack | null>(null);
 
   const contextValues = {
     userPokemon,
@@ -48,6 +55,10 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
     setStep,
     isCatching,
     setIsCatching,
+    attackAnimation,
+    setAttackAnimation,
+    attack,
+    setAttack,
   };
   return (
     <BattleContext.Provider value={contextValues}>

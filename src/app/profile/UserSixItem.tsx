@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { getPokemon, removeFromSix } from "./action";
 import { Pokemon } from "@/types/pokemon";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import {
   generatePokemonImage,
 } from "@/utils/generatePokemonImage";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import ErrorMessage from "@/components/ErrorMessage";
 
 interface UserSixItemProps {
   username: string;
@@ -22,15 +23,22 @@ const UserSixItem = ({
   setActive,
 }: UserSixItemProps) => {
   const context = useContext(PokemonContext);
+  const [error, setError] = useState(false);
   const img = pokemon && generatePokemonIcon(pokemon.name);
 
   const handleRemoveFromSix = async () => {
     const updatedUser = await removeFromSix(username, pokemon.id);
     console.log("updated user: ", updatedUser?.userSix);
     const newSix = context?.pokemonsFromSix.filter((e) => e.id !== pokemon.id);
-    if (!newSix) return null;
-    context?.setPokemonsFromSix(newSix);
-    console.log("new six is: ", newSix);
+    if (updatedUser && newSix) {
+      context?.setPokemonsFromSix(newSix);
+    } else {
+      console.log("it is too dangerous to be without pokemon");
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+    }
   };
   return (
     <>
@@ -66,6 +74,9 @@ const UserSixItem = ({
           </button>
         </div>
       </article>
+      {error && (
+        <ErrorMessage message="it is too dangerous to be without pokemon" />
+      )}
     </>
   );
 };

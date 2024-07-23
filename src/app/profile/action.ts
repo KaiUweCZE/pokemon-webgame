@@ -155,7 +155,7 @@ export const removeFromSix = async (username: string, pokemonId: string) => {
       select: { userSix: true },
     });
 
-    if (!user || user.userSix?.length <= 0) return null;
+    if (!user || user.userSix?.length <= 1) return null;
 
     const newSix = user.userSix.filter((e) => e !== pokemonId);
 
