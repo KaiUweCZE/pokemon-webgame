@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Market from "@/components/market/Market";
 import AboutLocation from "./AboutLocation";
 import MapNpcList from "./MapNpcList";
+import EnemyPokemonsInLocation from "./EnemyPokemonsInLocation";
+import Pokecentrum from "./Pokecentrum";
 
 interface MapProps {
   routes: string[];
@@ -26,10 +28,13 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
         return <MapNpcList location={location} />;
 
       case "Poke Centrum":
-        return <p>Poke centrum</p>;
+        return <Pokecentrum />;
 
       case "Market":
         return <Market location={location} />;
+
+      case "Battle":
+        return <EnemyPokemonsInLocation location={location} />;
 
       default:
         return <AboutLocation location={location} />;
@@ -45,13 +50,6 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
               {option}
             </li>
           ))}
-          <li
-            onClick={() => {
-              router.push("/battle");
-            }}
-          >
-            fight
-          </li>
         </ul>
       </nav>
       <div className="box">{handleOption()}</div>

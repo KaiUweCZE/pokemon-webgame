@@ -35,21 +35,16 @@
 .map-menu {
   display: flex;
   flex-direction: column;
-  background-color: rgba($primary-bgc, 0.85);
-  background-color: rgba($darker-blue, 1);
   background-color: rgba(darken($color: $dark-violet, $amount: 10), 0.9);
   border-radius: 0.5rem;
   color: white;
-  width: 30%;
+  width: 35%;
   aspect-ratio: 3/2;
   min-width: 15rem;
   min-height: 10rem;
+  box-shadow: 0 0 10px $dark-violet;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  place-self: center center;
   li {
     text-transform: capitalize;
     cursor: pointer;
@@ -153,7 +148,10 @@
 }
 
 .container-location {
+  display: grid;
   @include scroll-primary;
+  margin-top: 0.5rem;
+  margin-inline: 1rem;
 }
 
 @keyframes run {
@@ -209,8 +207,57 @@
   }
 }
 
+.npc-list {
+  //margin-inline: 1rem;
+}
+
+.npc-item {
+  display: flex;
+  padding-inline: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
 .routes-list {
   li {
     padding: 0.5rem;
+  }
+}
+
+.about-enemy-pokemons {
+  display: grid;
+  gap: 0.5rem;
+  h3 {
+    font-size: 1.5rem;
+    place-self: center;
+  }
+  img {
+    width: 100%;
+    max-width: 4rem;
+    aspect-ratio: 1/1;
+    place-self: end center;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  li {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+  span {
+    place-self: end;
+    font-size: 2rem;
+  }
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  }
+  .button-primary {
+    place-self: center;
   }
 }

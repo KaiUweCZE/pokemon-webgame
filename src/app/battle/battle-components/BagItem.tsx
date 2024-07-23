@@ -15,7 +15,7 @@ const BagItem = ({ name, count }: Item) => {
     }
   };
   return (
-    <li className="bag-item">
+    <li className="battle-bag-item">
       <span>
         {name}: {count}
       </span>

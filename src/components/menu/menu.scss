@@ -30,14 +30,20 @@ header:has(.secondary-menu) {
   width: 100%;
   position: relative;
   box-shadow: 0 0 4px $darker-blue;
+  padding: 0;
+  .menu-item.active {
+    background-color: $darker-blue;
+    box-shadow: 0 0 8px #020c1f;
+  }
 }
 
 header {
   display: grid;
-  height: 4rem;
+  height: 3rem;
   background-color: $dark-violet;
   position: relative;
   box-shadow: 0 0 4px $darker-blue;
+  padding: 0.35rem;
 }
 
 .secondary-menu {
@@ -62,6 +68,28 @@ header {
   max-width: 80rem;
   margin: 0 auto;
   position: relative;
+}
+
+.menu-item {
+  padding-inline: 0.5rem;
+  padding-top: 0.25rem;
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+
+a {
+  color: white;
+}
+
+.button-signout {
+  @include button-clasic;
+  background-color: darken($new-light, 20);
+  background-color: $darker-blue;
+  box-shadow: 0 0 4px $darker-blue;
+  &:hover {
+    background-color: lighten($color: $darker-blue, $amount: 10);
+    background-color: $darker-blue;
+    background-color: transparent;
+  }
 }
 
 .icon-box {
@@ -322,33 +350,6 @@ header {
   }
   &.twenty-fourth {
     grid-area: 14/24;
-  }
-}
-
-.menu-item {
-  padding-inline: 0.5rem;
-  padding-top: 0.25rem;
-  border-radius: 0.35rem 0.35rem 0 0;
-}
-
-.menu-item.active {
-  background-color: $darker-blue;
-  box-shadow: 0 0 8px #020c1f;
-}
-
-a {
-  color: white;
-}
-
-.button-signout {
-  @include button-clasic;
-  background-color: darken($new-light, 20);
-  background-color: $darker-blue;
-  box-shadow: 0 0 4px $darker-blue;
-  &:hover {
-    background-color: lighten($color: $darker-blue, $amount: 10);
-    background-color: $darker-blue;
-    background-color: transparent;
   }
 }
 

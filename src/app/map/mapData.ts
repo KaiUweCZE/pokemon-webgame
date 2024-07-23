@@ -31,7 +31,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "prof. Bloom", "Hank"],
     marketItems: ["pokeball", "potion"],
     routes: ["cave", "mountains", "large farm"],
@@ -67,7 +67,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Joel", "Lord"],
     marketItems: ["pokeball", "potion"],
     routes: ["shire", "bridge", "mountains"],
@@ -103,8 +103,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Samuel", "Wee", "Miner Tom"],
     marketItems: ["pokeball", "potion"],
     routes: ["large farm", "cave", "bridge"],
     img: gmountainImg,
@@ -139,10 +139,10 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Samuel", "Wee", "Miner Tom"],
     marketItems: ["pokeball", "potion"],
-    routes: ["mountain", "large farm"],
+    routes: ["mountains", "large farm"],
     img: caveImg,
     rounds: [
       {
@@ -175,8 +175,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["mountain", "large farm", "lovely", "swamp"],
     img: bridgeImg,
@@ -211,8 +211,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Sheriff", "Anna", "Princess"],
     marketItems: ["pokeball", "potion"],
     routes: ["bridge", "willy's barn", "swamp"],
     img: lovelyImg,
@@ -247,7 +247,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Willy"],
     marketItems: ["pokeball", "potion"],
     routes: ["lake", "deep mine", "futurome", "waterfalls", "lovely"],
@@ -283,8 +283,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Pepe", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["willy's barn", "deep mine", "gastly tower", "futurome"],
     img: lakeImg,
@@ -319,7 +319,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["lake", "gastly tower"],
@@ -355,8 +355,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Isabella", "Nana", "Wee"],
     marketItems: ["pokeball", "potion", "energy drink"],
     routes: ["lake", "deep mine", "magical forest"],
     img: gastlytowerImg,
@@ -391,8 +391,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Bob", "Jude", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "gastly tower"],
     img: magicalForestImg,
@@ -427,8 +427,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Sheriff", "Amendsen", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["gastly tower"],
     img: iceScreamImg,
@@ -463,8 +463,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Michael", "Pepe"],
     marketItems: ["pokeball", "potion"],
     routes: ["ice scream", "monastry", "willy's barn"],
     img: waterfallsImg,
@@ -499,8 +499,8 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
-    npcs: ["Sheriff", "Samuel", "Wee"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Fu", "Kung", "Sencha"],
     marketItems: ["pokeball", "potion"],
     routes: ["waterfalls", "ice sream", "northmandic", "chatot castle"],
     img: monastryImg,
@@ -535,7 +535,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["teleport", "monastry", "chatot castle"],
@@ -571,7 +571,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["northmandic", "chatot castle"],
@@ -607,7 +607,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["northmandic", "lovely", "monastry", "jungle", "swamp"],
@@ -643,7 +643,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["macho pichu", "chatot castle", "safari"],
@@ -679,7 +679,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["redwoods", "jungle", "safari", "swamp"],
@@ -715,7 +715,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["macho pichu", "yummy desert", "safari", "swamp"],
@@ -751,7 +751,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["redwoods"],
@@ -787,7 +787,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["macho pichu", "jungle", "redwood"],
@@ -823,7 +823,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["redwoods", "macho pichu", "castle", "lovely", "bridge"],
@@ -859,7 +859,7 @@ export const mapData = [
         Facilis repudiandae corporis ad rem doloribus cumque, praesentium
         aliquid provident minima quis odio! Voluptates exercitationem sequi illo
         repellendus? Est, fuga.`,
-    options: ["Routes", "Market", "Poke Centrum", "NPC"],
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
     routes: ["waterfalls", "willy's barn", "lake"],

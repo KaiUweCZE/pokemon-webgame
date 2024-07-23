@@ -24,14 +24,20 @@ header:has(.secondary-menu) {
   width: 100%;
   position: relative;
   box-shadow: 0 0 4px #01070f;
+  padding: 0;
+}
+header:has(.secondary-menu) .menu-item.active {
+  background-color: #01070f;
+  box-shadow: 0 0 8px #020c1f;
 }
 
 header {
   display: grid;
-  height: 4rem;
+  height: 3rem;
   background-color: #24255a;
   position: relative;
   box-shadow: 0 0 4px #01070f;
+  padding: 0.35rem;
 }
 
 .secondary-menu {
@@ -56,6 +62,40 @@ header {
   max-width: 80rem;
   margin: 0 auto;
   position: relative;
+}
+
+.menu-item {
+  padding-inline: 0.5rem;
+  padding-top: 0.25rem;
+  border-radius: 0.35rem 0.35rem 0 0;
+}
+
+a {
+  color: white;
+}
+
+.button-signout {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.25rem;
+  padding-inline: 0.5rem;
+  border: none;
+  border-radius: 0.15rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: 0.35s;
+  cursor: pointer;
+  background-color: #80679e;
+  background-color: #01070f;
+  box-shadow: 0 0 4px #01070f;
+}
+.button-signout:hover {
+  background-color: #041d3f;
+  background-color: #01070f;
+  background-color: transparent;
 }
 
 .icon-box {
@@ -374,45 +414,6 @@ header {
 }
 .map-item.twenty-fourth {
   grid-area: 14/24;
-}
-
-.menu-item {
-  padding-inline: 0.5rem;
-  padding-top: 0.25rem;
-  border-radius: 0.35rem 0.35rem 0 0;
-}
-
-.menu-item.active {
-  background-color: #01070f;
-  box-shadow: 0 0 8px #020c1f;
-}
-
-a {
-  color: white;
-}
-
-.button-signout {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 0.25rem;
-  padding-inline: 0.5rem;
-  border: none;
-  border-radius: 0.15rem;
-  color: white;
-  font-size: 0.9rem;
-  font-weight: bold;
-  transition: 0.35s;
-  cursor: pointer;
-  background-color: #80679e;
-  background-color: #01070f;
-  box-shadow: 0 0 4px #01070f;
-}
-.button-signout:hover {
-  background-color: #041d3f;
-  background-color: #01070f;
-  background-color: transparent;
 }
 
 .tag {

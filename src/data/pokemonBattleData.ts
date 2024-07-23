@@ -99,12 +99,40 @@ import sandshrewBack from "@/assets/images/pokemons/backside/sandshrew-back.webp
 import sandshrewIcon from "@/assets/images/pokemons/pokemon-icons/sandshrew-icon.png";
 
 import raichuImg from "@/assets/images/pokemons/raichu.webp";
-import raichuBack from "@/assets/images/pokemons/backside/raichu-back.png";
+import raichuBack from "@/assets/images/pokemons/backside/raichu-back.webp";
 import raichuIcon from "@/assets/images/pokemons/pokemon-icons/raichu-icon.png";
 
 import geodudeImg from "@/assets/images/pokemons/geodude.webp";
 import geodudeBack from "@/assets/images/pokemons/backside/geodude-back.webp";
 import geodudeIcon from "@/assets/images/pokemons/pokemon-icons/geodude-icon.png";
+
+import gravelerImg from "@/assets/images/pokemons/graveler.webp";
+import gravelerIcon from "@/assets/images/pokemons/pokemon-icons/graveler-icon.png";
+import gravelerBack from "@/assets/images/pokemons/backside/graveler-back.webp";
+
+import golemImg from "@/assets/images/pokemons/golem.webp";
+import golemIcon from "@/assets/images/pokemons/pokemon-icons/golem-icon.png";
+import golemBack from "@/assets/images/pokemons/backside/golem-back.webp";
+
+import rhyhornImg from "@/assets/images/pokemons/rhyhorn.webp";
+import rhyhornIcon from "@/assets/images/pokemons/pokemon-icons/rhyhorn-icon.png";
+import rhyhornBack from "@/assets/images/pokemons/backside/rhyhorn-back.webp";
+
+import rhydonImg from "@/assets/images/pokemons/rhydon.webp";
+import rhydonIcon from "@/assets/images/pokemons/pokemon-icons/rhydon-icon.png";
+import rhydonBack from "@/assets/images/pokemons/backside/rhydon-back.webp";
+
+import rhyperiorImg from "@/assets/images/pokemons/rhyperior.webp";
+import rhyperiorIcon from "@/assets/images/pokemons/pokemon-icons/rhyperior-icon.png";
+import rhyperiorBack from "@/assets/images/pokemons/backside/rhyperior-back.webp";
+
+import ursaringImg from "@/assets/images/pokemons/ursaring.webp";
+import ursaringIcon from "@/assets/images/pokemons/pokemon-icons/ursaring-icon.png";
+import ursaringBack from "@/assets/images/pokemons/backside/ursaring-back.webp";
+
+import ursalunaImg from "@/assets/images/pokemons/ursaluna.webp";
+import ursalunaIcon from "@/assets/images/pokemons/pokemon-icons/ursaring-icon.png";
+import ursalunaBack from "@/assets/images/pokemons/backside/ursaluna-back.jpg";
 
 export const pokemonBattleData = [
   {
@@ -496,5 +524,125 @@ export const pokemonBattleData = [
     energy: 15,
     expToLevel: 100,
     expForKill: 5,
+  },
+  {
+    id: 75,
+    name: "Graveler",
+    type: ["rock", "ground"],
+    img: gravelerImg,
+    imgBack: gravelerBack,
+    icon: gravelerIcon,
+    damage: 55,
+    defense: 115,
+    speed: 35,
+    hp: 55,
+    energy: 10,
+    expToLevel: 200,
+    expForKill: 93,
+  },
+  {
+    id: 76,
+    name: "Golem",
+    type: ["rock", "ground"],
+    img: golemImg,
+    imgBack: golemBack,
+    icon: golemIcon,
+    damage: 95,
+    defense: 130,
+    speed: 45,
+    hp: 80,
+    energy: 10,
+    expToLevel: 300,
+    expForKill: 198,
+  },
+  {
+    id: 111,
+    name: "Rhyhorn",
+    type: ["ground", "rock"],
+    img: rhyhornImg,
+    imgBack: rhyhornBack,
+    icon: rhyhornIcon,
+    damage: 85,
+    defense: 95,
+    speed: 25,
+    hp: 80,
+    energy: 15,
+    expToLevel: 200,
+    expForKill: 135,
+  },
+  {
+    id: 112,
+    name: "Rhydon",
+    type: ["ground", "rock"],
+    img: rhydonImg,
+    imgBack: rhydonBack,
+    icon: rhydonIcon,
+    damage: 130,
+    defense: 120,
+    speed: 40,
+    hp: 105,
+    energy: 15,
+    expToLevel: 300,
+    expForKill: 204,
+  },
+  {
+    id: 463,
+    name: "Raichu",
+    type: ["electric"],
+    img: raichuImg,
+    imgBack: raichuBack,
+    icon: raichuIcon,
+    damage: 140,
+    defense: 130,
+    speed: 40,
+    hp: 115,
+    energy: 20,
+    expToLevel: 400,
+    expForKill: 241,
+  },
+  {
+    id: 464,
+    name: "Rhyperior",
+    type: ["ground", "rock"],
+    img: rhyperiorImg,
+    imgBack: rhyperiorBack,
+    icon: rhyperiorIcon,
+    damage: 140,
+    defense: 130,
+    speed: 40,
+    hp: 115,
+    energy: 20,
+    expToLevel: 400,
+    expForKill: 241,
+  },
+  {
+    id: 217,
+    name: "Ursaring",
+    type: ["normal"],
+    img: ursaringImg,
+    imgBack: ursaringBack,
+    icon: ursaringIcon,
+    damage: 130,
+    defense: 75,
+    speed: 55,
+    hp: 90,
+    energy: 15,
+    expToLevel: 300,
+    expForKill: 175,
+  },
+  {
+    id: 901,
+    name: "Ursaluna",
+    type: ["ground", "normal"],
+    img: ursalunaImg,
+    imgBack: ursalunaBack,
+    icon: ursalunaIcon,
+    damage: 140,
+    defense: 105,
+    speed: 50,
+    hp: 130,
+    energy: 20,
+    expToLevel: 400,
+    expForKill: 273,
   },
 ];

@@ -337,12 +337,12 @@
   background-color: #f3c564;
 }
 
-.bag-item {
+.battle-bag-item {
   color: white;
   color: #303030;
   border-bottom: 2px dashed #f3c564;
 }
-.bag-item:hover {
+.battle-bag-item:hover {
   background-color: #f7d793;
 }
 

@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 const Timeline = () => {
   const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(false);
+  const context = useContext(UserContext);
 
   const user = data?.user;
   const partOfDay = data?.user.partOfDay;
@@ -35,31 +36,33 @@ const Timeline = () => {
   };
   return (
     <div className="container-footer">
-      <footer>
-        {activeFooter && (
-          <div className="box-time">
-            <span className="time-text">
-              {user ? `day: ${user.day}` : "not today"}
-            </span>
-            {partOfDay !== undefined && (
-              <div className="box-step">
-                <div className={partOfDay >= 1 ? "step pass" : "step"}></div>
-                <div className={partOfDay >= 2 ? "step pass" : "step"}></div>
-                <div className={partOfDay === 3 ? "step pass" : "step"}></div>
-              </div>
-            )}
-            <button className="button-primary" onClick={handleNextDay}>
-              next day
-            </button>
-          </div>
-        )}
-        <button
-          className="toggle-footer"
-          onClick={() => setActiveFooter(!activeFooter)}
-        >
-          <Image src={clockIcon} alt="clock icon" height={24} width={24} />
-        </button>
-      </footer>
+      {context?.isLog && (
+        <footer>
+          {activeFooter && (
+            <div className="box-time">
+              <span className="time-text">
+                {user ? `day: ${user.day}` : "not today"}
+              </span>
+              {partOfDay !== undefined && (
+                <div className="box-step">
+                  <div className={partOfDay >= 1 ? "step pass" : "step"}></div>
+                  <div className={partOfDay >= 2 ? "step pass" : "step"}></div>
+                  <div className={partOfDay === 3 ? "step pass" : "step"}></div>
+                </div>
+              )}
+              <button className="button-primary" onClick={handleNextDay}>
+                next day
+              </button>
+            </div>
+          )}
+          <button
+            className="toggle-footer"
+            onClick={() => setActiveFooter(!activeFooter)}
+          >
+            <Image src={clockIcon} alt="clock icon" height={24} width={24} />
+          </button>
+        </footer>
+      )}
     </div>
   );
 };
