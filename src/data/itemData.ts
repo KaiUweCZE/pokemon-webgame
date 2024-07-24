@@ -15,15 +15,18 @@ export const itemData = [
     name: "pokeball",
     img: pokeballsImg,
     func: catchPokemon,
+    cost: 10,
   },
   {
     id: 2,
     name: "potion",
     img: potionImg,
+    cost: 10,
   },
   {
     id: 3,
     name: "energy drink",
     img: energyImg,
+    cost: 10,
   },
 ];

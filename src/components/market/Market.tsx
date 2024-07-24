@@ -1,11 +1,10 @@
 "use client";
 import { mapData } from "@/app/map/mapData";
 import "./market.css";
-import { buyItem } from "./action";
 import { useSession } from "next-auth/react";
-import { itemData } from "@/data/itemData";
-import Image from "next/image";
-import bagImg from "@/assets/images/icons/bagIcon.webp";
+import MarketItem from "./MarketItem";
+import useTradeItem from "@/hooks/useTradeItem";
+import MarketMessage from "./MarketMessage";
 
 interface MarketProps {
   location: string;
@@ -13,6 +12,7 @@ interface MarketProps {
 
 const Market = ({ location }: MarketProps) => {
   const { data, update } = useSession();
+  const { handleBuy, handleSell, error, setError } = useTradeItem();
   const marketData = mapData.find((e) => e.name === location)?.marketItems;
 
   if (!data) {
@@ -21,47 +21,28 @@ const Market = ({ location }: MarketProps) => {
 
   const coins = data.user.items.find((item) => item.name === "coins");
 
-  const currentItem = (itemName: string) => {
+  const itemCount = (itemName: string) => {
     let item = data.user.items.find((item) => item.name === itemName);
-    let itemImg = itemData.find((i) => i.name === item?.name)?.img;
-    return <span>{item?.count}</span>;
+    return item?.count ? item.count : 0;
   };
 
-  const handleBuy = async (item: string) => {
-    const updatedUser = await buyItem(data?.user.name, item, 1, 1);
-
-    if (updatedUser) {
-      update({
-        ...data,
-        user: {
-          ...updatedUser,
-        },
-      });
-    }
-    console.log("after bought: ", updatedUser);
-  };
   return (
     <div className="container-market">
       <ul className="menu-market">
         {marketData?.map((item, index) => (
-          <li key={index}>
-            <span>{item}</span>
-            <div>
-              <button
-                className="button-primary"
-                onClick={() => handleBuy(item)}
-              >
-                buy
-              </button>
-              <button className="button-primary">sell</button>
-              {currentItem(item)}
-            </div>
-          </li>
+          <MarketItem
+            key={index}
+            itemName={item}
+            count={itemCount(item)}
+            handleBuy={handleBuy}
+            handleSell={handleSell}
+          />
         ))}
       </ul>
       <span className="coins">
         {coins?.name}: {coins?.count}
       </span>
+      {error && <MarketMessage setError={setError} />}
     </div>
   );
 };

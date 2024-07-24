@@ -1,3 +1,9 @@
+:root {
+  --blue-one: #02142c;
+  --light-one: #0a224f;
+  --darker-blue: #01070f;
+}
+
 .container-market {
   display: flex;
   flex-direction: column;
@@ -12,7 +18,7 @@
     grid-template-columns: 1fr min-content min-content 0.15fr;
     padding: 0.5rem;
   }
-  div {
+  .market-box {
     grid-column: span 3;
     display: grid;
     grid-template-columns: subgrid;
@@ -23,7 +29,61 @@
     }
   }
 }
+.market-item {
+  display: grid;
+  position: relative;
+}
+
+.market-box-item {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.market-input {
+  display: grid;
+  width: 2rem;
+  place-items: center;
+  background-color: transparent;
+  color: white;
+  padding-inline: 0.25rem;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 .coins {
   place-self: end end;
+}
+
+.market-message {
+  display: grid;
+  position: absolute;
+  background-color: var(--blue-one);
+  box-shadow: 0 0 8px var(--darker-blue);
+  border-radius: 0.35rem;
+  padding: 2rem;
+  gap: 0.5rem;
+  place-self: center;
+  z-index: 0;
+  opacity: 1;
+  translate: 0 0;
+  transition: 0.3s;
+  .button-primary {
+    place-self: center;
+  }
+  @starting-style {
+    opacity: 0;
+    translate: 0 5rem;
+  }
 }
