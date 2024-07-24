@@ -1,38 +1,65 @@
 .container-login-form {
-  display: flex;
-  flex-direction: column;
-  width: 20rem;
-  max-width: 30%;
+  display: grid;
+  width: 30rem;
+  max-width: 40%;
   margin: 0 auto;
   margin-top: 3rem;
   border-radius: 0.35rem;
   padding: 0.5rem;
 }
 
+.wrapper-form {
+  opacity: 1;
+  translate: 0 0;
+  transition: 0.5s;
+}
+@starting-style {
+  .wrapper-form {
+    opacity: 0;
+  }
+}
+
 .login-form {
-  display: flex;
-  flex-direction: column;
-  background-color: #f1f2f8;
+  display: grid;
+  background-color: #e0e2f0;
   gap: 0.5rem;
   padding: 1rem;
+  border-radius: 0.35rem 0.35rem 0 0;
+  color: #303030;
+  border-bottom: 1px solid #424e88;
+  box-shadow: 0px -22px 31px -41px rgba(0, 0, 0, 0.5), -25px 0px 15px -35px rgba(0, 0, 0, 0.5), 25px 0px 15px -35px rgba(0, 0, 0, 0.5), inset 0px -22px 41px -40px rgba(0, 0, 0, 0.5);
 }
 .login-form div {
   display: flex;
   flex-direction: column;
+  width: 80%;
+  place-self: center;
 }
 .login-form label {
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .login-form input {
   border: none;
-  background-color: white;
-  border-bottom: 2px solid #404040;
-  padding: 0.25rem;
+  background-color: transparent;
+  border: 1px solid rgba(48, 48, 48, 0.7);
+  border-radius: 0.35rem;
+  padding: 0.5rem;
   font-size: 1rem;
 }
-.login-form input:focus {
-  border: none;
-  outline: none;
+.login-form button {
+  margin-left: 10%;
+}
+.login-form ul {
+  margin-left: 10%;
+}
+.login-form .ok {
+  transition: 0.5s;
+  color: green;
+}
+.login-form .incorrect {
+  transition: 0.5s;
+  color: rgb(202, 65, 65);
 }
 
 .type-changer {
@@ -43,8 +70,17 @@
   padding: 0.35rem;
   cursor: pointer;
   transition: 0.3s;
+  opacity: 1;
+  translate: 0 0;
+  transition: 1s;
 }
 .type-changer:hover {
   background-color: #424e88;
   color: white;
+}
+@starting-style {
+  .type-changer {
+    opacity: 0;
+    translate: 2rem 0;
+  }
 }/*# sourceMappingURL=login.css.map */

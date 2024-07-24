@@ -40,28 +40,30 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <div>
-        <label htmlFor="name">Username: </label>
-        <input
-          type="text"
-          name="name"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          name="password"
-          id=""
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button className="button-primary" type="submit">
-        Login
-      </button>
-    </form>
+    <div className="wrapper-form">
+      <form onSubmit={handleSubmit} className="login-form">
+        <div>
+          <label htmlFor="name">Username: </label>
+          <input
+            type="text"
+            name="name"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password: </label>
+          <input
+            type="password"
+            name="password"
+            id=""
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button className="button-primary" type="submit">
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 

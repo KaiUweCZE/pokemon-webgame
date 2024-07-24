@@ -1,7 +1,7 @@
 import Image from "next/image";
 import golias from "@/assets/images/characters/golias.webp";
 import nana from "@/assets/images/characters/nana.webp";
-import confusitionus from "@/assets/images/characters/confusitionus.webp";
+import confusitionus from "@/assets/images/characters/confusitionus2.webp";
 import makatai from "@/assets/images/characters/makatai.webp";
 import EliteCard from "./EliteCard";
 import { useState } from "react";

@@ -1,40 +1,89 @@
 $form-background: #f1f2f8;
 $form-border: #424e88;
+//dynamic color
+$primary-color: #303030;
+$secondary-color: white;
+$primary-bgc: #442952;
+$new-light: #b4a5c6;
 
+// specific colors
+$lightest-indigo: #c5ceff;
+$light-indigo: #7a84ba;
+$pale-indigo: #4c5897;
+$darker-indigo: #424e88;
+$darkest-indigo: #364379;
+$dark-violet: #24255a;
+
+$blue-one: #02142c;
+$light-blue: #0a224f;
+$darker-blue: #01070f;
+// #0093E9
 .container-login-form {
-  display: flex;
-  flex-direction: column;
-  width: 20rem;
-  max-width: 30%;
+  display: grid;
+  width: 30rem;
+  max-width: 40%;
   margin: 0 auto;
   margin-top: 3rem;
   border-radius: 0.35rem;
   padding: 0.5rem;
 }
 
+.wrapper-form {
+  opacity: 1;
+  translate: 0 0;
+  transition: 0.5s;
+  @starting-style {
+    opacity: 0;
+  }
+}
+
 .login-form {
-  display: flex;
-  flex-direction: column;
-  background-color: $form-background;
+  display: grid;
+  background-color: darken($form-background, 5);
   gap: 0.5rem;
   padding: 1rem;
+  border-radius: 0.35rem 0.35rem 0 0;
+  color: #303030;
+  border-bottom: 1px solid $form-border;
+  box-shadow: 0px -22px 31px -41px rgba(0, 0, 0, 0.5),
+    -25px 0px 15px -35px rgba(0, 0, 0, 0.5),
+    25px 0px 15px -35px rgba(0, 0, 0, 0.5),
+    inset 0px -22px 41px -40px rgba(0, 0, 0, 0.5);
   div {
     display: flex;
     flex-direction: column;
+    width: 80%;
+    place-self: center;
   }
   label {
+    font-size: 1.2rem;
     font-weight: bold;
   }
   input {
     border: none;
-    background-color: white;
-    border-bottom: 2px solid #404040;
-    padding: 0.25rem;
+    background-color: transparent;
+    border: 1px solid rgba(#303030, 0.7);
+    border-radius: 0.35rem;
+    padding: 0.5rem;
     font-size: 1rem;
   }
   input:focus {
-    border: none;
-    outline: none;
+    //border: none;
+    //outline: none;
+  }
+  button {
+    margin-left: 10%;
+  }
+  ul {
+    margin-left: 10%;
+  }
+  .ok {
+    transition: 0.5s;
+    color: green;
+  }
+  .incorrect {
+    transition: 0.5s;
+    color: rgb(202, 65, 65);
   }
 }
 
@@ -48,5 +97,12 @@ $form-border: #424e88;
   &:hover {
     background-color: $form-border;
     color: white;
+  }
+  opacity: 1;
+  translate: 0 0;
+  transition: 1s;
+  @starting-style {
+    opacity: 0;
+    translate: 2rem 0;
   }
 }
