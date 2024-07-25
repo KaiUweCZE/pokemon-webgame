@@ -26,6 +26,8 @@ export interface BattleContextType {
   setAttackAnimation: Dispatch<SetStateAction<boolean>>;
   attack: Attack | null;
   setAttack: Dispatch<SetStateAction<Attack | null>>;
+  stopBattle: boolean;
+  setStopBattle: Dispatch<SetStateAction<boolean>>;
 }
 
 interface BattleProviderProps {
@@ -45,6 +47,7 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
   });
   const [attackAnimation, setAttackAnimation] = useState(false);
   const [attack, setAttack] = useState<Attack | null>(null);
+  const [stopBattle, setStopBattle] = useState(false);
 
   const contextValues = {
     userPokemon,
@@ -59,6 +62,8 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
     setAttackAnimation,
     attack,
     setAttack,
+    stopBattle,
+    setStopBattle,
   };
   return (
     <BattleContext.Provider value={contextValues}>

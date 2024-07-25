@@ -2,11 +2,13 @@ import { PokemonBattle } from "@/types/pokemonBattle";
 import HpBar from "../../../components/HpBar";
 import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import pokeball from "@/assets/images/icons/pokeball.webp";
 import Pokeball from "@/components/Pokeball";
 import flame from "@/assets/images/attacks/thunder.webp";
+import { EnemyContext } from "../EnemyContext";
+import useEnemyBattle from "@/hooks/useEnemyBattle";
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;
@@ -14,8 +16,10 @@ interface EnemyPokemonProps {
 
 const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
-
+  const enemyContext = useContext(EnemyContext);
   const pokemonImg = generatePokemonImage(enemyPokemon.name);
+
+  useEnemyBattle();
 
   const getClassName = () => {
     if (enemyPokemon.actualHp === 0) {

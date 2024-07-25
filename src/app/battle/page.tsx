@@ -5,6 +5,7 @@ import { mapData } from "../map/mapData";
 import useStartBattle from "@/hooks/useStartBattle";
 import { useState } from "react";
 import { RoundProvider } from "./RoundContext";
+import { EnemyProvider } from "./EnemyContext";
 
 const BattlePage = () => {
   const [round, setRound] = useState(0);
@@ -19,11 +20,13 @@ const BattlePage = () => {
   useStartBattle(location, round);
 
   return (
-    <RoundProvider>
-      <div className="container-battle">
-        <Battlefield round={round} setRound={setRound} />
-      </div>
-    </RoundProvider>
+    <EnemyProvider>
+      <RoundProvider>
+        <div className="container-battle">
+          <Battlefield round={round} setRound={setRound} />
+        </div>
+      </RoundProvider>
+    </EnemyProvider>
   );
 };
 

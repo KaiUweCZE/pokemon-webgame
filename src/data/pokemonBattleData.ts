@@ -134,6 +134,445 @@ import ursalunaImg from "@/assets/images/pokemons/ursaluna.webp";
 import ursalunaIcon from "@/assets/images/pokemons/pokemon-icons/ursaring-icon.png";
 import ursalunaBack from "@/assets/images/pokemons/backside/ursaluna-back.jpg";
 
+// Aegislash
+const aegislashAttacks = [
+  { level: 10, attacks: ["Shadow Sneak", "Iron Head"] },
+  { level: 20, attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword"] },
+  {
+    level: 30,
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+  },
+  {
+    level: 40,
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+  },
+  {
+    level: 50,
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+  },
+  {
+    level: 60,
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+  },
+  {
+    level: 70,
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+  },
+];
+
+// Bisharp
+const bisharpAttacks = [
+  { level: 10, attacks: ["Fury Cutter", "Metal Claw"] },
+  { level: 20, attacks: ["Fury Cutter", "Metal Claw", "Night Slash"] },
+  {
+    level: 30,
+    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+  },
+  {
+    level: 40,
+    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+  },
+  {
+    level: 50,
+    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+  },
+  {
+    level: 60,
+    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+  },
+  {
+    level: 70,
+    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+  },
+];
+
+// Blastoise
+const blastoiseAttacks = [
+  { level: 10, attacks: ["Water Gun", "Bite"] },
+  { level: 20, attacks: ["Water Gun", "Bite", "Aqua Tail"] },
+  { level: 30, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+  { level: 40, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+  { level: 50, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+  { level: 60, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+  { level: 70, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+];
+
+// Doublade
+const doubladeAttacks = [
+  { level: 10, attacks: ["Fury Cutter", "Shadow Sneak"] },
+  { level: 20, attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head"] },
+  {
+    level: 30,
+    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+  },
+  {
+    level: 40,
+    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+  },
+  {
+    level: 50,
+    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+  },
+  {
+    level: 60,
+    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+  },
+  {
+    level: 70,
+    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+  },
+];
+
+// Eevee
+const eeveeAttacks = [
+  { level: 10, attacks: ["Quick Attack", "Tackle"] },
+  { level: 20, attacks: ["Quick Attack", "Swift", "Tackle"] },
+  { level: 30, attacks: ["Quick Attack", "Swift", "Bite"] },
+  { level: 40, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
+  { level: 50, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
+  { level: 60, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
+  { level: 70, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
+];
+
+// Farfetch'd
+const farfetchdAttacks = [
+  { level: 10, attacks: ["Peck", "Fury Cutter"] },
+  { level: 20, attacks: ["Peck", "Fury Cutter", "Aerial Ace"] },
+  { level: 30, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+  { level: 40, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+  { level: 50, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+  { level: 60, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+  { level: 70, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+];
+
+// Gallade
+const galladeAttacks = [
+  { level: 10, attacks: ["Confusion", "Slash"] },
+  { level: 20, attacks: ["Confusion", "Slash", "Psycho Cut"] },
+  { level: 30, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+  { level: 40, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+  { level: 50, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+  { level: 60, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+  { level: 70, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+];
+
+// Granbull
+const granbullAttacks = [
+  { level: 10, attacks: ["Tackle", "Bite"] },
+  { level: 20, attacks: ["Tackle", "Bite", "Play Rough"] },
+  { level: 30, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 40, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 50, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 60, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 70, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+];
+
+// Grotle
+const grotleAttacks = [
+  { level: 10, attacks: ["Tackle", "Bite"] },
+  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
+  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+];
+
+// Jynx
+const jynxAttacks = [
+  { level: 10, attacks: ["Confusion", "Powder Snow"] },
+  { level: 20, attacks: ["Confusion", "Powder Snow", "Ice Punch"] },
+  { level: 30, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+  { level: 40, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+  { level: 50, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+  { level: 60, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+  { level: 70, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+];
+
+// Kirlia
+const kirliaAttacks = [
+  { level: 10, attacks: ["Confusion", "Magical Leaf"] },
+  { level: 20, attacks: ["Confusion", "Magical Leaf", "Draining Kiss"] },
+  {
+    level: 30,
+    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+  },
+  {
+    level: 40,
+    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+  },
+  {
+    level: 50,
+    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+  },
+  {
+    level: 60,
+    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+  },
+  {
+    level: 70,
+    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+  },
+];
+
+// Pawniard
+const pawniardAttacks = [
+  { level: 10, attacks: ["Scratch", "Fury Cutter"] },
+  { level: 20, attacks: ["Scratch", "Fury Cutter", "Metal Claw"] },
+  {
+    level: 30,
+    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+  },
+  {
+    level: 40,
+    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+  },
+  {
+    level: 50,
+    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+  },
+  {
+    level: 60,
+    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+  },
+  {
+    level: 70,
+    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+  },
+];
+
+// Ralts
+const raltsAttacks = [
+  { level: 10, attacks: ["Confusion", "Magical Leaf"] },
+  { level: 20, attacks: ["Confusion", "Magical Leaf", "Disarming Voice"] },
+  {
+    level: 30,
+    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+  },
+  {
+    level: 40,
+    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+  },
+  {
+    level: 50,
+    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+  },
+  {
+    level: 60,
+    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+  },
+  {
+    level: 70,
+    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+  },
+];
+
+// Sirfetch'd
+const sirfetchdAttacks = [
+  { level: 10, attacks: ["Fury Cutter", "Peck"] },
+  { level: 20, attacks: ["Fury Cutter", "Peck", "Brick Break"] },
+  { level: 30, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+  { level: 40, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+  { level: 50, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+  { level: 60, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+  { level: 70, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+];
+
+// Smoochum
+const smoochumAttacks = [
+  { level: 10, attacks: ["Pound", "Powder Snow"] },
+  { level: 20, attacks: ["Pound", "Powder Snow", "Confusion"] },
+  { level: 30, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+  { level: 40, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+  { level: 50, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+  { level: 60, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+  { level: 70, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+];
+
+// Snubbull
+const snubbullAttacks = [
+  { level: 10, attacks: ["Tackle", "Bite"] },
+  { level: 20, attacks: ["Tackle", "Bite", "Play Rough"] },
+  { level: 30, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 40, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 50, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 60, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 70, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+];
+
+// Squirtle
+const squirtleAttacks = [
+  { level: 10, attacks: ["Tackle", "Water Gun"] },
+  { level: 20, attacks: ["Tackle", "Water Gun", "Bite"] },
+  { level: 30, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 40, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 50, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 60, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 70, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+];
+
+// Teddiursa
+const teddiursaAttacks = [
+  { level: 10, attacks: ["Scratch", "Lick"] },
+  { level: 20, attacks: ["Scratch", "Lick", "Fury Swipes"] },
+  { level: 30, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+  { level: 40, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+  { level: 50, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+  { level: 60, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+  { level: 70, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+];
+
+// Torkoal
+const torkoalAttacks = [
+  { level: 10, attacks: ["Ember", "Smog"] },
+  { level: 20, attacks: ["Ember", "Smog", "Flame Wheel"] },
+  { level: 30, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+  { level: 40, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+  { level: 50, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+  { level: 60, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+  { level: 70, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+];
+
+// Torterra
+const torterraAttacks = [
+  { level: 10, attacks: ["Tackle", "Bite"] },
+  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
+  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+];
+
+// Turtwig
+const turtwigAttacks = [
+  { level: 10, attacks: ["Tackle", "Bite"] },
+  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
+  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+];
+
+// Wartortle
+const wartortleAttacks = [
+  { level: 10, attacks: ["Tackle", "Water Gun"] },
+  { level: 20, attacks: ["Tackle", "Water Gun", "Bite"] },
+  { level: 30, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 40, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 50, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 60, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 70, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+];
+
+// Hitmonchan
+const hitmonchanAttacks = [
+  { level: 10, attacks: ["Tackle", "Mach Punch"] },
+  { level: 20, attacks: ["Tackle", "Mach Punch", "Fire Punch"] },
+  {
+    level: 30,
+    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+  },
+  {
+    level: 40,
+    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+  },
+  {
+    level: 50,
+    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+  },
+  {
+    level: 60,
+    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+  },
+  {
+    level: 70,
+    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+  },
+];
+
+// Pikachu
+const pikachuAttacks = [
+  { level: 10, attacks: ["Thundershock", "Quick Attack"] },
+  { level: 20, attacks: ["Thundershock", "Quick Attack", "Electro Ball"] },
+  {
+    level: 30,
+    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+  },
+  {
+    level: 40,
+    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+  },
+  {
+    level: 50,
+    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+  },
+  {
+    level: 60,
+    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+  },
+  {
+    level: 70,
+    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+  },
+];
+
+// Geodude
+const geodudeAttacks = [
+  { level: 10, attacks: ["Tackle", "Rock Throw"] },
+  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
+  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+];
+
+// Sandshrew
+const sandshrewAttacks = [
+  { level: 10, attacks: ["Scratch", "Sand Attack"] },
+  { level: 20, attacks: ["Scratch", "Sand Attack", "Poison Sting"] },
+  { level: 30, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+  { level: 40, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+  { level: 50, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+  { level: 60, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+  { level: 70, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+];
+
+// Graveler
+const gravelerAttacks = [
+  { level: 10, attacks: ["Tackle", "Rock Throw"] },
+  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
+  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+];
+
+// Golem
+const golemAttacks = [
+  { level: 10, attacks: ["Tackle", "Rock Throw"] },
+  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
+  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+];
+
+// Rhyhorn
+const rhyhornAttacks = [
+  { level: 10, attacks: ["Tackle", "Rock Throw"] },
+  { level: 20, attacks: ["Tackle", "Rock Throw", "Stomp"] },
+  { level: 30, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+  { level: 40, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+  { level: 50, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+  { level: 60, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+  { level: 70, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+];
+
 export const pokemonBattleData = [
   {
     id: 1,
@@ -142,6 +581,7 @@ export const pokemonBattleData = [
     imgBack: aegislashBack,
     icon: aegislashIcon,
     type: ["steel", "ghost"],
+    attacks: aegislashAttacks,
     damage: 20,
     defense: 25,
     speed: 10,
@@ -157,6 +597,7 @@ export const pokemonBattleData = [
     imgBack: bisharpBack,
     icon: bisharpIcon,
     type: ["dark", "steel"],
+    attacks: bisharpAttacks,
     damage: 18,
     defense: 22,
     speed: 15,
@@ -172,6 +613,7 @@ export const pokemonBattleData = [
     imgBack: blastoiseBack,
     icon: blastoiseIcon,
     type: ["water"],
+    attacks: blastoiseAttacks,
     damage: 15,
     defense: 30,
     speed: 12,
@@ -187,6 +629,7 @@ export const pokemonBattleData = [
     imgBack: doubladeBack,
     icon: doubladeIcon,
     type: ["steel", "ghost"],
+    attacks: doubladeAttacks,
     damage: 18,
     defense: 24,
     speed: 10,
@@ -202,6 +645,8 @@ export const pokemonBattleData = [
     imgBack: eeveeBack,
     icon: eeveeIcon,
     type: ["normal"],
+    // pokemons attacks
+    attacks: eeveeAttacks,
     damage: 12,
     defense: 10,
     speed: 14,
@@ -217,6 +662,7 @@ export const pokemonBattleData = [
     imgBack: farfetchdBack,
     icon: farfetchdIcon,
     type: ["normal", "flying"],
+    attacks: farfetchdAttacks,
     damage: 14,
     defense: 12,
     speed: 15,
@@ -232,6 +678,7 @@ export const pokemonBattleData = [
     imgBack: galladeBack,
     icon: galladeIcon,
     type: ["psychic", "fighting"],
+    attacks: galladeAttacks,
     damage: 19,
     defense: 20,
     speed: 16,
@@ -247,6 +694,7 @@ export const pokemonBattleData = [
     imgBack: granbullBack,
     icon: granbullIcon,
     type: ["fairy"],
+    attacks: granbullAttacks,
     damage: 17,
     defense: 18,
     speed: 12,
@@ -262,6 +710,7 @@ export const pokemonBattleData = [
     imgBack: grotleBack,
     icon: grotleIcon,
     type: ["grass"],
+    attacks: grotleAttacks,
     damage: 15,
     defense: 22,
     speed: 10,
@@ -277,6 +726,7 @@ export const pokemonBattleData = [
     imgBack: jynxBack,
     icon: jynxIcon,
     type: ["ice", "psychic"],
+    attacks: jynxAttacks,
     damage: 20,
     defense: 15,
     speed: 15,
@@ -292,6 +742,7 @@ export const pokemonBattleData = [
     imgBack: kirliaBack,
     icon: kirliaIcon,
     type: ["psychic", "fairy"],
+    attacks: kirliaAttacks,
     damage: 15,
     defense: 12,
     speed: 14,
@@ -307,6 +758,7 @@ export const pokemonBattleData = [
     imgBack: pawniardBack,
     icon: pawniardIcon,
     type: ["dark", "steel"],
+    attacks: pawniardAttacks,
     damage: 14,
     defense: 16,
     speed: 13,
@@ -322,6 +774,7 @@ export const pokemonBattleData = [
     imgBack: raltsBack,
     icon: raltsIcon,
     type: ["psychic", "fairy"],
+    attacks: raltsAttacks,
     damage: 10,
     defense: 8,
     speed: 12,
@@ -337,6 +790,7 @@ export const pokemonBattleData = [
     imgBack: sirfetchdBack,
     icon: sirfetchdIcon,
     type: ["fighting"],
+    attacks: sirfetchdAttacks,
     damage: 18,
     defense: 20,
     speed: 14,
@@ -352,6 +806,7 @@ export const pokemonBattleData = [
     imgBack: smoochumBack,
     icon: smoochumIcon,
     type: ["ice", "psychic"],
+    attacks: smoochumAttacks,
     damage: 12,
     defense: 10,
     speed: 13,
@@ -367,6 +822,7 @@ export const pokemonBattleData = [
     imgBack: snubbullBack,
     icon: snubbullIcon,
     type: ["fairy"],
+    attacks: snubbullAttacks,
     damage: 14,
     defense: 12,
     speed: 12,
@@ -382,6 +838,7 @@ export const pokemonBattleData = [
     imgBack: squirtleBack,
     icon: squirtleIcon,
     type: ["water"],
+    attacks: squirtleAttacks,
     damage: 12,
     defense: 14,
     speed: 11,
@@ -397,6 +854,7 @@ export const pokemonBattleData = [
     imgBack: teddiursaBack,
     icon: teddiursaIcon,
     type: ["normal"],
+    attacks: teddiursaAttacks,
     damage: 14,
     defense: 12,
     speed: 12,
@@ -412,6 +870,7 @@ export const pokemonBattleData = [
     imgBack: torkoalBack,
     icon: torkoalIcon,
     type: ["fire"],
+    attacks: torkoalAttacks,
     damage: 16,
     defense: 22,
     speed: 8,
@@ -427,6 +886,7 @@ export const pokemonBattleData = [
     imgBack: torterraBack,
     icon: torterraIcon,
     type: ["grass", "ground"],
+    attacks: torterraAttacks,
     damage: 20,
     defense: 28,
     speed: 10,
@@ -442,6 +902,7 @@ export const pokemonBattleData = [
     imgBack: turtwigBack,
     icon: turtwigIcon,
     type: ["grass"],
+    attacks: turtwigAttacks,
     damage: 12,
     defense: 14,
     speed: 10,
@@ -457,6 +918,7 @@ export const pokemonBattleData = [
     imgBack: wartortleBack,
     icon: wartortleIcon,
     type: ["water"],
+    attacks: wartortleAttacks,
     damage: 15,
     defense: 18,
     speed: 12,
@@ -472,6 +934,7 @@ export const pokemonBattleData = [
     imgBack: hitmonchanBack,
     icon: hitmonchanIcon,
     type: ["fight"],
+    attacks: hitmonchanAttacks,
     damage: 10,
     defense: 20,
     speed: 10,
@@ -487,6 +950,7 @@ export const pokemonBattleData = [
     imgBack: pikachuBack,
     icon: pikachuIcon,
     type: ["electric"],
+    attacks: pikachuAttacks,
     damage: 10,
     defense: 20,
     speed: 10,
@@ -502,6 +966,7 @@ export const pokemonBattleData = [
     img: geodudeImg,
     imgBack: geodudeBack,
     icon: geodudeIcon,
+    attacks: geodudeAttacks,
     damage: 10,
     defense: 20,
     speed: 10,
@@ -517,6 +982,7 @@ export const pokemonBattleData = [
     img: sandshrewImg,
     imgBack: sandshrewBack,
     icon: sandshrewIcon,
+    attacks: sandshrewAttacks,
     damage: 10,
     defense: 20,
     speed: 10,
@@ -532,6 +998,7 @@ export const pokemonBattleData = [
     img: gravelerImg,
     imgBack: gravelerBack,
     icon: gravelerIcon,
+    attacks: gravelerAttacks,
     damage: 55,
     defense: 115,
     speed: 35,
@@ -547,6 +1014,7 @@ export const pokemonBattleData = [
     img: golemImg,
     imgBack: golemBack,
     icon: golemIcon,
+    attacks: golemAttacks,
     damage: 95,
     defense: 130,
     speed: 45,
@@ -562,6 +1030,7 @@ export const pokemonBattleData = [
     img: rhyhornImg,
     imgBack: rhyhornBack,
     icon: rhyhornIcon,
+    attacks: rhyhornAttacks,
     damage: 85,
     defense: 95,
     speed: 25,
