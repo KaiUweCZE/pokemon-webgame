@@ -12,9 +12,12 @@ export const generateMoves = (pokemonName: string, pokemonLevel: number) => {
   const movesArray = pokemon?.attacks?.find(
     (attack) => 10 >= attack.level - pokemonLevel
   )?.attacks;
+  console.log("moves array: ", movesArray);
 
   // get data for each attack
   const moves = attacksData.filter((move) => movesArray?.includes(move.name));
+
+  console.log("moves: ", moves);
 
   return moves;
 };

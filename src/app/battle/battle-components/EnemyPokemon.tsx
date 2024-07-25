@@ -19,8 +19,6 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const enemyContext = useContext(EnemyContext);
   const pokemonImg = generatePokemonImage(enemyPokemon.name);
 
-  useEnemyBattle();
-
   const getClassName = () => {
     if (enemyPokemon.actualHp === 0) {
       return "enemy-pokemon done";
@@ -45,8 +43,12 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
             <Pokeball />
           )}
           {context?.attackAnimation && context?.attack && (
-            <div className="flame">
-              <Image src={context.attack.img} alt="flame" width={130} />
+            <div className="user-pokemon-attack">
+              <Image
+                src={context.attack.img}
+                alt="user pokemon attack animation"
+                width={130}
+              />
             </div>
           )}
           {pokemonImg && (

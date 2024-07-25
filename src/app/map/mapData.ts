@@ -430,7 +430,7 @@ export const mapData = [
     options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Sheriff", "Amendsen", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["gastly tower"],
+    routes: ["gastly tower", "monastry", "waterfalls"],
     img: iceScreamImg,
     rounds: [
       {
@@ -502,7 +502,7 @@ export const mapData = [
     options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
     npcs: ["Fu", "Kung", "Sencha"],
     marketItems: ["pokeball", "potion"],
-    routes: ["waterfalls", "ice sream", "northmandic", "chatot castle"],
+    routes: ["waterfalls", "ice scream", "northmandic", "chatot castle"],
     img: monastryImg,
     rounds: [
       {

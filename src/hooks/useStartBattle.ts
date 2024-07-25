@@ -18,6 +18,7 @@ const useStartBattle = (location: string, round: number) => {
   useEffect(() => {
     const dataLocation = mapData.find((map) => map.name === location);
     const actualRound = dataLocation?.rounds.find((e) => e.id === round);
+    context?.setStopBattle(false);
     if (actualRound?.pokemons.length) {
       const randomNum = randomNumber(actualRound.pokemons.length);
       const generatedPokemon = generatePokemon(

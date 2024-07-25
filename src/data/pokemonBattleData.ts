@@ -140,437 +140,452 @@ const aegislashAttacks = [
   { level: 20, attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword"] },
   {
     level: 30,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
   },
   {
     level: 40,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
   },
   {
     level: 50,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
   },
   {
     level: 60,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
   },
   {
     level: 70,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "Night Slash"],
+    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
   },
 ];
 
 // Bisharp
 const bisharpAttacks = [
-  { level: 10, attacks: ["Fury Cutter", "Metal Claw"] },
-  { level: 20, attacks: ["Fury Cutter", "Metal Claw", "Night Slash"] },
+  { level: 10, attacks: ["tackle", "metal claw"] },
+  { level: 20, attacks: ["tackle", "metal claw", "night slash"] },
   {
     level: 30,
-    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
   },
   {
     level: 40,
-    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
   },
   {
     level: 50,
-    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
   },
   {
     level: 60,
-    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
   },
   {
     level: 70,
-    attacks: ["Fury Cutter", "Metal Claw", "Night Slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
   },
 ];
 
 // Blastoise
 const blastoiseAttacks = [
-  { level: 10, attacks: ["Water Gun", "Bite"] },
-  { level: 20, attacks: ["Water Gun", "Bite", "Aqua Tail"] },
-  { level: 30, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
-  { level: 40, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
-  { level: 50, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
-  { level: 60, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
-  { level: 70, attacks: ["Water Gun", "Bite", "Aqua Tail", "Hydro Pump"] },
+  { level: 10, attacks: ["water gun", "bite"] },
+  { level: 20, attacks: ["water gun", "bite", "aqua tail"] },
+  { level: 30, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
+  { level: 40, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
+  { level: 50, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
+  { level: 60, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
+  { level: 70, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
 ];
 
 // Doublade
 const doubladeAttacks = [
-  { level: 10, attacks: ["Fury Cutter", "Shadow Sneak"] },
-  { level: 20, attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head"] },
+  { level: 10, attacks: ["tackle", "Shadow Sneak"] },
+  { level: 20, attacks: ["tackle", "Shadow Sneak", "Iron Head"] },
   {
     level: 30,
-    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
   },
   {
     level: 40,
-    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
   },
   {
     level: 50,
-    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
   },
   {
     level: 60,
-    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
   },
   {
     level: 70,
-    attacks: ["Fury Cutter", "Shadow Sneak", "Iron Head", "Night Slash"],
+    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
   },
 ];
 
 // Eevee
 const eeveeAttacks = [
-  { level: 10, attacks: ["Quick Attack", "Tackle"] },
-  { level: 20, attacks: ["Quick Attack", "Swift", "Tackle"] },
-  { level: 30, attacks: ["Quick Attack", "Swift", "Bite"] },
-  { level: 40, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
-  { level: 50, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
-  { level: 60, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
-  { level: 70, attacks: ["Quick Attack", "Swift", "Bite", "Take Down"] },
+  { level: 10, attacks: ["iron tail", "tackle"] },
+  { level: 20, attacks: ["iron tail", "swift", "tackle"] },
+  { level: 30, attacks: ["iron tail", "swift", "bite"] },
+  { level: 40, attacks: ["iron tail", "swift", "bite", "take down"] },
+  { level: 50, attacks: ["iron tail", "swift", "bite", "take down"] },
+  { level: 60, attacks: ["iron tail", "swift", "bite", "take down"] },
+  { level: 70, attacks: ["iron tail", "swift", "bite", "take down"] },
 ];
 
 // Farfetch'd
 const farfetchdAttacks = [
-  { level: 10, attacks: ["Peck", "Fury Cutter"] },
-  { level: 20, attacks: ["Peck", "Fury Cutter", "Aerial Ace"] },
-  { level: 30, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
-  { level: 40, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
-  { level: 50, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
-  { level: 60, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
-  { level: 70, attacks: ["Peck", "Fury Cutter", "Aerial Ace", "Slash"] },
+  { level: 10, attacks: ["wing attack", "tackle"] },
+  { level: 20, attacks: ["wing attack", "tackle", "aerial ace"] },
+  { level: 30, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
+  { level: 40, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
+  { level: 50, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
+  { level: 60, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
+  { level: 70, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
 ];
 
 // Gallade
 const galladeAttacks = [
-  { level: 10, attacks: ["Confusion", "Slash"] },
-  { level: 20, attacks: ["Confusion", "Slash", "Psycho Cut"] },
-  { level: 30, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
-  { level: 40, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
-  { level: 50, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
-  { level: 60, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
-  { level: 70, attacks: ["Confusion", "Slash", "Psycho Cut", "Leaf Blade"] },
+  { level: 10, attacks: ["confusion", "slash"] },
+  { level: 20, attacks: ["confusion", "slash", "psycho cut"] },
+  { level: 30, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
+  { level: 40, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
+  { level: 50, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
+  { level: 60, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
+  { level: 70, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
 ];
 
 // Granbull
 const granbullAttacks = [
-  { level: 10, attacks: ["Tackle", "Bite"] },
-  { level: 20, attacks: ["Tackle", "Bite", "Play Rough"] },
-  { level: 30, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 40, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 50, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 60, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 70, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "play rough"] },
+  { level: 30, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 40, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 50, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 60, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 70, attacks: ["tackle", "bite", "play rough", "crunch"] },
 ];
 
 // Grotle
 const grotleAttacks = [
-  { level: 10, attacks: ["Tackle", "Bite"] },
-  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
-  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
+  { level: 30, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 40, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 50, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 60, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 70, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
 ];
 
 // Jynx
 const jynxAttacks = [
-  { level: 10, attacks: ["Confusion", "Powder Snow"] },
-  { level: 20, attacks: ["Confusion", "Powder Snow", "Ice Punch"] },
-  { level: 30, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
-  { level: 40, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
-  { level: 50, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
-  { level: 60, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
-  { level: 70, attacks: ["Confusion", "Powder Snow", "Ice Punch", "Psychic"] },
+  { level: 10, attacks: ["confusion", "ice beam"] },
+  { level: 20, attacks: ["confusion", "ice beam", "ice punch"] },
+  { level: 30, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
+  { level: 40, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
+  { level: 50, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
+  { level: 60, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
+  { level: 70, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
 ];
 
 // Kirlia
 const kirliaAttacks = [
-  { level: 10, attacks: ["Confusion", "Magical Leaf"] },
-  { level: 20, attacks: ["Confusion", "Magical Leaf", "Draining Kiss"] },
+  { level: 10, attacks: ["confusion", "magical leaf"] },
+  { level: 20, attacks: ["confusion", "magical leaf", "draining kiss"] },
   {
     level: 30,
-    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
   },
   {
     level: 40,
-    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
   },
   {
     level: 50,
-    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
   },
   {
     level: 60,
-    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
   },
   {
     level: 70,
-    attacks: ["Confusion", "Magical Leaf", "Draining Kiss", "Psychic"],
+    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
   },
 ];
 
 // Pawniard
 const pawniardAttacks = [
-  { level: 10, attacks: ["Scratch", "Fury Cutter"] },
-  { level: 20, attacks: ["Scratch", "Fury Cutter", "Metal Claw"] },
+  { level: 10, attacks: ["tackle", "tackle"] },
+  { level: 20, attacks: ["tackle", "tackle", "metal claw"] },
   {
     level: 30,
-    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+    attacks: ["tackle", "tackle", "metal claw", "night slash"],
   },
   {
     level: 40,
-    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+    attacks: ["tackle", "tackle", "metal claw", "night slash"],
   },
   {
     level: 50,
-    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+    attacks: ["tackle", "tackle", "metal claw", "night slash"],
   },
   {
     level: 60,
-    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+    attacks: ["tackle", "tackle", "metal claw", "night slash"],
   },
   {
     level: 70,
-    attacks: ["Scratch", "Fury Cutter", "Metal Claw", "Night Slash"],
+    attacks: ["tackle", "tackle", "metal claw", "night slash"],
   },
 ];
 
 // Ralts
 const raltsAttacks = [
-  { level: 10, attacks: ["Confusion", "Magical Leaf"] },
-  { level: 20, attacks: ["Confusion", "Magical Leaf", "Disarming Voice"] },
+  { level: 10, attacks: ["confusion", "magical leaf"] },
+  { level: 20, attacks: ["confusion", "magical leaf", "disarming voice"] },
   {
     level: 30,
-    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
   },
   {
     level: 40,
-    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
   },
   {
     level: 50,
-    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
   },
   {
     level: 60,
-    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
   },
   {
     level: 70,
-    attacks: ["Confusion", "Magical Leaf", "Disarming Voice", "Psychic"],
+    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
   },
 ];
 
 // Sirfetch'd
 const sirfetchdAttacks = [
-  { level: 10, attacks: ["Fury Cutter", "Peck"] },
-  { level: 20, attacks: ["Fury Cutter", "Peck", "Brick Break"] },
-  { level: 30, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
-  { level: 40, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
-  { level: 50, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
-  { level: 60, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
-  { level: 70, attacks: ["Fury Cutter", "Peck", "Brick Break", "Leaf Blade"] },
+  { level: 10, attacks: ["tackle", "wing attack"] },
+  { level: 20, attacks: ["tackle", "wing attack", "brick break"] },
+  {
+    level: 30,
+    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
+  },
+  {
+    level: 40,
+    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
+  },
+  {
+    level: 50,
+    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
+  },
+  {
+    level: 60,
+    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
+  },
+  {
+    level: 70,
+    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
+  },
 ];
 
 // Smoochum
 const smoochumAttacks = [
-  { level: 10, attacks: ["Pound", "Powder Snow"] },
-  { level: 20, attacks: ["Pound", "Powder Snow", "Confusion"] },
-  { level: 30, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
-  { level: 40, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
-  { level: 50, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
-  { level: 60, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
-  { level: 70, attacks: ["Pound", "Powder Snow", "Confusion", "Ice Punch"] },
+  { level: 10, attacks: ["slash", "ice beam"] },
+  { level: 20, attacks: ["slash", "ice beam", "confusion"] },
+  { level: 30, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
+  { level: 40, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
+  { level: 50, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
+  { level: 60, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
+  { level: 70, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
 ];
 
 // Snubbull
 const snubbullAttacks = [
-  { level: 10, attacks: ["Tackle", "Bite"] },
-  { level: 20, attacks: ["Tackle", "Bite", "Play Rough"] },
-  { level: 30, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 40, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 50, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 60, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
-  { level: 70, attacks: ["Tackle", "Bite", "Play Rough", "Crunch"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "play rough"] },
+  { level: 30, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 40, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 50, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 60, attacks: ["tackle", "bite", "play rough", "crunch"] },
+  { level: 70, attacks: ["tackle", "bite", "play rough", "crunch"] },
 ];
 
 // Squirtle
 const squirtleAttacks = [
-  { level: 10, attacks: ["Tackle", "Water Gun"] },
-  { level: 20, attacks: ["Tackle", "Water Gun", "Bite"] },
-  { level: 30, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 40, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 50, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 60, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 70, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 10, attacks: ["tackle", "water gun"] },
+  { level: 20, attacks: ["tackle", "water gun", "bite"] },
+  { level: 30, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 40, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 50, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 60, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 70, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
 ];
 
 // Teddiursa
 const teddiursaAttacks = [
-  { level: 10, attacks: ["Scratch", "Lick"] },
-  { level: 20, attacks: ["Scratch", "Lick", "Fury Swipes"] },
-  { level: 30, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
-  { level: 40, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
-  { level: 50, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
-  { level: 60, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
-  { level: 70, attacks: ["Scratch", "Lick", "Fury Swipes", "Slash"] },
+  { level: 10, attacks: ["tackle", "quick attack"] },
+  { level: 20, attacks: ["tackle", "quick attack", "bite"] },
+  { level: 30, attacks: ["tackle", "quick attack", "bite", "slash"] },
+  { level: 40, attacks: ["tackle", "quick attack", "bite", "slash"] },
+  { level: 50, attacks: ["tackle", "quick attack", "bite", "slash"] },
+  { level: 60, attacks: ["tackle", "quick attack", "bite", "slash"] },
+  { level: 70, attacks: ["tackle", "quick attack", "bite", "slash"] },
 ];
 
 // Torkoal
 const torkoalAttacks = [
-  { level: 10, attacks: ["Ember", "Smog"] },
-  { level: 20, attacks: ["Ember", "Smog", "Flame Wheel"] },
-  { level: 30, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
-  { level: 40, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
-  { level: 50, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
-  { level: 60, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
-  { level: 70, attacks: ["Ember", "Smog", "Flame Wheel", "Lava Plume"] },
+  { level: 10, attacks: ["ember", "smog"] },
+  { level: 20, attacks: ["ember", "smog", "flame wheel"] },
+  { level: 30, attacks: ["ember", "smog", "flame wheel", "stomp"] },
+  { level: 40, attacks: ["ember", "smog", "flame wheel", "stomp"] },
+  { level: 50, attacks: ["ember", "smog", "flame wheel", "stomp"] },
+  { level: 60, attacks: ["ember", "smog", "flame wheel", "stomp"] },
+  { level: 70, attacks: ["ember", "smog", "flame wheel", "stomp"] },
 ];
 
 // Torterra
 const torterraAttacks = [
-  { level: 10, attacks: ["Tackle", "Bite"] },
-  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
-  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
-  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
-  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
-  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
-  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Earthquake"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
+  { level: 30, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
+  { level: 40, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
+  { level: 50, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
+  { level: 60, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
+  { level: 70, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
 ];
 
 // Turtwig
 const turtwigAttacks = [
-  { level: 10, attacks: ["Tackle", "Bite"] },
-  { level: 20, attacks: ["Tackle", "Bite", "Razor Leaf"] },
-  { level: 30, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 40, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 50, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 60, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
-  { level: 70, attacks: ["Tackle", "Bite", "Razor Leaf", "Seed Bomb"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
+  { level: 30, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 40, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 50, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 60, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
+  { level: 70, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
 ];
 
 // Wartortle
 const wartortleAttacks = [
-  { level: 10, attacks: ["Tackle", "Water Gun"] },
-  { level: 20, attacks: ["Tackle", "Water Gun", "Bite"] },
-  { level: 30, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 40, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 50, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 60, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
-  { level: 70, attacks: ["Tackle", "Water Gun", "Bite", "Aqua Tail"] },
+  { level: 10, attacks: ["tackle", "water gun"] },
+  { level: 20, attacks: ["tackle", "water gun", "bite"] },
+  { level: 30, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 40, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 50, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 60, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
+  { level: 70, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
 ];
 
 // Hitmonchan
 const hitmonchanAttacks = [
-  { level: 10, attacks: ["Tackle", "Mach Punch"] },
-  { level: 20, attacks: ["Tackle", "Mach Punch", "Fire Punch"] },
+  { level: 10, attacks: ["tackle", "mach punch"] },
+  { level: 20, attacks: ["tackle", "mach punch", "fire punch"] },
   {
     level: 30,
-    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
   },
   {
     level: 40,
-    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
   },
   {
     level: 50,
-    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
   },
   {
     level: 60,
-    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
   },
   {
     level: 70,
-    attacks: ["Tackle", "Mach Punch", "Fire Punch", "Thunder Punch"],
+    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
   },
 ];
 
 // Pikachu
 const pikachuAttacks = [
-  { level: 10, attacks: ["Thundershock", "Quick Attack"] },
-  { level: 20, attacks: ["Thundershock", "Quick Attack", "Electro Ball"] },
+  { level: 10, attacks: ["thunderbolt", "iron tail"] },
+  { level: 20, attacks: ["thunderbolt", "iron tail", "quick attack"] },
   {
     level: 30,
-    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
   },
   {
     level: 40,
-    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
   },
   {
     level: 50,
-    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
   },
   {
     level: 60,
-    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
   },
   {
     level: 70,
-    attacks: ["Thundershock", "Quick Attack", "Electro Ball", "Thunderbolt"],
+    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
   },
 ];
 
 // Geodude
 const geodudeAttacks = [
-  { level: 10, attacks: ["Tackle", "Rock Throw"] },
-  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
-  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
-  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
-  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
-  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
-  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Rock Slide"] },
+  { level: 10, attacks: ["tackle", "rock throw"] },
+  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
+  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
+  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
+  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
+  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
+  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
 ];
 
 // Sandshrew
 const sandshrewAttacks = [
-  { level: 10, attacks: ["Scratch", "Sand Attack"] },
-  { level: 20, attacks: ["Scratch", "Sand Attack", "Poison Sting"] },
-  { level: 30, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
-  { level: 40, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
-  { level: 50, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
-  { level: 60, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
-  { level: 70, attacks: ["Scratch", "Sand Attack", "Poison Sting", "Dig"] },
+  { level: 10, attacks: ["tackle", "bite"] },
+  { level: 20, attacks: ["tackle", "bite", "poison sting"] },
+  { level: 30, attacks: ["tackle", "bite", "poison sting", "dig"] },
+  { level: 40, attacks: ["tackle", "bite", "poison sting", "dig"] },
+  { level: 50, attacks: ["tackle", "bite", "poison sting", "dig"] },
+  { level: 60, attacks: ["tackle", "bite", "poison sting", "dig"] },
+  { level: 70, attacks: ["tackle", "bite", "poison sting", "dig"] },
 ];
 
 // Graveler
 const gravelerAttacks = [
-  { level: 10, attacks: ["Tackle", "Rock Throw"] },
-  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
-  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 10, attacks: ["tackle", "rock throw"] },
+  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
+  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
 ];
 
 // Golem
 const golemAttacks = [
-  { level: 10, attacks: ["Tackle", "Rock Throw"] },
-  { level: 20, attacks: ["Tackle", "Rock Throw", "Magnitude"] },
-  { level: 30, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 40, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 50, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 60, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
-  { level: 70, attacks: ["Tackle", "Rock Throw", "Magnitude", "Earthquake"] },
+  { level: 10, attacks: ["tackle", "rock throw"] },
+  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
+  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
+  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
 ];
 
 // Rhyhorn
 const rhyhornAttacks = [
-  { level: 10, attacks: ["Tackle", "Rock Throw"] },
-  { level: 20, attacks: ["Tackle", "Rock Throw", "Stomp"] },
-  { level: 30, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
-  { level: 40, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
-  { level: 50, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
-  { level: 60, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
-  { level: 70, attacks: ["Tackle", "Rock Throw", "Stomp", "Earthquake"] },
+  { level: 10, attacks: ["tackle", "rock throw"] },
+  { level: 20, attacks: ["tackle", "rock throw", "stomp"] },
+  { level: 30, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
+  { level: 40, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
+  { level: 50, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
+  { level: 60, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
+  { level: 70, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
 ];
 
 export const pokemonBattleData = [

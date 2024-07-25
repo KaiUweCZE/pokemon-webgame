@@ -533,7 +533,7 @@ $bg-battle-secondary: $pale-indigo;
   }
 }
 
-.flame {
+.user-pokemon-attack {
   position: absolute;
   place-self: end end;
   translate: -1rem 0rem;
@@ -541,6 +541,18 @@ $bg-battle-secondary: $pale-indigo;
   img {
     @starting-style {
       translate: 0 0;
+    }
+  }
+}
+
+.enemy-attack {
+  position: absolute;
+  place-self: end start;
+  translate: 1rem 0;
+  z-index: 1;
+  img {
+    @starting-style {
+      translate: 1rem 0;
     }
   }
 }

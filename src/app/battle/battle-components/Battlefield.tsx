@@ -11,6 +11,7 @@ import useNewLevel from "@/hooks/useNewLevel";
 import NewLevel from "./NewLevel";
 import BattleText from "./BattleText";
 import { Dispatch, SetStateAction } from "react";
+import useEnemyBattle from "@/hooks/useEnemyBattle";
 
 interface BattlefieldProps {
   round: number;
@@ -31,6 +32,8 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
     exp,
     isCatching,
   } = useBattle();
+
+  useEnemyBattle();
 
   const newLevel = useNewLevel(change);
 
