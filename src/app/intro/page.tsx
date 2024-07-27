@@ -20,7 +20,13 @@ const IntroPage = () => {
       {context?.currentUser?.chapter === 0 ? (
         <>
           {step === 0 && <FirstScene setStep={setStep} />}
-          {step === 1 && <SecondScene step={step} setStep={setStep} />}
+          {step === 1 && data && (
+            <SecondScene
+              step={step}
+              username={data?.user.name}
+              setStep={setStep}
+            />
+          )}
           {step === 2 && <ThirdScene step={step} setStep={setStep} />}
         </>
       ) : (

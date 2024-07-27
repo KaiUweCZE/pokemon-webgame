@@ -44,6 +44,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                   />
                 </li>
               ))}
+            <li>empty</li>
           </ul>
         </div>
       </div>

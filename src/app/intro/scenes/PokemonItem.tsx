@@ -6,18 +6,26 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/contexts/UserContext";
 import { generatePokemon } from "@/utils/generatePokemon";
+import { pokemonBattleData } from "@/data/pokemonBattleData";
+import { addPokemonToSix } from "@/app/profile/action";
 
 interface PokemonItemProps {
   img: string | StaticImport;
   pokemonName: string;
   pokemonDataId: number;
-  pokemonInfro: string;
+  pokemonInfo: string;
 }
 
-const PokemonItem = (props: PokemonItemProps) => {
-  const [active, setActive] = useState({ index: 0, active: false });
+const PokemonItem = ({
+  img,
+  pokemonName,
+  pokemonDataId,
+  pokemonInfo,
+}: PokemonItemProps) => {
+  const [active, setActive] = useState(false);
   const context = useContext(UserContext);
   const router = useRouter();
+  const pokemon = pokemonBattleData.find((p) => p.name === pokemonName);
 
   if (!context) {
     console.log("context missing");
@@ -39,6 +47,7 @@ const PokemonItem = (props: PokemonItemProps) => {
     if (context.currentUser?.name) {
       const newUser = await addPokemon({
         username: context.currentUser?.name,
+        attacks: ["tackle", "bite"],
         pokemonName: pokemon.name,
         pokemonLevel: 5,
         type: pokemon.type,
@@ -55,43 +64,73 @@ const PokemonItem = (props: PokemonItemProps) => {
   };
 
   const introDone = async () => {
-    await handleAddPokemon(props.pokemonDataId);
+    await handleAddPokemon(pokemonDataId);
     const updatedUser = await nextChapter();
-    if (updatedUser) {
+    if (updatedUser && context.currentUser) {
       context.setCurrentUser(updatedUser);
+      await addPokemonToSix(
+        context.currentUser?.name,
+        updatedUser.pokemonIds[0]
+      );
     }
 
     router.push("/profile");
   };
 
   return (
-    <div className="pokemon-image">
+    <div className={active ? "pokemon-image active" : "pokemon-image"}>
       <Image
-        src={props.img}
+        src={img}
         alt="pokemon image"
         width={180}
         height={180}
-        onClick={introDone}
+        onClick={() => setActive(!active)}
       />
-      <article className="pokemon-info">
+      <div className="pokemon-card">
         <div className="pokemon-box">
-          <h3>{props.pokemonName}</h3>
-          <button
-            className="button-primary"
-            onClick={() => setActive({ index: 0, active: !active.active })}
-          >
-            more about
-          </button>
+          <h3>{pokemon?.name}</h3>
+          {pokemon?.type.map((type, index) => (
+            <div key={index} className={`type-box ${type}`}>
+              {type}
+            </div>
+          ))}
         </div>
-      </article>
-      <div
-        className={
-          active.active && active.index === 0
-            ? "text-wrapper open"
-            : "text-wrapper"
-        }
-      >
-        <p className="wrapped-text">{props.pokemonInfro}</p>
+
+        <div className={active ? "text-wrapper open" : "text-wrapper"}>
+          <ul className="wrapped-text">
+            <li>
+              <ul className="moves-list">
+                <li>
+                  <span>Moves:</span>
+                </li>
+                <li>tackle,</li>
+                <li>bite</li>
+              </ul>
+            </li>
+            <li>
+              <ul className="evolutions-list">
+                <li>
+                  <span>Evolutions: </span>
+                </li>
+                {pokemon?.name === "Eevee" && <li>umbreon, espeon</li>}
+                {pokemon?.name === "Teddiursa" && <li>ursaring, ursaluna</li>}
+              </ul>
+            </li>
+            <li>
+              <ul className="about-pokemon">
+                <li>
+                  <span>About:</span>
+                </li>
+                <li>{pokemonInfo}</li>
+              </ul>
+            </li>
+          </ul>
+          {active && (
+            <button className="button-primary" onClick={introDone}>
+              choose {pokemon?.name}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -667,7 +667,7 @@ export const pokemonBattleData = [
     speed: 14,
     hp: 12,
     energy: 14,
-    expToLevel: 80,
+    expToLevel: 50,
     expForKill: 6,
   },
   {
@@ -875,7 +875,7 @@ export const pokemonBattleData = [
     speed: 12,
     hp: 11,
     energy: 13,
-    expToLevel: 80,
+    expToLevel: 50,
     expForKill: 6,
   },
   {

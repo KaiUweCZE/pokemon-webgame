@@ -20,6 +20,7 @@
 }
 .section-profile img {
   place-self: end end;
+  filter: drop-shadow(0px 3px 3px rgba(66, 66, 66, 0.7254901961));
 }
 
 .profile-info {
@@ -69,6 +70,7 @@
 }
 .pokemon-box img {
   cursor: pointer;
+  filter: drop-shadow(0px 3px 5px #131313);
 }
 
 .profile-six {

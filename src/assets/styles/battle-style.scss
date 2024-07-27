@@ -134,7 +134,7 @@ $bg-battle-secondary: $pale-indigo;
   &.done {
     img {
       transition: 1s;
-      translate: 11rem;
+      translate: 12rem;
     }
     .enemy-pokemon-info {
       transition: 1s;
@@ -145,15 +145,6 @@ $bg-battle-secondary: $pale-indigo;
     img {
       opacity: 0;
     }
-    /*.pokeball {
-      position: absolute;
-      place-self: end end;
-      right: 4rem;
-      opacity: 1;
-      //animation: bounce 2s ease 0s infinite normal forwards;
-      animation: zoomInDown 3s ease-in-out forwards,
-        rubberBand 1s ease-in-out 3s forwards;
-    }*/
   }
   &.catched {
     img {
@@ -207,6 +198,7 @@ $bg-battle-secondary: $pale-indigo;
 .box-attacks {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   height: 100%;
   width: 100%;
   gap: 0.25rem;
@@ -232,6 +224,9 @@ $bg-battle-secondary: $pale-indigo;
   cursor: pointer;
   &:hover {
     background-color: lighten($color: $bg-battle, $amount: 10);
+  }
+  &.addons {
+    grid-row: 3;
   }
 }
 
@@ -508,15 +503,23 @@ $bg-battle-secondary: $pale-indigo;
     transform: scale3d(1, 1, 1);
   }
 }
+
 .new-level {
-  background-color: white;
-  border-left: $border-primary;
-  border-top: $border-primary;
+  display: grid;
+  background-color: lighten($bg-battle, 10);
+  color: white;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 0.35rem 0.35rem 0 0;
+  border-top: 2px solid #303030;
+  border-left: 2px solid #303030;
   width: 25%;
   aspect-ratio: 7/8;
   position: absolute;
-  top: 6rem;
-  right: 0;
+  place-self: start end;
+  bottom: 33.3%;
+  ul {
+    padding: 0.5rem;
+  }
 }
 
 .countdown {

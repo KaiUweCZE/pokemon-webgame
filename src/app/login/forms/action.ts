@@ -3,9 +3,9 @@ import { connectToDatabase } from "@/utils/server-helpers";
 import bcrypt from "bcrypt";
 import prisma from "../../../../prisma";
 
-export const signUp = async (formData: FormData) => {
-  const username = formData.get("name") as string;
-  const password = formData.get("password") as string;
+export const signUp = async (username: string, password: string) => {
+  //const username = formData.get("name") as string;
+  //const password = formData.get("password") as string;
 
   if (!username || !password) {
     throw new Error("Missing username or password");
@@ -38,7 +38,6 @@ export const signUp = async (formData: FormData) => {
     throw error; // or return a custom error object/message if you prefer
   }
 };
-
 
 export const getUser = async (username: string) => {
   if (!username) {

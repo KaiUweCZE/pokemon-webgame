@@ -88,22 +88,23 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
 
   return (
     <ul className="box-attacks">
-      <li className="attack-item" onClick={() => handleAttack("quick attack")}>
-        quick attack
-      </li>
-      <li className="attack-item" onClick={() => handleAttack("tackle")}>
-        tackle
-      </li>
-      <li className="attack-item" onClick={() => handleAttack("thunder")}>
-        thunder
-      </li>
-      <li className="attack-item" onClick={() => handleAttack("thunderbolt")}>
-        thunderbolt
-      </li>
-      <li className="attack-item" onClick={() => handleRest(userPokemon.id)}>
+      {context.userPokemon?.attacks.map((attack, index) => (
+        <li
+          key={index}
+          className="attack-item"
+          onClick={() => handleAttack(attack)}
+        >
+          {attack}
+        </li>
+      ))}
+
+      <li
+        className="attack-item addons"
+        onClick={() => handleRest(userPokemon.id)}
+      >
         rest{" "}
       </li>
-      <li className="attack-item">avoid</li>
+      <li className="attack-item addons">avoid</li>
 
       {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>

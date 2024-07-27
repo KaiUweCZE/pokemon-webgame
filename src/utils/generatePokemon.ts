@@ -49,7 +49,7 @@ export const generatePokemon = (pokemonId: number, levelRange: number[]) => {
     ),
     attacks: ["tackle"],
     abilities: [],
-    expToLevel: Math.ceil(data.expToLevel * Math.pow(1.5, level)),
+    expToLevel: data.expToLevel * level,
     expForKill: Math.ceil(data.expForKill * Math.pow(1.5, level)),
   };
 

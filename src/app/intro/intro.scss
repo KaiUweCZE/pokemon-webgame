@@ -1,16 +1,13 @@
-//dynamic color
-$primary-color: #303030;
-$secondary-color: white;
-$primary-bgc: #442952;
-$new-light: #b4a5c6;
+@import "../../assets/styles/addons/variables";
 
-// specific colors
-$lightest-indigo: #c5ceff;
-$light-indigo: #7a84ba;
-$pale-indigo: #4c5897;
-$darker-indigo: #424e88;
-$darkest-indigo: #364379;
-$dark-violet: #24255a;
+@mixin article-bgc {
+  padding: 1rem;
+  backdrop-filter: blur(7px) saturate(53%);
+  -webkit-backdrop-filter: blur(7px) saturate(53%);
+  background-color: rgba(206, 206, 206, 0.51);
+  border-radius: 1rem;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
 
 .container-intro {
   display: grid;
@@ -46,12 +43,7 @@ $dark-violet: #24255a;
   height: fit-content;
   width: 30rem;
   aspect-ratio: 3/1;
-  padding: 1rem;
-  backdrop-filter: blur(7px) saturate(53%);
-  -webkit-backdrop-filter: blur(7px) saturate(53%);
-  background-color: rgba(206, 206, 206, 0.51);
-  border-radius: 1rem;
-  border: 1px solid rgba(209, 213, 219, 0.3);
+  @include article-bgc;
   position: absolute;
   left: -30%;
   translate: 0 0;
@@ -63,13 +55,37 @@ $dark-violet: #24255a;
   }
 }
 
-.section-choose-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.second-scene {
+  display: grid;
+  place-items: center;
   gap: 1rem;
+  margin-top: 2rem;
+  container-name: second-scene;
+  container-type: inline-size;
   .wrapper {
     display: flex;
+  }
+  article {
+    display: grid;
+    @include article-bgc;
+    opacity: 1;
+    translate: 0 0;
+    transition: 0.5s;
+    @starting-style {
+      opacity: 0;
+      translate: 0 3rem;
+    }
+  }
+  .button-primary {
+    place-self: center;
+  }
+}
+
+@container second-scene (min-width: 100px) {
+  .second-scene {
+    article {
+      width: 30rem;
+    }
   }
 }
 
@@ -96,38 +112,60 @@ $dark-violet: #24255a;
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 2rem;
+  gap: 2rem;
+  button {
+    grid-column: span 2;
+    place-self: center;
+  }
 }
 
 .pokemon-image {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
   height: fit-content;
+  position: relative;
+  padding-inline: 1.5rem;
   img {
     cursor: pointer;
     filter: brightness(0.5) blur(2px);
     transition: 0.3s;
+    z-index: 1;
     &:hover {
+      filter: brightness(1);
+      scale: 1.05;
+    }
+  }
+  &.active {
+    img {
       filter: brightness(1);
       scale: 1.05;
     }
   }
 }
 
-.pokemon-info {
-  div {
+.pokemon-card {
+  grid-row: 2;
+  display: grid;
+  background-color: rgba(0, 0, 0, 0.315);
+  background-color: rgba(206, 206, 206, 0.51);
+  width: 100%;
+  border: 2px solid rgba(128, 128, 128, 0.65);
+  border-radius: 0.35rem;
+  border-radius: 8% 92% 7% 93% / 99% 7% 93% 1%;
+  box-shadow: 0 0 4px gray;
+  padding-top: 4rem;
+  padding-bottom: 0.5rem;
+  padding-inline: 0.5rem;
+  position: absolute;
+  place-self: start start;
+  top: -4rem;
+  .pokemon-box {
     display: flex;
-    button {
-      z-index: 1;
-    }
+    flex-direction: column;
+    align-items: center;
+    color: #303030;
   }
-}
-
-.pokemon-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .text-wrapper {
@@ -140,7 +178,7 @@ $dark-violet: #24255a;
     transition: 0.5s;
     border-radius: 0.35rem;
     margin-right: 1rem;
-    width: 25rem;
+    width: 90%;
   }
 }
 
@@ -148,5 +186,52 @@ $dark-violet: #24255a;
   grid-template-rows: 1fr;
   .wrapped-text {
     padding: 0.5rem;
+  }
+
+  .button-primary {
+    opacity: 0;
+    animation: button-animate 0.3s linear 0.4s forwards;
+  }
+}
+
+.type-box {
+  display: flex;
+  padding: 0.25rem;
+  padding-inline: 1rem;
+  border-radius: 0.35rem;
+  //font-weight: bold;
+}
+
+@keyframes button-animate {
+  from {
+    opacity: 0;
+    translate: -4rem 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.moves-list {
+  display: flex;
+  gap: 0.25rem;
+  span {
+    font-weight: bold;
+  }
+}
+
+.evolutions-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  span {
+    font-weight: bold;
+  }
+}
+
+.about-pokemon {
+  span {
+    font-weight: bold;
   }
 }

@@ -54,16 +54,44 @@
   }
 }
 
-.section-choose-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.second-scene {
+  display: grid;
+  place-items: center;
   gap: 1rem;
+  margin-top: 2rem;
+  container-name: second-scene;
+  container-type: inline-size;
 }
-.section-choose-profile .wrapper {
+.second-scene .wrapper {
   display: flex;
+}
+.second-scene article {
+  display: grid;
+  padding: 1rem;
+  backdrop-filter: blur(7px) saturate(53%);
+  -webkit-backdrop-filter: blur(7px) saturate(53%);
+  background-color: rgba(206, 206, 206, 0.51);
+  border-radius: 1rem;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  opacity: 1;
+  translate: 0 0;
+  transition: 0.5s;
+}
+@starting-style {
+  .second-scene article {
+    opacity: 0;
+    translate: 0 3rem;
+  }
+}
+.second-scene .button-primary {
+  place-self: center;
 }
 
+@container second-scene (min-width: 100px) {
+  .second-scene article {
+    width: 30rem;
+  }
+}
 .profile-image-box img {
   cursor: pointer;
   opacity: 1;
@@ -87,37 +115,59 @@
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 2rem;
+  gap: 2rem;
+}
+.third-scene button {
+  grid-column: span 2;
+  place-self: center;
 }
 
 .pokemon-image {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
   height: -moz-fit-content;
   height: fit-content;
+  position: relative;
+  padding-inline: 1.5rem;
 }
 .pokemon-image img {
   cursor: pointer;
   filter: brightness(0.5) blur(2px);
   transition: 0.3s;
+  z-index: 1;
 }
 .pokemon-image img:hover {
   filter: brightness(1);
   scale: 1.05;
 }
-
-.pokemon-info div {
-  display: flex;
-}
-.pokemon-info div button {
-  z-index: 1;
+.pokemon-image.active img {
+  filter: brightness(1);
+  scale: 1.05;
 }
 
-.pokemon-box {
+.pokemon-card {
+  grid-row: 2;
+  display: grid;
+  background-color: rgba(0, 0, 0, 0.315);
+  background-color: rgba(206, 206, 206, 0.51);
+  width: 100%;
+  border: 2px solid rgba(128, 128, 128, 0.65);
+  border-radius: 0.35rem;
+  border-radius: 8% 92% 7% 93%/99% 7% 93% 1%;
+  box-shadow: 0 0 4px gray;
+  padding-top: 4rem;
+  padding-bottom: 0.5rem;
+  padding-inline: 0.5rem;
+  position: absolute;
+  place-self: start start;
+  top: -4rem;
+}
+.pokemon-card .pokemon-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #303030;
 }
 
 .text-wrapper {
@@ -131,7 +181,7 @@
   transition: 0.5s;
   border-radius: 0.35rem;
   margin-right: 1rem;
-  width: 25rem;
+  width: 90%;
 }
 
 .text-wrapper.open {
@@ -139,4 +189,46 @@
 }
 .text-wrapper.open .wrapped-text {
   padding: 0.5rem;
+}
+.text-wrapper.open .button-primary {
+  opacity: 0;
+  animation: button-animate 0.3s linear 0.4s forwards;
+}
+
+.type-box {
+  display: flex;
+  padding: 0.25rem;
+  padding-inline: 1rem;
+  border-radius: 0.35rem;
+}
+
+@keyframes button-animate {
+  from {
+    opacity: 0;
+    translate: -4rem 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.moves-list {
+  display: flex;
+  gap: 0.25rem;
+}
+.moves-list span {
+  font-weight: bold;
+}
+
+.evolutions-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+}
+.evolutions-list span {
+  font-weight: bold;
+}
+
+.about-pokemon span {
+  font-weight: bold;
 }/*# sourceMappingURL=intro.css.map */

@@ -40,6 +40,13 @@ header {
   padding: 0.35rem;
 }
 
+body:has(.container-intro) header {
+  display: none;
+}
+body:has(.container-intro) footer {
+  display: none;
+}
+
 .secondary-menu {
   background-color: rgba(54, 89, 128, 0.7254901961);
   background-color: #01070f;

@@ -46,6 +46,15 @@ header {
   padding: 0.35rem;
 }
 
+body:has(.container-intro) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
+
 .secondary-menu {
   background-color: #365980b9;
   background-color: $darker-blue;

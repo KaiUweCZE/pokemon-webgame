@@ -27,6 +27,13 @@
   width: 165vh;
   height: auto;
   aspect-ratio: 16/9;
+  opacity: 1;
+  transition: 0.5s;
+}
+@starting-style {
+  .container-map img {
+    opacity: 0;
+  }
 }
 
 .map-menu {

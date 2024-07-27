@@ -9,6 +9,10 @@ const AttackCountdown = ({ time, setTime }: CountdownProps) => {
   const [actualTime, setActualTime] = useState(time);
 
   useEffect(() => {
+    setActualTime(time); // Sync with props time when it changes
+  }, [time]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setActualTime((prev) => {
         if (prev <= 0) {
@@ -21,7 +25,7 @@ const AttackCountdown = ({ time, setTime }: CountdownProps) => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [setTime]);
   return (
     <li className="countdown">
       <span>{actualTime >= 0 ? actualTime.toFixed(1) : 0}</span>

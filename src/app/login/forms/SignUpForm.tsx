@@ -4,6 +4,16 @@ import { signUp } from "./action";
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isRegistred, setIsRegistred] = useState(false);
+
+  const handleSignUp = async (e: any) => {
+    e.preventDefault();
+    const result = await signUp(username, password);
+
+    if (result) {
+      setIsRegistred(true);
+    }
+  };
 
   return (
     <div className="wrapper-form">
@@ -28,7 +38,7 @@ const SignUpForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="button-primary" formAction={signUp}>
+        <button className="button-primary" onClick={handleSignUp}>
           Sign up
         </button>
         <ul>
@@ -39,6 +49,11 @@ const SignUpForm = () => {
             password: atleast one char
           </li>
         </ul>
+        {isRegistred && (
+          <span className="registration-succes">
+            Registration was successful
+          </span>
+        )}
       </form>
     </div>
   );

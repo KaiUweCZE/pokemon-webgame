@@ -11,8 +11,10 @@ const NewLevel = () => {
   const pokemon = context.userPokemon;
   return (
     <div className="new-level">
-      <h3>{`level: ${pokemon?.level}`}</h3>
       <ul>
+        <li>
+          <h3>{`level: ${pokemon?.level}`}</h3>
+        </li>
         <li>{`hp: ${pokemon?.hp}`}</li>
         <li>{`damage: ${pokemon?.damage}`}</li>
         <li>{`defense: ${pokemon?.defense}`}</li>

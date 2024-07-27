@@ -142,22 +142,11 @@
 }
 .enemy-pokemon.done img {
   transition: 1s;
-  translate: 11rem;
+  translate: 12rem;
 }
 .enemy-pokemon.done .enemy-pokemon-info {
   transition: 1s;
   translate: -15rem;
-}
-.enemy-pokemon.catching {
-  /*.pokeball {
-    position: absolute;
-    place-self: end end;
-    right: 4rem;
-    opacity: 1;
-    //animation: bounce 2s ease 0s infinite normal forwards;
-    animation: zoomInDown 3s ease-in-out forwards,
-      rubberBand 1s ease-in-out 3s forwards;
-  }*/
 }
 .enemy-pokemon.catching img {
   opacity: 0;
@@ -218,6 +207,7 @@
 .box-attacks {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   height: 100%;
   width: 100%;
   gap: 0.25rem;
@@ -246,6 +236,9 @@
 }
 .attack-item:hover {
   background-color: #33347e;
+}
+.attack-item.addons {
+  grid-row: 3;
 }
 
 .switch-box {
@@ -515,14 +508,21 @@
   }
 }
 .new-level {
-  background-color: white;
-  border-left: 4px solid rgb(14, 14, 14);
-  border-top: 4px solid rgb(14, 14, 14);
+  display: grid;
+  background-color: #33347e;
+  color: white;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 0.35rem 0.35rem 0 0;
+  border-top: 2px solid #303030;
+  border-left: 2px solid #303030;
   width: 25%;
   aspect-ratio: 7/8;
   position: absolute;
-  top: 6rem;
-  right: 0;
+  place-self: start end;
+  bottom: 33.3%;
+}
+.new-level ul {
+  padding: 0.5rem;
 }
 
 .countdown {

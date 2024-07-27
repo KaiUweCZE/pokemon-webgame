@@ -7,6 +7,7 @@ interface AddPokemonProps {
   username: string;
   pokemonName: string;
   pokemonLevel: number;
+  attacks: string[];
   type: string[];
   energy: number;
   hp: number;
@@ -39,6 +40,7 @@ export const addPokemon = async (props: AddPokemonProps) => {
       data: {
         name: props.pokemonName,
         level: props.pokemonLevel,
+        attacks: props.attacks,
         userId: user.id,
         energy: props.energy,
         actualEnergy: props.energy,
@@ -76,7 +78,7 @@ export const addPokemon = async (props: AddPokemonProps) => {
   }
 };
 
-export const addImage = async (props: AddImageProps) => {
+export const initialProfile = async (props: AddImageProps) => {
   try {
     await connectToDatabase();
 
@@ -86,9 +88,14 @@ export const addImage = async (props: AddImageProps) => {
 
     if (!user) return null;
 
+    const initialItems = [
+      { name: "coins", count: 100 },
+      { name: "pokeball", count: 5 },
+    ];
+
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
-      data: { profileImg: props.image },
+      data: { profileImg: props.image, items: initialItems },
     });
 
     return updatedUser;
