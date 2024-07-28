@@ -1,8 +1,9 @@
 const Pokecentrum = () => {
+  const mapMessage = () => {};
   return (
     <section className="poke-centrum">
       <p>Welcome in Pokecentrum</p>
-      <button></button>
+      <button className="button-primary">Health pokemons in your six</button>
     </section>
   );
 };

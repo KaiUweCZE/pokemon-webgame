@@ -41,6 +41,7 @@ export const addPokemon = async (props: AddPokemonProps) => {
         name: props.pokemonName,
         level: props.pokemonLevel,
         attacks: props.attacks,
+        type: props.type,
         userId: user.id,
         energy: props.energy,
         actualEnergy: props.energy,

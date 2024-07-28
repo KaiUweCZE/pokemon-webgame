@@ -12,7 +12,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   const badges = badgesData.filter((badge) => user.badges.includes(badge.id));
 
   return (
-    <section className="section-profile">
+    <>
       <Image
         src={user.profileImg === "1" ? firstCharImg : secondCharImg}
         alt="profile image"
@@ -31,7 +31,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
           </ul>
         </div>
         <div className="flex-column">
-          <h3>{`${user.name} badges:`}</h3>
+          <h3>{`badges:`}</h3>
           <ul className="box-badges">
             {badges &&
               badges.map((badge) => (
@@ -48,7 +48,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
           </ul>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

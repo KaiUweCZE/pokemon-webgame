@@ -14,7 +14,7 @@ const useCatchPokemon = () => {
     let number = Math.ceil(Math.random() * 3);
     console.log("numberrrr is : ", number);
 
-    return number > 1;
+    return number > 0;
   };
 
   const handleCatch = async (username: string, pokemon: PokemonBattle) => {
@@ -26,10 +26,12 @@ const useCatchPokemon = () => {
     }
 
     context?.setIsCatching({ underway: true, isSucces: false });
+    context?.setStopBattle(true);
     if (!result) {
       setTimeout(() => {
+        context?.setStopBattle(false);
         context?.setIsCatching({ underway: false, isSucces: false });
-      }, 5000);
+      }, 3500);
       return null;
     }
 
@@ -46,7 +48,7 @@ const useCatchPokemon = () => {
       });
       setTimeout(() => {
         context?.setIsCatching({ underway: false, isSucces: true });
-      }, 5000);
+      }, 3500);
     } catch (error) {
       console.error("error occurs: ", error);
     }

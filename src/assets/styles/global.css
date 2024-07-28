@@ -291,18 +291,17 @@ li:has(.bar) {
   align-items: center;
   padding: 1rem;
   background-color: #24255a;
-  box-shadow: 0 0 8px black;
+  box-shadow: 0 0 2px rgb(116, 116, 116);
   border-radius: 0.5rem;
   color: #ffffff;
   position: fixed;
   inset: 0px;
   width: 16rem;
   height: 8rem;
-  max-width: 100vw;
-  max-height: 100dvh;
+  place-self: end;
   margin: auto;
   text-align: center;
-  translate: 0;
+  translate: 0 5rem;
   opacity: 1;
   transition: 0.3s;
   animation: go-out 0.3s linear 1s forwards;
@@ -313,7 +312,7 @@ li:has(.bar) {
 }
 @starting-style {
   .error-message {
-    translate: 0 2rem;
+    translate: 0 0rem;
     opacity: 0;
   }
 }

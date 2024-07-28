@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 
 const Timeline = () => {
   const { data, update } = useSession();
-  const [activeFooter, setActiveFooter] = useState(false);
+  const [activeFooter, setActiveFooter] = useState(true);
   const context = useContext(UserContext);
 
   const user = data?.user;
