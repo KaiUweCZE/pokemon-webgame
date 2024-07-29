@@ -111,9 +111,12 @@ $dark-violet: #24255a;
 
 .pokemon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   row-gap: 1rem;
+  column-gap: 0.5rem;
   overflow-x: hidden;
+  padding: 1rem;
+  padding-inline: 0.5rem;
   @include scroll-primary;
 }
 
@@ -140,7 +143,10 @@ $dark-violet: #24255a;
 
 .profile-pokemon-info {
   display: grid;
-  //background-color: red;
+  width: 90%;
+  li {
+    max-width: 90%;
+  }
 }
 
 .profile-six {
@@ -234,8 +240,8 @@ $dark-violet: #24255a;
   place-items: center center;
   position: absolute;
   place-self: start end;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
   background-color: rgba(153, 248, 153, 0.589);
 }
 

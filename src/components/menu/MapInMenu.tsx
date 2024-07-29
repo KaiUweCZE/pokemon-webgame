@@ -1,11 +1,11 @@
 import Image from "next/image";
-import mapImg from "@/assets/images/map.webp";
+import mapImg from "@/assets/images/map2.webp";
 
 interface LocationProps {
   location: string;
 }
 
-const MenuMap = ({ location }: LocationProps) => {
+const MapInMenu = ({ location }: LocationProps) => {
   return (
     <div className="menu-map">
       <Image
@@ -220,4 +220,4 @@ const MenuMap = ({ location }: LocationProps) => {
   );
 };
 
-export default MenuMap;
+export default MapInMenu;

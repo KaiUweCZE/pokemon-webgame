@@ -59,6 +59,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [27, 63, 25, 280, 281, 387, 95, 28],
   },
   {
     id: 1,
@@ -95,6 +96,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [27, 63, 25, 280, 281, 387, 95, 28],
   },
   {
     id: 2,
@@ -131,6 +133,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [27, 74, 95, 75, 111, 28, 112],
   },
   {
     id: 3,
@@ -167,6 +170,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [4, 27, 5, 74, 104, 111, 324, 624, 28],
   },
   {
     id: 4,
@@ -203,6 +207,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [98, 63, 209, 280, 281, 388, 210, 2, 216],
   },
   {
     id: 5,
@@ -219,26 +224,27 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [133, 216],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [1, 133, 216, 280],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [1, 64, 123, 238],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [281, 2],
         levelRange: [31, 40],
       },
     ],
     fight: true,
+    completePokemonList: [1, 133, 123, 216, 64, 238, 280, 281, 2],
   },
   {
     id: 6,
@@ -275,6 +281,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 7,
@@ -311,6 +318,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 8,
@@ -347,6 +355,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 9,
@@ -383,6 +392,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 10,
@@ -419,6 +429,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 11,
@@ -455,6 +466,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 12,
@@ -491,6 +503,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [8],
   },
   {
     id: 13,
@@ -527,6 +540,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 14,
@@ -563,6 +577,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 15,
@@ -599,6 +614,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 16,
@@ -635,6 +651,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 17,
@@ -671,6 +688,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 18,
@@ -707,6 +725,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 19,
@@ -743,6 +762,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 20,
@@ -779,6 +799,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 21,
@@ -815,6 +836,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 22,
@@ -851,6 +873,7 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
   {
     id: 23,
@@ -887,5 +910,6 @@ export const mapData = [
       },
     ],
     fight: true,
+    completePokemonList: [],
   },
 ];

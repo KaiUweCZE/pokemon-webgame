@@ -5,7 +5,7 @@ import mapIcon from "@/assets/images/icons/mapIcon.webp";
 import bagIcon from "@/assets/images/icons/bagIcon.webp";
 import contactIcon from "@/assets/images/icons/phoneIcon.webp";
 import { useState } from "react";
-import MenuMap from "./MenuMap";
+import MapInMenu from "./MapInMenu";
 import PokedexMenu from "./PokedexMenu";
 import BagMenu from "./BagMenu";
 import ContactsMenu from "./ContactsMenu";
@@ -58,7 +58,7 @@ const SecondaryMenu = ({ location }: LocationProps) => {
             onClick={() => handleOptions("pokedex")}
           />
         </div>
-        {active === "map" && <MenuMap location={location} />}
+        {active === "map" && <MapInMenu location={location} />}
         {active === "pokedex" && <PokedexMenu />}
         {active === "bag" && <BagMenu />}
         {active === "contacts" && <ContactsMenu />}
