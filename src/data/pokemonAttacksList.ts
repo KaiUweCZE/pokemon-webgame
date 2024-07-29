@@ -495,7 +495,7 @@ export const koffingAttacks = [
 
 // Krabby
 export const krabbyAttacks = [
-  { level: 10, attacks: ["bubble", "vice grip"] },
+  { level: 10, attacks: ["bubble"] },
   { level: 20, attacks: ["bubble", "vice grip", "stomp"] },
   { level: 30, attacks: ["bubble", "vice grip", "stomp", "crabhammer"] },
   { level: 40, attacks: ["bubble", "vice grip", "stomp", "crabhammer"] },

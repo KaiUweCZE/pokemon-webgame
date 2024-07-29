@@ -4,6 +4,10 @@ import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getExp } from "@/utils/battle-function/getExp";
 import { addExp } from "@/utils/addExp";
 import { PokemonBattle } from "@/types/pokemonBattle";
+import { Item } from "@/types/item";
+import { getReward } from "@/utils/battle-function/getReward";
+import { addReward } from "@/utils/addReward";
+import { error } from "console";
 
 /**
  * Custom hook to manage the battle state and logic.
@@ -24,6 +28,7 @@ const useBattle = () => {
   const [animationTime, setAnimationTime] = useState(false);
   const [newLevel, setNewLevel] = useState(true);
   const [exp, setExp] = useState(0);
+  const [reward, setReward] = useState<Item | null>(null);
   const context = useContext(BattleContext);
   if (!context) {
     throw new Error("missing context");

@@ -230,6 +230,14 @@ export const attacksData = [
     img: normalImg,
   },
   {
+    name: "bubble",
+    type: "water",
+    damage: 4,
+    energyCost: 2,
+    recoveryTime: 3,
+    img: waterImg,
+  },
+  {
     name: "fury cutter",
     type: "bug",
     damage: 4,

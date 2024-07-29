@@ -12,6 +12,9 @@ import NewLevel from "./NewLevel";
 import BattleText from "./BattleText";
 import { Dispatch, SetStateAction } from "react";
 import useEnemyBattle from "@/hooks/useEnemyBattle";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import useReward from "@/hooks/useReward";
 
 interface BattlefieldProps {
   round: number;
@@ -19,6 +22,9 @@ interface BattlefieldProps {
 }
 
 const Battlefield = ({ round, setRound }: BattlefieldProps) => {
+  const { data } = useSession();
+  const router = useRouter();
+
   const {
     damage,
     setDamage,
@@ -35,6 +41,8 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
 
   useEnemyBattle();
 
+  const { items } = useReward();
+
   const newLevel = useNewLevel(change);
 
   // check conditions and return valid message
@@ -42,7 +50,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
     if (enemyPokemon?.actualHp === 0 && menuChoice === "") {
       return (
         <BattleText
-          text={`You get: ${exp} exp. Do you want to continue?`}
+          text={`You get: ${exp} exp and ${items?.name}: ${items?.count}. Do you want to continue?`}
           button={true}
           setRound={setRound}
           round={round}
