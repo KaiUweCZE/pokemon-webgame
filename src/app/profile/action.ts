@@ -58,7 +58,10 @@ export const getUserPokemons = async (userId: string) => {
 
 export const addPokemonToSix = async (username: string, pokemonId: string) => {
   try {
+    console.log("try to connect to database");
+
     await connectToDatabase();
+    console.log("connect to database");
 
     const user = await prisma.user.findUnique({
       where: { name: username },

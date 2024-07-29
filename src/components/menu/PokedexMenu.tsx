@@ -28,7 +28,7 @@ const PokedexMenu = () => {
             key={pokemon.Id}
             onClick={() => setPokemonImg(pokemon.img)}
           >
-            {pokemon.name}
+            {pokemon.name} {pokemon.Id}
           </li>
         ))}
       </ul>

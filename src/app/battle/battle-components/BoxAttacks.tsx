@@ -39,6 +39,12 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
 
   const handleAttack = async (attackName: string) => {
     // fetch attack data {dmg, energyCost, type of attack}
+    if (context.stopBattle) {
+      console.log("you are done, switch your pokemon");
+
+      return null;
+    }
+
     const attackData = attacksData.find((attack) => attack.name === attackName);
 
     if (attackData) {

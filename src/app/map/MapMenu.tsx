@@ -46,7 +46,7 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
       <nav className="menu-navigation">
         <ul>
           {options.map((option, index) => (
-            <li key={index} onClick={() => setActive(option)}>
+            <li className="item" key={index} onClick={() => setActive(option)}>
               {option}
             </li>
           ))}

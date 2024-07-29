@@ -1,9 +1,62 @@
+import { useSession } from "next-auth/react";
+import { healUserSix } from "./action";
+import { useContext, useState } from "react";
+import { MapContext } from "./MapContext";
+import MapError from "./MapError";
+import HeartBeatLoader from "@/components/HeartBeatLoader";
+import Image from "next/image";
+import nurseImg from "@/assets/images/characters/nurse.webp";
+
 const Pokecentrum = () => {
-  const mapMessage = () => {};
+  const { data, update } = useSession();
+  const [isHealed, setIsHealed] = useState(false);
+  const context = useContext(MapContext);
+
+  const handleHealth = async () => {
+    console.log("start action");
+
+    context?.setLoader(true);
+    const updated = await healUserSix("f");
+    await update({
+      ...data,
+      user: updated?.updatedUser,
+    });
+
+    if (!updated?.updatedUser) {
+      console.log("too late");
+      context?.setError(true);
+      context?.setLoader(false);
+    } else {
+      console.log(
+        "succes: ",
+        data?.user,
+        updated?.updatedPokemons,
+        updated?.updatedUser
+      );
+      setIsHealed(true);
+      context?.setLoader(false);
+    }
+  };
   return (
     <section className="poke-centrum">
-      <p>Welcome in Pokecentrum</p>
-      <button className="button-primary">Health pokemons in your six</button>
+      <Image className="nurse" src={nurseImg} alt="nurse" />
+      {!isHealed && (
+        <article>
+          <h2>Welcome in Pokecentrum</h2>
+          <p>Want to heal your Pokémon?</p>
+          <button className="button-primary" onClick={handleHealth}>
+            Yes
+          </button>
+        </article>
+      )}
+      {isHealed && (
+        <article>
+          <p>
+            Your Pokémon are in good condition, you can continue your adventure!{" "}
+          </p>
+        </article>
+      )}
+      {context?.loader && <HeartBeatLoader />}
     </section>
   );
 };

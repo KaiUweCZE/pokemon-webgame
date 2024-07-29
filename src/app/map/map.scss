@@ -50,7 +50,7 @@
   box-shadow: 0 0 10px $dark-violet;
   position: absolute;
   place-self: center center;
-  li {
+  .item {
     text-transform: capitalize;
     cursor: pointer;
     &:hover {
@@ -61,13 +61,13 @@
   .menu-navigation {
     display: flex;
     background-color: $pale-indigo;
+    container-name: menu-navigation;
+    container-type: inline-size;
     ul {
       display: grid;
       grid-template-columns: repeat(5, minmax(max-content, 1fr));
       width: 100%;
-    }
-    @media (width < 60rem) {
-      ul {
+      @container menu-navigation (width < 380px) {
         grid-template-columns: repeat(3, minmax(max-content, 1fr));
       }
     }
@@ -230,6 +230,7 @@
 .routes-list {
   li {
     padding: 0.5rem;
+    cursor: pointer;
   }
 }
 
@@ -264,5 +265,79 @@
   }
   .button-primary {
     place-self: center;
+  }
+}
+
+.poke-centrum {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  height: 100%;
+  article {
+    grid-column: 2;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    place-self: center start;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(rgb(85, 85, 85), 0.6);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+      0 4px 4px rgba(61, 61, 61, 0.52), 0 4px 4px rgba(0, 0, 0, 0.52),
+      0 8px 8px rgba(0, 0, 0, 0.52);
+  }
+  h2 {
+    position: relative;
+    padding: 0;
+    top: 0;
+    background-color: transparent;
+    box-shadow: none;
+    place-self: start center;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+img.nurse {
+  grid-column: 1;
+  position: absolute;
+  place-self: end start;
+  height: 80%;
+  width: auto;
+  aspect-ratio: 1/2;
+  filter: drop-shadow(0 0 2px rgb(80, 80, 80));
+}
+
+.heart-beat {
+  grid-column: 2;
+  position: absolute;
+  place-self: end center;
+}
+
+.heart-beat svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heart-beat svg polyline#back {
+  fill: none;
+  stroke: #ff4d501c;
+}
+
+.heart-beat svg polyline#front {
+  fill: none;
+  stroke: #ff4d4f;
+  stroke-dasharray: 64, 192;
+  stroke-dashoffset: 256;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
   }
 }

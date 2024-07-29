@@ -24,7 +24,7 @@ const MapNpcList = ({ location }: LocationProps) => {
       {listData &&
         npcInfo?.map((npc, index) => (
           <li
-            className="npc-item"
+            className="npc-item item"
             key={index}
             onClick={() => handleNpc(npc.name)}
           >

@@ -155,7 +155,7 @@ export const attacksData = [
     damage: 6,
     energyCost: 3,
     recoveryTime: 3,
-    img: normalImg,
+    img: psychoImg,
   },
   {
     name: "psychic",
@@ -163,7 +163,7 @@ export const attacksData = [
     damage: 10,
     energyCost: 5,
     recoveryTime: 5,
-    img: normalImg,
+    img: psychoImg,
   },
   {
     name: "powder snow",
@@ -251,7 +251,7 @@ export const attacksData = [
     damage: 8,
     energyCost: 3,
     recoveryTime: 4,
-    img: normalImg,
+    img: psychoImg,
   },
   {
     name: "x-scissor",

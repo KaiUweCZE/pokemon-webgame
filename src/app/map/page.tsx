@@ -45,7 +45,7 @@ const MapPage = () => {
         />
       )}
       <h2>{location}</h2>
-      {loader && <MapLoader />}
+      {/*loader && <MapLoader />*/}
       {error && <MapError setError={setError} />}
       {npc !== "" && <NpcBox name={npc} />}
     </main>

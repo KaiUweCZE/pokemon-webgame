@@ -12,7 +12,11 @@ const MapRoutes = ({ routes }: RoutesProps) => {
   return (
     <ul className="routes-list">
       {routes.map((route, index) => (
-        <li key={index} onClick={() => handleChangeLocation(route)}>
+        <li
+          className="item"
+          key={index}
+          onClick={() => handleChangeLocation(route)}
+        >
           {route}
         </li>
       ))}

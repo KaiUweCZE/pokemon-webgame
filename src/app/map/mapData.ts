@@ -39,23 +39,23 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [27, 133, 216],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
-        levelRange: [11, 20],
+        pokemons: [25, 63, 133],
+        levelRange: [11, 15],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
-        levelRange: [21, 30],
+        pokemons: [280, 25, 216],
+        levelRange: [15, 19],
       },
       {
         id: 3,
-        pokemons: [1, 3],
-        levelRange: [31, 40],
+        pokemons: [1, 4, 7, 25],
+        levelRange: [5, 7],
       },
     ],
     fight: true,
@@ -75,23 +75,23 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [27, 63],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
-        levelRange: [11, 20],
+        pokemons: [63, 25, 280],
+        levelRange: [11, 15],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
-        levelRange: [21, 30],
+        pokemons: [281, 387, 95],
+        levelRange: [15, 20],
       },
       {
         id: 3,
-        pokemons: [1, 3],
-        levelRange: [31, 40],
+        pokemons: [95, 28],
+        levelRange: [20, 30],
       },
     ],
     fight: true,
@@ -111,23 +111,23 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [74, 27],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [74, 27, 95],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [111, 75, 95],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
-        levelRange: [31, 40],
+        pokemons: [28, 95, 112],
+        levelRange: [30, 35],
       },
     ],
     fight: true,
@@ -147,22 +147,22 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [27, 74, 104],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [4, 27, 104, 74],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [28, 4, 111, 95],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [324, 624, 5, 75],
         levelRange: [31, 40],
       },
     ],
@@ -183,22 +183,22 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [98, 63, 280],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [280, 63, 209],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [209, 216, 281],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [210, 2, 388],
         levelRange: [31, 40],
       },
     ],

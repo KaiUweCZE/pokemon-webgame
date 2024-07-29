@@ -119,15 +119,11 @@
 .pokemon-box {
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: subgrid;
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
-  /*li {
-    width: 5rem;
-  }*/
 }
 .pokemon-box img {
   cursor: pointer;

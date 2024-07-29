@@ -1,3 +1,4 @@
+"use client";
 import { Pokemon } from "@/types/pokemon";
 import { useContext } from "react";
 import { ProfileContext } from "./ProfileContext";
@@ -7,8 +8,7 @@ import HpBar from "@/components/HpBar";
 import EnergyBar from "@/components/EnergyBar";
 import ExpBar from "@/components/ExpBar";
 import { useSession } from "next-auth/react";
-import { addPokemonToSix } from "@/utils/addPokemonToSix";
-import { removePokemon } from "./action";
+import { addPokemonToSix, removePokemon } from "./action";
 import closeIcon from "@/assets/images/icons/close.svg";
 
 interface PokemonProps {
@@ -22,6 +22,8 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
 
   const user = data?.user;
   const handleAddToSix = async () => {
+    console.log("user is: ", user?.name);
+
     if (user) {
       try {
         const updatedUser = await addPokemonToSix(user.name, pokemon.id);

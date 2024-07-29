@@ -19,13 +19,13 @@ const ThirdScene = (props: ThirdSceneProps) => {
     <section className="third-scene">
       <PokemonItem
         pokemonName="Teddiursa"
-        pokemonDataId={18}
+        pokemonDataId={216}
         pokemonInfo={teddyText}
         img={teddiursaImg}
       />
       <PokemonItem
         pokemonName="Eevee"
-        pokemonDataId={5}
+        pokemonDataId={133}
         pokemonInfo={eeveeText}
         img={eeveeImg}
       />

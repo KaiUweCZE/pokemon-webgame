@@ -120,7 +120,6 @@ $dark-violet: #24255a;
 .pokemon-box {
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: subgrid;
   width: fit-content;
   height: fit-content;
   position: relative;
@@ -134,9 +133,6 @@ $dark-violet: #24255a;
     gap: 0.5rem;
     justify-content: flex-start;
   }
-  /*li {
-    width: 5rem;
-  }*/
   .types {
     display: flex;
   }

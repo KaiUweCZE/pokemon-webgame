@@ -35,12 +35,32 @@ const useBattle = () => {
     userPokemon,
     setUserPokemon,
     isCatching,
+    setStopBattle,
+    stopBattle,
   } = context;
+
+  // check user's pokemon hp
+  useEffect(() => {
+    if (userPokemon?.actualHp === 0) {
+      setStopBattle(true);
+      console.log("stop the fight");
+    } else {
+      setStopBattle(false);
+      console.log("lets fighhht", stopBattle);
+    }
+  }, [context]);
 
   useEffect(() => {
     // Calculate new HP after the damage
-    if (enemyPokemon) {
-      const newHp = makeDamage(damage, enemyPokemon?.actualHp);
+    if (userPokemon && context.attack && enemyPokemon && !stopBattle) {
+      const newHp = makeDamage(
+        damage,
+        enemyPokemon?.actualHp,
+        enemyPokemon?.type,
+        context?.attack.type,
+        userPokemon?.damage,
+        enemyPokemon?.defense
+      );
       setEnemyPokemon({
         ...enemyPokemon,
         actualHp: newHp <= 0 ? 0 : newHp,
@@ -48,7 +68,7 @@ const useBattle = () => {
     }
 
     // Trigger damage animation and reset it
-    if (damage > 0) {
+    if (damage > 0 && !stopBattle) {
       setAnimationTime(true);
       const timeout = setTimeout(() => {
         setAnimationTime(false);

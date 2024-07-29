@@ -134,463 +134,544 @@ import ursalunaImg from "@/assets/images/pokemons/ursaluna.webp";
 import ursalunaIcon from "@/assets/images/pokemons/pokemon-icons/ursaring-icon.png";
 import ursalunaBack from "@/assets/images/pokemons/backside/ursaluna-back.jpg";
 
-// Aegislash
-const aegislashAttacks = [
-  { level: 10, attacks: ["Shadow Sneak", "Iron Head"] },
-  { level: 20, attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword"] },
-  {
-    level: 30,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
-  },
-  {
-    level: 40,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
-  },
-  {
-    level: 50,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
-  },
-  {
-    level: 60,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
-  },
-  {
-    level: 70,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
-  },
-];
+import abraImg from "@/assets/images/pokemons/abra.webp";
+import abraIcon from "@/assets/images/pokemons/pokemon-icons/abra-icon.png";
+import abraBack from "@/assets/images/pokemons/backside/abra-back.webp";
 
-// Bisharp
-const bisharpAttacks = [
-  { level: 10, attacks: ["tackle", "metal claw"] },
-  { level: 20, attacks: ["tackle", "metal claw", "night slash"] },
-  {
-    level: 30,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
-  },
-  {
-    level: 40,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
-  },
-  {
-    level: 50,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
-  },
-  {
-    level: 60,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
-  },
-  {
-    level: 70,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
-  },
-];
+import alakazamImg from "@/assets/images/pokemons/alakazam.webp";
+import alakazamIcon from "@/assets/images/pokemons/pokemon-icons/alakazam-icon.png";
+import alakazamBack from "@/assets/images/pokemons/backside/alakazam-back.webp";
 
-// Blastoise
-const blastoiseAttacks = [
-  { level: 10, attacks: ["water gun", "bite"] },
-  { level: 20, attacks: ["water gun", "bite", "aqua tail"] },
-  { level: 30, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
-  { level: 40, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
-  { level: 50, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
-  { level: 60, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
-  { level: 70, attacks: ["water gun", "bite", "aqua tail", "Hydro Pump"] },
-];
+import bulbasaurImg from "@/assets/images/pokemons/bulbasaur.webp";
+import bulbasaurIcon from "@/assets/images/pokemons/pokemon-icons/bulbasaur-icon.png";
+import bulbasaurBack from "@/assets/images/pokemons/backside/bulbasaur-back.webp";
 
-// Doublade
-const doubladeAttacks = [
-  { level: 10, attacks: ["tackle", "Shadow Sneak"] },
-  { level: 20, attacks: ["tackle", "Shadow Sneak", "Iron Head"] },
-  {
-    level: 30,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
-  },
-  {
-    level: 40,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
-  },
-  {
-    level: 50,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
-  },
-  {
-    level: 60,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
-  },
-  {
-    level: 70,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
-  },
-];
+import cuboneImg from "@/assets/images/pokemons/cubone.webp";
+import cuboneIcon from "@/assets/images/pokemons/pokemon-icons/cubone-icon.png";
+import cuboneBack from "@/assets/images/pokemons/backside/cubone-back.webp";
 
-// Eevee
-const eeveeAttacks = [
-  { level: 10, attacks: ["iron tail", "tackle"] },
-  { level: 20, attacks: ["iron tail", "swift", "tackle"] },
-  { level: 30, attacks: ["iron tail", "swift", "bite"] },
-  { level: 40, attacks: ["iron tail", "swift", "bite", "take down"] },
-  { level: 50, attacks: ["iron tail", "swift", "bite", "take down"] },
-  { level: 60, attacks: ["iron tail", "swift", "bite", "take down"] },
-  { level: 70, attacks: ["iron tail", "swift", "bite", "take down"] },
-];
+import gastlyImg from "@/assets/images/pokemons/gastly.webp";
+import gastlyIcon from "@/assets/images/pokemons/pokemon-icons/gastly-icon.png";
+import gastlyBack from "@/assets/images/pokemons/backside/gastly-back.webp";
 
-// Farfetch'd
-const farfetchdAttacks = [
-  { level: 10, attacks: ["wing attack", "tackle"] },
-  { level: 20, attacks: ["wing attack", "tackle", "aerial ace"] },
-  { level: 30, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
-  { level: 40, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
-  { level: 50, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
-  { level: 60, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
-  { level: 70, attacks: ["wing attack", "tackle", "aerial ace", "slash"] },
-];
+import gengarImg from "@/assets/images/pokemons/gengar.webp";
+import gengarIcon from "@/assets/images/pokemons/pokemon-icons/gengar-icon.png";
+import gengarBack from "@/assets/images/pokemons/backside/gengar-back.webp";
 
-// Gallade
-const galladeAttacks = [
-  { level: 10, attacks: ["confusion", "slash"] },
-  { level: 20, attacks: ["confusion", "slash", "psycho cut"] },
-  { level: 30, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
-  { level: 40, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
-  { level: 50, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
-  { level: 60, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
-  { level: 70, attacks: ["confusion", "slash", "psycho cut", "leaf blade"] },
-];
+import haunterImg from "@/assets/images/pokemons/haunter.webp";
+import haunterIcon from "@/assets/images/pokemons/pokemon-icons/haunter-icon.png";
+import haunterBack from "@/assets/images/pokemons/backside/haunter-back.webp";
 
-// Granbull
-const granbullAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "play rough"] },
-  { level: 30, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 40, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 50, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 60, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 70, attacks: ["tackle", "bite", "play rough", "crunch"] },
-];
+import hitmonleeImg from "@/assets/images/pokemons/hitmonlee.webp";
+import hitmonleeIcon from "@/assets/images/pokemons/pokemon-icons/hitmonlee-icon.png";
+import hitmonleeBack from "@/assets/images/pokemons/backside/hitmonlee-back.webp";
 
-// Grotle
-const grotleAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
-  { level: 30, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 40, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 50, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 60, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 70, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-];
+import charizardImg from "@/assets/images/pokemons/charizard.webp";
+import charizardIcon from "@/assets/images/pokemons/pokemon-icons/charizard-icon.png";
+import charizardBack from "@/assets/images/pokemons/backside/charizard-back.webp";
 
-// Jynx
-const jynxAttacks = [
-  { level: 10, attacks: ["confusion", "ice beam"] },
-  { level: 20, attacks: ["confusion", "ice beam", "ice punch"] },
-  { level: 30, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
-  { level: 40, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
-  { level: 50, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
-  { level: 60, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
-  { level: 70, attacks: ["confusion", "ice beam", "ice punch", "psychic"] },
-];
+import charmanderImg from "@/assets/images/pokemons/charmander.webp";
+import charmanderIcon from "@/assets/images/pokemons/pokemon-icons/charmander-icon.png";
+import charmanderBack from "@/assets/images/pokemons/backside/charmander-back.webp";
 
-// Kirlia
-const kirliaAttacks = [
-  { level: 10, attacks: ["confusion", "magical leaf"] },
-  { level: 20, attacks: ["confusion", "magical leaf", "draining kiss"] },
-  {
-    level: 30,
-    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
-  },
-  {
-    level: 40,
-    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
-  },
-  {
-    level: 50,
-    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
-  },
-  {
-    level: 60,
-    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
-  },
-  {
-    level: 70,
-    attacks: ["confusion", "magical leaf", "draining kiss", "psychic"],
-  },
-];
+import charmeleonImg from "@/assets/images/pokemons/charmeleon.webp";
+import charmeleonIcon from "@/assets/images/pokemons/pokemon-icons/charmeleon-icon.png";
+import charmeleonBack from "@/assets/images/pokemons/backside/charmeleon-back.webp";
 
-// Pawniard
-const pawniardAttacks = [
-  { level: 10, attacks: ["tackle", "tackle"] },
-  { level: 20, attacks: ["tackle", "tackle", "metal claw"] },
-  {
-    level: 30,
-    attacks: ["tackle", "tackle", "metal claw", "night slash"],
-  },
-  {
-    level: 40,
-    attacks: ["tackle", "tackle", "metal claw", "night slash"],
-  },
-  {
-    level: 50,
-    attacks: ["tackle", "tackle", "metal claw", "night slash"],
-  },
-  {
-    level: 60,
-    attacks: ["tackle", "tackle", "metal claw", "night slash"],
-  },
-  {
-    level: 70,
-    attacks: ["tackle", "tackle", "metal claw", "night slash"],
-  },
-];
+import ivysaurImg from "@/assets/images/pokemons/ivysaur.webp";
+import ivysaurIcon from "@/assets/images/pokemons/pokemon-icons/ivysaur-icon.png";
+import ivysaurBack from "@/assets/images/pokemons/backside/ivysaur-back.webp";
 
-// Ralts
-const raltsAttacks = [
-  { level: 10, attacks: ["confusion", "magical leaf"] },
-  { level: 20, attacks: ["confusion", "magical leaf", "disarming voice"] },
-  {
-    level: 30,
-    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
-  },
-  {
-    level: 40,
-    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
-  },
-  {
-    level: 50,
-    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
-  },
-  {
-    level: 60,
-    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
-  },
-  {
-    level: 70,
-    attacks: ["confusion", "magical leaf", "disarming voice", "psychic"],
-  },
-];
+import kadabraImg from "@/assets/images/pokemons/kadabra.webp";
+import kadabraIcon from "@/assets/images/pokemons/pokemon-icons/kadabra-icon.png";
+import kadabraBack from "@/assets/images/pokemons/backside/kadabra-back.webp";
 
-// Sirfetch'd
-const sirfetchdAttacks = [
-  { level: 10, attacks: ["tackle", "wing attack"] },
-  { level: 20, attacks: ["tackle", "wing attack", "brick break"] },
-  {
-    level: 30,
-    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
-  },
-  {
-    level: 40,
-    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
-  },
-  {
-    level: 50,
-    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
-  },
-  {
-    level: 60,
-    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
-  },
-  {
-    level: 70,
-    attacks: ["tackle", "wing attack", "brick break", "leaf blade"],
-  },
-];
+import kangaskhanImg from "@/assets/images/pokemons/kangaskhan.webp";
+import kangaskhanIcon from "@/assets/images/pokemons/pokemon-icons/kangaskhan-icon.png";
+import kangaskhanBack from "@/assets/images/pokemons/backside/kangaskhan-back.webp";
 
-// Smoochum
-const smoochumAttacks = [
-  { level: 10, attacks: ["slash", "ice beam"] },
-  { level: 20, attacks: ["slash", "ice beam", "confusion"] },
-  { level: 30, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
-  { level: 40, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
-  { level: 50, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
-  { level: 60, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
-  { level: 70, attacks: ["slash", "ice beam", "confusion", "ice punch"] },
-];
+import kinglerImg from "@/assets/images/pokemons/kingler.webp";
+import kinglerIcon from "@/assets/images/pokemons/pokemon-icons/kingler-icon.png";
+import kinglerBack from "@/assets/images/pokemons/backside/kingler-back.webp";
 
-// Snubbull
-const snubbullAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "play rough"] },
-  { level: 30, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 40, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 50, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 60, attacks: ["tackle", "bite", "play rough", "crunch"] },
-  { level: 70, attacks: ["tackle", "bite", "play rough", "crunch"] },
-];
+import koffingImg from "@/assets/images/pokemons/koffing.webp";
+import koffingIcon from "@/assets/images/pokemons/pokemon-icons/koffing-icon.png";
+import koffingBack from "@/assets/images/pokemons/backside/koffing-back.webp";
 
-// Squirtle
-const squirtleAttacks = [
-  { level: 10, attacks: ["tackle", "water gun"] },
-  { level: 20, attacks: ["tackle", "water gun", "bite"] },
-  { level: 30, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 40, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 50, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 60, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 70, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-];
+import krabbyImg from "@/assets/images/pokemons/krabby.webp";
+import krabbyIcon from "@/assets/images/pokemons/pokemon-icons/krabby-icon.png";
+import krabbyBack from "@/assets/images/pokemons/backside/krabby-back.webp";
 
-// Teddiursa
-const teddiursaAttacks = [
-  { level: 10, attacks: ["tackle", "quick attack"] },
-  { level: 20, attacks: ["tackle", "quick attack", "bite"] },
-  { level: 30, attacks: ["tackle", "quick attack", "bite", "slash"] },
-  { level: 40, attacks: ["tackle", "quick attack", "bite", "slash"] },
-  { level: 50, attacks: ["tackle", "quick attack", "bite", "slash"] },
-  { level: 60, attacks: ["tackle", "quick attack", "bite", "slash"] },
-  { level: 70, attacks: ["tackle", "quick attack", "bite", "slash"] },
-];
+import marowakImg from "@/assets/images/pokemons/marowak.webp";
+import marowakIcon from "@/assets/images/pokemons/pokemon-icons/marowak-icon.png";
+import marowakBack from "@/assets/images/pokemons/backside/marowak-back.webp";
 
-// Torkoal
-const torkoalAttacks = [
-  { level: 10, attacks: ["ember", "smog"] },
-  { level: 20, attacks: ["ember", "smog", "flame wheel"] },
-  { level: 30, attacks: ["ember", "smog", "flame wheel", "stomp"] },
-  { level: 40, attacks: ["ember", "smog", "flame wheel", "stomp"] },
-  { level: 50, attacks: ["ember", "smog", "flame wheel", "stomp"] },
-  { level: 60, attacks: ["ember", "smog", "flame wheel", "stomp"] },
-  { level: 70, attacks: ["ember", "smog", "flame wheel", "stomp"] },
-];
+import mrmimeImg from "@/assets/images/pokemons/mrmime.webp";
+import mrmimeIcon from "@/assets/images/pokemons/pokemon-icons/mrmime-icon.png";
+import mrmimeBack from "@/assets/images/pokemons/backside/mrmime-back.webp";
 
-// Torterra
-const torterraAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
-  { level: 30, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
-  { level: 40, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
-  { level: 50, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
-  { level: 60, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
-  { level: 70, attacks: ["tackle", "bite", "razor leaf", "earthquake"] },
-];
+import onixImg from "@/assets/images/pokemons/onix.webp";
+import onixIcon from "@/assets/images/pokemons/pokemon-icons/onix-icon.png";
+import onixBack from "@/assets/images/pokemons/backside/onix-back.webp";
 
-// Turtwig
-const turtwigAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "razor leaf"] },
-  { level: 30, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 40, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 50, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 60, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-  { level: 70, attacks: ["tackle", "bite", "razor leaf", "seed bomb"] },
-];
+import sandslashImg from "@/assets/images/pokemons/sandslash.webp";
+import sandslashIcon from "@/assets/images/pokemons/pokemon-icons/sandslash-icon.png";
+import sandslashBack from "@/assets/images/pokemons/backside/sandslash-back.webp";
 
-// Wartortle
-const wartortleAttacks = [
-  { level: 10, attacks: ["tackle", "water gun"] },
-  { level: 20, attacks: ["tackle", "water gun", "bite"] },
-  { level: 30, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 40, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 50, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 60, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-  { level: 70, attacks: ["tackle", "water gun", "bite", "aqua tail"] },
-];
+import scytherImg from "@/assets/images/pokemons/scyther.webp";
+import scytherIcon from "@/assets/images/pokemons/pokemon-icons/scyther-icon.png";
+import scytherBack from "@/assets/images/pokemons/backside/scyther-back.webp";
 
-// Hitmonchan
-const hitmonchanAttacks = [
-  { level: 10, attacks: ["tackle", "mach punch"] },
-  { level: 20, attacks: ["tackle", "mach punch", "fire punch"] },
-  {
-    level: 30,
-    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
-  },
-  {
-    level: 40,
-    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
-  },
-  {
-    level: 50,
-    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
-  },
-  {
-    level: 60,
-    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
-  },
-  {
-    level: 70,
-    attacks: ["tackle", "mach punch", "fire punch", "thunder punch"],
-  },
-];
+import venusaurImg from "@/assets/images/pokemons/venusaur.webp";
+import venusaurIcon from "@/assets/images/pokemons/pokemon-icons/venusaur-icon.png";
+import venusaurBack from "@/assets/images/pokemons/backside/venusaur-back.webp";
 
-// Pikachu
-const pikachuAttacks = [
-  { level: 10, attacks: ["thunderbolt", "iron tail"] },
-  { level: 20, attacks: ["thunderbolt", "iron tail", "quick attack"] },
-  {
-    level: 30,
-    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
-  },
-  {
-    level: 40,
-    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
-  },
-  {
-    level: 50,
-    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
-  },
-  {
-    level: 60,
-    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
-  },
-  {
-    level: 70,
-    attacks: ["thunderbolt", "iron tail", "quick attack", "thunder"],
-  },
-];
-
-// Geodude
-const geodudeAttacks = [
-  { level: 10, attacks: ["tackle", "rock throw"] },
-  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
-  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
-  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
-  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
-  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
-  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "rock slide"] },
-];
-
-// Sandshrew
-const sandshrewAttacks = [
-  { level: 10, attacks: ["tackle", "bite"] },
-  { level: 20, attacks: ["tackle", "bite", "poison sting"] },
-  { level: 30, attacks: ["tackle", "bite", "poison sting", "dig"] },
-  { level: 40, attacks: ["tackle", "bite", "poison sting", "dig"] },
-  { level: 50, attacks: ["tackle", "bite", "poison sting", "dig"] },
-  { level: 60, attacks: ["tackle", "bite", "poison sting", "dig"] },
-  { level: 70, attacks: ["tackle", "bite", "poison sting", "dig"] },
-];
-
-// Graveler
-const gravelerAttacks = [
-  { level: 10, attacks: ["tackle", "rock throw"] },
-  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
-  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-];
-
-// Golem
-const golemAttacks = [
-  { level: 10, attacks: ["tackle", "rock throw"] },
-  { level: 20, attacks: ["tackle", "rock throw", "magnitude"] },
-  { level: 30, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 40, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 50, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 60, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-  { level: 70, attacks: ["tackle", "rock throw", "magnitude", "earthquake"] },
-];
-
-// Rhyhorn
-const rhyhornAttacks = [
-  { level: 10, attacks: ["tackle", "rock throw"] },
-  { level: 20, attacks: ["tackle", "rock throw", "stomp"] },
-  { level: 30, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
-  { level: 40, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
-  { level: 50, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
-  { level: 60, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
-  { level: 70, attacks: ["tackle", "rock throw", "stomp", "earthquake"] },
-];
+import weezingImg from "@/assets/images/pokemons/weezing.webp";
+import weezingIcon from "@/assets/images/pokemons/pokemon-icons/weezing-icon.png";
+import weezingBack from "@/assets/images/pokemons/backside/weezing-back.webp";
+import {
+  abraAttacks,
+  aegislashAttacks,
+  alakazamAttacks,
+  bisharpAttacks,
+  blastoiseAttacks,
+  bulbasaurAttacks,
+  charizardAttacks,
+  charmanderAttacks,
+  charmeleonAttacks,
+  cuboneAttacks,
+  doubladeAttacks,
+  eeveeAttacks,
+  farfetchdAttacks,
+  galladeAttacks,
+  gastlyAttacks,
+  gengarAttacks,
+  geodudeAttacks,
+  golemAttacks,
+  granbullAttacks,
+  gravelerAttacks,
+  grotleAttacks,
+  haunterAttacks,
+  hitmonchanAttacks,
+  hitmonleeAttacks,
+  ivysaurAttacks,
+  jynxAttacks,
+  kadabraAttacks,
+  kangaskhanAttacks,
+  kinglerAttacks,
+  kirliaAttacks,
+  koffingAttacks,
+  krabbyAttacks,
+  marowakAttacks,
+  mrmimeAttacks,
+  onixAttacks,
+  pawniardAttacks,
+  pikachuAttacks,
+  raltsAttacks,
+  rhyhornAttacks,
+  sandshrewAttacks,
+  sandslashAttacks,
+  scytherAttacks,
+  sirfetchdAttacks,
+  smoochumAttacks,
+  snubbullAttacks,
+  squirtleAttacks,
+  teddiursaAttacks,
+  torkoalAttacks,
+  torterraAttacks,
+  turtwigAttacks,
+  venusaurAttacks,
+  wartortleAttacks,
+  weezingAttacks,
+} from "./pokemonAttacksList";
 
 export const pokemonBattleData = [
   {
+    id: 63,
+    name: "Abra",
+    img: abraImg,
+    imgBack: abraBack,
+    icon: abraIcon,
+    type: ["psychic"],
+    attacks: abraAttacks,
+    damage: 10,
+    defense: 10,
+    speed: 90,
+    hp: 25,
+    energy: 30,
+    expToLevel: 50,
+    expForKill: 7,
+  },
+  {
+    id: 65,
+    name: "Alakazam",
+    img: alakazamImg,
+    imgBack: alakazamBack,
+    icon: alakazamIcon,
+    type: ["psychic"],
+    attacks: alakazamAttacks,
+    damage: 23,
+    defense: 15,
+    speed: 120,
+    hp: 55,
+    energy: 40,
+    expToLevel: 125,
+    expForKill: 15,
+  },
+  {
     id: 1,
+    name: "Bulbasaur",
+    img: bulbasaurImg,
+    imgBack: bulbasaurBack,
+    icon: bulbasaurIcon,
+    type: ["grass", "poison"],
+    attacks: bulbasaurAttacks,
+    damage: 13,
+    defense: 13,
+    speed: 45,
+    hp: 45,
+    energy: 30,
+    expToLevel: 60,
+    expForKill: 8,
+  },
+  {
+    id: 104,
+    name: "Cubone",
+    img: cuboneImg,
+    imgBack: cuboneBack,
+    icon: cuboneIcon,
+    type: ["ground"],
+    attacks: cuboneAttacks,
+    damage: 10,
+    defense: 95,
+    speed: 35,
+    hp: 50,
+    energy: 25,
+    expToLevel: 55,
+    expForKill: 7,
+  },
+  {
+    id: 92,
+    name: "Gastly",
+    img: gastlyImg,
+    imgBack: gastlyBack,
+    icon: gastlyIcon,
+    type: ["ghost", "poison"],
+    attacks: gastlyAttacks,
+    damage: 15,
+    defense: 5,
+    speed: 80,
+    hp: 30,
+    energy: 35,
+    expToLevel: 70,
+    expForKill: 9,
+  },
+  {
+    id: 94,
+    name: "Gengar",
+    img: gengarImg,
+    imgBack: gengarBack,
+    icon: gengarIcon,
+    type: ["ghost", "poison"],
+    attacks: gengarAttacks,
+    damage: 25,
+    defense: 15,
+    speed: 110,
+    hp: 60,
+    energy: 40,
+    expToLevel: 120,
+    expForKill: 15,
+  },
+  {
+    id: 93,
+    name: "Haunter",
+    img: haunterImg,
+    imgBack: haunterBack,
+    icon: haunterIcon,
+    type: ["ghost", "poison"],
+    attacks: haunterAttacks,
+    damage: 20,
+    defense: 10,
+    speed: 95,
+    hp: 45,
+    energy: 35,
+    expToLevel: 90,
+    expForKill: 12,
+  },
+  {
+    id: 106,
+    name: "Hitmonlee",
+    img: hitmonleeImg,
+    imgBack: hitmonleeBack,
+    icon: hitmonleeIcon,
+    type: ["fighting"],
+    attacks: hitmonleeAttacks,
+    damage: 25,
+    defense: 15,
+    speed: 87,
+    hp: 50,
+    energy: 35,
+    expToLevel: 100,
+    expForKill: 14,
+  },
+  {
+    id: 6,
+    name: "Charizard",
+    img: charizardImg,
+    imgBack: charizardBack,
+    icon: charizardIcon,
+    type: ["fire", "flying"],
+    attacks: charizardAttacks,
+    damage: 25,
+    defense: 20,
+    speed: 100,
+    hp: 78,
+    energy: 45,
+    expToLevel: 150,
+    expForKill: 20,
+  },
+  {
+    id: 4,
+    name: "Charmander",
+    img: charmanderImg,
+    imgBack: charmanderBack,
+    icon: charmanderIcon,
+    type: ["fire"],
+    attacks: charmanderAttacks,
+    damage: 15,
+    defense: 10,
+    speed: 65,
+    hp: 39,
+    energy: 30,
+    expToLevel: 60,
+    expForKill: 8,
+  },
+  {
+    id: 5,
+    name: "Charmeleon",
+    img: charmeleonImg,
+    imgBack: charmeleonBack,
+    icon: charmeleonIcon,
+    type: ["fire"],
+    attacks: charmeleonAttacks,
+    damage: 20,
+    defense: 15,
+    speed: 80,
+    hp: 58,
+    energy: 35,
+    expToLevel: 90,
+    expForKill: 12,
+  },
+  {
+    id: 2,
+    name: "Ivysaur",
+    img: ivysaurImg,
+    imgBack: ivysaurBack,
+    icon: ivysaurIcon,
+    type: ["grass", "poison"],
+    attacks: ivysaurAttacks,
+    damage: 18,
+    defense: 15,
+    speed: 60,
+    hp: 60,
+    energy: 30,
+    expToLevel: 80,
+    expForKill: 10,
+  },
+  {
+    id: 64,
+    name: "Kadabra",
+    img: kadabraImg,
+    imgBack: kadabraBack,
+    icon: kadabraIcon,
+    type: ["psychic"],
+    attacks: kadabraAttacks,
+    damage: 20,
+    defense: 15,
+    speed: 105,
+    hp: 40,
+    energy: 35,
+    expToLevel: 80,
+    expForKill: 12,
+  },
+  {
+    id: 115,
+    name: "Kangaskhan",
+    img: kangaskhanImg,
+    imgBack: kangaskhanBack,
+    icon: kangaskhanIcon,
+    type: ["normal"],
+    attacks: kangaskhanAttacks,
+    damage: 25,
+    defense: 20,
+    speed: 90,
+    hp: 105,
+    energy: 40,
+    expToLevel: 125,
+    expForKill: 18,
+  },
+  {
+    id: 99,
+    name: "Kingler",
+    img: kinglerImg,
+    imgBack: kinglerBack,
+    icon: kinglerIcon,
+    type: ["water"],
+    attacks: kinglerAttacks,
+    damage: 30,
+    defense: 25,
+    speed: 75,
+    hp: 55,
+    energy: 35,
+    expToLevel: 100,
+    expForKill: 15,
+  },
+  {
+    id: 109,
+    name: "Koffing",
+    img: koffingImg,
+    imgBack: koffingBack,
+    icon: koffingIcon,
+    type: ["poison"],
+    attacks: koffingAttacks,
+    damage: 20,
+    defense: 20,
+    speed: 35,
+    hp: 40,
+    energy: 25,
+    expToLevel: 60,
+    expForKill: 8,
+  },
+  {
+    id: 98,
+    name: "Krabby",
+    img: krabbyImg,
+    imgBack: krabbyBack,
+    icon: krabbyIcon,
+    type: ["water"],
+    attacks: krabbyAttacks,
+    damage: 20,
+    defense: 15,
+    speed: 50,
+    hp: 30,
+    energy: 25,
+    expToLevel: 55,
+    expForKill: 7,
+  },
+  {
+    id: 105,
+    name: "Marowak",
+    img: marowakImg,
+    imgBack: marowakBack,
+    icon: marowakIcon,
+    type: ["ground"],
+    attacks: marowakAttacks,
+    damage: 25,
+    defense: 110,
+    speed: 45,
+    hp: 60,
+    energy: 30,
+    expToLevel: 90,
+    expForKill: 12,
+  },
+  {
+    id: 122,
+    name: "Mr. Mime",
+    img: mrmimeImg,
+    imgBack: mrmimeBack,
+    icon: mrmimeIcon,
+    type: ["psychic", "fairy"],
+    attacks: mrmimeAttacks,
+    damage: 20,
+    defense: 45,
+    speed: 90,
+    hp: 40,
+    energy: 35,
+    expToLevel: 100,
+    expForKill: 14,
+  },
+  {
+    id: 95,
+    name: "Onix",
+    img: onixImg,
+    imgBack: onixBack,
+    icon: onixIcon,
+    type: ["rock", "ground"],
+    attacks: onixAttacks,
+    damage: 25,
+    defense: 160,
+    speed: 70,
+    hp: 35,
+    energy: 20,
+    expToLevel: 100,
+    expForKill: 15,
+  },
+  {
+    id: 28,
+    name: "Sandslash",
+    img: sandslashImg,
+    imgBack: sandslashBack,
+    icon: sandslashIcon,
+    type: ["ground"],
+    attacks: sandslashAttacks,
+    damage: 20,
+    defense: 110,
+    speed: 65,
+    hp: 75,
+    energy: 30,
+    expToLevel: 100,
+    expForKill: 13,
+  },
+  {
+    id: 123,
+    name: "Scyther",
+    img: scytherImg,
+    imgBack: scytherBack,
+    icon: scytherIcon,
+    type: ["bug", "flying"],
+    attacks: scytherAttacks,
+    damage: 30,
+    defense: 55,
+    speed: 105,
+    hp: 70,
+    energy: 35,
+    expToLevel: 120,
+    expForKill: 16,
+  },
+  {
+    id: 3,
+    name: "Venusaur",
+    img: venusaurImg,
+    imgBack: venusaurBack,
+    icon: venusaurIcon,
+    type: ["grass", "poison"],
+    attacks: venusaurAttacks,
+    damage: 30,
+    defense: 20,
+    speed: 80,
+    hp: 80,
+    energy: 35,
+    expToLevel: 140,
+    expForKill: 18,
+  },
+  {
+    id: 110,
+    name: "Weezing",
+    img: weezingImg,
+    imgBack: weezingBack,
+    icon: weezingIcon,
+    type: ["poison"],
+    attacks: weezingAttacks,
+    damage: 20,
+    defense: 120,
+    speed: 60,
+    hp: 65,
+    energy: 30,
+    expToLevel: 110,
+    expForKill: 14,
+  },
+  {
+    id: 681,
     name: "Aegislash",
     img: aegislashImg,
     imgBack: aegislashBack,
@@ -606,7 +687,7 @@ export const pokemonBattleData = [
     expForKill: 10,
   },
   {
-    id: 2,
+    id: 625,
     name: "Bisharp",
     img: bisharpImg,
     imgBack: bisharpBack,
@@ -622,7 +703,7 @@ export const pokemonBattleData = [
     expForKill: 9,
   },
   {
-    id: 3,
+    id: 9,
     name: "Blastoise",
     img: blastoiseImg,
     imgBack: blastoiseBack,
@@ -638,7 +719,7 @@ export const pokemonBattleData = [
     expForKill: 12,
   },
   {
-    id: 4,
+    id: 680,
     name: "Doublade",
     img: doubladeImg,
     imgBack: doubladeBack,
@@ -654,7 +735,7 @@ export const pokemonBattleData = [
     expForKill: 9,
   },
   {
-    id: 5,
+    id: 133,
     name: "Eevee",
     img: eeveeImg,
     imgBack: eeveeBack,
@@ -671,7 +752,7 @@ export const pokemonBattleData = [
     expForKill: 6,
   },
   {
-    id: 6,
+    id: 83,
     name: "Farfetch'd",
     img: farfetchdImg,
     imgBack: farfetchdBack,
@@ -687,7 +768,7 @@ export const pokemonBattleData = [
     expForKill: 7,
   },
   {
-    id: 7,
+    id: 475,
     name: "Gallade",
     img: galladeImg,
     imgBack: galladeBack,
@@ -703,7 +784,7 @@ export const pokemonBattleData = [
     expForKill: 9,
   },
   {
-    id: 8,
+    id: 210,
     name: "Granbull",
     img: granbullImg,
     imgBack: granbullBack,
@@ -719,7 +800,7 @@ export const pokemonBattleData = [
     expForKill: 8,
   },
   {
-    id: 9,
+    id: 388,
     name: "Grotle",
     img: grotleImg,
     imgBack: grotleBack,
@@ -735,7 +816,7 @@ export const pokemonBattleData = [
     expForKill: 8,
   },
   {
-    id: 10,
+    id: 124,
     name: "Jynx",
     img: jynxImg,
     imgBack: jynxBack,
@@ -751,7 +832,7 @@ export const pokemonBattleData = [
     expForKill: 10,
   },
   {
-    id: 11,
+    id: 281,
     name: "Kirlia",
     img: kirliaImg,
     imgBack: kirliaBack,
@@ -767,7 +848,7 @@ export const pokemonBattleData = [
     expForKill: 7,
   },
   {
-    id: 12,
+    id: 624,
     name: "Pawniard",
     img: pawniardImg,
     imgBack: pawniardBack,
@@ -783,7 +864,7 @@ export const pokemonBattleData = [
     expForKill: 7,
   },
   {
-    id: 13,
+    id: 280,
     name: "Ralts",
     img: raltsImg,
     imgBack: raltsBack,
@@ -799,7 +880,7 @@ export const pokemonBattleData = [
     expForKill: 5,
   },
   {
-    id: 14,
+    id: 865,
     name: "Sirfetch'd",
     img: sirfetchdImg,
     imgBack: sirfetchdBack,
@@ -815,7 +896,7 @@ export const pokemonBattleData = [
     expForKill: 9,
   },
   {
-    id: 15,
+    id: 238,
     name: "Smoochum",
     img: smoochumImg,
     imgBack: smoochumBack,
@@ -831,7 +912,7 @@ export const pokemonBattleData = [
     expForKill: 6,
   },
   {
-    id: 16,
+    id: 209,
     name: "Snubbull",
     img: snubbullImg,
     imgBack: snubbullBack,
@@ -847,7 +928,7 @@ export const pokemonBattleData = [
     expForKill: 6,
   },
   {
-    id: 17,
+    id: 7,
     name: "Squirtle",
     img: squirtleImg,
     imgBack: squirtleBack,
@@ -863,7 +944,7 @@ export const pokemonBattleData = [
     expForKill: 7,
   },
   {
-    id: 18,
+    id: 216,
     name: "Teddiursa",
     img: teddiursaImg,
     imgBack: teddiursaBack,
@@ -879,7 +960,7 @@ export const pokemonBattleData = [
     expForKill: 6,
   },
   {
-    id: 19,
+    id: 324,
     name: "Torkoal",
     img: torkoalImg,
     imgBack: torkoalBack,
@@ -895,7 +976,7 @@ export const pokemonBattleData = [
     expForKill: 8,
   },
   {
-    id: 20,
+    id: 389,
     name: "Torterra",
     img: torterraImg,
     imgBack: torterraBack,
@@ -911,7 +992,7 @@ export const pokemonBattleData = [
     expForKill: 12,
   },
   {
-    id: 21,
+    id: 387,
     name: "Turtwig",
     img: turtwigImg,
     imgBack: turtwigBack,
@@ -927,7 +1008,7 @@ export const pokemonBattleData = [
     expForKill: 6,
   },
   {
-    id: 22,
+    id: 8,
     name: "Wartortle",
     img: wartortleImg,
     imgBack: wartortleBack,
@@ -943,7 +1024,7 @@ export const pokemonBattleData = [
     expForKill: 8,
   },
   {
-    id: 23,
+    id: 107,
     name: "Hitmonchan",
     img: hitmonchanImg,
     imgBack: hitmonchanBack,
@@ -959,7 +1040,7 @@ export const pokemonBattleData = [
     expForKill: 5,
   },
   {
-    id: 24,
+    id: 25,
     name: "Pikachu",
     img: pikachuImg,
     imgBack: pikachuBack,
@@ -975,7 +1056,7 @@ export const pokemonBattleData = [
     expForKill: 5,
   },
   {
-    id: 25,
+    id: 74,
     name: "Geodude",
     type: ["rock"],
     img: geodudeImg,
@@ -991,7 +1072,7 @@ export const pokemonBattleData = [
     expForKill: 5,
   },
   {
-    id: 26,
+    id: 27,
     name: "Sandshrew",
     type: ["ground"],
     img: sandshrewImg,
@@ -1061,6 +1142,7 @@ export const pokemonBattleData = [
     img: rhydonImg,
     imgBack: rhydonBack,
     icon: rhydonIcon,
+    attacks: rhyhornAttacks,
     damage: 130,
     defense: 120,
     speed: 40,
@@ -1070,12 +1152,13 @@ export const pokemonBattleData = [
     expForKill: 204,
   },
   {
-    id: 463,
+    id: 26,
     name: "Raichu",
     type: ["electric"],
     img: raichuImg,
     imgBack: raichuBack,
     icon: raichuIcon,
+    attacks: pikachuAttacks,
     damage: 140,
     defense: 130,
     speed: 40,
@@ -1091,6 +1174,7 @@ export const pokemonBattleData = [
     img: rhyperiorImg,
     imgBack: rhyperiorBack,
     icon: rhyperiorIcon,
+    attacks: rhyhornAttacks,
     damage: 140,
     defense: 130,
     speed: 40,
@@ -1106,6 +1190,7 @@ export const pokemonBattleData = [
     img: ursaringImg,
     imgBack: ursaringBack,
     icon: ursaringIcon,
+    attacks: teddiursaAttacks,
     damage: 130,
     defense: 75,
     speed: 55,
@@ -1121,6 +1206,7 @@ export const pokemonBattleData = [
     img: ursalunaImg,
     imgBack: ursalunaBack,
     icon: ursalunaIcon,
+    attacks: teddiursaAttacks,
     damage: 140,
     defense: 105,
     speed: 50,
