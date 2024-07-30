@@ -5,6 +5,8 @@ import { useSession } from "next-auth/react";
 import MarketItem from "./MarketItem";
 import useTradeItem from "@/hooks/useTradeItem";
 import MarketMessage from "./MarketMessage";
+import salesmanImg from "@/assets/images/characters/salesman.webp";
+import Image from "next/image";
 
 interface MarketProps {
   location: string;
@@ -28,6 +30,13 @@ const Market = ({ location }: MarketProps) => {
 
   return (
     <div className="container-market">
+      <Image
+        className="salesman-image"
+        src={salesmanImg}
+        alt="salesman"
+        width={150}
+        height={300}
+      />
       <ul className="menu-market">
         {marketData?.map((item, index) => (
           <MarketItem
@@ -39,6 +48,7 @@ const Market = ({ location }: MarketProps) => {
           />
         ))}
       </ul>
+
       <span className="coins">
         {coins?.name}: {coins?.count}
       </span>

@@ -2,41 +2,99 @@
   --blue-one: #02142c;
   --light-one: #0a224f;
   --darker-blue: #01070f;
+  --light-one-alpha: #4c58976b;
 }
-
 .container-market {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  height: 100%;
+  position: relative;
+  .salesman-image {
+    grid-column: 1;
+    place-self: end end;
+    max-height: 100%;
+    width: 90%;
+    height: auto;
+    aspect-ratio: 1/2;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.671));
+  }
 }
 
-.menu-market {
-  display: grid;
-  grid-template-columns: 1fr; /* Adjust columns as necessary */
-  gap: 0.5rem;
-  li {
-    display: grid;
-    grid-template-columns: 1fr min-content min-content 0.15fr;
-    padding: 0.5rem;
-  }
-  .market-box {
-    grid-column: span 3;
-    display: grid;
-    grid-template-columns: subgrid;
-    place-self: end end;
-    gap: 0.5rem;
-    span {
-      place-self: center end;
+@media (width < 80rem) {
+  .container-market {
+    grid-template-columns: 1fr;
+    .salesman-image {
+      display: none;
+    }
+    .menu-market {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 1rem;
     }
   }
 }
-.market-item {
-  display: grid;
-  position: relative;
+
+@media (height < 50rem) {
+  .container-market {
+    grid-template-columns: 1fr;
+    .salesman-image {
+      display: none;
+    }
+    .menu-market {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 1rem;
+    }
+  }
 }
 
+.menu-market {
+  margin-top: 2rem;
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr; /* Adjust columns as necessary */
+  gap: 0.5rem;
+  background-color: var(--light-one-alpha);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 0.35rem;
+  height: fit-content;
+}
+
+.market-item {
+  display: grid;
+  grid-template-columns: minmax(5rem, 1fr) 1fr minmax(1.5rem, 2rem);
+  padding: 0.5rem;
+  .item-name {
+    grid-column: 1;
+    grid-row: 1;
+    place-self: start;
+  }
+}
+
+.market-box {
+  grid-row: 1;
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: subgrid;
+
+  gap: 0.5rem;
+
+  span {
+    place-self: center end;
+  }
+}
+
+.wrapper-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
 .market-box-item {
   display: flex;
   gap: 0.25rem;
+
+  place-self: end end;
 }
 
 .market-input {
@@ -63,6 +121,8 @@ input[type="number"] {
 }
 
 .coins {
+  position: absolute;
+  grid-column: 2;
   place-self: end end;
 }
 

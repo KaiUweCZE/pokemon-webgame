@@ -15,7 +15,13 @@ const EnemyPokemonsRound = ({ pokemonIds, round }: EnemyRoundsProps) => {
       <span>{round + 1}. </span>
       <div>
         {pokemonImgs.map((poke) => (
-          <Image key={poke.id} src={poke.img} alt="poke" />
+          <Image
+            key={poke.id}
+            src={poke.img}
+            alt="poke"
+            width={80}
+            height={80}
+          />
         ))}
       </div>
     </li>

@@ -39,7 +39,13 @@ const Pokecentrum = () => {
   };
   return (
     <section className="poke-centrum">
-      <Image className="nurse" src={nurseImg} alt="nurse" />
+      <Image
+        className="nurse"
+        src={nurseImg}
+        alt="nurse"
+        width={150}
+        height={300}
+      />
       {!isHealed && (
         <article>
           <h2>Welcome in Pokecentrum</h2>

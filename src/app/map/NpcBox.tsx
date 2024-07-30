@@ -59,7 +59,13 @@ const NpcBox = ({ name }: NpcNameProps) => {
               close
             </button>
           </div>
-          <Image src={npc.img} alt="image of npc" width={160} height={320} />
+          <Image
+            className="npc-image"
+            src={npc.img}
+            alt="image of npc"
+            width={240}
+            height={480}
+          />
         </section>
       )}
     </>

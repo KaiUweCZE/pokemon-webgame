@@ -27,6 +27,7 @@ const MapPage = () => {
     <main className="container-map">
       {locationData?.img && (
         <Image
+          className="main-image"
           src={locationData?.img}
           alt="cross road img"
           width={1456}

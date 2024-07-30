@@ -40,6 +40,7 @@ import wingchuImg from "@/assets/images/characters/wingchu.webp";
 import lordImg from "@/assets/images/characters/lord.webp";
 import TomImg from "@/assets/images/characters/miner.webp";
 import MichaelImg from "@/assets/images/characters/michael.webp";
+import kamakawiwoImg from "@/assets/images/characters/dojo-master.webp";
 
 export const npcData = [
   {
@@ -335,5 +336,12 @@ export const npcData = [
     message: "Hoy, Hoy! Do you have a shovel?",
     stadiumTrener: false,
     img: MichaelImg,
+  },
+  {
+    id: 41,
+    name: "Kamakawiwo",
+    message: "Oh why, oh why can't I?",
+    stadiumTrener: false,
+    img: kamakawiwoImg,
   },
 ];

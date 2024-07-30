@@ -229,6 +229,109 @@ import venusaurBack from "@/assets/images/pokemons/backside/venusaur-back.webp";
 import weezingImg from "@/assets/images/pokemons/weezing.webp";
 import weezingIcon from "@/assets/images/pokemons/pokemon-icons/weezing-icon.png";
 import weezingBack from "@/assets/images/pokemons/backside/weezing-back.webp";
+
+import arcanineImg from "@/assets/images/pokemons/arcanine.webp";
+import arcanineIcon from "@/assets/images/pokemons/pokemon-icons/arcanine-icon.png";
+import arcanineBack from "@/assets/images/pokemons/backside/arcanine-back.webp";
+
+import bearticImg from "@/assets/images/pokemons/beartic.webp";
+import bearticIcon from "@/assets/images/pokemons/pokemon-icons/beartic-icon.png";
+import bearticBack from "@/assets/images/pokemons/backside/beartic-back.webp";
+
+import cubchooImg from "@/assets/images/pokemons/cubchoo.webp";
+import cubchooIcon from "@/assets/images/pokemons/pokemon-icons/cubchoo-icon.png";
+import cubchooBack from "@/assets/images/pokemons/backside/cubchoo-back.webp";
+
+import growlitheImg from "@/assets/images/pokemons/growlithe.webp";
+import growlitheIcon from "@/assets/images/pokemons/pokemon-icons/growlithe-icon.png";
+import growlitheBack from "@/assets/images/pokemons/backside/growlithe-back.webp";
+
+import mamoswineImg from "@/assets/images/pokemons/mamoswine.webp";
+import mamoswineIcon from "@/assets/images/pokemons/pokemon-icons/mamoswine-icon.png";
+import mamoswineBack from "@/assets/images/pokemons/backside/mamoswine-back.webp";
+
+import nidokingImg from "@/assets/images/pokemons/nidoking.webp";
+import nidokingIcon from "@/assets/images/pokemons/pokemon-icons/nidoking-icon.png";
+import nidokingBack from "@/assets/images/pokemons/backside/nidoking-back.webp";
+
+import nidoranImg from "@/assets/images/pokemons/nidoran.webp";
+import nidoranIcon from "@/assets/images/pokemons/pokemon-icons/nidoran-icon.png";
+import nidoranBack from "@/assets/images/pokemons/backside/nidoran-back.webp";
+
+import nidorinoImg from "@/assets/images/pokemons/nidorino.webp";
+import nidorinoIcon from "@/assets/images/pokemons/pokemon-icons/nidorino-icon.png";
+import nidorinoBack from "@/assets/images/pokemons/backside/nidorino-back.webp";
+
+import ninetalesImg from "@/assets/images/pokemons/ninetales.webp";
+import ninetalesIcon from "@/assets/images/pokemons/pokemon-icons/ninetales-icon.png";
+import ninetalesBack from "@/assets/images/pokemons/backside/ninetales-back.webp";
+
+import piloswineImg from "@/assets/images/pokemons/piloswine.webp";
+import piloswineIcon from "@/assets/images/pokemons/pokemon-icons/piloswine-icon.png";
+import piloswineBack from "@/assets/images/pokemons/backside/piloswine-back.webp";
+
+import swinubImg from "@/assets/images/pokemons/swinub.webp";
+import swinubIcon from "@/assets/images/pokemons/pokemon-icons/swinub-icon.png";
+import swinubBack from "@/assets/images/pokemons/backside/swinub-back.webp";
+
+import vulpixImg from "@/assets/images/pokemons/vulpix.webp";
+import vulpixIcon from "@/assets/images/pokemons/pokemon-icons/vulpix-icon.png";
+import vulpixBack from "@/assets/images/pokemons/backside/vulpix-back.webp";
+
+import taurosImg from "@/assets/images/pokemons/tauros.webp";
+import taurosIcon from "@/assets/images/pokemons/pokemon-icons/tauros-icon.png";
+
+import tinkatinkImg from "@/assets/images/pokemons/tinkatink.webp";
+import tinkatinkIcon from "@/assets/images/pokemons/pokemon-icons/tinkatink-icon.gif";
+
+import tinkatonImg from "@/assets/images/pokemons/tinkaton.webp";
+import tinkatonIcon from "@/assets/images/pokemons/pokemon-icons/tinkaton-icon.gif";
+
+import tinkatuffImg from "@/assets/images/pokemons/tinkatuff.webp";
+import tinkatuffIcon from "@/assets/images/pokemons/pokemon-icons/tinkatuff-icon.gif";
+
+import togekissImg from "@/assets/images/pokemons/togekiss.webp";
+import togekissIcon from "@/assets/images/pokemons/pokemon-icons/togekiss-icon.png";
+
+import togeticImg from "@/assets/images/pokemons/togetic.webp";
+import togeticIcon from "@/assets/images/pokemons/pokemon-icons/togetic-icon.png";
+
+import togepiImg from "@/assets/images/pokemons/togepi.webp";
+import togepiIcon from "@/assets/images/pokemons/pokemon-icons/togepi-icon.png";
+
+import abomasnowImg from "@/assets/images/pokemons/abomasnow.webp";
+import abomasnowIcon from "@/assets/images/pokemons/pokemon-icons/abomasnow-icon.png";
+
+import galvantulaImg from "@/assets/images/pokemons/galvantula.webp";
+import galvantulaIcon from "@/assets/images/pokemons/pokemon-icons/galvantula-icon.png";
+
+import joltikImg from "@/assets/images/pokemons/joltik.webp";
+import joltikIcon from "@/assets/images/pokemons/pokemon-icons/joltik-icon.png";
+
+import machampImg from "@/assets/images/pokemons/machamp.webp";
+import machampIcon from "@/assets/images/pokemons/pokemon-icons/machamp-icon.png";
+
+import machokeImg from "@/assets/images/pokemons/machoke.webp";
+import machokeIcon from "@/assets/images/pokemons/pokemon-icons/machoke-icon.png";
+
+import machopImg from "@/assets/images/pokemons/machop.webp";
+import machopIcon from "@/assets/images/pokemons/pokemon-icons/machop-icon.png";
+
+import nuzleafImg from "@/assets/images/pokemons/nuzleaf.webp";
+import nuzleafIcon from "@/assets/images/pokemons/pokemon-icons/nuzleaf-icon.png";
+
+import pinsirImg from "@/assets/images/pokemons/pinsir.webp";
+import pinsirIcon from "@/assets/images/pokemons/pokemon-icons/pinsir-icon.png";
+
+import seedotImg from "@/assets/images/pokemons/seedot.webp";
+import seedotIcon from "@/assets/images/pokemons/pokemon-icons/seedot-icon.png";
+
+import shiftryImg from "@/assets/images/pokemons/shiftry.webp";
+import shiftryIcon from "@/assets/images/pokemons/pokemon-icons/shiftry-icon.png";
+
+import snoverImg from "@/assets/images/pokemons/snover.webp";
+import snoverIcon from "@/assets/images/pokemons/pokemon-icons/snover-icon.png";
+
 import {
   abraAttacks,
   aegislashAttacks,
@@ -1214,5 +1317,485 @@ export const pokemonBattleData = [
     energy: 20,
     expToLevel: 400,
     expForKill: 273,
+  },
+  {
+    id: 59,
+    name: "Arcanine",
+    type: ["fire"],
+    img: arcanineImg,
+    imgBack: arcanineBack,
+    icon: arcanineIcon,
+    attacks: eeveeAttacks,
+    damage: 110,
+    defense: 80,
+    speed: 95,
+    hp: 90,
+    energy: 25,
+    expToLevel: 300,
+    expForKill: 200,
+  },
+  {
+    id: 614,
+    name: "Beartic",
+    type: ["ice"],
+    img: bearticImg,
+    imgBack: bearticBack,
+    icon: bearticIcon,
+    attacks: eeveeAttacks,
+    damage: 130,
+    defense: 80,
+    speed: 50,
+    hp: 95,
+    energy: 20,
+    expToLevel: 350,
+    expForKill: 210,
+  },
+  {
+    id: 613,
+    name: "Cubchoo",
+    type: ["ice"],
+    img: cubchooImg,
+    imgBack: cubchooBack,
+    icon: cubchooIcon,
+    attacks: eeveeAttacks,
+    damage: 60,
+    defense: 40,
+    speed: 40,
+    hp: 55,
+    energy: 10,
+    expToLevel: 150,
+    expForKill: 100,
+  },
+  {
+    id: 58,
+    name: "Growlithe",
+    type: ["fire"],
+    img: growlitheImg,
+    imgBack: growlitheBack,
+    icon: growlitheIcon,
+    attacks: eeveeAttacks,
+    damage: 70,
+    defense: 45,
+    speed: 60,
+    hp: 55,
+    energy: 15,
+    expToLevel: 150,
+    expForKill: 105,
+  },
+  {
+    id: 473,
+    name: "Mamoswine",
+    type: ["ice", "ground"],
+    img: mamoswineImg,
+    imgBack: mamoswineBack,
+    icon: mamoswineIcon,
+    attacks: eeveeAttacks,
+    damage: 130,
+    defense: 90,
+    speed: 80,
+    hp: 110,
+    energy: 20,
+    expToLevel: 400,
+    expForKill: 230,
+  },
+  {
+    id: 34,
+    name: "Nidoking",
+    type: ["poison", "ground"],
+    img: nidokingImg,
+    imgBack: nidokingBack,
+    icon: nidokingIcon,
+    attacks: eeveeAttacks,
+    damage: 102,
+    defense: 77,
+    speed: 85,
+    hp: 81,
+    energy: 22,
+    expToLevel: 300,
+    expForKill: 220,
+  },
+  {
+    id: 32,
+    name: "Nidoran♂",
+    type: ["poison"],
+    img: nidoranImg,
+    imgBack: nidoranBack,
+    icon: nidoranIcon,
+    attacks: eeveeAttacks,
+    damage: 57,
+    defense: 40,
+    speed: 50,
+    hp: 46,
+    energy: 10,
+    expToLevel: 120,
+    expForKill: 60,
+  },
+  {
+    id: 33,
+    name: "Nidorino",
+    type: ["poison"],
+    img: nidorinoImg,
+    imgBack: nidorinoBack,
+    icon: nidorinoIcon,
+    attacks: eeveeAttacks,
+    damage: 72,
+    defense: 57,
+    speed: 65,
+    hp: 61,
+    energy: 15,
+    expToLevel: 180,
+    expForKill: 120,
+  },
+  {
+    id: 38,
+    name: "Ninetales",
+    type: ["fire"],
+    img: ninetalesImg,
+    imgBack: ninetalesBack,
+    icon: ninetalesIcon,
+    attacks: eeveeAttacks,
+    damage: 81,
+    defense: 75,
+    speed: 100,
+    hp: 73,
+    energy: 18,
+    expToLevel: 250,
+    expForKill: 170,
+  },
+  {
+    id: 221,
+    name: "Piloswine",
+    type: ["ice", "ground"],
+    img: piloswineImg,
+    imgBack: piloswineBack,
+    icon: piloswineIcon,
+    attacks: eeveeAttacks,
+    damage: 100,
+    defense: 60,
+    speed: 50,
+    hp: 100,
+    energy: 15,
+    expToLevel: 250,
+    expForKill: 140,
+  },
+  {
+    id: 220,
+    name: "Swinub",
+    type: ["ice", "ground"],
+    img: swinubImg,
+    imgBack: swinubBack,
+    icon: swinubIcon,
+    attacks: eeveeAttacks,
+    damage: 50,
+    defense: 40,
+    speed: 50,
+    hp: 50,
+    energy: 10,
+    expToLevel: 100,
+    expForKill: 60,
+  },
+  {
+    id: 37,
+    name: "Vulpix",
+    type: ["fire"],
+    img: vulpixImg,
+    imgBack: vulpixBack,
+    icon: vulpixIcon,
+    attacks: eeveeAttacks,
+    damage: 50,
+    defense: 40,
+    speed: 65,
+    hp: 38,
+    energy: 15,
+    expToLevel: 100,
+    expForKill: 60,
+  },
+  {
+    id: 128,
+    name: "Tauros",
+    type: ["normal"],
+    img: taurosImg,
+    imgBack: teddiursaBack,
+    icon: taurosIcon,
+    attacks: teddiursaAttacks,
+    damage: 100,
+    defense: 95,
+    speed: 110,
+    hp: 75,
+    energy: 20,
+    expToLevel: 250,
+    expForKill: 172,
+  },
+  {
+    id: 957,
+    name: "Tinkatink",
+    type: ["fairy", "steel"],
+    img: tinkatinkImg,
+    imgBack: teddiursaBack,
+    icon: tinkatinkIcon,
+    attacks: teddiursaAttacks,
+    damage: 50,
+    defense: 45,
+    speed: 35,
+    hp: 50,
+    energy: 15,
+    expToLevel: 100,
+    expForKill: 60,
+  },
+  {
+    id: 958,
+    name: "Tinkatuff",
+    type: ["fairy", "steel"],
+    img: tinkatuffImg,
+    imgBack: teddiursaBack,
+    icon: tinkatuffIcon,
+    attacks: teddiursaAttacks,
+    damage: 65,
+    defense: 55,
+    speed: 55,
+    hp: 65,
+    energy: 20,
+    expToLevel: 150,
+    expForKill: 90,
+  },
+  {
+    id: 959,
+    name: "Tinkaton",
+    type: ["fairy", "steel"],
+    img: tinkatonImg,
+    imgBack: teddiursaBack,
+    icon: tinkatonIcon,
+    attacks: teddiursaAttacks,
+    damage: 75,
+    defense: 70,
+    speed: 75,
+    hp: 85,
+    energy: 25,
+    expToLevel: 200,
+    expForKill: 140,
+  },
+  {
+    id: 468,
+    name: "Togekiss",
+    type: ["fairy", "flying"],
+    img: togekissImg,
+    imgBack: teddiursaBack,
+    icon: togekissIcon,
+    attacks: teddiursaAttacks,
+    damage: 85,
+    defense: 95,
+    speed: 80,
+    hp: 85,
+    energy: 20,
+    expToLevel: 220,
+    expForKill: 180,
+  },
+  {
+    id: 176,
+    name: "Togetic",
+    type: ["fairy", "flying"],
+    img: togeticImg,
+    imgBack: teddiursaBack,
+    icon: togeticIcon,
+    attacks: teddiursaAttacks,
+    damage: 40,
+    defense: 65,
+    speed: 40,
+    hp: 55,
+    energy: 10,
+    expToLevel: 100,
+    expForKill: 70,
+  },
+  {
+    id: 175,
+    name: "Togepi",
+    type: ["fairy"],
+    img: togepiImg,
+    imgBack: teddiursaBack,
+    icon: togepiIcon,
+    attacks: teddiursaAttacks,
+    damage: 20,
+    defense: 30,
+    speed: 20,
+    hp: 35,
+    energy: 5,
+    expToLevel: 50,
+    expForKill: 30,
+  },
+  {
+    id: 460,
+    name: "Abomasnow",
+    type: ["grass", "ice"],
+    img: abomasnowImg,
+    imgBack: teddiursaBack,
+    icon: abomasnowIcon,
+    attacks: teddiursaAttacks,
+    damage: 92,
+    defense: 75,
+    speed: 60,
+    hp: 90,
+    energy: 25,
+    expToLevel: 270,
+    expForKill: 200,
+  },
+  {
+    id: 596,
+    name: "Galvantula",
+    type: ["bug", "electric"],
+    img: galvantulaImg,
+    imgBack: teddiursaBack,
+    icon: galvantulaIcon,
+    attacks: teddiursaAttacks,
+    damage: 80,
+    defense: 60,
+    speed: 108,
+    hp: 70,
+    energy: 20,
+    expToLevel: 250,
+    expForKill: 150,
+  },
+  {
+    id: 595,
+    name: "Joltik",
+    type: ["bug", "electric"],
+    img: joltikImg,
+    imgBack: teddiursaBack,
+    icon: joltikIcon,
+    attacks: teddiursaAttacks,
+    damage: 50,
+    defense: 50,
+    speed: 65,
+    hp: 50,
+    energy: 15,
+    expToLevel: 150,
+    expForKill: 60,
+  },
+  {
+    id: 68,
+    name: "Machamp",
+    type: ["fighting"],
+    img: machampImg,
+    imgBack: teddiursaBack,
+    icon: machampIcon,
+    attacks: teddiursaAttacks,
+    damage: 130,
+    defense: 80,
+    speed: 55,
+    hp: 90,
+    energy: 25,
+    expToLevel: 350,
+    expForKill: 210,
+  },
+  {
+    id: 67,
+    name: "Machoke",
+    type: ["fighting"],
+    img: machokeImg,
+    imgBack: teddiursaBack,
+    icon: machokeIcon,
+    attacks: teddiursaAttacks,
+    damage: 100,
+    defense: 70,
+    speed: 45,
+    hp: 80,
+    energy: 20,
+    expToLevel: 250,
+    expForKill: 140,
+  },
+  {
+    id: 66,
+    name: "Machop",
+    type: ["fighting"],
+    img: machopImg,
+    imgBack: teddiursaBack,
+    icon: machopIcon,
+    attacks: teddiursaAttacks,
+    damage: 70,
+    defense: 60,
+    speed: 35,
+    hp: 70,
+    energy: 15,
+    expToLevel: 150,
+    expForKill: 70,
+  },
+  {
+    id: 274,
+    name: "Nuzleaf",
+    type: ["grass", "dark"],
+    img: nuzleafImg,
+    imgBack: teddiursaBack,
+    icon: nuzleafIcon,
+    attacks: teddiursaAttacks,
+    damage: 70,
+    defense: 40,
+    speed: 60,
+    hp: 70,
+    energy: 20,
+    expToLevel: 150,
+    expForKill: 90,
+  },
+  {
+    id: 127,
+    name: "Pinsir",
+    type: ["bug"],
+    img: pinsirImg,
+    imgBack: teddiursaBack,
+    icon: pinsirIcon,
+    attacks: teddiursaAttacks,
+    damage: 125,
+    defense: 100,
+    speed: 85,
+    hp: 65,
+    energy: 25,
+    expToLevel: 300,
+    expForKill: 210,
+  },
+  {
+    id: 273,
+    name: "Seedot",
+    type: ["grass"],
+    img: seedotImg,
+    imgBack: teddiursaBack,
+    icon: seedotIcon,
+    attacks: teddiursaAttacks,
+    damage: 40,
+    defense: 50,
+    speed: 30,
+    hp: 40,
+    energy: 10,
+    expToLevel: 100,
+    expForKill: 50,
+  },
+  {
+    id: 275,
+    name: "Shiftry",
+    type: ["grass", "dark"],
+    img: shiftryImg,
+    imgBack: teddiursaBack,
+    icon: shiftryIcon,
+    attacks: teddiursaAttacks,
+    damage: 100,
+    defense: 60,
+    speed: 80,
+    hp: 90,
+    energy: 20,
+    expToLevel: 250,
+    expForKill: 150,
+  },
+  {
+    id: 459,
+    name: "Snover",
+    type: ["grass", "ice"],
+    img: snoverImg,
+    imgBack: teddiursaBack,
+    icon: snoverIcon,
+    attacks: teddiursaAttacks,
+    damage: 62,
+    defense: 50,
+    speed: 40,
+    hp: 60,
+    energy: 15,
+    expToLevel: 150,
+    expForKill: 90,
   },
 ];

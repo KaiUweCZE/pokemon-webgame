@@ -20,67 +20,65 @@ const MarketItem = ({
 
   return (
     <li className="market-item">
-      <span>{item?.name}</span>
       <div className="market-box">
-        <div className="market-box-item">
-          <input
-            className="market-input"
-            type="number"
-            name=""
-            id=""
-            onChange={(e) =>
-              setBuyAmount({
-                index: item?.id ? item.id : 0,
-                count: parseInt(e.target.value),
-              })
-            }
-          />
-          <button
-            className="button-primary"
-            onClick={() =>
-              handleBuy(
-                itemName,
-                item?.cost ? item.cost : 1,
-                buyAmount.count > 0 ? buyAmount.count : 1
-              )
-            }
-          >
-            buy
-          </button>
-        </div>
-        <div className="market-box-item">
-          <input
-            className="market-input"
-            type="number"
-            name=""
-            id=""
-            onChange={(e) =>
-              setSellAmount({
-                index: item?.id ? item.id : 0,
-                count: parseInt(e.target.value),
-              })
-            }
-          />
-          <button
-            className="button-primary"
-            onClick={() =>
-              handleSell(
-                itemName,
-                item?.cost ? item.cost : 1,
-                sellAmount.count > 0 ? sellAmount.count : 1
-              )
-            }
-          >
-            sell
-          </button>
+        <span className="item-name">{item?.name}</span>
+        <div className="wrapper-items">
+          <div className="market-box-item">
+            <input
+              className="market-input"
+              type="number"
+              name=""
+              id=""
+              onChange={(e) =>
+                setBuyAmount({
+                  index: item?.id ? item.id : 0,
+                  count: parseInt(e.target.value),
+                })
+              }
+            />
+            <button
+              className="button-primary"
+              onClick={() =>
+                handleBuy(
+                  itemName,
+                  item?.cost ? item.cost : 1,
+                  buyAmount.count > 0 ? buyAmount.count : 1
+                )
+              }
+            >
+              buy
+            </button>
+          </div>
+          <div className="market-box-item">
+            <input
+              className="market-input"
+              type="number"
+              name=""
+              id=""
+              onChange={(e) =>
+                setSellAmount({
+                  index: item?.id ? item.id : 0,
+                  count: parseInt(e.target.value),
+                })
+              }
+            />
+
+            <button
+              className="button-primary"
+              onClick={() =>
+                handleSell(
+                  itemName,
+                  item?.cost ? item.cost : 1,
+                  sellAmount.count > 0 ? sellAmount.count : 1
+                )
+              }
+            >
+              sell
+            </button>
+          </div>{" "}
         </div>
         <span>{count}</span>
       </div>
-      {/*amount.count > 0 && (
-        <div className="me">
-          {item?.cost ? <p>{item?.cost * amount.count}</p> : <p>free</p>}
-        </div>
-      )*/}
     </li>
   );
 };
