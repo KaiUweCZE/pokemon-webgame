@@ -99,7 +99,7 @@ $bg-battle-secondary: $pale-indigo;
   display: grid;
   grid-template-areas: "user-pokemon user-pokemon-stats";
   place-items: end;
-  img {
+  .user-image {
     grid-area: user-pokemon;
     place-self: start start;
     margin-left: 5rem;
@@ -121,6 +121,58 @@ $bg-battle-secondary: $pale-indigo;
   span {
     font-weight: bold;
   }
+  .pokemons-bar {
+    grid-column: 2;
+    grid-area: user-pokemon-stats;
+    place-self: center center;
+    border-right: 2px solid gray;
+    //background-color: red;
+  }
+  .box-stats {
+    grid-column: 2;
+    place-self: center center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.enemy-oponent {
+  grid-area: enemy-pokemon;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .oponent-image {
+    grid-column: 2;
+    place-self: end;
+    margin-right: 5rem;
+  }
+  .oponent-pokemon {
+    grid-column: 2;
+    place-self: end;
+    margin-right: 5rem;
+  }
+  .pokemons-bar {
+    grid-column: 1;
+    grid-auto-columns: reverse;
+    place-self: start center;
+    //grid-auto-flow: dense;
+    direction: rtl;
+    margin-top: 2rem;
+    border-left: 2px solid gray;
+  }
+}
+
+// display amount of pokemons(user/ oponent)
+.pokemons-bar {
+  //position: absolute;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13%, 1fr));
+  place-items: center;
+  width: 15rem;
+  height: 2rem;
+  gap: 0.5rem;
+  background-color: #f3c6647e;
+  padding: 0.35rem;
+  border-bottom: 2px solid gray;
 }
 
 .enemy-pokemon {

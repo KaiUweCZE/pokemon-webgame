@@ -13,6 +13,8 @@ interface PokemonProviderProps {
 }
 
 export interface PokemonContextType {
+  currentPokemon: Pokemon | null;
+  setCurrentPokemon: Dispatch<SetStateAction<Pokemon | null>>;
   userPokemons: Pokemon[];
   setUserPokemons: Dispatch<SetStateAction<Pokemon[]>>;
   pokemonsFromSix: Pokemon[];
@@ -25,6 +27,7 @@ export const PokemonContext = createContext<PokemonContextType | undefined>(
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [userPokemons, setUserPokemons] = useState<Pokemon[]>([]);
+  const [currentPokemon, setCurrentPokemon] = useState<Pokemon | null>(null);
   const [pokemonsFromSix, setPokemonsFromSix] = useState<Pokemon[]>([]);
 
   if (pokemonsFromSix?.length >= 6) {
@@ -34,6 +37,8 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const contextValues = {
     userPokemons,
     setUserPokemons,
+    currentPokemon,
+    setCurrentPokemon,
     pokemonsFromSix,
     setPokemonsFromSix,
   };

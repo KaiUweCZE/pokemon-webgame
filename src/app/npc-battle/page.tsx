@@ -1,8 +1,13 @@
+"use client";
+import "@/assets/styles/battle-style.css";
+import { NpcBattleProvider } from "./NpcBattleContext";
+import NpcBattlefield from "./NpcBattlefied";
+
 const npcBattle = () => {
   return (
-    <div className="container-battle">
-      <div className="container-battlefield"></div>
-    </div>
+    <NpcBattleProvider>
+      <NpcBattlefield />
+    </NpcBattleProvider>
   );
 };
 
