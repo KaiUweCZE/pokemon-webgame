@@ -16,7 +16,7 @@ const OponentImage = ({ img }: OponentImageProps) => {
     context?.currentOponentPokemon &&
     generatePokemonImage(context.currentOponentPokemon.name);
   return (
-    <div className="enemy-oponent">
+    <div className="oponent">
       {context?.startBattle && context?.currentOponentPokemon ? (
         <OponentPokemonStats pokemon={context.currentOponentPokemon} />
       ) : (

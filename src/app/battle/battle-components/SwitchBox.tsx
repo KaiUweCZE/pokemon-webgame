@@ -24,7 +24,6 @@ interface SwitchBoxProps {
 const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const context = useContext(UserContext);
-  const battleContext = useContext(BattleContext);
 
   useEffect(() => {
     const getPokemons = async () => {

@@ -143,22 +143,21 @@
   flex-direction: column;
 }
 
-.enemy-oponent {
+.oponent {
   grid-area: enemy-pokemon;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.enemy-oponent .oponent-image {
+.oponent .oponent-image {
+  grid-column: 2;
+  place-self: center;
+}
+.oponent .oponent-pokemon {
   grid-column: 2;
   place-self: end;
   margin-right: 5rem;
 }
-.enemy-oponent .oponent-pokemon {
-  grid-column: 2;
-  place-self: end;
-  margin-right: 5rem;
-}
-.enemy-oponent .pokemons-bar {
+.oponent .pokemons-bar {
   grid-column: 1;
   grid-auto-columns: reverse;
   place-self: start center;

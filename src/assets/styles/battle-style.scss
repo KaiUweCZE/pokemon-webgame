@@ -136,14 +136,14 @@ $bg-battle-secondary: $pale-indigo;
   }
 }
 
-.enemy-oponent {
+.oponent {
   grid-area: enemy-pokemon;
   display: grid;
   grid-template-columns: 1fr 1fr;
   .oponent-image {
     grid-column: 2;
-    place-self: end;
-    margin-right: 5rem;
+    place-self: center;
+    //margin-right: 5rem;
   }
   .oponent-pokemon {
     grid-column: 2;
@@ -247,6 +247,7 @@ $bg-battle-secondary: $pale-indigo;
     }
   }
 }
+
 .box-attacks {
   display: grid;
   grid-template-columns: 1fr 1fr;

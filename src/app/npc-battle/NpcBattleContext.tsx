@@ -23,6 +23,8 @@ interface NpcBattleContextProps {
   setBattleText: Dispatch<SetStateAction<string>>;
   startBattle: boolean;
   setStartBattle: Dispatch<SetStateAction<boolean>>;
+  menuOption: string;
+  setMenuOption: Dispatch<SetStateAction<string>>;
 }
 
 interface Oponent {
@@ -46,6 +48,7 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
   const [currentOponentPokemon, setCurrentOponentPokemon] =
     useState<PokemonBattle | null>(null);
   const [user, setUser] = useState();
+  const [menuOption, setMenuOption] = useState("");
   const [startBattle, setStartBattle] = useState(false);
   const [battleText, setBattleText] = useState("");
 
@@ -66,6 +69,8 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
     setBattleText,
     startBattle,
     setStartBattle,
+    menuOption,
+    setMenuOption,
   };
   return (
     <NpcBattleContext.Provider value={contextValues}>
