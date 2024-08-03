@@ -16,8 +16,8 @@ interface isCatch {
 }
 
 export interface BattleContextType {
-  userPokemon: Pokemon | null;
-  setUserPokemon: Dispatch<SetStateAction<Pokemon | null>>;
+  //userPokemon: Pokemon | null;
+  // setUserPokemon: Dispatch<SetStateAction<Pokemon | null>>;
   enemyPokemon: PokemonBattle | null;
   setEnemyPokemon: Dispatch<SetStateAction<PokemonBattle | null>>;
   isCatching: isCatch;
@@ -42,7 +42,7 @@ export const BattleContext = createContext<BattleContextType | undefined>(
 );
 
 export const BattleProvider = ({ children }: BattleProviderProps) => {
-  const [userPokemon, setUserPokemon] = useState<Pokemon | null>(null);
+  //const [userPokemon, setUserPokemon] = useState<Pokemon | null>(null);
   const [enemyPokemon, setEnemyPokemon] = useState<PokemonBattle | null>(null);
   const [isCatching, setIsCatching] = useState({
     underway: false,
@@ -55,8 +55,8 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
   const [enemyAttack, setEnemyAttack] = useState<Attack | null>(null);
 
   const contextValues = {
-    userPokemon,
-    setUserPokemon,
+    //userPokemon,
+    //setUserPokemon,
     enemyPokemon,
     setEnemyPokemon,
     isCatching,

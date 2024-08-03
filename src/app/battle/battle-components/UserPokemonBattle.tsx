@@ -32,6 +32,7 @@ const UserPokemonBattle = ({
       {context?.enemyAttackAnimation && context.enemyAttack && (
         <div className="enemy-attack">
           <Image
+            className="enemy-attack-animation"
             src={context?.enemyAttack.img}
             alt="gif of enemy attack"
             width={130}
@@ -39,22 +40,59 @@ const UserPokemonBattle = ({
         </div>
       )}
       {imgBack && (
-        <Image src={imgBack} alt="user's pokemon" width={160} height={160} />
-      )}
-      <div className="box-bar">
-        <span>{`${userPokemon.name} lvl.${userPokemon.level}`}</span>
-        <HpBar maximumHp={userPokemon.hp} actualHp={userPokemon.actualHp} />
-        <EnergyBar
-          maximumEnergy={userPokemon.energy}
-          actualEnergy={userPokemon.actualEnergy}
+        <Image
+          className="user-image"
+          src={imgBack}
+          alt="user's pokemon"
+          width={170}
+          height={170}
         />
-        <ExpBar
+      )}
+      <div className="box-stats">
+        <div className="name-level">
+          <span>{userPokemon.name}</span>
+          <span>lv.{userPokemon.level}</span>
+        </div>
+        <div className="box-bars">
+          <div className="bar-wrapper">
+            <span>HP</span>
+            <HpBar actualHp={userPokemon.actualHp} maximumHp={userPokemon.hp} />
+          </div>
+          <div className="bar-wrapper">
+            <span>EN</span>
+            <EnergyBar
+              actualEnergy={userPokemon.actualEnergy}
+              maximumEnergy={userPokemon.energy}
+            />
+          </div>
+        </div>
+        {/*<ExpBar
           actualExp={userPokemon.actualExp}
           expToLevel={userPokemon.expToLevel}
-        />
+        />*/}
       </div>
     </div>
   );
 };
 
 export default UserPokemonBattle;
+/*
+
+
+<div className="box-bars">
+  <div className="bar-wrapper">
+    <span>EN</span>
+    <EnergyBar
+      actualEnergy={pokemon.actualEnergy}
+      maximumEnergy={pokemon.energy}
+    />
+  </div>
+  {/*<div className="bar-wrapper">
+      <span>exp.</span>
+      <ExpBar
+        expToLevel={pokemon.expToLevel}
+        actualExp={pokemon.actualExp}
+      />
+    </div>*}
+</div>
+</div>*/

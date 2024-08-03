@@ -52,6 +52,8 @@
   box-shadow: 0 0 10px #24255a;
   position: absolute;
   place-self: center center;
+  container-name: map-menu;
+  container-type: inline-size;
 }
 .map-menu .item {
   text-transform: capitalize;
@@ -63,15 +65,23 @@
 .map-menu .menu-navigation {
   display: flex;
   background-color: #4c5897;
+  border-radius: 0.35rem 0.35rem 0 0;
   container-name: menu-navigation;
   container-type: inline-size;
+  height: 2rem;
+  overflow: hidden;
+}
+@container map-menu (width < 380px) {
+  .map-menu .menu-navigation {
+    height: 5rem;
+  }
 }
 .map-menu .menu-navigation ul {
   display: grid;
   grid-template-columns: repeat(5, minmax(max-content, 1fr));
   width: 100%;
 }
-@container menu-navigation (width < 380px) {
+@container (width < 380px) {
   .map-menu .menu-navigation ul {
     grid-template-columns: repeat(3, minmax(max-content, 1fr));
   }

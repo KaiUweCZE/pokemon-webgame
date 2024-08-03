@@ -16,23 +16,22 @@ interface EnemyPokemonProps {
 
 const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
-  const enemyContext = useContext(EnemyContext);
   const pokemonImg = generatePokemonImage(enemyPokemon.name);
 
   const getClassName = () => {
     if (enemyPokemon.actualHp === 0) {
-      return "enemy-pokemon done";
+      return "oponent done";
     }
     if (context?.isCatching.underway) {
-      return "enemy-pokemon catching";
+      return "oponent catching";
     }
     if (context?.isCatching.isSucces) {
-      return "enemy-pokemon catched";
+      return "oponent catched";
     }
     if (context?.attackAnimation) {
       return "enemy-pokemon damage";
     }
-    return "enemy-pokemon";
+    return "oponent";
   };
 
   return (
@@ -53,18 +52,25 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
           )}
           {pokemonImg && (
             <Image
+              className="oponent-pokemon"
               src={pokemonImg}
               alt="enemy pokemon"
-              width={160}
-              height={160}
+              width={150}
+              height={150}
             />
           )}
-          <div className="enemy-pokemon-info">
-            <span>{`${enemyPokemon.name} lvl.${enemyPokemon.level}`}</span>
-            <HpBar
-              maximumHp={enemyPokemon.hp}
-              actualHp={enemyPokemon.actualHp}
-            />
+          <div className="box-stats">
+            <div className="name-level">
+              <span>{enemyPokemon.name}</span>
+              <span>lv.{enemyPokemon.level}</span>
+            </div>
+            <div className="bar-wrapper">
+              <span>HP</span>
+              <HpBar
+                maximumHp={enemyPokemon.hp}
+                actualHp={enemyPokemon.actualHp}
+              />
+            </div>
           </div>
         </>
       ) : (

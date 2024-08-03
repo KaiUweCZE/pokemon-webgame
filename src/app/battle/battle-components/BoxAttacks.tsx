@@ -6,6 +6,7 @@ import { changeEnergy } from "@/utils/battle-function/changeEnergy";
 import { restEng } from "@/utils/battle-function/restEng";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import AttackCountdown from "./AttackCountdown";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface BoxAttacksProps {
   userPokemon: Pokemon;
@@ -15,21 +16,23 @@ interface BoxAttacksProps {
 
 const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
   const context = useContext(BattleContext);
+  const pokemonContext = useContext(PokemonContext);
   const [time, setTime] = useState(0);
 
-  if (!context) {
+  if (!context || !pokemonContext) {
     throw new Error("context is missing");
   }
 
-  const { setUserPokemon, enemyPokemon } = context;
+  const { enemyPokemon } = context;
+  const { setCurrentPokemon } = pokemonContext;
 
   // increment pokemon energy
   const incrementEnergy = async (energyCost: number) => {
-    if (!context.userPokemon) {
+    if (!userPokemon) {
       return null;
     }
     const updatedPokemon = await changeEnergy({
-      pokemonId: context.userPokemon?.id,
+      pokemonId: userPokemon.id,
       energyCost: energyCost,
     });
     console.log("enemy pokemon: ", enemyPokemon);
@@ -73,7 +76,7 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     setChange((prev) => prev + 1);
     if (updatedPokemon) {
       // set change for actual energy
-      setUserPokemon({
+      setCurrentPokemon({
         ...userPokemon,
         actualEnergy: updatedPokemon.actualEnergy,
       });
@@ -84,7 +87,7 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     setTime(4);
     const updatedPokemon = await restEng(pokemonId);
     if (updatedPokemon) {
-      setUserPokemon({
+      setCurrentPokemon({
         ...userPokemon,
         actualEnergy: updatedPokemon?.actualEnergy,
       });
@@ -94,7 +97,7 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
 
   return (
     <ul className="box-attacks">
-      {context.userPokemon?.attacks.map((attack, index) => (
+      {userPokemon.attacks.map((attack, index) => (
         <li
           key={index}
           className="attack-item"

@@ -5,6 +5,7 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import BoxAttacks from "../battle/battle-components/BoxAttacks";
 import AttacksList from "./AttacksList";
 import SwitchBox from "../battle/battle-components/SwitchBox";
+import BattleBag from "../battle/battle-components/BattleBag";
 
 const NpcBattleMenu = () => {
   const context = useContext(NpcBattleContext);
@@ -15,6 +16,9 @@ const NpcBattleMenu = () => {
         return <AttacksList />;
       case "switch":
         return <SwitchBox setMenuChoice={context.setMenuOption} />;
+      case "bag":
+        return <BattleBag setMenuChoice={context.setMenuOption} />;
+
       default:
         return <h2>default</h2>;
     }

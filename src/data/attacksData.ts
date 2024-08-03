@@ -3,6 +3,7 @@ import electricImg from "@/assets/images/attacks/thunder.webp";
 import grassImg from "@/assets/images/attacks/leaf.webp";
 import waterImg from "@/assets/images/attacks/water.webp";
 import psychoImg from "@/assets/images/attacks/psycho.webp";
+import biteImg from "@/assets/images/attacks/fang3.webp";
 
 export const attacksData = [
   {
@@ -43,7 +44,7 @@ export const attacksData = [
     damage: 6,
     energyCost: 2,
     recoveryTime: 2,
-    img: normalImg,
+    img: biteImg,
   },
   {
     name: "play rough",

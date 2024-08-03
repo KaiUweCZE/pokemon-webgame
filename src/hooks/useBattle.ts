@@ -3,11 +3,8 @@ import { BattleContext } from "@/contexts/BattleContext";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getExp } from "@/utils/battle-function/getExp";
 import { addExp } from "@/utils/addExp";
-import { PokemonBattle } from "@/types/pokemonBattle";
 import { Item } from "@/types/item";
-import { getReward } from "@/utils/battle-function/getReward";
-import { addReward } from "@/utils/addReward";
-import { error } from "console";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 /**
  * Custom hook to manage the battle state and logic.
@@ -28,42 +25,43 @@ const useBattle = () => {
   const [animationTime, setAnimationTime] = useState(false);
   const [newLevel, setNewLevel] = useState(true);
   const [exp, setExp] = useState(0);
-  const [reward, setReward] = useState<Item | null>(null);
   const context = useContext(BattleContext);
-  if (!context) {
+  const pokemonContext = useContext(PokemonContext);
+
+  if (!context || !pokemonContext) {
     throw new Error("missing context");
   }
 
   const {
     enemyPokemon,
     setEnemyPokemon,
-    userPokemon,
-    setUserPokemon,
     isCatching,
     setStopBattle,
     stopBattle,
   } = context;
 
+  const { currentPokemon, setCurrentPokemon } = pokemonContext;
+
   // check user's pokemon hp
   useEffect(() => {
-    if (userPokemon?.actualHp === 0) {
+    if (currentPokemon?.actualHp === 0) {
       setStopBattle(true);
       console.log("stop the fight");
     } else {
       setStopBattle(false);
       console.log("lets fighhht", stopBattle);
     }
-  }, [context]);
+  }, [currentPokemon]);
 
   useEffect(() => {
     // Calculate new HP after the damage
-    if (userPokemon && context.attack && enemyPokemon && !stopBattle) {
+    if (currentPokemon && context.attack && enemyPokemon && !stopBattle) {
       const newHp = makeDamage(
         damage,
         enemyPokemon?.actualHp,
         enemyPokemon?.type,
         context?.attack.type,
-        userPokemon?.damage,
+        currentPokemon?.damage,
         enemyPokemon?.defense
       );
       setEnemyPokemon({
@@ -95,12 +93,12 @@ const useBattle = () => {
 
       setMenuChoice("");
 
-      if (newExp && userPokemon) {
-        addExp({ pokemonId: userPokemon.id, newExps: newExp }).then(
+      if (newExp && currentPokemon) {
+        addExp({ pokemonId: currentPokemon.id, newExps: newExp }).then(
           (updatedPokemon) => {
             if (updatedPokemon) {
-              setUserPokemon({
-                ...userPokemon,
+              setCurrentPokemon({
+                ...currentPokemon,
                 actualExp: updatedPokemon.actualExp,
                 level: updatedPokemon.level,
                 expToLevel: updatedPokemon.expToLevel,
@@ -111,7 +109,7 @@ const useBattle = () => {
                 speed: updatedPokemon.speed,
               });
               // Set new level notification
-              if (updatedPokemon.level > userPokemon.level) {
+              if (updatedPokemon.level > currentPokemon.level) {
                 setNewLevel(true);
                 const timeout = setTimeout(() => {
                   setNewLevel(false);
@@ -135,7 +133,7 @@ const useBattle = () => {
     setMenuChoice,
     animationTime,
     enemyPokemon,
-    userPokemon,
+    currentPokemon,
     exp,
     isCatching,
   };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "@/assets/styles/global.css";
 import Menu from "@/components/menu/Menu";
 import AuthProvider from "@/components/providers/AuthProvider";
@@ -8,8 +9,10 @@ import Timeline from "@/components/footer/Timeline";
 import { PokemonProvider } from "@/contexts/PokemonContext";
 import { BattleProvider } from "@/contexts/BattleContext";
 import { MapProvider } from "./map/MapContext";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+const lato = Lato({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,13 +26,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={lato.className}>
         <AuthProvider>
           <UserProvider>
             <PokemonProvider>
               <BattleProvider>
                 <Menu />
-                <MapProvider>{children}</MapProvider>
+                <MapProvider>
+                  <Suspense>{children}</Suspense>
+                </MapProvider>
                 <Timeline />
               </BattleProvider>
             </PokemonProvider>

@@ -1,10 +1,7 @@
 "use client";
-
-import { RoundContext } from "@/app/battle/RoundContext";
 import { mapData } from "@/app/map/mapData";
 import { BattleContext } from "@/contexts/BattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { randomNumber } from "@/utils/battle-function/randomPokemon";
 import { generatePokemon } from "@/utils/generatePokemon";
@@ -34,7 +31,7 @@ const useStartBattle = (location: string, round: number) => {
 
   useEffect(() => {
     if (pokemonContext && pokemonContext.pokemonsFromSix.length > 0) {
-      context?.setUserPokemon(pokemonContext.pokemonsFromSix[0]);
+      pokemonContext?.setCurrentPokemon(pokemonContext.pokemonsFromSix[0]);
     }
   }, [location]);
 

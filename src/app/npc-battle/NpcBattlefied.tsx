@@ -6,17 +6,24 @@ import mainCharBack from "@/assets/images/main-char-2-back2.webp";
 import { NpcBattleContext } from "./NpcBattleContext";
 import { useContext, useEffect } from "react";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import useChangeOponentPokemon from "./hooks/useChangeOponentPokemon";
 
-const NpcBattlefield = () => {
+interface BattlefieldProps {
+  name: string;
+}
+
+const NpcBattlefield = ({ name }: BattlefieldProps) => {
   const context = useContext(NpcBattleContext);
   const contextPokemon = useContext(PokemonContext);
-  const oponentData = npcData.find((npc) => npc.name === "Kamakawiwo");
+  const oponentData = npcData.find((npc) => npc.name === name);
   const handleCheck = () => {
     console.log("oponent: ", oponentData, context);
     console.log("oponents pokemon: ", context?.oponentPokemons);
     console.log("user pokemon context: ", contextPokemon);
+    console.log("oponent name: ", name);
   };
 
+  useChangeOponentPokemon();
   useEffect(() => {
     if (oponentData) {
       context?.setOponent(oponentData);

@@ -1,14 +1,17 @@
 import { BattleContext } from "@/contexts/BattleContext";
+import { Pokemon } from "@/types/pokemon";
 import { useContext } from "react";
 
-const NewLevel = () => {
+interface NewLevelProps {
+  pokemon: Pokemon;
+}
+
+const NewLevel = ({ pokemon }: NewLevelProps) => {
   const context = useContext(BattleContext);
 
   if (!context) {
     throw new Error("context is missing");
   }
-
-  const pokemon = context.userPokemon;
   return (
     <div className="new-level">
       <ul>

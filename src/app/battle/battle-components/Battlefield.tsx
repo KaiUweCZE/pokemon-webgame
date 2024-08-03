@@ -22,9 +22,6 @@ interface BattlefieldProps {
 }
 
 const Battlefield = ({ round, setRound }: BattlefieldProps) => {
-  const { data } = useSession();
-  const router = useRouter();
-
   const {
     damage,
     setDamage,
@@ -34,7 +31,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
     setMenuChoice,
     animationTime,
     enemyPokemon,
-    userPokemon,
+    currentPokemon,
     exp,
     isCatching,
   } = useBattle();
@@ -81,21 +78,21 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
   };
   return (
     <section className="container-battlefield">
-      {userPokemon && (
+      {currentPokemon && (
         <UserPokemonBattle
-          userPokemon={userPokemon}
+          userPokemon={currentPokemon}
           setDamage={setDamage}
           setChange={setChange}
         />
       )}
       {enemyPokemon && <EnemyPokemon enemyPokemon={enemyPokemon} />}
       {animationTime && <span className="hp-animation">-{damage}</span>}
-      {userPokemon && (
+      {currentPokemon && (
         <div className="user-battle">
           {getBattleText()}
           {menuChoice === "fight" && (
             <BoxAttacks
-              userPokemon={userPokemon}
+              userPokemon={currentPokemon}
               setDamage={setDamage}
               setChange={setChange}
             />
@@ -105,7 +102,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
           )}
           {menuChoice === "bag" && <BattleBag setMenuChoice={setMenuChoice} />}
           <UserBattleMenu setMenuChoice={setMenuChoice} />
-          {newLevel && <NewLevel />}
+          {newLevel && <NewLevel pokemon={currentPokemon} />}
         </div>
       )}
     </section>

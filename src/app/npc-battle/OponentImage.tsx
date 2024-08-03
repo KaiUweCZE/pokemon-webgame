@@ -20,18 +20,31 @@ const OponentImage = ({ img }: OponentImageProps) => {
       {context?.startBattle && context?.currentOponentPokemon ? (
         <OponentPokemonStats pokemon={context.currentOponentPokemon} />
       ) : (
-        <PokemonsBar />
+        <>
+          {context?.oponentPokemons && (
+            <PokemonsBar pokemons={context?.oponentPokemons} />
+          )}
+        </>
       )}
       {img && !context?.startBattle ? (
-        <Image className="oponent-image" src={img} alt="oponent" height={170} />
+        <Image className="oponent-image" src={img} alt="oponent" width={110} />
       ) : (
         pokemonImg && (
-          <Image
-            className="oponent-pokemon"
-            src={pokemonImg}
-            alt="oponent pokemon"
-            width={170}
-          />
+          <>
+            {context.attackAnimation && context.attack && (
+              <Image
+                className="attack-animation"
+                src={context.attack?.img}
+                alt="attack animation"
+              />
+            )}
+            <Image
+              className="oponent-pokemon"
+              src={pokemonImg}
+              alt="oponent pokemon"
+              width={150}
+            />
+          </>
         )
       )}
     </div>

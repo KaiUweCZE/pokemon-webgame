@@ -36,11 +36,6 @@ const Menu = () => {
             {context?.isLog && (
               <>
                 <MenuItem
-                  name="npc"
-                  link="/npc-battle"
-                  active={pathname === "/npc-battle" ? true : false}
-                />
-                <MenuItem
                   name="Profile"
                   link="/profile"
                   active={pathname === "/profile" ? true : false}

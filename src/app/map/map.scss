@@ -53,6 +53,8 @@
   box-shadow: 0 0 10px $dark-violet;
   position: absolute;
   place-self: center center;
+  container-name: map-menu;
+  container-type: inline-size;
   .item {
     text-transform: capitalize;
     cursor: pointer;
@@ -64,13 +66,19 @@
   .menu-navigation {
     display: flex;
     background-color: $pale-indigo;
+    border-radius: 0.35rem 0.35rem 0 0;
     container-name: menu-navigation;
     container-type: inline-size;
+    height: 2rem;
+    overflow: hidden;
+    @container map-menu (width < 380px) {
+      height: 5rem;
+    }
     ul {
       display: grid;
       grid-template-columns: repeat(5, minmax(max-content, 1fr));
       width: 100%;
-      @container menu-navigation (width < 380px) {
+      @container (width < 380px) {
         grid-template-columns: repeat(3, minmax(max-content, 1fr));
       }
     }

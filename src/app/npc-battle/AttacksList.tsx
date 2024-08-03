@@ -1,17 +1,41 @@
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { useContext } from "react";
+import { NpcBattleContext } from "./NpcBattleContext";
+import { attacksData } from "@/data/attacksData";
+import useDamage from "./hooks/useDamage";
 
 const AttacksList = () => {
-  const context = useContext(PokemonContext);
+  const pokemonContext = useContext(PokemonContext);
+  const context = useContext(NpcBattleContext);
+  const { setChange } = useDamage();
+  if (!context || !pokemonContext) return null;
 
-  if (!context) return null;
+  const pokemon = pokemonContext.currentPokemon;
+  const animation = context.attackAnimation;
+  const setAnimation = context.setAttackAnimation;
 
-  const pokemon = context.currentPokemon;
+  const handleAttack = (attackName: string) => {
+    const attack = attacksData.find((attack) => attack.name === attackName);
+    if (attack) {
+      setAnimation(true);
+      console.log("attack was set", attack.damage);
+      context.setAttack(attack);
+      setChange((prev) => prev + 1);
+      setTimeout(() => {
+        setAnimation(false);
+      }, 800);
+    }
+  };
+
   return (
     <ul className="box-attacks">
       {pokemon &&
         pokemon.attacks.map((attack) => (
-          <li key={attack} className="attack-item">
+          <li
+            key={attack}
+            className="attack-item"
+            onClick={() => handleAttack(attack)}
+          >
             {attack}
           </li>
         ))}
@@ -22,27 +46,3 @@ const AttacksList = () => {
 };
 
 export default AttacksList;
-
-/*
-<ul className="box-attacks">
-      {context.userPokemon?.attacks.map((attack, index) => (
-        <li
-          key={index}
-          className="attack-item"
-          onClick={() => handleAttack(attack)}
-        >
-          {attack}
-        </li>
-      ))}
-
-      <li
-        className="attack-item addons"
-        onClick={() => handleRest(userPokemon.id)}
-      >
-        rest{" "}
-      </li>
-      <li className="attack-item addons">avoid</li>
-
-      {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
-    </ul>
-*/

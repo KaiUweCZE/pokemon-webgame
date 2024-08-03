@@ -15,11 +15,10 @@ const NpcBattleText = () => {
 
   return (
     <div className="battle-text">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-        deserunt.
-      </p>
-      <button onClick={handleStartBattle}>click</button>
+      <p>Are you ready to start the battle?</p>
+      <button className="button-primary" onClick={handleStartBattle}>
+        click
+      </button>
     </div>
   );
 };

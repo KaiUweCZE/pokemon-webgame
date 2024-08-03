@@ -1,3 +1,4 @@
+import { Attack } from "@/types/attack";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { StaticImageData } from "next/image";
 import {
@@ -25,6 +26,10 @@ interface NpcBattleContextProps {
   setStartBattle: Dispatch<SetStateAction<boolean>>;
   menuOption: string;
   setMenuOption: Dispatch<SetStateAction<string>>;
+  attack: Attack | null;
+  setAttack: Dispatch<SetStateAction<Attack | null>>;
+  attackAnimation: boolean;
+  setAttackAnimation: Dispatch<SetStateAction<boolean>>;
 }
 
 interface Oponent {
@@ -51,6 +56,8 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
   const [menuOption, setMenuOption] = useState("");
   const [startBattle, setStartBattle] = useState(false);
   const [battleText, setBattleText] = useState("");
+  const [attack, setAttack] = useState<Attack | null>(null);
+  const [attackAnimation, setAttackAnimation] = useState(false);
 
   useEffect(() => {
     if (oponent?.pokemons) {
@@ -71,6 +78,10 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
     setStartBattle,
     menuOption,
     setMenuOption,
+    attack,
+    setAttack,
+    attackAnimation,
+    setAttackAnimation,
   };
   return (
     <NpcBattleContext.Provider value={contextValues}>

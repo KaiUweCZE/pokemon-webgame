@@ -2,13 +2,21 @@
 import "@/assets/styles/battle-style.css";
 import { NpcBattleProvider } from "./NpcBattleContext";
 import NpcBattlefield from "./NpcBattlefied";
+import { useSearchParams } from "next/navigation";
 
-const npcBattle = () => {
+const NpcBattle = () => {
+  const searchParams = useSearchParams();
+  const name = searchParams.get("name");
+
+  const logger = () => {
+    console.log("name: ", name);
+  };
   return (
     <NpcBattleProvider>
-      <NpcBattlefield />
+      <button onClick={logger}>clickeee</button>
+      {name && <NpcBattlefield name={name} />}
     </NpcBattleProvider>
   );
 };
 
-export default npcBattle;
+export default NpcBattle;

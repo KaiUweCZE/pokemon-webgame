@@ -12,13 +12,8 @@ interface BattleBagProps {
 
 const BattleBag = ({ setMenuChoice }: BattleBagProps) => {
   const { data } = useSession();
-  const context = useContext(BattleContext);
   if (!data) {
     throw new Error("data is missing");
-  }
-
-  if (!context) {
-    throw new Error("context is missing");
   }
 
   const items = data.user.items;

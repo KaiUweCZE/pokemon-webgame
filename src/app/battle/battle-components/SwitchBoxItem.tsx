@@ -6,6 +6,7 @@ import { generatePokemonIcon } from "@/utils/generatePokemonImage";
 import Image from "next/image";
 import { useContext } from "react";
 import infoIcon from "@/assets/images/icons/info.svg";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface SwitchBoxItemsProps {
   pokemon: Pokemon;
@@ -13,13 +14,13 @@ interface SwitchBoxItemsProps {
 
 const SwitchBoxItems = ({ pokemon }: SwitchBoxItemsProps) => {
   const icon = generatePokemonIcon(pokemon.name);
-  const context = useContext(BattleContext);
+  const context = useContext(PokemonContext);
 
   if (!context) {
     throw new Error("context is missing");
   }
 
-  const setPokemon = context.setUserPokemon;
+  const setPokemon = context.setCurrentPokemon;
   return (
     <li className="switch-box-item" onClick={() => setPokemon(pokemon)}>
       <div>

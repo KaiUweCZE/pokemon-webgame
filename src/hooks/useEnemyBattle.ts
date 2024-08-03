@@ -3,13 +3,16 @@ import { generateMoves } from "@/utils/battle-function/generateMoves";
 import { randomAttack } from "@/utils/battle-function/randomAttack";
 import { useContext, useEffect, useState } from "react";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 const useEnemyBattle = () => {
   const context = useContext(BattleContext);
+  const pokemonContext = useContext(PokemonContext);
 
   useEffect(() => {
-    if (!context || !context.enemyPokemon) return;
+    if (!context || !context.enemyPokemon || !pokemonContext) return;
     const move = context.enemyAttack;
+    const { currentPokemon, setCurrentPokemon } = pokemonContext;
     const setMove = context.setEnemyAttack;
     //get moves from generateMoves (array with data from attacksData)
     const moves = generateMoves(
@@ -20,22 +23,19 @@ const useEnemyBattle = () => {
     const selectedMove = randomAttack(moves);
     setMove(selectedMove);
 
-    if (
-      context.userPokemon?.actualHp === 0 ||
-      context.enemyPokemon.actualHp === 0
-    ) {
+    if (currentPokemon?.actualHp === 0 || context.enemyPokemon.actualHp === 0) {
       context.setStopBattle(true);
     }
 
     if (move) {
       const interval = setInterval(async () => {
-        if (context.userPokemon && move?.damage && !context.stopBattle) {
-          let newHp = (context.userPokemon?.actualHp ?? 0) - move.damage;
+        if (currentPokemon && move?.damage && !context.stopBattle) {
+          let newHp = (currentPokemon?.actualHp ?? 0) - move.damage;
           if (newHp <= 0) {
             newHp = 0;
             clearInterval(interval);
           }
-          context.setUserPokemon({ ...context.userPokemon, actualHp: newHp });
+          setCurrentPokemon({ ...currentPokemon, actualHp: newHp });
 
           context.setEnemyAttackAnimation(true);
 
@@ -46,7 +46,7 @@ const useEnemyBattle = () => {
 
           try {
             const updatedPokemon = await changeHpServer(
-              context.userPokemon.id,
+              currentPokemon.id,
               move.damage
             );
 

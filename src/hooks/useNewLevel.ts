@@ -1,4 +1,4 @@
-import { BattleContext } from "@/contexts/BattleContext";
+import { PokemonContext } from "@/contexts/PokemonContext";
 import { useContext, useEffect, useState } from "react";
 
 /**
@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
  */
 const useNewLevel = (change: number) => {
   const [newLevel, setNewLevel] = useState(false);
-  const context = useContext(BattleContext);
+  const context = useContext(PokemonContext);
 
   if (!context) {
     throw new Error("context is missing");
@@ -22,7 +22,7 @@ const useNewLevel = (change: number) => {
       }, 5000);
       return () => clearTimeout(timeout);
     }
-  }, [context.userPokemon?.level]);
+  }, [context.currentPokemon?.level]);
 
   return newLevel;
 };

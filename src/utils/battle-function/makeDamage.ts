@@ -25,6 +25,7 @@ export const makeDamage = (
   // check if denfense is not bigger then attack to avoid adding hp after attack
   // if defense is bigger damage will be only - 1
   const newHp = resultDamage < 0 ? hp + resultDamage : hp - 1;
+  const result = newHp < 0 ? 0 : newHp;
   console.log(
     "pokemon hp: ",
     hp,
@@ -36,9 +37,11 @@ export const makeDamage = (
     (baseAttack + damage) * multiplier,
     "newhp: ",
     newHp,
+    "result hp: ",
+    result,
     "attack advanatage: ",
     multiplier
   );
 
-  return newHp;
+  return result;
 };

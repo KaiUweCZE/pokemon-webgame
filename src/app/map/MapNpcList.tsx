@@ -29,7 +29,7 @@ const MapNpcList = ({ location }: LocationProps) => {
             onClick={() => handleNpc(npc.name)}
           >
             <span>{npc.name}</span>{" "}
-            {npc.stadiumTrener && (
+            {npc.stadiumTrainer && (
               <Image src={starIcon} alt="icon of star" width={32} height={32} />
             )}
           </li>
