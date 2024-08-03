@@ -58,8 +58,10 @@ export const healUserSix = async (username: string) => {
 
     const userSix = user?.userSix;
 
+    console.log("start healing");
+
     if (user?.partOfDay === 3) {
-      console.log("User cannot heal Pokémon as partOfDay is 3.");
+      console.log("User cannot heal Pokémon as partOfDay is 3.", user);
       return null;
     }
 

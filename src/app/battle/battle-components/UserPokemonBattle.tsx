@@ -30,14 +30,12 @@ const UserPokemonBattle = ({
   return (
     <div className="user-pokemon">
       {context?.enemyAttackAnimation && context.enemyAttack && (
-        <div className="enemy-attack">
-          <Image
-            className="enemy-attack-animation"
-            src={context?.enemyAttack.img}
-            alt="gif of enemy attack"
-            width={130}
-          />
-        </div>
+        <Image
+          className="enemy-attack"
+          src={context?.enemyAttack.img}
+          alt="gif of enemy attack"
+          width={130}
+        />
       )}
       {imgBack && (
         <Image

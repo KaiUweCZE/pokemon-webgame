@@ -144,11 +144,13 @@ $font-color: white;
   grid-area: enemy-pokemon;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
   .oponent-image {
     position: absolute;
     grid-column: 2;
     place-self: start end;
     right: 6rem;
+    height: auto;
   }
   .attack-animation {
     grid-column: 2;
@@ -187,6 +189,7 @@ $font-color: white;
   margin-top: 2rem;
   padding: 0.25rem;
   background-color: #f8f8d8;
+  max-width: 12rem;
   font-weight: bold;
   border-radius: 0.5rem 0.2rem 0.5rem 0.2rem;
   border: 3px solid #303030;
@@ -263,17 +266,10 @@ $font-color: white;
 }
 
 .oponent {
-  grid-area: enemy-pokemon;
-  display: grid;
-  grid-template-areas: "enemy-stats enemy-pokemon";
-  place-self: end end;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   &.done {
     img {
       transition: 1s;
-      translate: 12rem;
+      translate: 14rem;
     }
   }
   &.catching {
@@ -628,7 +624,7 @@ $font-color: white;
   aspect-ratio: 7/8;
   position: absolute;
   place-self: start end;
-  bottom: 33.3%;
+  bottom: 8rem;
   ul {
     padding: 0.5rem;
   }
@@ -650,25 +646,23 @@ $font-color: white;
 }
 
 .user-pokemon-attack {
+  grid-column: 2;
   position: absolute;
-  place-self: end end;
-  translate: -1rem 0rem;
+  place-self: end center;
+  translate: 2rem 0rem;
   z-index: 1;
-  img {
-    @starting-style {
-      translate: 0 0;
-    }
+
+  @starting-style {
+    translate: 0 0;
   }
 }
 
 .enemy-attack {
   position: absolute;
-  place-self: center;
-  margin-right: 8rem;
+  place-self: center start;
+  margin-left: 6rem;
   z-index: 1;
-  img {
-    @starting-style {
-      translate: 1rem 0;
-    }
+  @starting-style {
+    translate: 1rem 0;
   }
 }

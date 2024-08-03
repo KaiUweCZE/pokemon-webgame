@@ -271,14 +271,6 @@ export const attacksData = [
     img: normalImg,
   },
   {
-    name: "bite",
-    type: "dark",
-    damage: 6,
-    energyCost: 2,
-    recoveryTime: 2,
-    img: normalImg,
-  },
-  {
     name: "hydro pump",
     type: "water",
     damage: 12,

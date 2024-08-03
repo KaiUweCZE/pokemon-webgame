@@ -90,7 +90,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
       {currentPokemon && (
         <div className="user-battle">
           {getBattleText()}
-          {menuChoice === "fight" && (
+          {menuChoice === "fight" && !isCatching?.isSucces && (
             <BoxAttacks
               userPokemon={currentPokemon}
               setDamage={setDamage}

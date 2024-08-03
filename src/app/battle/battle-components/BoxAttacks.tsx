@@ -43,7 +43,7 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
   const handleAttack = async (attackName: string) => {
     // fetch attack data {dmg, energyCost, type of attack}
     if (context.stopBattle) {
-      console.log("you are done, switch your pokemon");
+      console.log("you are done, switch your pokemon", attackName);
 
       return null;
     }
@@ -62,7 +62,7 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
       throw new Error(`${attackName} does not exist`);
     }
 
-    console.log("attack data: ", attackData.recoveryTime);
+    console.log("attack data are: ", attackData);
 
     setTime(attackData.recoveryTime);
     if (userPokemon.actualEnergy - attackData?.energyCost < 0) {

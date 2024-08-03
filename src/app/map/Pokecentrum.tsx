@@ -16,7 +16,8 @@ const Pokecentrum = () => {
     console.log("start action");
 
     context?.setLoader(true);
-    const updated = await healUserSix("f");
+    if (!data) return null;
+    const updated = await healUserSix(data?.user.name);
     await update({
       ...data,
       user: updated?.updatedUser,

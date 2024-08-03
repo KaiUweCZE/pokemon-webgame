@@ -23,7 +23,7 @@ export const nextDay = async (username: string) => {
     const pokemons = await prisma.pokemon.findMany({
       where: { userId: updatedUser.id },
     });
-    console.log("day is succesfully updated");
+    console.log("day is succesfully updated", updatedUser);
 
     const updatedPokemons = pokemons.map((pokemon) =>
       prisma.pokemon.update({

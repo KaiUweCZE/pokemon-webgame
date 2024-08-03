@@ -150,12 +150,14 @@
   grid-area: enemy-pokemon;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
 }
 .oponent .oponent-image {
   position: absolute;
   grid-column: 2;
   place-self: start end;
   right: 6rem;
+  height: auto;
 }
 .oponent .attack-animation {
   grid-column: 2;
@@ -191,6 +193,7 @@
   margin-top: 2rem;
   padding: 0.25rem;
   background-color: #f8f8d8;
+  max-width: 12rem;
   font-weight: bold;
   border-radius: 0.5rem 0.2rem 0.5rem 0.2rem;
   border: 3px solid #303030;
@@ -268,13 +271,6 @@
 }
 
 .oponent {
-  grid-area: enemy-pokemon;
-  display: grid;
-  grid-template-areas: "enemy-stats enemy-pokemon";
-  place-self: end end;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   /*img {
     place-self: end;
     margin-right: 2rem;
@@ -291,7 +287,7 @@
 }
 .oponent.done img {
   transition: 1s;
-  translate: 12rem;
+  translate: 14rem;
 }
 .oponent.catching img {
   opacity: 0;
@@ -621,7 +617,7 @@
   aspect-ratio: 7/8;
   position: absolute;
   place-self: start end;
-  bottom: 33.3%;
+  bottom: 8rem;
 }
 .new-level ul {
   padding: 0.5rem;
@@ -643,25 +639,26 @@
 }
 
 .user-pokemon-attack {
+  grid-column: 2;
   position: absolute;
-  place-self: end end;
-  translate: -1rem 0rem;
+  place-self: end center;
+  translate: 2rem 0rem;
   z-index: 1;
 }
 @starting-style {
-  .user-pokemon-attack img {
+  .user-pokemon-attack {
     translate: 0 0;
   }
 }
 
 .enemy-attack {
   position: absolute;
-  place-self: center;
-  margin-right: 8rem;
+  place-self: center start;
+  margin-left: 6rem;
   z-index: 1;
 }
 @starting-style {
-  .enemy-attack img {
+  .enemy-attack {
     translate: 1rem 0;
   }
 }/*# sourceMappingURL=battle-style.css.map */

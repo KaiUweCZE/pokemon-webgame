@@ -5,7 +5,6 @@ import { PokemonContext } from "@/contexts/PokemonContext";
 import { NpcBattleContext } from "./NpcBattleContext";
 import useLoadSixToContext from "./hooks/useLoadSixToContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
-import HpBar from "@/components/HpBar";
 import UserPokemonStats from "./UserPokemonStats";
 
 interface UserImageProps {

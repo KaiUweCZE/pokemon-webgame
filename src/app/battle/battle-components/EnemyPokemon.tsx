@@ -29,7 +29,7 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
       return "oponent catched";
     }
     if (context?.attackAnimation) {
-      return "enemy-pokemon damage";
+      return "oponent damage";
     }
     return "oponent";
   };
@@ -42,13 +42,12 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
             <Pokeball />
           )}
           {context?.attackAnimation && context?.attack && (
-            <div className="user-pokemon-attack">
-              <Image
-                src={context.attack.img}
-                alt="user pokemon attack animation"
-                width={130}
-              />
-            </div>
+            <Image
+              className="user-pokemon-attack"
+              src={context.attack.img}
+              alt="user pokemon attack animation"
+              width={130}
+            />
           )}
           {pokemonImg && (
             <Image

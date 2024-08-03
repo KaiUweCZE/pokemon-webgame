@@ -27,7 +27,13 @@ const OponentImage = ({ img }: OponentImageProps) => {
         </>
       )}
       {img && !context?.startBattle ? (
-        <Image className="oponent-image" src={img} alt="oponent" width={110} />
+        <Image
+          className="oponent-image"
+          src={img}
+          alt="oponent"
+          width={110}
+          height={220}
+        />
       ) : (
         pokemonImg && (
           <>
