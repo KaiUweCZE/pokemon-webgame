@@ -11,6 +11,7 @@ const AttacksList = () => {
   if (!context || !pokemonContext) return null;
 
   const pokemon = pokemonContext.currentPokemon;
+
   const animation = context.attackAnimation;
   const setAnimation = context.setAttackAnimation;
 
@@ -20,6 +21,8 @@ const AttacksList = () => {
       setAnimation(true);
       console.log("attack was set", attack.damage);
       context.setAttack(attack);
+      console.log("context attack: ", context.attack);
+
       setChange((prev) => prev + 1);
       setTimeout(() => {
         setAnimation(false);

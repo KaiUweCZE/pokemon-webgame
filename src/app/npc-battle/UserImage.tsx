@@ -19,8 +19,7 @@ const UserImage = ({ img }: UserImageProps) => {
 
   if (!contextPokemon) return null;
 
-  const pokemon =
-    contextPokemon.currentPokemon || contextPokemon.pokemonsFromSix[0];
+  const pokemon = contextPokemon.currentPokemon;
   const pokemons = contextPokemon.pokemonsFromSix;
   const pokemonImg = pokemon ? generatePokemonImageBack(pokemon.name) : null;
 

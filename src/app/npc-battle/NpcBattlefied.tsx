@@ -28,6 +28,9 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
     if (oponentData) {
       context?.setOponent(oponentData);
     }
+    if (!contextPokemon?.currentPokemon) {
+      contextPokemon?.setCurrentPokemon(contextPokemon.pokemonsFromSix[0]);
+    }
   }, []);
   return (
     <>
