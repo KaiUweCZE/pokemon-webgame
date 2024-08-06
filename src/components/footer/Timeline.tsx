@@ -3,6 +3,7 @@ import { UserContext } from "@/contexts/UserContext";
 import { useContext, useState } from "react";
 import Image from "next/image";
 import clockIcon from "@/assets/images/icons/clock.svg";
+import alternativeClock from "@/assets/images/icons/hourglass.png";
 import "./footer.css";
 import { nextDay } from "./action";
 import { useSession } from "next-auth/react";
@@ -59,7 +60,12 @@ const Timeline = () => {
             className="toggle-footer"
             onClick={() => setActiveFooter(!activeFooter)}
           >
-            <Image src={clockIcon} alt="clock icon" height={24} width={24} />
+            <Image
+              src={alternativeClock}
+              alt="clock icon"
+              height={24}
+              width={24}
+            />
           </button>
         </footer>
       )}

@@ -38,11 +38,18 @@ footer {
   display: flex;
   border: none;
   background-color: rgba(16, 16, 16, 0.6862745098);
+  background-color: transparent;
   border-radius: 50%;
   transition: 0.3s;
 }
 .toggle-footer:hover {
   scale: 1.1;
+}
+.toggle-footer img {
+  transition: 0.5s;
+}
+.toggle-footer:hover img {
+  rotate: 60deg;
 }
 
 .box-time {

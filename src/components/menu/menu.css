@@ -163,6 +163,12 @@ a {
   height: 18rem;
 }
 
+.pokedex-pokemon-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .pokedex-pokemon {
   grid-column: 2;
   display: grid;
@@ -220,6 +226,26 @@ a {
 .pokedex-list li {
   color: white;
   cursor: pointer;
+}
+
+.evolution-chain {
+  place-self: start;
+  display: flex;
+}
+.evolution-chain li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.evolution-chain .arrow {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  place-items: center;
+}
+.evolution-chain .arrow span {
+  font-size: 0.7rem;
+  font-weight: bold;
+  position: absolute;
 }
 
 .base-info-types {

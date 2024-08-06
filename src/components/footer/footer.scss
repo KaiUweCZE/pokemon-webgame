@@ -38,10 +38,17 @@ footer {
   display: flex;
   border: none;
   background-color: #101010af;
+  background-color: transparent;
   border-radius: 50%;
   transition: 0.3s;
   &:hover {
     scale: 1.1;
+  }
+  img {
+    transition: 0.5s;
+  }
+  &:hover img {
+    rotate: 60deg;
   }
 }
 
