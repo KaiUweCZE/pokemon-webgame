@@ -12,11 +12,13 @@ const Timeline = () => {
   const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(true);
   const context = useContext(UserContext);
+  const [animateIcon, setAnimateIcon] = useState(false);
 
   const user = data?.user;
   const partOfDay = data?.user.partOfDay;
 
   const handleNextDay = async () => {
+    setAnimateIcon(true);
     if (user) {
       const updatedUser = await nextDay(user.name);
       if (updatedUser) {
@@ -34,6 +36,9 @@ const Timeline = () => {
 
       console.log("updated user: ", updatedUser);
     }
+    setTimeout(() => {
+      setAnimateIcon(false);
+    }, 1000);
   };
   return (
     <div className="container-footer">
@@ -61,6 +66,7 @@ const Timeline = () => {
             onClick={() => setActiveFooter(!activeFooter)}
           >
             <Image
+              className={animateIcon ? "active" : ""}
               src={alternativeClock}
               alt="clock icon"
               height={24}

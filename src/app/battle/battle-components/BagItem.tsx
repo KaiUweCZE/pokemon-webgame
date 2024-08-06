@@ -14,6 +14,7 @@ const BagItem = ({ name, count }: Item) => {
       handleCatch(user?.name, context?.enemyPokemon);
     }
   };
+
   return (
     <li className="battle-bag-item">
       <span>

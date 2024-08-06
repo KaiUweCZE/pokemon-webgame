@@ -8,8 +8,11 @@ import HpBar from "@/components/HpBar";
 import EnergyBar from "@/components/EnergyBar";
 import ExpBar from "@/components/ExpBar";
 import { useSession } from "next-auth/react";
-import { addPokemonToSix, removePokemon } from "./action";
+import { addPokemonToSix, evolvePokemon, removePokemon } from "./action";
 import closeIcon from "@/assets/images/icons/close.svg";
+import { pokemonBattleData } from "@/data/pokemonBattleData";
+import { prepareToEvolve } from "@/utils/prepareToEvolve";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface PokemonProps {
   pokemon: Pokemon;
@@ -18,7 +21,11 @@ interface PokemonProps {
 const PokemonFullCard = ({ pokemon }: PokemonProps) => {
   const { data, update } = useSession();
   const context = useContext(ProfileContext);
+  const pokemonContext = useContext(PokemonContext);
   const pokemonImage = generatePokemonImage(pokemon.name);
+  const evolution = pokemonBattleData.find(
+    (poke) => poke.name === pokemon.name
+  )?.evolution;
 
   const user = data?.user;
   const handleAddToSix = async () => {
@@ -40,6 +47,7 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
           context?.setError(false); // Clear error if update is successful
         }
       } catch (error) {
+        context?.setMessage("This pokemon is already in your Six");
         context?.setError(true);
         setTimeout(() => {
           context?.setError(false);
@@ -62,10 +70,39 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
           });
         }
       } else {
-        console.log("you cannot delete pokemon from six");
+        context?.setMessage("You cannot delete pokemon from your six");
+        context?.setError(true);
+        setTimeout(() => {
+          context?.setError(false);
+        }, 2000);
       }
     } catch (err) {
       console.error("error occurs while deleting", err);
+    }
+  };
+
+  const handleEvolvePokemon = async () => {
+    if (!evolution) return null;
+    if (pokemon.level > evolution?.level) {
+      context?.setMessage("It's level is too low");
+      context?.setError(true);
+      setTimeout(() => {
+        context?.setError(false);
+      }, 2000);
+    } else {
+      const newStats = prepareToEvolve(pokemon, evolution.name);
+      if (newStats) {
+        const evolvedpokemon = await evolvePokemon(pokemon.id, newStats);
+        console.log("New Stats: ", newStats, evolvedpokemon);
+        /*const pokemons = pokemonContext?.userPokemons;
+        if (pokemons) {
+          const newPokemons = pokemons.map((poke) =>
+            poke.id === pokemon.id ? evolvedpokemon : poke
+          ) as Pokemon[];
+
+          pokemonContext.setUserPokemons(newPokemons);
+        }*/
+      }
     }
   };
 
@@ -120,6 +157,11 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
         <button className="button-primary" onClick={handleDelete}>
           delete
         </button>
+        {evolution && (
+          <button className="button-primary" onClick={handleEvolvePokemon}>
+            evolve
+          </button>
+        )}
       </div>
       <Image
         className="close"

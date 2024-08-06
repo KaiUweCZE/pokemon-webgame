@@ -48,6 +48,9 @@ footer {
 .toggle-footer img {
   transition: 0.5s;
 }
+.toggle-footer img.active {
+  animation: rotation 1s linear forwards;
+}
 .toggle-footer:hover img {
   rotate: 60deg;
 }
@@ -68,5 +71,14 @@ footer {
   .box-time {
     opacity: 0;
     translate: -1rem -1rem;
+  }
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 1turn;
   }
 }/*# sourceMappingURL=footer.css.map */

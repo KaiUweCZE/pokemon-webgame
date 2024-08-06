@@ -47,6 +47,9 @@ footer {
   img {
     transition: 0.5s;
   }
+  img.active {
+    animation: rotation 1s linear forwards;
+  }
   &:hover img {
     rotate: 60deg;
   }
@@ -66,5 +69,14 @@ footer {
   @starting-style {
     opacity: 0;
     translate: -1rem -1rem;
+  }
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 1turn;
   }
 }
