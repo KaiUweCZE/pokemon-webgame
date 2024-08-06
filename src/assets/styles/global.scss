@@ -40,6 +40,17 @@ li:has(.bar) {
     place-self: end start;
     max-width: 80%;
   }
+  container-name: box;
+  container-type: inline-size;
+  @container box (width < 550px) {
+    article {
+      grid-column: span 2;
+      place-self: center;
+    }
+    img {
+      display: none;
+    }
+  }
 }
 
 .section-champion {
@@ -62,6 +73,17 @@ li:has(.bar) {
     grid-area: 1 / 1;
     place-self: end;
     max-width: 80%;
+  }
+  container: box;
+  container-type: inline-size;
+  @container box (width < 582px) {
+    article {
+      grid-column: span 2;
+      place-self: center;
+    }
+    img {
+      display: none;
+    }
   }
 }
 
@@ -135,6 +157,8 @@ li:has(.bar) {
       grid-template-columns: 1fr 3fr;
       opacity: 1;
       transition: 1s;
+      container-name: card;
+      container-type: inline-size;
       &:has(.left) {
         grid-template-columns: 3fr 1fr;
         img {
@@ -161,6 +185,16 @@ li:has(.bar) {
           place-self: end end;
         }
       }
+      /*@container card (width < 500px) {
+        img {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        article {
+          grid-column: span 2;
+          grid-row: 2;
+        }
+      }*/
     }
   }
 }

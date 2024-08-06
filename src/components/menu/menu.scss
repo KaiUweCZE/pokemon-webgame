@@ -147,6 +147,12 @@ a {
   height: 18rem;
 }
 
+.pokedex-pokemon-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .pokedex-pokemon {
   grid-column: 2;
   display: grid;
@@ -193,6 +199,26 @@ a {
   li {
     color: white;
     cursor: pointer;
+  }
+}
+
+.evolution-chain {
+  place-self: start;
+  display: flex;
+  li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .arrow {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    place-items: center;
+    span {
+      font-size: 0.7rem;
+      font-weight: bold;
+      position: absolute;
+    }
   }
 }
 

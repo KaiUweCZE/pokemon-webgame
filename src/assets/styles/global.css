@@ -27,10 +27,21 @@ li:has(.bar) {
 .box-home {
   display: grid;
   grid-template-columns: min-content 1fr;
+  container-name: box;
+  container-type: inline-size;
 }
 .box-home article {
   place-self: end start;
   max-width: 80%;
+}
+@container box (width < 550px) {
+  .box-home article {
+    grid-column: span 2;
+    place-self: center;
+  }
+  .box-home img {
+    display: none;
+  }
 }
 
 .section-champion {
@@ -46,6 +57,8 @@ li:has(.bar) {
   width: 80%;
   margin: 0 auto;
   padding-block: 1rem;
+  container: box;
+  container-type: inline-size;
 }
 .box-champion img {
   grid-column: 2;
@@ -54,6 +67,15 @@ li:has(.bar) {
   grid-area: 1/1;
   place-self: end;
   max-width: 80%;
+}
+@container box (width < 582px) {
+  .box-champion article {
+    grid-column: span 2;
+    place-self: center;
+  }
+  .box-champion img {
+    display: none;
+  }
 }
 
 .map {
@@ -127,6 +149,18 @@ li:has(.bar) {
   grid-template-columns: 1fr 3fr;
   opacity: 1;
   transition: 1s;
+  container-name: card;
+  container-type: inline-size;
+  /*@container card (width < 500px) {
+    img {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    article {
+      grid-column: span 2;
+      grid-row: 2;
+    }
+  }*/
 }
 .elite-four:has(.elite-card.active) .elite-card.active:has(.left) {
   grid-template-columns: 3fr 1fr;
