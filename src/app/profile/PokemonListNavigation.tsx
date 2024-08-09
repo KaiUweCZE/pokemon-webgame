@@ -1,5 +1,5 @@
 import { Pokemon } from "@/types/pokemon";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect } from "react";
 
 const pokemonTypes = [
   "all",
@@ -41,13 +41,11 @@ const PokemonListNavigation = ({
 
     if (pokemonType === "all") {
       setFilteredPokemons(pokemons);
-      console.log("nonooo");
     } else {
       setFilteredPokemons(filteredList);
     }
 
     console.log(`${pokemonType}: `, filteredPokemons, pokemons);
-    console.log("gaighai");
   };
 
   const handleFilterByLevel = (pokemonLevel: number) => {
@@ -60,6 +58,12 @@ const PokemonListNavigation = ({
       setFilteredPokemons(pokemons);
     }
   };
+
+  // if pokemons change (for example some pokemon is evolved) filteredPokemon will be set to default
+  useEffect(() => {
+    setFilteredPokemons(pokemons);
+  }, [pokemons]);
+
   return (
     <nav className="profile-nav">
       <ul>

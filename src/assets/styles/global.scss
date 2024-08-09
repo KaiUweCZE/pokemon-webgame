@@ -335,6 +335,7 @@ li:has(.bar) {
 .error-message {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
   background-color: rgba($dark-violet, 1);
   box-shadow: 0 0 2px rgb(116, 116, 116);

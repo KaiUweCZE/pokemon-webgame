@@ -2,7 +2,6 @@ import { useSession } from "next-auth/react";
 import { healUserSix } from "./action";
 import { useContext, useState } from "react";
 import { MapContext } from "./MapContext";
-import MapError from "./MapError";
 import HeartBeatLoader from "@/components/HeartBeatLoader";
 import Image from "next/image";
 import nurseImg from "@/assets/images/characters/nurse.webp";
@@ -51,7 +50,11 @@ const Pokecentrum = () => {
         <article>
           <h2>Welcome in Pokecentrum</h2>
           <p>Want to heal your Pokémon?</p>
-          <button className="button-primary" onClick={handleHealth}>
+          <button
+            className="button-primary"
+            onClick={handleHealth}
+            disabled={context?.loader}
+          >
             Yes
           </button>
         </article>

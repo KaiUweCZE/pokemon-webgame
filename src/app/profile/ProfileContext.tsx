@@ -16,6 +16,8 @@ interface ProfileContextType {
   setActive: Dispatch<SetStateAction<string>>;
   error: boolean;
   setError: Dispatch<SetStateAction<boolean>>;
+  message: string;
+  setMessage: Dispatch<SetStateAction<string>>;
   profilePokemon: Pokemon | null;
   setProfilePokemon: Dispatch<SetStateAction<Pokemon | null>>;
 }
@@ -27,6 +29,7 @@ export const ProfileContext = createContext<ProfileContextType | undefined>(
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
   const [active, setActive] = useState("");
   const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
   const [profilePokemon, setProfilePokemon] = useState<Pokemon | null>(null);
 
   const contextValues = {
@@ -34,6 +37,8 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
     setActive,
     error,
     setError,
+    message,
+    setMessage,
     profilePokemon,
     setProfilePokemon,
   };

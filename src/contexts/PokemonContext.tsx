@@ -19,6 +19,8 @@ export interface PokemonContextType {
   setUserPokemons: Dispatch<SetStateAction<Pokemon[]>>;
   pokemonsFromSix: Pokemon[];
   setPokemonsFromSix: Dispatch<SetStateAction<Pokemon[]>>;
+  isEvolved: boolean;
+  setIsEvolved: Dispatch<SetStateAction<boolean>>;
 }
 
 export const PokemonContext = createContext<PokemonContextType | undefined>(
@@ -29,7 +31,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [userPokemons, setUserPokemons] = useState<Pokemon[]>([]);
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | null>(null);
   const [pokemonsFromSix, setPokemonsFromSix] = useState<Pokemon[]>([]);
-
+  const [isEvolved, setIsEvolved] = useState(false);
   if (pokemonsFromSix?.length >= 6) {
     console.log("you cannot add next pokemon");
   }
@@ -41,6 +43,8 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     setCurrentPokemon,
     pokemonsFromSix,
     setPokemonsFromSix,
+    isEvolved,
+    setIsEvolved,
   };
   return (
     <PokemonContext.Provider value={contextValues}>

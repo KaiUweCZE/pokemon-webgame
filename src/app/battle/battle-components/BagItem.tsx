@@ -1,29 +1,28 @@
-import { BattleContext } from "@/contexts/BattleContext";
+import PokeballButton from "@/components/utils-buttons/PokeballButton";
+import PotionButton from "@/components/utils-buttons/PotionButton";
 import { itemData } from "@/data/itemData";
-import useCatchPokemon from "@/hooks/useCatchPokemon";
 import { Item } from "@/types/item";
-import { useContext } from "react";
 
 const BagItem = ({ name, count }: Item) => {
   const data = itemData.find((item) => item.name === name);
-  const context = useContext(BattleContext);
-  const { handleCatch, user } = useCatchPokemon();
 
-  const handleClick = () => {
-    if (user && context?.enemyPokemon) {
-      handleCatch(user?.name, context?.enemyPokemon);
+  const generateButton = () => {
+    if (name === "pokeball") {
+      return <PokeballButton />;
+    }
+    if (name === "potion") {
+      return <PotionButton potionType="potion" />;
+    } else {
+      return <button>nothing to do</button>;
     }
   };
+
   return (
     <li className="battle-bag-item">
       <span>
         {name}: {count}
       </span>
-      {data?.func && (
-        <button className="button-primary" onClick={handleClick}>
-          catch
-        </button>
-      )}
+      {name !== "coins" && generateButton()}
     </li>
   );
 };

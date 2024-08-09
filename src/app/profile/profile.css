@@ -213,6 +213,7 @@
   top: 5rem;
   left: 4rem;
   transition: 0.5s;
+  z-index: 2;
 }
 .about-pokemon.active {
   display: flex;

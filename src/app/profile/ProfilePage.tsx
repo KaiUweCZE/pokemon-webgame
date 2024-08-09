@@ -27,7 +27,7 @@ const ProfilePage = () => {
   }
 
   const setUserPokemons = pokemonContext?.setUserPokemons;
-
+  const userPokemons = pokemonContext.userPokemons;
   useEffect(() => {
     if (user) {
       handlePokemons();
@@ -62,7 +62,7 @@ const ProfilePage = () => {
           <UserSix username={user.name} six={pokemonContext.pokemonsFromSix} />
         )}
       </section>
-      {loading ? <PokemonList pokemons={pokemons} /> : <Loader />}
+      {loading ? <PokemonList pokemons={userPokemons} /> : <Loader />}
       <>
         {context?.active !== "" && context?.profilePokemon && (
           <PokemonFullCard pokemon={context?.profilePokemon} />

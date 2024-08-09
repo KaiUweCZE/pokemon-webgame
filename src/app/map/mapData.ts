@@ -182,7 +182,7 @@ export const mapData = [
     options: ["Routes", "NPC", "Battle"],
     npcs: ["Samuel", "Wee"],
     marketItems: ["pokeball", "potion"],
-    routes: ["mountain", "large farm", "lovely", "swamp"],
+    routes: ["mountains", "large farm", "lovely", "swamp"],
     img: bridgeImg,
     rounds: [
       {

@@ -3,6 +3,7 @@ import { UserContext } from "@/contexts/UserContext";
 import { useContext, useState } from "react";
 import Image from "next/image";
 import clockIcon from "@/assets/images/icons/clock.svg";
+import alternativeClock from "@/assets/images/icons/hourglass.png";
 import "./footer.css";
 import { nextDay } from "./action";
 import { useSession } from "next-auth/react";
@@ -11,11 +12,13 @@ const Timeline = () => {
   const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(true);
   const context = useContext(UserContext);
+  const [animateIcon, setAnimateIcon] = useState(false);
 
   const user = data?.user;
   const partOfDay = data?.user.partOfDay;
 
   const handleNextDay = async () => {
+    setAnimateIcon(true);
     if (user) {
       const updatedUser = await nextDay(user.name);
       if (updatedUser) {
@@ -33,6 +36,9 @@ const Timeline = () => {
 
       console.log("updated user: ", updatedUser);
     }
+    setTimeout(() => {
+      setAnimateIcon(false);
+    }, 1000);
   };
   return (
     <div className="container-footer">
@@ -59,7 +65,13 @@ const Timeline = () => {
             className="toggle-footer"
             onClick={() => setActiveFooter(!activeFooter)}
           >
-            <Image src={clockIcon} alt="clock icon" height={24} width={24} />
+            <Image
+              className={animateIcon ? "active" : ""}
+              src={alternativeClock}
+              alt="clock icon"
+              height={24}
+              width={24}
+            />
           </button>
         </footer>
       )}

@@ -212,3 +212,55 @@ export const removePokemon = async (pokemonId: string, username: string) => {
     await prisma.$disconnect();
   }
 };
+
+interface EvolutionStats {
+  name: string;
+  hp: number;
+  energy: number;
+  type: string[];
+  speed: number;
+  damage: number;
+  defense: number;
+  expToLevel: number;
+}
+
+export const evolvePokemon = async (
+  pokemonId: string,
+  evolution: EvolutionStats
+) => {
+  try {
+    connectToDatabase();
+
+    const pokemon = await prisma.pokemon.findUnique({
+      where: { id: pokemonId },
+    });
+
+    console.log("This pokemon: ", pokemon);
+
+    /* name: newBaseStats.name,
+    expToLevel: newBaseStats.expToLevel * pokemon.level,
+  };*/
+
+    const updatedPokemon = await prisma.pokemon.update({
+      where: { id: pokemonId },
+      data: {
+        name: evolution.name,
+        hp: evolution.hp,
+        energy: evolution.energy,
+        type: evolution.type,
+        speed: evolution.speed,
+        damage: evolution.damage,
+        defense: evolution.defense,
+        expToLevel: evolution.expToLevel,
+      },
+    });
+
+    console.log("new Pokemon: ", updatedPokemon);
+
+    return updatedPokemon;
+  } catch (error) {
+    console.log("error occurs: ", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+};
