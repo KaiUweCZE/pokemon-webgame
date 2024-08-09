@@ -4,22 +4,27 @@ import PokemonListNavigation from "./PokemonListNavigation";
 import { useContext, useState } from "react";
 import { ProfileContext } from "./ProfileContext";
 import PokemonFullCard from "./PokemonFullCard";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface PokemonListProps {
   pokemons: Pokemon[];
 }
 
 const PokemonList = ({ pokemons }: PokemonListProps) => {
-  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>(pokemons);
+  const context = useContext(PokemonContext);
+  if (!context) return null;
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>(
+    context.userPokemons
+  );
   //const [active, setActive] = useState("");
-  const context = useContext(ProfileContext);
+
   const clicker = () => {
-    console.log(pokemons);
+    console.log(context?.userPokemons);
   };
   return (
     <section className="profile-pokemons">
       <PokemonListNavigation
-        pokemons={pokemons}
+        pokemons={context.userPokemons}
         setFilteredPokemons={setFilteredPokemons}
         filteredPokemons={filteredPokemons}
       />

@@ -1,6 +1,6 @@
 "use client";
 import { Pokemon } from "@/types/pokemon";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProfileContext } from "./ProfileContext";
 import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
@@ -82,8 +82,8 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
   };
 
   const handleEvolvePokemon = async () => {
-    if (!evolution) return null;
-    if (pokemon.level > evolution?.level) {
+    if (!evolution || !context?.profilePokemon) return null;
+    if (pokemon.level < evolution?.level) {
       context?.setMessage("It's level is too low");
       context?.setError(true);
       setTimeout(() => {
@@ -94,14 +94,37 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
       if (newStats) {
         const evolvedpokemon = await evolvePokemon(pokemon.id, newStats);
         console.log("New Stats: ", newStats, evolvedpokemon);
-        /*const pokemons = pokemonContext?.userPokemons;
+        context?.setProfilePokemon({
+          id: context.profilePokemon?.id,
+          name: newStats.name,
+          type: newStats.type,
+          level: newStats.level,
+          hp: newStats.hp,
+          actualHp: context.profilePokemon.actualHp,
+          damage: newStats.damage,
+          energy: newStats.energy,
+          actualEnergy: context.profilePokemon.actualEnergy,
+          defense: newStats.defense,
+          speed: newStats.speed,
+          expToLevel: newStats.expToLevel,
+          actualExp: context.profilePokemon.actualExp,
+          attacks: context.profilePokemon.attacks,
+          abilities: context.profilePokemon.abilities,
+          userId: context.profilePokemon.userId,
+        });
+        const pokemons = pokemonContext?.userPokemons;
+
         if (pokemons) {
           const newPokemons = pokemons.map((poke) =>
             poke.id === pokemon.id ? evolvedpokemon : poke
           ) as Pokemon[];
 
           pokemonContext.setUserPokemons(newPokemons);
-        }*/
+          pokemonContext.setIsEvolved(true);
+          setTimeout(() => {
+            console.log("user pokemons: ", pokemonContext.userPokemons);
+          }, 100);
+        }
       }
     }
   };

@@ -41,6 +41,7 @@ import lordImg from "@/assets/images/characters/lord.webp";
 import TomImg from "@/assets/images/characters/miner.webp";
 import MichaelImg from "@/assets/images/characters/michael.webp";
 import kamakawiwoImg from "@/assets/images/characters/dojo-master.webp";
+import hugoImg from "@/assets/images/characters/hugo.webp";
 import { npcPokemons } from "./npcPokemons";
 
 const generateNpcPokemons = (name: string) => {
@@ -392,5 +393,13 @@ export const npcData = [
     pokemons: generateNpcPokemons("Kamakawiwo"),
     stadiumTrainer: false,
     img: kamakawiwoImg,
+  },
+  {
+    id: 42,
+    name: "Hugo",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: hugoImg,
   },
 ];

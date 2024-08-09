@@ -132,7 +132,7 @@ import ursaringBack from "@/assets/images/pokemons/backside/ursaring-back.webp";
 
 import ursalunaImg from "@/assets/images/pokemons/ursaluna.webp";
 import ursalunaIcon from "@/assets/images/pokemons/pokemon-icons/ursaring-icon.png";
-import ursalunaBack from "@/assets/images/pokemons/backside/ursaluna-back.jpg";
+import ursalunaBack from "@/assets/images/pokemons/backside/ursaluna-back.webp";
 
 import abraImg from "@/assets/images/pokemons/abra.webp";
 import abraIcon from "@/assets/images/pokemons/pokemon-icons/abra-icon.png";
@@ -304,9 +304,11 @@ import abomasnowIcon from "@/assets/images/pokemons/pokemon-icons/abomasnow-icon
 
 import galvantulaImg from "@/assets/images/pokemons/galvantula.webp";
 import galvantulaIcon from "@/assets/images/pokemons/pokemon-icons/galvantula-icon.png";
+import galvantulaBack from "@/assets/images/pokemons/backside/galvantula-back.webp";
 
 import joltikImg from "@/assets/images/pokemons/joltik.webp";
 import joltikIcon from "@/assets/images/pokemons/pokemon-icons/joltik-icon.png";
+import joltikBack from "@/assets/images/pokemons/backside/joltik-back.webp";
 
 import machampImg from "@/assets/images/pokemons/machamp.webp";
 import machampIcon from "@/assets/images/pokemons/pokemon-icons/machamp-icon.png";
@@ -428,6 +430,10 @@ export const pokemonBattleData = [
     expForKill: 10,
     evolutionLevels: [30, 50],
     evolutionChain: ["Bulbasaur", "Ivysaur", "Venusaur"],
+    evolution: {
+      level: 50,
+      name: "Venusaur",
+    },
   },
   {
     id: 3,
@@ -1887,7 +1893,7 @@ export const pokemonBattleData = [
     name: "Joltik",
     type: ["bug", "electric"],
     img: joltikImg,
-    imgBack: teddiursaBack,
+    imgBack: joltikBack,
     icon: joltikIcon,
     attacks: teddiursaAttacks,
     damage: 50,
@@ -1897,15 +1903,19 @@ export const pokemonBattleData = [
     energy: 15,
     expToLevel: 150,
     expForKill: 60,
-    evolutionLevels: [30, 50],
+    evolutionLevels: [30],
     evolutionChain: ["Joltik", "Galvantula"],
+    evolution: {
+      level: 3,
+      name: "Galvantula",
+    },
   },
   {
     id: 596,
     name: "Galvantula",
     type: ["bug", "electric"],
     img: galvantulaImg,
-    imgBack: teddiursaBack,
+    imgBack: galvantulaBack,
     icon: galvantulaIcon,
     attacks: teddiursaAttacks,
     damage: 80,
@@ -1915,8 +1925,13 @@ export const pokemonBattleData = [
     energy: 20,
     expToLevel: 250,
     expForKill: 150,
-    evolutionLevels: [30, 50],
+    evolutionLevels: [30],
     evolutionChain: ["Joltik", "Galvantula"],
+    // for testing will be removed
+    evolution: {
+      level: 3,
+      name: "Joltik",
+    },
   },
   {
     id: 66,
@@ -2005,6 +2020,10 @@ export const pokemonBattleData = [
     expForKill: 90,
     evolutionLevels: [30, 50],
     evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolution: {
+      level: 50,
+      name: "Shiftry",
+    },
   },
 
   {
@@ -2024,6 +2043,10 @@ export const pokemonBattleData = [
     expForKill: 50,
     evolutionLevels: [30, 50],
     evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolution: {
+      level: 30,
+      name: "Nuzleaf",
+    },
   },
   {
     id: 275,
