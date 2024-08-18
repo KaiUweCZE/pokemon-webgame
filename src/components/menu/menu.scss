@@ -446,6 +446,11 @@ a {
   &.twenty-fourth {
     grid-area: 14/24;
   }
+  &.twenty-fifth {
+    top: 0.3rem;
+    right: 0.15rem;
+    grid-area: 31/23;
+  }
 }
 
 .tag {

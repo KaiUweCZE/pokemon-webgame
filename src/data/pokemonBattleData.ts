@@ -10,6 +10,10 @@ import blastoiseImg from "@/assets/images/pokemons/blastoise.webp";
 import blastoiseIcon from "@/assets/images/pokemons/pokemon-icons/blastoise-icon.png";
 import blastoiseBack from "@/assets/images/pokemons/backside/blastoise-back.webp";
 
+import honedgeImg from "@/assets/images/pokemons/honedge.webp";
+import honedgeIcon from "@/assets/images/pokemons/pokemon-icons/honedge-icon.png";
+import honedgeBack from "@/assets/images/pokemons/backside/honedge-back.webp";
+
 import doubladeImg from "@/assets/images/pokemons/doublade.webp";
 import doubladeIcon from "@/assets/images/pokemons/pokemon-icons/doublade-icon.png";
 import doubladeBack from "@/assets/images/pokemons/backside/doublade-back.webp";
@@ -333,6 +337,50 @@ import shiftryIcon from "@/assets/images/pokemons/pokemon-icons/shiftry-icon.png
 
 import snoverImg from "@/assets/images/pokemons/snover.webp";
 import snoverIcon from "@/assets/images/pokemons/pokemon-icons/snover-icon.png";
+
+import rowletImg from "@/assets/images/pokemons/rowlet.webp";
+import rowletIcon from "@/assets/images/pokemons/pokemon-icons/rowlet-icon.gif";
+import rowletBack from "@/assets/images/pokemons/backside/rowlet-back.webp";
+
+import dartrixImg from "@/assets/images/pokemons/dartrix.webp";
+import dartrixIcon from "@/assets/images/pokemons/pokemon-icons/dartrix-icon.png";
+import dartrixBack from "@/assets/images/pokemons/backside/dartrix-back.webp";
+
+import decidueyeImg from "@/assets/images/pokemons/decidueye.webp";
+import decidueyeIcon from "@/assets/images/pokemons/pokemon-icons/decidueye-icon.png";
+import decidueyeBack from "@/assets/images/pokemons/backside/decidueye-back.webp";
+
+import dusclopsImg from "@/assets/images/pokemons/dusclops.webp";
+import dusclopsIcon from "@/assets/images/pokemons/pokemon-icons/dusclops-icon.png";
+import dusclopsBack from "@/assets/images/pokemons/backside/dusclops-back.webp";
+
+import dusknoirImg from "@/assets/images/pokemons/dusknoir.webp";
+import dusknoirIcon from "@/assets/images/pokemons/pokemon-icons/dusknoir-icon.png";
+import dusknoirBack from "@/assets/images/pokemons/backside/dusknoir-back.webp";
+
+import duskullImg from "@/assets/images/pokemons/duskull.webp";
+import duskullIcon from "@/assets/images/pokemons/pokemon-icons/duskull-icon.png";
+import duskullBack from "@/assets/images/pokemons/backside/duskull-back.webp";
+
+import hoothootImg from "@/assets/images/pokemons/hoothoot.webp";
+import hoothootIcon from "@/assets/images/pokemons/pokemon-icons/hoothoot-icon.png";
+import hoothootBack from "@/assets/images/pokemons/backside/hoothoot-back.webp";
+
+import noctowlImg from "@/assets/images/pokemons/noctowl.webp";
+import noctowlIcon from "@/assets/images/pokemons/pokemon-icons/noctowl-icon.png";
+import noctowlBack from "@/assets/images/pokemons/backside/noctowl-back.webp";
+
+import pidgeyImg from "@/assets/images/pokemons/pidgey.webp";
+import pidgeyIcon from "@/assets/images/pokemons/pokemon-icons/pidgey-icon.png";
+import pidgeyBack from "@/assets/images/pokemons/backside/pidgey-back.webp";
+
+import pidgeottoImg from "@/assets/images/pokemons/pidgeotto.webp";
+import pidgeottoIcon from "@/assets/images/pokemons/pokemon-icons/pidgeotto-icon.png";
+import pidgeottoBack from "@/assets/images/pokemons/backside/pidgeotto-back.webp";
+
+import pidgeotImg from "@/assets/images/pokemons/pidgeot.webp";
+import pidgeotIcon from "@/assets/images/pokemons/pokemon-icons/pidgeot-icon.png";
+import pidgeotBack from "@/assets/images/pokemons/backside/pidgeot-back.webp";
 
 import {
   abraAttacks,
@@ -938,6 +986,28 @@ export const pokemonBattleData = [
     evolutionLevels: [30, 50],
     evolutionChain: ["Pawniard", "Bisharp"],
   },
+  {
+    id: 680,
+    name: "Honedge",
+    img: honedgeImg,
+    imgBack: honedgeBack,
+    icon: honedgeIcon,
+    type: ["steel", "ghost"],
+    attacks: doubladeAttacks,
+    damage: 18,
+    defense: 24,
+    speed: 10,
+    hp: 14,
+    energy: 19,
+    expToLevel: 98,
+    expForKill: 9,
+    evolutionLevels: [30, 50],
+    evolutionChain: ["Honedge", "Doublade", "Aegislash"],
+    evolution: {
+      level: 30,
+      name: "Doublade",
+    },
+  },
 
   {
     id: 680,
@@ -1505,7 +1575,6 @@ export const pokemonBattleData = [
     evolutionLevels: [30, 50],
     evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
   },
-
   {
     id: 58,
     name: "Growlithe",
@@ -2049,6 +2118,28 @@ export const pokemonBattleData = [
     },
   },
   {
+    id: 274,
+    name: "Nuzleaf",
+    type: ["grass", "dark"],
+    img: nuzleafImg,
+    imgBack: teddiursaBack,
+    icon: nuzleafIcon,
+    attacks: teddiursaAttacks,
+    damage: 100,
+    defense: 60,
+    speed: 80,
+    hp: 90,
+    energy: 20,
+    expToLevel: 250,
+    expForKill: 150,
+    evolutionLevels: [30, 50],
+    evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolution: {
+      level: 50,
+      name: "Shiftry",
+    },
+  },
+  {
     id: 275,
     name: "Shiftry",
     type: ["grass", "dark"],
@@ -2065,5 +2156,213 @@ export const pokemonBattleData = [
     expForKill: 150,
     evolutionLevels: [30, 50],
     evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+  },
+
+  {
+    id: 722,
+    name: "Rowlet",
+    type: ["grass", "flying"],
+    img: rowletImg,
+    imgBack: rowletBack,
+    icon: rowletIcon,
+    attacks: eeveeAttacks,
+    damage: 55,
+    defense: 55,
+    speed: 42,
+    hp: 68,
+    energy: 15,
+    expToLevel: 50,
+    expForKill: 50,
+    evolutionLevels: [17, 34],
+    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+  },
+  {
+    id: 723,
+    name: "Dartrix",
+    type: ["grass", "flying"],
+    img: dartrixImg,
+    imgBack: dartrixBack,
+    icon: dartrixIcon,
+    attacks: eeveeAttacks,
+    damage: 55,
+    defense: 55,
+    speed: 52,
+    hp: 78,
+    energy: 22,
+    expToLevel: 100,
+    expForKill: 62,
+    evolutionLevels: [17, 34],
+    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+  },
+
+  {
+    id: 724,
+    name: "Decidueye",
+    type: ["grass", "ghost"],
+    img: decidueyeImg,
+    imgBack: decidueyeBack,
+    icon: decidueyeIcon,
+    attacks: eeveeAttacks,
+    damage: 107,
+    defense: 75,
+    speed: 70,
+    hp: 78,
+    energy: 22,
+    expToLevel: 300,
+    expForKill: 240,
+    evolutionLevels: [34],
+    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+  },
+
+  {
+    id: 356,
+    name: "Dusclops",
+    type: ["ghost"],
+    img: dusclopsImg,
+    imgBack: dusclopsBack,
+    icon: dusclopsIcon,
+    attacks: eeveeAttacks,
+    damage: 70,
+    defense: 130,
+    speed: 25,
+    hp: 40,
+    energy: 15,
+    expToLevel: 90,
+    expForKill: 90,
+    evolutionLevels: [37, 55],
+    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+  },
+
+  {
+    id: 477,
+    name: "Dusknoir",
+    type: ["ghost"],
+    img: dusknoirImg,
+    imgBack: dusknoirBack,
+    icon: dusknoirIcon,
+    attacks: eeveeAttacks,
+    damage: 100,
+    defense: 135,
+    speed: 45,
+    hp: 45,
+    energy: 20,
+    expToLevel: 150,
+    expForKill: 120,
+    evolutionLevels: [55],
+    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+  },
+
+  {
+    id: 355,
+    name: "Duskull",
+    type: ["ghost"],
+    img: duskullImg,
+    imgBack: duskullBack,
+    icon: duskullIcon,
+    attacks: eeveeAttacks,
+    damage: 40,
+    defense: 90,
+    speed: 25,
+    hp: 20,
+    energy: 10,
+    expToLevel: 60,
+    expForKill: 60,
+    evolutionLevels: [37, 55],
+    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+  },
+
+  {
+    id: 163,
+    name: "Hoothoot",
+    type: ["normal", "flying"],
+    img: hoothootImg,
+    imgBack: hoothootBack,
+    icon: hoothootIcon,
+    attacks: eeveeAttacks,
+    damage: 30,
+    defense: 30,
+    speed: 50,
+    hp: 60,
+    energy: 12,
+    expToLevel: 70,
+    expForKill: 52,
+    evolutionLevels: [20],
+    evolutionChain: ["Hoothoot", "Noctowl"],
+  },
+
+  {
+    id: 164,
+    name: "Noctowl",
+    type: ["normal", "flying"],
+    img: noctowlImg,
+    imgBack: noctowlBack,
+    icon: noctowlIcon,
+    attacks: eeveeAttacks,
+    damage: 50,
+    defense: 50,
+    speed: 70,
+    hp: 100,
+    energy: 15,
+    expToLevel: 150,
+    expForKill: 120,
+    evolutionLevels: [],
+    evolutionChain: ["Hoothoot", "Noctowl"],
+  },
+
+  {
+    id: 16,
+    name: "Pidgey",
+    type: ["normal", "flying"],
+    img: pidgeyImg,
+    imgBack: pidgeyBack,
+    icon: pidgeyIcon,
+    attacks: eeveeAttacks,
+    damage: 45,
+    defense: 40,
+    speed: 56,
+    hp: 40,
+    energy: 10,
+    expToLevel: 50,
+    expForKill: 50,
+    evolutionLevels: [18, 36],
+    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+  },
+
+  {
+    id: 17,
+    name: "Pidgeotto",
+    type: ["normal", "flying"],
+    img: pidgeottoImg,
+    imgBack: pidgeottoBack,
+    icon: pidgeottoIcon,
+    attacks: eeveeAttacks,
+    damage: 60,
+    defense: 55,
+    speed: 71,
+    hp: 63,
+    energy: 15,
+    expToLevel: 100,
+    expForKill: 100,
+    evolutionLevels: [36],
+    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+  },
+
+  {
+    id: 18,
+    name: "Pidgeot",
+    type: ["normal", "flying"],
+    img: pidgeotImg,
+    imgBack: pidgeotBack,
+    icon: pidgeotIcon,
+    attacks: eeveeAttacks,
+    damage: 80,
+    defense: 75,
+    speed: 101,
+    hp: 83,
+    energy: 20,
+    expToLevel: 150,
+    expForKill: 150,
+    evolutionLevels: [],
+    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
   },
 ];

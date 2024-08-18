@@ -25,7 +25,7 @@ import judeImg from "@/assets/images/characters/jude.webp";
 import kaliImg from "@/assets/images/characters/kali.webp";
 import kungImg from "@/assets/images/characters/kung.webp";
 import macImg from "@/assets/images/characters/mac.webp";
-import makatAIImg from "@/assets/images/characters/makatai.webp";
+import makataiImg from "@/assets/images/characters/makatai.webp";
 import nanaImg from "@/assets/images/characters/nana.webp";
 import pepeImg from "@/assets/images/characters/pepe.webp";
 import princessImg from "@/assets/images/characters/princess.webp";
@@ -42,7 +42,20 @@ import TomImg from "@/assets/images/characters/miner.webp";
 import MichaelImg from "@/assets/images/characters/michael.webp";
 import kamakawiwoImg from "@/assets/images/characters/dojo-master.webp";
 import hugoImg from "@/assets/images/characters/hugo.webp";
+import jasminImg from "@/assets/images/characters/jasmin.webp";
+import giovanniImg from "@/assets/images/characters/giovanni.webp";
+import joeyImg from "@/assets/images/characters/joey.webp";
+import morrisImg from "@/assets/images/characters/morris.webp";
+import tooteeImg from "@/assets/images/characters/tootee.webp";
+import stuartImg from "@/assets/images/characters/stue.webp";
+import daoxuanImg from "@/assets/images/characters/daoxuan.webp";
+import shamanImg from "@/assets/images/characters/shaman.webp";
+import kawuImg from "@/assets/images/characters/kawu.webp";
+import rebeccaImg from "@/assets/images/characters/rebecca.webp";
+import hughImg from "@/assets/images/characters/hugh.webp";
+
 import { npcPokemons } from "./npcPokemons";
+import { raphaelPokemons } from "./npcPokemon/raphaelPokemons";
 
 const generateNpcPokemons = (name: string) => {
   const data = npcPokemons.find((npc) => npc.id === name);
@@ -63,7 +76,7 @@ export const npcData = [
     name: "Amendsen",
     message: "It's a beautiful day for an adventure, isn't it?",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: amendsenImg,
   },
   {
@@ -87,7 +100,7 @@ export const npcData = [
     name: "Barbagoose",
     message: "The forest is full of secrets. Will you uncover them all?",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: barbagooseImg,
   },
   {
@@ -140,10 +153,10 @@ export const npcData = [
   },
   {
     id: 11,
-    name: "Donchato",
+    name: "Don Chatot",
     message: "Strategy is key to winning battles. Plan ahead.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: donchatotImg,
   },
   {
@@ -167,7 +180,7 @@ export const npcData = [
     name: "Geronimo",
     message: "Bravery is not the absence of fear, but the triumph over it.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: geronimoImg,
   },
   {
@@ -199,7 +212,7 @@ export const npcData = [
     name: "Heath",
     message: "Knowledge is power. Never stop learning.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: heathImg,
   },
   {
@@ -215,7 +228,7 @@ export const npcData = [
     name: "Isabella",
     message: "Magic is real if you believe in it.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: isabellaImg,
   },
   {
@@ -247,7 +260,7 @@ export const npcData = [
     name: "Kali",
     message: "Dance like no one is watching.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: kaliImg,
   },
   {
@@ -268,11 +281,11 @@ export const npcData = [
   },
   {
     id: 27,
-    name: "MakatAI",
+    name: "Makatai",
     message: "Technology can be your greatest ally.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
     stadiumTrainer: false,
-    img: makatAIImg,
+    img: makataiImg,
   },
   {
     id: 28,
@@ -295,7 +308,7 @@ export const npcData = [
     name: "Princess",
     message: "Kindness is a virtue that everyone should embrace.",
     pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    stadiumTrainer: true,
     img: princessImg,
   },
   {
@@ -310,8 +323,8 @@ export const npcData = [
     id: 32,
     name: "Raphael",
     message: "Art is the expression of the soul.",
-    pokemons: generateNpcPokemons("Kamakawiwo"),
-    stadiumTrainer: false,
+    pokemons: raphaelPokemons.pokemons,
+    stadiumTrainer: true,
     img: raphaelImg,
   },
   {
@@ -401,5 +414,93 @@ export const npcData = [
     pokemons: generateNpcPokemons("Kamakawiwo"),
     stadiumTrainer: false,
     img: hugoImg,
+  },
+  {
+    id: 43,
+    name: "Jasmin",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: jasminImg,
+  },
+  {
+    id: 44,
+    name: "Stuart",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: stuartImg,
+  },
+  {
+    id: 45,
+    name: "Morris",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: morrisImg,
+  },
+  {
+    id: 46,
+    name: "Joey",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: joeyImg,
+  },
+  {
+    id: 47,
+    name: "Giovanni",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: giovanniImg,
+  },
+  {
+    id: 48,
+    name: "Tootee",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: tooteeImg,
+  },
+  {
+    id: 49,
+    name: "Rebecca",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: true,
+    img: rebeccaImg,
+  },
+  {
+    id: 50,
+    name: "Kawu",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: kawuImg,
+  },
+  {
+    id: 51,
+    name: "Daoxuan",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: daoxuanImg,
+  },
+  {
+    id: 52,
+    name: "Shaman",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: shamanImg,
+  },
+  {
+    id: 52,
+    name: "Hugh",
+    message: "Hey",
+    pokemons: generateNpcPokemons("Kamakawiwo"),
+    stadiumTrainer: false,
+    img: hughImg,
   },
 ];

@@ -216,6 +216,15 @@ const MapInMenu = ({ location }: LocationProps) => {
       >
         <span className="tag">futurome</span>
       </div>
+      <div
+        className={
+          location === "southam"
+            ? "map-item twenty-fifth active"
+            : "map-item twenty-fifth"
+        }
+      >
+        <span className="tag">southam</span>
+      </div>
     </div>
   );
 };

@@ -509,6 +509,11 @@ a {
 .map-item.twenty-fourth {
   grid-area: 14/24;
 }
+.map-item.twenty-fifth {
+  top: 0.3rem;
+  right: 0.15rem;
+  grid-area: 31/23;
+}
 
 .tag {
   display: none;

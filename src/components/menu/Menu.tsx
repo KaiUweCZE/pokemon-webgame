@@ -6,6 +6,7 @@ import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/contexts/UserContext";
+import path from "path";
 
 const Menu = () => {
   const { data, status } = useSession();
@@ -27,11 +28,18 @@ const Menu = () => {
         <nav className="navigation">
           <ul className="menu">
             {!context?.isLog && (
-              <MenuItem
-                name="Home"
-                link="/"
-                active={pathname === "/" ? true : false}
-              />
+              <>
+                <MenuItem
+                  name="Home"
+                  link="/"
+                  active={pathname === "/" ? true : false}
+                />
+                <MenuItem
+                  name="Info"
+                  link="/info"
+                  active={pathname === "/info" ? true : false}
+                />
+              </>
             )}
             {context?.isLog && (
               <>
@@ -44,6 +52,11 @@ const Menu = () => {
                   name="Map"
                   link="/map"
                   active={pathname === "/map" ? true : false}
+                />
+                <MenuItem
+                  name="Info"
+                  link="/info"
+                  active={pathname === "/info" ? true : false}
                 />
               </>
             )}

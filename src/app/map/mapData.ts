@@ -22,6 +22,7 @@ import waterfallsImg from "@/assets/images/countires/waterfalls.webp";
 import yummyImg from "@/assets/images/countires/yummy.webp";
 import largeFarmImg from "@/assets/images/countires/large-farm.webp";
 import safariImg from "@/assets/images/countires/safari.webp";
+import southamImg from "@/assets/images/countires/southam.webp";
 
 export const mapData = [
   {
@@ -108,7 +109,7 @@ export const mapData = [
     options: ["Routes", "NPC", "Battle"],
     npcs: ["Samuel", "Wee", "Miner Tom"],
     marketItems: ["pokeball", "potion"],
-    routes: ["large farm", "cave", "bridge"],
+    routes: ["large farm", "cave", "bridge", "southam"],
     img: gmountainImg,
     rounds: [
       {
@@ -145,7 +146,7 @@ export const mapData = [
     options: ["Routes", "NPC", "Battle"],
     npcs: ["Samuel", "Wee", "Miner Tom"],
     marketItems: ["pokeball", "potion"],
-    routes: ["mountains", "large farm"],
+    routes: ["mountains", "large farm", "southam"],
     img: caveImg,
     rounds: [
       {
@@ -889,6 +890,43 @@ export const mapData = [
     marketItems: ["pokeball", "potion"],
     routes: ["waterfalls", "willy's barn", "lake"],
     img: futuromeImg,
+    rounds: [
+      {
+        id: 0,
+        pokemons: [5, 6],
+        levelRange: [5, 10],
+      },
+      {
+        id: 1,
+        pokemons: [3, 5, 6],
+        levelRange: [11, 20],
+      },
+      {
+        id: 2,
+        pokemons: [2, 4, 1],
+        levelRange: [21, 30],
+      },
+      {
+        id: 3,
+        pokemons: [1, 3],
+        levelRange: [31, 40],
+      },
+    ],
+    fight: true,
+    completePokemonList: [],
+  },
+  {
+    id: 24,
+    name: "southam",
+    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, eum.
+        Facilis repudiandae corporis ad rem doloribus cumque, praesentium
+        aliquid provident minima quis odio! Voluptates exercitationem sequi illo
+        repellendus? Est, fuga.`,
+    options: ["Routes", "Market", "Poke Centrum", "NPC", "Battle"],
+    npcs: ["Sheriff", "Raphael", "Wee"],
+    marketItems: ["pokeball", "potion"],
+    routes: ["cave", "mountains"],
+    img: southamImg,
     rounds: [
       {
         id: 0,

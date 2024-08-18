@@ -1,0 +1,43 @@
+.wrapper-info {
+  display: grid;
+}
+
+.container-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: rgb(240, 235, 225);
+  max-width: 80rem;
+  margin: 0 auto;
+  color: #303030;
+  scroll-behavior: smooth;
+}
+
+.navigation-info {
+  display: grid;
+}
+
+.menu-info {
+  display: grid;
+  grid-auto-flow: column;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 8px rgb(158, 158, 158);
+}
+
+.base-info {
+  display: grid;
+  padding-inline: 1rem;
+  line-height: 1.75rem;
+  margin-top: 1rem;
+}
+.base-info article {
+  margin-bottom: 1rem;
+}
+
+.info-item {
+  cursor: pointer;
+}
+
+.info-list {
+  list-style: disc;
+  list-style-position: inside;
+}/*# sourceMappingURL=info-style.css.map */
