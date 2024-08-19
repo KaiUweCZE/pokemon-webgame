@@ -5,6 +5,7 @@ import { getExp } from "@/utils/battle-function/getExp";
 import { addExp } from "@/utils/addExp";
 import { Item } from "@/types/item";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
 /**
  * Custom hook to manage the battle state and logic.
@@ -20,7 +21,7 @@ const useBattle = () => {
   // state to track changes in the battle
   const [change, setChange] = useState(0);
   // state to track the user's menu choice
-  const [menuChoice, setMenuChoice] = useState("");
+  const [menuChoice, setMenuChoice] = useState<BattleMenu>(BattleMenu.DEFAULT);
   // display user's dame for a while
   const [animationTime, setAnimationTime] = useState(false);
   const [newLevel, setNewLevel] = useState(true);
@@ -91,7 +92,7 @@ const useBattle = () => {
       });
       setExp(newExp);
 
-      setMenuChoice("");
+      setMenuChoice(BattleMenu.DEFAULT);
 
       if (newExp && currentPokemon) {
         addExp({ pokemonId: currentPokemon.id, newExps: newExp }).then(

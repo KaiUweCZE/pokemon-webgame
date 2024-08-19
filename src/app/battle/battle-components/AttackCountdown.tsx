@@ -13,19 +13,26 @@ const AttackCountdown = ({ time, setTime }: CountdownProps) => {
   }, [time]);
 
   useEffect(() => {
+    if (actualTime <= 0) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setActualTime((prev) => {
-        if (prev <= 0) {
-          setTime(0);
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 0.1;
+        const newTime = Math.max(prev - 0.1, 0);
+        return newTime;
       });
     }, 100);
 
     return () => clearInterval(interval);
-  }, [setTime]);
+  }, [actualTime]);
+
+  useEffect(() => {
+    if (actualTime !== time) {
+      setTime(actualTime);
+    }
+  }, [actualTime, setTime, time]);
+
   return (
     <li className="countdown">
       <span>{actualTime >= 0 ? actualTime.toFixed(1) : 0}</span>

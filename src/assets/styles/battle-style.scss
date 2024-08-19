@@ -8,6 +8,19 @@ $bg-battle: #7576b3;
 $bg-battle-secondary: $pale-indigo;
 $font-color: white;
 
+@mixin battle-menu-button {
+  box-shadow: 0px 2px 4px 0px rgba(58, 58, 58, 0.24);
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+  border: none;
+  background-color: #7576b3;
+  transition: 0.4s;
+  &:hover {
+    background-color: darken(#7576b3, 10);
+    box-shadow: inset 1px 1px 1px grey;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15) inset;
+  }
+}
+
 .container-battlefield {
   display: grid;
   //grid-template-columns: 1fr 1fr;
@@ -55,6 +68,7 @@ $font-color: white;
     height: 100%;
     width: 100%;
     grid-template-columns: 1fr 1fr;
+    gap: 0.1rem;
     place-items: center;
     place-self: end end;
     background-color: $new-light;
@@ -96,6 +110,13 @@ $font-color: white;
       opacity: 0;
       transition: 0.3s;
     }
+  }
+  button {
+    @include battle-menu-button();
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+    font-size: 1.25rem;
   }
 }
 
@@ -170,6 +191,13 @@ $font-color: white;
     margin-top: 2rem;
     border-left: 2px solid gray;
   }
+}
+
+.opponent-attack {
+  position: absolute;
+  place-self: end start;
+  left: 12%;
+  z-index: 1;
 }
 
 .oponent-pokemon {
@@ -335,6 +363,18 @@ $font-color: white;
   &.addons {
     grid-row: 3;
   }
+  button {
+    @include battle-menu-button();
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  button:disabled {
+    color: rgba(255, 255, 255, 0.514);
+    box-shadow: 0 0 0 transparent;
+  }
 }
 
 .switch-box {
@@ -416,8 +456,18 @@ $font-color: white;
     margin-top: 0.2rem;
     gap: 0.5rem;
   }
+  li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.25rem;
+    font-weight: bold;
+  }
   .button-primary {
+    grid-column: 2;
+    place-self: end;
     background-color: darken(#f3c564, 20);
+    padding-inline: 0.5rem;
+    padding-block: 0.1rem;
     &:hover {
       background-color: #f3c564;
     }

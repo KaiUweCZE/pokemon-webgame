@@ -6,15 +6,16 @@ import BoxAttacks from "./BoxAttacks";
 import UserBattleMenu from "./UserBattleMenu";
 import SwitchBox from "./SwitchBox";
 import BattleBag from "./BattleBag";
-import useBattle from "@/hooks/useBattle";
+import useBattle from "@/app/battle/hooks/useBattle";
 import useNewLevel from "@/hooks/useNewLevel";
 import NewLevel from "./NewLevel";
 import BattleText from "./BattleText";
 import { Dispatch, SetStateAction } from "react";
-import useEnemyBattle from "@/hooks/useEnemyBattle";
+import useEnemyBattle from "../hooks/useEnemyBattle";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import useReward from "@/hooks/useReward";
+import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
 interface BattlefieldProps {
   round: number;
@@ -64,7 +65,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
         />
       );
     }
-    if (menuChoice === "fight") {
+    if (menuChoice === BattleMenu.FIGHT) {
       return null;
     }
     return (
@@ -90,17 +91,19 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
       {currentPokemon && (
         <div className="user-battle">
           {getBattleText()}
-          {menuChoice === "fight" && !isCatching?.isSucces && (
+          {menuChoice === BattleMenu.FIGHT && !isCatching?.isSucces && (
             <BoxAttacks
               userPokemon={currentPokemon}
               setDamage={setDamage}
               setChange={setChange}
             />
           )}
-          {menuChoice === "switch" && (
+          {menuChoice === BattleMenu.SWITCH && (
             <SwitchBox setMenuChoice={setMenuChoice} />
           )}
-          {menuChoice === "bag" && <BattleBag setMenuChoice={setMenuChoice} />}
+          {menuChoice === BattleMenu.BAG && (
+            <BattleBag setMenuChoice={setMenuChoice} />
+          )}
           <UserBattleMenu setMenuChoice={setMenuChoice} />
           {newLevel && <NewLevel pokemon={currentPokemon} />}
         </div>

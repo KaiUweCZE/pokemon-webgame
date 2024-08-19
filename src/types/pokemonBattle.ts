@@ -1,3 +1,5 @@
+import { Attack } from "./attack";
+
 export interface PokemonBattle {
   name: string;
   type: string[];

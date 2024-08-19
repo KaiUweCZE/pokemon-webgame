@@ -33,7 +33,7 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
       case "Market":
         return <Market location={location} />;
 
-      case "Battle":
+      case "Explore":
         return <EnemyPokemonsInLocation location={location} />;
 
       default:

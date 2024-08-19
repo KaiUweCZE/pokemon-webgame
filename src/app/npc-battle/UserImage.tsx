@@ -12,14 +12,14 @@ interface UserImageProps {
 }
 
 const UserImage = ({ img }: UserImageProps) => {
-  const contextPokemon = useContext(PokemonContext);
+  const pokemonContext = useContext(PokemonContext);
   const context = useContext(NpcBattleContext);
   useLoadSixToContext();
 
-  if (!contextPokemon) return null;
+  if (!pokemonContext) return null;
 
-  const pokemon = contextPokemon.currentPokemon;
-  const pokemons = contextPokemon.pokemonsFromSix;
+  const pokemon = pokemonContext.currentPokemon;
+  const pokemons = pokemonContext.pokemonsFromSix;
   const pokemonImg = pokemon ? generatePokemonImageBack(pokemon.name) : null;
 
   return (
@@ -33,6 +33,14 @@ const UserImage = ({ img }: UserImageProps) => {
         <Image className="user-image" src={img} alt="back" height={170} />
       ) : (
         <>
+          {context.oponentAttackAnimation && context.oponentAttack && (
+            <Image
+              className="opponent-attack"
+              src={context.oponentAttack.img}
+              alt="opponent attack animation"
+              height={150}
+            />
+          )}
           {pokemonImg && (
             <Image
               className="user-image"

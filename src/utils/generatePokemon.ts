@@ -1,5 +1,10 @@
 import { pokemonBattleData } from "@/data/pokemonBattleData";
 import { generatePokemonsRate } from "./generatePokemonsRate";
+import { calculateStat } from "./calculateStat";
+import {
+  generateMoves,
+  generateMovesName,
+} from "./battle-function/generateMoves";
 
 /**
  * Generates a random number within the specified range.
@@ -13,42 +18,33 @@ export const randomLevel = (levelRange: number[]) => {
 
 export const generatePokemon = (pokemonId: number, levelRange: number[]) => {
   const data = pokemonBattleData.find((pokemon) => pokemon.id === pokemonId);
-  const level = randomLevel(levelRange);
-  console.log("data: ", data);
-  console.log("level: ", level);
-
-  // generate pokemon's potentional, each ability can be in range 0.5 - 1.5
-  const { hpRate, defenseRate, speedRate, dmgRate, energyRate } =
-    generatePokemonsRate();
 
   if (!data) {
     throw new Error(`pokemon not found ${pokemonId}`);
   }
+
+  const level = randomLevel(levelRange);
+  // generate pokemon's potentional, each ability can be in range 0.5 - 1.5
+  const { hpRate, defenseRate, speedRate, dmgRate, energyRate } =
+    generatePokemonsRate();
+
+  const hp = calculateStat(data.hp, level, hpRate);
+  const energy = calculateStat(data.energy, level, energyRate);
 
   const pokemon = {
     //...data,
     name: data.name,
     type: data.type,
     level: level,
-    damage: parseFloat(
-      (data.damage * Math.pow(1.05, level) * dmgRate).toFixed(2)
-    ),
-    hp: parseFloat((data.hp * Math.pow(1.05, level) * hpRate).toFixed(2)),
-    actualHp: parseFloat((data.hp * Math.pow(1.05, level) * hpRate).toFixed(2)),
-    defense: parseFloat(
-      (data.defense * Math.pow(1.05, level) * defenseRate).toFixed(2)
-    ),
-    speed: parseFloat(
-      (data.speed * Math.pow(1.05, level) * speedRate).toFixed(2)
-    ),
-    energy: parseFloat(
-      (data.energy * Math.pow(1.05, level) * energyRate).toFixed(2)
-    ),
-    actualEnergy: parseFloat(
-      (data.energy * Math.pow(1.05, level) * energyRate).toFixed(2)
-    ),
-    attacks: ["tackle"],
-    abilities: [],
+    damage: calculateStat(data.damage, level, dmgRate),
+    hp: hp,
+    actualHp: hp,
+    defense: calculateStat(data.defense, level, defenseRate),
+    speed: calculateStat(data.speed, level, speedRate),
+    energy: energy,
+    actualEnergy: energy,
+    attacks: generateMovesName(data.name, level),
+    abilities: [], // will be empty array or random
     expToLevel: data.expToLevel * level,
     expForKill: Math.ceil(data.expForKill * Math.pow(1.5, level)),
   };

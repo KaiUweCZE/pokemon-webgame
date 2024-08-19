@@ -2,7 +2,7 @@
 import Battlefield from "@/app/battle/battle-components/Battlefield";
 import { useSession } from "next-auth/react";
 import { mapData } from "../map/mapData";
-import useStartBattle from "@/hooks/useStartBattle";
+import useStartBattle from "./hooks/useStartBattle";
 import { useState } from "react";
 import { RoundProvider } from "./RoundContext";
 import { EnemyProvider } from "./EnemyContext";

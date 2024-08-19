@@ -3,8 +3,13 @@ import pokeballIcon from "@/assets/images/icons/pokeball.png";
 import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 
+interface PokemonBar {
+  name: string;
+  actualHp: number;
+}
+
 interface PokemonsBarProps {
-  pokemons: PokemonBattle[];
+  pokemons: PokemonBar[];
 }
 
 const PokemonsBar = ({ pokemons }: PokemonsBarProps) => {

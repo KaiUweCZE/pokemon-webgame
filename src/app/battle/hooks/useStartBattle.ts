@@ -2,6 +2,7 @@
 import { mapData } from "@/app/map/mapData";
 import { BattleContext } from "@/contexts/BattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { randomNumber } from "@/utils/battle-function/randomPokemon";
 import { generatePokemon } from "@/utils/generatePokemon";

@@ -4,6 +4,7 @@ import grassImg from "@/assets/images/attacks/leaf.webp";
 import waterImg from "@/assets/images/attacks/water.webp";
 import psychoImg from "@/assets/images/attacks/psycho.webp";
 import biteImg from "@/assets/images/attacks/fang3.webp";
+import fireImg from "@/assets/images/attacks/fire.gif";
 
 export const attacksData = [
   {
@@ -108,7 +109,7 @@ export const attacksData = [
     damage: 4,
     energyCost: 2,
     recoveryTime: 3,
-    img: normalImg,
+    img: fireImg,
   },
   {
     name: "flame wheel",

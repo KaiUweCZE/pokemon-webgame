@@ -7,6 +7,8 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import { useContext, useEffect } from "react";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import useChangeOponentPokemon from "./hooks/useChangeOponentPokemon";
+import { Oponent } from "@/types/oponent";
+import { oponentPokemon } from "@/data/npcPokemons";
 
 interface BattlefieldProps {
   name: string;
@@ -16,6 +18,7 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
   const context = useContext(NpcBattleContext);
   const contextPokemon = useContext(PokemonContext);
   const oponentData = npcData.find((npc) => npc.name === name);
+
   const handleCheck = () => {
     console.log("oponent: ", oponentData, context);
     console.log("oponents pokemon: ", context?.oponentPokemons);
@@ -26,7 +29,12 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
   useChangeOponentPokemon();
   useEffect(() => {
     if (oponentData) {
-      context?.setOponent(oponentData);
+      // change type of oponentData to Oponent
+      const typedOponentData: Oponent = {
+        ...oponentData,
+        pokemons: oponentData.pokemons as oponentPokemon[],
+      };
+      context?.setOponent(typedOponentData);
     }
     if (!contextPokemon?.currentPokemon) {
       contextPokemon?.setCurrentPokemon(contextPokemon.pokemonsFromSix[0]);

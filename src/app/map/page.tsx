@@ -26,7 +26,7 @@ const MapPage = () => {
 
   const locationData = mapData.find((data) => data.name === location);
 
-  const imageLoader: ImageLoader = ({ src, width, quality }) => {
+  /*const imageLoader: ImageLoader = ({ src, width, quality }) => {
     console.log("loader is running", { src, width, quality });
 
     const baseUrl = src || placeholderImg.src;
@@ -44,7 +44,7 @@ const MapPage = () => {
     console.log("url.search: ", url.search);
 
     return url.toString();
-  };
+  };*/
 
   return (
     <main className="container-map">
@@ -60,8 +60,8 @@ const MapPage = () => {
           placeholder="blur"
           blurDataURL={placeholderImg.blurDataURL}
           quality={15}
-          loader={imageLoader}
-          onLoad={(e) => console.log("done!", e.target)}
+          //loader={imageLoader}
+          //onLoad={(e) => console.log("done!", e.target)}
           //onLoad={}
         />
       )}

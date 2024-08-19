@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NpcBattleContext } from "./NpcBattleContext";
 import { randomOponentPokemon } from "./npc-utils/randomOponentPokemon";
+import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
 const NpcBattleText = () => {
   const context = useContext(NpcBattleContext);
@@ -8,6 +9,7 @@ const NpcBattleText = () => {
   const handleStartBattle = () => {
     if (context?.oponentPokemons?.length) {
       context?.setStartBattle(true);
+      context.setMenuOption(BattleMenu.FIGHT);
       const number = randomOponentPokemon(context?.oponentPokemons?.length);
       context.setCurrentOponentPokemon(context.oponentPokemons[number]);
     }

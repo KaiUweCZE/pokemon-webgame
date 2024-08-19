@@ -56,6 +56,7 @@ import hughImg from "@/assets/images/characters/hugh.webp";
 
 import { npcPokemons } from "./npcPokemons";
 import { raphaelPokemons } from "./npcPokemon/raphaelPokemons";
+import { sheriffPokemons } from "./npcPokemon/sheriffPokemon";
 
 const generateNpcPokemons = (name: string) => {
   const data = npcPokemons.find((npc) => npc.id === name);
@@ -347,7 +348,7 @@ export const npcData = [
     id: 35,
     name: "Sheriff",
     message: "Law and order must be maintained.",
-    pokemons: generateNpcPokemons("Kamakawiwo"),
+    pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
     img: sheriffImg,
   },

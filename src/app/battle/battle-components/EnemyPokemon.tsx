@@ -4,11 +4,7 @@ import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import { useContext, useEffect } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
-import pokeball from "@/assets/images/icons/pokeball.webp";
 import Pokeball from "@/components/Pokeball";
-import flame from "@/assets/images/attacks/thunder.webp";
-import { EnemyContext } from "../EnemyContext";
-import useEnemyBattle from "@/hooks/useEnemyBattle";
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;

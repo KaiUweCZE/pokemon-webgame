@@ -5,6 +5,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useMemo,
   useState,
 } from "react";
 
@@ -21,6 +22,8 @@ export interface PokemonContextType {
   setPokemonsFromSix: Dispatch<SetStateAction<Pokemon[]>>;
   isEvolved: boolean;
   setIsEvolved: Dispatch<SetStateAction<boolean>>;
+  isCombatReady: boolean;
+  //setIsCombatReady: Dispatch<SetStateAction<boolean>>;
 }
 
 export const PokemonContext = createContext<PokemonContextType | undefined>(
@@ -32,11 +35,17 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | null>(null);
   const [pokemonsFromSix, setPokemonsFromSix] = useState<Pokemon[]>([]);
   const [isEvolved, setIsEvolved] = useState(false);
+  //const [isCombatReady, setIsCombatReady] = useState(false);
+
+  const isCombatReady = useMemo(() => {
+    return pokemonsFromSix.some((pokemon) => pokemon.actualHp > 0);
+  }, [pokemonsFromSix]);
+
   if (pokemonsFromSix?.length >= 6) {
     console.log("you cannot add next pokemon");
   }
 
-  const contextValues = {
+  const contextValues: PokemonContextType = {
     userPokemons,
     setUserPokemons,
     currentPokemon,
@@ -45,6 +54,8 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     setPokemonsFromSix,
     isEvolved,
     setIsEvolved,
+    isCombatReady,
+    //setIsCombatReady,
   };
   return (
     <PokemonContext.Provider value={contextValues}>

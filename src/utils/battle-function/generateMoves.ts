@@ -21,3 +21,25 @@ export const generateMoves = (pokemonName: string, pokemonLevel: number) => {
 
   return moves;
 };
+
+export const generateMovesName = (
+  pokemonName: string,
+  pokemonLevel: number
+): string[] => {
+  // get data about enemy pokemon
+  const pokemon = pokemonBattleData.find((p) => p.name === pokemonName);
+
+  console.log("pokemon from generateMoves", pokemon);
+
+  // get string array of it's attacks
+
+  const movesArray = pokemon?.attacks?.find(
+    (attack) => 10 >= attack.level - pokemonLevel
+  )?.attacks;
+
+  if (!movesArray) {
+    return [];
+  }
+
+  return movesArray;
+};

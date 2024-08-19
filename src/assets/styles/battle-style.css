@@ -41,6 +41,7 @@
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr 1fr;
+  gap: 0.1rem;
   place-items: center;
   place-self: end end;
   background-color: #b4a5c6;
@@ -81,6 +82,22 @@
           clip-path: polygon(50% 0%, 100% 50%, 50% 100%);
   opacity: 0;
   transition: 0.3s;
+}
+.user-battle-menu button {
+  box-shadow: 0px 2px 4px 0px rgba(58, 58, 58, 0.24);
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+  border: none;
+  background-color: #7576b3;
+  transition: 0.4s;
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+  font-size: 1.25rem;
+}
+.user-battle-menu button:hover {
+  background-color: #57589e;
+  box-shadow: inset 1px 1px 1px grey;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15) inset;
 }
 
 .user-pokemon {
@@ -174,6 +191,13 @@
   direction: rtl;
   margin-top: 2rem;
   border-left: 2px solid gray;
+}
+
+.opponent-attack {
+  position: absolute;
+  place-self: end start;
+  left: 12%;
+  z-index: 1;
 }
 
 .oponent-pokemon {
@@ -337,6 +361,27 @@
 .attack-item.addons {
   grid-row: 3;
 }
+.attack-item button {
+  box-shadow: 0px 2px 4px 0px rgba(58, 58, 58, 0.24);
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+  border: none;
+  background-color: #7576b3;
+  transition: 0.4s;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.attack-item button:hover {
+  background-color: #57589e;
+  box-shadow: inset 1px 1px 1px grey;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15) inset;
+}
+.attack-item button:disabled {
+  color: rgba(255, 255, 255, 0.514);
+  box-shadow: 0 0 0 transparent;
+}
 
 .switch-box {
   display: grid;
@@ -420,8 +465,18 @@
   margin-top: 0.2rem;
   gap: 0.5rem;
 }
+.battle-bag li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.25rem;
+  font-weight: bold;
+}
 .battle-bag .button-primary {
+  grid-column: 2;
+  place-self: end;
   background-color: #e09d11;
+  padding-inline: 0.5rem;
+  padding-block: 0.1rem;
 }
 .battle-bag .button-primary:hover {
   background-color: #f3c564;

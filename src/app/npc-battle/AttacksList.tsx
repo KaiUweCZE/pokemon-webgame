@@ -4,6 +4,7 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import { attacksData } from "@/data/attacksData";
 import useDamage from "./hooks/useDamage";
 import AttackCountdown from "../battle/battle-components/AttackCountdown";
+import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 
 const AttacksList = () => {
   const pokemonContext = useContext(PokemonContext);
@@ -17,8 +18,8 @@ const AttacksList = () => {
 
   const handleAttack = (attackName: string) => {
     const attack = attacksData.find((attack) => attack.name === attackName);
-    if (attack) {
-      setTime(attack.recoveryTime);
+    if (attack && pokemon?.speed) {
+      setTime(restAfterAttack(pokemon.speed, attack.recoveryTime));
       setAnimation(true);
       console.log("attack was set", attack.damage);
       context.setAttack(attack);
@@ -35,16 +36,23 @@ const AttacksList = () => {
     <ul className="box-attacks">
       {pokemon &&
         pokemon.attacks.map((attack) => (
-          <li
-            key={attack}
-            className="attack-item"
-            onClick={() => handleAttack(attack)}
-          >
-            {attack}
+          <li key={attack} className="attack-item">
+            <button
+              onClick={() => handleAttack(attack)}
+              disabled={context.stopBattle}
+            >
+              {attack}
+            </button>
           </li>
         ))}
-      <li className="attack-item addons">rest </li>
-      <li className="attack-item addons">avoid</li>
+      <li className="attack-item addons">
+        {" "}
+        <button disabled={context.stopBattle}>rest</button>{" "}
+      </li>
+      <li className="attack-item addons">
+        {" "}
+        <button disabled={context.stopBattle}>avoid</button>
+      </li>
       {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>
   );

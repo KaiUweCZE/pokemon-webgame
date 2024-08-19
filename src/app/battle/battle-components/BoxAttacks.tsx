@@ -7,6 +7,7 @@ import { restEng } from "@/utils/battle-function/restEng";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import AttackCountdown from "./AttackCountdown";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 
 interface BoxAttacksProps {
   userPokemon: Pokemon;
@@ -64,7 +65,8 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
 
     console.log("attack data are: ", attackData);
 
-    setTime(attackData.recoveryTime);
+    // calculate actual recovary time based pokemon speed and attack recovery time
+    setTime(restAfterAttack(userPokemon.speed, attackData.recoveryTime));
     if (userPokemon.actualEnergy - attackData?.energyCost < 0) {
       console.log("attack can not be used");
       return null;
@@ -98,22 +100,27 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
   return (
     <ul className="box-attacks">
       {userPokemon.attacks.map((attack, index) => (
-        <li
-          key={index}
-          className="attack-item"
-          onClick={() => handleAttack(attack)}
-        >
-          {attack}
+        <li key={index} className="attack-item">
+          <button
+            onClick={() => handleAttack(attack)}
+            disabled={context.stopBattle}
+          >
+            {attack}
+          </button>
         </li>
       ))}
 
-      <li
-        className="attack-item addons"
-        onClick={() => handleRest(userPokemon.id)}
-      >
-        rest{" "}
+      <li className="attack-item addons">
+        <button
+          onClick={() => handleRest(userPokemon.id)}
+          disabled={context.stopBattle}
+        >
+          rest
+        </button>
       </li>
-      <li className="attack-item addons">avoid</li>
+      <li className="attack-item addons">
+        <button disabled={context.stopBattle}>avoid</button>
+      </li>
 
       {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>

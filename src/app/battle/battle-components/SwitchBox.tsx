@@ -16,9 +16,10 @@ import {
   useState,
 } from "react";
 import SwitchBoxItems from "./SwitchBoxItem";
+import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
 interface SwitchBoxProps {
-  setMenuChoice: Dispatch<SetStateAction<string>>;
+  setMenuChoice: Dispatch<SetStateAction<BattleMenu>>;
 }
 
 const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
@@ -51,7 +52,7 @@ const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
         alt="close icon"
         width={16}
         height={16}
-        onClick={() => setMenuChoice("")}
+        onClick={() => setMenuChoice(BattleMenu.DEFAULT)}
       />
     </div>
   );

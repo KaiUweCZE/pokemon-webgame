@@ -3,6 +3,8 @@ import { mapData } from "./mapData";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import EnemyPokemonsRound from "./EnemyPokemonsRound";
+import { useContext } from "react";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface LocationType {
   location: string;
@@ -10,6 +12,7 @@ interface LocationType {
 
 const EnemyPokemonsInLocation = ({ location }: LocationType) => {
   const router = useRouter();
+  const context = useContext(PokemonContext);
   const locationData = mapData.find((e) => e.name === location);
   const rounds = locationData?.rounds;
 
@@ -34,7 +37,7 @@ const EnemyPokemonsInLocation = ({ location }: LocationType) => {
           router.push("/battle");
         }}
       >
-        battle
+        explore
       </button>
     </section>
   );

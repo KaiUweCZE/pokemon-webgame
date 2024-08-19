@@ -10,8 +10,8 @@ const PokedexList = ({ setPokemonPokedex }: PokedexListProps) => {
   const filterPokemons = pokemonBattleData.sort((a, b) => a.id - b.id);
   return (
     <ul className="pokedex-list">
-      {filterPokemons.map((pokemon) => (
-        <li key={pokemon.id} onClick={() => setPokemonPokedex(pokemon)}>
+      {filterPokemons.map((pokemon, index) => (
+        <li key={pokemon.id + index} onClick={() => setPokemonPokedex(pokemon)}>
           {pokemon.name} {pokemon.id}
         </li>
       ))}

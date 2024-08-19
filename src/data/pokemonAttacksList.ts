@@ -1,18 +1,18 @@
 // Aegislash
 export const aegislashAttacks = [
-  { level: 10, attacks: ["Shadow Sneak", "Iron Head"] },
-  { level: 20, attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword"] },
+  { level: 10, attacks: ["shadow sneak", "iron head"] },
+  { level: 20, attacks: ["shadow sneak", "iron head", "sacred sword"] },
   {
     level: 30,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
+    attacks: ["shadow sneak", "iron head", "sacred sword", "night slash"],
   },
   {
     level: 40,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
+    attacks: ["shadow sneak", "iron head", "sacred sword", "night slash"],
   },
   {
     level: 50,
-    attacks: ["Shadow Sneak", "Iron Head", "Sacred Sword", "night slash"],
+    attacks: ["shadow sneak", "iron head", "sacred sword", "night slash"],
   },
 ];
 
@@ -22,15 +22,15 @@ export const bisharpAttacks = [
   { level: 20, attacks: ["tackle", "metal claw", "night slash"] },
   {
     level: 30,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "iron head"],
   },
   {
     level: 40,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "iron head"],
   },
   {
     level: 50,
-    attacks: ["tackle", "metal claw", "night slash", "Iron Head"],
+    attacks: ["tackle", "metal claw", "night slash", "iron head"],
   },
 ];
 
@@ -45,19 +45,19 @@ export const blastoiseAttacks = [
 
 // Doublade
 export const doubladeAttacks = [
-  { level: 10, attacks: ["tackle", "Shadow Sneak"] },
-  { level: 20, attacks: ["tackle", "Shadow Sneak", "Iron Head"] },
+  { level: 10, attacks: ["tackle", "shadow sneak"] },
+  { level: 20, attacks: ["tackle", "shadow sneak", "iron head"] },
   {
     level: 30,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
+    attacks: ["tackle", "shadow sneak", "iron head", "night slash"],
   },
   {
     level: 40,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
+    attacks: ["tackle", "shadow sneak", "iron head", "night slash"],
   },
   {
     level: 50,
-    attacks: ["tackle", "Shadow Sneak", "Iron Head", "night slash"],
+    attacks: ["tackle", "shadow sneak", "iron head", "night slash"],
   },
 ];
 

@@ -8,6 +8,9 @@ import {
   useEffect,
   useState,
 } from "react";
+import { generateNpcPokemons } from "./npc-utils/generateNpcPokemonStats";
+import { oponentPokemon } from "@/data/npcPokemons";
+import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
 interface NpcBattleProps {
   children: React.ReactNode;
@@ -24,12 +27,18 @@ interface NpcBattleContextProps {
   setBattleText: Dispatch<SetStateAction<string>>;
   startBattle: boolean;
   setStartBattle: Dispatch<SetStateAction<boolean>>;
-  menuOption: string;
-  setMenuOption: Dispatch<SetStateAction<string>>;
+  menuOption: BattleMenu;
+  setMenuOption: Dispatch<SetStateAction<BattleMenu>>;
   attack: Attack | null;
   setAttack: Dispatch<SetStateAction<Attack | null>>;
   attackAnimation: boolean;
   setAttackAnimation: Dispatch<SetStateAction<boolean>>;
+  oponentAttack: Attack | null;
+  setOponentAttack: Dispatch<SetStateAction<Attack | null>>;
+  oponentAttackAnimation: boolean;
+  setOponentAttackAnimation: Dispatch<SetStateAction<boolean>>;
+  stopBattle: boolean;
+  setStopBattle: Dispatch<SetStateAction<boolean>>;
 }
 
 interface Oponent {
@@ -38,7 +47,7 @@ interface Oponent {
   message: string;
   img: StaticImageData;
   stadiumTrainer: boolean;
-  pokemons: PokemonBattle[] | undefined;
+  pokemons: oponentPokemon[] | undefined;
 }
 
 export const NpcBattleContext = createContext<
@@ -53,15 +62,21 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
   const [currentOponentPokemon, setCurrentOponentPokemon] =
     useState<PokemonBattle | null>(null);
   const [user, setUser] = useState();
-  const [menuOption, setMenuOption] = useState("");
+  const [menuOption, setMenuOption] = useState(BattleMenu.DEFAULT);
   const [startBattle, setStartBattle] = useState(false);
   const [battleText, setBattleText] = useState("");
   const [attack, setAttack] = useState<Attack | null>(null);
   const [attackAnimation, setAttackAnimation] = useState(false);
+  const [oponentAttack, setOponentAttack] = useState<Attack | null>(null);
+  const [oponentAttackAnimation, setOponentAttackAnimation] = useState(false);
+  const [stopBattle, setStopBattle] = useState(false);
 
   useEffect(() => {
     if (oponent?.pokemons) {
-      setOponentPokemons(oponent?.pokemons);
+      const buildedPokemons = oponent.pokemons
+        .map(generateNpcPokemons)
+        .filter((pokemon): pokemon is PokemonBattle => pokemon !== null);
+      setOponentPokemons(buildedPokemons);
     }
   }, [oponent]);
 
@@ -82,7 +97,14 @@ export const NpcBattleProvider = ({ children }: NpcBattleProps) => {
     setAttack,
     attackAnimation,
     setAttackAnimation,
+    oponentAttack,
+    setOponentAttack,
+    oponentAttackAnimation,
+    setOponentAttackAnimation,
+    stopBattle,
+    setStopBattle,
   };
+
   return (
     <NpcBattleContext.Provider value={contextValues}>
       {children}

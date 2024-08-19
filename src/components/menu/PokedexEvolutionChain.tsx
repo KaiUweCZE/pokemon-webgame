@@ -15,7 +15,7 @@ const PokedexEvolutionChain = ({ pokemon }: PokedexEvolutionProps) => {
     <ul className="evolution-chain">
       {pokemon?.evolutionChain &&
         pokemon?.evolutionChain.map((evolution: string, index: number) => (
-          <li key={evolution} className="evolution-chain-item">
+          <li key={evolution + index} className="evolution-chain-item">
             <Image
               src={generateEvolutionImg(evolution)}
               alt="pokemon img"
