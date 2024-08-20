@@ -6,6 +6,7 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import useLoadSixToContext from "./hooks/useLoadSixToContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import UserPokemonStats from "./UserPokemonStats";
+import { useCssClass } from "./hooks/useCssClass";
 
 interface UserImageProps {
   img: StaticImageData;
@@ -15,6 +16,7 @@ const UserImage = ({ img }: UserImageProps) => {
   const pokemonContext = useContext(PokemonContext);
   const context = useContext(NpcBattleContext);
   useLoadSixToContext();
+  const generateCss = useCssClass();
 
   if (!pokemonContext) return null;
 
@@ -23,7 +25,7 @@ const UserImage = ({ img }: UserImageProps) => {
   const pokemonImg = pokemon ? generatePokemonImageBack(pokemon.name) : null;
 
   return (
-    <div className="user-pokemon">
+    <div className={generateCss("user-pokemon")}>
       {context?.startBattle && pokemon ? (
         <UserPokemonStats pokemon={pokemon} />
       ) : (

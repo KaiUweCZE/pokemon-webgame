@@ -1,7 +1,6 @@
 import NpcBattleMenu from "./NpcBattleMenu";
 import OponentImage from "./OponentImage";
 import UserImage from "./UserImage";
-import mainCharBack from "@/assets/images/main-char-2-back2.webp";
 import useChangeOponentPokemon from "./hooks/useChangeOponentPokemon";
 import { useBattleState } from "./hooks/useBattleState";
 import useInitializeBattleData from "./hooks/useInitializeBattleData";
@@ -18,13 +17,13 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
     return <div>Loading...</div>;
   }
   const { oponentPokemons, currentOponentPokemon } = npcBattleContext;
-  const { userPokemons, currentPokemon } = pokemonContext;
+  const { currentPokemon, pokemonsFromSix } = pokemonContext;
 
   useBattleState(
-    userPokemons,
+    pokemonsFromSix,
     oponentPokemons,
-    currentOponentPokemon,
-    currentPokemon
+    currentPokemon,
+    currentOponentPokemon
   );
   useChangeOponentPokemon();
 

@@ -19,20 +19,34 @@ export const useBattleState = (
   // Tracks the health of current Pokémon and updates battle status
   // when a Pokémon faints or when one side loses all Pokémon
   useEffect(() => {
-    if (currentPokemon && currentOpponentPokemon) {
-      if (currentPokemon.actualHp <= 0) {
-        if (userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
-          setBattleState(NpcBattleState.PLAYER_POKEMON_FAINTED);
-        } else {
-          setBattleState(NpcBattleState.OPPONENT_VICTORY);
-        }
-      } else if (currentOpponentPokemon.actualHp <= 0) {
-        if (opponentPokemons?.some((pokemon) => pokemon.actualHp > 0)) {
-          setBattleState(NpcBattleState.OPPONENT_POKEMON_FAINTED);
-        } else {
-          setBattleState(NpcBattleState.PLAYER_VICTORY);
-        }
+    if (!currentPokemon || !currentOpponentPokemon) return;
+
+    const getBattleState = (): NpcBattleState | null => {
+      switch (true) {
+        case currentPokemon.actualHp <= 0:
+          console.log("user pokemons: ", userPokemons);
+
+          if (userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
+            return NpcBattleState.PLAYER_POKEMON_FAINTED;
+          } else {
+            return NpcBattleState.OPPONENT_VICTORY;
+          }
+
+        case currentOpponentPokemon.actualHp <= 0:
+          if (opponentPokemons?.some((pokemon) => pokemon.actualHp > 0)) {
+            return NpcBattleState.OPPONENT_POKEMON_FAINTED;
+          } else {
+            return NpcBattleState.PLAYER_VICTORY;
+          }
+
+        default:
+          return null;
       }
+    };
+
+    const newState = getBattleState();
+    if (newState) {
+      setBattleState(newState);
     }
   }, [currentPokemon, currentOpponentPokemon, userPokemons, opponentPokemons]);
 
