@@ -311,7 +311,7 @@
 }
 .oponent.done img {
   transition: 1s;
-  translate: 14rem;
+  translate: 16rem;
 }
 .oponent.catching img {
   opacity: 0;
@@ -497,13 +497,15 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
+  width: 100%;
+  padding-inline: 1rem;
   background-color: #7576b3;
   color: white;
   color: white;
   transition: 0.3s;
   opacity: 1;
   translate: 0 0;
+  font-size: 1.25rem;
 }
 @starting-style {
   .battle-text {

@@ -297,7 +297,7 @@ $font-color: white;
   &.done {
     img {
       transition: 1s;
-      translate: 14rem;
+      translate: 16rem;
     }
   }
   &.catching {
@@ -489,13 +489,15 @@ $font-color: white;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
+  width: 100%;
+  padding-inline: 1rem;
   background-color: $bg-battle;
   color: white;
   color: $font-color;
   transition: 0.3s;
   opacity: 1;
   translate: 0 0;
+  font-size: 1.25rem;
   @starting-style {
     opacity: 0;
     translate: 10rem 0;

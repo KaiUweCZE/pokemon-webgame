@@ -1,3 +1,4 @@
+import { BattleContext } from "@/contexts/BattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { healPokemon } from "@/utils/healPokemon";
 import { useSession } from "next-auth/react";
@@ -15,6 +16,7 @@ interface PotionButtonProps {
 
 const PotionButton = ({ potionType }: PotionButtonProps) => {
   const context = useContext(PokemonContext);
+  const battleContext = useContext(BattleContext);
   const { data, update } = useSession();
   const isFullyHealed =
     context?.currentPokemon?.actualHp === context?.currentPokemon?.hp;
@@ -66,7 +68,7 @@ const PotionButton = ({ potionType }: PotionButtonProps) => {
     <button
       className="button-primary"
       onClick={handleClick}
-      disabled={isFullyHealed}
+      disabled={isFullyHealed || battleContext?.stopBattle}
     >
       use
     </button>

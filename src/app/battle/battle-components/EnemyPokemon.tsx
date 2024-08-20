@@ -2,9 +2,18 @@ import { PokemonBattle } from "@/types/pokemonBattle";
 import HpBar from "../../../components/HpBar";
 import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import Pokeball from "@/components/Pokeball";
+import EnemyPokemonStats from "./EnemyPokemonStats";
+
+enum EnemyPokemonState {
+  Done = "oponent done",
+  Catching = "oponent catching",
+  Caught = "oponent catched",
+  Damaged = "oponent damage",
+  Default = "oponent",
+}
 
 interface EnemyPokemonProps {
   enemyPokemon: PokemonBattle;
@@ -12,67 +21,53 @@ interface EnemyPokemonProps {
 
 const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
-  const pokemonImg = generatePokemonImage(enemyPokemon.name);
+  const pokemonImg = useMemo(
+    () => generatePokemonImage(enemyPokemon.name),
+    [enemyPokemon.name]
+  );
 
-  const getClassName = () => {
-    if (enemyPokemon.actualHp === 0) {
-      return "oponent done";
-    }
-    if (context?.isCatching.underway) {
-      return "oponent catching";
-    }
-    if (context?.isCatching.isSucces) {
-      return "oponent catched";
-    }
-    if (context?.attackAnimation) {
-      return "oponent damage";
-    }
-    return "oponent";
+  const getClassName = (): EnemyPokemonState => {
+    if (enemyPokemon.actualHp === 0) return EnemyPokemonState.Done;
+    if (context?.isCatching.underway) return EnemyPokemonState.Catching;
+    if (context?.isCatching.isSucces) return EnemyPokemonState.Caught;
+    if (context?.attackAnimation) return EnemyPokemonState.Damaged;
+    return EnemyPokemonState.Default;
   };
+
+  if (enemyPokemon.actualHp === undefined) {
+    return <p>???</p>;
+  }
 
   return (
     <div className={getClassName()}>
-      {enemyPokemon.actualHp !== undefined ? (
-        <>
-          {(context?.isCatching.underway || context?.isCatching.isSucces) && (
-            <Pokeball />
-          )}
-          {context?.attackAnimation && context?.attack && (
-            <Image
-              className="user-pokemon-attack"
-              src={context.attack.img}
-              alt="user pokemon attack animation"
-              width={130}
-            />
-          )}
-          {pokemonImg && (
-            <Image
-              className="oponent-pokemon"
-              src={pokemonImg}
-              alt="enemy pokemon"
-              width={150}
-              height={150}
-            />
-          )}
-          <div className="box-stats">
-            <div className="name-level">
-              <span>{enemyPokemon.name}</span>
-              <span>lv.{enemyPokemon.level}</span>
-            </div>
-            <div className="bar-wrapper">
-              <span>HP</span>
-              <HpBar
-                maximumHp={enemyPokemon.hp}
-                actualHp={enemyPokemon.actualHp}
-              />
-            </div>
-          </div>
-        </>
-      ) : (
-        <p>where he is?</p>
+      {(context?.isCatching.underway || context?.isCatching.isSucces) && (
+        <Pokeball />
       )}
+      {context?.attackAnimation && context?.attack && (
+        <Image
+          className="user-pokemon-attack"
+          src={context.attack.img}
+          alt="user pokemon attack animation"
+          width={130}
+        />
+      )}
+      {pokemonImg && (
+        <Image
+          className="oponent-pokemon"
+          src={pokemonImg}
+          alt="enemy pokemon"
+          width={150}
+          height={150}
+        />
+      )}
+      <EnemyPokemonStats
+        name={enemyPokemon.name}
+        level={enemyPokemon.level}
+        hp={enemyPokemon.hp}
+        actualHp={enemyPokemon.actualHp}
+      />
     </div>
   );
 };
 
-export default EnemyPokemon;
+export default React.memo(EnemyPokemon);

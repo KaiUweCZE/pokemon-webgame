@@ -79,13 +79,7 @@ const Battlefield = ({ round, setRound }: BattlefieldProps) => {
   };
   return (
     <section className="container-battlefield">
-      {currentPokemon && (
-        <UserPokemonBattle
-          userPokemon={currentPokemon}
-          setDamage={setDamage}
-          setChange={setChange}
-        />
-      )}
+      {currentPokemon && <UserPokemonBattle userPokemon={currentPokemon} />}
       {enemyPokemon && <EnemyPokemon enemyPokemon={enemyPokemon} />}
       {animationTime && <span className="hp-animation">-{damage}</span>}
       {currentPokemon && (
