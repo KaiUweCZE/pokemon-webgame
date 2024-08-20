@@ -3,7 +3,7 @@ import { Pokemon } from "@/types/pokemon";
 import PokemonListNavigation from "./PokemonListNavigation";
 import { useContext, useState } from "react";
 import { ProfileContext } from "./ProfileContext";
-import PokemonFullCard from "./PokemonFullCard";
+import PokemonFullCard from "./full-card/PokemonFullCard";
 import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface PokemonListProps {

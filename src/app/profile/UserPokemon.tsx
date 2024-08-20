@@ -8,7 +8,7 @@ import EnergyBar from "@/components/EnergyBar";
 import ErrorMessage from "@/components/ErrorMessage";
 import { generatePokemonTypes } from "@/utils/generatePokemonTypes";
 import { useSession } from "next-auth/react";
-import PokemonFullCard from "./PokemonFullCard";
+import PokemonFullCard from "./full-card/PokemonFullCard";
 import { ProfileContext } from "./ProfileContext";
 
 interface ActiveType {

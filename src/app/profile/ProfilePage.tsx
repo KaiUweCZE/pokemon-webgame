@@ -11,7 +11,7 @@ import Loader from "@/components/Loader";
 import UserSix from "./UserSix";
 import PokemonList from "./PokemonList";
 import { ProfileContext, ProfileProvider } from "./ProfileContext";
-import PokemonFullCard from "./PokemonFullCard";
+import PokemonFullCard from "./full-card/PokemonFullCard";
 
 const ProfilePage = () => {
   const { data, update } = useSession();

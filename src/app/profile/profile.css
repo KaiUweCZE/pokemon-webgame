@@ -287,6 +287,24 @@
   }
 }
 
+.evolution {
+  position: absolute;
+  z-index: 1;
+}
+
+.evolving {
+  opacity: 0.3;
+  animation: evolving 1.2s infinite both;
+}
+
+@keyframes evolving {
+  0%, 50%, 100% {
+    opacity: 0.3;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
 .full-card-attacks {
   display: grid;
   grid-template-columns: 1fr 1fr;
