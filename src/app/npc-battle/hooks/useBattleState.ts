@@ -16,11 +16,19 @@ export const useBattleState = (
   }
   const { battleState, setBattleState } = context;
 
+  // check if some of user's pokemon are ready to fight
+  useEffect(() => {
+    if (battleState === NpcBattleState.NOT_STARTED) {
+      if (!userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
+        setBattleState(NpcBattleState.CANNOT_START);
+      }
+    }
+  }, []);
+
   // Tracks the health of current Pokémon and updates battle status
   // when a Pokémon faints or when one side loses all Pokémon
   useEffect(() => {
     if (!currentPokemon || !currentOpponentPokemon) return;
-
     const getBattleState = (): NpcBattleState | null => {
       switch (true) {
         case currentPokemon.actualHp <= 0:

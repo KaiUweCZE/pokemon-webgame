@@ -23,6 +23,8 @@ const GenerateBattleButton = ({
       case NpcBattleState.OPPONENT_VICTORY:
       case NpcBattleState.BATTLE_ENDED:
         return "New Battle";
+      case NpcBattleState.CANNOT_START:
+        return "Go Home";
       default:
         return "Continue";
     }

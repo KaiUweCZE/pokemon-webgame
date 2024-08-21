@@ -6,10 +6,12 @@ import { generateBattleText } from "./npc-utils/generateBattleText";
 import GenerateBattleButton from "./npc-utils/GenerateBattleButton";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { useRouter } from "next/navigation";
 
 const NpcBattleText = () => {
   const context = useContext(NpcBattleContext);
   const pokemonContext = useContext(PokemonContext);
+  const router = useRouter();
   if (!context || !pokemonContext) {
     throw new Error("context is missing");
   }
@@ -37,6 +39,12 @@ const NpcBattleText = () => {
         if (oponentPokemons?.length) {
           setStartBattle(true);
           setMenuOption(BattleMenu.FIGHT);
+          const userPokemon = pokemonsFromSix.find(
+            (pokemon) => pokemon.actualHp > 0
+          );
+          if (userPokemon) {
+            setCurrentPokemon(userPokemon);
+          }
           const number = randomOponentPokemon(oponentPokemons?.length);
           setCurrentOponentPokemon(oponentPokemons[number]);
           setBattleState(NpcBattleState.BATTLE);
@@ -54,6 +62,8 @@ const NpcBattleText = () => {
           setBattleState(NpcBattleState.BATTLE);
           setStopBattle(false);
         }
+      case NpcBattleState.CANNOT_START:
+        router.push("/profile");
 
       default:
         console.log("Default action for state:", battleState);

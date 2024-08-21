@@ -40,6 +40,8 @@ export const generateBattleText = (
       return "Oh no! You've lost the battle.";
     case NpcBattleState.BATTLE_ENDED:
       return "The battle has ended.";
+    case NpcBattleState.CANNOT_START:
+      return "don't go to matches without pokemon";
     default:
       return "...";
   }

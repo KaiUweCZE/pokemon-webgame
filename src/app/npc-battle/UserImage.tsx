@@ -3,7 +3,6 @@ import PokemonsBar from "./PokemonsBar";
 import { useContext } from "react";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { NpcBattleContext } from "./NpcBattleContext";
-import useLoadSixToContext from "./hooks/useLoadSixToContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import UserPokemonStats from "./UserPokemonStats";
 import { useCssClass } from "./hooks/useCssClass";
@@ -15,7 +14,6 @@ interface UserImageProps {
 const UserImage = ({ img }: UserImageProps) => {
   const pokemonContext = useContext(PokemonContext);
   const context = useContext(NpcBattleContext);
-  useLoadSixToContext();
   const generateCss = useCssClass();
 
   if (!pokemonContext) return null;
