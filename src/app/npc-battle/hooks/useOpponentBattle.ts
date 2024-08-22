@@ -6,6 +6,7 @@ import { attacksData } from "@/data/attacksData";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 const useOpponentBattle = () => {
   const context = useContext(NpcBattleContext);
@@ -66,6 +67,7 @@ const useOpponentBattle = () => {
 
     if (newHp <= 0) {
       context.setStopBattle(true);
+      context.setBattleState(NpcBattleState.OPPONENT_POKEMON_FAINTED);
       pokemonContext.setCurrentPokemon({ ...userPokemon, actualHp: 0 });
     } else {
       setUserPokemon({ ...userPokemon, actualHp: newHp });
@@ -80,7 +82,7 @@ const useOpponentBattle = () => {
   }, [context, pokemonContext]);
 
   useEffect(() => {
-    if (context?.stopBattle) {
+    if (context?.battleState !== NpcBattleState.BATTLE) {
       console.log("Battle has stopped");
       return;
     }

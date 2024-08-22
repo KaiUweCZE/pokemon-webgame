@@ -6,6 +6,9 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import UserPokemonStats from "./UserPokemonStats";
 import { useCssClass } from "./hooks/useCssClass";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
+import goOut2 from "@/assets/images/gif/puff.gif";
+import goOut from "@/assets/images/gif/goout.gif";
 
 interface UserImageProps {
   img: StaticImageData;
@@ -42,12 +45,24 @@ const UserImage = ({ img }: UserImageProps) => {
             />
           )}
           {pokemonImg && (
-            <Image
-              className="user-image"
-              src={pokemonImg}
-              alt="back"
-              height={170}
-            />
+            <>
+              {(context.battleState ===
+                NpcBattleState.PLAYER_SWITCHING_POKEMON ||
+                context.battleState === NpcBattleState.BATTLE_START) && (
+                <Image
+                  className="user-pokemon-go-out"
+                  src={goOut}
+                  alt="user pokemon come out"
+                  height={220}
+                />
+              )}
+              <Image
+                className="user-pokemon-image"
+                src={pokemonImg}
+                alt="back"
+                height={170}
+              />
+            </>
           )}
         </>
       )}

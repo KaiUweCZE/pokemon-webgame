@@ -5,6 +5,7 @@ import { attacksData } from "@/data/attacksData";
 import useDamage from "./hooks/useDamage";
 import AttackCountdown from "../battle/battle-components/AttackCountdown";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 const AttacksList = () => {
   const pokemonContext = useContext(PokemonContext);
@@ -18,7 +19,11 @@ const AttacksList = () => {
 
   const handleAttack = (attackName: string) => {
     const attack = attacksData.find((attack) => attack.name === attackName);
-    if (attack && pokemon?.speed) {
+    if (
+      attack &&
+      pokemon?.speed &&
+      context.battleState === NpcBattleState.BATTLE
+    ) {
       setTime(restAfterAttack(pokemon.speed, attack.recoveryTime));
       setAnimation(true);
       console.log("attack was set", attack.damage);

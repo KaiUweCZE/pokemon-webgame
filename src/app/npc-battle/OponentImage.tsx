@@ -4,6 +4,11 @@ import { useContext } from "react";
 import { NpcBattleContext } from "./NpcBattleContext";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import OponentPokemonStats from "./OponentPokemonStats";
+import field from "@/assets/images/fields/field2.webp";
+import go from "@/assets/images/gif/goout.gif";
+import go3 from "@/assets/images/gif/puff.gif";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { getCssClass } from "./npc-utils/getCssClass";
 
 interface OponentImageProps {
   img: StaticImageData;
@@ -16,7 +21,23 @@ const OponentImage = ({ img }: OponentImageProps) => {
     context?.currentOponentPokemon &&
     generatePokemonImage(context.currentOponentPokemon.name);
   return (
-    <div className="oponent">
+    <div
+      className={
+        context?.battleState
+          ? getCssClass("oponent", context?.battleState)
+          : "oponent"
+      }
+    >
+      {(context?.battleState === NpcBattleState.BATTLE_START ||
+        context?.battleState === NpcBattleState.OPPONENT_SWITCHING_POKEMON) && (
+        <Image
+          className="go-in-pokemon"
+          src={go}
+          alt="throwing pokeball"
+          height={150}
+        />
+      )}
+      <Image className="field" src={field} alt="battle field" width={280} />
       {context?.startBattle && context?.currentOponentPokemon ? (
         <OponentPokemonStats pokemon={context.currentOponentPokemon} />
       ) : (
@@ -31,8 +52,8 @@ const OponentImage = ({ img }: OponentImageProps) => {
           className="oponent-image"
           src={img}
           alt="oponent"
-          width={110}
-          height={220}
+          width={90}
+          height={180}
         />
       ) : (
         pokemonImg && (

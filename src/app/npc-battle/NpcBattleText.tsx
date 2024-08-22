@@ -20,6 +20,7 @@ const NpcBattleText = () => {
     setStartBattle,
     setMenuOption,
     setCurrentOponentPokemon,
+    currentOponentPokemon,
     oponentPokemons,
     battleState,
     setBattleState,
@@ -34,11 +35,13 @@ const NpcBattleText = () => {
       battleState
     );
 
+    //setMenuOption(BattleMenu.FIGHT);
+    // button actions in different casses of battle state
     switch (battleState) {
       case NpcBattleState.NOT_STARTED:
         if (oponentPokemons?.length) {
           setStartBattle(true);
-          setMenuOption(BattleMenu.FIGHT);
+          //setMenuOption(BattleMenu.FIGHT);
           const userPokemon = pokemonsFromSix.find(
             (pokemon) => pokemon.actualHp > 0
           );
@@ -47,7 +50,10 @@ const NpcBattleText = () => {
           }
           const number = randomOponentPokemon(oponentPokemons?.length);
           setCurrentOponentPokemon(oponentPokemons[number]);
-          setBattleState(NpcBattleState.BATTLE);
+          setBattleState(NpcBattleState.BATTLE_START);
+          setTimeout(() => {
+            setBattleState(NpcBattleState.BATTLE);
+          }, 1400);
           console.log("Battle started, new state:", NpcBattleState.BATTLE);
         } else {
           console.log("No opponent pokemons available");
@@ -61,16 +67,24 @@ const NpcBattleText = () => {
           setCurrentPokemon(nextPokemon);
           setBattleState(NpcBattleState.BATTLE);
           setStopBattle(false);
+        } else {
+          setBattleState(NpcBattleState.OPPONENT_VICTORY);
         }
+        break;
       case NpcBattleState.CANNOT_START:
+      case NpcBattleState.BATTLE_STOPPED:
         router.push("/profile");
-
+        break;
       default:
         console.log("Default action for state:", battleState);
     }
   };
 
-  const battleText = generateBattleText(battleState);
+  const battleText = generateBattleText(
+    battleState,
+    currentPokemon?.name,
+    currentOponentPokemon?.name
+  );
 
   return (
     <div className="battle-text">

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { NpcBattleContext } from "../NpcBattleContext";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 const useDamage = () => {
   const context = useContext(NpcBattleContext);
@@ -15,7 +16,12 @@ const useDamage = () => {
     const userPokemon = pokemonContext.currentPokemon;
     const attack = context.attack;
 
-    if (enemy && attack && userPokemon) {
+    if (
+      enemy &&
+      attack &&
+      userPokemon &&
+      context.battleState === NpcBattleState.BATTLE
+    ) {
       let newHp = makeDamage(
         attack.damage,
         enemy.actualHp,

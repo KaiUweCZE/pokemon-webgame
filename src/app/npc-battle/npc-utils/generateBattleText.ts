@@ -2,7 +2,7 @@ import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 export const generateBattleText = (
   state: NpcBattleState,
-  playerPokemonName?: string,
+  userPokemonName?: string,
   opponentPokemonName?: string
 ): string => {
   switch (state) {
@@ -10,21 +10,21 @@ export const generateBattleText = (
       return "Are you ready to start the battle?";
     case NpcBattleState.BATTLE:
       return "The battle has begun!";
-    case NpcBattleState.PLAYER_TURN:
-      return "It's your turn. Choose your move!";
+    case NpcBattleState.BATTLE_START:
+      return `I choose you ${userPokemonName}`;
     case NpcBattleState.OPPONENT_TURN:
       return "Your opponent is thinking...";
     case NpcBattleState.PLAYER_ATTACKING:
-      return playerPokemonName
-        ? `${playerPokemonName} is attacking!`
+      return userPokemonName
+        ? `${userPokemonName} is attacking!`
         : "Your Pokémon is attacking!";
     case NpcBattleState.OPPONENT_ATTACKING:
       return opponentPokemonName
         ? `${opponentPokemonName} is attacking!`
         : "The opponent's Pokémon is attacking!";
     case NpcBattleState.PLAYER_POKEMON_FAINTED:
-      return playerPokemonName
-        ? `${playerPokemonName} has fainted!`
+      return userPokemonName
+        ? `${userPokemonName} has fainted!`
         : "Your Pokémon has fainted!";
     case NpcBattleState.OPPONENT_POKEMON_FAINTED:
       return opponentPokemonName
@@ -41,7 +41,9 @@ export const generateBattleText = (
     case NpcBattleState.BATTLE_ENDED:
       return "The battle has ended.";
     case NpcBattleState.CANNOT_START:
-      return "don't go to matches without pokemon";
+      return "Don't go to matches without pokemon";
+    case NpcBattleState.BATTLE_STOPPED:
+      return "Do you want to leave a match?";
     default:
       return "...";
   }

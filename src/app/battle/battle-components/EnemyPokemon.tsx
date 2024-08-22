@@ -2,10 +2,11 @@ import { PokemonBattle } from "@/types/pokemonBattle";
 import HpBar from "../../../components/HpBar";
 import Image from "next/image";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import Pokeball from "@/components/Pokeball";
 import EnemyPokemonStats from "./EnemyPokemonStats";
+import field from "@/assets/images/fields/field2.webp";
 
 enum EnemyPokemonState {
   Done = "oponent done",
@@ -51,6 +52,7 @@ const EnemyPokemon = ({ enemyPokemon }: EnemyPokemonProps) => {
           width={130}
         />
       )}
+      {<Image className="field" src={field} alt="battle field" width={280} />}
       {pokemonImg && (
         <Image
           className="oponent-pokemon"

@@ -15,8 +15,8 @@ const GenerateBattleButton = ({
         return "Start Battle";
       case NpcBattleState.BATTLE:
         return "Choose Action";
-      case NpcBattleState.PLAYER_TURN:
-        return "Attack";
+      case NpcBattleState.BATTLE_STOPPED:
+        return "Leave";
       case NpcBattleState.PLAYER_POKEMON_FAINTED:
         return "Switch Pokémon";
       case NpcBattleState.PLAYER_VICTORY:

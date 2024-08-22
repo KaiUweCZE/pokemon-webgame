@@ -7,6 +7,7 @@ import AttacksList from "./AttacksList";
 import SwitchBox from "../battle/battle-components/SwitchBox";
 import BattleBag from "../battle/battle-components/BattleBag";
 import { BattleMenu } from "@/types/enums/enumBattleMenu";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 const NpcBattleMenu = () => {
   const context = useContext(NpcBattleContext);
@@ -19,14 +20,17 @@ const NpcBattleMenu = () => {
         return <SwitchBox setMenuChoice={context.setMenuOption} />;
       case BattleMenu.BAG:
         return <BattleBag setMenuChoice={context.setMenuOption} />;
-
+      /*case BattleMenu.RUN:
+        context.setBattleState(NpcBattleState.BATTLE_STOPPED);
+        return;*/
       default:
         return <h2>default</h2>;
     }
   };
   return (
     <div className="user-battle">
-      {context?.menuOption === BattleMenu.DEFAULT || !context?.startBattle ? (
+      {context?.menuOption === BattleMenu.DEFAULT ||
+      context?.menuOption === BattleMenu.RUN ? (
         <NpcBattleText />
       ) : (
         returnComponent()
