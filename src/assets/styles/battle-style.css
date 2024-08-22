@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: "enemy-pokemon" "user-pokemon" "menu";
   grid-template-rows: 1fr 1fr auto;
-  border: 4px solid rgb(14, 14, 14);
+  border: 2px solid rgba(248, 248, 216, 0.4196078431);
   position: relative;
   width: 100%;
   max-width: 50rem;
@@ -20,9 +20,7 @@
   grid-template-columns: 1fr 0.5fr;
   height: 8rem;
   width: 100%;
-  border-top: 4px solid rgb(14, 14, 14);
-  background-color: #7576b3;
-  background-color: #f8f8f6;
+  background-color: #0a224f;
   box-shadow: 0 0 8px #01070f;
 }
 
@@ -32,9 +30,9 @@
   width: 100%;
   height: 100%;
   place-self: center end;
-  border-left: 4px solid rgb(14, 14, 14);
   position: relative;
   box-shadow: 0 0 4px #01070f;
+  box-shadow: -5px 0 10px -10px #01070f;
 }
 .user-battle-menu ul {
   display: grid;
@@ -44,9 +42,7 @@
   gap: 0.1rem;
   place-items: center;
   place-self: end end;
-  background-color: #b4a5c6;
-  background-color: #7a84ba;
-  background-color: #7576b3;
+  background-color: #0a224f;
   color: white;
   color: white;
 }
@@ -60,7 +56,7 @@
   transition: 0.3s;
 }
 .user-battle-menu li:hover {
-  background-color: #9697c5;
+  background-color: #10357c;
 }
 .user-battle-menu li:hover span::before {
   opacity: 1;
@@ -84,10 +80,9 @@
   transition: 0.3s;
 }
 .user-battle-menu button {
-  box-shadow: 0px 2px 4px 0px rgba(58, 58, 58, 0.24);
-  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border: none;
-  background-color: #7576b3;
+  background-color: #0a224f;
   transition: 0.4s;
   width: 100%;
   height: 100%;
@@ -95,9 +90,9 @@
   font-size: 1.25rem;
 }
 .user-battle-menu button:hover {
-  background-color: #57589e;
+  background-color: #040f22;
   box-shadow: inset 1px 1px 1px grey;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 0 10px 0 rgba(43, 20, 20, 0.15) inset;
 }
 
 .user-pokemon {
@@ -110,13 +105,33 @@
   grid-area: user-pokemon;
   place-self: start start;
   margin-left: 5rem;
+  z-index: -1;
   transition: 0.5s;
   opacity: 1;
   translate: 0 0;
   filter: brightness(1);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.582));
 }
 @starting-style {
   .user-pokemon .user-image {
+    opacity: 0;
+    translate: -10rem 0;
+    filter: brightness(0.2);
+  }
+}
+.user-pokemon .user-pokemon-image {
+  grid-area: user-pokemon;
+  place-self: start start;
+  margin-left: 5rem;
+  z-index: -1;
+  transition: 0.5s;
+  opacity: 1;
+  translate: 0 0;
+  filter: brightness(1);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.582));
+}
+@starting-style {
+  .user-pokemon .user-pokemon-image {
     opacity: 0;
     translate: -10rem 0;
     filter: brightness(0.2);
@@ -127,7 +142,7 @@
   flex-direction: column;
   place-self: center end;
   padding: 0.5rem;
-  border: 4px solid rgb(14, 14, 14);
+  border: 0 solid rgb(14, 14, 14);
   border-radius: 1rem;
   margin-right: 2rem;
   transition: 0.5s;
@@ -164,6 +179,22 @@
   flex-direction: column;
 }
 
+.user-pokemon.start .user-pokemon-image {
+  opacity: 0;
+}
+
+.user-pokemon.user-switching .user-pokemon-image {
+  opacity: 0;
+}
+
+.user-pokemon-go-out {
+  position: absolute;
+  place-self: end start;
+  margin-left: 5rem;
+  translate: 0 2.5rem;
+  z-index: -1;
+}
+
 .oponent {
   grid-area: enemy-pokemon;
   display: grid;
@@ -176,13 +207,14 @@
   place-self: start end;
   right: 6rem;
   height: auto;
+  filter: drop-shadow(10px 5px 10px rgba(41, 41, 41, 0.384));
 }
 .oponent .attack-animation {
   grid-column: 2;
   position: absolute;
   place-self: end;
-  right: 8rem;
-  top: 2rem;
+  right: 6rem;
+  top: 3rem;
   z-index: 1;
 }
 .oponent .pokemons-bar {
@@ -193,6 +225,20 @@
   margin-top: 2rem;
   border-left: 2px solid #303030;
   border-radius: 11% 10% 73% 10%/0% 0% 12% 38%;
+}
+
+.oponent.start .oponent-pokemon {
+  opacity: 0;
+}
+
+.oponent.oponent-switching .oponent-pokemon {
+  opacity: 0;
+}
+
+.field {
+  position: absolute;
+  place-self: end;
+  translate: 0rem 5rem;
 }
 
 .opponent-attack {
@@ -206,7 +252,16 @@
   position: absolute;
   grid-column: 2;
   place-self: end end;
-  right: 5rem;
+  right: 4.5rem;
+  top: 1.5rem;
+  filter: drop-shadow(4px -4px 5px rgba(0, 0, 0, 0.25));
+  opacity: 1;
+  transition: 1s;
+}
+@starting-style {
+  .oponent-pokemon {
+    opacity: 0;
+  }
 }
 
 .box-stats {
@@ -316,7 +371,7 @@
 }
 .oponent.done img {
   transition: 1s;
-  translate: 16rem;
+  translate: 18rem;
 }
 .oponent.catching img {
   opacity: 0;
@@ -333,15 +388,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  height: 100%;
-  width: 100%;
   gap: 0.25rem;
   background-color: rgb(255, 239, 205);
-  background-color: #7576b3;
+  background-color: #0a224f;
   transition: 0.3s;
   opacity: 1;
   translate: 0 0;
   position: relative;
+  margin: 1rem;
 }
 @starting-style {
   .box-attacks {
@@ -361,16 +415,15 @@
   cursor: pointer;
 }
 .attack-item:hover {
-  background-color: #9697c5;
+  background-color: #10357c;
 }
 .attack-item.addons {
   grid-row: 3;
 }
 .attack-item button {
-  box-shadow: 0px 2px 4px 0px rgba(58, 58, 58, 0.24);
-  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.11);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border: none;
-  background-color: #7576b3;
+  background-color: #0a224f;
   transition: 0.4s;
   width: 100%;
   height: 100%;
@@ -379,9 +432,9 @@
   font-size: 1rem;
 }
 .attack-item button:hover {
-  background-color: #57589e;
+  background-color: #040f22;
   box-shadow: inset 1px 1px 1px grey;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 0 10px 0 rgba(43, 20, 20, 0.15) inset;
 }
 .attack-item button:disabled {
   color: rgba(255, 255, 255, 0.514);
@@ -391,15 +444,16 @@
 .switch-box {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
-  border: 4px solid rgb(14, 14, 14);
+  border: 2px solid rgba(248, 248, 216, 0.4196078431);
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: #fbfcc2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65), 0 1px 2px rgba(0, 0, 0, 0.24);
   height: 75%;
   width: 34%;
   position: absolute;
   bottom: 0;
   right: 0;
   padding-inline: 1rem;
-  background-color: #4c5897;
-  color: white;
   z-index: 1;
   transition: 0.3s;
   opacity: 1;
@@ -441,15 +495,15 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
-  border: 4px solid rgb(14, 14, 14);
+  border: 0 solid rgb(14, 14, 14);
+  background-color: #fbfcc2;
   border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65), 0 1px 2px rgba(0, 0, 0, 0.24);
   height: 75%;
   width: 34%;
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #4c5897;
-  background-color: #fbfcc2;
   z-index: 1;
   transition: 0.3s;
   opacity: 1;
@@ -504,7 +558,7 @@
   gap: 0.5rem;
   width: 100%;
   padding-inline: 1rem;
-  background-color: #7576b3;
+  background-color: #0a224f;
   color: white;
   color: white;
   transition: 0.3s;
@@ -669,7 +723,7 @@
 }
 .new-level {
   display: grid;
-  background-color: #9697c5;
+  background-color: #10357c;
   color: white;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
   border-radius: 0.35rem 0.35rem 0 0;
@@ -685,6 +739,13 @@
   padding: 0.5rem;
 }
 
+.go-in-pokemon {
+  position: absolute;
+  place-self: end;
+  right: 5rem;
+  z-index: 1;
+}
+
 .countdown {
   display: grid;
   place-items: center center;
@@ -692,7 +753,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  background-color: rgba(122, 132, 186, 0.95);
+  background-color: #040f22;
 }
 .countdown span {
   display: flex;

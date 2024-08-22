@@ -536,3 +536,28 @@ li:has(.bar) {
     filter: saturate(0.8) brightness(0.8);
   }
 }
+
+.logo {
+  position: absolute;
+  display: grid;
+  cursor: pointer;
+  &:hover .logo-animation {
+    opacity: 1;
+  }
+  &:hover .logo-image {
+    scale: 1.1;
+  }
+}
+
+.logo-image {
+  position: absolute;
+  transition: 0.4s;
+  translate: 0rem 1rem;
+}
+
+.logo-animation {
+  position: absolute;
+  z-index: 2;
+  transition: 0.5s;
+  opacity: 0;
+}

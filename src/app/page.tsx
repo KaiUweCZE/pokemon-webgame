@@ -6,6 +6,7 @@ import mapImg from "@/assets/images/map-labels.png";
 import { useState } from "react";
 import EliteFour from "@/components/EliteFour";
 import conradImg from "@/assets/images/characters/conrad.webp";
+import Logo from "@/components/Logo";
 
 const Home = () => {
   const { data, update } = useSession();
@@ -63,6 +64,7 @@ const Home = () => {
       <div className="map">
         <Image src={mapImg} alt="map of tekel" />
       </div>
+      {/*<Logo />*/}
     </main>
   );
 };
