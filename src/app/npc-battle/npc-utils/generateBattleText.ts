@@ -12,9 +12,7 @@ export const generateBattleText = (
       return "The battle has begun!";
     case NpcBattleState.BATTLE_START:
       return `I choose you ${userPokemonName}`;
-    case NpcBattleState.OPPONENT_TURN:
-      return "Your opponent is thinking...";
-    case NpcBattleState.PLAYER_ATTACKING:
+    case NpcBattleState.USER_ATTACKING:
       return userPokemonName
         ? `${userPokemonName} is attacking!`
         : "Your Pokémon is attacking!";
@@ -22,7 +20,7 @@ export const generateBattleText = (
       return opponentPokemonName
         ? `${opponentPokemonName} is attacking!`
         : "The opponent's Pokémon is attacking!";
-    case NpcBattleState.PLAYER_POKEMON_FAINTED:
+    case NpcBattleState.USER_POKEMON_FAINTED:
       return userPokemonName
         ? `${userPokemonName} has fainted!`
         : "Your Pokémon has fainted!";
@@ -30,11 +28,11 @@ export const generateBattleText = (
       return opponentPokemonName
         ? `${opponentPokemonName} has fainted!`
         : "The opponent's Pokémon has fainted!";
-    case NpcBattleState.PLAYER_SWITCHING_POKEMON:
+    case NpcBattleState.USER_SWITCHING_POKEMON:
       return "Choose your next Pokémon!";
     case NpcBattleState.OPPONENT_SWITCHING_POKEMON:
       return "The opponent is switching Pokémon!";
-    case NpcBattleState.PLAYER_VICTORY:
+    case NpcBattleState.USER_VICTORY:
       return "Congratulations! You've won the battle!";
     case NpcBattleState.OPPONENT_VICTORY:
       return "Oh no! You've lost the battle.";

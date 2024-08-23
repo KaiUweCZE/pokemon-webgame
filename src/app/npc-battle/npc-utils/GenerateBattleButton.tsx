@@ -9,7 +9,7 @@ const GenerateBattleButton = ({
   state,
   onButtonClick,
 }: GenerateBattleButtonProps) => {
-  const getButtonText = (state: NpcBattleState): string => {
+  const getButtonText = (state: NpcBattleState): string | null => {
     switch (state) {
       case NpcBattleState.NOT_STARTED:
         return "Start Battle";
@@ -17,22 +17,29 @@ const GenerateBattleButton = ({
         return "Choose Action";
       case NpcBattleState.BATTLE_STOPPED:
         return "Leave";
-      case NpcBattleState.PLAYER_POKEMON_FAINTED:
+      case NpcBattleState.USER_POKEMON_FAINTED:
         return "Switch Pokémon";
-      case NpcBattleState.PLAYER_VICTORY:
+      case NpcBattleState.USER_VICTORY:
       case NpcBattleState.OPPONENT_VICTORY:
       case NpcBattleState.BATTLE_ENDED:
         return "New Battle";
       case NpcBattleState.CANNOT_START:
         return "Go Home";
       default:
-        return "Continue";
+        return null;
     }
   };
+
+  const buttonText = getButtonText(state);
+
   return (
-    <button className="button-primary" onClick={onButtonClick}>
-      {getButtonText(state)}
-    </button>
+    <>
+      {buttonText && (
+        <button className="button-primary" onClick={onButtonClick}>
+          {buttonText}
+        </button>
+      )}
+    </>
   );
 };
 

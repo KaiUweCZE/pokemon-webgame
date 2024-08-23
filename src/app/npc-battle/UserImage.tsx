@@ -1,14 +1,16 @@
 import Image, { StaticImageData } from "next/image";
 import PokemonsBar from "./PokemonsBar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { NpcBattleContext } from "./NpcBattleContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import UserPokemonStats from "./UserPokemonStats";
 import { useCssClass } from "./hooks/useCssClass";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
-import goOut2 from "@/assets/images/gif/puff.gif";
-import goOut from "@/assets/images/gif/goout.gif";
+import goOut from "@/assets/images/gif/puff.gif";
+import goIn from "@/assets/images/gif/goout.gif";
+import SwitchPokemonImage from "./PokemonImages/SwitchPokemonImage";
+import BattleStartImage from "./PokemonImages/BattleStartImage";
 
 interface UserImageProps {
   img: StaticImageData;
@@ -19,12 +21,25 @@ const UserImage = ({ img }: UserImageProps) => {
   const context = useContext(NpcBattleContext);
   const generateCss = useCssClass();
 
+  const [displayedPokemon, setDisplayedPokemon] =
+    useState<StaticImageData | null>(null);
+
   if (!pokemonContext) return null;
 
   const pokemon = pokemonContext.currentPokemon;
   const pokemons = pokemonContext.pokemonsFromSix;
   const pokemonImg = pokemon ? generatePokemonImageBack(pokemon.name) : null;
 
+  const getImages = () => {
+    switch (context?.battleState) {
+      case NpcBattleState.BATTLE_START:
+        return <BattleStartImage />;
+      case NpcBattleState.USER_SWITCHING_POKEMON:
+        return <SwitchPokemonImage />;
+      default:
+        break;
+    }
+  };
   return (
     <div className={generateCss("user-pokemon")}>
       {context?.startBattle && pokemon ? (
@@ -46,16 +61,7 @@ const UserImage = ({ img }: UserImageProps) => {
           )}
           {pokemonImg && (
             <>
-              {(context.battleState ===
-                NpcBattleState.PLAYER_SWITCHING_POKEMON ||
-                context.battleState === NpcBattleState.BATTLE_START) && (
-                <Image
-                  className="user-pokemon-go-out"
-                  src={goOut}
-                  alt="user pokemon come out"
-                  height={220}
-                />
-              )}
+              {getImages()}
               <Image
                 className="user-pokemon-image"
                 src={pokemonImg}
@@ -71,3 +77,22 @@ const UserImage = ({ img }: UserImageProps) => {
 };
 
 export default UserImage;
+
+/*(context.battleState === NpcBattleState.USER_SWITCHING_POKEMON ||
+                context.battleState === NpcBattleState.BATTLE_START) && (
+                <Image
+                  className="user-pokemon-go-in"
+                  src={goIn}
+                  alt="user pokemon coming in"
+                  height={220}
+                />
+              )}
+              {context.battleState ===
+                NpcBattleState.USER_SWITCHING_POKEMON && (
+                <Image
+                  src={goOut}
+                  className="user-pokemon-go-out"
+                  alt="user pokemon go out"
+                  height={150}
+                />
+              )*/

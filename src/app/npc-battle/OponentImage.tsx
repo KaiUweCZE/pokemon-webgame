@@ -5,8 +5,8 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import { generatePokemonImage } from "@/utils/generatePokemonImage";
 import OponentPokemonStats from "./OponentPokemonStats";
 import field from "@/assets/images/fields/field2.webp";
-import go from "@/assets/images/gif/goout.gif";
-import go3 from "@/assets/images/gif/puff.gif";
+//import go from "@/assets/images/gif/goout.gif";
+import go from "@/assets/images/gif/go-500ms-delay.gif";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
 import { getCssClass } from "./npc-utils/getCssClass";
 

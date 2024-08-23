@@ -128,6 +128,7 @@
   opacity: 1;
   translate: 0 0;
   filter: brightness(1);
+  transition: 0.5s;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.582));
 }
 @starting-style {
@@ -185,9 +186,10 @@
 
 .user-pokemon.user-switching .user-pokemon-image {
   opacity: 0;
+  transition: 0s;
 }
 
-.user-pokemon-go-out {
+.user-pokemon-go-in {
   position: absolute;
   place-self: end start;
   margin-left: 5rem;
@@ -195,6 +197,23 @@
   z-index: -1;
 }
 
+.user-pokemon-go-out {
+  position: absolute;
+  place-self: end start;
+  margin-left: 2rem;
+  translate: 0 2.5rem;
+  z-index: -1;
+  animation: hidden-after-xms 0.5s linear forwards;
+}
+
+@keyframes hidden-after-xms {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 .oponent {
   grid-area: enemy-pokemon;
   display: grid;

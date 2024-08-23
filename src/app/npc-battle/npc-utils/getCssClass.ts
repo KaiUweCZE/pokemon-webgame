@@ -7,7 +7,7 @@ export const getCssClass = (
   const cssClasses = [baseClass];
 
   switch (battleState) {
-    case NpcBattleState.PLAYER_POKEMON_FAINTED:
+    case NpcBattleState.USER_POKEMON_FAINTED:
       cssClasses.push("user-done");
       break;
     case NpcBattleState.BATTLE_START:
@@ -16,16 +16,16 @@ export const getCssClass = (
     case NpcBattleState.OPPONENT_SWITCHING_POKEMON:
       cssClasses.push("oponent-switching");
       break;
-    case NpcBattleState.PLAYER_SWITCHING_POKEMON:
+    case NpcBattleState.USER_SWITCHING_POKEMON:
       cssClasses.push("user-switching");
       break;
-    case NpcBattleState.PLAYER_ATTACKING:
+    case NpcBattleState.USER_ATTACKING:
       cssClasses.push("attacking");
       break;
     case NpcBattleState.OPPONENT_ATTACKING:
       cssClasses.push("defending");
       break;
-    case NpcBattleState.PLAYER_VICTORY:
+    case NpcBattleState.USER_VICTORY:
       cssClasses.push("victory");
       break;
     case NpcBattleState.OPPONENT_VICTORY:
