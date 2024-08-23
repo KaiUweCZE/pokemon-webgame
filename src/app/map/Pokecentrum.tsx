@@ -5,35 +5,38 @@ import { MapContext } from "./MapContext";
 import HeartBeatLoader from "@/components/HeartBeatLoader";
 import Image from "next/image";
 import nurseImg from "@/assets/images/characters/nurse.webp";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 const Pokecentrum = () => {
   const { data, update } = useSession();
   const [isHealed, setIsHealed] = useState(false);
   const context = useContext(MapContext);
+  const pokemonContext = useContext(PokemonContext);
 
   const handleHealth = async () => {
-    console.log("start action");
+    if (!data || !pokemonContext) return null;
+    try {
+      context?.setLoader(true);
+      context?.setError(false);
+      const result = await healUserSix(data.user.name);
+      if (!result) {
+        context?.setError(true);
+        return;
+      }
 
-    context?.setLoader(true);
-    if (!data) return null;
-    const updated = await healUserSix(data?.user.name);
-    await update({
-      ...data,
-      user: updated?.updatedUser,
-    });
+      // update six of user's pokemon for context
+      pokemonContext.setPokemonsFromSix(result.updatedPokemons);
+      console.log("result: ", result.updatedPokemons);
 
-    if (!updated?.updatedUser) {
-      console.log("too late");
-      context?.setError(true);
-      context?.setLoader(false);
-    } else {
-      console.log(
-        "succes: ",
-        data?.user,
-        updated?.updatedPokemons,
-        updated?.updatedUser
-      );
+      await update({
+        ...data,
+        user: result.updatedUser,
+      });
+
       setIsHealed(true);
+    } catch (error) {
+      console.error("Error healing Pokémon:", error);
+    } finally {
       context?.setLoader(false);
     }
   };

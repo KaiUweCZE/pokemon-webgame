@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { addPokemon, chapterDone } from "./action";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useRouter } from "next/navigation";
-import { UserContext } from "@/contexts/UserContext";
 import { generatePokemon } from "@/utils/generatePokemon";
 import { pokemonBattleData } from "@/data/pokemonBattleData";
 import { addPokemonToSix } from "@/app/profile/action";
+import { useSession } from "next-auth/react";
 
 interface PokemonItemProps {
   img: string | StaticImport;
@@ -23,55 +23,48 @@ const PokemonItem = ({
   pokemonInfo,
 }: PokemonItemProps) => {
   const [active, setActive] = useState(false);
-  const context = useContext(UserContext);
+  const { data } = useSession();
   const router = useRouter();
   const pokemon = pokemonBattleData.find((p) => p.name === pokemonName);
 
-  if (!context) {
+  if (!data) {
     console.log("context missing");
     throw new Error();
   }
+  const username = data.user.name;
 
   const nextChapter = async () => {
-    if (context.currentUser?.name) {
-      const updatedUser = await chapterDone(context.currentUser.name, 1);
-      console.log("chapter is done");
-      return updatedUser;
-    }
-
-    console.log("error occurs");
+    const updatedUser = await chapterDone(username, 1);
+    console.log("chapter is done");
+    return updatedUser;
   };
 
   const handleAddPokemon = async (pokemonDataId: number) => {
     const pokemon = generatePokemon(pokemonDataId, [5, 5]);
-    if (context.currentUser?.name) {
-      const newUser = await addPokemon({
-        username: context.currentUser?.name,
-        attacks: ["tackle", "bite"],
-        pokemonName: pokemon.name,
-        pokemonLevel: 5,
-        type: pokemon.type,
-        hp: pokemon.hp,
-        defense: pokemon.defense,
-        damage: pokemon.damage,
-        speed: pokemon.speed,
-        energy: pokemon.energy,
-        expToLevel: pokemon.expToLevel,
-      });
-      console.log(newUser);
-    }
+
+    const newUser = await addPokemon({
+      username: username,
+      attacks: ["tackle", "bite"],
+      pokemonName: pokemon.name,
+      pokemonLevel: 5,
+      type: pokemon.type,
+      hp: pokemon.hp,
+      defense: pokemon.defense,
+      damage: pokemon.damage,
+      speed: pokemon.speed,
+      energy: pokemon.energy,
+      expToLevel: pokemon.expToLevel,
+    });
+    console.log(newUser);
+
     console.log("done");
   };
 
   const introDone = async () => {
     await handleAddPokemon(pokemonDataId);
     const updatedUser = await nextChapter();
-    if (updatedUser && context.currentUser) {
-      context.setCurrentUser(updatedUser);
-      await addPokemonToSix(
-        context.currentUser?.name,
-        updatedUser.pokemonIds[0]
-      );
+    if (updatedUser) {
+      await addPokemonToSix(username, updatedUser.pokemonIds[0]);
     }
 
     router.push("/profile");

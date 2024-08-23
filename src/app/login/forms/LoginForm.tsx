@@ -1,8 +1,7 @@
 "use client";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import "./login.css";
-import { UserContext } from "@/contexts/UserContext";
 import { getUser } from "./action";
 import { useRouter } from "next/navigation";
 
@@ -10,17 +9,14 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const context = useContext(UserContext);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newUser = await getUser(username);
+    const user = await getUser(username);
 
-    if (newUser) {
-      context?.setCurrentUser(newUser);
-
-      if ("error" in newUser) {
-        console.error("Error:", newUser.error);
+    if (user) {
+      if ("error" in user) {
+        console.error("Error:", user.error);
         return;
       }
 
@@ -31,7 +27,7 @@ const LoginForm = () => {
       });
 
       // Check user's chapter and redirect accordingly
-      if (newUser.chapter > 0) {
+      if (user.chapter > 0) {
         router.push("/profile");
       } else {
         router.push("/intro");

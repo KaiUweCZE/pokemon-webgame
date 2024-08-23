@@ -1,14 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
 import teddiursaImg from "@/assets/images/pokemons/teddiursa.webp";
 import eeveeImg from "@/assets/images/pokemons/eevee.webp";
 import PokemonItem from "./PokemonItem";
 
-interface ThirdSceneProps {
-  step: number;
-  setStep: Dispatch<SetStateAction<number>>;
-}
-
-const ThirdScene = (props: ThirdSceneProps) => {
+const ThirdScene = () => {
   const teddyText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
               minus eum quo voluptatem illo odit, deleniti exercitationem neque
               eius nam nisi officiis ducimus quaerat.`;
@@ -29,14 +23,6 @@ const ThirdScene = (props: ThirdSceneProps) => {
         pokemonInfo={eeveeText}
         img={eeveeImg}
       />
-      {/*
-        <button
-          className="button-primary"
-          onClick={() => props.setStep(props.step - 1)}
-        >
-          prev
-        </button>
-      */}
     </section>
   );
 };

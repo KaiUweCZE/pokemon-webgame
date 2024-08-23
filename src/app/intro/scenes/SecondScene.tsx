@@ -50,12 +50,6 @@ const SecondScene = ({ step, setStep, username }: SecondSceneProps) => {
       </div>{" "}
       <article>
         <p>Choose one of the profiles and proceed to the Pokémon selection</p>
-        {/*<button
-          className="button-primary"
-          onClick={() => setStep(step - 1)}
-        >
-          prev
-        </button>*/}
       </article>
     </section>
   );
