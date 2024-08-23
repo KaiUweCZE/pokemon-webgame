@@ -4,6 +4,7 @@ import { randomAttack } from "@/utils/battle-function/randomAttack";
 import { useContext, useEffect, useState } from "react";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { NpcBattleState } from "@/types/enums/npcBattleState";
 
 const useEnemyBattle = () => {
   const context = useContext(BattleContext);
@@ -25,20 +26,16 @@ const useEnemyBattle = () => {
 
     if (currentPokemon?.actualHp === 0 || context.enemyPokemon.actualHp === 0) {
       context.setStopBattle(true);
+      context.setBattleState(NpcBattleState.USER_POKEMON_FAINTED);
     }
 
-    if (move) {
+    if (move && currentPokemon) {
       const interval = setInterval(async () => {
-        if (currentPokemon && move?.damage && !context.stopBattle) {
-          let newHp = (currentPokemon?.actualHp ?? 0) - move.damage;
-          if (newHp <= 0) {
-            newHp = 0;
-            clearInterval(interval);
-          }
+        if (move?.damage && !context.stopBattle) {
+          let newHp = Math.max(currentPokemon?.actualHp - move.damage);
           setCurrentPokemon({ ...currentPokemon, actualHp: newHp });
 
           context.setEnemyAttackAnimation(true);
-
           setTimeout(() => {
             context.setEnemyAttackAnimation(false);
           }, 1500);
@@ -47,7 +44,7 @@ const useEnemyBattle = () => {
           try {
             const updatedPokemon = await changeHpServer(
               currentPokemon.id,
-              move.damage
+              newHp
             );
 
             if (updatedPokemon) {
@@ -55,6 +52,11 @@ const useEnemyBattle = () => {
             }
           } catch (error) {
             console.error("error occurs: ", error);
+          }
+          if (newHp === 0) {
+            clearInterval(interval);
+            context.setStopBattle(true);
+            context.setBattleState(NpcBattleState.USER_POKEMON_FAINTED);
           }
         }
       }, move?.recoveryTime * 1000);

@@ -5,7 +5,7 @@ import { Pokemon } from "@/types/pokemon";
 import { changeEnergy } from "@/utils/battle-function/changeEnergy";
 import { restEng } from "@/utils/battle-function/restEng";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import AttackCountdown from "./AttackCountdown";
+import AttackCountdown from "../../../components/battle/AttackCountdown";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 
@@ -32,13 +32,10 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
     if (!userPokemon) {
       return null;
     }
-    const updatedPokemon = await changeEnergy({
-      pokemonId: userPokemon.id,
-      energyCost: energyCost,
-    });
+    const updatedEnergy = await changeEnergy(userPokemon.id, energyCost);
     console.log("enemy pokemon: ", enemyPokemon);
 
-    return updatedPokemon;
+    return updatedEnergy;
   };
 
   const handleAttack = async (attackName: string) => {
@@ -71,16 +68,16 @@ const BoxAttacks = ({ userPokemon, setDamage, setChange }: BoxAttacksProps) => {
       console.log("attack can not be used");
       return null;
     }
-    const updatedPokemon = await incrementEnergy(attackData.energyCost);
+    const newEnergy = await incrementEnergy(attackData.energyCost);
     // set damage
     setDamage(attackData?.damage);
     // informs about the change
     setChange((prev) => prev + 1);
-    if (updatedPokemon) {
+    if (newEnergy) {
       // set change for actual energy
       setCurrentPokemon({
         ...userPokemon,
-        actualEnergy: updatedPokemon.actualEnergy,
+        actualEnergy: newEnergy,
       });
     }
   };

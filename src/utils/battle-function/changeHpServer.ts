@@ -3,7 +3,7 @@
 import prisma from "../../../prisma";
 import { connectToDatabase } from "../server-helpers";
 
-export const changeHpServer = async (pokemonId: string, damage: number) => {
+export const changeHpServer = async (pokemonId: string, newHp: number) => {
   try {
     connectToDatabase();
 
@@ -14,13 +14,14 @@ export const changeHpServer = async (pokemonId: string, damage: number) => {
 
     if (!pokemon) return null;
 
-    let newHp = pokemon?.actualHp - damage < 0 ? 0 : pokemon?.actualHp - damage;
+    // Ensure newHp is not negative
+    const updatedHp = Math.max(0, newHp);
 
     const pokemonUpdated = await prisma.pokemon.update({
       where: { id: pokemonId },
       data: {
         ...pokemon,
-        actualHp: newHp,
+        actualHp: updatedHp,
       },
     });
 

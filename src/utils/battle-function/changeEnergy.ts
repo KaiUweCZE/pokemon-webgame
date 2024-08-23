@@ -2,15 +2,7 @@
 import prisma from "../../../prisma";
 import { connectToDatabase } from "../server-helpers";
 
-interface ChangeEnergyProps {
-  pokemonId: string;
-  energyCost: number;
-}
-
-export const changeEnergy = async ({
-  pokemonId,
-  energyCost,
-}: ChangeEnergyProps) => {
+export const changeEnergy = async (pokemonId: string, energyCost: number) => {
   try {
     await connectToDatabase();
     console.log("connection to database was successful");
@@ -25,7 +17,7 @@ export const changeEnergy = async ({
     });
     console.log("Pokemon energy updated successfully", updatedPokemon);
 
-    return updatedPokemon;
+    return updatedPokemon.actualEnergy;
   } catch (error) {
     console.error("Error updating pokemon energy:", error);
   } finally {

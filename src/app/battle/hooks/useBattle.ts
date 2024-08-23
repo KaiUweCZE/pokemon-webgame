@@ -3,7 +3,6 @@ import { BattleContext } from "@/contexts/BattleContext";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getExp } from "@/utils/battle-function/getExp";
 import { addExp } from "@/utils/addExp";
-import { Item } from "@/types/item";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleMenu } from "@/types/enums/enumBattleMenu";
 
