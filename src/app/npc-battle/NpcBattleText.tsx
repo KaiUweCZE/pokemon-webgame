@@ -7,6 +7,7 @@ import GenerateBattleButton from "./npc-utils/GenerateBattleButton";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { useRouter } from "next/navigation";
+import { switchingTimer } from "@/utils/timer/switchingTimer";
 
 const NpcBattleText = () => {
   const context = useContext(NpcBattleContext);
@@ -51,15 +52,15 @@ const NpcBattleText = () => {
           const number = randomOponentPokemon(oponentPokemons?.length);
           setCurrentOponentPokemon(oponentPokemons[number]);
           setBattleState(NpcBattleState.BATTLE_START);
-          setTimeout(() => {
+          switchingTimer(() => {
             setBattleState(NpcBattleState.BATTLE);
-          }, 1400);
+          });
           console.log("Battle started, new state:", NpcBattleState.BATTLE);
         } else {
           console.log("No opponent pokemons available");
         }
         break;
-      case NpcBattleState.PLAYER_POKEMON_FAINTED:
+      case NpcBattleState.USER_POKEMON_FAINTED:
         const nextPokemon = pokemonsFromSix.find(
           (pokemon) => pokemon.actualHp > 0
         );
@@ -71,9 +72,12 @@ const NpcBattleText = () => {
           setBattleState(NpcBattleState.OPPONENT_VICTORY);
         }
         break;
+      case NpcBattleState.BATTLE:
+        context.setMenuOption(BattleMenu.FIGHT);
+        break;
       case NpcBattleState.CANNOT_START:
       case NpcBattleState.BATTLE_STOPPED:
-        router.push("/profile");
+        router.push("/map");
         break;
       default:
         console.log("Default action for state:", battleState);

@@ -2,11 +2,11 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { NpcBattleContext } from "../NpcBattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { randomAttack } from "@/utils/battle-function/randomAttack";
-import { attacksData } from "@/data/attacksData";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 
 const useOpponentBattle = () => {
   const context = useContext(NpcBattleContext);
@@ -14,23 +14,26 @@ const useOpponentBattle = () => {
   const recoveryTimeRef = useRef(1000);
   const timingAdjustmentRef = useRef(50);
   const [lastAttackTime, setLastAttackTime] = useState(Date.now());
+  const [isFirstAttack, setIsFirstAttack] = useState(true);
 
-  const performAttack = useCallback(() => {
-    if (!context || !pokemonContext) return;
+  const performAttack = useCallback(async () => {
+    if (!context?.currentOponentPokemon || !pokemonContext?.currentPokemon)
+      return;
 
-    const opponentPokemon = context.currentOponentPokemon;
-    const setOpponentPokemon = context.setCurrentOponentPokemon;
-    const userPokemon = pokemonContext.currentPokemon;
-    const setUserPokemon = pokemonContext.setCurrentPokemon;
+    const {
+      currentOponentPokemon: opponentPokemon,
+      setCurrentOponentPokemon: setOpponentPokemon,
+    } = context;
+    const { currentPokemon: userPokemon, setCurrentPokemon: setUserPokemon } =
+      pokemonContext;
 
     if (!opponentPokemon || !opponentPokemon.attacks) return;
 
+    // check opponent energy
+    console.log("opponent energy: ", opponentPokemon.actualEnergy);
     // get data about attack
-    const attacksNames = opponentPokemon?.attacks;
-    const attacks = getAttacksFromNames(attacksNames);
-
-    if (!attacks || attacks.length === 0 || !userPokemon || !opponentPokemon)
-      return;
+    const attacks = getAttacksFromNames(opponentPokemon?.attacks);
+    if (!attacks || attacks.length === 0) return;
 
     // randomoize current attack
     const currentAttack = randomAttack(attacks);
@@ -58,22 +61,36 @@ const useOpponentBattle = () => {
     // new hp for user pokemon after attack
     const newHp = makeDamage(
       currentAttack.damage / 100,
-      userPokemon?.actualHp,
-      userPokemon?.type,
+      userPokemon.actualHp,
+      userPokemon.type,
       currentAttack.type,
-      opponentPokemon.damage / 100,
-      userPokemon?.defense
+      opponentPokemon.damage / 20,
+      userPokemon.defense
     );
 
     if (newHp <= 0) {
       context.setStopBattle(true);
-      context.setBattleState(NpcBattleState.OPPONENT_POKEMON_FAINTED);
-      pokemonContext.setCurrentPokemon({ ...userPokemon, actualHp: 0 });
+      context.setBattleState(NpcBattleState.USER_POKEMON_FAINTED);
+      setUserPokemon({ ...userPokemon, actualHp: 0 });
     } else {
       setUserPokemon({ ...userPokemon, actualHp: newHp });
+      const newSix = pokemonContext.pokemonsFromSix.map((pokemon) =>
+        pokemon.id !== userPokemon.id ? pokemon : userPokemon
+      );
+      pokemonContext.setPokemonsFromSix(newSix);
+      try {
+        const updatedPokemon = await changeHpServer(userPokemon.id, newHp);
+
+        if (updatedPokemon) {
+          console.log("updatedPokemon hp: ", updatedPokemon.actualHp);
+        }
+      } catch (error) {
+        console.error("error occurs: ", error);
+      }
     }
     // set time from last attack
     setLastAttackTime(Date.now());
+    setIsFirstAttack(false);
     console.log(
       `Opponent ${opponentPokemon.name} used ${currentAttack}. Next attack in ${
         recoveryTimeRef.current / 1000
@@ -81,32 +98,49 @@ const useOpponentBattle = () => {
     );
   }, [context, pokemonContext]);
 
+  // if the user switches pokemon, the next opponent's attack will be 1.5s after the spawn
+  useEffect(() => {
+    if (context?.battleState === NpcBattleState.USER_SWITCHING_POKEMON) {
+      setIsFirstAttack(true);
+    }
+  }, [context?.battleState]);
+
   useEffect(() => {
     if (context?.battleState !== NpcBattleState.BATTLE) {
       console.log("Battle has stopped");
       return;
     }
-    // check every 0.1s if recovery time has passed
-    const interval = setInterval(() => {
-      const now = Date.now();
-      // round (now - lastAttackTime)
-      // usage interval check that now - lastAttackTime === 45ms, with added -50 we
-      if (
-        now - lastAttackTime - timingAdjustmentRef.current >=
-        recoveryTimeRef.current
-      ) {
-        // Reduce the timing adjustment, but keep it non-negative
-        /*
+
+    // opponent's first attack will be after 1.5s
+    if (isFirstAttack) {
+      const firstAttackTimer = setTimeout(() => {
+        performAttack();
+      }, 1500);
+
+      return () => clearTimeout(firstAttackTimer);
+    } else {
+      // check every 0.1s if recovery time has passed
+      const interval = setInterval(() => {
+        const now = Date.now();
+        // round (now - lastAttackTime)
+        // usage interval check that now - lastAttackTime === 45ms, with added -50 we
+        if (
+          now - lastAttackTime - timingAdjustmentRef.current >=
+          recoveryTimeRef.current
+        ) {
+          // Reduce the timing adjustment, but keep it non-negative
+          /*
         e.g. with 10 attacks the opponent could be at an advantage of up to .5s, gradually reducing the rounding advantage
          */
-        timingAdjustmentRef.current = Math.max(
-          0,
-          timingAdjustmentRef.current - 5
-        );
-        performAttack();
-      }
-    }, 100);
-    return () => clearInterval(interval);
+          timingAdjustmentRef.current = Math.max(
+            0,
+            timingAdjustmentRef.current - 5
+          );
+          performAttack();
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
   }, [context?.setOponentAttack, context?.stopBattle, performAttack]);
 
   return null;

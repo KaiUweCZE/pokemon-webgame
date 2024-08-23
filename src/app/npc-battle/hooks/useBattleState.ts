@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { Pokemon } from "@/types/pokemon";
 import { NpcBattleContext } from "../NpcBattleContext";
@@ -7,7 +7,7 @@ import { NpcBattleState } from "@/types/enums/npcBattleState";
 export const useBattleState = (
   userPokemons: Pokemon[],
   opponentPokemons: PokemonBattle[] | null,
-  currentPokemon: PokemonBattle | null,
+  userPokemon: PokemonBattle | null,
   currentOpponentPokemon: PokemonBattle | null
 ) => {
   const context = useContext(NpcBattleContext);
@@ -28,23 +28,24 @@ export const useBattleState = (
   // Tracks the health of current Pokémon and updates battle status
   // when a Pokémon faints or when one side loses all Pokémon
   useEffect(() => {
-    if (!currentPokemon || !currentOpponentPokemon) return;
+    if (!userPokemon || !currentOpponentPokemon) return;
     const getBattleState = (): NpcBattleState | null => {
       switch (true) {
-        case currentPokemon.actualHp <= 0:
+        case userPokemon.actualHp <= 0:
           console.log("user pokemons: ", userPokemons);
 
           if (userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
-            return NpcBattleState.PLAYER_POKEMON_FAINTED;
+            return NpcBattleState.USER_POKEMON_FAINTED;
           } else {
             return NpcBattleState.OPPONENT_VICTORY;
           }
 
         case currentOpponentPokemon.actualHp <= 0:
+          console.log("ouha");
           if (opponentPokemons?.some((pokemon) => pokemon.actualHp > 0)) {
             return NpcBattleState.OPPONENT_POKEMON_FAINTED;
           } else {
-            return NpcBattleState.PLAYER_VICTORY;
+            return NpcBattleState.USER_VICTORY;
           }
 
         default:
@@ -56,7 +57,7 @@ export const useBattleState = (
     if (newState) {
       setBattleState(newState);
     }
-  }, [currentPokemon, currentOpponentPokemon, userPokemons, opponentPokemons]);
+  }, [userPokemon, currentOpponentPokemon, userPokemons, opponentPokemons]);
 
   return { battleState, setBattleState };
 };

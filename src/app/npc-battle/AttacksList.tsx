@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { NpcBattleContext } from "./NpcBattleContext";
 import { attacksData } from "@/data/attacksData";
 import useDamage from "./hooks/useDamage";
-import AttackCountdown from "../battle/battle-components/AttackCountdown";
+import AttackCountdown from "../../components/battle/AttackCountdown";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { NpcBattleState } from "@/types/enums/npcBattleState";
 
@@ -44,7 +44,10 @@ const AttacksList = () => {
           <li key={attack} className="attack-item">
             <button
               onClick={() => handleAttack(attack)}
-              disabled={context.stopBattle}
+              disabled={
+                context.battleState !== NpcBattleState.BATTLE ||
+                pokemon.actualEnergy <= 0
+              }
             >
               {attack}
             </button>
@@ -52,11 +55,15 @@ const AttacksList = () => {
         ))}
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.stopBattle}>rest</button>{" "}
+        <button disabled={context.battleState !== NpcBattleState.BATTLE}>
+          rest
+        </button>{" "}
       </li>
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.stopBattle}>avoid</button>
+        <button disabled={context.battleState !== NpcBattleState.BATTLE}>
+          avoid
+        </button>
       </li>
       {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>
