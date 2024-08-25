@@ -23,7 +23,9 @@ export const getClassInBattle = (
       cssClasses.push("last-round-done");
       break;
     case BattleState.USER_SWITCHING_POKEMON:
-      cssClasses.push("switching-pokemon");
+      cssClasses.push("user-switching");
+      break;
+    case BattleState.BATTLE:
       break;
     default:
       cssClasses.push("not-started");

@@ -7,7 +7,8 @@ $border-primary2: 0 solid rgb(14, 14, 14);
 $bg-battle2: #010108;
 $bg-battle3: #f8f8d8;
 $bg-battle1: #59a09f;
-$bg-battle: $light-blue;
+//$bg-battle: $light-blue;
+$bg-battle: lighten($darker-blue, 10);
 $bg-battle-secondary: #fbfcc2;
 $font-color: white;
 $pokemon-bar-border: 2px solid #303030;
@@ -213,6 +214,10 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
 }
 
 .user-pokemon.user-switching {
+  .user-image {
+    opacity: 0;
+    transition: 0s;
+  }
   .user-pokemon-image {
     opacity: 0;
     transition: 0s;
@@ -309,6 +314,7 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
   position: absolute;
   place-self: end;
   translate: 0rem 5rem;
+  z-index: -1;
 }
 
 .opponent-attack {
@@ -430,7 +436,7 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
     }
   }
   &.catching {
-    img {
+    img.oponent-pokemon {
       opacity: 0;
     }
   }
@@ -630,6 +636,11 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
   opacity: 1;
   translate: 0 0;
   font-size: 1.25rem;
+  p {
+    display: grid;
+    text-wrap: balance;
+    text-align: center;
+  }
   @starting-style {
     opacity: 0;
     translate: 10rem 0;

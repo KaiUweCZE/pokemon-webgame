@@ -1,4 +1,3 @@
-import { BattleContext } from "@/contexts/BattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
 import { PokemonBattle } from "@/types/pokemonBattle";
@@ -72,7 +71,7 @@ export const useGetExp = (
       }
       setExpAdded(true);
     }
-  }, [enemyPokemon?.actualHp, pokemonContext, expAdded]);
+  }, [battleState]);
 
   // Effect to set the trigger when enemy Pokemon's HP changes
   // The 'trigger' state and its related effect solve a specific race condition:

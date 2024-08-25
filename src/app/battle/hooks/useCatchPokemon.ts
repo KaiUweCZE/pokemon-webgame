@@ -12,7 +12,7 @@ const useCatchPokemon = () => {
   const user = data?.user;
 
   const randomCatch = useCallback(() => {
-    return Math.random() < 2 / 3;
+    return Math.random() < 1 / 3;
   }, []);
 
   const handleCatch = async (username: string, pokemon: PokemonBattle) => {
@@ -34,18 +34,10 @@ const useCatchPokemon = () => {
     const result = randomCatch();
     console.log("result of catching: ", result);
 
-    if (!result) {
-      setTimeout(() => {
-        context?.setStopBattle(false);
-        //context?.setIsCatching({ underway: false, isSucces: false });
-        context.setBattleState(BattleState.BATTLE);
-      }, 3500);
-      console.log("Catching failed");
-      return null;
-    }
-
     try {
-      const updatedUser = await catchPokemon(username, pokemon);
+      console.log("start with server side");
+
+      const updatedUser = await catchPokemon(username, pokemon, result);
       if (!updatedUser) {
         throw new Error("Failed to update user after catching Pokemon");
       }
@@ -58,13 +50,18 @@ const useCatchPokemon = () => {
         },
       });
 
-      setTimeout(() => {
-        //context?.setIsCatching({ underway: false, isSucces: true });
-        context.setBattleState(BattleState.CAUGHT);
-      }, 3500);
+      if (result) {
+        setTimeout(() => {
+          context.setBattleState(BattleState.CAUGHT);
+        }, 3500);
+      } else {
+        setTimeout(() => {
+          context?.setStopBattle(false);
+          context.setBattleState(BattleState.BATTLE);
+        }, 3500);
+      }
     } catch (error) {
       console.error("Error occurred while catching Pokemon: ", error);
-      //context.setIsCatching({ underway: false, isSucces: false });
       context.setBattleState(BattleState.BATTLE);
     }
   };

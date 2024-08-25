@@ -6,12 +6,13 @@ import { BattleContext } from "@/contexts/BattleContext";
 import UserPokemonStats from "./UserPokemonStats";
 import { getClassInBattle } from "../utils/getClassInBattle";
 import { BattleState } from "@/types/enums/battleState";
+import SwitchPokemonImage from "@/components/battlestate-images/SwitchPokemonImage";
 
 interface UserPokemonBattleProps {
   userPokemon: Pokemon;
 }
 
-const UserPokemonBattle = ({ userPokemon }: UserPokemonBattleProps) => {
+const UserPokemonImage = ({ userPokemon }: UserPokemonBattleProps) => {
   const imgBack = generatePokemonImageBack(userPokemon.name);
   const context = useContext(BattleContext);
 
@@ -31,13 +32,18 @@ const UserPokemonBattle = ({ userPokemon }: UserPokemonBattleProps) => {
         />
       )}
       {imgBack && (
-        <Image
-          className="user-image"
-          src={imgBack}
-          alt="user's pokemon"
-          width={170}
-          height={170}
-        />
+        <>
+          <Image
+            className="user-image"
+            src={imgBack}
+            alt="user's pokemon"
+            width={170}
+            height={170}
+          />
+          {context?.battleState === BattleState.USER_SWITCHING_POKEMON && (
+            <SwitchPokemonImage />
+          )}
+        </>
       )}
       <UserPokemonStats
         name={userPokemon.name}
@@ -53,4 +59,4 @@ const UserPokemonBattle = ({ userPokemon }: UserPokemonBattleProps) => {
   );
 };
 
-export default UserPokemonBattle;
+export default UserPokemonImage;

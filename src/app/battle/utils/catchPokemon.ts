@@ -10,7 +10,8 @@ interface Item {
 
 export const catchPokemon = async (
   username: string,
-  pokemon: PokemonBattle
+  pokemon: PokemonBattle,
+  result: boolean
 ) => {
   await connectToDatabase();
 
@@ -32,35 +33,47 @@ export const catchPokemon = async (
 
     pokeball.count -= 1;
 
-    const newPokemon = await prisma.pokemon.create({
-      data: {
-        name: pokemon.name,
-        type: pokemon.type,
-        level: pokemon.level,
-        attacks: pokemon.attacks,
-        abilities: pokemon.abilities,
-        actualHp: pokemon.actualHp,
-        hp: pokemon.hp,
-        actualEnergy: pokemon.actualEnergy,
-        energy: pokemon.energy,
-        damage: pokemon.damage,
-        defense: pokemon.defense,
-        speed: pokemon.speed,
-        userId: user.id,
-      },
-    });
+    if (result) {
+      const newPokemon = await prisma.pokemon.create({
+        data: {
+          name: pokemon.name,
+          type: pokemon.type,
+          level: pokemon.level,
+          attacks: pokemon.attacks,
+          abilities: pokemon.abilities,
+          actualHp: pokemon.actualHp,
+          hp: pokemon.hp,
+          actualEnergy: pokemon.actualEnergy,
+          energy: pokemon.energy,
+          damage: pokemon.damage,
+          defense: pokemon.defense,
+          speed: pokemon.speed,
+          userId: user.id,
+        },
+      });
 
-    const updateUser = await prisma.user.update({
-      where: { name: username },
-      data: {
-        items: items as any,
-        pokemonIds: { push: newPokemon.id },
-      },
-    });
+      const updateUser = await prisma.user.update({
+        where: { name: username },
+        data: {
+          items: items as any,
+          pokemonIds: { push: newPokemon.id },
+        },
+      });
 
-    console.log("new pokemon: ", newPokemon);
+      console.log("new pokemon: ", newPokemon);
 
-    return updateUser;
+      return updateUser;
+    } else {
+      console.log("catching was not successfull");
+
+      const updateUser = await prisma.user.update({
+        where: { name: username },
+        data: {
+          items: items as any,
+        },
+      });
+      return updateUser;
+    }
   } catch (error) {
     console.log("Errors occurs: ", error);
   } finally {

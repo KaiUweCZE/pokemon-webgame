@@ -44,8 +44,6 @@ const useStartBattle = (location: string) => {
     context?.setIsCatching({ underway: false, isSucces: false });
     console.log(`is catching is ${context?.isCatching.isSucces}`);
   }, []);
-
-  console.log("round: ", roundContext?.round);
 };
 
 export default useStartBattle;

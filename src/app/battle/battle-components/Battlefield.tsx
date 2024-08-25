@@ -1,6 +1,6 @@
 "use client";
 import EnemyPokemon from "./EnemyPokemon";
-import UserPokemonBattle from "./UserPokemonBattle";
+import UserPokemonBattle from "./UserPokemonImage";
 import "@/assets/styles/battle-style.css";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import useEnemyBattle from "../hooks/useEnemyBattle";

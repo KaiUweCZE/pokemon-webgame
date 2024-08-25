@@ -35,6 +35,8 @@ const EnemyPokemon = ({
     <div className={getClassInBattle("oponent", enemyPokemonState)}>
       {(enemyPokemonState === BattleState.CATCHING ||
         enemyPokemonState === BattleState.CAUGHT) && <Pokeball />}
+      <Image className="field" src={field} alt="battle field" width={280} />
+
       {context?.attackAnimation && context?.attack && (
         <Image
           className="user-pokemon-attack"
@@ -43,7 +45,7 @@ const EnemyPokemon = ({
           width={130}
         />
       )}
-      <Image className="field" src={field} alt="battle field" width={280} />
+
       {pokemonImg && (
         <Image
           className="oponent-pokemon"
@@ -53,6 +55,7 @@ const EnemyPokemon = ({
           height={150}
         />
       )}
+
       <EnemyPokemonStats
         name={enemyPokemon.name}
         level={enemyPokemon.level}

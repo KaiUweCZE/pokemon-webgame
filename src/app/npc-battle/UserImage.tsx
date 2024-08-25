@@ -9,8 +9,8 @@ import { useCssClass } from "./hooks/useCssClass";
 import { BattleState } from "@/types/enums/battleState";
 import goOut from "@/assets/images/gif/puff.gif";
 import goIn from "@/assets/images/gif/goout.gif";
-import SwitchPokemonImage from "./PokemonImages/SwitchPokemonImage";
-import BattleStartImage from "./PokemonImages/BattleStartImage";
+import SwitchPokemonImage from "../../components/battlestate-images/SwitchPokemonImage";
+import BattleStartImage from "../../components/battlestate-images/BattleStartImage";
 
 interface UserImageProps {
   img: StaticImageData;

@@ -14,8 +14,10 @@ const UserBattleMenu = ({ setMenuChoice }: UserBattleMenuProps) => {
     context?.setBattleState(BattleState.BATTLE_STOPPED);
   };
   const handleFight = () => {
+    if (context?.enemyPokemon && context?.enemyPokemon?.actualHp > 0) {
+      context?.setBattleState(BattleState.BATTLE);
+    }
     setMenuChoice(BattleMenuState.FIGHT);
-    context?.setBattleState(BattleState.BATTLE);
   };
   return (
     <div className="user-battle-menu">
