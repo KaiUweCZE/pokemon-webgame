@@ -1,7 +1,7 @@
 "use client";
 import { Attack } from "@/types/attack";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
-import { Pokemon } from "@/types/pokemon";
+import { BattleState } from "@/types/enums/battleState";
+import { BattleMenuState } from "@/types/enums/enumBattleMenu";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import {
   createContext,
@@ -33,8 +33,12 @@ export interface BattleContextType {
   setEnemyAttack: Dispatch<SetStateAction<Attack | null>>;
   stopBattle: boolean;
   setStopBattle: Dispatch<SetStateAction<boolean>>;
-  battleState: NpcBattleState;
-  setBattleState: Dispatch<SetStateAction<NpcBattleState>>;
+  battleState: BattleState;
+  setBattleState: Dispatch<SetStateAction<BattleState>>;
+  menuOption: BattleMenuState;
+  setMenuOption: Dispatch<SetStateAction<BattleMenuState>>;
+  change: number;
+  setChange: Dispatch<SetStateAction<number>>;
 }
 
 interface BattleProviderProps {
@@ -56,10 +60,11 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
   const [attack, setAttack] = useState<Attack | null>(null);
   const [stopBattle, setStopBattle] = useState(false);
   const [enemyAttack, setEnemyAttack] = useState<Attack | null>(null);
-  const [battleState, setBattleState] = useState<NpcBattleState>(
-    NpcBattleState.NOT_STARTED
+  const [battleState, setBattleState] = useState<BattleState>(
+    BattleState.WILD_POKEMON_APPEAR
   );
-
+  const [change, setChange] = useState(0);
+  const [menuOption, setMenuOption] = useState(BattleMenuState.DEFAULT);
   const contextValues = {
     enemyPokemon,
     setEnemyPokemon,
@@ -77,6 +82,10 @@ export const BattleProvider = ({ children }: BattleProviderProps) => {
     setEnemyAttack,
     battleState,
     setBattleState,
+    menuOption,
+    setMenuOption,
+    change,
+    setChange,
   };
   return (
     <BattleContext.Provider value={contextValues}>

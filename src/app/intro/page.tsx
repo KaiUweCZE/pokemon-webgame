@@ -25,7 +25,7 @@ const IntroPage = () => {
               setStep={setStep}
             />
           )}
-          {step === 2 && <ThirdScene step={step} setStep={setStep} />}
+          {step === 2 && <ThirdScene />}
         </>
       ) : (
         <ChapterDone />

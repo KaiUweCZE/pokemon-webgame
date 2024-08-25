@@ -5,7 +5,7 @@ import { randomAttack } from "@/utils/battle-function/randomAttack";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 
 const useOpponentBattle = () => {
@@ -70,7 +70,7 @@ const useOpponentBattle = () => {
 
     if (newHp <= 0) {
       context.setStopBattle(true);
-      context.setBattleState(NpcBattleState.USER_POKEMON_FAINTED);
+      context.setBattleState(BattleState.USER_POKEMON_FAINTED);
       setUserPokemon({ ...userPokemon, actualHp: 0 });
     } else {
       setUserPokemon({ ...userPokemon, actualHp: newHp });
@@ -100,13 +100,13 @@ const useOpponentBattle = () => {
 
   // if the user switches pokemon, the next opponent's attack will be 1.5s after the spawn
   useEffect(() => {
-    if (context?.battleState === NpcBattleState.USER_SWITCHING_POKEMON) {
+    if (context?.battleState === BattleState.USER_SWITCHING_POKEMON) {
       setIsFirstAttack(true);
     }
   }, [context?.battleState]);
 
   useEffect(() => {
-    if (context?.battleState !== NpcBattleState.BATTLE) {
+    if (context?.battleState !== BattleState.BATTLE) {
       console.log("Battle has stopped");
       return;
     }

@@ -1,12 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { NpcBattleContext } from "../NpcBattleContext";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
 import { changeEnergy } from "@/utils/battle-function/changeEnergy";
+import { BattleContext } from "@/contexts/BattleContext";
 
 const useDamage = () => {
-  const context = useContext(NpcBattleContext);
+  const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
 
   const changeEnergyOnServer = useCallback(
@@ -28,14 +28,14 @@ const useDamage = () => {
     )
       return;
 
-    const enemy = context.currentOponentPokemon;
+    const enemy = context.enemyPokemon;
     const userPokemon = pokemonContext.currentPokemon;
     const attack = context.attack;
     const pokemonSix = pokemonContext.pokemonsFromSix;
     const setPokemonSix = pokemonContext.setPokemonsFromSix;
 
     if (!enemy || !attack || !userPokemon) return;
-
+    //context.setChange((change) => change + 1);
     const newHp = makeDamage(
       attack.damage,
       enemy.actualHp,
@@ -51,20 +51,27 @@ const useDamage = () => {
       actualEnergy: newEnergy,
     });
 
-    context.setCurrentOponentPokemon({
+    console.log("new energy: ", pokemonContext.currentPokemon?.actualEnergy);
+
+    context.setEnemyPokemon({
       ...enemy,
       actualHp: Math.max(0, newHp),
     });
+
+    console.log("new HP: ", newHp);
 
     const newSix = pokemonSix.map((pokemon) =>
       pokemon.id !== userPokemon.id ? pokemon : userPokemon
     );
     setPokemonSix(newSix);
 
+    console.log("New six of pokemon: ", pokemonSix);
+
     changeEnergyOnServer(userPokemon.id, attack.energyCost);
     console.log("enemy stat: ", enemy);
-    console.log("new HP", newHp);
   }, [context?.attack, context?.change]);
+
+  //return { setChange };
 };
 
 export default useDamage;

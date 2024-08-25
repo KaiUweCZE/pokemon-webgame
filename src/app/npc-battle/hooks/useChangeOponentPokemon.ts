@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { NpcBattleContext } from "../NpcBattleContext";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 
 const useChangeOponentPokemon = () => {
   const context = useContext(NpcBattleContext);
@@ -23,9 +23,9 @@ const useChangeOponentPokemon = () => {
     }
 
     if (enemy && enemy?.actualHp <= 0) {
-      context.setBattleState(NpcBattleState.OPPONENT_SWITCHING_POKEMON);
+      context.setBattleState(BattleState.OPPONENT_SWITCHING_POKEMON);
       setTimeout(() => {
-        context.setBattleState(NpcBattleState.BATTLE);
+        context.setBattleState(BattleState.BATTLE);
       }, 2000);
       // beware of this modification to an enemy Pokémon with a name, it could affect multiple Pokémon with the same name
       const nextEnemy = updatedEnemies?.find((e) => e.actualHp > 0);

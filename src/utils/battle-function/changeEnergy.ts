@@ -15,7 +15,10 @@ export const changeEnergy = async (pokemonId: string, energyCost: number) => {
         },
       },
     });
-    console.log("Pokemon energy updated successfully", updatedPokemon);
+    console.log(
+      "Pokemon energy updated successfully",
+      updatedPokemon.actualEnergy
+    );
 
     return updatedPokemon.actualEnergy;
   } catch (error) {

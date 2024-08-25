@@ -2,18 +2,22 @@
 import { mapData } from "@/app/map/mapData";
 import { BattleContext } from "@/contexts/BattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { randomNumber } from "@/utils/battle-function/randomPokemon";
 import { generatePokemon } from "@/utils/generatePokemon";
 import { useContext, useEffect, useState } from "react";
+import { RoundContext } from "../RoundContext";
 
-const useStartBattle = (location: string, round: number) => {
+const useStartBattle = (location: string) => {
   const [pokemon, setPokemon] = useState<PokemonBattle>();
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
+  const roundContext = useContext(RoundContext);
 
   useEffect(() => {
+    if (!context || !pokemonContext || !roundContext) return;
+
+    const round = roundContext.round;
     const dataLocation = mapData.find((map) => map.name === location);
     const actualRound = dataLocation?.rounds.find((e) => e.id === round);
     context?.setStopBattle(false);
@@ -28,7 +32,7 @@ const useStartBattle = (location: string, round: number) => {
         context?.setEnemyPokemon(generatedPokemon);
       }
     }
-  }, [round]);
+  }, [roundContext?.round]);
 
   useEffect(() => {
     if (pokemonContext && pokemonContext.pokemonsFromSix.length > 0) {
@@ -41,9 +45,7 @@ const useStartBattle = (location: string, round: number) => {
     console.log(`is catching is ${context?.isCatching.isSucces}`);
   }, []);
 
-  console.log("round: ", round);
-
-  return pokemon;
+  console.log("round: ", roundContext?.round);
 };
 
 export default useStartBattle;

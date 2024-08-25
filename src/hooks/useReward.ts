@@ -1,4 +1,5 @@
 import { BattleContext } from "@/contexts/BattleContext";
+import { PokemonContext } from "@/contexts/PokemonContext";
 import { Item } from "@/types/item";
 import { addReward } from "@/utils/addReward";
 import { getReward } from "@/utils/battle-function/getReward";
@@ -9,12 +10,14 @@ const useReward = () => {
   const { data, update } = useSession();
   const [items, setItems] = useState<Item | null>(null);
   const context = useContext(BattleContext);
+  const pokemonContext = useContext(PokemonContext);
 
   useEffect(() => {
     if (!context?.enemyPokemon) return;
 
     const reward = getReward(context.enemyPokemon.level);
     setItems(reward);
+    pokemonContext?.setReward(reward);
     if (!data) return;
 
     const handleReward = async () => {

@@ -2,107 +2,70 @@
 import EnemyPokemon from "./EnemyPokemon";
 import UserPokemonBattle from "./UserPokemonBattle";
 import "@/assets/styles/battle-style.css";
-import BoxAttacks from "./BoxAttacks";
-import UserBattleMenu from "./UserBattleMenu";
-import SwitchBox from "../../../components/battle/SwitchBox";
-import BattleBag from "../../../components/battle/BattleBag";
-import useBattle from "@/app/battle/hooks/useBattle";
-import useNewLevel from "@/hooks/useNewLevel";
-import NewLevel from "./NewLevel";
-import BattleText from "./BattleText";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import useEnemyBattle from "../hooks/useEnemyBattle";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import useReward from "@/hooks/useReward";
-import { BattleMenu } from "@/types/enums/enumBattleMenu";
+import { BattleContext } from "@/contexts/BattleContext";
+import { BattleState } from "@/types/enums/battleState";
+import UserBattleInterface from "./UserBattleInterface";
+import { useBattleState } from "../hooks/useBattleState";
+import useLoadSixToContext from "@/app/npc-battle/hooks/useLoadSixToContext";
+import { PokemonContext } from "@/contexts/PokemonContext";
+import { useBattleInit } from "../hooks/useBattleInit";
+import { RoundContext } from "../RoundContext";
+import useStartBattle from "../hooks/useStartBattle";
 
 interface BattlefieldProps {
   round: number;
   setRound: Dispatch<SetStateAction<number>>;
+  location: string;
 }
 
-const Battlefield = ({ round, setRound }: BattlefieldProps) => {
-  const {
-    damage,
-    setDamage,
-    change,
-    setChange,
-    menuChoice,
-    setMenuChoice,
-    animationTime,
-    enemyPokemon,
-    currentPokemon,
-    exp,
-    isCatching,
-  } = useBattle();
+const Battlefield = ({ round, setRound, location }: BattlefieldProps) => {
+  const context = useContext(BattleContext);
+  const pokemonContext = useContext(PokemonContext);
+  const roundContext = useContext(RoundContext);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useBattleInit();
   useEnemyBattle();
-
+  useBattleState();
+  useLoadSixToContext();
+  useStartBattle(location);
   const { items } = useReward();
 
-  const newLevel = useNewLevel(change);
+  if (!context || !pokemonContext) return;
 
-  // check conditions and return valid message
-  const getBattleText = () => {
-    if (enemyPokemon?.actualHp === 0 && menuChoice === "") {
-      return (
-        <BattleText
-          text={`You get: ${exp} exp and ${items?.name}: ${items?.count}. Do you want to continue?`}
-          button={true}
-          setRound={setRound}
-          round={round}
-        />
-      );
-    }
-    if (isCatching.isSucces) {
-      return (
-        <BattleText
-          text={`You catch it. Do you want to continue?`}
-          button={true}
-          setRound={setRound}
-          round={round}
-        />
-      );
-    }
-    if (menuChoice === BattleMenu.FIGHT) {
-      return null;
-    }
-    return (
-      <BattleText
-        text={`hey man! It looks like a ${enemyPokemon?.name}`}
-        button={false}
-        setRound={setRound}
-        round={round}
-      />
-    );
+  const { currentPokemon } = pokemonContext;
+  const { enemyPokemon } = context;
+
+  const logStates = () => {
+    console.log("batle state: ", context.battleState);
   };
   return (
-    <section className="container-battlefield">
-      {currentPokemon && <UserPokemonBattle userPokemon={currentPokemon} />}
-      {enemyPokemon && <EnemyPokemon enemyPokemon={enemyPokemon} />}
-      {animationTime && <span className="hp-animation">-{damage}</span>}
-      {currentPokemon && (
-        <div className="user-battle">
-          {getBattleText()}
-          {menuChoice === BattleMenu.FIGHT && !isCatching?.isSucces && (
-            <BoxAttacks
-              userPokemon={currentPokemon}
-              setDamage={setDamage}
-              setChange={setChange}
-            />
-          )}
-          {menuChoice === BattleMenu.SWITCH && (
-            <SwitchBox setMenuChoice={setMenuChoice} />
-          )}
-          {menuChoice === BattleMenu.BAG && (
-            <BattleBag setMenuChoice={setMenuChoice} />
-          )}
-          <UserBattleMenu setMenuChoice={setMenuChoice} />
-          {newLevel && <NewLevel pokemon={currentPokemon} />}
-        </div>
-      )}
-    </section>
+    <>
+      <section className="container-battlefield">
+        {currentPokemon && <UserPokemonBattle userPokemon={currentPokemon} />}
+        {enemyPokemon && (
+          <EnemyPokemon
+            enemyPokemon={enemyPokemon}
+            enemyPokemonState={context?.battleState ?? BattleState.NOT_STARTED}
+          />
+        )}
+        {currentPokemon && (
+          <UserBattleInterface
+            newLevel={pokemonContext.newLevel}
+            menuOption={context?.menuOption}
+            setMenuOption={context?.setMenuOption}
+            currentPokemon={currentPokemon}
+            battleState={
+              context?.battleState ?? BattleState.WILD_POKEMON_APPEAR
+            }
+          />
+        )}
+      </section>
+      {/*<button onClick={logStates}>clicca</button>*/}
+    </>
   );
 };
 

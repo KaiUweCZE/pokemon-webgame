@@ -3,6 +3,7 @@ import { PokemonBattle } from "@/types/pokemonBattle";
 import { catchPokemon } from "../utils/catchPokemon";
 import { useSession } from "next-auth/react";
 import { useCallback, useContext } from "react";
+import { BattleState } from "@/types/enums/battleState";
 
 const useCatchPokemon = () => {
   const { data, update, status } = useSession();
@@ -26,7 +27,8 @@ const useCatchPokemon = () => {
       return;
     }
 
-    context?.setIsCatching({ underway: true, isSucces: false });
+    //context?.setIsCatching({ underway: true, isSucces: false });
+    context.setBattleState(BattleState.CATCHING);
     context?.setStopBattle(true);
 
     const result = randomCatch();
@@ -35,7 +37,8 @@ const useCatchPokemon = () => {
     if (!result) {
       setTimeout(() => {
         context?.setStopBattle(false);
-        context?.setIsCatching({ underway: false, isSucces: false });
+        //context?.setIsCatching({ underway: false, isSucces: false });
+        context.setBattleState(BattleState.BATTLE);
       }, 3500);
       console.log("Catching failed");
       return null;
@@ -56,11 +59,13 @@ const useCatchPokemon = () => {
       });
 
       setTimeout(() => {
-        context?.setIsCatching({ underway: false, isSucces: true });
+        //context?.setIsCatching({ underway: false, isSucces: true });
+        context.setBattleState(BattleState.CAUGHT);
       }, 3500);
     } catch (error) {
       console.error("Error occurred while catching Pokemon: ", error);
-      context.setIsCatching({ underway: false, isSucces: false });
+      //context.setIsCatching({ underway: false, isSucces: false });
+      context.setBattleState(BattleState.BATTLE);
     }
   };
   return { handleCatch, user };

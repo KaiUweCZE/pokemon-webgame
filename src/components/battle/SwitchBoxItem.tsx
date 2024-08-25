@@ -6,15 +6,20 @@ import Image from "next/image";
 import { Dispatch, SetStateAction, useContext } from "react";
 import infoIcon from "@/assets/images/icons/info.svg";
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 import { switchingTimer } from "@/utils/timer/switchingTimer";
 
 interface SwitchBoxItemsProps {
   pokemon: Pokemon;
-  setBattleState: Dispatch<SetStateAction<NpcBattleState>>;
+  battleState: BattleState;
+  setBattleState: Dispatch<SetStateAction<BattleState>>;
 }
 
-const SwitchBoxItems = ({ pokemon, setBattleState }: SwitchBoxItemsProps) => {
+const SwitchBoxItems = ({
+  pokemon,
+  setBattleState,
+  battleState,
+}: SwitchBoxItemsProps) => {
   const icon = generatePokemonIcon(pokemon.name);
   const context = useContext(PokemonContext);
 
@@ -26,10 +31,14 @@ const SwitchBoxItems = ({ pokemon, setBattleState }: SwitchBoxItemsProps) => {
   const currentPokemon = context.currentPokemon;
 
   const handleSwitchPokemon = () => {
-    if (pokemon.id !== currentPokemon?.id && pokemon.actualHp > 0) {
-      console.log("pokemons ids: ", pokemon.id, currentPokemon?.id);
-      setBattleState(NpcBattleState.USER_SWITCHING_POKEMON);
-      switchingTimer(() => setBattleState(NpcBattleState.BATTLE));
+    if (
+      pokemon.id !== currentPokemon?.id &&
+      pokemon.actualHp > 0 &&
+      battleState === BattleState.BATTLE
+    ) {
+      console.log("switch pokemon");
+      setBattleState(BattleState.USER_SWITCHING_POKEMON);
+      switchingTimer(() => setBattleState(BattleState.BATTLE));
       setPokemon(pokemon);
     }
   };

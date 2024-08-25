@@ -45,7 +45,7 @@ const PotionButton = ({ potionType }: PotionButtonProps) => {
       const result = await healPokemon(pokemon.id, healAmount, potionType);
       if (result) {
         const { updatedPokemon, updatedUser } = result;
-        setPokemon(updatedPokemon);
+        setPokemon({ ...pokemon, actualHp: updatedPokemon.actualHp });
         await update({
           ...data,
           user: {

@@ -1,7 +1,5 @@
 import Image from "next/image";
 import pokeballIcon from "@/assets/images/icons/pokeball.png";
-import { Pokemon } from "@/types/pokemon";
-import { PokemonBattle } from "@/types/pokemonBattle";
 
 interface PokemonBar {
   name: string;

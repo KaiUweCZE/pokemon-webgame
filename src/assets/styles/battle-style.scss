@@ -29,6 +29,10 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
     box-shadow: 0 0 10px 0 rgba(43, 20, 20, 0.15) inset;
   }
 }
+/*
+.container-battle {
+  z-index: -1;
+}*/
 
 .container-battlefield {
   display: grid;
@@ -48,6 +52,13 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
   box-shadow: 0 0 6px $darker-blue;
   overflow: hidden;
   color: #303030;
+  background-color: #cab991;
+  background-image: linear-gradient(
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 60%
+  );
+  background-size: 5px 5px;
+  z-index: 1;
 }
 
 .user-battle {
@@ -175,6 +186,23 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
     place-self: center center;
     display: flex;
     flex-direction: column;
+    padding-bottom: 0.5rem;
+    //border-bottom: 0;
+  }
+  .bar:has(.exp-bar) {
+    display: grid;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    place-self: start end;
+    bottom: 0.1rem;
+    height: 0.3rem;
+    width: 95%;
+    max-width: 150%;
+    border-radius: 11% 2% 5% 53% / 0% 28% 12% 14%;
+  }
+  .exp-bar {
+    height: 0.2rem;
+    max-height: 80%;
   }
 }
 
@@ -259,6 +287,21 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
 .oponent.oponent-switching {
   .oponent-pokemon {
     opacity: 0;
+  }
+}
+
+.oponent.wild-pokemon-fainted {
+  .oponent-pokemon {
+    transition: 1s;
+    translate: 16rem;
+    filter: brightness(0.2);
+  }
+}
+
+.oponent.last-round-done {
+  .oponent-pokemon {
+    transition: 0.5s;
+    filter: brightness(0.1);
   }
 }
 
@@ -391,13 +434,14 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
       opacity: 0;
     }
   }
-  &.catched {
-    img {
+  &.caught {
+    img.oponent-pokemon {
       display: none;
     }
     .pokeball {
       display: flex;
       opacity: 1;
+      z-index: 1;
     }
   }
   /*img {

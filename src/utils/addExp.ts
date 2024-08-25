@@ -54,7 +54,7 @@ export const addExp = async ({ pokemonId, newExps }: AddExpRequest) => {
       },
     });
 
-    console.log("new exps was successfully added");
+    console.log(`new exps was successfully added ${newExps}`);
     return updatedPokemon;
   } catch (error) {
     console.error("error occurs", error);

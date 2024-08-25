@@ -17,13 +17,13 @@ const BattlePage = () => {
     (location) => location.name === user?.location
   );
 
-  useStartBattle(location, round);
+  //useStartBattle(location, round);
 
   return (
     <EnemyProvider>
       <RoundProvider>
         <div className="container-battle">
-          <Battlefield round={round} setRound={setRound} />
+          <Battlefield round={round} setRound={setRound} location={location} />
         </div>
       </RoundProvider>
     </EnemyProvider>

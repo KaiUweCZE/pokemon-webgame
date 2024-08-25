@@ -1,4 +1,5 @@
 "use client";
+import { Item } from "@/types/item";
 import { Pokemon } from "@/types/pokemon";
 import {
   Dispatch,
@@ -23,6 +24,12 @@ export interface PokemonContextType {
   isEvolved: boolean;
   setIsEvolved: Dispatch<SetStateAction<boolean>>;
   isCombatReady: boolean;
+  exps: number;
+  setExps: Dispatch<SetStateAction<number>>;
+  reward: Item | null;
+  setReward: Dispatch<SetStateAction<Item | null>>;
+  newLevel: boolean;
+  setNewLevel: Dispatch<SetStateAction<boolean>>;
   //setIsCombatReady: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -35,6 +42,9 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [currentPokemon, setCurrentPokemon] = useState<Pokemon | null>(null);
   const [pokemonsFromSix, setPokemonsFromSix] = useState<Pokemon[]>([]);
   const [isEvolved, setIsEvolved] = useState(false);
+  const [exps, setExps] = useState(0);
+  const [reward, setReward] = useState<Item | null>(null);
+  const [newLevel, setNewLevel] = useState(false);
   //const [isCombatReady, setIsCombatReady] = useState(false);
 
   const isCombatReady = useMemo(() => {
@@ -56,6 +66,12 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     setIsEvolved,
     isCombatReady,
     //setIsCombatReady,
+    reward,
+    setReward,
+    exps,
+    setExps,
+    newLevel,
+    setNewLevel,
   };
   return (
     <PokemonContext.Provider value={contextValues}>

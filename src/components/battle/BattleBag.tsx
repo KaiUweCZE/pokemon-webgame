@@ -5,10 +5,10 @@ import { useSession } from "next-auth/react";
 import { Dispatch, SetStateAction, useContext } from "react";
 import BagItem from "./BagItem";
 import closeIcon from "@/assets/images/icons/close.svg";
-import { BattleMenu } from "@/types/enums/enumBattleMenu";
+import { BattleMenuState } from "@/types/enums/enumBattleMenu";
 
 interface BattleBagProps {
-  setMenuChoice: Dispatch<SetStateAction<BattleMenu>>;
+  setMenuChoice: Dispatch<SetStateAction<BattleMenuState>>;
 }
 
 const BattleBag = ({ setMenuChoice }: BattleBagProps) => {
@@ -32,7 +32,7 @@ const BattleBag = ({ setMenuChoice }: BattleBagProps) => {
         alt="close icon"
         width={16}
         height={16}
-        onClick={() => setMenuChoice(BattleMenu.DEFAULT)}
+        onClick={() => setMenuChoice(BattleMenuState.DEFAULT)}
       />
     </div>
   );

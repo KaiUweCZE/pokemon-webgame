@@ -2,10 +2,10 @@ import { useEffect, useContext } from "react";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { Pokemon } from "@/types/pokemon";
 import { NpcBattleContext } from "../NpcBattleContext";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 
 export const useBattleState = (
-  userPokemons: Pokemon[],
+  userPokemons: Pokemon[] | null,
   opponentPokemons: PokemonBattle[] | null,
   userPokemon: PokemonBattle | null,
   currentOpponentPokemon: PokemonBattle | null
@@ -18,9 +18,12 @@ export const useBattleState = (
 
   // check if some of user's pokemon are ready to fight
   useEffect(() => {
-    if (battleState === NpcBattleState.NOT_STARTED) {
-      if (!userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
-        setBattleState(NpcBattleState.CANNOT_START);
+    if (battleState === BattleState.NOT_STARTED) {
+      if (
+        userPokemons &&
+        !userPokemons.some((pokemon) => pokemon.actualHp > 0)
+      ) {
+        setBattleState(BattleState.CANNOT_START);
       }
     }
   }, []);
@@ -29,23 +32,26 @@ export const useBattleState = (
   // when a Pokémon faints or when one side loses all Pokémon
   useEffect(() => {
     if (!userPokemon || !currentOpponentPokemon) return;
-    const getBattleState = (): NpcBattleState | null => {
+    const getBattleState = (): BattleState | null => {
       switch (true) {
         case userPokemon.actualHp <= 0:
           console.log("user pokemons: ", userPokemons);
 
-          if (userPokemons.some((pokemon) => pokemon.actualHp > 0)) {
-            return NpcBattleState.USER_POKEMON_FAINTED;
+          if (
+            userPokemons &&
+            userPokemons.some((pokemon) => pokemon.actualHp > 0)
+          ) {
+            return BattleState.USER_POKEMON_FAINTED;
           } else {
-            return NpcBattleState.OPPONENT_VICTORY;
+            return BattleState.OPPONENT_VICTORY;
           }
 
         case currentOpponentPokemon.actualHp <= 0:
           console.log("ouha");
           if (opponentPokemons?.some((pokemon) => pokemon.actualHp > 0)) {
-            return NpcBattleState.OPPONENT_POKEMON_FAINTED;
+            return BattleState.OPPONENT_POKEMON_FAINTED;
           } else {
-            return NpcBattleState.USER_VICTORY;
+            return BattleState.USER_VICTORY;
           }
 
         default:

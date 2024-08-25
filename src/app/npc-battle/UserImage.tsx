@@ -6,7 +6,7 @@ import { NpcBattleContext } from "./NpcBattleContext";
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import UserPokemonStats from "./UserPokemonStats";
 import { useCssClass } from "./hooks/useCssClass";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 import goOut from "@/assets/images/gif/puff.gif";
 import goIn from "@/assets/images/gif/goout.gif";
 import SwitchPokemonImage from "./PokemonImages/SwitchPokemonImage";
@@ -32,9 +32,9 @@ const UserImage = ({ img }: UserImageProps) => {
 
   const getImages = () => {
     switch (context?.battleState) {
-      case NpcBattleState.BATTLE_START:
+      case BattleState.BATTLE_START:
         return <BattleStartImage />;
-      case NpcBattleState.USER_SWITCHING_POKEMON:
+      case BattleState.USER_SWITCHING_POKEMON:
         return <SwitchPokemonImage />;
       default:
         break;
@@ -78,8 +78,8 @@ const UserImage = ({ img }: UserImageProps) => {
 
 export default UserImage;
 
-/*(context.battleState === NpcBattleState.USER_SWITCHING_POKEMON ||
-                context.battleState === NpcBattleState.BATTLE_START) && (
+/*(context.battleState === BattleState.USER_SWITCHING_POKEMON ||
+                context.battleState === BattleState.BATTLE_START) && (
                 <Image
                   className="user-pokemon-go-in"
                   src={goIn}
@@ -88,7 +88,7 @@ export default UserImage;
                 />
               )}
               {context.battleState ===
-                NpcBattleState.USER_SWITCHING_POKEMON && (
+                BattleState.USER_SWITCHING_POKEMON && (
                 <Image
                   src={goOut}
                   className="user-pokemon-go-out"

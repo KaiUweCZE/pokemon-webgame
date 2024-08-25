@@ -39,12 +39,9 @@ const UserPokemonStats: React.FC<UserPokemonStatsProps> = ({
           <EnergyBar actualEnergy={actualEnergy} maximumEnergy={energy} />
         </div>
       </div>
-      {/*actualExp !== undefined && expToLevel !== undefined && (
-        <ExpBar
-          actualExp={actualExp}
-          expToLevel={expToLevel}
-        />
-      )*/}
+      {actualExp !== undefined && expToLevel !== undefined && (
+        <ExpBar actualExp={actualExp} expToLevel={expToLevel} />
+      )}
     </div>
   );
 };

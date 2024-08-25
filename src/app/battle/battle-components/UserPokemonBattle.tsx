@@ -1,9 +1,11 @@
 import { generatePokemonImageBack } from "@/utils/generatePokemonImage";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useContext } from "react";
 import { Pokemon } from "@/types/pokemon";
 import { BattleContext } from "@/contexts/BattleContext";
 import UserPokemonStats from "./UserPokemonStats";
+import { getClassInBattle } from "../utils/getClassInBattle";
+import { BattleState } from "@/types/enums/battleState";
 
 interface UserPokemonBattleProps {
   userPokemon: Pokemon;
@@ -14,7 +16,12 @@ const UserPokemonBattle = ({ userPokemon }: UserPokemonBattleProps) => {
   const context = useContext(BattleContext);
 
   return (
-    <div className="user-pokemon">
+    <div
+      className={getClassInBattle(
+        "user-pokemon",
+        context?.battleState ?? BattleState.BATTLE_STOPPED
+      )}
+    >
       {context?.enemyAttackAnimation && context.enemyAttack && (
         <Image
           className="enemy-attack"

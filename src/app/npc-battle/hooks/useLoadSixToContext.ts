@@ -3,7 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { getSix } from "@/utils/battle-function/getSix";
 import { useSession } from "next-auth/react";
 import { NpcBattleContext } from "../NpcBattleContext";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 
 const useLoadSixToContext = () => {
   const { data } = useSession();
@@ -24,10 +24,10 @@ const useLoadSixToContext = () => {
         const readyPokemon = pokemonSix.find((pokemon) => pokemon.actualHp > 0);
         if (readyPokemon) {
           context?.setCurrentPokemon(readyPokemon);
-          npcBattleContext?.setBattleState(NpcBattleState.NOT_STARTED);
+          npcBattleContext?.setBattleState(BattleState.NOT_STARTED);
         } else {
           console.log("pokemons are not ready");
-          npcBattleContext?.setBattleState(NpcBattleState.CANNOT_START);
+          npcBattleContext?.setBattleState(BattleState.CANNOT_START);
         }
       } catch (error) {
         console.error("error occurs: ", error);

@@ -1,4 +1,4 @@
-import NpcBattleMenu from "./NpcBattleMenu";
+import BattleMenu from "@/components/battle/BattleMenu";
 import OponentImage from "./OponentImage";
 import UserImage from "./UserImage";
 import useChangeOponentPokemon from "./hooks/useChangeOponentPokemon";
@@ -6,6 +6,7 @@ import { useBattleState } from "./hooks/useBattleState";
 import useInitializeBattleData from "./hooks/useInitializeBattleData";
 import useLoadSixToContext from "./hooks/useLoadSixToContext";
 import Loader from "@/components/Loader";
+import useDamage from "./hooks/useDamage";
 
 interface BattlefieldProps {
   name: string;
@@ -16,19 +17,18 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
     useInitializeBattleData(name);
   const { loading } = useLoadSixToContext();
 
+  useBattleState(
+    pokemonContext?.pokemonsFromSix ?? null,
+    npcBattleContext?.oponentPokemons ?? null,
+    pokemonContext?.currentPokemon ?? null,
+    npcBattleContext?.currentOponentPokemon ?? null
+  );
+  useChangeOponentPokemon();
+  useDamage();
+
   if (!npcBattleContext || !pokemonContext) {
     return <Loader />;
   }
-  const { oponentPokemons, currentOponentPokemon } = npcBattleContext;
-  const { currentPokemon, pokemonsFromSix } = pokemonContext;
-
-  useBattleState(
-    pokemonsFromSix,
-    oponentPokemons,
-    currentPokemon,
-    currentOponentPokemon
-  );
-  useChangeOponentPokemon();
 
   const handleCheck = () => {
     console.log("oponent: ", oponentData, npcBattleContext);
@@ -49,7 +49,7 @@ const NpcBattlefield = ({ name }: BattlefieldProps) => {
           <div className="container-battlefield">
             {oponentData?.img && <OponentImage img={oponentData.img} />}
             <UserImage img={charImg} />
-            <NpcBattleMenu />
+            <BattleMenu />
           </div>{" "}
         </>
       )}

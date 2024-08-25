@@ -4,20 +4,14 @@ import { getSix } from "@/utils/battle-function/getSix";
 import Image from "next/image";
 import closeIcon from "@/assets/images/icons/close.svg";
 
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import SwitchBoxItems from "./SwitchBoxItem";
-import { BattleMenu } from "@/types/enums/enumBattleMenu";
+import { BattleMenuState } from "@/types/enums/enumBattleMenu";
 import { useSession } from "next-auth/react";
 import { useBattleContext } from "@/hooks/useBattleContext";
 
 interface SwitchBoxProps {
-  setMenuChoice: Dispatch<SetStateAction<BattleMenu>>;
+  setMenuChoice: Dispatch<SetStateAction<BattleMenuState>>;
 }
 
 const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
@@ -45,6 +39,7 @@ const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
           <SwitchBoxItems
             key={pokemon.id}
             pokemon={pokemon}
+            battleState={context.battleState}
             setBattleState={context.setBattleState}
           />
         ))}
@@ -55,7 +50,7 @@ const SwitchBox = ({ setMenuChoice }: SwitchBoxProps) => {
         alt="close icon"
         width={16}
         height={16}
-        onClick={() => setMenuChoice(BattleMenu.DEFAULT)}
+        onClick={() => setMenuChoice(BattleMenuState.DEFAULT)}
       />
     </div>
   );

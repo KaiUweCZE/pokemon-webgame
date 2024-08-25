@@ -7,7 +7,7 @@ import OponentPokemonStats from "./OponentPokemonStats";
 import field from "@/assets/images/fields/field2.webp";
 //import go from "@/assets/images/gif/goout.gif";
 import go from "@/assets/images/gif/go-500ms-delay.gif";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
 import { getCssClass } from "./npc-utils/getCssClass";
 
 interface OponentImageProps {
@@ -28,8 +28,8 @@ const OponentImage = ({ img }: OponentImageProps) => {
           : "oponent"
       }
     >
-      {(context?.battleState === NpcBattleState.BATTLE_START ||
-        context?.battleState === NpcBattleState.OPPONENT_SWITCHING_POKEMON) && (
+      {(context?.battleState === BattleState.BATTLE_START ||
+        context?.battleState === BattleState.OPPONENT_SWITCHING_POKEMON) && (
         <Image
           className="go-in-pokemon"
           src={go}

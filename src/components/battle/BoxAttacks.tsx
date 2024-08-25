@@ -1,17 +1,16 @@
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { useContext, useState } from "react";
-import { NpcBattleContext } from "./NpcBattleContext";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { attacksData } from "@/data/attacksData";
-import useDamage from "./hooks/useDamage";
-import AttackCountdown from "../../components/battle/AttackCountdown";
+import useDamage from "@/app/npc-battle/hooks/useDamage";
+import AttackCountdown from "./AttackCountdown";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
-import { NpcBattleState } from "@/types/enums/npcBattleState";
+import { BattleState } from "@/types/enums/battleState";
+import { useBattleContext } from "@/hooks/useBattleContext";
 
-const AttacksList = () => {
+const BoxAttacks = () => {
   const pokemonContext = useContext(PokemonContext);
-  const context = useContext(NpcBattleContext);
+  const context = useBattleContext();
   const [time, setTime] = useState(0);
-  const { setChange } = useDamage();
   if (!context || !pokemonContext) return null;
 
   const pokemon = pokemonContext.currentPokemon;
@@ -22,7 +21,7 @@ const AttacksList = () => {
     if (
       attack &&
       pokemon?.speed &&
-      context.battleState === NpcBattleState.BATTLE
+      context.battleState === BattleState.BATTLE
     ) {
       setTime(restAfterAttack(pokemon.speed, attack.recoveryTime));
       setAnimation(true);
@@ -30,7 +29,7 @@ const AttacksList = () => {
       context.setAttack(attack);
       console.log("context attack: ", context.attack);
 
-      setChange((prev) => prev + 1);
+      context.setChange((prev) => prev + 1);
       setTimeout(() => {
         setAnimation(false);
       }, 800);
@@ -45,7 +44,7 @@ const AttacksList = () => {
             <button
               onClick={() => handleAttack(attack)}
               disabled={
-                context.battleState !== NpcBattleState.BATTLE ||
+                context.battleState !== BattleState.BATTLE ||
                 pokemon.actualEnergy <= 0
               }
             >
@@ -55,13 +54,13 @@ const AttacksList = () => {
         ))}
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.battleState !== NpcBattleState.BATTLE}>
+        <button disabled={context.battleState !== BattleState.BATTLE}>
           rest
         </button>{" "}
       </li>
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.battleState !== NpcBattleState.BATTLE}>
+        <button disabled={context.battleState !== BattleState.BATTLE}>
           avoid
         </button>
       </li>
@@ -70,4 +69,4 @@ const AttacksList = () => {
   );
 };
 
-export default AttacksList;
+export default BoxAttacks;

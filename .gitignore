@@ -40,3 +40,5 @@ next-env.d.ts
 #*.css.map
 
 /src/app/checknpc
+
+/src/old

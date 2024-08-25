@@ -1,4 +1,4 @@
-export enum BattleMenu {
+export enum BattleMenuState {
   FIGHT = "FIGHT",
   BAG = "BAG",
   SWITCH = "SWITCH",
