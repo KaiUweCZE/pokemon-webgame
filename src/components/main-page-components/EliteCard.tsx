@@ -1,31 +1,36 @@
+import useClickOutside from "@/hooks/useClickOutside";
 import Image, { StaticImageData } from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
-interface ActiveType {
-  isActive: boolean;
-  index: number;
-}
-
 interface EliteCardProps {
   img: StaticImageData;
-  active: ActiveType;
-  setActive: Dispatch<SetStateAction<ActiveType>>;
+  activeIndex: number;
+  setActiveIndex: Dispatch<SetStateAction<number>>;
   index: number;
   name: string;
 }
-const EliteCard = ({ img, active, setActive, index, name }: EliteCardProps) => {
+
+const EliteCard = ({
+  img,
+  activeIndex,
+  setActiveIndex,
+  index,
+  name,
+}: EliteCardProps) => {
+  const { active, setActive } = useClickOutside(".elite-card");
   return (
     <div
       className={
-        active.isActive && active.index === index
-          ? "elite-card active"
-          : "elite-card"
+        active && activeIndex === index ? "elite-card active" : "elite-card"
       }
     >
       <Image
         src={img}
         alt="member of elite four"
-        onClick={() => setActive({ isActive: !active.isActive, index: index })}
+        onClick={() => {
+          setActive(!active);
+          setActiveIndex(index);
+        }}
       />
       <article className={index > 2 ? "left" : ""}>
         <h3>{name}</h3>

@@ -7,7 +7,7 @@ import EliteCard from "./EliteCard";
 import { useState } from "react";
 
 const EliteFour = () => {
-  const [active, setActive] = useState({ isActive: false, index: 0 });
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="elite">
@@ -15,29 +15,29 @@ const EliteFour = () => {
       <div className="elite-four">
         <EliteCard
           img={golias}
-          active={active}
-          setActive={setActive}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
           index={1}
           name="Golias"
         />
         <EliteCard
           img={nana}
-          active={active}
-          setActive={setActive}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
           index={2}
           name="Nana"
         />
         <EliteCard
           img={confusitionus}
-          active={active}
-          setActive={setActive}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
           index={3}
           name="Confusitionus"
         />
         <EliteCard
           img={makatai}
-          active={active}
-          setActive={setActive}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
           index={4}
           name="Makatai"
         />

@@ -9,6 +9,7 @@ import MapInMenu from "./MapInMenu";
 import PokedexMenu from "./PokedexMenu";
 import BagMenu from "./BagMenu";
 import ContactsMenu from "./ContactsMenu";
+import useClickOutside from "@/hooks/useClickOutside";
 
 interface LocationProps {
   location: string;
