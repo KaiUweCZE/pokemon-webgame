@@ -1,12 +1,11 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import MenuItem from "./MenuItem";
 import SecondaryMenu from "./SecondaryMenu";
 import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/contexts/UserContext";
-import path from "path";
 
 const Menu = () => {
   const { data, status } = useSession();

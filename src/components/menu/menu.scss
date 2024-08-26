@@ -46,6 +46,11 @@ header {
   padding: 0.35rem;
 }
 
+.menu-logo {
+  position: absolute;
+  translate: 5rem 50rem;
+}
+
 body:has(.container-intro) {
   header {
     display: none;
