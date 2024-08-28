@@ -6,9 +6,10 @@ import bagIcon from "@/assets/images/icons/bagIcon.webp";
 import contactIcon from "@/assets/images/icons/phoneIcon.webp";
 import { useState } from "react";
 import MapInMenu from "./MapInMenu";
-import PokedexMenu from "./PokedexMenu";
+import PokedexMenu from "./pokedex/PokedexMenu";
 import BagMenu from "./BagMenu";
 import ContactsMenu from "./ContactsMenu";
+import { PokedexProvider } from "./pokedex/PokedexContext";
 
 interface LocationProps {
   location: string;
@@ -59,7 +60,11 @@ const SecondaryMenu = ({ location }: LocationProps) => {
           />
         </div>
         {active === "map" && <MapInMenu location={location} />}
-        {active === "pokedex" && <PokedexMenu />}
+        {active === "pokedex" && (
+          <PokedexProvider>
+            <PokedexMenu />
+          </PokedexProvider>
+        )}
         {active === "bag" && <BagMenu />}
         {active === "contacts" && <ContactsMenu />}
       </div>

@@ -6,7 +6,7 @@ import barbagooseImg from "@/assets/images/characters/barbagoose.webp";
 import bobImg from "@/assets/images/characters/bob.webp";
 import bruceImg from "@/assets/images/characters/bruce.webp";
 import brunoImg from "@/assets/images/characters/bruno.webp";
-import confusitionusImg from "@/assets/images/characters/confusitionus.webp";
+import confusitionusImg from "@/assets/images/characters/confusitionus2.webp";
 import conradImg from "@/assets/images/characters/conrad.webp";
 import donaldImg from "@/assets/images/characters/donald.webp";
 import donchatotImg from "@/assets/images/characters/donchatot.webp";
@@ -53,6 +53,11 @@ import shamanImg from "@/assets/images/characters/shaman.webp";
 import kawuImg from "@/assets/images/characters/kawu.webp";
 import rebeccaImg from "@/assets/images/characters/rebecca.webp";
 import hughImg from "@/assets/images/characters/hugh.webp";
+import robinImg from "@/assets/images/characters/robin.webp";
+import grumpyImg from "@/assets/images/characters/grumpy.webp";
+import salazarImg from "@/assets/images/characters/salazar.webp";
+import albertImg from "@/assets/images/characters/albert.webp";
+import marryImg from "@/assets/images/characters/marry.webp";
 
 import { npcPokemons } from "./npcPokemons";
 import { raphaelPokemons } from "./npcPokemon/raphaelPokemons";
@@ -503,5 +508,45 @@ export const npcData = [
     pokemons: generateNpcPokemons("Kamakawiwo"),
     stadiumTrainer: false,
     img: hughImg,
+  },
+  {
+    id: 53,
+    name: "Robin",
+    message: "Hey",
+    pokemons: raphaelPokemons,
+    stadiumTrainer: false,
+    img: robinImg,
+  },
+  {
+    id: 53,
+    name: "Grumpy",
+    message: "Hey",
+    pokemons: raphaelPokemons,
+    stadiumTrainer: false,
+    img: grumpyImg,
+  },
+  {
+    id: 54,
+    name: "Salazar",
+    message: "Hey",
+    pokemons: raphaelPokemons,
+    stadiumTrainer: false,
+    img: salazarImg,
+  },
+  {
+    id: 55,
+    name: "Albert",
+    message: "Hey",
+    pokemons: raphaelPokemons,
+    stadiumTrainer: false,
+    img: albertImg,
+  },
+  {
+    id: 56,
+    name: "Marry",
+    message: "Hey",
+    pokemons: raphaelPokemons,
+    stadiumTrainer: false,
+    img: marryImg,
   },
 ];

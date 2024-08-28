@@ -284,7 +284,7 @@ export const mapData = [
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [387, 273, 595, 32, 595, 274, 66, 33, 123, 127, 596],
   },
   {
     id: 7,
@@ -301,27 +301,27 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [7, 63, 66, 98],
+        pokemons: [7, 129, 98],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [98, 5, 67, 109, 209],
+        pokemons: [129, 116, 7, 98],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [98, 8, 99],
+        pokemons: [8, 99, 656, 117],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [9, 99, 67],
+        pokemons: [117, 657, 8, 99],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [7, 8, 98, 99, 116, 117, 129, 656, 657],
   },
   {
     id: 8,
@@ -337,28 +337,29 @@ export const mapData = [
     img: deepmineImg,
     rounds: [
       {
+        // zubat, magmar, machoke,
         id: 0,
-        pokemons: [387, 273, 595, 32],
+        pokemons: [74, 111, 4],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [595, 274, 273, 66],
+        pokemons: [37, 58, , 66],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [67, 33, 1],
+        pokemons: [67, 324, 390],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [5, 67, 75, 95, 112],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [4, 5, 37, 58, 67, 66, 74, 75, 95, 111, 112, 390, 324],
   },
   {
     id: 9,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import PokedexList from "./PokedexList";
 import { PokemonPokedex } from "@/types/pokemonPokedex";
 import PokedexPokemonDetail from "./PokedexPokemonDetail";
+import PokedexSearchBar from "./PokedexSearchBar";
 
 const PokedexMenu = () => {
   const [pokemonPokedex, setPokemonPokedex] = useState<PokemonPokedex | null>(
@@ -10,7 +11,10 @@ const PokedexMenu = () => {
 
   return (
     <div className="pokedex-wrap">
-      <h2>Pokedex</h2>
+      <div className="pokedex-menu">
+        <PokedexSearchBar />
+        <h2>Pokedex</h2>
+      </div>
       <section className="pokedex">
         {pokemonPokedex && (
           <PokedexPokemonDetail pokemonPokedex={pokemonPokedex} />

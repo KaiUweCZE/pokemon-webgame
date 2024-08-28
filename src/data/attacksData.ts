@@ -14,7 +14,7 @@ import bugImg from "@/assets/images/attacks/circle.gif";
 import flyingImg from "@/assets/images/attacks/circle.gif";
 import ghostImg from "@/assets/images/attacks/circle.gif";
 import groundImg from "@/assets/images/attacks/circle.gif";
-import rockImg from "@/assets/images/attacks/circle.gif";
+import rockImg from "@/assets/images/attacks/rock.webp";
 import poisonImg from "@/assets/images/attacks/circle.gif";
 import dragonImg from "@/assets/images/attacks/circle.gif";
 

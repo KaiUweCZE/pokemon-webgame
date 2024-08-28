@@ -273,6 +273,7 @@
 .about-enemy-pokemons {
   display: grid;
   gap: 0.5rem;
+  overflow-x: hidden;
 }
 .about-enemy-pokemons h3 {
   font-size: 1.5rem;

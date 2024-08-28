@@ -1074,3 +1074,226 @@ export const tinkatonAttacks = [
   { level: 40, attacks: ["tackle", "fairy wind", "metal claw", "iron tail"] },
   { level: 50, attacks: ["tackle", "fairy wind", "metal claw", "iron tail"] },
 ];
+
+// Electric types
+export const elekidAttacks = [
+  { level: 0, attacks: ["quick attack", "thundershock"] },
+  { level: 10, attacks: ["quick attack", "thundershock"] },
+  { level: 20, attacks: ["thundershock", "slam"] },
+  { level: 30, attacks: ["thundershock", "slam"] },
+  { level: 40, attacks: ["thundershock", "slam", "thunderbolt"] },
+  { level: 50, attacks: ["thundershock", "slam", "thunderbolt"] },
+];
+
+export const electabuzzAttacks = [
+  { level: 0, attacks: ["thundershock", "slam"] },
+  { level: 10, attacks: ["thundershock", "slam", "thunderbolt"] },
+  { level: 20, attacks: ["thundershock", "slam", "thunderbolt"] },
+  { level: 30, attacks: ["slam", "thunderbolt"] },
+  { level: 40, attacks: ["slam", "thunderbolt", "thunder"] },
+  { level: 50, attacks: ["slam", "thunderbolt", "thunder"] },
+];
+
+export const electivireAttacks = [
+  { level: 0, attacks: ["slam", "thunderbolt"] },
+  { level: 10, attacks: ["slam", "thunderbolt", "thunder"] },
+  { level: 20, attacks: ["slam", "thunderbolt", "thunder"] },
+  { level: 30, attacks: ["slam", "thunderbolt", "thunder"] },
+  { level: 40, attacks: ["thunderbolt", "thunder"] },
+  { level: 50, attacks: ["thunderbolt", "thunder"] },
+];
+
+// Water types
+export const horseaAttacks = [
+  { level: 0, attacks: ["water gun"] },
+  { level: 10, attacks: ["water gun", "bubble beam"] },
+  { level: 20, attacks: ["water gun", "bubble beam"] },
+  { level: 30, attacks: ["water gun", "bubble beam"] },
+  { level: 40, attacks: ["water gun", "bubble beam"] },
+  { level: 50, attacks: ["water gun", "bubble beam"] },
+];
+
+export const seadraAttacks = [
+  { level: 0, attacks: ["water gun", "bubble beam"] },
+  { level: 10, attacks: ["water gun", "bubble beam"] },
+  { level: 20, attacks: ["water gun", "bubble beam", "hydro pump"] },
+  { level: 30, attacks: ["water gun", "bubble beam", "hydro pump"] },
+  { level: 40, attacks: ["bubble beam", "hydro pump"] },
+  { level: 50, attacks: ["bubble beam", "hydro pump"] },
+];
+
+export const kingdraAttacks = [
+  { level: 0, attacks: ["water gun", "bubble beam", "hydro pump"] },
+  { level: 10, attacks: ["water gun", "bubble beam", "hydro pump"] },
+  { level: 20, attacks: ["bubble beam", "hydro pump", "dragon rage"] },
+  { level: 30, attacks: ["bubble beam", "hydro pump", "dragon rage"] },
+  { level: 40, attacks: ["hydro pump", "dragon rage", "dragon claw"] },
+  { level: 50, attacks: ["hydro pump", "dragon rage", "dragon claw"] },
+];
+
+// Fire types
+export const chimcharAttacks = [
+  { level: 0, attacks: ["scratch", "ember"] },
+  { level: 10, attacks: ["scratch", "ember"] },
+  { level: 20, attacks: ["ember", "flame wheel"] },
+  { level: 30, attacks: ["ember", "flame wheel"] },
+  { level: 40, attacks: ["ember", "flame wheel", "flamethrower"] },
+  { level: 50, attacks: ["ember", "flame wheel", "flamethrower"] },
+];
+
+export const monfernoAttacks = [
+  { level: 0, attacks: ["ember", "flame wheel"] },
+  { level: 10, attacks: ["ember", "flame wheel", "flamethrower"] },
+  { level: 20, attacks: ["ember", "flame wheel", "flamethrower"] },
+  { level: 30, attacks: ["flame wheel", "flamethrower"] },
+  { level: 40, attacks: ["flame wheel", "flamethrower", "fire blast"] },
+  { level: 50, attacks: ["flame wheel", "flamethrower", "fire blast"] },
+];
+
+export const infernapeAttacks = [
+  { level: 0, attacks: ["flame wheel", "flamethrower"] },
+  { level: 10, attacks: ["flame wheel", "flamethrower", "fire blast"] },
+  { level: 20, attacks: ["flame wheel", "flamethrower", "fire blast"] },
+  { level: 30, attacks: ["flamethrower", "fire blast"] },
+  { level: 40, attacks: ["flamethrower", "fire blast"] },
+  { level: 50, attacks: ["flamethrower", "fire blast"] },
+];
+
+// Fighting types
+export const mankeyAttacks = [
+  { level: 0, attacks: ["scratch", "karate chop"] },
+  { level: 10, attacks: ["scratch", "karate chop"] },
+  { level: 20, attacks: ["karate chop", "much punch"] },
+  { level: 30, attacks: ["karate chop", "much punch"] },
+  { level: 40, attacks: ["karate chop", "much punch"] },
+  { level: 50, attacks: ["karate chop", "much punch"] },
+];
+
+export const primeapeAttacks = [
+  { level: 0, attacks: ["karate chop", "much punch"] },
+  { level: 10, attacks: ["karate chop", "much punch"] },
+  { level: 20, attacks: ["karate chop", "much punch", "high jump kick"] },
+  { level: 30, attacks: ["karate chop", "much punch", "high jump kick"] },
+  { level: 40, attacks: ["much punch", "high jump kick"] },
+  { level: 50, attacks: ["much punch", "high jump kick"] },
+];
+
+export const annihilapeAttacks = [
+  { level: 0, attacks: ["karate chop", "much punch", "high jump kick"] },
+  { level: 10, attacks: ["karate chop", "much punch", "high jump kick"] },
+  { level: 20, attacks: ["much punch", "high jump kick"] },
+  { level: 30, attacks: ["much punch", "high jump kick", "shadow ball"] },
+  { level: 40, attacks: ["high jump kick", "shadow ball"] },
+  { level: 50, attacks: ["high jump kick", "shadow ball"] },
+];
+
+// Bug types
+export const grubbinAttacks = [
+  { level: 0, attacks: ["tackle", "bug bite"] },
+  { level: 10, attacks: ["tackle", "bug bite"] },
+  { level: 20, attacks: ["bug bite", "bite"] },
+  { level: 30, attacks: ["bug bite", "bite"] },
+  { level: 40, attacks: ["bug bite", "bite"] },
+  { level: 50, attacks: ["bug bite", "bite"] },
+];
+
+export const charjabugAttacks = [
+  { level: 0, attacks: ["tackle", "bug bite", "bite"] },
+  { level: 10, attacks: ["bug bite", "bite"] },
+  { level: 20, attacks: ["bug bite", "bite", "x-scissor"] },
+  { level: 30, attacks: ["bug bite", "bite", "x-scissor"] },
+  { level: 40, attacks: ["bite", "x-scissor"] },
+  { level: 50, attacks: ["bite", "x-scissor"] },
+];
+
+export const vikavoltAttacks = [
+  { level: 0, attacks: ["bug bite", "bite", "x-scissor"] },
+  { level: 10, attacks: ["bug bite", "bite", "x-scissor"] },
+  { level: 20, attacks: ["bite", "x-scissor", "thunderbolt"] },
+  { level: 30, attacks: ["bite", "x-scissor", "thunderbolt"] },
+  { level: 40, attacks: ["x-scissor", "thunderbolt", "thunder"] },
+  { level: 50, attacks: ["x-scissor", "thunderbolt", "thunder"] },
+];
+
+// Water starters
+export const froakieAttacks = [
+  { level: 0, attacks: ["tackle", "water gun"] },
+  { level: 10, attacks: ["tackle", "water gun"] },
+  { level: 20, attacks: ["water gun", "quick attack"] },
+  { level: 30, attacks: ["water gun", "quick attack"] },
+  { level: 40, attacks: ["water gun", "quick attack", "bubble beam"] },
+  { level: 50, attacks: ["water gun", "quick attack", "bubble beam"] },
+];
+
+export const frogadierAttacks = [
+  { level: 0, attacks: ["water gun", "quick attack"] },
+  { level: 10, attacks: ["water gun", "quick attack", "bubble beam"] },
+  { level: 20, attacks: ["water gun", "quick attack", "bubble beam"] },
+  { level: 30, attacks: ["quick attack", "bubble beam"] },
+  { level: 40, attacks: ["quick attack", "bubble beam", "hydro pump"] },
+  { level: 50, attacks: ["quick attack", "bubble beam", "hydro pump"] },
+];
+
+export const greninjaAttacks = [
+  { level: 0, attacks: ["water gun", "quick attack", "bubble beam"] },
+  { level: 10, attacks: ["water gun", "quick attack", "bubble beam"] },
+  { level: 20, attacks: ["quick attack", "bubble beam", "hydro pump"] },
+  { level: 30, attacks: ["quick attack", "bubble beam", "hydro pump"] },
+  { level: 40, attacks: ["bubble beam", "hydro pump"] },
+  { level: 50, attacks: ["bubble beam", "hydro pump"] },
+];
+
+// Other Pokémon
+export const magikarpAttacks = [
+  { level: 0, attacks: ["splash", "tackle"] },
+  { level: 10, attacks: ["splash", "tackle"] },
+  { level: 20, attacks: ["splash", "tackle"] },
+  { level: 30, attacks: ["splash", "tackle"] },
+  { level: 40, attacks: ["splash", "tackle"] },
+  { level: 50, attacks: ["splash", "tackle"] },
+];
+
+export const gyaradosAttacks = [
+  { level: 0, attacks: ["tackle", "bite"] },
+  { level: 10, attacks: ["tackle", "bite", "dragon rage"] },
+  { level: 20, attacks: ["bite", "dragon rage"] },
+  { level: 30, attacks: ["bite", "dragon rage", "hydro pump"] },
+  { level: 40, attacks: ["dragon rage", "hydro pump"] },
+  { level: 50, attacks: ["dragon rage", "hydro pump"] },
+];
+
+export const heracrossAttacks = [
+  { level: 0, attacks: ["tackle", "horn attack"] },
+  { level: 10, attacks: ["tackle", "horn attack"] },
+  { level: 20, attacks: ["horn attack", "much punch"] },
+  { level: 30, attacks: ["horn attack", "much punch"] },
+  { level: 40, attacks: ["much punch", "high jump kick"] },
+  { level: 50, attacks: ["much punch", "high jump kick"] },
+];
+
+export const scizorAttacks = [
+  { level: 0, attacks: ["quick attack", "metal claw"] },
+  { level: 10, attacks: ["quick attack", "metal claw"] },
+  { level: 20, attacks: ["metal claw", "x-scissor"] },
+  { level: 30, attacks: ["metal claw", "x-scissor"] },
+  { level: 40, attacks: ["metal claw", "x-scissor"] },
+  { level: 50, attacks: ["metal claw", "x-scissor"] },
+];
+
+export const blitzleAttacks = [
+  { level: 0, attacks: ["quick attack", "thundershock"] },
+  { level: 10, attacks: ["quick attack", "thundershock"] },
+  { level: 20, attacks: ["thundershock", "spark"] },
+  { level: 30, attacks: ["thundershock", "spark"] },
+  { level: 40, attacks: ["spark", "thunderbolt"] },
+  { level: 50, attacks: ["spark", "thunderbolt"] },
+];
+
+export const zebstrikaAttacks = [
+  { level: 0, attacks: ["quick attack", "thundershock", "spark"] },
+  { level: 10, attacks: ["thundershock", "spark"] },
+  { level: 20, attacks: ["thundershock", "spark", "thunderbolt"] },
+  { level: 30, attacks: ["spark", "thunderbolt"] },
+  { level: 40, attacks: ["spark", "thunderbolt", "thunder"] },
+  { level: 50, attacks: ["thunderbolt", "thunder"] },
+];
