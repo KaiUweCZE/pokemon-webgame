@@ -2,7 +2,7 @@ import { pokemonBattleData } from "@/data/pokemonBattleData";
 import Image from "next/image";
 
 interface EnemyRoundsProps {
-  pokemonIds: number[];
+  pokemonIds: (number | undefined)[];
   round: number;
 }
 

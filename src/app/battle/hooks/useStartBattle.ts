@@ -23,10 +23,12 @@ const useStartBattle = (location: string) => {
     context?.setStopBattle(false);
     if (actualRound?.pokemons.length) {
       const randomNum = randomNumber(actualRound.pokemons.length);
-      const generatedPokemon = generatePokemon(
-        actualRound.pokemons[randomNum],
-        actualRound?.levelRange
-      );
+      const generatedPokemon = actualRound.pokemons[randomNum]
+        ? generatePokemon(
+            actualRound.pokemons[randomNum],
+            actualRound?.levelRange
+          )
+        : null;
       if (generatedPokemon) {
         setPokemon(generatedPokemon);
         context?.setEnemyPokemon(generatedPokemon);

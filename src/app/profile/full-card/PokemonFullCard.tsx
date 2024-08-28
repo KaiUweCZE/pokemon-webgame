@@ -13,6 +13,7 @@ import { useAddToSix } from "../hooks/useAddToSix";
 import { useDeletePokemon } from "../hooks/useDeletePokemon";
 import { useEvolvePokemon } from "../hooks/useEvolvePokemon";
 import evolutionAnimation from "@/assets/images/attacks/evolution.gif";
+import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
 
 interface PokemonProps {
   pokemon: Pokemon;
@@ -29,6 +30,7 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
 
   const handleAddToSix = () => addToSix(pokemon.id);
   const handleDelete = () => deletePokemon(pokemon.id);
+  const attackData = getAttacksFromNames(pokemon.attacks);
 
   return (
     <div className="full-card">
@@ -44,7 +46,7 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
         )}
         <FullCardPokemonImg name={pokemon.name} isEvolving={isEvolving} />
         <h2>{pokemon.name}</h2>
-        <FullCardAttacksList attacks={pokemon.attacks} />
+        <FullCardAttacksList attacks={attackData} />
       </div>
       <FullCardStats pokemon={pokemon} />
       <FullCardButtons

@@ -279,6 +279,33 @@ $dark-violet: #24255a;
   }
 }
 
+.about-attack {
+  display: grid;
+  position: absolute;
+  background-color: rgba($dark-violet, 0.65);
+  height: fit-content;
+  width: 10rem;
+  height: 5.5rem;
+  translate: 0 1.5rem;
+  transition: 0.5s;
+  padding: 0.35rem;
+  @include scroll-primary;
+  overflow-y: auto;
+  .attack-atributes {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: start;
+    li {
+      display: flex;
+      justify-content: start;
+    }
+  }
+  .attack-advantages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .evolution {
   position: absolute;
   z-index: 1;
@@ -304,7 +331,22 @@ $dark-violet: #24255a;
 .full-card-attacks {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 50%;
+  width: 60%;
+  gap: 0.25rem;
+  li {
+    display: grid;
+    width: 100%;
+    place-items: center;
+    font-weight: bold;
+    text-wrap: balance;
+    font-size: 0.8rem;
+    padding-inline: 0.1rem;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+  li:hover {
+    filter: brightness(1.2);
+  }
 }
 
 .close {

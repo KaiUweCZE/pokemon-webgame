@@ -10,7 +10,7 @@ export const useBattleInit = () => {
   useEffect(() => {
     console.log("change wild pokemon");
     cotnext?.setBattleState(BattleState.WILD_POKEMON_APPEAR);
-    cotnext?.setAttack(null);
+    //cotnext?.setAttack(null);
     pokemonContext?.setExps(0);
   }, [cotnext?.enemyPokemon]);
 };

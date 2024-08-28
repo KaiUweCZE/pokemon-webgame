@@ -7,6 +7,7 @@ import { useState } from "react";
 import EliteFour from "@/components/EliteFour";
 import conradImg from "@/assets/images/characters/conrad.webp";
 import Logo from "@/components/Logo";
+import fig from "@/assets/images/attacks/rock.webp";
 
 const Home = () => {
   const { data, update } = useSession();
