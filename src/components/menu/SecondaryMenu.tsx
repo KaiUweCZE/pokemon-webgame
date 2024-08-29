@@ -3,24 +3,31 @@ import Image from "next/image";
 import pokedexIcon from "@/assets/images/icons/pokedex1.webp";
 import mapIcon from "@/assets/images/icons/mapIcon.webp";
 import bagIcon from "@/assets/images/icons/bagIcon.webp";
-import contactIcon from "@/assets/images/icons/phoneIcon.webp";
+import messageIcon from "@/assets/images/icons/email.webp";
 import { useState } from "react";
 import MapInMenu from "./MapInMenu";
 import PokedexMenu from "./pokedex/PokedexMenu";
 import BagMenu from "./BagMenu";
-import ContactsMenu from "./ContactsMenu";
 import { PokedexProvider } from "./pokedex/PokedexContext";
+import MessageMenu from "./MessageMenu";
 
 interface LocationProps {
   location: string;
 }
 
-const SecondaryMenu = ({ location }: LocationProps) => {
-  const [active, setActive] = useState("");
+enum MenuType {
+  BAG = "BAG",
+  POKEDEX = "POKEDEX",
+  MAP = "MAP",
+  MESSAGE = "MESSAGE",
+}
 
-  const handleOptions = (e: string) => {
+const SecondaryMenu = ({ location }: LocationProps) => {
+  const [active, setActive] = useState<MenuType | null>(null);
+
+  const handleOptions = (e: MenuType) => {
     if (active === e) {
-      setActive("");
+      setActive(null);
     } else {
       setActive(e);
     }
@@ -32,41 +39,41 @@ const SecondaryMenu = ({ location }: LocationProps) => {
         <div className="icon-box">
           <Image
             className="secondary-menu-img"
-            src={contactIcon}
-            alt="icon of pokedex"
+            src={messageIcon}
+            alt="icon of message"
             width={24}
-            onClick={() => handleOptions("contacts")}
+            onClick={() => handleOptions(MenuType.MESSAGE)}
           />
           <Image
             className="secondary-menu-img"
             src={bagIcon}
             alt="icon of bag"
             width={24}
-            onClick={() => handleOptions("bag")}
+            onClick={() => handleOptions(MenuType.BAG)}
           />
           <Image
             className="secondary-menu-img"
             src={mapIcon}
             alt="icon of map"
             width={24}
-            onClick={() => handleOptions("map")}
+            onClick={() => handleOptions(MenuType.MAP)}
           />
           <Image
             className="secondary-menu-img"
             src={pokedexIcon}
             alt="icon of pokedex"
             width={24}
-            onClick={() => handleOptions("pokedex")}
+            onClick={() => handleOptions(MenuType.POKEDEX)}
           />
         </div>
-        {active === "map" && <MapInMenu location={location} />}
-        {active === "pokedex" && (
+        {active === MenuType.MAP && <MapInMenu location={location} />}
+        {active === MenuType.POKEDEX && (
           <PokedexProvider>
             <PokedexMenu />
           </PokedexProvider>
         )}
-        {active === "bag" && <BagMenu />}
-        {active === "contacts" && <ContactsMenu />}
+        {active === MenuType.BAG && <BagMenu />}
+        {active === MenuType.MESSAGE && <MessageMenu />}
       </div>
     </div>
   );

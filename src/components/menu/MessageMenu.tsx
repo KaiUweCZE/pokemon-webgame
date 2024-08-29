@@ -4,7 +4,7 @@ import Image from "next/image";
 import Call from "./Call";
 import { useState } from "react";
 
-const ContactsMenu = () => {
+const MessageMenu = () => {
   const [call, setCall] = useState("");
   const { data } = useSession();
 
@@ -36,4 +36,4 @@ const ContactsMenu = () => {
   );
 };
 
-export default ContactsMenu;
+export default MessageMenu;
