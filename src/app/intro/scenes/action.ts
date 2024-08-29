@@ -51,6 +51,7 @@ export const addPokemon = async (props: AddPokemonProps) => {
         damage: props.damage,
         defense: props.defense,
         expToLevel: props.expToLevel,
+        evolutionInformed: false,
       },
     });
 

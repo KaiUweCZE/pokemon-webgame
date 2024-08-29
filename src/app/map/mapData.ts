@@ -339,27 +339,29 @@ export const mapData = [
       {
         // zubat, magmar, machoke,
         id: 0,
-        pokemons: [74, 111, 4],
+        pokemons: [74, 111, 41],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [37, 58, , 66],
+        pokemons: [37, 58, , 66, 41],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [67, 324, 390],
+        pokemons: [67, 42, 324, 390, 228],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [5, 67, 75, 95, 112],
+        pokemons: [67, 75, 95, 112, 229],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [4, 5, 37, 58, 67, 66, 74, 75, 95, 111, 112, 390, 324],
+    completePokemonList: [
+      37, 41, 42, 58, 67, 66, 74, 75, 95, 111, 112, 390, 324, 228, 229,
+    ],
   },
   {
     id: 9,
@@ -376,27 +378,27 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [92, 198, 355],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [92, 198, 356, 679],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [680, 93, 356],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [94, 681, 356, 430],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [92, 93, 94, 355, 356, 679, 680, 681, 198, 430],
   },
   {
     id: 10,
@@ -413,27 +415,29 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [63, 736, 274, 280],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [64, 281, 274, 722],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [275, 64, 723, 122],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [475, 275, 724, 596],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [
+      63, 64, 122, 280, 281, 475, 274, 275, 722, 723, 724, 596, 736,
+    ],
   },
   {
     id: 11,
@@ -450,27 +454,29 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [5, 6],
+        pokemons: [220, 238, 459, 613],
         levelRange: [5, 10],
       },
       {
         id: 1,
-        pokemons: [3, 5, 6],
+        pokemons: [215, 124, 220, 613],
         levelRange: [11, 20],
       },
       {
         id: 2,
-        pokemons: [2, 4, 1],
+        pokemons: [221, 215, 461, 124],
         levelRange: [21, 30],
       },
       {
         id: 3,
-        pokemons: [1, 3],
+        pokemons: [614, 473, 460, 461, 124],
         levelRange: [31, 40],
       },
     ],
     fight: true,
-    completePokemonList: [],
+    completePokemonList: [
+      215, 461, 220, 221, 473, 613, 614, 238, 124, 459, 460,
+    ],
   },
   {
     id: 12,

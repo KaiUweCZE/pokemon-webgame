@@ -11,7 +11,6 @@ import eeveeIcon from "@/assets/images/pokemons/pokemon-icons/eevee-icon.png";
 import hitmonchanIcon from "@/assets/images/pokemons/pokemon-icons/hitmonchan-icon.png";
 import geodudeIcon from "@/assets/images/pokemons/pokemon-icons/geodude-icon.png";
 import sandshrewIcon from "@/assets/images/pokemons/pokemon-icons/sandshrew-icon.png";
-// webdata from pokemon.com
 
 export const pokemonsData = [
   {

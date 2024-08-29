@@ -15,44 +15,45 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  name            String    @unique
-  hashedPassword  String?
-  profileImg      String?
-  level           Int       @default(1)
-  badges          Int[]     @default([])
-  pokemonIds      String[]  @db.ObjectId
-  pokemons        Pokemon[] @relation
-  userSix         String[]  @default([])
-  location        String    @default("shire")
-  visitedLocation String[]  @default(["shire"])
-  chapter         Int       @default(0)
-  day             Int       @default(0)
-  partOfDay       Int       @default(0)
-  items           Json      @default("[]")
-  contacts        String[]  @default(["prof. Bloom"])
-  Message         Message[]
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  name             String    @unique
+  hashedPassword   String?
+  profileImg       String?
+  level            Int       @default(1)
+  badges           Int[]     @default([])
+  pokemonIds       String[]  @db.ObjectId
+  pokemons         Pokemon[] @relation
+  userSix          String[]  @default([])
+  location         String    @default("shire")
+  visitedLocations String[]  @default(["shire"])
+  chapter          Int       @default(0)
+  day              Int       @default(0)
+  partOfDay        Int       @default(0)
+  items            Json      @default("[]")
+  contacts         String[]  @default(["prof. Bloom"])
+  Message          Message[]
 }
 
 model Pokemon {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  name         String
-  type         String[]
-  level        Int       @default(1)
-  attacks      String[]  @default([])
-  abilities    String[]  @default([])
-  actualHp     Int       @default(10)
-  hp           Int       @default(10)
-  actualEnergy Int       @default(5)
-  energy       Int       @default(10)
-  actualExp    Int       @default(0)
-  expToLevel   Int       @default(100)
-  damage       Int       @default(1)
-  defense      Int       @default(1)
-  speed        Int       @default(1)
-  userId       String?   @db.ObjectId
-  user         User?     @relation(fields: [userId], references: [id])
-  Message      Message[]
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  type              String[]
+  level             Int       @default(1)
+  attacks           String[]  @default([])
+  abilities         String[]  @default([])
+  actualHp          Int       @default(10)
+  hp                Int       @default(10)
+  actualEnergy      Int       @default(5)
+  energy            Int       @default(10)
+  actualExp         Int       @default(0)
+  expToLevel        Int       @default(100)
+  damage            Int       @default(1)
+  defense           Int       @default(1)
+  speed             Int       @default(1)
+  evolutionInformed Boolean
+  userId            String?   @db.ObjectId
+  user              User?     @relation(fields: [userId], references: [id])
+  Message           Message[]
 }
 
 enum MessageType {

@@ -57,6 +57,7 @@ const authOptions: NextAuthOptions = {
               pokemonIds: user.pokemonIds,
               userSix: user.userSix,
               location: user.location,
+              visitedLocations: user.visitedLocations,
               chapter: user.chapter,
               day: user.day,
               partOfDay: user.partOfDay,
@@ -93,6 +94,7 @@ const authOptions: NextAuthOptions = {
         token.pokemonIds = user.pokemonIds;
         token.userSix = user.userSix;
         token.location = user.location;
+        token.visitedLocations = user.visitedLocations;
         token.chapter = user.chapter;
         token.day = user.day;
         token.partOfDay = user.partOfDay;
@@ -113,6 +115,7 @@ const authOptions: NextAuthOptions = {
       session.user.pokemonIds = token.pokemonIds;
       session.user.userSix = token.userSix;
       session.user.location = token.location;
+      session.user.visitedLocations = token.visitedLocations;
       session.user.chapter = token.chapter;
       session.user.day = token.day;
       session.user.partOfDay = token.partOfDay;

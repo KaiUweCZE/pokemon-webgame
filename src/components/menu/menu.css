@@ -157,12 +157,13 @@ a {
 
 .pokedex {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: 0.35fr 1fr;
   width: 32rem;
   height: 18rem;
 }
 
 .pokedex-pokemon-wrapper {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

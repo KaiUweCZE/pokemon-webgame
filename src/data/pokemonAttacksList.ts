@@ -1297,3 +1297,243 @@ export const zebstrikaAttacks = [
   { level: 40, attacks: ["spark", "thunderbolt", "thunder"] },
   { level: 50, attacks: ["thunderbolt", "thunder"] },
 ];
+
+export const zubatAttacks = [
+  { level: 0, attacks: ["leech life"] },
+  { level: 10, attacks: ["leech life", "wing attack"] },
+  { level: 20, attacks: ["leech life", "wing attack", "bite"] },
+  { level: 30, attacks: ["wing attack", "bite", "poison sting"] },
+  { level: 40, attacks: ["wing attack", "bite", "poison sting", "toxic"] },
+  { level: 50, attacks: ["wing attack", "bite", "poison sting", "toxic"] },
+];
+
+export const golbatAttacks = [
+  { level: 0, attacks: ["wing attack", "bite"] },
+  { level: 10, attacks: ["wing attack", "bite", "poison sting"] },
+  { level: 20, attacks: ["wing attack", "bite", "poison sting", "toxic"] },
+  {
+    level: 30,
+    attacks: ["wing attack", "poison sting", "toxic", "shadow ball"],
+  },
+  {
+    level: 40,
+    attacks: ["poison sting", "toxic", "shadow ball", "brave bird"],
+  },
+  {
+    level: 50,
+    attacks: ["poison sting", "toxic", "shadow ball", "brave bird"],
+  },
+];
+
+export const crobatAttacks = [
+  { level: 0, attacks: ["wing attack", "poison sting"] },
+  { level: 10, attacks: ["wing attack", "poison sting", "toxic"] },
+  {
+    level: 20,
+    attacks: ["wing attack", "poison sting", "toxic", "shadow ball"],
+  },
+  {
+    level: 30,
+    attacks: ["poison sting", "toxic", "shadow ball", "brave bird"],
+  },
+  { level: 40, attacks: ["toxic", "shadow ball", "brave bird", "x-scissor"] },
+  { level: 50, attacks: ["toxic", "shadow ball", "brave bird", "x-scissor"] },
+];
+
+export const larvitarAttacks = [
+  { level: 0, attacks: ["tackle", "bite"] },
+  { level: 10, attacks: ["tackle", "bite", "rock throw"] },
+  { level: 20, attacks: ["bite", "rock throw", "dig"] },
+  { level: 30, attacks: ["rock throw", "dig", "crunch"] },
+  { level: 40, attacks: ["rock throw", "dig", "crunch", "earthquake"] },
+  { level: 50, attacks: ["rock throw", "dig", "crunch", "earthquake"] },
+];
+
+export const pupitarAttacks = [
+  { level: 0, attacks: ["rock throw", "dig"] },
+  { level: 10, attacks: ["rock throw", "dig", "crunch"] },
+  { level: 20, attacks: ["rock throw", "dig", "crunch", "earthquake"] },
+  { level: 30, attacks: ["dig", "crunch", "earthquake", "stone edge"] },
+  { level: 40, attacks: ["crunch", "earthquake", "stone edge", "dark pulse"] },
+  { level: 50, attacks: ["crunch", "earthquake", "stone edge", "dark pulse"] },
+];
+
+export const tyranitarAttacks = [
+  { level: 0, attacks: ["crunch", "earthquake"] },
+  { level: 10, attacks: ["crunch", "earthquake", "stone edge"] },
+  { level: 20, attacks: ["earthquake", "stone edge", "dark pulse"] },
+  {
+    level: 30,
+    attacks: ["earthquake", "stone edge", "dark pulse", "dragon claw"],
+  },
+  {
+    level: 40,
+    attacks: ["stone edge", "dark pulse", "dragon claw", "fire blast"],
+  },
+  {
+    level: 50,
+    attacks: ["stone edge", "dark pulse", "dragon claw", "fire blast"],
+  },
+];
+
+export const shieldonAttacks = [
+  { level: 0, attacks: ["tackle", "metal claw"] },
+  { level: 10, attacks: ["tackle", "metal claw", "rock throw"] },
+  { level: 20, attacks: ["metal claw", "rock throw", "iron tail"] },
+  {
+    level: 30,
+    attacks: ["metal claw", "rock throw", "iron tail", "earthquake"],
+  },
+  {
+    level: 40,
+    attacks: ["rock throw", "iron tail", "earthquake", "flash cannon"],
+  },
+  {
+    level: 50,
+    attacks: ["rock throw", "iron tail", "earthquake", "flash cannon"],
+  },
+];
+
+export const bastiodonAttacks = [
+  { level: 0, attacks: ["metal claw", "rock throw"] },
+  { level: 10, attacks: ["metal claw", "rock throw", "iron tail"] },
+  {
+    level: 20,
+    attacks: ["metal claw", "rock throw", "iron tail", "earthquake"],
+  },
+  {
+    level: 30,
+    attacks: ["rock throw", "iron tail", "earthquake", "flash cannon"],
+  },
+  {
+    level: 40,
+    attacks: ["iron tail", "earthquake", "flash cannon", "stone edge"],
+  },
+  {
+    level: 50,
+    attacks: ["iron tail", "earthquake", "flash cannon", "stone edge"],
+  },
+];
+
+export const murkrowAttacks = [
+  { level: 0, attacks: ["wing attack", "quick attack"] },
+  { level: 10, attacks: ["wing attack", "quick attack", "night shade"] },
+  { level: 20, attacks: ["wing attack", "night shade", "dark pulse"] },
+  {
+    level: 30,
+    attacks: ["wing attack", "night shade", "dark pulse", "psychic"],
+  },
+  {
+    level: 40,
+    attacks: ["night shade", "dark pulse", "psychic", "brave bird"],
+  },
+  {
+    level: 50,
+    attacks: ["night shade", "dark pulse", "psychic", "brave bird"],
+  },
+];
+
+export const honchkrowAttacks = [
+  { level: 0, attacks: ["wing attack", "night shade"] },
+  { level: 10, attacks: ["wing attack", "night shade", "dark pulse"] },
+  { level: 20, attacks: ["night shade", "dark pulse", "psychic"] },
+  { level: 30, attacks: ["dark pulse", "psychic", "brave bird"] },
+  {
+    level: 40,
+    attacks: ["dark pulse", "psychic", "brave bird", "shadow ball"],
+  },
+  {
+    level: 50,
+    attacks: ["dark pulse", "psychic", "brave bird", "shadow ball"],
+  },
+];
+
+export const houndourAttacks = [
+  { level: 0, attacks: ["ember", "bite"] },
+  { level: 10, attacks: ["ember", "bite", "flamethrower"] },
+  { level: 20, attacks: ["bite", "flamethrower", "dark pulse"] },
+  { level: 30, attacks: ["flamethrower", "dark pulse", "crunch"] },
+  {
+    level: 40,
+    attacks: ["dark pulse", "flamethrower", "crunch", "fire blast"],
+  },
+  {
+    level: 50,
+    attacks: ["dark pulse", "flamethrower", "crunch", "fire blast"],
+  },
+];
+
+export const houndoomAttacks = [
+  { level: 0, attacks: ["flamethrower", "dark pulse"] },
+  { level: 10, attacks: ["flamethrower", "dark pulse", "crunch"] },
+  { level: 20, attacks: ["dark pulse", "flamethrower", "crunch"] },
+  { level: 30, attacks: ["flamethrower", "crunch", "fire blast"] },
+  { level: 40, attacks: ["crunch", "fire blast", "shadow ball"] },
+  { level: 50, attacks: ["crunch", "fire blast", "shadow ball", "solar beam"] },
+];
+
+export const beldumAttacks = [
+  { level: 0, attacks: ["tackle"] },
+  { level: 10, attacks: ["tackle", "metal claw"] },
+  { level: 20, attacks: ["tackle", "metal claw", "confusion"] },
+  { level: 30, attacks: ["metal claw", "confusion", "psychic"] },
+  {
+    level: 40,
+    attacks: ["metal claw", "confusion", "psychic", "flash cannon"],
+  },
+  {
+    level: 50,
+    attacks: ["metal claw", "confusion", "psychic", "flash cannon"],
+  },
+];
+
+export const metangAttacks = [
+  { level: 0, attacks: ["metal claw", "confusion"] },
+  { level: 10, attacks: ["metal claw", "confusion", "psychic"] },
+  { level: 20, attacks: ["confusion", "psychic", "flash cannon"] },
+  { level: 30, attacks: ["psychic", "flash cannon", "earthquake"] },
+  {
+    level: 40,
+    attacks: ["psychic", "flash cannon", "earthquake", "meteor mash"],
+  },
+  {
+    level: 50,
+    attacks: ["psychic", "flash cannon", "earthquake", "meteor mash"],
+  },
+];
+
+export const metagrossAttacks = [
+  { level: 0, attacks: ["psychic", "flash cannon"] },
+  { level: 10, attacks: ["psychic", "flash cannon", "earthquake"] },
+  { level: 20, attacks: ["flash cannon", "earthquake", "meteor mash"] },
+  { level: 30, attacks: ["earthquake", "meteor mash", "thunder"] },
+  {
+    level: 40,
+    attacks: ["meteor mash", "earthquake", "thunder", "hyper beam"],
+  },
+  {
+    level: 50,
+    attacks: ["meteor mash", "earthquake", "thunder", "hyper beam"],
+  },
+];
+
+export const sneaselAttacks = [
+  { level: 0, attacks: ["quick attack", "metal claw"] },
+  { level: 10, attacks: ["quick attack", "metal claw", "ice beam"] },
+  { level: 20, attacks: ["quick attack", "ice beam", "metal claw"] },
+  { level: 30, attacks: ["ice beam", "metal claw", "dark pulse"] },
+  { level: 40, attacks: ["metal claw", "dark pulse", "blizzard"] },
+  { level: 50, attacks: ["metal claw", "dark pulse", "blizzard", "x-scissor"] },
+];
+
+export const weavileAttacks = [
+  { level: 0, attacks: ["ice beam", "metal claw"] },
+  { level: 10, attacks: ["ice beam", "metal claw", "dark pulse"] },
+  { level: 20, attacks: ["metal claw", "dark pulse", "blizzard"] },
+  { level: 30, attacks: ["dark pulse", "blizzard", "x-scissor"] },
+  { level: 40, attacks: ["blizzard", "x-scissor", "night shade"] },
+  {
+    level: 50,
+    attacks: ["blizzard", "x-scissor", "night shade", "shadow ball"],
+  },
+];

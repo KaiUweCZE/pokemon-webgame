@@ -1,3 +1,7 @@
+/*
+dragon: drampa, tyrunt, dragonair
+steel: steelix, magnemite, skarmory, scizor
+*/
 import aegislashImg from "@/assets/images/pokemons/aegislash.webp";
 import aegislashIcon from "@/assets/images/pokemons/pokemon-icons/aegislash-icon.png";
 import aegislashBack from "@/assets/images/pokemons/backside/aegislash-back.webp";
@@ -478,6 +482,74 @@ import zebstrikaImg from "@/assets/images/pokemons/zebstrika.webp";
 import zebstrikaIcon from "@/assets/images/pokemons/pokemon-icons/zebstrika-icon.png";
 import zebstrikaBack from "@/assets/images/pokemons/backside/zebstrika-back.webp";
 
+import zubatImg from "@/assets/images/pokemons/zubat.webp";
+import zubatIcon from "@/assets/images/pokemons/pokemon-icons/zubat-icon.png";
+import zubatBack from "@/assets/images/pokemons/backside/zubat-back.webp";
+
+import golbatImg from "@/assets/images/pokemons/golbat.webp";
+import golbatIcon from "@/assets/images/pokemons/pokemon-icons/golbat-icon.png";
+import golbatBack from "@/assets/images/pokemons/backside/golbat-back.webp";
+
+import crobatImg from "@/assets/images/pokemons/crobat.webp";
+import crobatIcon from "@/assets/images/pokemons/pokemon-icons/crobat-icon.png";
+import crobatBack from "@/assets/images/pokemons/backside/crobat-back.webp";
+
+import larvitarImg from "@/assets/images/pokemons/larvitar.webp";
+import larvitarIcon from "@/assets/images/pokemons/pokemon-icons/larvitar-icon.png";
+import larvitarBack from "@/assets/images/pokemons/backside/larvitar-back.webp";
+
+import pupitarImg from "@/assets/images/pokemons/pupitar.webp";
+import pupitarIcon from "@/assets/images/pokemons/pokemon-icons/pupitar-icon.png";
+import pupitarBack from "@/assets/images/pokemons/backside/pupitar-back.webp";
+
+import tyranitarImg from "@/assets/images/pokemons/tyranitar.webp";
+import tyranitarIcon from "@/assets/images/pokemons/pokemon-icons/tyranitar-icon.png";
+import tyranitarBack from "@/assets/images/pokemons/backside/tyranitar-back.webp";
+
+import shieldonImg from "@/assets/images/pokemons/shieldon.webp";
+import shieldonIcon from "@/assets/images/pokemons/pokemon-icons/shieldon-icon.png";
+import shieldonBack from "@/assets/images/pokemons/backside/shieldon-back.webp";
+
+import bastiodonImg from "@/assets/images/pokemons/bastiodon.webp";
+import bastiodonIcon from "@/assets/images/pokemons/pokemon-icons/bastiodon-icon.png";
+import bastiodonBack from "@/assets/images/pokemons/backside/bastiodon-back.webp";
+
+import murkrowImg from "@/assets/images/pokemons/murkrow.webp";
+import murkrowIcon from "@/assets/images/pokemons/pokemon-icons/murkrow-icon.png";
+import murkrowBack from "@/assets/images/pokemons/backside/murkrow-back.webp";
+
+import honchkrowImg from "@/assets/images/pokemons/honchkrow.webp";
+import honchkrowIcon from "@/assets/images/pokemons/pokemon-icons/honchkrow-icon.png";
+import honchkrowBack from "@/assets/images/pokemons/backside/honchkrow-back.webp";
+
+import houndourImg from "@/assets/images/pokemons/houndour.webp";
+import houndourIcon from "@/assets/images/pokemons/pokemon-icons/houndour-icon.png";
+import houndourBack from "@/assets/images/pokemons/backside/houndour-back.webp";
+
+import houndoomImg from "@/assets/images/pokemons/houndoom.webp";
+import houndoomIcon from "@/assets/images/pokemons/pokemon-icons/houndoom-icon.png";
+import houndoomBack from "@/assets/images/pokemons/backside/houndoom-back.webp";
+
+import beldumImg from "@/assets/images/pokemons/beldum.webp";
+import beldumIcon from "@/assets/images/pokemons/pokemon-icons/beldum-icon.png";
+import beldumBack from "@/assets/images/pokemons/backside/beldum-back.webp";
+
+import metangImg from "@/assets/images/pokemons/metang.webp";
+import metangIcon from "@/assets/images/pokemons/pokemon-icons/metang-icon.png";
+import metangBack from "@/assets/images/pokemons/backside/metang-back.webp";
+
+import metagrossImg from "@/assets/images/pokemons/metagross.webp";
+import metagrossIcon from "@/assets/images/pokemons/pokemon-icons/metagross-icon.png";
+import metagrossBack from "@/assets/images/pokemons/backside/metagross-back.webp";
+
+import sneaselImg from "@/assets/images/pokemons/sneasel.webp";
+import sneaselIcon from "@/assets/images/pokemons/pokemon-icons/sneasel-icon.png";
+import sneaselBack from "@/assets/images/pokemons/backside/sneasel-back.webp";
+
+import weavileImg from "@/assets/images/pokemons/weavile.webp";
+import weavileIcon from "@/assets/images/pokemons/pokemon-icons/weavile-icon.png";
+import weavileBack from "@/assets/images/pokemons/backside/weavile-back.webp";
+
 import {
   abomasnowAttacks,
   abraAttacks,
@@ -485,7 +557,9 @@ import {
   alakazamAttacks,
   annihilapeAttacks,
   arcanineAttacks,
+  bastiodonAttacks,
   bearticAttacks,
+  beldumAttacks,
   bisharpAttacks,
   blastoiseAttacks,
   blitzleAttacks,
@@ -495,6 +569,7 @@ import {
   charmanderAttacks,
   charmeleonAttacks,
   chimcharAttacks,
+  crobatAttacks,
   cubchooAttacks,
   cuboneAttacks,
   dartrixAttacks,
@@ -515,6 +590,7 @@ import {
   gastlyAttacks,
   gengarAttacks,
   geodudeAttacks,
+  golbatAttacks,
   golemAttacks,
   granbullAttacks,
   gravelerAttacks,
@@ -527,9 +603,12 @@ import {
   heracrossAttacks,
   hitmonchanAttacks,
   hitmonleeAttacks,
+  honchkrowAttacks,
   honedgeAttacks,
   hoothootAttacks,
   horseaAttacks,
+  houndoomAttacks,
+  houndourAttacks,
   infernapeAttacks,
   ivysaurAttacks,
   joltikAttacks,
@@ -541,6 +620,7 @@ import {
   kirliaAttacks,
   koffingAttacks,
   krabbyAttacks,
+  larvitarAttacks,
   machampAttacks,
   machokeAttacks,
   machopAttacks,
@@ -548,8 +628,11 @@ import {
   mamoswineAttacks,
   mankeyAttacks,
   marowakAttacks,
+  metagrossAttacks,
+  metangAttacks,
   monfernoAttacks,
   mrMimeAttacks,
+  murkrowAttacks,
   nidokingAttacks,
   nidoranMAttacks,
   nidorinoAttacks,
@@ -565,6 +648,7 @@ import {
   piloswineAttacks,
   pinsirAttacks,
   primeapeAttacks,
+  pupitarAttacks,
   raichuAttacks,
   raltsAttacks,
   rhydonAttacks,
@@ -577,9 +661,11 @@ import {
   scytherAttacks,
   seadraAttacks,
   seedotAttacks,
+  shieldonAttacks,
   shiftryAttacks,
   sirfetchdAttacks,
   smoochumAttacks,
+  sneaselAttacks,
   snoverAttacks,
   snubbullAttacks,
   squirtleAttacks,
@@ -595,14 +681,17 @@ import {
   torkoalAttacks,
   torterraAttacks,
   turtwigAttacks,
+  tyranitarAttacks,
   ursalunaAttacks,
   ursaringAttacks,
   venusaurAttacks,
   vikavoltAttacks,
   vulpixAttacks,
   wartortleAttacks,
+  weavileAttacks,
   weezingAttacks,
   zebstrikaAttacks,
+  zubatAttacks,
 } from "./pokemonAttacksList";
 
 export const pokemonBattleData = [
@@ -1009,6 +1098,50 @@ export const pokemonBattleData = [
     expForKill: 170,
     evolutionLevels: [30, 50],
     evolutionChain: ["Vulpix", "Ninetales"],
+  },
+  {
+    id: 41,
+    name: "Zubat",
+    img: zubatImg,
+    imgBack: zubatBack,
+    icon: zubatIcon,
+    type: ["poison", "flying"],
+    attacks: zubatAttacks,
+    damage: 4.5,
+    defense: 3.5,
+    speed: 5.5,
+    hp: 40,
+    energy: 30,
+    expToLevel: 60,
+    expForKill: 8,
+    evolutionLevels: [22, 45],
+    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolution: {
+      level: 22,
+      name: "Golbat",
+    },
+  },
+  {
+    id: 42,
+    name: "Golbat",
+    img: golbatImg,
+    imgBack: golbatBack,
+    icon: golbatIcon,
+    type: ["poison", "flying"],
+    attacks: golbatAttacks,
+    damage: 8.0,
+    defense: 7.0,
+    speed: 9.0,
+    hp: 75,
+    energy: 45,
+    expToLevel: 90,
+    expForKill: 15,
+    evolutionLevels: [22, 45],
+    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolution: {
+      level: 45,
+      name: "Crobat",
+    },
   },
   {
     id: 56,
@@ -1771,6 +1904,25 @@ export const pokemonBattleData = [
     evolutionChain: ["Hoothoot", "Noctowl"],
   },
   {
+    id: 169,
+    name: "Crobat",
+    img: crobatImg,
+    imgBack: crobatBack,
+    icon: crobatIcon,
+    type: ["poison", "flying"],
+    attacks: crobatAttacks,
+    damage: 9.0,
+    defense: 8.0,
+    speed: 13.0,
+    hp: 85,
+    energy: 55,
+    expToLevel: 120,
+    expForKill: 20,
+    evolutionLevels: [22, 45],
+    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolution: null,
+  },
+  {
     id: 175,
     name: "Togepi",
     type: ["fairy"],
@@ -1805,6 +1957,28 @@ export const pokemonBattleData = [
     expForKill: 70,
     evolutionLevels: [30, 50],
     evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+  },
+  {
+    id: 198,
+    name: "Murkrow",
+    img: murkrowImg,
+    imgBack: murkrowBack,
+    icon: murkrowIcon,
+    type: ["dark", "flying"],
+    attacks: murkrowAttacks,
+    damage: 8.5,
+    defense: 4.2,
+    speed: 9.1,
+    hp: 60,
+    energy: 40,
+    expToLevel: 85,
+    expForKill: 14,
+    evolutionLevels: [35],
+    evolutionChain: ["Murkrow", "Honchkrow"],
+    evolution: {
+      level: 35,
+      name: "Honchkrow",
+    },
   },
   {
     id: 209,
@@ -1874,7 +2048,28 @@ export const pokemonBattleData = [
     expToLevel: 140,
     expForKill: 18,
   },
-
+  {
+    id: 215,
+    name: "Sneasel",
+    img: sneaselImg,
+    imgBack: sneaselBack,
+    icon: sneaselIcon,
+    type: ["dark", "ice"],
+    attacks: sneaselAttacks,
+    damage: 9.5,
+    defense: 5.5,
+    speed: 11.5,
+    hp: 55,
+    energy: 40,
+    expToLevel: 90,
+    expForKill: 15,
+    evolutionLevels: [40],
+    evolutionChain: ["Sneasel", "Weavile"],
+    evolution: {
+      level: 40,
+      name: "Weavile",
+    },
+  },
   {
     id: 216,
     name: "Teddiursa",
@@ -1956,6 +2151,47 @@ export const pokemonBattleData = [
     evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
   },
   {
+    id: 228,
+    name: "Houndour",
+    img: houndourImg,
+    imgBack: houndourBack,
+    icon: houndourIcon,
+    type: ["dark", "fire"],
+    attacks: houndourAttacks,
+    damage: 6.0,
+    defense: 4.0,
+    speed: 6.5,
+    hp: 45,
+    energy: 35,
+    expToLevel: 75,
+    expForKill: 12,
+    evolutionLevels: [24],
+    evolutionChain: ["Houndour", "Houndoom"],
+    evolution: {
+      level: 24,
+      name: "Houndoom",
+    },
+  },
+  {
+    id: 229,
+    name: "Houndoom",
+    img: houndoomImg,
+    imgBack: houndoomBack,
+    icon: houndoomIcon,
+    type: ["dark", "fire"],
+    attacks: houndoomAttacks,
+    damage: 9.0,
+    defense: 5.0,
+    speed: 9.5,
+    hp: 75,
+    energy: 50,
+    expToLevel: 110,
+    expForKill: 18,
+    evolutionLevels: [24],
+    evolutionChain: ["Houndour", "Houndoom"],
+    evolution: null,
+  },
+  {
     id: 230,
     name: "Kingdra",
     img: kingdraImg,
@@ -2004,6 +2240,69 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 90,
     expForKill: 10,
+  },
+  {
+    id: 246,
+    name: "Larvitar",
+    img: larvitarImg,
+    imgBack: larvitarBack,
+    icon: larvitarIcon,
+    type: ["rock", "ground"],
+    attacks: larvitarAttacks,
+    damage: 6.4,
+    defense: 5.0,
+    speed: 4.1,
+    hp: 50,
+    energy: 35,
+    expToLevel: 70,
+    expForKill: 10,
+    evolutionLevels: [30, 55],
+    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolution: {
+      level: 30,
+      name: "Pupitar",
+    },
+  },
+  {
+    id: 247,
+    name: "Pupitar",
+    img: pupitarImg,
+    imgBack: pupitarBack,
+    icon: pupitarIcon,
+    type: ["rock", "ground"],
+    attacks: pupitarAttacks,
+    damage: 8.4,
+    defense: 7.0,
+    speed: 5.1,
+    hp: 70,
+    energy: 45,
+    expToLevel: 100,
+    expForKill: 15,
+    evolutionLevels: [55],
+    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolution: {
+      level: 55,
+      name: "Tyranitar",
+    },
+  },
+  {
+    id: 248,
+    name: "Tyranitar",
+    img: tyranitarImg,
+    imgBack: tyranitarBack,
+    icon: tyranitarIcon,
+    type: ["rock", "dark"],
+    attacks: tyranitarAttacks,
+    damage: 13.4,
+    defense: 11.0,
+    speed: 6.1,
+    hp: 100,
+    energy: 60,
+    expToLevel: 150,
+    expForKill: 25,
+    evolutionLevels: [],
+    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolution: null,
   },
   {
     id: 273,
@@ -2156,6 +2455,69 @@ export const pokemonBattleData = [
     evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
   },
   {
+    id: 374,
+    name: "Beldum",
+    img: beldumImg,
+    imgBack: beldumBack,
+    icon: beldumIcon,
+    type: ["steel", "psychic"],
+    attacks: beldumAttacks,
+    damage: 4.0,
+    defense: 8.0,
+    speed: 3.0,
+    hp: 40,
+    energy: 30,
+    expToLevel: 80,
+    expForKill: 12,
+    evolutionLevels: [20, 45],
+    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolution: {
+      level: 20,
+      name: "Metang",
+    },
+  },
+  {
+    id: 375,
+    name: "Metang",
+    img: metangImg,
+    imgBack: metangBack,
+    icon: metangIcon,
+    type: ["steel", "psychic"],
+    attacks: metangAttacks,
+    damage: 7.5,
+    defense: 10.0,
+    speed: 5.0,
+    hp: 60,
+    energy: 45,
+    expToLevel: 110,
+    expForKill: 18,
+    evolutionLevels: [45],
+    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolution: {
+      level: 45,
+      name: "Metagross",
+    },
+  },
+  {
+    id: 376,
+    name: "Metagross",
+    img: metagrossImg,
+    imgBack: metagrossBack,
+    icon: metagrossIcon,
+    type: ["steel", "psychic"],
+    attacks: metagrossAttacks,
+    damage: 13.5,
+    defense: 13.0,
+    speed: 7.0,
+    hp: 80,
+    energy: 60,
+    expToLevel: 150,
+    expForKill: 25,
+    evolutionLevels: [],
+    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolution: null,
+  },
+  {
     id: 387,
     name: "Turtwig",
     img: turtwigImg,
@@ -2266,6 +2628,66 @@ export const pokemonBattleData = [
     expForKill: 18,
   },
   {
+    id: 410,
+    name: "Shieldon",
+    img: shieldonImg,
+    imgBack: shieldonBack,
+    icon: shieldonIcon,
+    type: ["rock", "steel"],
+    attacks: shieldonAttacks,
+    damage: 4.2,
+    defense: 11.8,
+    speed: 3.0,
+    hp: 30,
+    energy: 35,
+    expToLevel: 80,
+    expForKill: 12,
+    evolutionLevels: [30],
+    evolutionChain: ["Shieldon", "Bastiodon"],
+    evolution: {
+      level: 30,
+      name: "Bastiodon",
+    },
+  },
+  {
+    id: 411,
+    name: "Bastiodon",
+    img: bastiodonImg,
+    imgBack: bastiodonBack,
+    icon: bastiodonIcon,
+    type: ["rock", "steel"],
+    attacks: bastiodonAttacks,
+    damage: 5.2,
+    defense: 16.8,
+    speed: 3.0,
+    hp: 60,
+    energy: 50,
+    expToLevel: 120,
+    expForKill: 18,
+    evolutionLevels: [],
+    evolutionChain: ["Shieldon", "Bastiodon"],
+    evolution: null,
+  },
+  {
+    id: 430,
+    name: "Honchkrow",
+    img: honchkrowImg,
+    imgBack: honchkrowBack,
+    icon: honchkrowIcon,
+    type: ["dark", "flying"],
+    attacks: honchkrowAttacks,
+    damage: 12.5,
+    defense: 5.2,
+    speed: 7.1,
+    hp: 100,
+    energy: 55,
+    expToLevel: 120,
+    expForKill: 20,
+    evolutionLevels: [],
+    evolutionChain: ["Murkrow", "Honchkrow"],
+    evolution: null,
+  },
+  {
     id: 459,
     name: "Snover",
     type: ["grass", "ice"],
@@ -2301,7 +2723,25 @@ export const pokemonBattleData = [
     evolutionLevels: [30, 50],
     evolutionChain: ["Snover", "Abomasnow"],
   },
-
+  {
+    id: 461,
+    name: "Weavile",
+    img: weavileImg,
+    imgBack: weavileBack,
+    icon: weavileIcon,
+    type: ["dark", "ice"],
+    attacks: weavileAttacks,
+    damage: 12.0,
+    defense: 6.5,
+    speed: 12.5,
+    hp: 70,
+    energy: 55,
+    expToLevel: 130,
+    expForKill: 22,
+    evolutionLevels: [],
+    evolutionChain: ["Sneasel", "Weavile"],
+    evolution: null,
+  },
   {
     id: 464,
     name: "Rhyperior",
@@ -2606,7 +3046,7 @@ export const pokemonBattleData = [
     expForKill: 18,
   },
   {
-    id: 680,
+    id: 679,
     name: "Honedge",
     img: honedgeImg,
     imgBack: honedgeBack,
