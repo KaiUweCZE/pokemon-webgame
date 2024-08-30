@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export const useClickOutsideD = (
+export const useClickOutside = (
   setInitState: Dispatch<SetStateAction<boolean>>,
   initState: boolean,
   cssSelector: string
