@@ -25,7 +25,7 @@ export const attacksData = [
     type: "normal",
     damage: 3,
     energyCost: 5,
-    recoveryTime: 1,
+    recoveryTime: 2,
     img: normalImg,
   },
   {
@@ -34,7 +34,7 @@ export const attacksData = [
     type: "normal",
     damage: 3,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 3,
     img: normalImg,
   },
   {
@@ -43,8 +43,8 @@ export const attacksData = [
     type: "normal",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
-    img: electricImg,
+    recoveryTime: 4,
+    img: normalImg,
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const attacksData = [
     type: "fire",
     damage: 4,
     energyCost: 4,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: fireImg,
   },
   {
@@ -61,7 +61,7 @@ export const attacksData = [
     type: "fire",
     damage: 6,
     energyCost: 6,
-    recoveryTime: 4,
+    recoveryTime: 5,
     img: fireImg,
   },
   {
@@ -70,7 +70,7 @@ export const attacksData = [
     type: "fire",
     damage: 8,
     energyCost: 8,
-    recoveryTime: 5,
+    recoveryTime: 6,
     img: fireImg,
   },
   {
@@ -79,7 +79,7 @@ export const attacksData = [
     type: "water",
     damage: 4,
     energyCost: 3,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: waterImg,
   },
   {
@@ -88,7 +88,7 @@ export const attacksData = [
     type: "water",
     damage: 5,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: waterImg,
   },
   {
@@ -97,7 +97,7 @@ export const attacksData = [
     type: "water",
     damage: 8,
     energyCost: 6,
-    recoveryTime: 4,
+    recoveryTime: 5,
     img: waterImg,
   },
   {
@@ -106,7 +106,7 @@ export const attacksData = [
     type: "grass",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: grassImg,
   },
   {
@@ -115,7 +115,7 @@ export const attacksData = [
     type: "grass",
     damage: 5,
     energyCost: 5,
-    recoveryTime: 2,
+    recoveryTime: 3,
     img: grassImg,
   },
   {
@@ -133,7 +133,7 @@ export const attacksData = [
     type: "electric",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 3,
     img: electricImg,
   },
   {
@@ -160,7 +160,7 @@ export const attacksData = [
     type: "ice",
     damage: 8,
     energyCost: 6,
-    recoveryTime: 4,
+    recoveryTime: 5,
     img: iceImg,
   },
   {
@@ -178,7 +178,7 @@ export const attacksData = [
     type: "ice",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: iceImg,
   },
   {
@@ -196,7 +196,7 @@ export const attacksData = [
     type: "fighting",
     damage: 5,
     energyCost: 4,
-    recoveryTime: 1,
+    recoveryTime: 2,
     img: fightingImg,
   },
   {
@@ -214,7 +214,7 @@ export const attacksData = [
     type: "poison",
     damage: 4,
     energyCost: 2,
-    recoveryTime: 1,
+    recoveryTime: 3,
     img: poisonImg,
   },
   {
@@ -232,7 +232,7 @@ export const attacksData = [
     type: "poison",
     damage: 6,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: poisonImg,
   },
   {
@@ -250,7 +250,7 @@ export const attacksData = [
     type: "ground",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 4,
+    recoveryTime: 5,
     img: groundImg,
   },
   {
@@ -259,7 +259,7 @@ export const attacksData = [
     type: "ground",
     damage: 3,
     energyCost: 2,
-    recoveryTime: 1,
+    recoveryTime: 3,
     img: groundImg,
   },
   {
@@ -268,7 +268,7 @@ export const attacksData = [
     type: "flying",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 4,
     img: flyingImg,
   },
   {
@@ -277,7 +277,7 @@ export const attacksData = [
     type: "flying",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: flyingImg,
   },
   {
@@ -286,7 +286,7 @@ export const attacksData = [
     type: "flying",
     damage: 8,
     energyCost: 6,
-    recoveryTime: 4,
+    recoveryTime: 5,
     img: flyingImg,
   },
   {
@@ -295,7 +295,7 @@ export const attacksData = [
     type: "psychic",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: psychicImg,
   },
   {
@@ -313,7 +313,7 @@ export const attacksData = [
     type: "psychic",
     damage: 6,
     energyCost: 4,
-    recoveryTime: 2,
+    recoveryTime: 4,
     img: psychicImg,
   },
   {
@@ -322,7 +322,7 @@ export const attacksData = [
     type: "bug",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 4,
     img: bugImg,
   },
   {
@@ -349,7 +349,7 @@ export const attacksData = [
     type: "rock",
     damage: 6,
     energyCost: 4,
-    recoveryTime: 2,
+    recoveryTime: 5,
     img: rockImg,
   },
   {
@@ -358,7 +358,7 @@ export const attacksData = [
     type: "rock",
     damage: 8,
     energyCost: 6,
-    recoveryTime: 4,
+    recoveryTime: 6,
     img: rockImg,
   },
   {
@@ -376,7 +376,7 @@ export const attacksData = [
     type: "ghost",
     damage: 4,
     energyCost: 2,
-    recoveryTime: 1,
+    recoveryTime: 3,
     img: ghostImg,
   },
   {
@@ -394,7 +394,7 @@ export const attacksData = [
     type: "ghost",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 4,
     img: ghostImg,
   },
   {
@@ -403,7 +403,7 @@ export const attacksData = [
     type: "dragon",
     damage: 7,
     energyCost: 5,
-    recoveryTime: 3,
+    recoveryTime: 5,
     img: dragonImg,
   },
   {
@@ -430,7 +430,7 @@ export const attacksData = [
     type: "dark",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 4,
     img: biteImg,
   },
   {
@@ -457,7 +457,7 @@ export const attacksData = [
     type: "steel",
     damage: 6,
     energyCost: 4,
-    recoveryTime: 2,
+    recoveryTime: 4,
     img: steelImg,
   },
   {
@@ -484,7 +484,7 @@ export const attacksData = [
     type: "fairy",
     damage: 5,
     energyCost: 3,
-    recoveryTime: 2,
+    recoveryTime: 5,
     img: fairyImg,
   },
   {

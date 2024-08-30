@@ -25,6 +25,7 @@ export const changeHpServer = async (pokemonId: string, newHp: number) => {
       },
     });
 
+    console.log("new hp is: ", pokemonUpdated.actualHp);
     return pokemonUpdated;
   } catch (error) {
     console.error("error occurs: ", error);

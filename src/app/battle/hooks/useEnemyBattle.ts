@@ -5,10 +5,12 @@ import { useContext, useEffect, useState } from "react";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
+import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 
 const useEnemyBattle = () => {
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
+  const [isAttacking, setIsAttacking] = useState(false);
 
   useEffect(() => {
     if (!context || !context.enemyPokemon || !pokemonContext) return;
@@ -21,48 +23,46 @@ const useEnemyBattle = () => {
       context?.enemyPokemon?.level
     );
 
+    // set random attack from the enemy attacks
     const selectedMove = randomAttack(moves);
     setMove(selectedMove);
-
-    if (currentPokemon?.actualHp === 0 || context.enemyPokemon.actualHp === 0) {
-      context.setStopBattle(true);
-    }
+    const recovery = restAfterAttack(
+      context.enemyPokemon.speed,
+      selectedMove.recoveryTime
+    );
 
     if (move && currentPokemon && context.battleState === BattleState.BATTLE) {
+      // check if there is not attack in progress
+      if (isAttacking) return;
       const interval = setInterval(async () => {
-        if (move?.damage && !context.stopBattle) {
-          let newHp = Math.max(currentPokemon?.actualHp - move.damage, 0);
-          setCurrentPokemon((prevPokemon) => {
-            if (!prevPokemon) return prevPokemon;
-            return { ...prevPokemon, actualHp: newHp };
-          });
+        console.log(
+          `start recovery: ${recovery} attack: ${selectedMove.name} recovery time: ${selectedMove.recoveryTime}`
+        );
+        setIsAttacking(true);
 
-          context.setEnemyAttackAnimation(true);
-          setTimeout(() => {
-            context.setEnemyAttackAnimation(false);
-          }, 1500);
-          console.log("new hp: ", newHp);
-          console.log("new energy: ", currentPokemon.actualEnergy);
+        let newHp = Math.max(currentPokemon?.actualHp - move.damage, 0);
+        setCurrentPokemon((prevPokemon) => {
+          if (!prevPokemon) return prevPokemon;
+          return { ...prevPokemon, actualHp: newHp };
+        });
 
-          try {
-            const updatedPokemon = await changeHpServer(
-              currentPokemon.id,
-              newHp
-            );
-
-            if (updatedPokemon) {
-              console.log("all correct");
-            }
-          } catch (error) {
-            console.error("error occurs: ", error);
-          }
-          if (newHp === 0) {
-            clearInterval(interval);
-            context.setStopBattle(true);
-            context.setBattleState(BattleState.USER_POKEMON_FAINTED);
-          }
+        // active and deactive animation
+        context.setEnemyAttackAnimation(true);
+        setTimeout(() => {
+          context.setEnemyAttackAnimation(false);
+        }, 1500);
+        try {
+          await changeHpServer(currentPokemon.id, newHp);
+        } catch (error) {
+          console.error("error occurs: ", error);
+        } finally {
+          setIsAttacking(false);
         }
-      }, move?.recoveryTime * 1000);
+        if (newHp === 0) {
+          clearInterval(interval);
+          context.setBattleState(BattleState.USER_POKEMON_FAINTED);
+        }
+      }, recovery * 1000);
 
       return () => clearInterval(interval);
     }

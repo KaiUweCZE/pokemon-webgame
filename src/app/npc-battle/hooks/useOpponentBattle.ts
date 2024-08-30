@@ -7,7 +7,6 @@ import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
 import { BattleState } from "@/types/enums/battleState";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
-import OponentImage from "../OponentImage";
 
 const useOpponentBattle = () => {
   const context = useContext(NpcBattleContext);
@@ -16,10 +15,13 @@ const useOpponentBattle = () => {
   const timingAdjustmentRef = useRef(50);
   const [lastAttackTime, setLastAttackTime] = useState(Date.now());
   const [isFirstAttack, setIsFirstAttack] = useState(true);
+  const [isAttacking, setIsAttacking] = useState(false);
 
   const performAttack = useCallback(async () => {
     if (!context?.currentOponentPokemon || !pokemonContext?.currentPokemon)
       return;
+    if (isAttacking) return;
+    setIsAttacking(true);
 
     const {
       currentOponentPokemon: opponentPokemon,
@@ -34,11 +36,11 @@ const useOpponentBattle = () => {
       context.battleState === BattleState.USER_VICTORY ||
       context.battleState === BattleState.OPPONENT_POKEMON_FAINTED
     ) {
-      console.log("Battle has ended. Opponent stops attacking.");
       return;
     }
     // check opponent energy
     console.log("opponent energy: ", opponentPokemon.actualEnergy);
+
     // get data about attack
     const attacks = getAttacksFromNames(opponentPokemon?.attacks);
     if (!attacks || attacks.length === 0) return;
@@ -51,7 +53,10 @@ const useOpponentBattle = () => {
     );
 
     // set new energy after attack
-    setOpponentPokemon({ ...opponentPokemon, actualEnergy: newEnergy });
+    setOpponentPokemon((prevPokemon) => {
+      if (!prevPokemon) return opponentPokemon;
+      return { ...opponentPokemon, actualEnergy: newEnergy };
+    });
 
     // trigger attack aniamtion
     context.setOponentAttackAnimation(true);
@@ -78,18 +83,20 @@ const useOpponentBattle = () => {
     if (newHp <= 0) {
       context.setStopBattle(true);
       context.setBattleState(BattleState.USER_POKEMON_FAINTED);
-      setUserPokemon({ ...userPokemon, actualHp: 0 });
+      setUserPokemon((prevPokemon) => {
+        if (!prevPokemon) return userPokemon;
+        return { ...prevPokemon, actualHp: 0 };
+      });
       try {
-        const updatedPokemon = await changeHpServer(userPokemon.id, newHp);
-
-        if (updatedPokemon) {
-          console.log("updatedPokemon hp: ", updatedPokemon.actualHp);
-        }
+        await changeHpServer(userPokemon.id, newHp);
       } catch (error) {
         console.error("error occurs: ", error);
       }
     } else {
-      setUserPokemon({ ...userPokemon, actualHp: newHp });
+      setUserPokemon((prevPokemon) => {
+        if (!prevPokemon) return userPokemon;
+        return { ...userPokemon, actualHp: newHp };
+      });
       const newSix = pokemonContext.pokemonsFromSix.map((pokemon) =>
         pokemon.id !== userPokemon.id ? pokemon : userPokemon
       );
@@ -98,26 +105,28 @@ const useOpponentBattle = () => {
         const updatedPokemon = await changeHpServer(userPokemon.id, newHp);
 
         if (updatedPokemon) {
-          console.log("updatedPokemon hp: ", updatedPokemon.actualHp);
+          console.log("user pokemon hp: ", updatedPokemon.actualHp);
         }
       } catch (error) {
         console.error("error occurs: ", error);
+      } finally {
+        setIsAttacking(false);
       }
     }
     // set time from last attack
     setLastAttackTime(Date.now());
     setIsFirstAttack(false);
     console.log(
-      `Opponent ${opponentPokemon.name} used ${currentAttack}. Next attack in ${
-        recoveryTimeRef.current / 1000
-      } seconds. opponent speed: ${opponentPokemon.speed}`
+      `Opponent ${opponentPokemon.name} used ${currentAttack.name}: ${
+        currentAttack.damage
+      }. Next attack in ${recoveryTimeRef.current / 1000} s, ${
+        userPokemon.actualHp
+      }`
     );
-  }, [context, pokemonContext]);
+  }, [context, pokemonContext, isAttacking]);
 
   // if the user switches pokemon, the next opponent's attack will be 1.5s after the spawn
   useEffect(() => {
-    console.log("what");
-
     if (context?.battleState === BattleState.USER_SWITCHING_POKEMON) {
       setIsFirstAttack(true);
     }
@@ -125,16 +134,13 @@ const useOpponentBattle = () => {
 
   useEffect(() => {
     const isBattleActive = context?.battleState === BattleState.BATTLE;
-    if (!isBattleActive) {
-      console.log("Battle has stopped");
-      return;
-    }
+    if (!isBattleActive) return;
 
-    // opponent's first attack will be after 1.5s
+    // opponent's first attack will be after 600ms
     if (isFirstAttack) {
       const firstAttackTimer = setTimeout(() => {
         performAttack();
-      }, 1500);
+      }, 600);
 
       return () => clearTimeout(firstAttackTimer);
     } else {

@@ -179,14 +179,18 @@ a {
   grid-column: span 2;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 0.5rem;
   background-color: rgb(255, 192, 74);
   background-color: rgba($light-indigo, 0.3);
   box-shadow: 0 0 4px rgba(49, 49, 49, 0.808);
   padding: 0.25rem;
   padding-inline: 0.5rem;
   color: white;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
 .pokedex-list {

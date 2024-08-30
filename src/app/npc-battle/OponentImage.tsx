@@ -66,6 +66,7 @@ const OponentImage = ({ img }: OponentImageProps) => {
                 className="attack-animation"
                 src={context.attack?.img}
                 alt="attack animation"
+                width={150}
               />
             )}
             <Image
