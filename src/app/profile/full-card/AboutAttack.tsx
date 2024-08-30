@@ -1,5 +1,5 @@
 import { typesOfPokemon } from "@/data/typesOfPokemonData";
-import { useClickOutsideD } from "@/hooks/useClickOutsideD";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { Attack } from "@/types/attack";
 import { Dispatch, SetStateAction } from "react";
 
@@ -10,7 +10,7 @@ interface AboutAttackProps {
 }
 
 const AboutAttack = ({ setActive, active, attack }: AboutAttackProps) => {
-  const { initState } = useClickOutsideD(setActive, active, ".about-attack");
+  const { initState } = useClickOutside(setActive, active, ".about-attack");
   const advanteges = typesOfPokemon.find(
     (e) => e.name === attack.type
   )?.advantage;
