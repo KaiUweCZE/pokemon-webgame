@@ -15,23 +15,31 @@ const useChangeOponentPokemon = () => {
     const enemies = context.oponentPokemons;
     const setEnemies = context.setOponentPokemons;
 
+    if (!enemy || !enemies || enemies.length === 0) return;
+
     const updatedEnemies = enemies?.map((e) =>
       e.name === enemy?.name ? { ...e, actualHp: enemy.actualHp } : e
     );
-    if (updatedEnemies) {
-      setEnemies(updatedEnemies);
-    }
+    setEnemies(updatedEnemies);
 
-    if (enemy && enemy?.actualHp <= 0) {
-      context.setBattleState(BattleState.OPPONENT_SWITCHING_POKEMON);
-      setTimeout(() => {
-        context.setBattleState(BattleState.BATTLE);
-      }, 2000);
-      // beware of this modification to an enemy Pokémon with a name, it could affect multiple Pokémon with the same name
-      const nextEnemy = updatedEnemies?.find((e) => e.actualHp > 0);
-      console.log("enemyHp is 0", nextEnemy);
-      if (nextEnemy) {
-        setEnemy(nextEnemy);
+    if (enemy?.actualHp <= 0) {
+      const hasRemainingPokemon = updatedEnemies.some((e) => e.actualHp > 0);
+
+      if (hasRemainingPokemon) {
+        context.setBattleState(BattleState.OPPONENT_SWITCHING_POKEMON);
+
+        setTimeout(() => {
+          // beware of this modification to an enemy Pokémon with a name, it could affect multiple Pokémon with the same name
+          const nextEnemy = updatedEnemies?.find((e) => e.actualHp > 0);
+          if (nextEnemy) {
+            setEnemy(nextEnemy);
+            context.setBattleState(BattleState.BATTLE);
+          }
+        }, 2000);
+      } else {
+        // No more Pokemon left, end the battle
+        context.setBattleState(BattleState.USER_VICTORY);
+        console.log("All opponent Pokemon have fainted. User wins!");
       }
     }
   }, [context?.currentOponentPokemon]);

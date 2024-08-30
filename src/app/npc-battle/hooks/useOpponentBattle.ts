@@ -7,6 +7,7 @@ import { makeDamage } from "@/utils/battle-function/makeDamage";
 import { getAttacksFromNames } from "@/utils/battle-function/getAttacksFromNames";
 import { BattleState } from "@/types/enums/battleState";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
+import OponentImage from "../OponentImage";
 
 const useOpponentBattle = () => {
   const context = useContext(NpcBattleContext);
@@ -29,6 +30,13 @@ const useOpponentBattle = () => {
 
     if (!opponentPokemon || !opponentPokemon.attacks) return;
 
+    if (
+      context.battleState === BattleState.USER_VICTORY ||
+      context.battleState === BattleState.OPPONENT_POKEMON_FAINTED
+    ) {
+      console.log("Battle has ended. Opponent stops attacking.");
+      return;
+    }
     // check opponent energy
     console.log("opponent energy: ", opponentPokemon.actualEnergy);
     // get data about attack
@@ -55,16 +63,15 @@ const useOpponentBattle = () => {
 
     // set time for next attack
     recoveryTimeRef.current =
-      restAfterAttack(opponentPokemon.speed / 100, currentAttack.recoveryTime) *
-      1000;
+      restAfterAttack(opponentPokemon.speed, currentAttack.recoveryTime) * 1000;
 
     // new hp for user pokemon after attack
     const newHp = makeDamage(
-      currentAttack.damage / 100,
+      currentAttack.damage,
       userPokemon.actualHp,
       userPokemon.type,
       currentAttack.type,
-      opponentPokemon.damage / 20,
+      opponentPokemon.damage,
       userPokemon.defense
     );
 
@@ -72,6 +79,15 @@ const useOpponentBattle = () => {
       context.setStopBattle(true);
       context.setBattleState(BattleState.USER_POKEMON_FAINTED);
       setUserPokemon({ ...userPokemon, actualHp: 0 });
+      try {
+        const updatedPokemon = await changeHpServer(userPokemon.id, newHp);
+
+        if (updatedPokemon) {
+          console.log("updatedPokemon hp: ", updatedPokemon.actualHp);
+        }
+      } catch (error) {
+        console.error("error occurs: ", error);
+      }
     } else {
       setUserPokemon({ ...userPokemon, actualHp: newHp });
       const newSix = pokemonContext.pokemonsFromSix.map((pokemon) =>
@@ -100,13 +116,16 @@ const useOpponentBattle = () => {
 
   // if the user switches pokemon, the next opponent's attack will be 1.5s after the spawn
   useEffect(() => {
+    console.log("what");
+
     if (context?.battleState === BattleState.USER_SWITCHING_POKEMON) {
       setIsFirstAttack(true);
     }
   }, [context?.battleState]);
 
   useEffect(() => {
-    if (context?.battleState !== BattleState.BATTLE) {
+    const isBattleActive = context?.battleState === BattleState.BATTLE;
+    if (!isBattleActive) {
       console.log("Battle has stopped");
       return;
     }

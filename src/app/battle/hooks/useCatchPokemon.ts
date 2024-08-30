@@ -12,7 +12,7 @@ const useCatchPokemon = () => {
   const user = data?.user;
 
   const randomCatch = useCallback(() => {
-    return Math.random() < 1 / 3;
+    return Math.random() < 2 / 3;
   }, []);
 
   const handleCatch = async (username: string, pokemon: PokemonBattle) => {

@@ -204,6 +204,10 @@
   max-height: 80%;
 }
 
+.user-pokemon.user-pokemon-fainted .user-pokemon-image {
+  filter: brightness(0.25);
+}
+
 .user-pokemon.start .user-pokemon-image {
   opacity: 0;
 }

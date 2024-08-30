@@ -18,7 +18,14 @@ export const useBattleState = () => {
 
     if (!currentPokemon || !enemyPokemon) return;
     console.log("battle state manager: ", context.battleState);
+    console.log("enemy pokemon: ", enemyPokemon);
 
+    if (
+      enemyPokemon.actualHp > 0 &&
+      context.battleState === BattleState.WILD_POKEMON_FAINTED
+    ) {
+      setBattleState(BattleState.WILD_POKEMON_APPEAR);
+    }
     if (currentPokemon?.actualHp <= 0) {
       console.log("this one: ", pokemonContext.currentPokemon?.actualHp);
 

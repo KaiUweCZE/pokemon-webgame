@@ -75,6 +75,9 @@ const BattleText = () => {
       case BattleState.BATTLE:
         context.setMenuOption(BattleMenuState.FIGHT);
         break;
+      case BattleState.USER_VICTORY:
+        router.push("/map");
+        break;
       case BattleState.CANNOT_START:
       case BattleState.BATTLE_STOPPED:
         router.push("/map");

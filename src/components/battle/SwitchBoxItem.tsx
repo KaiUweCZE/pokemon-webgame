@@ -32,9 +32,10 @@ const SwitchBoxItems = ({
 
   const handleSwitchPokemon = () => {
     if (
-      pokemon.id !== currentPokemon?.id &&
-      pokemon.actualHp > 0 &&
-      battleState === BattleState.BATTLE
+      (pokemon.id !== currentPokemon?.id &&
+        pokemon.actualHp > 0 &&
+        battleState === BattleState.BATTLE) ||
+      battleState === BattleState.USER_POKEMON_FAINTED
     ) {
       console.log("switch pokemon");
       setBattleState(BattleState.USER_SWITCHING_POKEMON);

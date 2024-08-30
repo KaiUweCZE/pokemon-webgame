@@ -16,6 +16,10 @@ export interface PokemonPokedex {
   defense: number;
   speed: number;
   energy: number;
-  evolutionLevels?: number[];
-  evolutionChain?: string[];
+  evolutionLevels?: number[] | null;
+  evolutionChain?: string[] | null;
+  evolution?: {
+    level?: number;
+    name?: string;
+  } | null;
 }

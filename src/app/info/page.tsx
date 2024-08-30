@@ -8,7 +8,7 @@ const InfoPage = () => {
   return (
     <div className="wrapper-info">
       <main className="container-info">
-        <InfoNavigation />
+        {/*<InfoNavigation />*/}
         <section className="base-info">
           {infoPageId?.map((id) => (
             <InfoArticle key={id} id={id} />

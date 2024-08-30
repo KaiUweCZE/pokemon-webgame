@@ -38,7 +38,9 @@ const OponentImage = ({ img }: OponentImageProps) => {
         />
       )}
       <Image className="field" src={field} alt="battle field" width={280} />
-      {context?.startBattle && context?.currentOponentPokemon ? (
+      {context?.startBattle &&
+      context?.currentOponentPokemon &&
+      context.battleState !== BattleState.USER_VICTORY ? (
         <OponentPokemonStats pokemon={context.currentOponentPokemon} />
       ) : (
         <>
@@ -47,7 +49,8 @@ const OponentImage = ({ img }: OponentImageProps) => {
           )}
         </>
       )}
-      {img && !context?.startBattle ? (
+      {(img && !context?.startBattle) ||
+      context?.battleState === BattleState.USER_VICTORY ? (
         <Image
           className="oponent-image"
           src={img}

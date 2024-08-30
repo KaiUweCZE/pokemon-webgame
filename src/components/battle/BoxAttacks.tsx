@@ -1,11 +1,11 @@
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { Dispatch, SetStateAction, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { attacksData } from "@/data/attacksData";
-import useDamage from "@/app/npc-battle/hooks/useDamage";
 import AttackCountdown from "./AttackCountdown";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { BattleState } from "@/types/enums/battleState";
 import { useBattleContext } from "@/hooks/useBattleContext";
+import { restEng } from "@/utils/battle-function/restEng";
 
 const BoxAttacks = () => {
   const pokemonContext = useContext(PokemonContext);
@@ -36,6 +36,26 @@ const BoxAttacks = () => {
     }
   };
 
+  const handleRest = async () => {
+    console.log("actual pokemon: ", pokemon);
+
+    if (pokemon?.id) {
+      try {
+        const updatedPokemon = await restEng(pokemon.id);
+        if (updatedPokemon) {
+          pokemonContext.setCurrentPokemon({
+            ...pokemon,
+            actualEnergy: updatedPokemon.actualEnergy,
+          });
+          setTime(5);
+          console.log("updated pokemon: ", updatedPokemon);
+        }
+      } catch (error) {
+        console.error("Error while resting:", error);
+      }
+    }
+  };
+
   return (
     <ul className="box-attacks">
       {pokemon &&
@@ -54,7 +74,10 @@ const BoxAttacks = () => {
         ))}
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.battleState !== BattleState.BATTLE}>
+        <button
+          disabled={context.battleState !== BattleState.BATTLE}
+          onClick={handleRest}
+        >
           rest
         </button>{" "}
       </li>

@@ -8,13 +8,8 @@ const NpcBattle = () => {
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
 
-  const logger = () => {
-    console.log("name: ", name);
-  };
-
   return (
     <NpcBattleProvider>
-      <button onClick={logger}>clickeee</button>
       {name && <NpcBattlefield name={name} />}
     </NpcBattleProvider>
   );

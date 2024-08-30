@@ -207,6 +207,12 @@ $secondary-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.65),
   }
 }
 
+.user-pokemon.user-pokemon-fainted {
+  .user-pokemon-image {
+    filter: brightness(0.25);
+  }
+}
+
 .user-pokemon.start {
   .user-pokemon-image {
     opacity: 0;

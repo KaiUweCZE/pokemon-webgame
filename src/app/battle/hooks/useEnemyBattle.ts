@@ -32,13 +32,17 @@ const useEnemyBattle = () => {
       const interval = setInterval(async () => {
         if (move?.damage && !context.stopBattle) {
           let newHp = Math.max(currentPokemon?.actualHp - move.damage, 0);
-          setCurrentPokemon({ ...currentPokemon, actualHp: newHp });
+          setCurrentPokemon((prevPokemon) => {
+            if (!prevPokemon) return prevPokemon;
+            return { ...prevPokemon, actualHp: newHp };
+          });
 
           context.setEnemyAttackAnimation(true);
           setTimeout(() => {
             context.setEnemyAttackAnimation(false);
           }, 1500);
           console.log("new hp: ", newHp);
+          console.log("new energy: ", currentPokemon.actualEnergy);
 
           try {
             const updatedPokemon = await changeHpServer(

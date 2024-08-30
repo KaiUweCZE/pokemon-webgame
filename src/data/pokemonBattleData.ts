@@ -756,6 +756,7 @@ export const pokemonBattleData = [
     expForKill: 18,
     evolutionLevels: [30, 50],
     evolutionChain: ["Bulbasaur", "Ivysaur", "Venusaur"],
+    evolution: null,
   },
   {
     id: 4,
@@ -818,6 +819,7 @@ export const pokemonBattleData = [
     expForKill: 20,
     evolutionLevels: [30, 50],
     evolutionChain: ["Charmander", "Charmeleon", "Charizard"],
+    evolution: null,
   },
   {
     id: 7,
@@ -858,6 +860,7 @@ export const pokemonBattleData = [
     expForKill: 8,
     evolutionLevels: [30, 50],
     evolutionChain: ["Squirtle", "Wartortle", "Blastoise"],
+    evolution: null,
   },
   {
     id: 9,
@@ -876,6 +879,7 @@ export const pokemonBattleData = [
     expForKill: 12,
     evolutionLevels: [30, 50],
     evolutionChain: ["Squirtle", "Wartortle", "Blastoise"],
+    evolution: null,
   },
   {
     id: 16,
@@ -894,6 +898,7 @@ export const pokemonBattleData = [
     expForKill: 50,
     evolutionLevels: [18, 36],
     evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolution: null,
   },
 
   {
@@ -913,6 +918,7 @@ export const pokemonBattleData = [
     expForKill: 100,
     evolutionLevels: [36],
     evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolution: null,
   },
 
   {
@@ -932,6 +938,7 @@ export const pokemonBattleData = [
     expForKill: 150,
     evolutionLevels: [],
     evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolution: null,
   },
   {
     id: 25,
@@ -950,6 +957,7 @@ export const pokemonBattleData = [
     expForKill: 5,
     evolutionLevels: [30, 50],
     evolutionChain: ["Pikachu", "Raichu"],
+    evolution: null,
   },
   {
     id: 26,
@@ -968,6 +976,7 @@ export const pokemonBattleData = [
     expForKill: 241,
     evolutionLevels: [30, 50],
     evolutionChain: ["Pikachu", "Raichu"],
+    evolution: null,
   },
   {
     id: 27,
@@ -1008,6 +1017,7 @@ export const pokemonBattleData = [
     expForKill: 13,
     evolutionLevels: [30],
     evolutionChain: ["Sandshrew", "Sandslash"],
+    evolution: null,
   },
   {
     id: 32,
@@ -1026,6 +1036,7 @@ export const pokemonBattleData = [
     expForKill: 60,
     evolutionLevels: [30, 50],
     evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolution: null,
   },
   {
     id: 33,
@@ -1044,6 +1055,7 @@ export const pokemonBattleData = [
     expForKill: 120,
     evolutionLevels: [30, 50],
     evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolution: null,
   },
   {
     id: 34,
@@ -1062,6 +1074,7 @@ export const pokemonBattleData = [
     expForKill: 220,
     evolutionLevels: [30, 50],
     evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolution: null,
   },
   {
     id: 37,
@@ -1080,6 +1093,7 @@ export const pokemonBattleData = [
     expForKill: 60,
     evolutionLevels: [30, 50],
     evolutionChain: ["Vulpix", "Ninetales"],
+    evolution: null,
   },
   {
     id: 38,
@@ -1098,6 +1112,7 @@ export const pokemonBattleData = [
     expForKill: 170,
     evolutionLevels: [30, 50],
     evolutionChain: ["Vulpix", "Ninetales"],
+    evolution: null,
   },
   {
     id: 41,
@@ -1158,6 +1173,9 @@ export const pokemonBattleData = [
     energy: 35,
     expToLevel: 85,
     expForKill: 11,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 57,
@@ -1174,6 +1192,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 120,
     expForKill: 16,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 58,
@@ -1192,6 +1213,7 @@ export const pokemonBattleData = [
     expForKill: 105,
     evolutionLevels: [30, 50],
     evolutionChain: ["Growlithe", "Arcanine"],
+    evolution: null,
   },
   {
     id: 59,
@@ -1210,6 +1232,7 @@ export const pokemonBattleData = [
     expForKill: 200,
     evolutionLevels: [30, 50],
     evolutionChain: ["Growlithe", "Arcanine"],
+    evolution: null,
   },
   {
     id: 63,
@@ -1272,6 +1295,7 @@ export const pokemonBattleData = [
     expForKill: 15,
     evolutionLevels: [30, 50],
     evolutionChain: ["Abra", "Kadabra", "Alakazam"],
+    evolution: null,
   },
   {
     id: 66,
@@ -1290,6 +1314,7 @@ export const pokemonBattleData = [
     expForKill: 70,
     evolutionLevels: [30, 50],
     evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolution: null,
   },
   {
     id: 67,
@@ -1308,6 +1333,7 @@ export const pokemonBattleData = [
     expForKill: 140,
     evolutionLevels: [30, 50],
     evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolution: null,
   },
   {
     id: 68,
@@ -1326,6 +1352,7 @@ export const pokemonBattleData = [
     expForKill: 210,
     evolutionLevels: [30, 50],
     evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolution: null,
   },
   {
     id: 74,
@@ -1344,6 +1371,7 @@ export const pokemonBattleData = [
     expForKill: 5,
     evolutionLevels: [30, 50],
     evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolution: null,
   },
   {
     id: 75,
@@ -1362,6 +1390,7 @@ export const pokemonBattleData = [
     expForKill: 93,
     evolutionLevels: [30, 50],
     evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolution: null,
   },
   {
     id: 76,
@@ -1380,6 +1409,7 @@ export const pokemonBattleData = [
     expForKill: 198,
     evolutionLevels: [30, 50],
     evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolution: null,
   },
   {
     id: 83,
@@ -1464,6 +1494,7 @@ export const pokemonBattleData = [
     expForKill: 15,
     evolutionLevels: [30, 50],
     evolutionChain: ["Gastly", "Haunter", "Gengar"],
+    evolution: null,
   },
   {
     id: 95,
@@ -1480,6 +1511,9 @@ export const pokemonBattleData = [
     energy: 20,
     expToLevel: 100,
     expForKill: 15,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 98,
@@ -1520,6 +1554,7 @@ export const pokemonBattleData = [
     expForKill: 15,
     evolutionLevels: [30, 50],
     evolutionChain: ["Krabby", "Kingler"],
+    evolution: null,
   },
   {
     id: 104,
@@ -1560,6 +1595,7 @@ export const pokemonBattleData = [
     expForKill: 12,
     evolutionLevels: [30],
     evolutionChain: ["Cubone", "Marowak"],
+    evolution: null,
   },
   {
     id: 106,
@@ -1576,6 +1612,9 @@ export const pokemonBattleData = [
     energy: 35,
     expToLevel: 100,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 107,
@@ -1592,6 +1631,9 @@ export const pokemonBattleData = [
     energy: 15,
     expToLevel: 100,
     expForKill: 5,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 109,
@@ -1632,6 +1674,7 @@ export const pokemonBattleData = [
     expForKill: 14,
     evolutionLevels: [30],
     evolutionChain: ["Koffing", "Weezing"],
+    evolution: null,
   },
   {
     id: 111,
@@ -1650,6 +1693,7 @@ export const pokemonBattleData = [
     expForKill: 135,
     evolutionLevels: [30, 50],
     evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolution: null,
   },
   {
     id: 112,
@@ -1668,6 +1712,7 @@ export const pokemonBattleData = [
     expForKill: 204,
     evolutionLevels: [30, 50],
     evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolution: null,
   },
   {
     id: 115,
@@ -1684,6 +1729,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 125,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 116,
@@ -1700,6 +1748,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 75,
     expForKill: 9,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 117,
@@ -1716,6 +1767,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 110,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 122,
@@ -1732,6 +1786,9 @@ export const pokemonBattleData = [
     energy: 35,
     expToLevel: 100,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
 
   {
@@ -1751,6 +1808,7 @@ export const pokemonBattleData = [
     expForKill: 16,
     evolutionLevels: [30, 50],
     evolutionChain: ["Scyther", "Scizor"],
+    evolution: null,
   },
   {
     id: 124,
@@ -1769,6 +1827,7 @@ export const pokemonBattleData = [
     expForKill: 10,
     evolutionLevels: [30, 50],
     evolutionChain: ["Smoochum", "Jynx"],
+    evolution: null,
   },
   {
     id: 125,
@@ -1785,6 +1844,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 120,
     expForKill: 15,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 127,
@@ -1801,6 +1863,9 @@ export const pokemonBattleData = [
     energy: 25,
     expToLevel: 300,
     expForKill: 210,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 128,
@@ -1817,6 +1882,9 @@ export const pokemonBattleData = [
     energy: 20,
     expToLevel: 250,
     expForKill: 172,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 129,
@@ -1833,6 +1901,12 @@ export const pokemonBattleData = [
     energy: 20,
     expToLevel: 40,
     expForKill: 5,
+    evolutionLevels: [20],
+    evolutionChain: ["Magikarp", "Gyarados"],
+    evolution: {
+      name: "Gyarados",
+      level: 20,
+    },
   },
   {
     id: 130,
@@ -1849,6 +1923,9 @@ export const pokemonBattleData = [
     energy: 50,
     expToLevel: 160,
     expForKill: 22,
+    evolutionLevels: [20],
+    evolutionChain: ["Magikarp, Gyarados"],
+    evolution: null,
   },
   {
     id: 133,
@@ -1858,13 +1935,19 @@ export const pokemonBattleData = [
     icon: eeveeIcon,
     type: ["normal"],
     attacks: eeveeAttacks,
-    damage: 5.5,
+    /*damage: 5.5,
     defense: 6.5,
-    speed: 5.5,
-    hp: 5.5,
+    speed: 5.5,*/
+    damage: 15.5,
+    defense: 16.5,
+    speed: 15.5,
+    hp: 55,
     energy: 14,
     expToLevel: 50,
     expForKill: 6,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 163,
@@ -1883,6 +1966,10 @@ export const pokemonBattleData = [
     expForKill: 52,
     evolutionLevels: [20],
     evolutionChain: ["Hoothoot", "Noctowl"],
+    evolution: {
+      name: "Noctowl",
+      level: 20,
+    },
   },
 
   {
@@ -1902,6 +1989,7 @@ export const pokemonBattleData = [
     expForKill: 120,
     evolutionLevels: [],
     evolutionChain: ["Hoothoot", "Noctowl"],
+    evolution: null,
   },
   {
     id: 169,
@@ -1939,6 +2027,10 @@ export const pokemonBattleData = [
     expForKill: 30,
     evolutionLevels: [30, 50],
     evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolution: {
+      name: "Togetic",
+      level: 30,
+    },
   },
   {
     id: 176,
@@ -1957,6 +2049,10 @@ export const pokemonBattleData = [
     expForKill: 70,
     evolutionLevels: [30, 50],
     evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolution: {
+      name: "Togekiss",
+      level: 50,
+    },
   },
   {
     id: 198,
@@ -2015,6 +2111,7 @@ export const pokemonBattleData = [
     expForKill: 8,
     evolutionLevels: [30, 50],
     evolutionChain: ["Snubbull", "Granbull"],
+    evolution: null,
   },
   {
     id: 212,
@@ -2031,6 +2128,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 135,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 214,
@@ -2047,6 +2147,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 140,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 215,
@@ -2078,10 +2181,14 @@ export const pokemonBattleData = [
     icon: teddiursaIcon,
     type: ["normal"],
     attacks: teddiursaAttacks,
-    damage: 8.0,
+    /*damage: 8.0,
     defense: 5.0,
     speed: 4.0,
-    hp: 60,
+    hp: 60,*/
+    damage: 15.5,
+    defense: 16.5,
+    speed: 15.5,
+    hp: 55,
     energy: 13,
     expToLevel: 50,
     expForKill: 6,
@@ -2131,6 +2238,7 @@ export const pokemonBattleData = [
     expForKill: 60,
     evolutionLevels: [30, 50],
     evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolution: null,
   },
   {
     id: 221,
@@ -2149,6 +2257,7 @@ export const pokemonBattleData = [
     expForKill: 140,
     evolutionLevels: [30, 50],
     evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolution: null,
   },
   {
     id: 228,
@@ -2206,6 +2315,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 145,
     expForKill: 19,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 238,
@@ -2224,6 +2336,7 @@ export const pokemonBattleData = [
     expForKill: 6,
     evolutionLevels: [30, 50],
     evolutionChain: ["Smoochum", "Jynx"],
+    evolution: null,
   },
   {
     id: 239,
@@ -2240,6 +2353,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 90,
     expForKill: 10,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 246,
@@ -2365,6 +2481,7 @@ export const pokemonBattleData = [
     expForKill: 150,
     evolutionLevels: [30, 50],
     evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolution: null,
   },
   {
     id: 280,
@@ -2383,6 +2500,7 @@ export const pokemonBattleData = [
     expForKill: 5,
     evolutionLevels: [30, 50],
     evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolution: null,
   },
   {
     id: 281,
@@ -2401,6 +2519,7 @@ export const pokemonBattleData = [
     expForKill: 7,
     evolutionLevels: [30, 50],
     evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolution: null,
   },
   {
     id: 324,
@@ -2417,6 +2536,9 @@ export const pokemonBattleData = [
     energy: 17,
     expToLevel: 90,
     expForKill: 8,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 355,
@@ -2435,6 +2557,7 @@ export const pokemonBattleData = [
     expForKill: 60,
     evolutionLevels: [37, 55],
     evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolution: null,
   },
   {
     id: 356,
@@ -2453,6 +2576,7 @@ export const pokemonBattleData = [
     expForKill: 90,
     evolutionLevels: [37, 55],
     evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolution: null,
   },
   {
     id: 374,
@@ -2578,6 +2702,7 @@ export const pokemonBattleData = [
     expForKill: 12,
     evolutionLevels: [30, 50],
     evolutionChain: ["Turtwig", "Grotle", "Torterra"],
+    evolution: null,
   },
   {
     id: 390,
@@ -2594,6 +2719,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 85,
     expForKill: 10,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 391,
@@ -2610,6 +2738,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 110,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 392,
@@ -2626,6 +2757,9 @@ export const pokemonBattleData = [
     energy: 50,
     expToLevel: 140,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 410,
@@ -2704,6 +2838,7 @@ export const pokemonBattleData = [
     expForKill: 90,
     evolutionLevels: [30, 50],
     evolutionChain: ["Snover", "Abomasnow"],
+    evolution: null,
   },
   {
     id: 460,
@@ -2722,6 +2857,7 @@ export const pokemonBattleData = [
     expForKill: 200,
     evolutionLevels: [30, 50],
     evolutionChain: ["Snover", "Abomasnow"],
+    evolution: null,
   },
   {
     id: 461,
@@ -2759,6 +2895,7 @@ export const pokemonBattleData = [
     expForKill: 241,
     evolutionLevels: [30, 50],
     evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolution: null,
   },
   {
     id: 466,
@@ -2775,6 +2912,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 140,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 468,
@@ -2793,6 +2933,7 @@ export const pokemonBattleData = [
     expForKill: 180,
     evolutionLevels: [30, 50],
     evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolution: null,
   },
   {
     id: 473,
@@ -2811,6 +2952,7 @@ export const pokemonBattleData = [
     expForKill: 230,
     evolutionLevels: [30, 50],
     evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolution: null,
   },
   {
     id: 475,
@@ -2829,6 +2971,7 @@ export const pokemonBattleData = [
     expForKill: 9,
     evolutionLevels: [30, 50],
     evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolution: null,
   },
   {
     id: 477,
@@ -2847,6 +2990,7 @@ export const pokemonBattleData = [
     expForKill: 120,
     evolutionLevels: [55],
     evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolution: null,
   },
   {
     id: 522,
@@ -2863,6 +3007,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 100,
     expForKill: 12,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 523,
@@ -2879,6 +3026,9 @@ export const pokemonBattleData = [
     energy: 45,
     expToLevel: 130,
     expForKill: 16,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 595,
@@ -2942,6 +3092,7 @@ export const pokemonBattleData = [
     expForKill: 100,
     evolutionLevels: [30, 50],
     evolutionChain: ["Cubchoo", "Beartic"],
+    evolution: null,
   },
   {
     id: 614,
@@ -2960,6 +3111,7 @@ export const pokemonBattleData = [
     expForKill: 210,
     evolutionLevels: [30, 50],
     evolutionChain: ["Cubchoo", "Beartic"],
+    evolution: null,
   },
   {
     id: 624,
@@ -2978,6 +3130,7 @@ export const pokemonBattleData = [
     expForKill: 7,
     evolutionLevels: [30, 50],
     evolutionChain: ["Pawniard", "Bisharp"],
+    evolution: null,
   },
   {
     id: 625,
@@ -2996,6 +3149,7 @@ export const pokemonBattleData = [
     expForKill: 9,
     evolutionLevels: [30, 50],
     evolutionChain: ["Pawniard", "Bisharp"],
+    evolution: null,
   },
   {
     id: 656,
@@ -3012,6 +3166,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 85,
     expForKill: 10,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 657,
@@ -3028,6 +3185,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 110,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 658,
@@ -3044,6 +3204,9 @@ export const pokemonBattleData = [
     energy: 50,
     expToLevel: 140,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 679,
@@ -3106,6 +3269,7 @@ export const pokemonBattleData = [
     expForKill: 10,
     evolutionLevels: [30, 50],
     evolutionChain: ["Honedge", "Doublade", "Aegislash"],
+    evolution: null,
   },
 
   {
@@ -3125,6 +3289,7 @@ export const pokemonBattleData = [
     expForKill: 50,
     evolutionLevels: [17, 34],
     evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolution: null,
   },
   {
     id: 723,
@@ -3143,6 +3308,7 @@ export const pokemonBattleData = [
     expForKill: 62,
     evolutionLevels: [17, 34],
     evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolution: null,
   },
   {
     id: 724,
@@ -3161,6 +3327,7 @@ export const pokemonBattleData = [
     expForKill: 240,
     evolutionLevels: [34],
     evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolution: null,
   },
   {
     id: 736,
@@ -3177,6 +3344,9 @@ export const pokemonBattleData = [
     energy: 30,
     expToLevel: 80,
     expForKill: 9,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 737,
@@ -3193,6 +3363,9 @@ export const pokemonBattleData = [
     energy: 40,
     expToLevel: 110,
     expForKill: 14,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 738,
@@ -3209,6 +3382,9 @@ export const pokemonBattleData = [
     energy: 50,
     expToLevel: 140,
     expForKill: 18,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
   {
     id: 865,
@@ -3227,6 +3403,7 @@ export const pokemonBattleData = [
     expForKill: 9,
     evolutionLevels: [30, 50],
     evolutionChain: ["Farfetch'd", "Sirfetch'd"],
+    evolution: null,
   },
   {
     id: 901,
@@ -3245,6 +3422,7 @@ export const pokemonBattleData = [
     expForKill: 273,
     evolutionLevels: [30, 50],
     evolutionChain: ["Teddiursa", "Ursaring", "Ursaluna"],
+    evolution: null,
   },
   {
     id: 957,
@@ -3263,6 +3441,7 @@ export const pokemonBattleData = [
     expForKill: 60,
     evolutionLevels: [30, 50],
     evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolution: null,
   },
   {
     id: 958,
@@ -3281,6 +3460,7 @@ export const pokemonBattleData = [
     expForKill: 90,
     evolutionLevels: [30, 50],
     evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolution: null,
   },
   {
     id: 959,
@@ -3299,6 +3479,7 @@ export const pokemonBattleData = [
     expForKill: 140,
     evolutionLevels: [30, 50],
     evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolution: null,
   },
   {
     id: 979,
@@ -3315,5 +3496,8 @@ export const pokemonBattleData = [
     energy: 50,
     expToLevel: 150,
     expForKill: 20,
+    evolutionLevels: null,
+    evolutionChain: null,
+    evolution: null,
   },
 ];

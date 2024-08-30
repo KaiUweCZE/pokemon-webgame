@@ -25,10 +25,10 @@ export interface PokemonData {
   energy: number;
   expToLevel: number;
   expForKill: number;
-  evolutionLevels?: number[];
-  evolutionChain?: string[];
+  evolutionLevels?: number[] | null;
+  evolutionChain?: string[] | null;
   evolution?: {
     level?: number;
     name?: string;
-  };
+  } | null;
 }

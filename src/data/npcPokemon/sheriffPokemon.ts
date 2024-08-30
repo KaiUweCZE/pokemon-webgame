@@ -8,7 +8,7 @@ export const sheriffPokemons = {
     {
       name: "Growlithe",
       type: ["fire"],
-      level: 25,
+      level: 5,
       attacks: ["ember"],
       abilities: ["Guts", "No Guard"],
       speedRate: 1.2,

@@ -3,7 +3,7 @@ import Image from "next/image";
 import pokedexIcon from "@/assets/images/icons/pokedex1.webp";
 import mapIcon from "@/assets/images/icons/mapIcon.webp";
 import bagIcon from "@/assets/images/icons/bagIcon.webp";
-import messageIcon from "@/assets/images/icons/email.webp";
+import messageIcon from "@/assets/images/icons/envelope.webp";
 import { useState } from "react";
 import MapInMenu from "./MapInMenu";
 import PokedexMenu from "./pokedex/PokedexMenu";

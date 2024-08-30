@@ -8,7 +8,7 @@ export const getCssClass = (
 
   switch (battleState) {
     case BattleState.USER_POKEMON_FAINTED:
-      cssClasses.push("user-done");
+      cssClasses.push("user-pokemon-fainted");
       break;
     case BattleState.BATTLE_START:
       cssClasses.push("start");
@@ -26,7 +26,7 @@ export const getCssClass = (
       cssClasses.push("defending");
       break;
     case BattleState.USER_VICTORY:
-      cssClasses.push("victory");
+      cssClasses.push("user-victory");
       break;
     case BattleState.OPPONENT_VICTORY:
       cssClasses.push("defeat");

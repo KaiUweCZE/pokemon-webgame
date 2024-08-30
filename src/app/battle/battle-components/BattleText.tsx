@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { RoundContext } from "../RoundContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { Item } from "@/types/item";
+import { BattleMenuState } from "@/types/enums/enumBattleMenu";
 
 interface TextProps {
   battleState: BattleState;
@@ -27,6 +28,8 @@ const BattleText = ({ battleState }: TextProps) => {
 
   const generateButtonFunc = () => {
     switch (context?.battleState) {
+      case BattleState.BATTLE:
+        return context.setMenuOption(BattleMenuState.FIGHT);
       case BattleState.USER_POKEMON_FAINTED:
         return console.log("battle state: ", context?.battleState, "oooo");
       case BattleState.WILD_POKEMON_FAINTED:

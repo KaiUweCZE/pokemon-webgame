@@ -14,11 +14,11 @@ export const restEng = async (pokemonId: string) => {
     if (!pokemon) return null;
 
     // the number will be different for each pokemon
-    let newEnergy = pokemon?.actualEnergy + 5;
-
-    if (newEnergy > pokemon.energy) {
-      newEnergy = pokemon.energy;
-    }
+    const ENERGY_INCREMENT = 5;
+    let newEnergy = Math.min(
+      pokemon.actualEnergy + ENERGY_INCREMENT,
+      pokemon.energy
+    );
 
     const updatePokemon = await prisma.pokemon.update({
       where: { id: pokemonId },
