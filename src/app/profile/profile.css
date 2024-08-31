@@ -120,6 +120,21 @@
 .pokemon-list::-webkit-scrollbar-thumb:hover {
   background-color: #4c5897;
 }
+@media (width < 67rem) {
+  .pokemon-list {
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+}
+@media (width < 52rem) {
+  .pokemon-list {
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  }
+}
+@media (width < 35rem) {
+  .pokemon-list {
+    grid-template-columns: repeat(auto-fit, minmax(85%, 1fr));
+  }
+}
 
 .pokemon-box {
   display: grid;

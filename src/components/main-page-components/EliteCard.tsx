@@ -1,26 +1,18 @@
 import { useClickOutside } from "@/hooks/useClickOutside";
 import Image, { StaticImageData } from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 interface EliteCardProps {
   img: StaticImageData;
-  activeIndex: number;
-  setActiveIndex: Dispatch<SetStateAction<number>>;
   index: number;
   name: string;
 }
 
-const EliteCard = ({
-  img,
-  activeIndex,
-  setActiveIndex,
-  index,
-  name,
-}: EliteCardProps) => {
+const EliteCard = ({ img, index, name }: EliteCardProps) => {
   const [active, setActive] = useState(false);
-  const { initState } = useClickOutside(setActive, active, ".elite-card");
+  const { isVisible } = useClickOutside(setActive, active, ".elite-card");
   return (
-    <div className={initState ? "elite-card active" : "elite-card"}>
+    <div className={isVisible ? "elite-card active" : "elite-card"}>
       <Image
         src={img}
         alt="member of elite four"

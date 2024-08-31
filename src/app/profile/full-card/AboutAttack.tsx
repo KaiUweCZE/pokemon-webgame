@@ -10,13 +10,13 @@ interface AboutAttackProps {
 }
 
 const AboutAttack = ({ setActive, active, attack }: AboutAttackProps) => {
-  const { initState } = useClickOutside(setActive, active, ".about-attack");
+  const { isVisible } = useClickOutside(setActive, active, ".about-attack");
   const advanteges = typesOfPokemon.find(
     (e) => e.name === attack.type
   )?.advantage;
   return (
     <>
-      {initState && (
+      {isVisible && (
         <article className="about-attack">
           <h3>{attack.name}</h3>
           <ul className="attack-atributes">

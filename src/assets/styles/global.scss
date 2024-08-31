@@ -352,7 +352,7 @@ li:has(.bar) {
   opacity: 1;
   transition: 0.3s;
   animation: go-out 0.3s linear 1s forwards;
-  z-index: 1;
+  z-index: 2;
   p {
     font-weight: bold;
   }

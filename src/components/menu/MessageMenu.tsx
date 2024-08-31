@@ -2,9 +2,15 @@ import { useSession } from "next-auth/react";
 import callIcon from "@/assets/images/icons/call.png";
 import Image from "next/image";
 import Call from "./Call";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { MenuType } from "./SecondaryMenu";
+import closeIcon from "@/assets/images/icons/close.svg";
 
-const MessageMenu = () => {
+interface MessageProps {
+  setActive: Dispatch<SetStateAction<MenuType | null>>;
+}
+
+const MessageMenu = ({ setActive }: MessageProps) => {
   const [call, setCall] = useState("");
   const { data } = useSession();
 
@@ -12,9 +18,21 @@ const MessageMenu = () => {
     throw new Error("data is missing");
   }
 
+  const handleClose = () => {
+    setActive(null);
+  };
+
   const contacts = data.user.contacts;
   return (
     <div className="container-contacts">
+      <Image
+        className="close-icon"
+        src={closeIcon}
+        alt="close icon"
+        width={20}
+        height={20}
+        onClick={handleClose}
+      />
       <div className="contact">
         <h3>Contacts</h3>
         <ul className="contact-list">
