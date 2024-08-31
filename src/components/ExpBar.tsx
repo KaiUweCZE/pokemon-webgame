@@ -8,7 +8,10 @@ const ExpBar = ({ expToLevel, actualExp }: ExpBarProps) => {
     <div className="bar">
       <div
         className="exp-bar"
-        style={{ width: `${(actualExp / expToLevel) * 100}%` }}
+        style={{
+          width: `${(actualExp / expToLevel) * 100}%`,
+          maxWidth: "100%",
+        }}
       ></div>
     </div>
   );

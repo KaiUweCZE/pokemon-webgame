@@ -6,17 +6,17 @@ import psychicImg from "@/assets/images/attacks/psycho.webp";
 import biteImg from "@/assets/images/attacks/fang3.webp";
 import fireImg from "@/assets/images/attacks/fire.gif";
 import fightingImg from "@/assets/images/attacks/circle.gif";
-import iceImg from "@/assets/images/attacks/circle.gif";
-import steelImg from "@/assets/images/attacks/circle.gif";
-import fairyImg from "@/assets/images/attacks/circle.gif";
-import darkImg from "@/assets/images/attacks/circle.gif";
-import bugImg from "@/assets/images/attacks/circle.gif";
-import flyingImg from "@/assets/images/attacks/circle.gif";
-import ghostImg from "@/assets/images/attacks/circle.gif";
-import groundImg from "@/assets/images/attacks/circle.gif";
+import iceImg from "@/assets/images/attacks/skull.webp";
+import steelImg from "@/assets/images/attacks/skull.webp";
+import fairyImg from "@/assets/images/attacks/fairy.webp";
+import darkImg from "@/assets/images/attacks/skull.webp";
+import bugImg from "@/assets/images/attacks/skull.webp";
+import flyingImg from "@/assets/images/attacks/skull.webp";
+import ghostImg from "@/assets/images/attacks/ghost2.webp";
+import groundImg from "@/assets/images/attacks/skull.webp";
 import rockImg from "@/assets/images/attacks/rock.webp";
-import poisonImg from "@/assets/images/attacks/circle.gif";
-import dragonImg from "@/assets/images/attacks/circle.gif";
+import poisonImg from "@/assets/images/attacks/skull.webp";
+import dragonImg from "@/assets/images/attacks/dragon.gif";
 
 export const attacksData = [
   {

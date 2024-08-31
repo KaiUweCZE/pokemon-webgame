@@ -1,9 +1,18 @@
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
+import { Pokemon } from "@/types/pokemon";
 import { PokemonBattle } from "@/types/pokemonBattle";
 import { addExp } from "@/utils/addExp";
 import { getExp } from "@/utils/battle-function/getExp";
-import { useContext, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export const useGetExp = (
   enemyPokemon: PokemonBattle | null,
@@ -13,23 +22,56 @@ export const useGetExp = (
   const [expAdded, setExpAdded] = useState(false);
   const [trigger, setTrigger] = useState(0);
 
+  const handleLevelUp = useCallback(
+    (
+      updatedPokemon: Pokemon,
+      currentPokemon: Pokemon,
+      setCurrentPokemon: Dispatch<SetStateAction<Pokemon | null>>
+    ) => {
+      const newLevelStats = {
+        actualExp: updatedPokemon.actualExp,
+        level: updatedPokemon.level,
+        expToLevel: updatedPokemon.expToLevel,
+        damage: updatedPokemon.damage,
+        defense: updatedPokemon.defense,
+        energy: updatedPokemon.energy,
+        hp: updatedPokemon.hp,
+        speed: updatedPokemon.speed,
+      };
+
+      setCurrentPokemon((prevPokemon: Pokemon | null) => {
+        if (!prevPokemon) return prevPokemon;
+        return updatedPokemon.level > currentPokemon.level
+          ? { ...prevPokemon, ...newLevelStats }
+          : { ...prevPokemon, actualExp: updatedPokemon.actualExp };
+      });
+
+      if (pokemonContext && updatedPokemon.level > currentPokemon.level) {
+        console.log("pokemon has new level!!");
+        pokemonContext.setNewLevel(true);
+        setTimeout(() => pokemonContext.setNewLevel(false), 5000);
+      }
+    },
+    [pokemonContext?.currentPokemon?.actualExp]
+  );
+
   useEffect(() => {
     if (!pokemonContext || !enemyPokemon) return;
 
-    const { currentPokemon, setCurrentPokemon } = pokemonContext;
+    const { currentPokemon, setCurrentPokemon, setExps } = pokemonContext;
 
-    // If the enemy Pokemon's HP reaches 0, calculate and add exps
-    if (
+    const isEnemyDefeated =
       battleState === BattleState.WILD_POKEMON_FAINTED &&
       !expAdded &&
-      trigger > 0
-    ) {
+      trigger > 0;
+    // If the enemy Pokemon's HP reaches 0, calculate and add exps
+    if (isEnemyDefeated) {
       const newExp = getExp({
         pokemonHp: 0,
         pokemonName: enemyPokemon.name,
         pokemonLevel: enemyPokemon.level,
       });
-      pokemonContext.setExps(newExp);
+      setExps(newExp);
       console.log(
         "your pokemon gets: ",
         pokemonContext.exps,
@@ -39,35 +81,19 @@ export const useGetExp = (
       );
 
       if (newExp && currentPokemon) {
-        addExp({ pokemonId: currentPokemon.id, newExps: newExp }).then(
-          (updatedPokemon) => {
+        setCurrentPokemon((prevPokemon) => {
+          if (!prevPokemon) return prevPokemon;
+          return { ...prevPokemon, actualExp: prevPokemon.actualExp + newExp };
+        });
+        addExp({ pokemonId: currentPokemon.id, newExps: newExp })
+          .then((updatedPokemon) => {
             if (updatedPokemon) {
-              setCurrentPokemon({
-                ...currentPokemon,
-                actualExp: updatedPokemon.actualExp,
-                level: updatedPokemon.level,
-                expToLevel: updatedPokemon.expToLevel,
-                damage: updatedPokemon.damage,
-                defense: updatedPokemon.defense,
-                energy: updatedPokemon.energy,
-                hp: updatedPokemon.hp,
-                speed: updatedPokemon.speed,
-              });
-
-              // Set new level notification
-              if (updatedPokemon.level > currentPokemon.level) {
-                console.log("pokemon has new level!!");
-
-                pokemonContext.setNewLevel(true);
-                const timeout = setTimeout(() => {
-                  pokemonContext.setNewLevel(false);
-                }, 5000);
-                // Cleanup timeout
-                return () => clearTimeout(timeout);
-              }
+              handleLevelUp(updatedPokemon, currentPokemon, setCurrentPokemon);
             }
-          }
-        );
+          })
+          .catch((error) => {
+            console.error("Error adding exp:", error);
+          });
       }
       setExpAdded(true);
     }
