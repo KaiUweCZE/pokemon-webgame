@@ -39,15 +39,23 @@ const BoxAttacks = () => {
   const handleRest = async () => {
     console.log("actual pokemon: ", pokemon);
 
-    if (pokemon?.id) {
+    if (pokemon?.id && pokemonContext.currentPokemon) {
+      pokemonContext.setCurrentPokemon((prevPokemon) => {
+        if (!prevPokemon) return prevPokemon;
+        return {
+          ...pokemon,
+          actualEnergy: prevPokemon.actualEnergy + 5,
+        };
+      });
+      setTime(5);
       try {
         const updatedPokemon = await restEng(pokemon.id);
         if (updatedPokemon) {
-          pokemonContext.setCurrentPokemon({
+          /*pokemonContext.setCurrentPokemon({
             ...pokemon,
             actualEnergy: updatedPokemon.actualEnergy,
           });
-          setTime(5);
+          setTime(5);*/
           console.log("updated pokemon: ", updatedPokemon);
         }
       } catch (error) {

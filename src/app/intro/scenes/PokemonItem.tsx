@@ -23,6 +23,7 @@ const PokemonItem = ({
   pokemonInfo,
 }: PokemonItemProps) => {
   const [active, setActive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { data } = useSession();
   const router = useRouter();
   const pokemon = pokemonBattleData.find((p) => p.name === pokemonName);
@@ -61,6 +62,7 @@ const PokemonItem = ({
   };
 
   const introDone = async () => {
+    setLoading(true);
     await handleAddPokemon(pokemonDataId);
     const updatedUser = await nextChapter();
     if (updatedUser) {
@@ -119,7 +121,11 @@ const PokemonItem = ({
             </li>
           </ul>
           {active && (
-            <button className="button-primary" onClick={introDone}>
+            <button
+              className="button-primary"
+              onClick={introDone}
+              disabled={loading}
+            >
               choose {pokemon?.name}
             </button>
           )}
