@@ -119,6 +119,15 @@ $dark-violet: #24255a;
   padding: 1rem;
   padding-inline: 0.5rem;
   @include scroll-primary;
+  @media (width < 67rem) {
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+  @media (width < 52rem) {
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  }
+  @media (width < 35rem) {
+    grid-template-columns: repeat(auto-fit, minmax(85%, 1fr));
+  }
 }
 
 .pokemon-box {
