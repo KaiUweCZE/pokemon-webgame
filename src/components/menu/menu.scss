@@ -279,6 +279,9 @@ a {
   width: 15rem;
   height: 20rem;
   @include menu-mixin;
+  .close-icon {
+    margin: 0;
+  }
 }
 
 .contact {
@@ -286,6 +289,7 @@ a {
   flex-direction: column;
   align-items: center;
   ul {
+    margin-top: 0.5rem;
     width: 100%;
   }
 }
@@ -313,31 +317,77 @@ a {
 
 .bag {
   display: grid;
+  position: relative;
   width: 15rem;
   height: 20rem;
+  //border: solid 2px rgb(0, 0, 0);
+  border-radius: 0.35rem;
+  grid-template-rows: 1.75rem 1fr;
   background-color: darken($dark-violet, 10);
   color: white;
   @include menu-mixin;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .bag-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.25rem;
+    margin-inline: 0.5rem;
+  }
+  .bag-cell {
+    background-color: rgba($dark-violet, 0.6);
+    border-radius: 0.3rem;
   }
   ul {
     width: 100%;
   }
+  h3 {
+    place-self: start center;
+    height: fit-content;
+  }
 }
 
 .bag-item {
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center;
+  height: 100%;
   gap: 0.5rem;
   color: white;
   padding-inline: 0.5rem;
   transition: 0.4s;
   cursor: pointer;
+  position: relative;
+  border-radius: 0.3rem;
   &:hover {
     background-color: rgba($pale-indigo, 0.6);
+  }
+  span {
+    position: absolute;
+    font-size: 0.6rem;
+    font-weight: bold;
+    margin-inline: 0.25rem;
+    place-self: end end;
+  }
+  .bag-item-image {
+    position: absolute;
+  }
+}
+
+.bag-coins {
+  position: absolute;
+  place-self: end end;
+  margin: 0.25rem;
+}
+
+.close-icon {
+  position: absolute;
+  place-self: start end;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0.25rem;
+  z-index: 1;
+  &:hover {
+    filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg)
+      brightness(117%) contrast(86%);
   }
 }
 
@@ -357,6 +407,14 @@ a {
     display: flex;
     padding: 0.15rem;
     border-radius: 0.5rem;
+  }
+  .close-icon {
+    background-color: #991e1e;
+    transition: background-color 0s;
+    &:hover {
+      transition: background-color 0s;
+      background-color: #991e1e2d;
+    }
   }
 }
 

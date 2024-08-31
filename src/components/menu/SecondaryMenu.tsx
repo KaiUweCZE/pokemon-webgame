@@ -7,7 +7,7 @@ import messageIcon from "@/assets/images/icons/envelope.webp";
 import { useState } from "react";
 import MapInMenu from "./MapInMenu";
 import PokedexMenu from "./pokedex/PokedexMenu";
-import BagMenu from "./BagMenu";
+import BagMenu from "./bag/BagMenu";
 import { PokedexProvider } from "./pokedex/PokedexContext";
 import MessageMenu from "./MessageMenu";
 
@@ -15,7 +15,7 @@ interface LocationProps {
   location: string;
 }
 
-enum MenuType {
+export enum MenuType {
   BAG = "BAG",
   POKEDEX = "POKEDEX",
   MAP = "MAP",
@@ -66,14 +66,16 @@ const SecondaryMenu = ({ location }: LocationProps) => {
             onClick={() => handleOptions(MenuType.POKEDEX)}
           />
         </div>
-        {active === MenuType.MAP && <MapInMenu location={location} />}
+        {active === MenuType.MAP && (
+          <MapInMenu setActive={setActive} location={location} />
+        )}
         {active === MenuType.POKEDEX && (
           <PokedexProvider>
-            <PokedexMenu />
+            <PokedexMenu setActive={setActive} />
           </PokedexProvider>
         )}
-        {active === MenuType.BAG && <BagMenu />}
-        {active === MenuType.MESSAGE && <MessageMenu />}
+        {active === MenuType.BAG && <BagMenu setActive={setActive} />}
+        {active === MenuType.MESSAGE && <MessageMenu setActive={setActive} />}
       </div>
     </div>
   );

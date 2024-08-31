@@ -1,17 +1,15 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 export const useClickOutside = (
-  setInitState: Dispatch<SetStateAction<boolean>>,
-  initState: boolean,
+  setIsVisible: Dispatch<SetStateAction<boolean>>,
+  isVisible: boolean,
   cssSelector: string
 ) => {
-  const [isOpen, setIsOpen] = useState(initState);
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const clickedElement = event.target as HTMLElement;
       if (!clickedElement.closest(cssSelector)) {
-        setInitState(false);
+        setIsVisible(false);
       }
     };
 
@@ -20,5 +18,5 @@ export const useClickOutside = (
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [cssSelector]);
-  return { initState };
+  return { isVisible };
 };

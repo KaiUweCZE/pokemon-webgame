@@ -1,13 +1,28 @@
 import Image from "next/image";
 import mapImg from "@/assets/images/map2.webp";
+import closeIcon from "@/assets/images/icons/close.svg";
+import { Dispatch, SetStateAction } from "react";
+import { MenuType } from "./SecondaryMenu";
 
 interface LocationProps {
   location: string;
+  setActive: Dispatch<SetStateAction<MenuType | null>>;
 }
 
-const MapInMenu = ({ location }: LocationProps) => {
+const MapInMenu = ({ location, setActive }: LocationProps) => {
+  const handleClose = () => {
+    setActive(null);
+  };
   return (
     <div className="menu-map">
+      <Image
+        className="close-icon"
+        src={closeIcon}
+        alt="close icon"
+        width={20}
+        height={20}
+        onClick={handleClose}
+      />
       <Image
         src={mapImg}
         alt="map of region"

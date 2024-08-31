@@ -317,6 +317,9 @@ a {
     right: 5rem;
   }
 }
+.container-contacts .close-icon {
+  margin: 0;
+}
 
 .contact {
   display: flex;
@@ -324,6 +327,7 @@ a {
   align-items: center;
 }
 .contact ul {
+  margin-top: 0.5rem;
   width: 100%;
 }
 
@@ -350,8 +354,11 @@ a {
 
 .bag {
   display: grid;
+  position: relative;
   width: 15rem;
   height: 20rem;
+  border-radius: 0.35rem;
+  grid-template-rows: 1.75rem 1fr;
   background-color: #151636;
   color: white;
   position: absolute;
@@ -368,26 +375,68 @@ a {
     right: 5rem;
   }
 }
-.bag div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.bag .bag-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.25rem;
+  margin-inline: 0.5rem;
+}
+.bag .bag-cell {
+  background-color: rgba(36, 37, 90, 0.6);
+  border-radius: 0.3rem;
 }
 .bag ul {
   width: 100%;
 }
+.bag h3 {
+  place-self: start center;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 
 .bag-item {
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center;
+  height: 100%;
   gap: 0.5rem;
   color: white;
   padding-inline: 0.5rem;
   transition: 0.4s;
   cursor: pointer;
+  position: relative;
+  border-radius: 0.3rem;
 }
 .bag-item:hover {
   background-color: rgba(76, 88, 151, 0.6);
+}
+.bag-item span {
+  position: absolute;
+  font-size: 0.6rem;
+  font-weight: bold;
+  margin-inline: 0.25rem;
+  place-self: end end;
+}
+.bag-item .bag-item-image {
+  position: absolute;
+}
+
+.bag-coins {
+  position: absolute;
+  place-self: end end;
+  margin: 0.25rem;
+}
+
+.close-icon {
+  position: absolute;
+  place-self: start end;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0.25rem;
+  z-index: 1;
+}
+.close-icon:hover {
+  filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg) brightness(117%) contrast(86%);
 }
 
 .menu-map {
@@ -419,6 +468,14 @@ a {
   display: flex;
   padding: 0.15rem;
   border-radius: 0.5rem;
+}
+.menu-map .close-icon {
+  background-color: #991e1e;
+  transition: background-color 0s;
+}
+.menu-map .close-icon:hover {
+  transition: background-color 0s;
+  background-color: rgba(153, 30, 30, 0.1764705882);
 }
 
 .map-item {
