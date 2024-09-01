@@ -1,13 +1,17 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { addPokemon, chapterDone } from "./action";
+import { addPokemon, chapterDone } from "../action";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useRouter } from "next/navigation";
 import { generatePokemon } from "@/utils/generatePokemon";
 import { pokemonBattleData } from "@/data/pokemonBattleData";
 import { addPokemonToSix } from "@/app/profile/action";
 import { useSession } from "next-auth/react";
+import IntroMovesList from "./IntoMovesList";
+import IntroEvolutionsList from "./IntroEvolutionList";
+import IntroAboutPokemon from "./IntroAboutPokemon";
+import IntroPokemonBox from "./IntroPokemonBox";
 
 interface PokemonItemProps {
   img: string | StaticImport;
@@ -73,7 +77,7 @@ const PokemonItem = ({
   };
 
   return (
-    <div className={active ? "pokemon-image active" : "pokemon-image"}>
+    <article className={active ? "pokemon-image active" : "pokemon-image"}>
       <Image
         src={img}
         alt="pokemon image"
@@ -81,57 +85,34 @@ const PokemonItem = ({
         height={180}
         onClick={() => setActive(!active)}
       />
-      <div className="pokemon-card">
-        <div className="pokemon-box">
-          <h3>{pokemon?.name}</h3>
-          {pokemon?.type.map((type, index) => (
-            <div key={index} className={`type-box ${type}`}>
-              {type}
+      {pokemon && (
+        <div className="pokemon-details">
+          <IntroPokemonBox
+            pokemonName={pokemon.name}
+            pokemonTypes={pokemon.type}
+          />
+          <div className={active ? "text-wrapper open" : "text-wrapper"}>
+            <div className="wrapped-text">
+              <IntroMovesList />
+              <IntroEvolutionsList pokemonName={pokemon.name} />
+              <IntroAboutPokemon
+                pokemonName={pokemon.name}
+                pokemonInfo={pokemonInfo}
+              />
             </div>
-          ))}
+            {active && (
+              <button
+                className="button-primary"
+                onClick={introDone}
+                disabled={loading}
+              >
+                choose {pokemon?.name}
+              </button>
+            )}
+          </div>
         </div>
-
-        <div className={active ? "text-wrapper open" : "text-wrapper"}>
-          <ul className="wrapped-text">
-            <li>
-              <ul className="moves-list">
-                <li>
-                  <span>Moves:</span>
-                </li>
-                <li>tackle,</li>
-                <li>bite</li>
-              </ul>
-            </li>
-            <li>
-              <ul className="evolutions-list">
-                <li>
-                  <span>Evolutions: </span>
-                </li>
-                {pokemon?.name === "Eevee" && <li>umbreon, espeon</li>}
-                {pokemon?.name === "Teddiursa" && <li>ursaring, ursaluna</li>}
-              </ul>
-            </li>
-            <li>
-              <ul className="about-pokemon">
-                <li>
-                  <span>About:</span>
-                </li>
-                <li>{pokemonInfo}</li>
-              </ul>
-            </li>
-          </ul>
-          {active && (
-            <button
-              className="button-primary"
-              onClick={introDone}
-              disabled={loading}
-            >
-              choose {pokemon?.name}
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
+      )}
+    </article>
   );
 };
 
