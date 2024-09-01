@@ -14,7 +14,6 @@ const Home = () => {
       <div className="map">
         <Image src={mapImg} alt="map of tekel" />
       </div>
-      {/*<Logo />*/}
     </main>
   );
 };

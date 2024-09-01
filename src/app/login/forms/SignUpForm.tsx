@@ -5,13 +5,22 @@ const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistred, setIsRegistred] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
-    const result = await signUp(username, password);
+    setIsLoading(true);
 
-    if (result) {
-      setIsRegistred(true);
+    try {
+      const result = await signUp(username, password);
+      if (result) {
+        setIsRegistred(true);
+      }
+    } catch (error) {
+      setError("An error occurred during sign up");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -25,7 +34,12 @@ const SignUpForm = () => {
             name="name"
             type="text"
             required
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              if (error) {
+                setError("");
+              }
+              setUsername(e.target.value);
+            }}
           />
         </div>
         <div className="login-form-box">
@@ -37,8 +51,13 @@ const SignUpForm = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+          {error && <span className="login-error">{error}</span>}
         </div>
-        <button className="button-primary" onClick={handleSignUp}>
+        <button
+          className="button-primary"
+          onClick={handleSignUp}
+          disabled={isLoading}
+        >
           Sign up
         </button>
         <ul>

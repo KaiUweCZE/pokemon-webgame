@@ -1,6 +1,6 @@
 import teddiursaImg from "@/assets/images/pokemons/teddiursa.webp";
 import eeveeImg from "@/assets/images/pokemons/eevee.webp";
-import PokemonItem from "./PokemonItem";
+import PokemonItem from "./intro-components/PokemonItem";
 
 const ThirdScene = () => {
   const teddyText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet

@@ -66,7 +66,7 @@ const useEnemyBattle = () => {
 
       return () => clearInterval(interval);
     }
-  }, [context]);
+  }, [context, pokemonContext?.currentPokemon?.actualEnergy]);
 };
 
 export default useEnemyBattle;

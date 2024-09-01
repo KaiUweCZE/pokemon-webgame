@@ -83,8 +83,12 @@ $darker-blue: #01070f;
   }
   .incorrect {
     transition: 0.5s;
-    color: rgb(202, 65, 65);
+    color: #ca4141;
   }
+}
+
+.error-login {
+  color: #ca4141;
 }
 
 .type-changer {

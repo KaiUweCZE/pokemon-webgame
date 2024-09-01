@@ -8,31 +8,42 @@ import { useRouter } from "next/navigation";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
     const user = await getUser(username);
 
     if (user) {
       if ("error" in user) {
+        setError("An error occured during login");
         console.error("Error:", user.error);
+        setIsLoading(false);
         return;
       }
 
-      await signIn("credentials", {
+      const result = await signIn("credentials", {
         name: username,
         password,
         redirect: false,
       });
 
       // Check user's chapter and redirect accordingly
-      if (user.chapter > 0) {
-        router.push("/profile");
+      if (result?.ok) {
+        if (user.chapter > 0) {
+          router.push("/profile");
+        } else {
+          router.push("/intro");
+        }
       } else {
-        router.push("/intro");
+        setError("An error occured during login");
       }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -43,7 +54,12 @@ const LoginForm = () => {
           <input
             type="text"
             name="name"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              if (error) {
+                setError("");
+              }
+              setUsername(e.target.value);
+            }}
           />
         </div>
         <div>
@@ -54,8 +70,10 @@ const LoginForm = () => {
             id=""
             onChange={(e) => setPassword(e.target.value)}
           />
+          {error && <span className="error-login">{error}</span>}
         </div>
-        <button className="button-primary" type="submit">
+
+        <button className="button-primary" type="submit" disabled={isLoading}>
           Login
         </button>
       </form>
