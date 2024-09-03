@@ -102,3 +102,34 @@ export const healUserSix = async (username: string) => {
     await prisma.$disconnect();
   }
 };
+
+export const spendPartOfDay = async (username: string) => {
+  try {
+    await connectToDatabase();
+
+    const user = await prisma.user.findUnique({
+      where: { name: username },
+      select: { partOfDay: true },
+    });
+
+    if (!user || user.partOfDay === 3) {
+      console.log("You can preform this action tomorrow");
+      return null;
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { name: username },
+      data: {
+        partOfDay: { increment: 1 },
+      },
+    });
+
+    console.log("partOfDay is updated: ", updatedUser.partOfDay);
+
+    return updatedUser.partOfDay;
+  } catch (error) {
+    console.error("An Error occured during add partOfDay");
+  } finally {
+    await prisma.$disconnect();
+  }
+};

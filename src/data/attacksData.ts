@@ -129,7 +129,7 @@ export const attacksData = [
   },
   {
     id: 13,
-    name: "thundershock",
+    name: "thunder shock",
     type: "electric",
     damage: 5,
     energyCost: 3,

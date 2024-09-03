@@ -3,18 +3,48 @@ import { mapData } from "./mapData";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import EnemyPokemonsRound from "./EnemyPokemonsRound";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PokemonContext } from "@/contexts/PokemonContext";
+import { spendPartOfDay } from "./action";
+import { useSession } from "next-auth/react";
+import { Session } from "next-auth";
+import ErrorMessage from "@/components/ErrorMessage";
 
 interface LocationType {
   location: string;
+  username: string;
 }
 
-const EnemyPokemonsInLocation = ({ location }: LocationType) => {
+const EnemyPokemonsInLocation = ({ location, username }: LocationType) => {
   const router = useRouter();
+  const { data, update } = useSession();
   const context = useContext(PokemonContext);
+  const [error, setError] = useState("");
   const locationData = mapData.find((e) => e.name === location);
   const rounds = locationData?.rounds;
+
+  const handleExplore = async () => {
+    try {
+      const updatedPartOfDay = await spendPartOfDay(username);
+      console.log("updated part of day: ", updatedPartOfDay);
+
+      if (updatedPartOfDay === null) {
+        console.log("part of day was not updated");
+        setError("enough for today.");
+        setTimeout(() => {
+          setError("");
+        }, 2500);
+      } else {
+        await update({
+          ...data,
+          user: { ...data?.user, partOfDay: updatedPartOfDay },
+        });
+        router.push("/battle");
+      }
+    } catch (error) {
+      console.error("Error during explore:", error);
+    }
+  };
 
   const logger = () => {
     console.log("");
@@ -31,14 +61,10 @@ const EnemyPokemonsInLocation = ({ location }: LocationType) => {
           />
         ))}
       </ul>
-      <button
-        className="button-primary"
-        onClick={() => {
-          router.push("/battle");
-        }}
-      >
+      <button className="button-primary" onClick={handleExplore}>
         explore
       </button>
+      {error && <ErrorMessage message={error} />}
     </section>
   );
 };

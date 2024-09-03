@@ -21,6 +21,11 @@
   background-size: 5px 5px;
   z-index: 1;
 }
+@media (width < 30rem) {
+  .container-battlefield {
+    width: 90%;
+  }
+}
 
 .user-battle {
   grid-area: menu;
@@ -101,6 +106,30 @@
   background-color: #01070f;
   box-shadow: inset 1px 1px 1px grey;
   box-shadow: 0 0 10px 0 rgba(43, 20, 20, 0.15) inset;
+}
+@media (width < 30rem) {
+  .user-battle-menu {
+    grid-template-columns: 1fr max-content;
+  }
+  .user-battle-menu button {
+    font-size: 0.8rem;
+  }
+  .user-battle-menu ul {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .user-battle-menu li {
+    background-color: yellow;
+  }
+}
+@media (width < 27rem) {
+  .user-battle-menu button {
+    font-size: 0.8rem;
+  }
+  .user-battle-menu ul {
+    grid-template-columns: 1fr;
+    width: 60%;
+  }
 }
 
 .user-pokemon {
@@ -387,6 +416,10 @@
   height: fit-content;
   padding-block: 0rem;
   padding-right: 0.1rem;
+}
+.bar-wrapper .bar .text-hp {
+  position: absolute;
+  top: -0.1rem;
 }
 .bar-wrapper .hp-bar {
   padding: 0;

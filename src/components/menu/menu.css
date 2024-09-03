@@ -140,6 +140,8 @@ a {
   box-shadow: 0 0 8px #01070f;
   position: relative;
   width: 33rem;
+  container-name: pokedex;
+  container-type: inline-size;
   position: absolute;
   top: 3rem;
   right: 5rem;
@@ -155,11 +157,24 @@ a {
   }
 }
 
+@media (width < 35rem) {
+  .pokedex-wrap {
+    width: clamp(50vw, 32rem, 80vw);
+    overflow-y: auto;
+    right: 2rem;
+  }
+}
 .pokedex {
   display: grid;
   grid-template-columns: 0.35fr 1fr;
   width: 32rem;
   height: 18rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex {
+    width: clamp(50vw, 32rem, 80vw);
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon-wrapper {
@@ -167,6 +182,13 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex-pokemon-wrapper {
+    grid-row: 1;
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon {
@@ -231,6 +253,15 @@ a {
   color: white;
   cursor: pointer;
 }
+@container pokedex (max-width: 30rem) {
+  .pokedex-list {
+    grid-row: 2;
+    width: 100%;
+    height: 10rem;
+    background-color: #042a5d;
+    margin: 0;
+  }
+}
 
 .pokedex-menu {
   display: grid;
@@ -245,6 +276,21 @@ a {
   justify-content: center;
   color: white;
   margin-bottom: 0.5rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex-menu {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .pokedex-menu h2 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .pokedex-menu .pokedex-search-bar {
+    grid-row: 2;
+    margin: 0;
+    padding-inline: 1rem;
+  }
 }
 
 .pokedex-search-bar {
@@ -478,6 +524,13 @@ a {
   background-color: rgba(153, 30, 30, 0.1764705882);
 }
 
+@media (width < 38rem) {
+  .menu-map {
+    width: 20.8rem;
+    height: 11.7rem;
+    right: 1rem;
+  }
+}
 .map-item {
   position: relative;
   width: 150%;

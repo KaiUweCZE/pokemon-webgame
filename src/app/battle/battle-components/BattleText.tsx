@@ -28,6 +28,8 @@ const BattleText = ({ battleState }: TextProps) => {
 
   const generateButtonFunc = () => {
     switch (context?.battleState) {
+      case BattleState.BATTLE_STOPPED:
+        return router.push("/map");
       case BattleState.BATTLE:
         return context.setMenuOption(BattleMenuState.FIGHT);
       case BattleState.USER_POKEMON_FAINTED:

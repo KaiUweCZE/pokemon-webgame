@@ -20,20 +20,24 @@ $darker-blue: #01070f;
 // #0093E9
 .container-login-form {
   display: grid;
-  width: 30rem;
-  max-width: 40%;
-  margin: 0 auto;
+  grid-template-columns: 1fr max-content 1fr;
   margin-top: 3rem;
   border-radius: 0.35rem;
   padding: 0.5rem;
 }
 
 .wrapper-form {
+  grid-column: 2;
+  display: grid;
   opacity: 1;
+  width: clamp(15rem, 40vw, 30rem);
   translate: 0 0;
   transition: 0.5s;
   @starting-style {
     opacity: 0;
+  }
+  @media (width < 30rem) {
+    place-self: center;
   }
 }
 
@@ -92,6 +96,7 @@ $darker-blue: #01070f;
 }
 
 .type-changer {
+  grid-column: 2;
   border-left: 2px solid $form-border;
   border-bottom: 2px solid $form-border;
   width: fit-content;

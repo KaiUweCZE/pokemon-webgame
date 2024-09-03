@@ -323,10 +323,21 @@ li:has(.bar) {
   height: 1rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
+  position: relative;
 }
 .bar:has(.exp-bar) {
   height: 0.5rem;
   padding: 0.1rem;
+}
+.bar .text-hp {
+  display: flex;
+  font-size: 0.6rem;
+  font-weight: bold;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.2rem;
 }
 
 .hp-bar {
@@ -352,7 +363,7 @@ li:has(.bar) {
 }
 
 .error-message {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -366,7 +377,6 @@ li:has(.bar) {
   height: 8rem;
   place-self: end;
   margin: auto;
-  text-align: center;
   translate: 0 5rem;
   opacity: 1;
   transition: 0.3s;
@@ -374,6 +384,10 @@ li:has(.bar) {
   z-index: 2;
 }
 .error-message p {
+  display: grid;
+  place-items: center;
+  width: -moz-max-content;
+  width: max-content;
   font-weight: bold;
 }
 @starting-style {
