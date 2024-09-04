@@ -11,9 +11,13 @@ const useEnemyBattle = () => {
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
   const [isAttacking, setIsAttacking] = useState(false);
+  const [trigger, setTrigger] = useState(0);
 
   useEffect(() => {
     if (!context || !context.enemyPokemon || !pokemonContext) return;
+    console.log("is attacking?: ", isAttacking);
+
+    if (isAttacking) return;
     const move = context.enemyAttack;
     const { currentPokemon, setCurrentPokemon } = pokemonContext;
     const setMove = context.setEnemyAttack;
@@ -31,9 +35,11 @@ const useEnemyBattle = () => {
       selectedMove.recoveryTime
     );
 
+    console.log("trigger!! ", trigger);
+
     if (move && currentPokemon && context.battleState === BattleState.BATTLE) {
       // check if there is not attack in progress
-      if (isAttacking) return;
+
       const interval = setInterval(async () => {
         console.log(
           `start recovery: ${recovery} attack: ${selectedMove.name} recovery time: ${selectedMove.recoveryTime}`
@@ -50,7 +56,7 @@ const useEnemyBattle = () => {
         context.setEnemyAttackAnimation(true);
         setTimeout(() => {
           context.setEnemyAttackAnimation(false);
-        }, 1500);
+        }, 1000);
         try {
           await changeHpServer(currentPokemon.id, newHp);
         } catch (error) {
@@ -66,7 +72,14 @@ const useEnemyBattle = () => {
 
       return () => clearInterval(interval);
     }
-  }, [context, pokemonContext]);
+  }, [context, pokemonContext, trigger]);
+
+  useEffect(() => {
+    if (!isAttacking) {
+      setTrigger((prev) => prev + 1);
+      console.log("triggered: ", trigger);
+    }
+  }, [isAttacking]);
 };
 
 export default useEnemyBattle;

@@ -149,11 +149,11 @@ export const raichuAttacks = [
 
 // Ground types
 export const sandshrewAttacks = [
-  { level: 0, attacks: ["quick attack", "sand attack"] },
-  { level: 10, attacks: ["quick attack", "sand attack", "poison sting"] },
+  { level: 0, attacks: ["scratch", "sand attack"] },
+  { level: 10, attacks: ["scratch", "sand attack", "poison sting"] },
   {
     level: 20,
-    attacks: ["quick attack", "sand attack", "poison sting", "earthquake"],
+    attacks: ["scratch", "sand attack", "poison sting", "earthquake"],
   },
   {
     level: 30,
@@ -195,8 +195,8 @@ export const sandslashAttacks = [
 
 // Poison types
 export const nidoranMAttacks = [
-  { level: 0, attacks: ["poison sting", "tackle"] },
-  { level: 10, attacks: ["poison sting", "tackle", "sludge bomb"] },
+  { level: 0, attacks: ["poison sting", "scratch"] },
+  { level: 10, attacks: ["poison sting", "scratch", "sludge bomb"] },
   { level: 20, attacks: ["poison sting", "tackle", "sludge bomb", "toxic"] },
   { level: 30, attacks: ["poison sting", "tackle", "sludge bomb", "toxic"] },
   { level: 40, attacks: ["poison sting", "tackle", "sludge bomb", "toxic"] },
@@ -682,8 +682,8 @@ export const granbullAttacks = [
 
 // Normal types
 export const teddiursaAttacks = [
-  { level: 0, attacks: ["tackle", "quick attack"] },
-  { level: 10, attacks: ["tackle", "quick attack", "slam"] },
+  { level: 0, attacks: ["scratch", "quick attack"] },
+  { level: 10, attacks: ["scratch", "quick attack", "slam"] },
   { level: 20, attacks: ["tackle", "quick attack", "slam"] },
   { level: 30, attacks: ["tackle", "quick attack", "slam"] },
   { level: 40, attacks: ["tackle", "quick attack", "slam"] },
