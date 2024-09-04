@@ -223,7 +223,7 @@ export const nidokingAttacks = [
 
 // Fire types
 export const vulpixAttacks = [
-  { level: 0, attacks: ["ember", "tackle"] },
+  { level: 0, attacks: ["ember", "bite"] },
   { level: 10, attacks: ["ember", "tackle", "flamethrower"] },
   { level: 20, attacks: ["ember", "tackle", "flamethrower", "fire blast"] },
   { level: 30, attacks: ["ember", "tackle", "flamethrower", "fire blast"] },

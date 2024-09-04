@@ -148,6 +148,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .pokedex-wrap {
@@ -155,6 +156,9 @@ a {
     top: 0;
     right: 5rem;
   }
+}
+.pokedex-wrap .close-icon {
+  background-color: transparent;
 }
 
 @media (width < 35rem) {
@@ -355,6 +359,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .container-contacts {
@@ -364,6 +369,7 @@ a {
   }
 }
 .container-contacts .close-icon {
+  background-color: transparent;
   margin: 0;
 }
 
@@ -413,6 +419,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .bag {
@@ -439,6 +446,9 @@ a {
   place-self: start center;
   height: -moz-fit-content;
   height: fit-content;
+}
+.bag .close-icon {
+  background-color: transparent;
 }
 
 .bag-item {
@@ -480,6 +490,7 @@ a {
   transition: 0.5s;
   margin: 0.25rem;
   z-index: 1;
+  background-color: transparent;
 }
 .close-icon:hover {
   filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg) brightness(117%) contrast(86%);
@@ -502,6 +513,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .menu-map {

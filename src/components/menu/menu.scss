@@ -139,6 +139,10 @@ a {
   container-name: pokedex;
   container-type: inline-size;
   @include menu-mixin;
+  z-index: 2;
+  .close-icon {
+    background-color: transparent;
+  }
 }
 
 @media (width < 35rem) {
@@ -318,7 +322,9 @@ a {
   width: 15rem;
   height: 20rem;
   @include menu-mixin;
+  z-index: 2;
   .close-icon {
+    background-color: transparent;
     margin: 0;
   }
 }
@@ -365,6 +371,7 @@ a {
   background-color: darken($dark-violet, 10);
   color: white;
   @include menu-mixin;
+  z-index: 2;
   .bag-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -382,6 +389,9 @@ a {
   h3 {
     place-self: start center;
     height: fit-content;
+  }
+  .close-icon {
+    background-color: transparent;
   }
 }
 
@@ -424,6 +434,7 @@ a {
   transition: 0.5s;
   margin: 0.25rem;
   z-index: 1;
+  background-color: transparent;
   &:hover {
     filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg)
       brightness(117%) contrast(86%);
@@ -442,6 +453,7 @@ a {
   border-radius: 0.5rem;
   box-shadow: 0 0 8px $darker-blue;
   @include menu-mixin;
+  z-index: 2;
   img {
     display: flex;
     padding: 0.15rem;

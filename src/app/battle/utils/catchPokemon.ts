@@ -49,6 +49,7 @@ export const catchPokemon = async (
           defense: pokemon.defense,
           speed: pokemon.speed,
           userId: user.id,
+          evolutionInformed: false,
         },
       });
 

@@ -23,7 +23,14 @@ const UserBattleMenu = ({ setMenuChoice }: UserBattleMenuProps) => {
     <div className="user-battle-menu">
       <ul>
         <li onClick={handleFight}>
-          <button>FIGHT</button>
+          <button
+            disabled={
+              context?.battleState === BattleState.CAUGHT ||
+              context?.battleState === BattleState.CATCHING
+            }
+          >
+            FIGHT
+          </button>
         </li>
         <li onClick={() => setMenuChoice(BattleMenuState.SWITCH)}>
           <button>SWITCH</button>

@@ -91,9 +91,7 @@ const BoxAttacks = () => {
       </li>
       <li className="attack-item addons">
         {" "}
-        <button disabled={context.battleState !== BattleState.BATTLE}>
-          avoid
-        </button>
+        <button disabled={true}>avoid</button>
       </li>
       {time > 0 && <AttackCountdown time={time} setTime={setTime} />}
     </ul>
