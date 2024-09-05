@@ -6,10 +6,11 @@ import bagIcon from "@/assets/images/icons/bagIcon.webp";
 import messageIcon from "@/assets/images/icons/envelope.webp";
 import { useState } from "react";
 import MapInMenu from "./MapInMenu";
-import PokedexMenu from "./pokedex/PokedexMenu";
-import BagMenu from "./bag/BagMenu";
+import PokedexInMenu from "./pokedex/PokedexInMenu";
+import BagInMenu from "./bag/BagInMenu";
 import { PokedexProvider } from "./pokedex/PokedexContext";
-import MessageMenu from "./MessageMenu";
+import MessageInMenu from "./message/MessageInMenu";
+import { MessageProvider } from "./message/MessageContext";
 
 interface LocationProps {
   location: string;
@@ -71,11 +72,15 @@ const SecondaryMenu = ({ location }: LocationProps) => {
         )}
         {active === MenuType.POKEDEX && (
           <PokedexProvider>
-            <PokedexMenu setActive={setActive} />
+            <PokedexInMenu setActive={setActive} />
           </PokedexProvider>
         )}
-        {active === MenuType.BAG && <BagMenu setActive={setActive} />}
-        {active === MenuType.MESSAGE && <MessageMenu setActive={setActive} />}
+        {active === MenuType.BAG && <BagInMenu setActive={setActive} />}
+        {active === MenuType.MESSAGE && (
+          <MessageProvider>
+            <MessageInMenu setActive={setActive} />
+          </MessageProvider>
+        )}
       </div>
     </div>
   );

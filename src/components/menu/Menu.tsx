@@ -22,7 +22,7 @@ const Menu = () => {
   };
 
   return (
-    <header>
+    <header className="main-header">
       <div className="container-menu">
         <nav className="navigation">
           <ul className="menu">

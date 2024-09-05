@@ -1,16 +1,17 @@
 import { useSession } from "next-auth/react";
 import callIcon from "@/assets/images/icons/call.png";
 import Image from "next/image";
-import Call from "./Call";
 import { Dispatch, SetStateAction, useState } from "react";
-import { MenuType } from "./SecondaryMenu";
+import { MenuType } from "../SecondaryMenu";
 import closeIcon from "@/assets/images/icons/close.svg";
+import MessageNavigation from "./MessageNavigation";
+import MessageList from "./MessageList";
 
 interface MessageProps {
   setActive: Dispatch<SetStateAction<MenuType | null>>;
 }
 
-const MessageMenu = ({ setActive }: MessageProps) => {
+const MessageInMenu = ({ setActive }: MessageProps) => {
   const [call, setCall] = useState("");
   const { data } = useSession();
 
@@ -24,7 +25,7 @@ const MessageMenu = ({ setActive }: MessageProps) => {
 
   const contacts = data.user.contacts;
   return (
-    <div className="container-contacts">
+    <div className="container-message">
       <Image
         className="close-icon"
         src={closeIcon}
@@ -33,25 +34,10 @@ const MessageMenu = ({ setActive }: MessageProps) => {
         height={20}
         onClick={handleClose}
       />
-      <div className="contact">
-        <h3>Contacts</h3>
-        <ul className="contact-list">
-          {contacts.map((contact, index) => (
-            <li key={index} className="contact-item">
-              <span>{contact}</span>{" "}
-              <Image
-                src={callIcon}
-                alt="icon of phone"
-                width={16}
-                onClick={() => setCall(contact)}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Call name={call} />
+      <MessageNavigation />
+      <MessageList />
     </div>
   );
 };
 
-export default MessageMenu;
+export default MessageInMenu;

@@ -11,7 +11,7 @@ interface PokedexProps {
   setActive: Dispatch<SetStateAction<MenuType | null>>;
 }
 
-const PokedexMenu = ({ setActive }: PokedexProps) => {
+const PokedexInMenu = ({ setActive }: PokedexProps) => {
   const [pokemonPokedex, setPokemonPokedex] = useState<PokemonPokedex | null>(
     null
   );
@@ -44,4 +44,4 @@ const PokedexMenu = ({ setActive }: PokedexProps) => {
   );
 };
 
-export default PokedexMenu;
+export default PokedexInMenu;

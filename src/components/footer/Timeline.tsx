@@ -51,7 +51,7 @@ const Timeline = () => {
   return (
     <div className="container-footer">
       {context?.isLog && (
-        <footer>
+        <footer className="main-footer">
           {activeFooter && (
             <div className="box-time">
               <span className="time-text">

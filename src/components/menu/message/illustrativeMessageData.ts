@@ -1,0 +1,63 @@
+import { Message, MessageType } from "@/types/message";
+
+export const MessageData: Message[] = [
+  {
+    id: "a1b2c3",
+    from: "Prof. Bloom",
+    type: MessageType.DEFAULT,
+    text: "Welcome to the world of Pokémon! I hope you're ready for a grand adventure.",
+    time: 2,
+    viewed: false,
+  },
+  {
+    id: "d4e5f6",
+    from: "Hank",
+    type: MessageType.QUEST,
+    text: "Could you please help me find lost Pokémon in the forest? A reward awaits you!",
+    time: 2,
+    viewed: true,
+  },
+  {
+    id: "g7h8i9",
+    from: "Golias",
+    type: MessageType.EVOLUTION,
+    text: "Congratulations! Your Charmander is ready for evolution. Don't forget to give it a Fire Stone.",
+    pokemonId: "66a53b1a98fa11d92fd45f19",
+    time: 2,
+    viewed: false,
+  },
+  {
+    id: "j10k11l12",
+    from: "Rebecca",
+    type: MessageType.NEW_MOVE,
+    text: "Your Pikachu can learn a new move 'Thunder Punch'. Do you want to train it?",
+    pokemonId: "66a53b1a98fa11d92fd45f19",
+    time: 2,
+    viewed: false,
+  },
+  {
+    id: "m13n14o15",
+    from: "Prof. Bloom",
+    type: MessageType.DEFAULT,
+    text: "Prepare for trouble! And make it double...",
+    time: 2,
+    viewed: false,
+  },
+  {
+    id: "p16q17r18",
+    from: "Prof. Bloom",
+    type: MessageType.QUEST,
+    text: "I've heard about a rare Pokémon in the mountains. Can you find and photograph it for me?",
+    time: 2,
+    viewed: false,
+  },
+  {
+    id: "s19t20u21",
+    from: "Hank",
+    type: MessageType.NEW_MOVE,
+    text: "Hey! I heard your Bulbasaur can learn 'Solar Beam'. That's an awesome attack!",
+    pokemonId: "66a53b1a98fa11d92fd45f19",
+    time: 2,
+    viewed: false,
+  },
+];

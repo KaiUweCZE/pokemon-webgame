@@ -11,7 +11,7 @@ interface BagMenuProps {
   setActive: Dispatch<SetStateAction<MenuType | null>>;
 }
 
-const BagMenu = ({ setActive }: BagMenuProps) => {
+const BagInMenu = ({ setActive }: BagMenuProps) => {
   const { data } = useSession();
   if (!data) throw new Error("data is missing");
 
@@ -50,7 +50,7 @@ const BagMenu = ({ setActive }: BagMenuProps) => {
   );
 };
 
-export default BagMenu;
+export default BagInMenu;
 
 /* <ul>
           {items.map((item, index) => (
