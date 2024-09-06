@@ -56,11 +56,12 @@ model Pokemon {
   Message           Message[]
 }
 
+
 enum MessageType {
   EVOLUTION
-  NEW_ATTACK
+  NEW_MOVE
   QUEST
-  GENERAL
+  DEFAULT
 }
 
 model Message {

@@ -3,7 +3,7 @@ import MessageMenu from "./MessageMenu";
 const MessageNavigation = () => {
   return (
     <header className="message-header">
-      <h3>Contacts</h3>
+      <h3>Messages</h3>
       <MessageMenu />
     </header>
   );

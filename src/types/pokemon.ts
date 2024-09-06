@@ -14,6 +14,6 @@ export interface Pokemon {
   energy: number;
   damage: number;
   defense: number;
-  evolutionInformed: boolean;
+  evolutionInformed: boolean | null;
   userId: string | null;
 }

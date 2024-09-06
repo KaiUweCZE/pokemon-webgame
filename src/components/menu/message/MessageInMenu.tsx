@@ -35,7 +35,7 @@ const MessageInMenu = ({ setActive }: MessageProps) => {
         onClick={handleClose}
       />
       <MessageNavigation />
-      <MessageList />
+      <MessageList userId={data.user.id} />
     </div>
   );
 };
