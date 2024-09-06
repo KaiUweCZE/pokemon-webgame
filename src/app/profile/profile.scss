@@ -45,6 +45,10 @@ $dark-violet: #24255a;
     place-self: end end;
     filter: drop-shadow(0px 3px 3px #424242b9);
   }
+  @media (width < 30rem) {
+    grid-template-columns: 1fr;
+    margin-bottom: 1rem;
+  }
 }
 
 .profile-info {

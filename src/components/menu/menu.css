@@ -16,7 +16,7 @@ ul {
   list-style: none;
 }
 
-header:has(.secondary-menu) {
+.main-header:has(.secondary-menu) {
   display: grid;
   grid-template-rows: 1fr 0.5fr;
   background-color: #24255a;
@@ -26,12 +26,12 @@ header:has(.secondary-menu) {
   box-shadow: 0 0 4px #01070f;
   padding: 0;
 }
-header:has(.secondary-menu) .menu-item.active {
+.main-header:has(.secondary-menu) .menu-item.active {
   background-color: #01070f;
   box-shadow: 0 0 8px #020c1f;
 }
 
-header {
+.main-header {
   display: grid;
   height: 3rem;
   background-color: #24255a;
@@ -45,10 +45,10 @@ header {
   translate: 5rem 50rem;
 }
 
-body:has(.container-intro) header {
+body:has(.container-intro) .main-header {
   display: none;
 }
-body:has(.container-intro) footer {
+body:has(.container-intro) .main-footer {
   display: none;
 }
 
@@ -140,12 +140,15 @@ a {
   box-shadow: 0 0 8px #01070f;
   position: relative;
   width: 33rem;
+  container-name: pokedex;
+  container-type: inline-size;
   position: absolute;
   top: 3rem;
   right: 5rem;
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .pokedex-wrap {
@@ -154,12 +157,28 @@ a {
     right: 5rem;
   }
 }
+.pokedex-wrap .close-icon {
+  background-color: transparent;
+}
 
+@media (width < 35rem) {
+  .pokedex-wrap {
+    width: clamp(50vw, 32rem, 80vw);
+    overflow-y: auto;
+    right: 2rem;
+  }
+}
 .pokedex {
   display: grid;
   grid-template-columns: 0.35fr 1fr;
   width: 32rem;
   height: 18rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex {
+    width: clamp(50vw, 32rem, 80vw);
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon-wrapper {
@@ -167,6 +186,13 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex-pokemon-wrapper {
+    grid-row: 1;
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon {
@@ -231,6 +257,15 @@ a {
   color: white;
   cursor: pointer;
 }
+@container pokedex (max-width: 30rem) {
+  .pokedex-list {
+    grid-row: 2;
+    width: 100%;
+    height: 10rem;
+    background-color: #042a5d;
+    margin: 0;
+  }
+}
 
 .pokedex-menu {
   display: grid;
@@ -245,6 +280,21 @@ a {
   justify-content: center;
   color: white;
   margin-bottom: 0.5rem;
+}
+@container pokedex (max-width: 30rem) {
+  .pokedex-menu {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .pokedex-menu h2 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .pokedex-menu .pokedex-search-bar {
+    grid-row: 2;
+    margin: 0;
+    padding-inline: 1rem;
+  }
 }
 
 .pokedex-search-bar {
@@ -296,57 +346,146 @@ a {
   place-items: center;
 }
 
-.container-contacts {
+.container-message {
   display: grid;
-  grid-template-rows: 1fr 0.5fr;
   color: white;
   background-color: #0a224f;
-  width: 15rem;
+  grid-auto-rows: min-content;
+  width: 32rem;
   height: 20rem;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
   position: absolute;
   top: 3rem;
   right: 5rem;
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 @starting-style {
-  .container-contacts {
+  .container-message {
     opacity: 0;
     top: 0;
     right: 5rem;
   }
 }
-.container-contacts .close-icon {
+.container-message .close-icon {
+  background-color: transparent;
   margin: 0;
+  top: 0.25rem;
+  right: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.contact {
+.message-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 2rem;
+}
+.message-header h3 {
+  grid-column: 2;
+  place-self: start center;
+}
+
+.message-navigation {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: #000000;
+}
+
+.message-menu {
+  cursor: pointer;
+  transition: height 0.35s;
+  height: 1.5rem;
+  overflow: hidden;
+}
+.message-menu li {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0.35rem;
+  align-items: center;
+  position: relative;
+}
+.message-menu:has(.open) {
+  height: 6.5rem;
+}
+
+.menu-icon {
+  display: grid;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+  transition: 0.5s;
+}
+.menu-icon.open {
+  rotate: -225deg;
+}
+
+.menu-icon-item {
+  width: 80%;
+  height: 0.15rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  position: absolute;
+}
+.menu-icon-item.left-item {
+  rotate: 90deg;
+  place-self: center;
+}
+.menu-icon-item.right-item {
+  rotate: 180deg;
+  place-self: center;
+}
+
+.message-list {
+  display: grid;
+  place-self: start start;
+}
+
+.message-list-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(253, 103, 103, 0.3019607843);
+  cursor: pointer;
+}
+
+.message-detail {
+  grid-row: 2;
+  display: grid;
+  width: 31rem;
+  height: 100%;
+  background-color: #02142c;
+  position: absolute;
+  padding: 1rem;
+}
+.message-detail h2 {
+  font-size: 1.25rem;
+}
+
+.message {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(76, 88, 151, 0.3);
 }
-.contact ul {
+.message ul {
   margin-top: 0.5rem;
   width: 100%;
 }
 
-.call {
-  background-color: rgba(76, 88, 151, 0.3);
-  border: 2px solid #01070f;
-}
-
-.contact-item {
+.message-item {
   display: flex;
   justify-content: space-between;
   padding-inline: 0.5rem;
 }
-.contact-item img {
+.message-item img {
   filter: brightness(1);
   transition: 0.3s;
   cursor: pointer;
 }
-.contact-item img:hover {
+.message-item img:hover {
   transition: 0.5s;
   filter: invert(47%) sepia(9%) saturate(2827%) hue-rotate(87deg) brightness(112%) contrast(98%);
   scale: 1.2;
@@ -367,6 +506,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .bag {
@@ -393,6 +533,9 @@ a {
   place-self: start center;
   height: -moz-fit-content;
   height: fit-content;
+}
+.bag .close-icon {
+  background-color: transparent;
 }
 
 .bag-item {
@@ -434,6 +577,7 @@ a {
   transition: 0.5s;
   margin: 0.25rem;
   z-index: 1;
+  background-color: transparent;
 }
 .close-icon:hover {
   filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg) brightness(117%) contrast(86%);
@@ -456,6 +600,7 @@ a {
   opacity: 1;
   transition: 1s;
   z-index: 1;
+  z-index: 2;
 }
 @starting-style {
   .menu-map {
@@ -478,6 +623,13 @@ a {
   background-color: rgba(153, 30, 30, 0.1764705882);
 }
 
+@media (width < 38rem) {
+  .menu-map {
+    width: 20.8rem;
+    height: 11.7rem;
+    right: 1rem;
+  }
+}
 .map-item {
   position: relative;
   width: 150%;

@@ -10,6 +10,9 @@ const HpBar = ({ maximumHp, actualHp }: HpProps) => {
         className="hp-bar"
         style={{ width: `${(actualHp / maximumHp) * 100}%` }}
       ></div>
+      {/*<span className="text-hp">
+        {actualHp}/{maximumHp}
+      </span>*/}
     </div>
   );
 };

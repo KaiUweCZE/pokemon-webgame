@@ -13,9 +13,10 @@ interface MapProps {
   fight: boolean;
   options: string[];
   location: string;
+  username: string;
 }
 
-const MapMenu = ({ location, routes, options }: MapProps) => {
+const MapMenu = ({ location, routes, options, username }: MapProps) => {
   const [active, setActive] = useState("");
   const router = useRouter();
 
@@ -34,7 +35,9 @@ const MapMenu = ({ location, routes, options }: MapProps) => {
         return <Market location={location} />;
 
       case "Explore":
-        return <EnemyPokemonsInLocation location={location} />;
+        return (
+          <EnemyPokemonsInLocation location={location} username={username} />
+        );
 
       default:
         return <AboutLocation location={location} />;

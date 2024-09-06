@@ -40,23 +40,23 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [27, 133, 216],
+        pokemons: [27, 37],
         levelRange: [1, 3],
       },
       {
         id: 1,
         pokemons: [25, 63, 133],
-        levelRange: [11, 15],
+        levelRange: [2, 5],
       },
       {
         id: 2,
         pokemons: [280, 25, 216],
-        levelRange: [15, 19],
+        levelRange: [4, 12],
       },
       {
         id: 3,
         pokemons: [1, 4, 7, 25],
-        levelRange: [5, 7],
+        levelRange: [15, 27],
       },
     ],
     fight: true,

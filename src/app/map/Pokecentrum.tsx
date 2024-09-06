@@ -52,7 +52,7 @@ const Pokecentrum = () => {
       {!isHealed && (
         <article>
           <h2>Welcome in Pokecentrum</h2>
-          <p>Want to heal your Pokémon?</p>
+          <p>Do you want to heal your Pokémon?</p>
           <button
             className="button-primary"
             onClick={handleHealth}

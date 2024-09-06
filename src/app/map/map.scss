@@ -11,7 +11,7 @@
     font-size: 1.75rem;
     color: white;
   }
-  h2 {
+  .location-name {
     bottom: 10%;
     place-self: end center;
     position: absolute;
@@ -28,13 +28,24 @@
     max-width: 100%;
     width: 165vh;
     height: auto;
-    min-width: 800px;
-    min-height: 450px;
+    min-width: 800px * 0.8;
+    min-height: 450px * 0.8;
     aspect-ratio: 16/9;
     opacity: 1;
     transition: 0.5s;
     @starting-style {
       opacity: 0;
+    }
+  }
+  @media (width < 40rem) {
+    width: 100%;
+    padding: 2rem;
+    height: 90vh;
+    .main-image {
+      display: none;
+    }
+    .location-name {
+      display: none;
     }
   }
 }
@@ -62,7 +73,14 @@
       background-color: rgba(rgb(255, 255, 255), 0.2);
     }
   }
+  @media (width < 50rem) {
+    width: 60%;
+    aspect-ratio: 2/1;
+  }
 
+  @media (width < 40rem) {
+    width: 90%;
+  }
   .menu-navigation {
     display: flex;
     background-color: $pale-indigo;

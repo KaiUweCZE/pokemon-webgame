@@ -17,6 +17,7 @@ import groundImg from "@/assets/images/attacks/skull.webp";
 import rockImg from "@/assets/images/attacks/rock.webp";
 import poisonImg from "@/assets/images/attacks/skull.webp";
 import dragonImg from "@/assets/images/attacks/dragon.gif";
+import scratchImg from "@/assets/images/attacks/scratch.webp";
 
 export const attacksData = [
   {
@@ -129,7 +130,7 @@ export const attacksData = [
   },
   {
     id: 13,
-    name: "thundershock",
+    name: "thunder shock",
     type: "electric",
     damage: 5,
     energyCost: 3,
@@ -505,6 +506,15 @@ export const attacksData = [
     recoveryTime: 4,
     img: fairyImg,
   },
+  {
+    id: 55,
+    name: "scratch",
+    type: "normal",
+    damage: 3,
+    energyCost: 1,
+    recoveryTime: 3,
+    img: scratchImg,
+  },
 ];
 
 /*
@@ -517,15 +527,7 @@ name: "lava plume",
     recoveryTime: 5,
     img: normalImg,
   },
-  {
-  id: 0,  
-  name: "scratch",
-    type: "normal",
-    damage: 3,
-    energyCost: 1,
-    recoveryTime: 2,
-    img: normalImg,
-  },
+  
   {
   id: 0,  
   name: "fury swipes",

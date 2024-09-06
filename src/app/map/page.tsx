@@ -71,9 +71,10 @@ const MapPage = () => {
           routes={locationData?.routes}
           fight={locationData.fight}
           location={location}
+          username={data.user.name}
         />
       )}
-      <h2>{location}</h2>
+      <h2 className="location-name">{location}</h2>
       {/*loader && <MapLoader />*/}
       {error && <MapError setError={setError} />}
       {npc !== "" && <NpcBox name={npc} />}

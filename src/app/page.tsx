@@ -14,9 +14,6 @@ const Home = () => {
       <div className="map">
         <Image src={mapImg} alt="map of tekel" />
       </div>
-      <button className="button-primary">
-        <div className="loader-primary"></div>
-      </button>
     </main>
   );
 };

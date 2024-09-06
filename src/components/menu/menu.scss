@@ -22,7 +22,7 @@ $blue-one: #02142c;
 $light-blue: #0a224f;
 $darker-blue: #01070f;
 
-header:has(.secondary-menu) {
+.main-header:has(.secondary-menu) {
   display: grid;
   grid-template-rows: 1fr 0.5fr;
   background-color: $dark-violet;
@@ -37,7 +37,7 @@ header:has(.secondary-menu) {
   }
 }
 
-header {
+.main-header {
   display: grid;
   height: 3rem;
   background-color: $dark-violet;
@@ -52,10 +52,10 @@ header {
 }
 
 body:has(.container-intro) {
-  header {
+  .main-header {
     display: none;
   }
-  footer {
+  .main-footer {
     display: none;
   }
 }
@@ -136,7 +136,21 @@ a {
   box-shadow: 0 0 8px $darker-blue;
   position: relative;
   width: 33rem;
+  container-name: pokedex;
+  container-type: inline-size;
   @include menu-mixin;
+  z-index: 2;
+  .close-icon {
+    background-color: transparent;
+  }
+}
+
+@media (width < 35rem) {
+  .pokedex-wrap {
+    width: clamp(50vw, 32rem, 80vw);
+    overflow-y: auto;
+    right: 2rem;
+  }
 }
 
 .pokedex {
@@ -144,6 +158,10 @@ a {
   grid-template-columns: 0.35fr 1fr;
   width: 32rem;
   height: 18rem;
+  @container pokedex (max-width: 30rem) {
+    width: clamp(50vw, 32rem, 80vw);
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon-wrapper {
@@ -151,6 +169,11 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  @container pokedex (max-width: 30rem) {
+    grid-row: 1;
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokedex-pokemon {
@@ -204,6 +227,13 @@ a {
     color: white;
     cursor: pointer;
   }
+  @container pokedex (max-width: 30rem) {
+    grid-row: 2;
+    width: 100%;
+    height: 10rem;
+    background-color: lighten($blue-one, 10);
+    margin: 0;
+  }
 }
 
 .pokedex-menu {
@@ -219,6 +249,19 @@ a {
     color: white;
 
     margin-bottom: 0.5rem;
+  }
+  @container pokedex (max-width: 30rem) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    h2 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .pokedex-search-bar {
+      grid-row: 2;
+      margin: 0;
+      padding-inline: 1rem;
+    }
   }
 }
 
@@ -271,34 +314,124 @@ a {
   }
 }
 
-.container-contacts {
+.container-message {
   display: grid;
-  grid-template-rows: 1fr 0.5fr;
   color: white;
   background-color: $light-blue;
-  width: 15rem;
+  grid-auto-rows: min-content;
+  width: 32rem;
   height: 20rem;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
   @include menu-mixin;
+  z-index: 2;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   .close-icon {
+    background-color: transparent;
     margin: 0;
+    top: 0.25rem;
+    right: 0.25rem;
+    background-color: rgba(white, 0.2);
   }
 }
 
-.contact {
+.message-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 2rem;
+  h3 {
+    grid-column: 2;
+    place-self: start center;
+  }
+}
+
+.message-navigation {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: #000000;
+}
+
+.message-menu {
+  cursor: pointer;
+  transition: height 0.35s;
+  height: 1.5rem;
+  overflow: hidden;
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 0.35rem;
+    align-items: center;
+    position: relative;
+  }
+  &:has(.open) {
+    height: 6.5rem;
+  }
+}
+
+.menu-icon {
+  display: grid;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+  transition: 0.5s;
+  &.open {
+    rotate: -225deg;
+  }
+}
+
+.menu-icon-item {
+  width: 80%;
+  height: 0.15rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  position: absolute;
+  &.left-item {
+    rotate: 90deg;
+    place-self: center;
+  }
+  &.right-item {
+    rotate: 180deg;
+    place-self: center;
+  }
+}
+
+.message-list {
+  display: grid;
+  place-self: start start;
+}
+
+.message-list-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fd67674d;
+  cursor: pointer;
+}
+
+.message-detail {
+  grid-row: 2;
+  display: grid;
+  width: 31rem;
+  height: 100%;
+  background-color: $blue-one;
+  position: absolute;
+  padding: 1rem;
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+.message {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba($pale-indigo, 0.3);
   ul {
     margin-top: 0.5rem;
     width: 100%;
   }
 }
 
-.call {
-  background-color: rgba($pale-indigo, 0.3);
-  border: 2px solid $darker-blue;
-}
-.contact-item {
+.message-item {
   display: flex;
   justify-content: space-between;
   padding-inline: 0.5rem;
@@ -326,6 +459,7 @@ a {
   background-color: darken($dark-violet, 10);
   color: white;
   @include menu-mixin;
+  z-index: 2;
   .bag-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -343,6 +477,9 @@ a {
   h3 {
     place-self: start center;
     height: fit-content;
+  }
+  .close-icon {
+    background-color: transparent;
   }
 }
 
@@ -385,6 +522,7 @@ a {
   transition: 0.5s;
   margin: 0.25rem;
   z-index: 1;
+  background-color: transparent;
   &:hover {
     filter: invert(32%) sepia(21%) saturate(3436%) hue-rotate(327deg)
       brightness(117%) contrast(86%);
@@ -403,6 +541,7 @@ a {
   border-radius: 0.5rem;
   box-shadow: 0 0 8px $darker-blue;
   @include menu-mixin;
+  z-index: 2;
   img {
     display: flex;
     padding: 0.15rem;
@@ -415,6 +554,14 @@ a {
       transition: background-color 0s;
       background-color: #991e1e2d;
     }
+  }
+}
+
+@media (width < 38rem) {
+  .menu-map {
+    width: 32rem * 0.65;
+    height: 18rem * 0.65;
+    right: 1rem;
   }
 }
 

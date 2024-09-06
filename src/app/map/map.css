@@ -9,7 +9,7 @@
   font-size: 1.75rem;
   color: white;
 }
-.container-map h2 {
+.container-map .location-name {
   bottom: 10%;
   place-self: end center;
   position: absolute;
@@ -26,8 +26,8 @@
   max-width: 100%;
   width: 165vh;
   height: auto;
-  min-width: 800px;
-  min-height: 450px;
+  min-width: 640px;
+  min-height: 360px;
   aspect-ratio: 16/9;
   opacity: 1;
   transition: 0.5s;
@@ -35,6 +35,19 @@
 @starting-style {
   .container-map .main-image {
     opacity: 0;
+  }
+}
+@media (width < 40rem) {
+  .container-map {
+    width: 100%;
+    padding: 2rem;
+    height: 90vh;
+  }
+  .container-map .main-image {
+    display: none;
+  }
+  .container-map .location-name {
+    display: none;
   }
 }
 
@@ -61,6 +74,17 @@
 }
 .map-menu .item:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+@media (width < 50rem) {
+  .map-menu {
+    width: 60%;
+    aspect-ratio: 2/1;
+  }
+}
+@media (width < 40rem) {
+  .map-menu {
+    width: 90%;
+  }
 }
 .map-menu .menu-navigation {
   display: flex;

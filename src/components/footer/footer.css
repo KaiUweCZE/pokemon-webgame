@@ -6,7 +6,7 @@
   margin-top: 2rem;
 }
 
-footer {
+.main-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
