@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 import { MessageContext } from "./MessageContext";
 import { Message } from "@/types/message";
 import MessageDetail from "./MessageDetail";
@@ -20,7 +20,7 @@ const MessageList = ({ userId }: MessageListProps) => {
   const [specificMessage, setSpecificMessage] = useState<Message | null>(null);
   const [isHover, setIsHover] = useState({ active: false, id: "" });
   const { generateMessage } = useGenerateMessage();
-  const { error, isLoading } = useFetchMessages(userId);
+  //const { error, isLoading } = useFetchMessages(userId);
 
   if (!context) throw new Error("context is missing");
 
@@ -30,6 +30,9 @@ const MessageList = ({ userId }: MessageListProps) => {
   );
 
   const handleReadMessage = async (e: Message) => {
+    if (!e.viewed) {
+      context.setNumberOfNewMessages((prev) => prev - 1);
+    }
     const editedMessages = messages?.map((message) =>
       message.id !== e.id ? message : { ...message, viewed: true }
     );
@@ -74,53 +77,48 @@ const MessageList = ({ userId }: MessageListProps) => {
 
   return (
     <div className="container-message-list">
-      {isLoading ? (
-        <div className="loader-primary"></div>
-      ) : (
-        <ul className="message-list">
-          {filtredMessages &&
-            filtredMessages.map((message) => (
-              <li
-                className={
-                  isHover.active && isHover.id === message.id
-                    ? "message-list-item read"
-                    : "message-list-item"
-                }
-                key={message.id}
-                onClick={() => handleReadMessage(message)}
-                onMouseEnter={() =>
-                  setIsHover({ active: true, id: message.id })
-                }
-                onMouseLeave={() => setIsHover({ ...isHover, active: false })}
-              >
-                <span
-                  className={
-                    isHover.active && isHover.id === message.id ? "read" : ""
-                  }
-                >
-                  {message.from}
-                </span>
-                {!message.viewed && (
-                  <Image
-                    src={alertIcon}
-                    alt="alert icon"
-                    width={16}
-                    height={16}
-                  />
-                )}
-              </li>
-            ))}
-          <li>
-            <button
-              className="button-primary"
-              onClick={handleGenerateMessage}
-              disabled={typeof generateMessage !== "function"}
+      <ul className="message-list">
+        {filtredMessages &&
+          filtredMessages.map((message) => (
+            <li
+              className={
+                isHover.active && isHover.id === message.id
+                  ? "message-list-item read"
+                  : "message-list-item"
+              }
+              key={message.id}
+              onClick={() => handleReadMessage(message)}
+              onMouseEnter={() => setIsHover({ active: true, id: message.id })}
+              onMouseLeave={() => setIsHover({ ...isHover, active: false })}
             >
-              generate
-            </button>
-          </li>
-        </ul>
-      )}
+              <span
+                className={
+                  isHover.active && isHover.id === message.id ? "read" : ""
+                }
+              >
+                {message.from}
+              </span>
+              {!message.viewed && (
+                <Image
+                  src={alertIcon}
+                  alt="alert icon"
+                  width={16}
+                  height={16}
+                />
+              )}
+            </li>
+          ))}
+        <li>
+          <button
+            className="button-primary"
+            onClick={handleGenerateMessage}
+            disabled={typeof generateMessage !== "function"}
+          >
+            generate
+          </button>
+        </li>
+      </ul>
+
       {isVisible && specificMessage && (
         <MessageDetail message={specificMessage} />
       )}

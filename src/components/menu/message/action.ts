@@ -101,3 +101,23 @@ export const deleteMessage = async (messageId: string) => {
     await prisma.$disconnect();
   }
 };
+
+export const getUnreadedMessages = async (userId: string) => {
+  try {
+    await connectToDatabase();
+
+    const messages = await prisma.message.findMany({
+      where: { userId: userId, viewed: false },
+    });
+
+    if (!messages) return null;
+
+    console.log("this messages has not been read: ", messages);
+
+    return messages.length;
+  } catch (error) {
+    console.error("An error has occured: ", error);
+  } finally {
+    await prisma.$disconnect();
+  }
+};

@@ -46,7 +46,7 @@ const useLoadSixToContext = () => {
     const username = data.user.name;
     console.log("start with fetching");
     fetchAndSetPokemon(username);
-  }, [data]);
+  }, [data?.user]);
 
   return { loading };
 };

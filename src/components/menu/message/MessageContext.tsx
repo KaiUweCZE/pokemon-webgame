@@ -19,6 +19,10 @@ interface MessageContextType {
   setMessages: Dispatch<SetStateAction<Message[] | null>>;
   isFetched: boolean;
   setIsFetched: Dispatch<SetStateAction<boolean>>;
+  numberOfNewMessages: number;
+  setNumberOfNewMessages: Dispatch<SetStateAction<number>>;
+  fetchTrigger: number;
+  setFetchTrigger: Dispatch<SetStateAction<number>>;
 }
 
 export const MessageContext = createContext<MessageContextType | undefined>(
@@ -36,6 +40,8 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
   );
   const [messages, setMessages] = useState<Message[] | null>(null);
   const [isFetched, setIsFetched] = useState(false);
+  const [numberOfNewMessages, setNumberOfNewMessages] = useState(0);
+  const [fetchTrigger, setFetchTrigger] = useState(0);
 
   const contextValues = {
     userMessages,
@@ -46,6 +52,10 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
     setMessages,
     isFetched,
     setIsFetched,
+    numberOfNewMessages,
+    setNumberOfNewMessages,
+    fetchTrigger,
+    setFetchTrigger,
   };
 
   return (

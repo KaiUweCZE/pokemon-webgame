@@ -6,6 +6,7 @@ import "./menu.css";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { UserContext } from "@/contexts/UserContext";
+import { MessageProvider } from "./message/MessageContext";
 
 const Menu = () => {
   const { data, status } = useSession();
@@ -71,10 +72,10 @@ const Menu = () => {
           </button>
         )}
       </div>
-      {context?.isLog && (
-        <SecondaryMenu
-          location={data?.user.location ? data.user.location : ""}
-        />
+      {context?.isLog && data?.user && (
+        <MessageProvider>
+          <SecondaryMenu userId={data.user.id} location={data.user.location} />
+        </MessageProvider>
       )}
     </header>
   );

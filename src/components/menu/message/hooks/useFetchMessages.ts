@@ -11,8 +11,17 @@ export const useFetchMessages = (userId: string) => {
 
   const fetchMessages = useCallback(async () => {
     if (!messageContext) return { error, isLoading };
-    const { messages, setMessages, isFetched, setIsFetched } = messageContext;
-    if (isFetched) return;
+    console.log("fetching messages");
+
+    const {
+      messages,
+      setMessages,
+      //isFetched,
+      //setIsFetched,
+      setNumberOfNewMessages,
+      fetchTrigger,
+    } = messageContext;
+    //if (isFetched) return;
     setIsLoading(true);
     setError(null);
     try {
@@ -30,8 +39,12 @@ export const useFetchMessages = (userId: string) => {
             pokemonId: m?.pokemonId || undefined,
           };
         });
+        const unviewedMessages = editedMessages.filter(
+          (m) => m.viewed === false
+        );
+        setNumberOfNewMessages(unviewedMessages.length);
         setMessages(editedMessages);
-        setIsFetched(true);
+        //setIsFetched(true);
       }
     } catch (error) {
       setError("Failed to fetch messages");
@@ -42,11 +55,9 @@ export const useFetchMessages = (userId: string) => {
   }, [userId, messageContext?.isFetched, messageContext?.setMessages]);
 
   useEffect(() => {
-    if (!messageContext?.isFetched) {
-      fetchMessages();
-      messageContext?.setIsFetched(true);
-    }
-  }, []);
+    fetchMessages();
+    //messageContext?.setIsFetched(true);
+  }, [messageContext?.fetchTrigger]);
 
   return { error, isLoading };
 };

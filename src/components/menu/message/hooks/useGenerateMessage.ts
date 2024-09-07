@@ -7,6 +7,7 @@ import { PokemonContext } from "@/contexts/PokemonContext";
 import { Pokemon } from "@/types/pokemon";
 import { questTexts } from "../dataQuest";
 import { useSession } from "next-auth/react";
+import { MessageContext } from "../MessageContext";
 
 export const generateText = (
   type: MessageType,
@@ -32,6 +33,7 @@ export const generateText = (
 export const useGenerateMessage = () => {
   const { data: session } = useSession();
   const pokemonContext = useContext(PokemonContext);
+  const messageContext = useContext(MessageContext);
 
   //const { pokemonsFromSix } = pokemonContext;
   const userId = session?.user.id;
@@ -73,6 +75,8 @@ export const useGenerateMessage = () => {
       text: text,
     };
 
+    messageContext?.setFetchTrigger((prev) => prev + 1);
+    console.log("trigger activated: ", messageContext?.fetchTrigger);
     const newMessage = await createMessage(userId, message, pokemonId);
     return newMessage;
   }, [pokemonContext, userId, pokemon, pokemonId]);
