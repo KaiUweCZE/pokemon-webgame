@@ -2,9 +2,10 @@
 import { useState } from "react";
 import UserSixItem from "./UserSixItem";
 import { Pokemon } from "@/types/pokemon";
+import { PokemonWithOrder } from "@/contexts/PokemonContext";
 
 interface UserSixProps {
-  six: Pokemon[];
+  six: PokemonWithOrder[];
   username: string;
 }
 

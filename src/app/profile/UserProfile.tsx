@@ -12,7 +12,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   const badges = badgesData.filter((badge) => user.badges.includes(badge.id));
 
   return (
-    <>
+    <div className="profile-box">
       <Image
         src={user.profileImg === "1" ? firstCharImg : secondCharImg}
         alt="profile image"
@@ -48,7 +48,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

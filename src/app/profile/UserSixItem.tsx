@@ -1,17 +1,15 @@
 import { Dispatch, SetStateAction, useContext, useState } from "react";
-import { getPokemon, removeFromSix } from "./action";
-import { Pokemon } from "@/types/pokemon";
+import { removeFromSix } from "./action";
 import Image from "next/image";
-import {
-  generatePokemonIcon,
-  generatePokemonImage,
-} from "@/utils/generatePokemonImage";
-import { PokemonContext } from "@/contexts/PokemonContext";
+import { generatePokemonIcon } from "@/utils/generatePokemonImage";
+import { PokemonContext, PokemonWithOrder } from "@/contexts/PokemonContext";
 import ErrorMessage from "@/components/ErrorMessage";
+import { useClickOutside } from "@/hooks/useClickOutside";
+import closeIcon from "@/assets/images/icons/close.svg";
 
 interface UserSixItemProps {
   username: string;
-  pokemon: Pokemon;
+  pokemon: PokemonWithOrder;
   setActive: Dispatch<SetStateAction<string>>;
   active: string;
 }
@@ -25,6 +23,9 @@ const UserSixItem = ({
   const context = useContext(PokemonContext);
   const [error, setError] = useState(false);
   const img = pokemon && generatePokemonIcon(pokemon.name);
+  const [open, setOpen] = useState(false);
+
+  const { isVisible } = useClickOutside(setOpen, open, ".about-pokemon");
 
   const handleRemoveFromSix = async () => {
     const updatedUser = await removeFromSix(username, pokemon.id);
@@ -47,33 +48,55 @@ const UserSixItem = ({
           <Image
             src={img}
             alt="image of pokemon"
-            width={30}
-            height={30}
-            onClick={() => setActive(pokemon.id)}
+            width={28}
+            height={28}
+            onClick={() => {
+              setActive(pokemon.id);
+              setOpen(true);
+            }}
           />
         )}
       </div>
-      <article
-        className={
-          active === pokemon.id ? "about-pokemon active" : "about-pokemon"
-        }
-      >
-        <h3>{pokemon?.name}</h3>
-        <ul>
-          <li>level: {pokemon?.level}</li>
-          <li>hp: {pokemon?.hp}</li>
-          <li>damage: {pokemon?.damage}</li>
-          <li>defense: {pokemon?.defense}</li>
-        </ul>
-        <div className="box-buttons">
-          <button className="button-primary" onClick={() => setActive("")}>
-            close
-          </button>
-          <button className="button-primary red" onClick={handleRemoveFromSix}>
-            return
-          </button>
-        </div>
-      </article>
+      {isVisible && (
+        <article
+          className={
+            active === pokemon.id && isVisible
+              ? "about-pokemon active"
+              : "about-pokemon"
+          }
+        >
+          <Image
+            src={closeIcon}
+            className="close-article"
+            alt="close icon"
+            width={16}
+            height={16}
+            onClick={() => setActive("")}
+          />
+          <h3>{pokemon?.name}</h3>
+          <ul>
+            <li>order: {pokemon.battleOrder}</li>
+            <li>level: {pokemon?.level}</li>
+            <li>hp: {pokemon?.hp}</li>
+            <li>damage: {pokemon?.damage}</li>
+            <li>defense: {pokemon?.defense}</li>
+          </ul>
+          <div className="box-buttons">
+            <button
+              className="button-primary red"
+              onClick={handleRemoveFromSix}
+            >
+              return pokemon
+            </button>
+            <button
+              className="button-primary"
+              onClick={() => context?.setPokemonFirst(pokemon.id)}
+            >
+              set first
+            </button>
+          </div>
+        </article>
+      )}
       {error && (
         <ErrorMessage message="it is too dangerous to be without pokemon" />
       )}

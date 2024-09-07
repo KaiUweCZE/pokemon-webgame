@@ -26,8 +26,9 @@ const ProfilePage = () => {
     throw new Error("pokemon context is missing");
   }
 
-  const setUserPokemons = pokemonContext?.setUserPokemons;
-  const userPokemons = pokemonContext.userPokemons;
+  const { setUserPokemons, userPokemons, pokemonsFromSix, sortedPokemons } =
+    pokemonContext;
+
   useEffect(() => {
     if (user) {
       handlePokemons();
@@ -37,7 +38,7 @@ const ProfilePage = () => {
   const handlePokemons = async () => {
     if (user) {
       const pokemons = await getUserPokemons(user.id);
-      const pokemonSix = await getSix(user.name);
+      // const pokemonSix = await getSix(user.name);
 
       if (pokemons) {
         setPokemons(pokemons);
@@ -45,9 +46,9 @@ const ProfilePage = () => {
       }
       if (setUserPokemons) {
         setUserPokemons(pokemons);
-        if (pokemonSix) {
-          pokemonContext.setPokemonsFromSix(pokemonSix);
-        }
+        /*if (pokemonSix) {
+          setPokemonsFromSix(pokemonSix);
+        }*/
       }
       //await update(data, data.user: {...data.user, })
       setLoading(true);
@@ -58,9 +59,7 @@ const ProfilePage = () => {
     <main className="container-profile">
       <section className="section-profile">
         {user && <UserProfile user={user} />}
-        {user?.userSix && (
-          <UserSix username={user.name} six={pokemonContext.pokemonsFromSix} />
-        )}
+        {user && <UserSix username={user.name} six={sortedPokemons} />}
       </section>
       {loading ? <PokemonList pokemons={userPokemons} /> : <Loader />}
       <>

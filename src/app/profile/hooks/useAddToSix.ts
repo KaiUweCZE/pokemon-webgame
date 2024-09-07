@@ -2,17 +2,29 @@ import { useSession } from "next-auth/react";
 import { useContext } from "react";
 import { ProfileContext } from "../ProfileContext";
 import { addPokemonToSix } from "../action";
+import { PokemonContext } from "@/contexts/PokemonContext";
+import { Pokemon } from "@/types/pokemon";
 
 export const useAddToSix = () => {
   const { data, update } = useSession();
   const context = useContext(ProfileContext);
+  const pokemonContext = useContext(PokemonContext);
 
-  const addToSix = async (pokemonId: string) => {
+  const addToSix = async (pokemon: Pokemon) => {
     const user = data?.user;
-    if (!user) return;
+    if (!user || !pokemonContext) return;
 
+    const { setPokemonsFromSix, pokemonsFromSix } = pokemonContext;
     try {
-      const updatedUser = await addPokemonToSix(user.name, pokemonId);
+      if (pokemonsFromSix.length >= 6) {
+        throw new Error("You already have 6 Pokémon in your Six");
+      }
+      if (pokemonsFromSix.some((p) => p.id === pokemon.id)) {
+        throw new Error("This Pokémon is already in your Six");
+      }
+
+      setPokemonsFromSix([...pokemonsFromSix, pokemon]);
+      const updatedUser = await addPokemonToSix(user.name, pokemon.id);
       if (updatedUser) {
         await update({
           ...data,

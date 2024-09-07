@@ -28,7 +28,7 @@ const PokemonFullCard = ({ pokemon }: PokemonProps) => {
     (poke) => poke.name === pokemon.name
   )?.evolution;
 
-  const handleAddToSix = () => addToSix(pokemon.id);
+  const handleAddToSix = () => addToSix(pokemon);
   const handleDelete = () => deletePokemon(pokemon.id);
   const attackData = getAttacksFromNames(pokemon.attacks);
 
