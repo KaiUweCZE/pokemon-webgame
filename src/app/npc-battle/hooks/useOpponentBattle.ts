@@ -93,6 +93,8 @@ const useOpponentBattle = () => {
         console.error("error occurs: ", error);
       }
     } else {
+      console.log("newHp: ", newHp);
+
       setUserPokemon((prevPokemon) => {
         if (!prevPokemon) return userPokemon;
         return { ...userPokemon, actualHp: newHp };
@@ -117,11 +119,11 @@ const useOpponentBattle = () => {
     setLastAttackTime(Date.now());
     setIsFirstAttack(false);
     console.log(
-      `Opponent ${opponentPokemon.name} used ${currentAttack.name}: ${
-        currentAttack.damage
-      }. Next attack in ${recoveryTimeRef.current / 1000} s, ${
-        userPokemon.actualHp
-      }`
+      `Opponent ${opponentPokemon.name} used ${
+        currentAttack.name
+      } with damage: ${currentAttack.damage}. Next attack is comming in ${
+        recoveryTimeRef.current / 1000
+      } s`
     );
   }, [context, pokemonContext, isAttacking]);
 

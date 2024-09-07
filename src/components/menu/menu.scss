@@ -488,24 +488,34 @@ a {
   opacity: 1;
   translate: 0 0;
   transition: 0.5s;
-  h2 {
-    font-size: 1.25rem;
-  }
+
   @starting-style {
     opacity: 0;
     translate: 10rem 0;
   }
+
+  .button-primary {
+    font-size: 0.8rem;
+    place-self: end end;
+    background-color: #c45f5f;
+    &:hover {
+      background-color: #991e1e;
+    }
+  }
 }
 
-.message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba($pale-indigo, 0.3);
-  ul {
-    margin-top: 0.5rem;
-    width: 100%;
+.message-detail-header {
+  margin-bottom: 1rem;
+  h2 {
+    font-size: 1rem;
   }
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+.message-text {
+  margin-bottom: 0.5rem;
 }
 
 .message-item {

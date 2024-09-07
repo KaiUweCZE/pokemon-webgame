@@ -116,11 +116,8 @@ export const useGetExp = (
 
   // Reset expAdded when the battle state changes from WILD_POKEMON_FAINTED
   useEffect(() => {
-    console.log("exp added: ", expAdded);
-
     if (battleState !== BattleState.WILD_POKEMON_FAINTED) {
       setExpAdded(false);
-      console.log("excdaw: ", expAdded);
     }
   }, [trigger]);
 };

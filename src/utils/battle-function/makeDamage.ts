@@ -1,12 +1,12 @@
 import { typesOfPokemon } from "@/data/typesOfPokemonData";
 
 export const makeDamage = (
-  damage: number,
-  hp: number,
-  pokemonTypes: string[],
+  attackDamage: number,
+  defendingPokemonHp: number,
+  defendingPokemonTypes: string[],
   attackType: string,
-  baseAttack: number,
-  baseDefense: number
+  attackingPokemonDamage: number,
+  defendingPokemonDefense: number
 ) => {
   let multiplier = 1;
   const attackTypeData = typesOfPokemon.find(
@@ -14,34 +14,38 @@ export const makeDamage = (
   );
   // Adjust the multiplier based on the type matchups
   // for example fire has advantage against water => damage * 2
-  pokemonTypes.forEach((type) => {
+  defendingPokemonTypes.forEach((type) => {
     if (attackTypeData?.advantage.includes(type)) {
       multiplier *= 2;
     } else if (attackTypeData?.disadvantage.includes(type)) {
       multiplier *= 0.5;
     }
   });
-  const resultDamage = baseDefense * 0.5 - (baseAttack + damage) * multiplier;
-  // check if denfense is not bigger then attack to avoid adding hp after attack
+
+  // .5 after defendingPokemonDefense is test contstant,
+  const resultDamage = Math.min(
+    defendingPokemonDefense * 0.5 -
+      (attackingPokemonDamage + attackDamage) * multiplier,
+    -1
+  );
+  // check if denfense is not bigger then attack to avoid adding defendingPokemonHp after attack
   // if defense is bigger damage will be only - 1
-  const newHp = resultDamage < 0 ? hp + resultDamage : hp - 1;
-  const result = newHp < 0 ? 0 : newHp;
+  const newHp = Math.max(defendingPokemonHp + resultDamage, 0);
   console.log(
     "pokemon hp: ",
-    hp,
+    defendingPokemonHp,
+
+    "overall damage: ",
+    (attackingPokemonDamage + attackDamage) * multiplier,
     "defense: ",
-    baseDefense,
-    "result damage : ",
+    defendingPokemonDefense,
+    "result of damage : ",
     resultDamage,
-    "raw attack: ",
-    (baseAttack + damage) * multiplier,
     "newhp: ",
     newHp,
-    "result hp: ",
-    result,
     "attack advanatage: ",
     multiplier
   );
 
-  return result;
+  return newHp;
 };

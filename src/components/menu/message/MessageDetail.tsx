@@ -41,7 +41,7 @@ const MessageDetail = ({ message }: MessageDetailProps) => {
         <h2>{headline}</h2>
         <span>from: {message.from}</span>
       </header>
-      <p>{message.text}</p>
+      <p className="message-text">{message.text}</p>
       <footer>day: {message.time}</footer>
       <button className="button-primary" onClick={handleDeleteMessage}>
         delete

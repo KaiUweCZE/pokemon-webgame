@@ -21,6 +21,8 @@ const useReward = () => {
     if (!data) return;
 
     const handleReward = async () => {
+      console.log(" user obtains this reward: ", reward);
+
       try {
         const updatedUser = await addReward(data.user.name, reward);
         if (updatedUser) {
@@ -39,8 +41,6 @@ const useReward = () => {
 
     if (context.enemyPokemon.actualHp === 0) {
       handleReward();
-    } else {
-      console.log("Enemy Pokémon has too much HP.");
     }
   }, [context?.enemyPokemon?.actualHp]);
 

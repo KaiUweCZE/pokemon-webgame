@@ -12,6 +12,7 @@ import { PokedexProvider } from "./pokedex/PokedexContext";
 import MessageInMenu from "./message/MessageInMenu";
 import { MessageContext, MessageProvider } from "./message/MessageContext";
 import { useFetchMessages } from "./message/hooks/useFetchMessages";
+import useLoadSixToContext from "@/app/npc-battle/hooks/useLoadSixToContext";
 
 interface LocationProps {
   location: string;
@@ -29,6 +30,7 @@ const SecondaryMenu = ({ location, userId }: LocationProps) => {
   const [active, setActive] = useState<MenuType | null>(null);
   const context = useContext(MessageContext);
   const { error, isLoading } = useFetchMessages(userId);
+  useLoadSixToContext();
   const itemWidth = 24;
   const handleOptions = (e: MenuType) => {
     if (active === e) {

@@ -36,7 +36,6 @@ export const useBattleState = (
       switch (true) {
         case userPokemon.actualHp <= 0:
           console.log("user pokemons: ", userPokemons);
-
           if (
             userPokemons &&
             userPokemons.some((pokemon) => pokemon.actualHp > 0)
@@ -47,7 +46,6 @@ export const useBattleState = (
           }
 
         case currentOpponentPokemon.actualHp <= 0:
-          console.log("ouha");
           if (opponentPokemons?.some((pokemon) => pokemon.actualHp > 0)) {
             return BattleState.OPPONENT_POKEMON_FAINTED;
           } else {

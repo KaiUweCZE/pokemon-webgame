@@ -6,6 +6,7 @@ import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
+import { makeDamage } from "@/utils/battle-function/makeDamage";
 
 const useEnemyBattle = () => {
   const context = useContext(BattleContext);
@@ -20,18 +21,16 @@ const useEnemyBattle = () => {
     if (isAttacking) return;
     const move = context.enemyAttack;
     const { currentPokemon, setCurrentPokemon } = pokemonContext;
+    const { enemyPokemon } = context;
     const setMove = context.setEnemyAttack;
     //get moves from generateMoves (array with data from attacksData)
-    const moves = generateMoves(
-      context?.enemyPokemon?.name,
-      context?.enemyPokemon?.level
-    );
+    const moves = generateMoves(enemyPokemon.name, enemyPokemon.level);
 
     // set random attack from the enemy attacks
     const selectedMove = randomAttack(moves);
     setMove(selectedMove);
     const recovery = restAfterAttack(
-      context.enemyPokemon.speed,
+      enemyPokemon.speed,
       selectedMove.recoveryTime
     );
 
@@ -46,7 +45,17 @@ const useEnemyBattle = () => {
         );
         setIsAttacking(true);
 
-        let newHp = Math.max(currentPokemon?.actualHp - move.damage, 0);
+        const newHp = makeDamage(
+          move.damage,
+          currentPokemon.actualHp,
+          currentPokemon.type,
+          move.type,
+          enemyPokemon.damage,
+          currentPokemon.defense
+        );
+
+        console.log("new hP: ", newHp);
+
         setCurrentPokemon((prevPokemon) => {
           if (!prevPokemon) return prevPokemon;
           return { ...prevPokemon, actualHp: newHp };
