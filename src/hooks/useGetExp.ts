@@ -109,7 +109,7 @@ export const useGetExp = (
   // battle state updates before the enemy Pokemon's HP is set to 0.
   useEffect(() => {
     if (enemyPokemon && enemyPokemon?.actualHp > 0) {
-      console.log("trigger was actived", enemyPokemon?.actualHp);
+      //console.log("trigger was actived", enemyPokemon?.actualHp);
       setTrigger((prev) => prev + 1);
     }
   }, [battleState]);

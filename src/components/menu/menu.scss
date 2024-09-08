@@ -583,6 +583,7 @@ a {
   border-radius: 0.3rem;
   &:hover {
     background-color: rgba($pale-indigo, 0.6);
+    background-color: rgba(242, 84, 31, 0.6);
   }
   span {
     position: absolute;
@@ -593,6 +594,12 @@ a {
   }
   .bag-item-image {
     position: absolute;
+  }
+  &.useable {
+    background-color: rgb(54, 105, 97);
+    &:hover {
+      background-color: rgba(11, 202, 129, 0.6);
+    }
   }
 }
 

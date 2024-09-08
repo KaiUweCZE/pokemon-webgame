@@ -241,10 +241,6 @@
   opacity: 0;
 }
 
-.user-pokemon.user-switching .user-image {
-  opacity: 0;
-  transition: 0s;
-}
 .user-pokemon.user-switching .user-pokemon-image {
   opacity: 0;
   transition: 0s;

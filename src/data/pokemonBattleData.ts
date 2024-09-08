@@ -99,7 +99,7 @@ import hitmonchanIcon from "@/assets/images/pokemons/pokemon-icons/hitmonchan-ic
 import hitmonchanBack from "@/assets/images/pokemons/backside/hitmonchan-back.webp";
 
 import pikachuImg from "@/assets/images/pokemons/pikachu.webp";
-import pikachuBack from "@/assets/images/pokemons/backside/pikachu-back.png";
+import pikachuBack from "@/assets/images/pokemons/backside/pikachu-back.webp";
 import pikachuIcon from "@/assets/images/pokemons/pokemon-icons/pikachu-icon.png";
 
 import sandshrewImg from "@/assets/images/pokemons/sandshrew.webp";

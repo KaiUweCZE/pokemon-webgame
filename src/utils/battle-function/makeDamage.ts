@@ -31,7 +31,7 @@ export const makeDamage = (
   // check if denfense is not bigger then attack to avoid adding defendingPokemonHp after attack
   // if defense is bigger damage will be only - 1
   const newHp = Math.max(defendingPokemonHp + resultDamage, 0);
-  console.log(
+  /*console.log(
     "pokemon hp: ",
     defendingPokemonHp,
 
@@ -45,7 +45,7 @@ export const makeDamage = (
     newHp,
     "attack advanatage: ",
     multiplier
-  );
+  );*/
 
   return newHp;
 };

@@ -366,9 +366,11 @@ li:has(.bar) {
   display: grid;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 1rem;
   background-color: #24255a;
-  box-shadow: 0 0 2px rgb(116, 116, 116);
+  background-color: rgba(2, 20, 44, 0.95);
+  box-shadow: 0 0 4px rgb(15, 15, 15);
   border-radius: 0.5rem;
   color: #ffffff;
   position: fixed;
@@ -380,7 +382,6 @@ li:has(.bar) {
   translate: 0 5rem;
   opacity: 1;
   transition: 0.3s;
-  animation: go-out 0.3s linear 1s forwards;
   z-index: 2;
 }
 .error-message p {
@@ -389,10 +390,13 @@ li:has(.bar) {
   width: -moz-max-content;
   width: max-content;
   font-weight: bold;
+  width: 100%;
+  min-width: 14rem;
+  text-wrap: balance;
 }
 @starting-style {
   .error-message {
-    translate: 0 0rem;
+    translate: 0 10rem;
     opacity: 0;
   }
 }
@@ -403,7 +407,7 @@ li:has(.bar) {
   }
   to {
     opacity: 0;
-    translate: 0 -2rem;
+    translate: 0 0rem;
   }
 }
 .pokemon-type {

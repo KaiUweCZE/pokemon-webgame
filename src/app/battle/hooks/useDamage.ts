@@ -51,24 +51,22 @@ const useDamage = () => {
       actualEnergy: newEnergy,
     });
 
-    console.log("new energy: ", pokemonContext.currentPokemon?.actualEnergy);
+    //console.log("new energy: ", pokemonContext.currentPokemon?.actualEnergy);
 
     context.setEnemyPokemon({
       ...enemy,
       actualHp: Math.max(0, newHp),
     });
 
-    console.log("new HP: ", newHp);
+    //console.log("new HP: ", newHp);
 
     const newSix = pokemonSix.map((pokemon) =>
-      pokemon.id !== userPokemon.id ? pokemon : userPokemon
+      pokemon.id !== userPokemon.id ? pokemon : { ...userPokemon, order: 0 }
     );
     setPokemonSix(newSix);
 
-    console.log("New six of pokemon: ", pokemonSix);
-
     changeEnergyOnServer(userPokemon.id, attack.energyCost);
-    console.log("enemy stat: ", enemy);
+    //console.log("enemy stat: ", enemy);
   }, [context?.attack, context?.change]);
 
   //return { setChange };

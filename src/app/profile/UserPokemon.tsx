@@ -80,11 +80,10 @@ const UserPokemon: React.FC<UserPokemonProps> = ({
             </li>
           </ul>
         }
-        {data?.user.userSix.includes(pokemon.id) && (
+        {data?.user.userSix.some((p) => p.pokemonId === pokemon.id) && (
           <div className="sticker">6</div>
         )}
       </div>{" "}
-      {context?.error && <ErrorMessage message={context.message} />}
     </>
   );
 };

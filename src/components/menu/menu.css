@@ -644,6 +644,7 @@ a {
 }
 .bag-item:hover {
   background-color: rgba(76, 88, 151, 0.6);
+  background-color: rgba(242, 84, 31, 0.6);
 }
 .bag-item span {
   position: absolute;
@@ -654,6 +655,12 @@ a {
 }
 .bag-item .bag-item-image {
   position: absolute;
+}
+.bag-item.useable {
+  background-color: rgb(54, 105, 97);
+}
+.bag-item.useable:hover {
+  background-color: rgba(11, 202, 129, 0.6);
 }
 
 .bag-coins {

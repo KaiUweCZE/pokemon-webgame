@@ -4,7 +4,7 @@ import UserImage from "./UserImage";
 import useChangeOponentPokemon from "./hooks/useChangeOponentPokemon";
 import { useBattleState } from "./hooks/useBattleState";
 import useInitializeBattleData from "./hooks/useInitializeBattleData";
-import useLoadSixToContext from "./hooks/useLoadSixToContext";
+import useLoadSixToContext from "@/hooks/useLoadSixToContext";
 import Loader from "@/components/Loader";
 import useDamage from "./hooks/useDamage";
 

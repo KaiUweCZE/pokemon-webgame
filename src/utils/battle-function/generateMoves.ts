@@ -13,7 +13,7 @@ export const generateMoves = (pokemonName: string, pokemonLevel: number) => {
     }
     return acc;
   }, [] as string[]);
-  console.log("available moves: ", availableMoves);
+  //console.log("available moves: ", availableMoves);
 
   // get data for each attack
   const moves = attacksData.filter((move) =>

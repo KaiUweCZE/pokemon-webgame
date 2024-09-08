@@ -9,7 +9,7 @@ import { BattleContext } from "@/contexts/BattleContext";
 import { BattleState } from "@/types/enums/battleState";
 import UserBattleInterface from "./UserBattleInterface";
 import { useBattleState } from "../hooks/useBattleState";
-import useLoadSixToContext from "@/app/npc-battle/hooks/useLoadSixToContext";
+import useLoadSixToContext from "@/hooks/useLoadSixToContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { useBattleInit } from "../hooks/useBattleInit";
 import { RoundContext } from "../RoundContext";

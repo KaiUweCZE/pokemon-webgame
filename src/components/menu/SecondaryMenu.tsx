@@ -12,7 +12,7 @@ import { PokedexProvider } from "./pokedex/PokedexContext";
 import MessageInMenu from "./message/MessageInMenu";
 import { MessageContext, MessageProvider } from "./message/MessageContext";
 import { useFetchMessages } from "./message/hooks/useFetchMessages";
-import useLoadSixToContext from "@/app/npc-battle/hooks/useLoadSixToContext";
+import useLoadSixToContext from "@/hooks/useLoadSixToContext";
 
 interface LocationProps {
   location: string;

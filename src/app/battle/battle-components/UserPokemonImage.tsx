@@ -34,7 +34,7 @@ const UserPokemonImage = ({ userPokemon }: UserPokemonBattleProps) => {
       {imgBack && (
         <>
           <Image
-            className="user-image"
+            className="user-pokemon-image"
             src={imgBack}
             alt="user's pokemon"
             width={170}

@@ -100,7 +100,7 @@ const useOpponentBattle = () => {
         return { ...userPokemon, actualHp: newHp };
       });
       const newSix = pokemonContext.pokemonsFromSix.map((pokemon) =>
-        pokemon.id !== userPokemon.id ? pokemon : userPokemon
+        pokemon.id !== userPokemon.id ? pokemon : { ...userPokemon, order: 0 }
       );
       pokemonContext.setPokemonsFromSix(newSix);
       try {

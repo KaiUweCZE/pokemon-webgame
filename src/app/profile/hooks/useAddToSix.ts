@@ -17,13 +17,18 @@ export const useAddToSix = () => {
     const { setPokemonsFromSix, pokemonsFromSix } = pokemonContext;
     try {
       if (pokemonsFromSix.length >= 6) {
-        throw new Error("You already have 6 Pokémon in your Six");
+        context?.setMessage(`You already have 6 Pokémon in your Six`);
+        throw new Error(`You already have 6 Pokémon in your Six`);
       }
       if (pokemonsFromSix.some((p) => p.id === pokemon.id)) {
-        throw new Error("This Pokémon is already in your Six");
+        context?.setMessage(`This ${pokemon.name} is already in your Six `);
+        throw new Error(`This Pokémon is already in your Six ${pokemon.name}`);
       }
 
-      setPokemonsFromSix([...pokemonsFromSix, pokemon]);
+      setPokemonsFromSix([
+        ...pokemonsFromSix,
+        { ...pokemon, order: pokemonsFromSix.length },
+      ]);
       const updatedUser = await addPokemonToSix(user.name, pokemon.id);
       if (updatedUser) {
         await update({
@@ -33,7 +38,6 @@ export const useAddToSix = () => {
         context?.setError(false);
       }
     } catch (error) {
-      context?.setMessage("This pokemon is already in your Six");
       context?.setError(true);
       setTimeout(() => context?.setError(false), 2000);
     }

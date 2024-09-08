@@ -1,15 +1,17 @@
-import { PokemonContext } from "@/contexts/PokemonContext";
+import { PokemonContext, PokemonWithOrder } from "@/contexts/PokemonContext";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { getSix } from "@/utils/battle-function/getSix";
 import { useSession } from "next-auth/react";
-import { NpcBattleContext } from "../NpcBattleContext";
+import { NpcBattleContext } from "../app/npc-battle/NpcBattleContext";
 import { BattleState } from "@/types/enums/battleState";
+import { Pokemon } from "@/types/pokemon";
 
 const useLoadSixToContext = () => {
   const { data } = useSession();
   const npcBattleContext = useContext(NpcBattleContext);
   const context = useContext(PokemonContext);
   const [loading, setLoading] = useState(false);
+  const [fetched, setFetched] = useState(false);
 
   const fetchAndSetPokemon = useCallback(
     async (username: string) => {
@@ -20,8 +22,20 @@ const useLoadSixToContext = () => {
           console.log("Pokemons are not set");
           return;
         }
-        context?.setPokemonsFromSix(pokemonSix);
-        const readyPokemon = pokemonSix.find((pokemon) => pokemon.actualHp > 0);
+
+        const typedPokemonSix: PokemonWithOrder[] = pokemonSix.map(
+          (pokemon): PokemonWithOrder => ({
+            ...(pokemon as Pokemon),
+            order: pokemon.order ?? 0,
+          })
+        );
+
+        context?.setPokemonsFromSix(
+          typedPokemonSix.sort((a, b) => a.order - b.order)
+        );
+        const readyPokemon = typedPokemonSix.find(
+          (pokemon) => pokemon.actualHp > 0
+        );
         if (readyPokemon) {
           context?.setCurrentPokemon(readyPokemon);
           npcBattleContext?.setBattleState(BattleState.NOT_STARTED);
@@ -33,7 +47,6 @@ const useLoadSixToContext = () => {
         console.error("error occurs: ", error);
         // there will be enum for error
       } finally {
-        console.log("load end");
         setLoading(false);
       }
     },
@@ -42,13 +55,14 @@ const useLoadSixToContext = () => {
 
   useEffect(() => {
     // check if ther is data, context and if pokemons from six are already fetched
-    if (!data || !context || context.pokemonsFromSix.length > 0) return;
+    if (!data || !context || context.pokemonsFromSix.length > 0 || loading)
+      return;
     const username = data.user.name;
     console.log("start with fetching");
     fetchAndSetPokemon(username);
-  }, [data?.user]);
+  }, [data?.user.userSix, data?.user.day, loading, fetchAndSetPokemon]);
 
-  return { loading };
+  return { loading, fetchAndSetPokemon };
 };
 
 export default useLoadSixToContext;

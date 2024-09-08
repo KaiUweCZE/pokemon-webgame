@@ -34,13 +34,13 @@ export const mapData = [
         repellendus? Est, fuga.`,
     options: ["Routes", "Market", "Poke Centrum", "NPC", "Explore"],
     npcs: ["Sheriff", "prof. Bloom", "Hank"],
-    marketItems: ["pokeball", "potion"],
+    marketItems: ["pokeball", "potion", "coffee"],
     routes: ["cave", "mountains", "large farm"],
     img: shireImg,
     rounds: [
       {
         id: 0,
-        pokemons: [27, 37],
+        pokemons: [27 /*37*/],
         levelRange: [1, 3],
       },
       {

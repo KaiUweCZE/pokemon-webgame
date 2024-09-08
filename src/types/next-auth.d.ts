@@ -1,6 +1,11 @@
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
 import { JWT } from "next-auth/jwt";
 
+interface UserSixEntry {
+  pokemonId: string;
+  order: number;
+}
+
 declare module "next-auth" {
   interface Session {
     user: {
@@ -9,7 +14,7 @@ declare module "next-auth" {
       profileImg: string | null;
       level: number;
       pokemonIds: string[];
-      userSix: string[];
+      userSix: { pokemonId: string; order: number }[];
       badges: number[];
       location: string;
       visitedLocations: string[];
@@ -27,7 +32,7 @@ declare module "next-auth" {
     profileImg: string | null;
     level: number;
     pokemonIds: string[];
-    userSix: string[];
+    userSix: { pokemonId: string; order: number }[];
     location: string;
     visitedLocations: string[];
     chapter: number;
@@ -46,7 +51,7 @@ declare module "next-auth/jwt" {
     profileImg: string | null;
     level: number;
     pokemonIds: string[];
-    userSix: string[];
+    userSix: { pokemonId: string; order: number }[];
     location: string;
     visitedLocations: string[];
     chapter: number;

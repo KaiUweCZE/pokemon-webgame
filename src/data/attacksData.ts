@@ -18,6 +18,7 @@ import rockImg from "@/assets/images/attacks/rock.webp";
 import poisonImg from "@/assets/images/attacks/skull.webp";
 import dragonImg from "@/assets/images/attacks/dragon.gif";
 import scratchImg from "@/assets/images/attacks/scratch.webp";
+import universal from "@/assets/images/attacks/fighting.webp";
 
 export const attacksData = [
   {
@@ -260,7 +261,7 @@ export const attacksData = [
     type: "ground",
     damage: 3,
     energyCost: 2,
-    recoveryTime: 3,
+    recoveryTime: 4, // 4
     img: groundImg,
   },
   {

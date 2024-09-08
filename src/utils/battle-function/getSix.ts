@@ -17,15 +17,37 @@ export const getSix = async (username: string) => {
       return null;
     }
 
-    const { userSix } = user;
+    let userSix = user.userSix as { pokemonId: string; order: number }[];
+
+    if (userSix.length === 0) {
+      return [];
+    }
+
+    const pokemonIds = userSix.map((entry) => entry.pokemonId);
 
     const pokemons = await prisma.pokemon.findMany({
       where: {
-        id: { in: userSix },
+        id: {
+          in: pokemonIds,
+        },
       },
     });
 
-    return pokemons;
+    const result = userSix.map((pokemonFromSix) => {
+      const pokemonData = pokemons.find(
+        (pokemon) => pokemon.id === pokemonFromSix.pokemonId
+      );
+      return {
+        ...pokemonData,
+        order: pokemonFromSix.order,
+      };
+    });
+
+    result.sort((a, b) => a.order - b.order);
+
+    console.log("users six: ", result);
+
+    return result;
   } catch (error) {
     console.error("Error fetching user's pokemon:", error);
     return null;

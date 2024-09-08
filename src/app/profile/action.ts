@@ -2,6 +2,11 @@
 import { connectToDatabase } from "@/utils/server-helpers";
 import prisma from "../../../prisma";
 
+interface UserSixEntry {
+  pokemonId: string;
+  order: number;
+}
+
 export const getProfile = async (username: string) => {
   if (!username) {
     throw new Error("Username is required");
@@ -56,45 +61,6 @@ export const getUserPokemons = async (userId: string) => {
   }
 };
 
-export const addPokemonToSix = async (username: string, pokemonId: string) => {
-  try {
-    console.log("try to connect to database");
-
-    await connectToDatabase();
-    console.log("connect to database");
-
-    const user = await prisma.user.findUnique({
-      where: { name: username },
-    });
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    if (user.userSix && user.userSix.length >= 6) {
-      throw new Error("User's six is already full");
-    }
-
-    if (user.userSix && user.userSix.includes(pokemonId)) {
-      throw new Error("Pokemon is already in the user's six");
-    }
-
-    const updatedUser = await prisma.user.update({
-      where: { name: username },
-      data: {
-        userSix: { push: pokemonId },
-      },
-    });
-
-    return updatedUser;
-  } catch (error) {
-    console.error("Error in addPokemonToSix function", error);
-    throw new Error("Server error: Unable to add pokemon to user's six");
-  } finally {
-    await prisma.$disconnect();
-  }
-};
-
 export const getPokemon = async (pokemonId: string) => {
   try {
     await connectToDatabase();
@@ -110,40 +76,49 @@ export const getPokemon = async (pokemonId: string) => {
 
     return pokemon;
   } catch (error) {
-    console.error("Error fetching user's pokemon:", error);
+    console.error("Error fetching user's pokemon add pokemon to six:", error);
     return null;
   } finally {
     await prisma.$disconnect();
   }
 };
 
-export const getSix = async (username: string) => {
+export const addPokemonToSix = async (username: string, pokemonId: string) => {
   try {
     await connectToDatabase();
 
     const user = await prisma.user.findUnique({
       where: { name: username },
-      select: {
-        userSix: true,
-      },
+      select: { userSix: true },
     });
+
     if (!user) {
-      console.error("User not found");
-      return null;
+      throw new Error("User not found");
     }
 
-    const { userSix } = user;
+    let userSix = user.userSix as { pokemonId: string; order: number }[];
 
-    const pokemons = await prisma.pokemon.findMany({
-      where: {
-        id: { in: userSix },
+    if (userSix.length >= 6) {
+      throw new Error("User's six is already full");
+    }
+
+    if (userSix.some((entry) => entry.pokemonId === pokemonId)) {
+      throw new Error("Pokemon is already in the user's six");
+    }
+
+    userSix.push({ pokemonId: pokemonId, order: userSix.length });
+
+    const updatedUser = await prisma.user.update({
+      where: { name: username },
+      data: {
+        userSix: userSix,
       },
     });
 
-    return pokemons;
+    return updatedUser;
   } catch (error) {
-    console.error("Error fetching user's pokemon:", error);
-    return null;
+    console.error("Error in addPokemonToSix function", error);
+    throw new Error("Server error: Unable to add pokemon to user's six");
   } finally {
     await prisma.$disconnect();
   }
@@ -158,13 +133,21 @@ export const removeFromSix = async (username: string, pokemonId: string) => {
       select: { userSix: true },
     });
 
-    if (!user || user.userSix?.length <= 1) return null;
+    if (!user) return null;
 
-    const newSix = user.userSix.filter((e) => e !== pokemonId);
+    let userSix = user.userSix as { pokemonId: string; order: number }[];
+
+    if (userSix.length <= 1) return null;
+
+    const newSix = userSix
+      .filter((entry) => entry.pokemonId !== pokemonId)
+      .map((entry, index) => ({ ...entry, order: index }));
 
     const updatedUser = await prisma.user.update({
       where: { name: username },
-      data: { userSix: newSix },
+      data: {
+        userSix: newSix,
+      },
     });
 
     return updatedUser;
@@ -174,6 +157,8 @@ export const removeFromSix = async (username: string, pokemonId: string) => {
     await prisma.$disconnect();
   }
 };
+
+export const changeOrderInUserSix = async () => {};
 
 export const removePokemon = async (pokemonId: string, username: string) => {
   try {

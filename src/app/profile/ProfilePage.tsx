@@ -1,8 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { getSix, getUserPokemons } from "./action";
+import { getUserPokemons } from "./action";
 import { useSession } from "next-auth/react";
-import { User } from "@/types/user";
 import UserProfile from "./UserProfile";
 import { Pokemon } from "@/types/pokemon";
 import "./profile.css";
@@ -10,7 +9,7 @@ import { PokemonContext } from "@/contexts/PokemonContext";
 import Loader from "@/components/Loader";
 import UserSix from "./UserSix";
 import PokemonList from "./PokemonList";
-import { ProfileContext, ProfileProvider } from "./ProfileContext";
+import { ProfileContext } from "./ProfileContext";
 import PokemonFullCard from "./full-card/PokemonFullCard";
 
 const ProfilePage = () => {
@@ -26,8 +25,7 @@ const ProfilePage = () => {
     throw new Error("pokemon context is missing");
   }
 
-  const { setUserPokemons, userPokemons, pokemonsFromSix, sortedPokemons } =
-    pokemonContext;
+  const { setUserPokemons, userPokemons, pokemonsFromSix } = pokemonContext;
 
   useEffect(() => {
     if (user) {
@@ -59,7 +57,7 @@ const ProfilePage = () => {
     <main className="container-profile">
       <section className="section-profile">
         {user && <UserProfile user={user} />}
-        {user && <UserSix username={user.name} six={sortedPokemons} />}
+        {user && <UserSix username={user.name} six={pokemonsFromSix} />}
       </section>
       {loading ? <PokemonList pokemons={userPokemons} /> : <Loader />}
       <>

@@ -17,7 +17,7 @@ export const useBattleState = () => {
     const { enemyPokemon, setBattleState, setMenuOption } = context;
 
     if (!currentPokemon || !enemyPokemon) return;
-    console.log("battle state manager: ", context.battleState);
+    //console.log("battle state manager: ", context.battleState);
 
     if (
       enemyPokemon.actualHp > 0 &&

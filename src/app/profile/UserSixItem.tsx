@@ -73,26 +73,28 @@ const UserSixItem = ({
             height={16}
             onClick={() => setActive("")}
           />
-          <h3>{pokemon?.name}</h3>
+          <h3>
+            {pokemon.order + 1}. {pokemon?.name}
+          </h3>
           <ul>
-            <li>order: {pokemon.battleOrder}</li>
-            <li>level: {pokemon?.level}</li>
-            <li>hp: {pokemon?.hp}</li>
-            <li>damage: {pokemon?.damage}</li>
-            <li>defense: {pokemon?.defense}</li>
+            <li>level: {pokemon.level}</li>
+            <li>actualHp: {pokemon.actualHp}</li>
+            <li>hp: {pokemon.hp}</li>
+            <li>damage: {pokemon.damage}</li>
+            <li>defense: {pokemon.defense}</li>
           </ul>
           <div className="box-buttons">
-            <button
-              className="button-primary red"
-              onClick={handleRemoveFromSix}
-            >
-              return pokemon
-            </button>
             <button
               className="button-primary"
               onClick={() => context?.setPokemonFirst(pokemon.id)}
             >
-              set first
+              first in battle
+            </button>
+            <button
+              className="button-primary red"
+              onClick={handleRemoveFromSix}
+            >
+              return to box
             </button>
           </div>
         </article>

@@ -1,3 +1,5 @@
+import { UserSixEntry } from "./next-auth";
+
 export interface User {
   id: string;
   name: string;
@@ -5,7 +7,7 @@ export interface User {
   level: number;
   pokemonIds: string[];
   badges: number[];
-  userSix: string[];
+  userSix: UserSixEntry[];
   location: string;
   day: number;
   partOfDay: number;

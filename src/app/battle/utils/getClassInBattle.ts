@@ -8,7 +8,7 @@ export const getClassInBattle = (
 
   switch (state) {
     case BattleState.USER_POKEMON_FAINTED:
-      cssClasses.push("user-pokemon-done");
+      cssClasses.push("user-pokemon-fainted");
       break;
     case BattleState.CATCHING:
       cssClasses.push("catching");

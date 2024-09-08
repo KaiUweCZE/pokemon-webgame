@@ -1,94 +1,102 @@
 import { BattleContext } from "@/contexts/BattleContext";
 import { generateMoves } from "@/utils/battle-function/generateMoves";
 import { randomAttack } from "@/utils/battle-function/randomAttack";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { changeHpServer } from "@/utils/battle-function/changeHpServer";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { BattleState } from "@/types/enums/battleState";
 import { restAfterAttack } from "@/utils/battle-function/restAfterAttack";
 import { makeDamage } from "@/utils/battle-function/makeDamage";
+import { Attack } from "@/types/attack";
 
 const useEnemyBattle = () => {
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
   const [isAttacking, setIsAttacking] = useState(false);
-  const [trigger, setTrigger] = useState(0);
+  const recoveryRef = useRef(500);
+  const lastAttackTimeRef = useRef(Date.now());
+  const selectedMoveRef = useRef<Attack | null>(null);
 
   useEffect(() => {
-    if (!context || !context.enemyPokemon || !pokemonContext) return;
-    console.log("is attacking?: ", isAttacking);
+    if (
+      !context ||
+      !context.enemyPokemon ||
+      !pokemonContext ||
+      context.battleState !== BattleState.BATTLE
+    )
+      return;
 
-    if (isAttacking) return;
-    const move = context.enemyAttack;
     const { currentPokemon, setCurrentPokemon } = pokemonContext;
-    const { enemyPokemon } = context;
-    const setMove = context.setEnemyAttack;
-    //get moves from generateMoves (array with data from attacksData)
-    const moves = generateMoves(enemyPokemon.name, enemyPokemon.level);
+    const { enemyPokemon, setEnemyAttack } = context;
 
-    // set random attack from the enemy attacks
-    const selectedMove = randomAttack(moves);
-    setMove(selectedMove);
-    const recovery = restAfterAttack(
-      enemyPokemon.speed,
-      selectedMove.recoveryTime
-    );
+    const performAttack = async () => {
+      if (isAttacking) return;
 
-    console.log("trigger!! ", trigger);
+      const now = Date.now();
+      if (now - lastAttackTimeRef.current < recoveryRef.current) return;
 
-    if (move && currentPokemon && context.battleState === BattleState.BATTLE) {
-      // check if there is not attack in progress
+      if (!selectedMoveRef.current) {
+        const moves = generateMoves(enemyPokemon.name, enemyPokemon.level);
+        selectedMoveRef.current = randomAttack(moves);
+      }
+      console.log("Executing attack: ", selectedMoveRef.current.name);
 
-      const interval = setInterval(async () => {
-        console.log(
-          `start recovery: ${recovery} attack: ${selectedMove.name} recovery time: ${selectedMove.recoveryTime}`
-        );
-        setIsAttacking(true);
+      setIsAttacking(true);
+      setEnemyAttack(selectedMoveRef.current);
+      lastAttackTimeRef.current = now;
 
+      console.log("enemy attack: ", context.enemyAttack);
+
+      if (context.enemyAttack && currentPokemon) {
         const newHp = makeDamage(
-          move.damage,
+          context.enemyAttack.damage,
           currentPokemon.actualHp,
           currentPokemon.type,
-          move.type,
+          context.enemyAttack.type,
           enemyPokemon.damage,
           currentPokemon.defense
         );
-
-        console.log("new hP: ", newHp);
 
         setCurrentPokemon((prevPokemon) => {
           if (!prevPokemon) return prevPokemon;
           return { ...prevPokemon, actualHp: newHp };
         });
 
-        // active and deactive animation
         context.setEnemyAttackAnimation(true);
         setTimeout(() => {
           context.setEnemyAttackAnimation(false);
         }, 1000);
+
         try {
           await changeHpServer(currentPokemon.id, newHp);
         } catch (error) {
           console.error("error occurs: ", error);
         } finally {
           setIsAttacking(false);
+          const newRecoveryTime = restAfterAttack(
+            enemyPokemon.speed,
+            selectedMoveRef.current.recoveryTime
+          );
+          recoveryRef.current = newRecoveryTime * 1000;
+          console.log(
+            `New recovery time: ${newRecoveryTime}s, recovery ref: ${recoveryRef.current}`
+          );
+          selectedMoveRef.current = null;
         }
+
         if (newHp === 0) {
-          clearInterval(interval);
           context.setBattleState(BattleState.USER_POKEMON_FAINTED);
         }
-      }, recovery * 1000);
+      } else {
+        // tunr on again if context is not set yet
+        setIsAttacking(false);
+      }
+    };
 
-      return () => clearInterval(interval);
-    }
-  }, [context, pokemonContext, trigger]);
+    const intervalId = setInterval(performAttack, 50);
 
-  useEffect(() => {
-    if (!isAttacking) {
-      setTrigger((prev) => prev + 1);
-      console.log("triggered: ", trigger);
-    }
-  }, [isAttacking]);
+    return () => clearInterval(intervalId);
+  }, [context, pokemonContext]);
 };
 
 export default useEnemyBattle;

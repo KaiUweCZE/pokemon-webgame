@@ -7,13 +7,18 @@ import alternativeClock from "@/assets/images/icons/hourglass.png";
 import "./footer.css";
 import { nextDay } from "./action";
 import { useSession } from "next-auth/react";
+import useLoadSixToContext from "@/hooks/useLoadSixToContext";
+import { getSix } from "@/utils/battle-function/getSix";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 const Timeline = () => {
   const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(true);
   const context = useContext(UserContext);
+  const pokemonContext = useContext(PokemonContext);
   const [animateIcon, setAnimateIcon] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { fetchAndSetPokemon } = useLoadSixToContext();
 
   const user = data?.user;
   const partOfDay = data?.user.partOfDay;
@@ -36,6 +41,8 @@ const Timeline = () => {
             partOfDay: 0,
           },
         });
+        fetchAndSetPokemon(user.name);
+
         console.log("updated user: ", updatedUser);
       }
     } catch (error) {

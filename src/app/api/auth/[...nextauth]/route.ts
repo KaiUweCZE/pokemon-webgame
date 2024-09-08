@@ -3,6 +3,7 @@ import NextAuth, { User, NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../../prisma";
 import bcrypt from "bcrypt";
+import { UserSixEntry } from "@/types/next-auth";
 //import { User } from "@/types/user";
 
 const authOptions: NextAuthOptions = {
@@ -55,7 +56,7 @@ const authOptions: NextAuthOptions = {
               profileImg: user.profileImg,
               level: user.level,
               pokemonIds: user.pokemonIds,
-              userSix: user.userSix,
+              userSix: (user.userSix as any) ?? [],
               location: user.location,
               visitedLocations: user.visitedLocations,
               chapter: user.chapter,

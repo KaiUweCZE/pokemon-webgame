@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { MenuType } from "../SecondaryMenu";
 import Image from "next/image";
 import closeIcon from "@/assets/images/icons/close.svg";
+import GenerateBagItem from "./utils-items/GenerateBagItem";
 
 interface BagMenuProps {
   setActive: Dispatch<SetStateAction<MenuType | null>>;
@@ -40,7 +41,10 @@ const BagInMenu = ({ setActive }: BagMenuProps) => {
         {cells.map((_, index) => (
           <div className="bag-cell" key={index}>
             {filteredItems[index] ? (
-              <BagItem item={filteredItems[index]} />
+              <GenerateBagItem
+                item={filteredItems[index]}
+                username={data.user.name}
+              />
             ) : null}
           </div>
         ))}
