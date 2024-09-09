@@ -11,8 +11,10 @@ export const useDeletePokemon = () => {
     const user = data?.user;
     if (!user) return;
 
+    const pokemonIds = data.user.userSix.map((p) => p.pokemonId);
+
     try {
-      if (!data?.user.userSix.includes(pokemonId)) {
+      if (!pokemonIds) {
         const updatedUser = await removePokemon(pokemonId, user?.name);
         if (updatedUser) {
           await update({

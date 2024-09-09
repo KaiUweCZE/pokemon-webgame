@@ -115,6 +115,8 @@ export const addPokemonToSix = async (username: string, pokemonId: string) => {
       },
     });
 
+    console.log("pokemon is successfully add to six: ", pokemonId);
+
     return updatedUser;
   } catch (error) {
     console.error("Error in addPokemonToSix function", error);

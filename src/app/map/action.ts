@@ -56,7 +56,7 @@ export const healUserSix = async (username: string) => {
       select: { userSix: true, partOfDay: true },
     });
 
-    const userSix = user?.userSix;
+    const userSix = user?.userSix as { pokemonId: string; order: number }[];
 
     console.log("start healing");
 
@@ -66,9 +66,10 @@ export const healUserSix = async (username: string) => {
     }
 
     if (!userSix) return null;
+    const pokemonIds = userSix.map((p) => p.pokemonId);
 
     const pokemonToUpdate = await prisma.pokemon.findMany({
-      where: { id: { in: userSix } },
+      where: { id: { in: pokemonIds } },
     });
 
     const updatePromises = pokemonToUpdate.map((pokemon) => {

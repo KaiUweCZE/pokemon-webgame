@@ -15,6 +15,7 @@ const useLoadSixToContext = () => {
 
   const fetchAndSetPokemon = useCallback(
     async (username: string) => {
+      console.log("this not");
       setLoading(true);
       try {
         const pokemonSix = await getSix(username);
@@ -55,7 +56,13 @@ const useLoadSixToContext = () => {
 
   useEffect(() => {
     // check if ther is data, context and if pokemons from six are already fetched
-    if (!data || !context || context.pokemonsFromSix.length > 0 || loading)
+    if (
+      !data ||
+      !context ||
+      context.pokemonsFromSix.length > 0 ||
+      loading ||
+      data.user.pokemonIds.length === 0
+    )
       return;
     const username = data.user.name;
     console.log("start with fetching");

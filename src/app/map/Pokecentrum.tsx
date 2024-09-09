@@ -15,6 +15,7 @@ const Pokecentrum = () => {
 
   const handleHealth = async () => {
     if (!data || !pokemonContext) return null;
+    const { setPokemonsFromSix, pokemonsFromSix } = pokemonContext;
     try {
       context?.setLoader(true);
       context?.setError(false);
@@ -24,9 +25,18 @@ const Pokecentrum = () => {
         return;
       }
 
+      // add order to each pokemon and sort it in correct order
+      const newPokemonSix = result.updatedPokemons
+        .map((p) => {
+          // ensure that the order is maintained
+          const index = pokemonsFromSix.find((po) => po.id === p.id)?.order;
+          return { ...p, order: index ?? 0 };
+        })
+        .sort((a, b) => a.order - b.order);
+
       // update six of user's pokemon for context
-      pokemonContext.setPokemonsFromSix(result.updatedPokemons);
-      console.log("result: ", result.updatedPokemons);
+      setPokemonsFromSix(newPokemonSix);
+      console.log("result: ", newPokemonSix);
 
       await update({
         ...data,

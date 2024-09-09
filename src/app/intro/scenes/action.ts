@@ -22,7 +22,7 @@ interface AddImageProps {
   image: string;
 }
 
-export const addPokemon = async (props: AddPokemonProps) => {
+export const createPokemon = async (props: AddPokemonProps) => {
   try {
     await connectToDatabase();
     console.log("successfully connected");
@@ -69,7 +69,7 @@ export const addPokemon = async (props: AddPokemonProps) => {
     });
 
     console.log(`User with name: ${user} fetched successfully.`);
-    return updatedUser;
+    return newPokemon;
   } catch (error) {
     console.error("Error in getProfile function:", error);
     throw new Error("Server error: Unable to fetch user profile");

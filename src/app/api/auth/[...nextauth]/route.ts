@@ -65,6 +65,7 @@ const authOptions: NextAuthOptions = {
               badges: user.badges,
               items: (user.items as any) ?? [], // Ensure items is not null
               contacts: user.contacts,
+              dailyMessage: user.dailyMessage,
             };
             console.log("Returning user:", returnUser);
             return returnUser;
@@ -102,6 +103,7 @@ const authOptions: NextAuthOptions = {
         token.badges = user.badges;
         token.items = user.items;
         token.contacts = user.contacts;
+        token.dailyMessage = user.dailyMessage;
       }
       return token;
     },
@@ -123,6 +125,7 @@ const authOptions: NextAuthOptions = {
       session.user.badges = token.badges;
       session.user.items = token.items;
       session.user.contacts = token.contacts;
+      session.user.dailyMessage = token.dailyMessage;
       return session;
     },
   },

@@ -25,9 +25,9 @@ const BoxAttacks = () => {
     ) {
       setTime(restAfterAttack(pokemon.speed, attack.recoveryTime));
       setAnimation(true);
-      console.log("attack was set", attack.damage);
+      //console.log("attack was set", attack.damage);
       context.setAttack(attack);
-      console.log("context attack: ", context.attack);
+      //console.log("context attack: ", context.attack);
 
       context.setChange((prev) => prev + 1);
       setTimeout(() => {
@@ -51,12 +51,7 @@ const BoxAttacks = () => {
       try {
         const updatedPokemon = await restEng(pokemon.id);
         if (updatedPokemon) {
-          /*pokemonContext.setCurrentPokemon({
-            ...pokemon,
-            actualEnergy: updatedPokemon.actualEnergy,
-          });
-          setTime(5);*/
-          console.log("updated pokemon: ", updatedPokemon);
+          //console.log("updated pokemon: ", updatedPokemon);
         }
       } catch (error) {
         console.error("Error while resting:", error);
