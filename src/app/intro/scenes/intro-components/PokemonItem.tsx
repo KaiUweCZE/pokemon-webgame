@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
-import { addPokemon, chapterDone } from "../action";
+import { useContext, useState } from "react";
+import { createPokemon, chapterDone } from "../action";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { useRouter } from "next/navigation";
 import { generatePokemon } from "@/utils/generatePokemon";
@@ -12,6 +12,10 @@ import IntroMovesList from "./IntoMovesList";
 import IntroEvolutionsList from "./IntroEvolutionList";
 import IntroAboutPokemon from "./IntroAboutPokemon";
 import IntroPokemonBox from "./IntroPokemonBox";
+import { MessageType } from "@/types/message";
+import { MessageContext } from "@/components/menu/message/MessageContext";
+import { createMessage } from "@/components/menu/message/action";
+import { PokemonContext } from "@/contexts/PokemonContext";
 
 interface PokemonItemProps {
   img: string | StaticImport;
@@ -19,6 +23,14 @@ interface PokemonItemProps {
   pokemonDataId: number;
   pokemonInfo: string;
 }
+
+const firstMessage = {
+  from: "prof. Bloom",
+  time: 18,
+  text: `Hi there, I sent you a starter pack for your journey, 
+  it's a few pokeballs and coins, so enjoy.`,
+  type: MessageType.DEFAULT,
+};
 
 const PokemonItem = ({
   img,
@@ -29,25 +41,41 @@ const PokemonItem = ({
   const [active, setActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data } = useSession();
+  const messageContext = useContext(MessageContext);
+  const pokemonContext = useContext(PokemonContext);
   const router = useRouter();
   const pokemon = pokemonBattleData.find((p) => p.name === pokemonName);
 
-  if (!data) {
+  if (!data || !messageContext || !pokemonContext) {
     console.log("context missing");
     throw new Error();
   }
   const username = data.user.name;
-
+  const { setMessages, setNumberOfNewMessages } = messageContext;
+  const { setPokemonsFromSix } = pokemonContext;
   const nextChapter = async () => {
     const updatedUser = await chapterDone(username, 1);
+    const newMessage = await createMessage(data.user.id, firstMessage);
+    if (newMessage) {
+      const editedMessage = {
+        id: newMessage.id,
+        from: newMessage.from,
+        text: newMessage.text,
+        viewed: false,
+        time: newMessage.time,
+        type: newMessage.type as MessageType,
+      };
+      setMessages([editedMessage]);
+      setNumberOfNewMessages(1);
+    }
     console.log("chapter is done");
     return updatedUser;
   };
 
-  const handleAddPokemon = async (pokemonDataId: number) => {
+  const handleCreatePokemon = async (pokemonDataId: number) => {
     const pokemon = generatePokemon(pokemonDataId, [5, 5]);
 
-    const newUser = await addPokemon({
+    const newPokemon = await createPokemon({
       username: username,
       attacks: ["tackle", "bite"],
       pokemonName: pokemon.name,
@@ -60,14 +88,20 @@ const PokemonItem = ({
       energy: pokemon.energy,
       expToLevel: pokemon.expToLevel,
     });
-    console.log(newUser);
+    console.log(newPokemon);
 
-    console.log("done");
+    if (newPokemon) {
+      const editedPokemon = {
+        ...newPokemon,
+        order: 0,
+      };
+      setPokemonsFromSix([editedPokemon]);
+    }
   };
 
   const introDone = async () => {
     setLoading(true);
-    await handleAddPokemon(pokemonDataId);
+    await handleCreatePokemon(pokemonDataId);
     const updatedUser = await nextChapter();
     if (updatedUser) {
       await addPokemonToSix(username, updatedUser.pokemonIds[0]);

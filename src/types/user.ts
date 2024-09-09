@@ -7,11 +7,12 @@ export interface User {
   level: number;
   pokemonIds: string[];
   badges: number[];
-  userSix: UserSixEntry[];
+  userSix: { pokemonId: string; order: number }[];
   location: string;
   day: number;
   partOfDay: number;
   chapter: number;
   items: { name: string; count: number }[];
+  dailyMessage: number;
   contacts: string[];
 }

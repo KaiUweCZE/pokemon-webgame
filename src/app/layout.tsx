@@ -10,6 +10,7 @@ import { PokemonProvider } from "@/contexts/PokemonContext";
 import { BattleProvider } from "@/contexts/BattleContext";
 import { MapProvider } from "./map/MapContext";
 import { Suspense } from "react";
+import { MessageProvider } from "@/components/menu/message/MessageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({ weight: "400", subsets: ["latin"] });
@@ -31,11 +32,13 @@ export default function RootLayout({
           <UserProvider>
             <PokemonProvider>
               <BattleProvider>
-                <Menu />
-                <MapProvider>
-                  <Suspense>{children}</Suspense>
-                </MapProvider>
-                <Timeline />
+                <MessageProvider>
+                  <Menu />
+                  <MapProvider>
+                    <Suspense>{children}</Suspense>
+                  </MapProvider>
+                  <Timeline />
+                </MessageProvider>
               </BattleProvider>
             </PokemonProvider>
           </UserProvider>

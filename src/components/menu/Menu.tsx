@@ -73,9 +73,7 @@ const Menu = () => {
         )}
       </div>
       {context?.isLog && data?.user && (
-        <MessageProvider>
-          <SecondaryMenu userId={data.user.id} location={data.user.location} />
-        </MessageProvider>
+        <SecondaryMenu userId={data.user.id} location={data.user.location} />
       )}
     </header>
   );

@@ -2,25 +2,26 @@
 import { UserContext } from "@/contexts/UserContext";
 import { useContext, useState } from "react";
 import Image from "next/image";
-import clockIcon from "@/assets/images/icons/clock.svg";
 import alternativeClock from "@/assets/images/icons/hourglass.png";
 import "./footer.css";
 import { nextDay } from "./action";
 import { useSession } from "next-auth/react";
 import useLoadSixToContext from "@/hooks/useLoadSixToContext";
-import { getSix } from "@/utils/battle-function/getSix";
-import { PokemonContext } from "@/contexts/PokemonContext";
+import { handleDailyMessage } from "./utils/handleDailyMessage";
+import { MessageContext } from "../menu/message/MessageContext";
+import PartOfDay from "./timeline-components/PartOfDay";
 
 const Timeline = () => {
   const { data, update } = useSession();
   const [activeFooter, setActiveFooter] = useState(true);
   const context = useContext(UserContext);
-  const pokemonContext = useContext(PokemonContext);
+  const messageContext = useContext(MessageContext);
   const [animateIcon, setAnimateIcon] = useState(false);
   const [loading, setLoading] = useState(false);
   const { fetchAndSetPokemon } = useLoadSixToContext();
 
-  const user = data?.user;
+  if (!data) return;
+  const user = data.user;
   const partOfDay = data?.user.partOfDay;
 
   const handleNextDay = async () => {
@@ -29,9 +30,11 @@ const Timeline = () => {
     try {
       if (user) {
         const updatedUser = await nextDay(user.name);
-        if (updatedUser) {
-          console.log("updated session: ", data);
-        }
+        const { updated, newMessage } = await handleDailyMessage(
+          user.day,
+          user.dailyMessage,
+          user.id
+        );
         // update session
         await update({
           ...data,
@@ -39,11 +42,19 @@ const Timeline = () => {
             ...data?.user,
             day: updatedUser?.day,
             partOfDay: 0,
+            dailyMessage: updated?.dailyMessage,
           },
         });
-        fetchAndSetPokemon(user.name);
 
-        console.log("updated user: ", updatedUser);
+        if (newMessage) {
+          messageContext?.setMessages((prev) => {
+            if (!prev) return [newMessage];
+            return [...prev, newMessage];
+          });
+          messageContext?.setNumberOfNewMessages((prev) => prev + 1);
+        }
+        fetchAndSetPokemon(user.name);
+        console.log("jou jou jupi: ", messageContext?.messages);
       }
     } catch (error) {
       console.error("Error updating day:", error);
@@ -64,13 +75,7 @@ const Timeline = () => {
               <span className="time-text">
                 {user ? `day: ${user.day}` : "not today"}
               </span>
-              {partOfDay !== undefined && (
-                <div className="box-step">
-                  <div className={partOfDay >= 1 ? "step pass" : "step"}></div>
-                  <div className={partOfDay >= 2 ? "step pass" : "step"}></div>
-                  <div className={partOfDay === 3 ? "step pass" : "step"}></div>
-                </div>
-              )}
+              {partOfDay !== undefined && <PartOfDay partOfDay={partOfDay} />}
               <button
                 className="button-primary"
                 onClick={handleNextDay}

@@ -13,7 +13,7 @@ const useEnemyBattle = () => {
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
   const [isAttacking, setIsAttacking] = useState(false);
-  const recoveryRef = useRef(500);
+  const recoveryRef = useRef(1500);
   const lastAttackTimeRef = useRef(Date.now());
   const selectedMoveRef = useRef<Attack | null>(null);
 
@@ -30,6 +30,12 @@ const useEnemyBattle = () => {
     const { enemyPokemon, setEnemyAttack } = context;
 
     const performAttack = async () => {
+      console.log(
+        "checks: ",
+        isAttacking,
+        context.enemyAttack?.name,
+        currentPokemon?.name
+      );
       if (isAttacking) return;
 
       const now = Date.now();
@@ -41,7 +47,7 @@ const useEnemyBattle = () => {
       }
       console.log("Executing attack: ", selectedMoveRef.current.name);
 
-      setIsAttacking(true);
+      setIsAttacking(() => true);
       setEnemyAttack(selectedMoveRef.current);
       lastAttackTimeRef.current = now;
 
@@ -72,14 +78,14 @@ const useEnemyBattle = () => {
         } catch (error) {
           console.error("error occurs: ", error);
         } finally {
-          setIsAttacking(false);
+          setIsAttacking(() => false);
           const newRecoveryTime = restAfterAttack(
             enemyPokemon.speed,
             selectedMoveRef.current.recoveryTime
           );
           recoveryRef.current = newRecoveryTime * 1000;
           console.log(
-            `New recovery time: ${newRecoveryTime}s, recovery ref: ${recoveryRef.current}`
+            `New recovery time: ${newRecoveryTime}s, recovery ref: ${recoveryRef.current},is attacking? ${isAttacking}`
           );
           selectedMoveRef.current = null;
         }
@@ -89,14 +95,20 @@ const useEnemyBattle = () => {
         }
       } else {
         // tunr on again if context is not set yet
-        setIsAttacking(false);
+        console.log(
+          "why this is missing?: ",
+          context.enemyAttack,
+          currentPokemon
+        );
+
+        setIsAttacking(() => false);
       }
     };
 
     const intervalId = setInterval(performAttack, 50);
 
     return () => clearInterval(intervalId);
-  }, [context, pokemonContext]);
+  }, [context, pokemonContext, isAttacking]);
 };
 
 export default useEnemyBattle;
