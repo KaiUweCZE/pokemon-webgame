@@ -40,12 +40,14 @@ export const getMessages = async (userId: string) => {
       where: { userId: userId },
     });
 
+    const messageIds = messages.map((m) => m.id);
+
     if (!messages) {
       console.log("there are not messages");
       return null;
     }
 
-    console.log("user's messages are: ", messages);
+    console.log("user's messages are: ", messageIds);
 
     return messages;
   } catch (error) {
@@ -59,6 +61,17 @@ export const readMessage = async (messageId: string) => {
   try {
     await connectToDatabase();
 
+    const message = await prisma.message.findUnique({
+      where: { id: messageId },
+    });
+
+    if (!message) return;
+
+    if (message.viewed) {
+      console.log("this message is already viewed");
+      return message;
+    }
+
     const updatedMessage = await prisma.message.update({
       where: { id: messageId, viewed: false },
       data: { viewed: true },
@@ -69,7 +82,7 @@ export const readMessage = async (messageId: string) => {
       return null;
     }
 
-    console.log("user's messages are: ", updatedMessage);
+    console.log("updated message");
 
     return updatedMessage;
   } catch (error) {

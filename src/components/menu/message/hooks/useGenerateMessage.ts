@@ -1,4 +1,4 @@
-import { npcData } from "@/data/npcData";
+import { npcData } from "@/data/npc/npcData";
 import { randomNumber } from "@/utils/battle-function/randomPokemon";
 import { Message, MessageType } from "@/types/message";
 import { createMessage } from "../action";

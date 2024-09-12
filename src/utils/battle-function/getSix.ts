@@ -45,7 +45,10 @@ export const getSix = async (username: string) => {
 
     result.sort((a, b) => a.order - b.order);
 
-    console.log("users six: ", result);
+    console.log(
+      "users six: ",
+      result.map((e) => e.name)
+    );
 
     return result;
   } catch (error) {

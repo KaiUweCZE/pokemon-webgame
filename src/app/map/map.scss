@@ -227,11 +227,17 @@
 
 .box-npc {
   display: grid;
+  place-self: center center;
   background-color: rgba($blue-one, 1);
   color: white;
   box-shadow: 0 0 5px $darker-blue;
   @include scroll-primary;
+  height: 25rem;
+  min-width: 100%;
+  //height: fit-content;
+  //height: clamp(50rem, fit-content, 100%);
   max-height: 100%;
+  padding-bottom: 1rem;
   article {
     font-size: 1rem;
     padding: 1rem;
@@ -240,6 +246,20 @@
   button {
     place-self: center;
   }
+  .button-primary {
+    background-color: lighten($blue-one, 10);
+    &:hover {
+      background-color: lighten($blue-one, 20);
+    }
+  }
+}
+
+.action-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: fit-content;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .npc-list {

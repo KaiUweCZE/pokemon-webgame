@@ -9,7 +9,13 @@ import {
 } from "react";
 import { MessageData } from "./illustrativeMessageData";
 import { Message, MessageType } from "@/types/message";
-import { useSession } from "next-auth/react";
+import { Quest } from "@/types/quest";
+import { atom, useAtom } from "jotai";
+import {
+  addQuestAtom,
+  completeQuestAtom,
+  questsAtom,
+} from "@/components/menu/message/store/questStore";
 
 interface MessageContextType {
   userMessages: Message[];
@@ -24,6 +30,9 @@ interface MessageContextType {
   setNumberOfNewMessages: Dispatch<SetStateAction<number>>;
   fetchTrigger: number;
   setFetchTrigger: Dispatch<SetStateAction<number>>;
+  quests: Quest[];
+  addQuest: (newQuest: Quest) => void;
+  completeQuest: (questName: string) => void;
 }
 
 export const MessageContext = createContext<MessageContextType | undefined>(
@@ -35,7 +44,6 @@ interface MessageProviderProps {
 }
 
 export const MessageProvider = ({ children }: MessageProviderProps) => {
-  const { data: session } = useSession();
   const [userMessages, setUserMessages] = useState<Message[]>(MessageData);
   const [visibleMessages, setVisibleMessages] = useState<MessageType | null>(
     null
@@ -44,6 +52,11 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
   const [isFetched, setIsFetched] = useState(false);
   const [numberOfNewMessages, setNumberOfNewMessages] = useState(0);
   const [fetchTrigger, setFetchTrigger] = useState(0);
+
+  // quest related state
+  const [quests, setQuests] = useAtom(questsAtom);
+  const [, addQuest] = useAtom(addQuestAtom);
+  const [, completeQuest] = useAtom(completeQuestAtom);
 
   const contextValues = {
     userMessages,
@@ -58,6 +71,9 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
     setNumberOfNewMessages,
     fetchTrigger,
     setFetchTrigger,
+    quests,
+    addQuest,
+    completeQuest,
   };
 
   return (

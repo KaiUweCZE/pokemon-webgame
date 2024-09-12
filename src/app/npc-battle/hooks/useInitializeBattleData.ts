@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo } from "react";
 import { NpcBattleContext } from "../NpcBattleContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
-import { npcData } from "@/data/npcData";
+import { npcData } from "@/data/npc/npcData";
 import { Oponent } from "@/types/oponent";
 import { oponentPokemon } from "@/data/npcPokemons";
 import { useSession } from "next-auth/react";

@@ -49,7 +49,10 @@ export const getUserPokemons = async (userId: string) => {
       where: { userId: userId },
     });
 
-    console.log("Pokemons retrieved:", pokemons);
+    console.log(
+      "Pokemons retrieved:",
+      pokemons.map((p) => p.name)
+    );
     return pokemons;
   } catch (error) {
     console.error("Error in getUserPokemons function:", error);

@@ -33,6 +33,7 @@ model User {
   contacts         String[]  @default(["prof. Bloom"])
   dailyMessage     Int       @default(0)
   Message          Message[]
+  Quest            Quest[]
 }
 
 model Pokemon {
@@ -76,4 +77,33 @@ model Message {
   user      User        @relation(fields: [userId], references: [id])
   pokemonId String?     @db.ObjectId
   pokemon   Pokemon?    @relation(fields: [pokemonId], references: [id])
+}
+
+model Quest {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  from        String
+  startDay    Int?
+  endDay      Int?
+  location    String?
+  rewards     Json        @default("[]")
+  completed   Boolean     @default(false)
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String      @db.ObjectId
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  objectives  Objective[]
+  progress    Json        @default("{}")
+}
+
+model Objective {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  quest          Quest   @relation(fields: [questId], references: [id])
+  questId        String  @db.ObjectId
+  type           String
+  target         String
+  requiredAmount Int
+  currentAmount  Int     @default(0)
+  completed      Boolean @default(false)
 }
