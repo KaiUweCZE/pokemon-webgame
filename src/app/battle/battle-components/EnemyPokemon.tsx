@@ -20,10 +20,7 @@ const EnemyPokemon = ({
   enemyPokemonState,
 }: EnemyPokemonProps) => {
   const context = useContext(BattleContext);
-  const pokemonImg = useMemo(
-    () => generatePokemonImage(enemyPokemon.name),
-    [enemyPokemon.name]
-  );
+  const pokemonImg = generatePokemonImage(enemyPokemon.name);
 
   useGetExp(enemyPokemon, enemyPokemonState);
 

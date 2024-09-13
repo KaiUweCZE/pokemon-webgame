@@ -18,19 +18,17 @@ export const createQuest = async (quest: Quest | null, userId: string) => {
 
     const rewards = quest.rewards as { name: string; count: number }[];
 
-    const { active, ...questData } = quest;
-
     const createdQuest = await prisma.quest.create({
       data: {
-        name: questData.name,
+        name: quest.name,
         from: quest.from,
         description: quest.description,
         startDay: user.day,
-        endDay: user.day + questData.duration ?? 100,
+        endDay: quest.endDay,
         rewards: rewards,
         userId: userId,
         objectives: {
-          create: questData.objectives.map((obj) => ({
+          create: quest.objectives.map((obj) => ({
             type: obj.type,
             target: obj.target,
             requiredAmount: obj.requiredAmount,
@@ -39,6 +37,9 @@ export const createQuest = async (quest: Quest | null, userId: string) => {
           })),
         },
         progress: JSON.stringify({}),
+      },
+      include: {
+        objectives: true,
       },
     });
 

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import MapRoutes from "./MapRoutes";
-import { useRouter } from "next/navigation";
 import Market from "@/components/market/Market";
 import AboutLocation from "./AboutLocation";
 import MapNpcList from "./MapNpcList";
@@ -18,7 +17,6 @@ interface MapProps {
 
 const MapMenu = ({ location, routes, options, username }: MapProps) => {
   const [active, setActive] = useState("");
-  const router = useRouter();
 
   const handleOption = () => {
     switch (active) {

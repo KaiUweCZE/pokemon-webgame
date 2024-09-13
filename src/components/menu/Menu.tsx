@@ -58,6 +58,11 @@ const Menu = () => {
                   link="/info"
                   active={pathname === "/info" ? true : false}
                 />
+                <MenuItem
+                  name="Quests"
+                  link="/quests"
+                  active={pathname === "/quests" ? true : false}
+                />
               </>
             )}
           </ul>

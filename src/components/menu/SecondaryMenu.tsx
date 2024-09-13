@@ -52,7 +52,7 @@ const SecondaryMenu = ({ location, userId }: LocationProps) => {
               width={itemWidth}
               onClick={() => handleOptions(MenuType.MESSAGE)}
             />
-            {context && !!context.numberOfNewMessages && (
+            {context && context.numberOfNewMessages > 0 && (
               <span>{context.numberOfNewMessages}</span>
             )}
           </div>

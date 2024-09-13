@@ -1,16 +1,23 @@
 import { npcQuestsData } from "@/data/npc/npc-quests/npcQuestsData";
 import { npcData } from "@/data/npc/npcData";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { Dispatch, useContext } from "react";
 import { MapContext } from "./MapContext";
+import { SetStateAction } from "jotai";
 
 interface NpcActionsListProps {
   name: string;
   userDay: number;
+  active: boolean;
+  setActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const NpcActionsList = ({ name, userDay }: NpcActionsListProps) => {
+const NpcActionsList = ({
+  name,
+  userDay,
+  active,
+  setActive,
+}: NpcActionsListProps) => {
   const context = useContext(MapContext);
   const router = useRouter();
   const npc = npcData.find((e) => e.name === name);
@@ -21,6 +28,7 @@ const NpcActionsList = ({ name, userDay }: NpcActionsListProps) => {
   if (!context) return;
 
   const { quest, setQuest } = context;
+
   const handleFightClick = () => {
     if (npc) {
       router.push(`/npc-battle?name=${encodeURIComponent(npc.name)}`);
@@ -31,13 +39,10 @@ const NpcActionsList = ({ name, userDay }: NpcActionsListProps) => {
     console.log("whups");
 
     if (questData && userDay && npc) {
-      const availableQuest = questData.find((q) => q.minDay <= userDay);
-
+      const availableQuest = questData.find((q) => q.startDay <= userDay);
+      setActive(true);
       if (availableQuest) {
-        setQuest({
-          active: quest?.active === true ? false : true,
-          ...availableQuest,
-        });
+        setQuest({ id: "gag", ...availableQuest });
         console.log("Available quest:", availableQuest);
       } else {
         console.log("No quests available for the current day.");

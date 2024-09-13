@@ -30,9 +30,9 @@ interface MessageContextType {
   setNumberOfNewMessages: Dispatch<SetStateAction<number>>;
   fetchTrigger: number;
   setFetchTrigger: Dispatch<SetStateAction<number>>;
-  quests: Quest[];
-  addQuest: (newQuest: Quest) => void;
-  completeQuest: (questName: string) => void;
+  //quests: Quest[];
+  //addQuest: (newQuest: Quest) => void;
+  //completeQuest: (questName: string) => void;
 }
 
 export const MessageContext = createContext<MessageContextType | undefined>(
@@ -54,9 +54,9 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
   const [fetchTrigger, setFetchTrigger] = useState(0);
 
   // quest related state
-  const [quests, setQuests] = useAtom(questsAtom);
+  /*const [quests, setQuests] = useAtom(questsAtom);
   const [, addQuest] = useAtom(addQuestAtom);
-  const [, completeQuest] = useAtom(completeQuestAtom);
+  const [, completeQuest] = useAtom(completeQuestAtom);*/
 
   const contextValues = {
     userMessages,
@@ -71,9 +71,9 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
     setNumberOfNewMessages,
     fetchTrigger,
     setFetchTrigger,
-    quests,
+    /* quests,
     addQuest,
-    completeQuest,
+    completeQuest,*/
   };
 
   return (

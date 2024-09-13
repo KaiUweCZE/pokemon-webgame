@@ -2,15 +2,21 @@ export type Objective = {
   type: string;
   target: string;
   requiredAmount: number;
+  currentAmount: number;
+  completed: boolean;
+  //questId: string;
 };
 
 export interface Quest {
-  active: boolean;
+  id: string;
   name: string;
   description: string;
   from: string;
-  minDay: number;
-  duration: number;
-  objectives: Objective[];
+  startDay: number;
+  endDay: number | null;
+  location: string | null;
   rewards: { name: string; count: number }[];
+  completed: boolean;
+  objectives: Objective[];
+  progress: string;
 }

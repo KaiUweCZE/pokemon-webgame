@@ -9,13 +9,14 @@ export const getQuests = async (userId: string) => {
 
     const quests = await prisma.quest.findMany({
       where: { userId: userId },
+      include: { objectives: true },
     });
 
     if (!quests) {
       console.log("Quests does not exist");
     }
 
-    const questNames = quests.map((q) => q.name);
+    const questNames = quests.map((q) => q);
 
     console.log("quests: ", questNames);
 

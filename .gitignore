@@ -42,3 +42,5 @@ next-env.d.ts
 /src/app/checknpc
 
 /src/old
+
+/src/app/quests

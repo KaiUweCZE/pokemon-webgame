@@ -34,6 +34,7 @@ export const MapProvider = ({ children }: LocationProviderProps) => {
   const [npc, setNpc] = useState("");
   const [npcMessage, setNpcMessage] = useState("");
   const [quest, setQuest] = useState<Quest | null>(null);
+  const [questVisible, setQuestVisible] = useState(false);
 
   const contextValue = {
     error,
