@@ -1,6 +1,6 @@
 import { memo, useContext, useState } from "react";
 import { MessageContext } from "./MessageContext";
-import { Message } from "@/types/message";
+import { Message, MessageType } from "@/types/message";
 import MessageDetail from "./MessageDetail";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import alertIcon from "@/assets/images/icons/alert.webp";
@@ -65,7 +65,19 @@ const MessageList = ({ userId }: MessageListProps) => {
         if (newMessage) {
           console.log("new message: ", newMessage);
 
-          //setUserMessages((prevMessages) => [...prevMessages, newMessage]);
+          const editedMessage = {
+            id: newMessage.id,
+            from: newMessage.from,
+            time: newMessage.time,
+            text: newMessage.text,
+            viewed: newMessage.viewed,
+            type: newMessage.type as MessageType,
+          };
+
+          setMessages((prev) => {
+            if (!prev) return [editedMessage];
+            return [...prev, editedMessage];
+          });
         }
       } catch (error) {
         console.error("Error generating message:", error);

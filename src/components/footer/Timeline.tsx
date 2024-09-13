@@ -54,7 +54,6 @@ const Timeline = () => {
           messageContext?.setNumberOfNewMessages((prev) => prev + 1);
         }
         fetchAndSetPokemon(user.name);
-        console.log("jou jou jupi: ", messageContext?.messages);
       }
     } catch (error) {
       console.error("Error updating day:", error);

@@ -1,4 +1,5 @@
 "use client";
+import { Quest } from "@/types/quest";
 import React, {
   createContext,
   Dispatch,
@@ -7,8 +8,6 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { changeLocation } from "./action";
-import { useSession } from "next-auth/react";
 
 interface LocationChangeContextType {
   error: boolean;
@@ -17,6 +16,10 @@ interface LocationChangeContextType {
   setLoader: Dispatch<SetStateAction<boolean>>;
   npc: string;
   setNpc: Dispatch<SetStateAction<string>>;
+  npcMessage: string;
+  setNpcMessage: Dispatch<SetStateAction<string>>;
+  quest: Quest | null;
+  setQuest: Dispatch<SetStateAction<Quest | null>>;
 }
 
 interface LocationProviderProps {
@@ -29,6 +32,8 @@ export const MapProvider = ({ children }: LocationProviderProps) => {
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const [npc, setNpc] = useState("");
+  const [npcMessage, setNpcMessage] = useState("");
+  const [quest, setQuest] = useState<Quest | null>(null);
 
   const contextValue = {
     error,
@@ -37,6 +42,10 @@ export const MapProvider = ({ children }: LocationProviderProps) => {
     setLoader,
     npc,
     setNpc,
+    npcMessage,
+    setNpcMessage,
+    quest,
+    setQuest,
   };
 
   return (

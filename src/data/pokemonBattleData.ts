@@ -2659,7 +2659,7 @@ export const pokemonBattleData = [
     evolutionLevels: [30, 50],
     evolutionChain: ["Turtwig", "Grotle", "Torterra"],
     evolution: {
-      level: 30,
+      level: 15,
       name: "Grotle",
     },
   },
@@ -2682,7 +2682,7 @@ export const pokemonBattleData = [
     evolutionChain: ["Turtwig", "Grotle", "Torterra"],
     evolution: {
       level: 50,
-      name: "Torterra",
+      name: "Tortera",
     },
   },
   {

@@ -611,3 +611,128 @@ li:has(.bar) {
   transition: 0.5s;
   opacity: 0;
 }
+
+// animation sketch
+
+.evolution-profi-box {
+  display: grid;
+  width: fit-content;
+  margin-left: 10rem;
+  padding: 1rem;
+  position: relative;
+  margin: 5rem;
+  .old-evolution {
+    display: grid;
+    position: absolute;
+    scale: 0.8;
+  }
+  .new-evolution,
+  .evolution-gif {
+    display: none;
+  }
+
+  &.start {
+    .old-evolution {
+      display: grid;
+      position: absolute;
+      filter: grayscale(1) brightness(0.25);
+      scale: 0.8;
+      animation: old-evolution-animation 5s linear forwards;
+    }
+
+    .new-evolution {
+      display: grid;
+      z-index: 2;
+      position: absolute;
+      filter: grayscale(1) brightness(0.25);
+      animation: new-evolution-animation 5s linear forwards;
+    }
+
+    .evolution-gif {
+      display: grid;
+      z-index: 1;
+      position: absolute;
+      translate: -2.8rem -1rem;
+      opacity: 0;
+      animation: evolution 7s linear;
+    }
+  }
+}
+
+@keyframes old-evolution-animation {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes evolution {
+  0% {
+    opacity: 0;
+  }
+  79% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes new-evolution-animation {
+  2.5%,
+  7.5%,
+  12.5%,
+  17.5%,
+  22.5%,
+  27.5%,
+  32.5%,
+  37.5%,
+  42.5%,
+  47.5%,
+  52.5%,
+  57.5%,
+  62.5%,
+  67.5%,
+  72.5%,
+  77.5%,
+  82.5%,
+  87.5%,
+  92.5%,
+  97.5% {
+    opacity: 0;
+  }
+  0%,
+  5%,
+  10%,
+  15%,
+  20%,
+  25%,
+  30%,
+  35%,
+  40%,
+  45%,
+  50%,
+  55%,
+  60%,
+  65%,
+  70%,
+  75%,
+  80%,
+  85%,
+  90%,
+  95% {
+    opacity: 1;
+    filter: grayscale(1) brightness(0.25);
+  }
+  100% {
+    opacity: 1;
+    filter: opacity(1);
+  }
+}

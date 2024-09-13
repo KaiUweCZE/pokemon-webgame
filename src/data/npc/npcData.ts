@@ -59,7 +59,7 @@ import salazarImg from "@/assets/images/characters/salazar.webp";
 import albertImg from "@/assets/images/characters/albert.webp";
 import marryImg from "@/assets/images/characters/marry.webp";
 
-import { npcPokemons } from "./npcPokemons";
+import { npcPokemons } from "../npcPokemons";
 import { raphaelPokemons } from "./npcPokemon/raphaelPokemons";
 import { sheriffPokemons } from "./npcPokemon/sheriffPokemon";
 
@@ -75,6 +75,17 @@ export const npcData = [
     message: "Welcome to our village! How can I assist you today?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: alcuboneImg,
   },
   {
@@ -83,6 +94,17 @@ export const npcData = [
     message: "It's a beautiful day for an adventure, isn't it?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: amendsenImg,
   },
   {
@@ -91,6 +113,17 @@ export const npcData = [
     message: "Have you seen the new market? It's bustling with activity!",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: annaImg,
   },
   {
@@ -99,6 +132,17 @@ export const npcData = [
     message: "Keep your friends close, and your enemies closer.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: attilaImg,
   },
   {
@@ -107,6 +151,17 @@ export const npcData = [
     message: "The forest is full of secrets. Will you uncover them all?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: barbagooseImg,
   },
   {
@@ -115,6 +170,17 @@ export const npcData = [
     message: "Hey there, traveler! Need some directions?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: bobImg,
   },
   {
@@ -123,6 +189,17 @@ export const npcData = [
     message: "Never give up, no matter how tough the journey gets.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: bruceImg,
   },
   {
@@ -131,6 +208,17 @@ export const npcData = [
     message: "I've got some rare items for trade. Interested?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: brunoImg,
   },
   {
@@ -139,6 +227,17 @@ export const npcData = [
     message: "Wisdom comes with time. Be patient and learn.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: confusitionusImg,
   },
   {
@@ -147,6 +246,17 @@ export const npcData = [
     message: "The mountains hold many mysteries. Be careful out there.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: conradImg,
   },
   {
@@ -155,6 +265,17 @@ export const npcData = [
     message: "I heard there's a treasure hidden somewhere in this town.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: donaldImg,
   },
   {
@@ -163,6 +284,17 @@ export const npcData = [
     message: "Strategy is key to winning battles. Plan ahead.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: donchatotImg,
   },
   {
@@ -171,6 +303,17 @@ export const npcData = [
     message: "Have you tried our local cuisine? It's the best around!",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: fattucinoImg,
   },
   {
@@ -179,6 +322,17 @@ export const npcData = [
     message: "Balance is essential. Keep your mind and body in harmony.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: fuImg,
   },
   {
@@ -187,6 +341,17 @@ export const npcData = [
     message: "Bravery is not the absence of fear, but the triumph over it.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: geronimoImg,
   },
   {
@@ -195,6 +360,17 @@ export const npcData = [
     message: "Strength comes from within. Believe in yourself.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: goliasImg,
   },
   {
@@ -203,6 +379,17 @@ export const npcData = [
     message: "Cooking is an art. Every dish tells a story.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: gourmattImg,
   },
   {
@@ -211,6 +398,17 @@ export const npcData = [
     message: "The sea is vast and full of wonders. Explore it!",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: hankImg,
   },
   {
@@ -219,6 +417,17 @@ export const npcData = [
     message: "Knowledge is power. Never stop learning.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: heathImg,
   },
   {
@@ -227,6 +436,17 @@ export const npcData = [
     message: "Every journey begins with a single step.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: humbertoImg,
   },
   {
@@ -235,6 +455,17 @@ export const npcData = [
     message: "Magic is real if you believe in it.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: isabellaImg,
   },
   {
@@ -243,6 +474,17 @@ export const npcData = [
     message: "Every flower has its own unique beauty.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: jeanImg,
   },
   {
@@ -251,6 +493,17 @@ export const npcData = [
     message: "Music is the language of the soul.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: joelImg,
   },
   {
@@ -259,6 +512,17 @@ export const npcData = [
     message: "Stay focused and never lose sight of your goals.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: judeImg,
   },
   {
@@ -267,6 +531,17 @@ export const npcData = [
     message: "Dance like no one is watching.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: kaliImg,
   },
   {
@@ -275,6 +550,17 @@ export const npcData = [
     message: "Train hard and you will achieve greatness.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: kungImg,
   },
   {
@@ -283,6 +569,17 @@ export const npcData = [
     message: "There's always a way, you just have to find it.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: macImg,
   },
   {
@@ -291,6 +588,17 @@ export const npcData = [
     message: "Technology can be your greatest ally.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: makataiImg,
   },
   {
@@ -299,6 +607,17 @@ export const npcData = [
     message: "Home is where the heart is.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: nanaImg,
   },
   {
@@ -307,6 +626,17 @@ export const npcData = [
     message: "Laughter is the best medicine.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: pepeImg,
   },
   {
@@ -315,6 +645,17 @@ export const npcData = [
     message: "Kindness is a virtue that everyone should embrace.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: princessImg,
   },
   {
@@ -323,6 +664,17 @@ export const npcData = [
     message: "Nice to hear you! How are you?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: false,
+    actions: [
+      {
+        name: "battle",
+        active: false,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: profBloomImg,
   },
   {
@@ -331,6 +683,17 @@ export const npcData = [
     message: "Art is the expression of the soul.",
     pokemons: raphaelPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: raphaelImg,
   },
   {
@@ -339,6 +702,17 @@ export const npcData = [
     message: "Every decision shapes your destiny.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: samuelImg,
   },
   {
@@ -347,6 +721,17 @@ export const npcData = [
     message: "A good cup of tea can solve many problems.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: senchaImg,
   },
   {
@@ -355,6 +740,17 @@ export const npcData = [
     message: "Law and order must be maintained.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: false,
+    actions: [
+      {
+        name: "battle",
+        active: false,
+      },
+      {
+        name: "quest",
+        active: true,
+      },
+    ],
     img: sheriffImg,
   },
   {
@@ -363,6 +759,17 @@ export const npcData = [
     message: "Curiosity is the key to discovery.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: weeImg,
   },
   {
@@ -371,6 +778,17 @@ export const npcData = [
     message: "Hard work always pays off in the end.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: willyImg,
   },
   {
@@ -379,6 +797,17 @@ export const npcData = [
     message: "Speed and agility can turn the tide of any battle.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: wingchuImg,
   },
   {
@@ -387,6 +816,17 @@ export const npcData = [
     message: "Speed and agility can turn the tide of any battle.",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: lordImg,
   },
   {
@@ -395,6 +835,17 @@ export const npcData = [
     message: "Hoy, Hoy! Do you have a shovel?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: TomImg,
   },
   {
@@ -403,6 +854,17 @@ export const npcData = [
     message: "Hoy, Hoy! Do you have a shovel?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: MichaelImg,
   },
   {
@@ -411,6 +873,17 @@ export const npcData = [
     message: "Oh why, oh why can't I?",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: kamakawiwoImg,
   },
   {
@@ -419,6 +892,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: hugoImg,
   },
   {
@@ -427,6 +911,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: jasminImg,
   },
   {
@@ -435,6 +930,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: stuartImg,
   },
   {
@@ -443,6 +949,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: morrisImg,
   },
   {
@@ -451,6 +968,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: joeyImg,
   },
   {
@@ -459,6 +987,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: giovanniImg,
   },
   {
@@ -467,6 +1006,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: tooteeImg,
   },
   {
@@ -475,6 +1025,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: true,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: rebeccaImg,
   },
   {
@@ -483,6 +1044,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: kawuImg,
   },
   {
@@ -491,6 +1063,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: daoxuanImg,
   },
   {
@@ -499,6 +1082,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: shamanImg,
   },
   {
@@ -507,6 +1101,17 @@ export const npcData = [
     message: "Hey",
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: hughImg,
   },
   {
@@ -515,6 +1120,17 @@ export const npcData = [
     message: "Hey",
     pokemons: raphaelPokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: robinImg,
   },
   {
@@ -523,6 +1139,17 @@ export const npcData = [
     message: "Hey",
     pokemons: raphaelPokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: grumpyImg,
   },
   {
@@ -531,6 +1158,17 @@ export const npcData = [
     message: "Hey",
     pokemons: raphaelPokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: salazarImg,
   },
   {
@@ -539,6 +1177,17 @@ export const npcData = [
     message: "Hey",
     pokemons: raphaelPokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: albertImg,
   },
   {
@@ -547,6 +1196,17 @@ export const npcData = [
     message: "Hey",
     pokemons: raphaelPokemons,
     stadiumTrainer: false,
+    battle: true,
+    actions: [
+      {
+        name: "battle",
+        active: true,
+      },
+      {
+        name: "quest",
+        active: false,
+      },
+    ],
     img: marryImg,
   },
 ];

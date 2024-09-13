@@ -2,9 +2,9 @@
 import { useContext } from "react";
 import { mapData } from "./mapData";
 import { MapContext } from "./MapContext";
-import { npcData } from "@/data/npcData";
 import Image from "next/image";
 import starIcon from "@/assets/images/icons/star.webp";
+import { npcData } from "@/data/npc/npcData";
 
 interface LocationProps {
   location: string;
