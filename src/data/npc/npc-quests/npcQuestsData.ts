@@ -1,15 +1,96 @@
 export const npcQuestsData = [
   {
     name: "Save Our Village",
-    description: "Hey man, there is a lot of zubats and I need your help",
+    description: `Listen up, youngster! These darn Zubats are making our lives a living hell. I can't even enjoy my coffee in peace without one of 'em knocking it outta my hand! I need you to whack a few of 'em. And no excuses, ya hear?`,
     from: "Sheriff",
     startDay: 5,
     endDay: 8,
+    duration: 3,
     location: null,
     objectives: [
       {
         type: "eliminatePokemon",
         target: "Zubat",
+        requiredAmount: 5,
+        currentAmount: 0,
+        completed: false,
+      },
+    ],
+    rewards: [
+      { name: "coins", count: 100 },
+      { name: "pokeball", count: 5 },
+    ],
+    completed: false,
+    progress: "{}",
+  },
+  {
+    name: "Save Our Village II",
+    description: `Well, I'll be! Those Zubats brought reinforcements! Now we've got their evolved buddies, Golbats, too. It's like having a double whiskey - double the trouble! You better roll up your sleeves and sort 'em all out. And no whining!`,
+    from: "Sheriff",
+    startDay: 7,
+    endDay: 8,
+    duration: 3,
+    location: null,
+    objectives: [
+      {
+        type: "eliminatePokemon",
+        target: "Golbat",
+        requiredAmount: 5,
+        currentAmount: 0,
+        completed: false,
+      },
+      {
+        type: "eliminatePokemon",
+        target: "Zubat",
+        requiredAmount: 5,
+        currentAmount: 0,
+        completed: false,
+      },
+    ],
+    rewards: [
+      { name: "coins", count: 100 },
+      { name: "pokeball", count: 5 },
+    ],
+    completed: false,
+    progress: "{}",
+  },
+  {
+    name: "Save Our Village III",
+    description: `Dadgummit! Now we've got a Rhyhorn invasion! They're stomping all over our gardens and making potholes in the roads big as my fist. I'm starting to think they're all out to get me. I want you to teach those rocky critters a lesson. And make it snappy, before I lose my marbles!`,
+    from: "Sheriff",
+    startDay: 12,
+    endDay: 8,
+    duration: 3,
+    location: null,
+    objectives: [
+      {
+        type: "eliminatePokemon",
+        target: "Rhyhorn",
+        requiredAmount: 5,
+        currentAmount: 0,
+        completed: false,
+      },
+    ],
+    rewards: [
+      { name: "coins", count: 100 },
+      { name: "pokeball", count: 5 },
+    ],
+    completed: false,
+    progress: "{}",
+  },
+  {
+    name: "Save Our Village IV",
+    description:
+      "For crying out loud! Now we've got Torterras as big as barns! They're sitting on our houses and flattening 'em like pancakes. I'm too old for this tomfoolery. I need you to drive 'em outta town before they put down roots. And remember, no cuddling with 'em - this is serious business!",
+    from: "Sheriff",
+    startDay: 25,
+    endDay: 8,
+    duration: 3,
+    location: null,
+    objectives: [
+      {
+        type: "eliminatePokemon",
+        target: "Torterra",
         requiredAmount: 5,
         currentAmount: 0,
         completed: false,

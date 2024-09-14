@@ -737,7 +737,9 @@ export const npcData = [
   {
     id: 35,
     name: "Sheriff",
-    message: "Law and order must be maintained.",
+    message: `Hey there, greenhorn! Welcome to my neck of the woods, but you better mind your manners! We don't play hide and seek with troublemakers and swindlers 'round here, you can bet your bottom dollar on that! I've been runnin' this joint for... uh, how long's it been? Well, a fair few years now, and this whole time it's been running smoother than a well-oiled bicycle. And I ain't plannin' on lettin' some young whippersnapper mess it all up!
+Haha, I'm just pullin' your leg, sonny! But let me tell ya, we don't joke around with punishment here. A clip 'round the ear? Reckon you're too old for that now, eh? I'd love to tan the hides of them flower children who keep loiterin' and pollutin' the air! Eh, sure, I'm all for peace and quiet too, but... Hold on, what was that? Did you hear it too? Oh boy, I've gone and forgotten where I left off again...
+Anywho, just remember this - in this here Pokémon town, I'm the sheriff! And if I catch wind of any funny business, I won't be goin' easy on ya. So watch yourself, bucko!`,
     pokemons: sheriffPokemons.pokemons,
     stadiumTrainer: false,
     battle: false,

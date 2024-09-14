@@ -59,6 +59,7 @@ const authOptions: NextAuthOptions = {
               userSix: (user.userSix as any) ?? [],
               location: user.location,
               visitedLocations: user.visitedLocations,
+              completedQuests: user.completedQuests,
               chapter: user.chapter,
               day: user.day,
               partOfDay: user.partOfDay,
@@ -104,6 +105,7 @@ const authOptions: NextAuthOptions = {
         token.items = user.items;
         token.contacts = user.contacts;
         token.dailyMessage = user.dailyMessage;
+        token.completedQuests = user.completedQuests;
       }
       return token;
     },
@@ -126,6 +128,7 @@ const authOptions: NextAuthOptions = {
       session.user.items = token.items;
       session.user.contacts = token.contacts;
       session.user.dailyMessage = token.dailyMessage;
+      session.user.completedQuests = token.completedQuests;
       return session;
     },
   },

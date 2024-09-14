@@ -736,3 +736,29 @@ li:has(.bar) {
     filter: opacity(1);
   }
 }
+
+.alert-window {
+  position: absolute;
+  display: grid;
+  gap: 0.5rem;
+  background-color: rgba($blue-one, 0.85);
+  padding: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  place-items: center;
+  .button-primary {
+    background-color: lighten($blue-one, 15);
+    width: 4rem;
+  }
+  place-self: center center;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.flex-row {
+  display: flex;
+  gap: 0.5rem;
+}

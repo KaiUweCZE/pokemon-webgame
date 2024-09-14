@@ -9,13 +9,10 @@ import { EnemyProvider } from "./EnemyContext";
 
 const BattlePage = () => {
   const [round, setRound] = useState(0);
-  const { data, update } = useSession();
+  const { data } = useSession();
   const user = data?.user;
 
   const location = user?.location ?? "";
-  const battleData = mapData.find(
-    (location) => location.name === user?.location
-  );
 
   //useStartBattle(location, round);
 

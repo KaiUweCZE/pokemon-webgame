@@ -18,8 +18,8 @@ interface LocationChangeContextType {
   setNpc: Dispatch<SetStateAction<string>>;
   npcMessage: string;
   setNpcMessage: Dispatch<SetStateAction<string>>;
-  quest: Quest | null;
-  setQuest: Dispatch<SetStateAction<Quest | null>>;
+  quests: Quest[] | null;
+  setQuests: Dispatch<SetStateAction<Quest[] | null>>;
 }
 
 interface LocationProviderProps {
@@ -33,7 +33,7 @@ export const MapProvider = ({ children }: LocationProviderProps) => {
   const [loader, setLoader] = useState(false);
   const [npc, setNpc] = useState("");
   const [npcMessage, setNpcMessage] = useState("");
-  const [quest, setQuest] = useState<Quest | null>(null);
+  const [quests, setQuests] = useState<Quest[] | null>(null);
   const [questVisible, setQuestVisible] = useState(false);
 
   const contextValue = {
@@ -45,8 +45,8 @@ export const MapProvider = ({ children }: LocationProviderProps) => {
     setNpc,
     npcMessage,
     setNpcMessage,
-    quest,
-    setQuest,
+    quests,
+    setQuests,
   };
 
   return (

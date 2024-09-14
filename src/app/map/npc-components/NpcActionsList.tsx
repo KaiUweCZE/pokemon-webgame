@@ -2,22 +2,19 @@ import { npcQuestsData } from "@/data/npc/npc-quests/npcQuestsData";
 import { npcData } from "@/data/npc/npcData";
 import { useRouter } from "next/navigation";
 import { Dispatch, useContext } from "react";
-import { MapContext } from "./MapContext";
+import { MapContext } from "../MapContext";
 import { SetStateAction } from "jotai";
+import { Quest } from "@/types/quest";
+import { useSession } from "next-auth/react";
 
 interface NpcActionsListProps {
   name: string;
   userDay: number;
-  active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
 }
 
-const NpcActionsList = ({
-  name,
-  userDay,
-  active,
-  setActive,
-}: NpcActionsListProps) => {
+const NpcActionsList = ({ name, userDay, setActive }: NpcActionsListProps) => {
+  const { data } = useSession();
   const context = useContext(MapContext);
   const router = useRouter();
   const npc = npcData.find((e) => e.name === name);
@@ -25,9 +22,10 @@ const NpcActionsList = ({
   const actionsList = filtredActions?.map((action) => action.name);
   const questData = npcQuestsData.filter((quest) => quest.from === npc?.name);
 
-  if (!context) return;
+  if (!context || !data) return;
 
-  const { quest, setQuest } = context;
+  const { quests, setQuests } = context;
+  const { user } = data;
 
   const handleFightClick = () => {
     if (npc) {
@@ -36,14 +34,25 @@ const NpcActionsList = ({
   };
 
   const checkQuest = () => {
-    console.log("whups");
+    console.log("Checking quests...", user.completedQuests);
 
     if (questData && userDay && npc) {
-      const availableQuest = questData.find((q) => q.startDay <= userDay);
+      const availableQuest = questData.filter(
+        (q) => q.startDay <= userDay && !user.completedQuests.includes(q.name)
+      );
       setActive(true);
-      if (availableQuest) {
-        setQuest({ id: "gag", ...availableQuest });
-        console.log("Available quest:", availableQuest);
+
+      if (availableQuest.length > 0) {
+        setQuests((prev) => {
+          const newQuests = availableQuest.map((q) => ({
+            ...q,
+            id: q.name,
+            rewarded: false,
+          }));
+          return [...newQuests];
+        });
+
+        console.log("available: ", availableQuest);
       } else {
         console.log("No quests available for the current day.");
       }
@@ -66,19 +75,22 @@ const NpcActionsList = ({
   };
 
   return (
-    <ul className="action-list">
-      {actionsList &&
-        actionsList.map((action) => (
-          <li key={action}>
-            <button
-              className="button-primary"
-              onClick={generateButtonUtil(action)}
-            >
-              {action}
-            </button>
-          </li>
-        ))}
-    </ul>
+    <div className="container-actions">
+      <span>Do you need something?</span>
+      <ul className="action-list">
+        {actionsList &&
+          actionsList.map((action) => (
+            <li key={action}>
+              <button
+                className="button-primary"
+                onClick={generateButtonUtil(action)}
+              >
+                {action}
+              </button>
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 };
 

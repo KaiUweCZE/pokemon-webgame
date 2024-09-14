@@ -2,6 +2,7 @@ import { Quest } from "@/types/quest";
 import { atom, useAtom } from "jotai";
 import { getQuests } from "@/utils/quests/getQuests";
 import { useEffect, useState } from "react";
+import { convertToQuest } from "@/utils/type-check/convertToQuest";
 
 export const questsAtom = atom<Quest[]>([]);
 
@@ -24,6 +25,12 @@ export const completeQuestAtom = atom(null, (get, set, questName) =>
   )
 );
 
+export const rewardQuestAtom = atom(null, (get, set, questId: string) =>
+  set(questsAtom, (quests) =>
+    quests.map((q) => (q.id === questId ? { ...q, rewarded: true } : q))
+  )
+);
+
 export const useLoadQuests = (userId: string) => {
   const [quests, setQuests] = useAtom(questsAtom);
   const [loading, setLoading] = useState(true);
@@ -34,21 +41,10 @@ export const useLoadQuests = (userId: string) => {
       try {
         setLoading(true);
         const fetchedQuests = await getQuests(userId);
+        console.log("feteched: ", fetchedQuests);
+
         const editedFetchedQuests = fetchedQuests?.map((q) => {
-          return {
-            id: q.id,
-            name: q.name,
-            description: q.description,
-            from: q.from,
-            startDay: q.startDay ?? 0,
-            endDay: q.endDay ?? null,
-            location: q.location ?? null,
-            completed: q.completed,
-            duration: (q.endDay ?? 0) - (q?.startDay ?? 0) ?? null,
-            rewards: q.rewards as { name: string; count: number }[],
-            objectives: q.objectives,
-            progress: q.progress as string,
-          };
+          return convertToQuest(q);
         });
         if (editedFetchedQuests) {
           setQuests(editedFetchedQuests);
@@ -69,7 +65,7 @@ export const useLoadQuests = (userId: string) => {
     fetchQuests();
   }, [userId, setQuests]);
 
-  return { quests, loading, error };
+  return { quests, setQuests, loading, error };
 };
 
 export const updateQuestAfterPokemonDefeatAtom = atom(
@@ -86,20 +82,13 @@ export const updateQuestAfterPokemonDefeatAtom = atom(
         console.log(`Checking quest: ${quest.name}`);
 
         const updatedObjectives = quest.objectives.map((objective) => {
-          console.log(
-            `Checking objective: ${objective.type}, target: ${objective.target}`
-          );
-
+          // edit quests that are not completed
           if (
             objective.type === "eliminatePokemon" &&
             objective.target.toLowerCase() ===
               defeatedPokemonName.toLowerCase() &&
-            objective.currentAmount < objective.requiredAmount
+            !objective.completed
           ) {
-            console.log(
-              `Matching objective found. Current amount: ${objective.currentAmount}, Required amount: ${objective.requiredAmount}`
-            );
-
             const newCurrentAmount = objective.currentAmount + 1;
             console.log(`Updating current amount to: ${newCurrentAmount}`);
 
@@ -116,10 +105,6 @@ export const updateQuestAfterPokemonDefeatAtom = atom(
           (obj) => obj.completed
         );
 
-        console.log(
-          `Quest "${quest.name}" completed: ${allObjectivesCompleted}`
-        );
-
         return {
           ...quest,
           objectives: updatedObjectives,
@@ -132,17 +117,3 @@ export const updateQuestAfterPokemonDefeatAtom = atom(
     });
   }
 );
-
-export const useUpdateQuestAfterPokemonDefeat = () => {
-  const [quests, updateQuest] = useAtom(updateQuestAfterPokemonDefeatAtom);
-
-  const debugUpdateQuest = (defeatedPokemonName: string) => {
-    console.log(`Calling updateQuest for ${defeatedPokemonName}`);
-    console.log("Current quests before update:", quests);
-    updateQuest(defeatedPokemonName);
-    // Note: We can't log the updated quests here because the state update is asynchronous
-    // We'll need to check the next render to see the updated state
-  };
-
-  return debugUpdateQuest;
-};

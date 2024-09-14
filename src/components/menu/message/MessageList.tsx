@@ -20,7 +20,6 @@ const MessageList = ({ userId }: MessageListProps) => {
   const [specificMessage, setSpecificMessage] = useState<Message | null>(null);
   const [isHover, setIsHover] = useState({ active: false, id: "" });
   const { generateMessage } = useGenerateMessage();
-  //const { error, isLoading } = useFetchMessages(userId);
 
   if (!context) throw new Error("context is missing");
 
@@ -57,36 +56,6 @@ const MessageList = ({ userId }: MessageListProps) => {
     ".message-detail"
   );
 
-  const handleGenerateMessage = async () => {
-    if (typeof generateMessage === "function") {
-      try {
-        const newMessage = await generateMessage();
-
-        if (newMessage) {
-          console.log("new message: ", newMessage);
-
-          const editedMessage = {
-            id: newMessage.id,
-            from: newMessage.from,
-            time: newMessage.time,
-            text: newMessage.text,
-            viewed: newMessage.viewed,
-            type: newMessage.type as MessageType,
-          };
-
-          setMessages((prev) => {
-            if (!prev) return [editedMessage];
-            return [...prev, editedMessage];
-          });
-        }
-      } catch (error) {
-        console.error("Error generating message:", error);
-      }
-    } else {
-      console.warn("Generate message function is not available");
-    }
-  };
-
   return (
     <div className="container-message-list">
       <ul className="message-list">
@@ -120,15 +89,6 @@ const MessageList = ({ userId }: MessageListProps) => {
               )}
             </li>
           ))}
-        <li>
-          <button
-            className="button-primary"
-            onClick={handleGenerateMessage}
-            disabled={typeof generateMessage !== "function"}
-          >
-            generate
-          </button>
-        </li>
       </ul>
 
       {isVisible && specificMessage && (
@@ -139,3 +99,43 @@ const MessageList = ({ userId }: MessageListProps) => {
 };
 
 export default MessageList;
+
+/* const handleGenerateMessage = async () => {
+    if (typeof generateMessage === "function") {
+      try {
+        const newMessage = await generateMessage();
+
+        if (newMessage) {
+          console.log("new message: ", newMessage);
+
+          const editedMessage = {
+            id: newMessage.id,
+            from: newMessage.from,
+            time: newMessage.time,
+            text: newMessage.text,
+            viewed: newMessage.viewed,
+            type: newMessage.type as MessageType,
+          };
+
+          setMessages((prev) => {
+            if (!prev) return [editedMessage];
+            return [...prev, editedMessage];
+          });
+        }
+      } catch (error) {
+        console.error("Error generating message:", error);
+      }
+    } else {
+      console.warn("Generate message function is not available");
+    }
+  };*/
+
+/*<li>
+          <button
+            className="button-primary"
+            onClick={handleGenerateMessage}
+            disabled={typeof generateMessage !== "function"}
+          >
+            generate
+          </button>
+        </li>*/

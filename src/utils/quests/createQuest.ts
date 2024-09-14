@@ -12,11 +12,19 @@ export const createQuest = async (quest: Quest | null, userId: string) => {
 
     const user = await prisma.user.findUnique({
       where: { id: userId },
+      //select: {completedQuests: true}
     });
 
     if (!user) return;
 
+    if (user.completedQuests.includes(quest.name)) {
+      console.log("Quest has already been completed by this user");
+      return null;
+    }
+
     const rewards = quest.rewards as { name: string; count: number }[];
+
+    const duration = quest.endDay ? user.day + quest.endDay : null;
 
     const createdQuest = await prisma.quest.create({
       data: {
@@ -24,7 +32,7 @@ export const createQuest = async (quest: Quest | null, userId: string) => {
         from: quest.from,
         description: quest.description,
         startDay: user.day,
-        endDay: quest.endDay,
+        endDay: duration,
         rewards: rewards,
         userId: userId,
         objectives: {
@@ -36,10 +44,18 @@ export const createQuest = async (quest: Quest | null, userId: string) => {
             completed: false,
           })),
         },
+        rewarded: false,
         progress: JSON.stringify({}),
       },
       include: {
         objectives: true,
+      },
+    });
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        completedQuests: { push: quest.name },
       },
     });
 

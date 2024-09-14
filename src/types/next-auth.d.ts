@@ -18,6 +18,7 @@ declare module "next-auth" {
       badges: number[];
       location: string;
       visitedLocations: string[];
+      completedQuests: string[];
       chapter: number;
       day: number;
       partOfDay: number;
@@ -36,6 +37,7 @@ declare module "next-auth" {
     userSix: { pokemonId: string; order: number }[];
     location: string;
     visitedLocations: string[];
+    completedQuests: string[];
     chapter: number;
     day: number;
     partOfDay: number;
@@ -56,6 +58,7 @@ declare module "next-auth/jwt" {
     userSix: { pokemonId: string; order: number }[];
     location: string;
     visitedLocations: string[];
+    completedQuests: string[];
     chapter: number;
     day: number;
     partOfDay: number;

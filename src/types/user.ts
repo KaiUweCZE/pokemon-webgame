@@ -8,6 +8,7 @@ export interface User {
   pokemonIds: string[];
   badges: number[];
   userSix: { pokemonId: string; order: number }[];
+  completedQuests: string[];
   location: string;
   day: number;
   partOfDay: number;

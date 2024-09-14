@@ -1,0 +1,116 @@
+@import "../../assets/styles/addons/variables",
+  "../../assets//styles/addons/mixins";
+
+//dynamic color
+$primary-color: #303030;
+$secondary-color: white;
+$primary-bgc: #442952;
+$new-light: #b4a5c6;
+
+$bgc-home: rgb(240, 235, 225);
+
+// specific colors
+$lightest-indigo: #c5ceff;
+$light-indigo: #7a84ba;
+$pale-indigo: #4c5897;
+$darker-indigo: #424e88;
+$darkest-indigo: #364379;
+$dark-violet: #24255a;
+
+$blue-one: #02142c;
+$light-blue: #0a224f;
+$darker-blue: #01070f;
+
+.container-quests {
+  display: grid;
+  padding: 2rem;
+  max-width: $max-width;
+  margin: 0 auto;
+  background-color: $bgc-home;
+  box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
+}
+
+.headline-quests {
+}
+
+.list-quests {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+.quest {
+  display: grid;
+  position: relative;
+  color: #303030;
+  background-color: $bgc-home;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  .button-primary {
+    background-color: #808080;
+  }
+}
+
+.quest-name {
+}
+
+.quest-description {
+}
+
+.quest-from {
+}
+
+.quest-location {
+}
+
+.quest-status {
+}
+
+.quest-objectives {
+}
+
+.list-objectives {
+}
+
+.objective {
+}
+
+.quest-error {
+  display: grid;
+  position: absolute;
+  gap: 0.5rem;
+  background: $blue-one;
+  background-color: #d8d3ca;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #303030;
+  width: 90%;
+  place-self: end center;
+  translate: 0 5%;
+  padding: 1rem;
+  opacity: 1;
+  transition: 0.5s;
+  p {
+    font-weight: bold;
+  }
+  @starting-style {
+    opacity: 0;
+    translate: 0% 50%;
+  }
+  .button-primary {
+    background-color: rgb(208, 65, 65);
+  }
+}
+
+.close-icon {
+  background-color: red;
+  z-index: 1;
+}
+
+.rewarded {
+  background-color: darken(#d8d3ca, 10);
+  background-color: rgba(73, 167, 73, 0.267);
+}

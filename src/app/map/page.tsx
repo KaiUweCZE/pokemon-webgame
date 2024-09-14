@@ -6,13 +6,24 @@ import { mapData } from "./mapData";
 import MapMenu from "./MapMenu";
 import MapError from "./MapError";
 import { MapContext } from "./MapContext";
-import { useContext } from "react";
-import NpcDetail from "./NpcDetail";
+import { useContext, useEffect, useState } from "react";
+import NpcDetail from "./npc-components/NpcDetail";
 import placeholderImg from "@/assets/images/countires/crossroad2.webp";
 
 const MapPage = () => {
   const context = useContext(MapContext);
-  const { data } = useSession();
+  const { data, status } = useSession();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (status !== "loading" && context) {
+      setIsLoaded(true);
+    }
+  }, [status, context]);
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   if (!context || !data) {
     throw new Error("context is missing");

@@ -14,9 +14,11 @@ export interface Quest {
   from: string;
   startDay: number;
   endDay: number | null;
+  duration: number;
   location: string | null;
   rewards: { name: string; count: number }[];
   completed: boolean;
   objectives: Objective[];
   progress: string;
+  rewarded: boolean;
 }

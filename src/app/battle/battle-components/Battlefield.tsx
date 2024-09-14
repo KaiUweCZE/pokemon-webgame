@@ -12,8 +12,8 @@ import { useBattleState } from "../hooks/useBattleState";
 import useLoadSixToContext from "@/hooks/useLoadSixToContext";
 import { PokemonContext } from "@/contexts/PokemonContext";
 import { useBattleInit } from "../hooks/useBattleInit";
-import { RoundContext } from "../RoundContext";
 import useStartBattle from "../hooks/useStartBattle";
+import { useHandleObjectives } from "../hooks/useUpdateQuestAfterPokemonDefeat";
 
 interface BattlefieldProps {
   round: number;
@@ -24,14 +24,16 @@ interface BattlefieldProps {
 const Battlefield = ({ round, setRound, location }: BattlefieldProps) => {
   const context = useContext(BattleContext);
   const pokemonContext = useContext(PokemonContext);
-  const roundContext = useContext(RoundContext);
-  const [isLoading, setIsLoading] = useState(true);
 
   useBattleInit();
   useEnemyBattle();
   useBattleState();
   useLoadSixToContext();
   useStartBattle(location);
+  useHandleObjectives(
+    context?.enemyPokemon?.name ?? "pikachu",
+    context?.enemyPokemon?.actualHp ?? 15
+  );
   const { items } = useReward();
 
   if (!context || !pokemonContext) return;

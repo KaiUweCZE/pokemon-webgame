@@ -24,6 +24,7 @@ model User {
   pokemonIds       String[]  @db.ObjectId
   pokemons         Pokemon[] @relation
   userSix          Json      @default("[]")
+  completedQuests String[] @default([])
   location         String    @default("shire")
   visitedLocations String[]  @default(["shire"])
   chapter          Int       @default(0)
@@ -95,6 +96,7 @@ model Quest {
   updatedAt   DateTime    @updatedAt
   objectives  Objective[]
   progress    Json        @default("{}")
+  rewarded Boolean
 }
 
 model Objective {
@@ -103,6 +105,7 @@ model Objective {
   questId        String  @db.ObjectId
   type           String
   target         String
+  specificReq Json @default("{}")
   requiredAmount Int
   currentAmount  Int     @default(0)
   completed      Boolean @default(false)

@@ -21,6 +21,8 @@ $dark-violet: #24255a;
 $blue-one: #02142c;
 $light-blue: #0a224f;
 $darker-blue: #01070f;
+$component-primary-bgc: $light-blue;
+$component-secundary-bgc: $blue-one;
 
 .main-header:has(.secondary-menu) {
   display: grid;
@@ -150,6 +152,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   background-color: darken($dark-violet, 10);
+  background-color: $component-primary-bgc;
   border: 2px solid $darker-blue;
   border-radius: 0.5rem;
   box-shadow: 0 0 8px $darker-blue;
@@ -201,12 +204,14 @@ a {
   grid-template-columns: max-content 1fr;
   grid-auto-rows: min-content;
   background-color: rgba($color: $light-blue, $alpha: 0.5);
+  background-color: $component-secundary-bgc;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   gap: 0.5rem;
   width: 100%;
   height: fit-content;
-  //margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0.5rem;
+
   img {
     grid-column: 1;
   }
@@ -337,6 +342,8 @@ a {
   display: grid;
   color: white;
   background-color: $light-blue;
+  background-color: $dark-violet;
+  background-color: $component-primary-bgc;
   grid-auto-rows: min-content;
   width: 32rem;
   height: 20rem;
@@ -468,7 +475,7 @@ a {
       position: absolute;
       height: 100%;
       width: 100%;
-      background-color: #101010;
+      background-color: $component-secundary-bgc;
       z-index: -1;
     }
   }
@@ -483,6 +490,8 @@ a {
   width: 100%;
   height: fit-content;
   background-color: $blue-one;
+  background-color: darken($dark-violet, 10);
+  background-color: $component-secundary-bgc;
   position: absolute;
   padding: 1rem;
   opacity: 1;
@@ -544,6 +553,7 @@ a {
   border-radius: 0.35rem;
   grid-template-rows: 1.75rem 1fr;
   background-color: darken($dark-violet, 10);
+  background-color: $component-secundary-bgc;
   color: white;
   @include menu-mixin;
   z-index: 2;
@@ -556,6 +566,7 @@ a {
   }
   .bag-cell {
     background-color: rgba($dark-violet, 0.6);
+    background-color: $component-primary-bgc;
     border-radius: 0.3rem;
   }
   ul {

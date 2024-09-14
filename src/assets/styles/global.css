@@ -681,4 +681,29 @@ li:has(.bar) {
     opacity: 1;
     filter: opacity(1);
   }
+}
+.alert-window {
+  position: absolute;
+  display: grid;
+  gap: 0.5rem;
+  background-color: rgba(2, 20, 44, 0.85);
+  padding: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  place-items: center;
+  place-self: center center;
+}
+.alert-window .button-primary {
+  background-color: #053575;
+  width: 4rem;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.flex-row {
+  display: flex;
+  gap: 0.5rem;
 }/*# sourceMappingURL=global.css.map */

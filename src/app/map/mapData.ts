@@ -40,7 +40,7 @@ export const mapData = [
     rounds: [
       {
         id: 0,
-        pokemons: [27, 41 /*37*/],
+        pokemons: [, /*27*/ 41 /*37*/],
         levelRange: [1, 3],
       },
       {

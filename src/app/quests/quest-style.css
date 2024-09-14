@@ -1,0 +1,70 @@
+.container-quests {
+  display: grid;
+  padding: 2rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  background-color: rgb(240, 235, 225);
+  box-shadow: 0px 3px 6px 0px rgba(140, 149, 159, 0.15);
+}
+
+.list-quests {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+.quest {
+  display: grid;
+  position: relative;
+  color: #303030;
+  background-color: rgb(240, 235, 225);
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.35rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.quest .button-primary {
+  background-color: #808080;
+}
+
+.quest-error {
+  display: grid;
+  position: absolute;
+  gap: 0.5rem;
+  background: #02142c;
+  background-color: #d8d3ca;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #303030;
+  width: 90%;
+  place-self: end center;
+  translate: 0 5%;
+  padding: 1rem;
+  opacity: 1;
+  transition: 0.5s;
+}
+.quest-error p {
+  font-weight: bold;
+}
+@starting-style {
+  .quest-error {
+    opacity: 0;
+    translate: 0% 50%;
+  }
+}
+.quest-error .button-primary {
+  background-color: rgb(208, 65, 65);
+}
+
+.close-icon {
+  background-color: red;
+  z-index: 1;
+}
+
+.rewarded {
+  background-color: #c2bbad;
+  background-color: rgba(73, 167, 73, 0.267);
+}/*# sourceMappingURL=quest-style.css.map */
