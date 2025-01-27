@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+// --- ENUMS ---
+enum Location {
+  SHIRE
+  FOREST
+  CAVE
+  TOWN
+  MOUNTAIN
+}
+
+enum Sender {
+  PROF_BLOOM
+  RIVAL
+  SYSTEM
+  NPC
+}
+
+enum ObjectiveType {
+  COLLECT
+  DEFEAT
+  EXPLORE
+  CATCH
+  TALK
+}
+
+enum ItemType {
+  POKEBALL
+  POTION
+  COFFEE
+  KEY_ITEM
+  EVOLUTION_STONE
+}
+
+
+// --- MODELS ---
+model User {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  name             String         @unique
+  email            String?
+  password         String?
+  profileImg       String?
+  level            Int            @default(1)
+  badges           Int[]          @default([])
+  pokemons         Pokemon[]      @relation("UserPokemons")
+  activePokemonIds String[]       @db.ObjectId  
+  activePokemons Pokemon[] @relation("ActivePokemons")
+  completedQuests  String[]       @db.ObjectId @default([])
+  location         Location       @default(SHIRE)
+  visitedLocations Location[]     @default([SHIRE])
+  chapter          Int            @default(0)
+  day              Int            @default(0)
+  partOfDay        Int            @default(0)
+  inventory        InventoryItem[]
+  contacts         Sender[]       @default([PROF_BLOOM])
+  dailyMessage     Int            @default(0)
+  messages         Message[]
+  quests           Quest[]
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([location])
+  @@index([day])
+}
+
+model Pokemon {
+  id               String     @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  types            String[]
+  level            Int        @default(1)
+  attacks          String[]   @default([])
+  abilities        String[]   @default([])
+  currentHp        Int        @default(10)
+  maxHp            Int        @default(10)
+  currentEnergy    Int        @default(5)
+  maxEnergy        Int        @default(10)
+  currentExp       Int        @default(0)
+  expToNextLevel   Int        @default(100)
+  damage           Int        @default(1)
+  defense          Int        @default(1)
+  speed            Int        @default(1)
+  evolutionInformed Boolean   @default(false)
+  user             User?      @relation("UserPokemons", fields: [userId], references: [id])
+  userId           String?    @db.ObjectId
+  activeUser   User?   @relation("ActivePokemons", fields: [activeUserId], references: [id])
+  activeUserId String? @db.ObjectId
+  messages         Message[]
+  createdAt        DateTime   @default(now())
+
+  @@index([userId])
+  @@index([types])
+}
+
+model Message {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  from       Sender
+  type       MessageType
+  text       String
+  time       Int
+  viewed     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
+  pokemon    Pokemon? @relation(fields: [pokemonId], references: [id])
+  pokemonId  String?  @db.ObjectId
+
+  @@index([userId, viewed])
+}
+
+model Quest {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  from        Sender
+  startDay    Int?
+  endDay      Int?
+  location    Location?
+  rewards     Json        @default("[]")
+  completed   Boolean     @default(false)
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String      @db.ObjectId
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  objectives  Objective[]
+  progress    Json        @default("{}")
+  rewarded    Boolean     @default(false)
+
+  @@index([userId, completed])
+}
+
+model Objective {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  quest           Quest         @relation(fields: [questId], references: [id])
+  questId         String        @db.ObjectId
+  type            ObjectiveType
+  target          String
+  specificReq     Json          @default("{}")
+  requiredAmount  Int
+  currentAmount   Int           @default(0)
+  completed       Boolean       @default(false)
+
+  @@index([questId])
+}
+
+model InventoryItem {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String   @db.ObjectId
+  itemType ItemType
+  quantity Int      @default(1)
+  metadata Json?
+
+  @@unique([userId, itemType])
+}
+
+enum MessageType {
+  EVOLUTION
+  NEW_MOVE
+  QUEST
+  SYSTEM
+  BATTLE
+  STORY
+}
