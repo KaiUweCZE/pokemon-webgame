@@ -7,6 +7,7 @@ import { useHandleForm } from "@/hooks/use-handle-form";
 import { FormMessage } from "@/components/ui/form-message";
 import { Toast } from "@/components/ui/toast";
 import { queryClient } from "@/lib/providers";
+import { getCurrentUser } from "@/utils/actions/get-current-user";
 
 export default function SignInForm() {
   const router = useRouter();
@@ -19,11 +20,6 @@ export default function SignInForm() {
     setErrors({});
     try {
       const formData = new FormData(event.currentTarget);
-
-      console.log("Form data:", {
-        name: formData.get("name"),
-        password: formData.get("password"),
-      });
 
       const result = await signIn("credentials", {
         name: formData.get("name") as string,
@@ -39,8 +35,14 @@ export default function SignInForm() {
         document.dispatchEvent(event);
 
         queryClient.removeQueries();
-        //queryClient.invalidateQueries({ queryKey: ["current-user"] });
-        window.location.href = `/`;
+
+        // Get user data and check chapter
+        const userData = await getCurrentUser();
+        if (userData?.chapter === 0) {
+          window.location.href = `/intro`;
+        } else {
+          window.location.href = `/`;
+        }
       }
     } catch (error) {
       setErrors({ general: ["Unexpected error occurred"] });

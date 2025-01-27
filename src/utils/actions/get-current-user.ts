@@ -20,6 +20,7 @@ export async function getCurrentUser() {
         id: true,
         name: true,
         email: true,
+        chapter: true,
         createdAt: true,
       },
     });

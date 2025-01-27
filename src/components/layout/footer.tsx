@@ -16,7 +16,7 @@ export function Footer() {
   if (!isAuthenticated) return null;
 
   return (
-    <div className="fixed bottom-0 z-50 w-full">
+    <footer className="footer fixed bottom-0 z-50 w-full">
       <div className="max-width mx-auto grid place-items-end">
         <div className="relative">
           {/* Day info panel */}
@@ -54,6 +54,6 @@ export function Footer() {
           </Button>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

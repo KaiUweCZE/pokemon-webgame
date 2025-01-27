@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="bg-background">
+    <div className="blur-on bg-background">
       <main className="max-width mx-auto grid">
         <section className="bg-content p-4">
           <article>

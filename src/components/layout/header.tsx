@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 bg-primary">
+      <header className="header sticky top-0 z-50 bg-primary">
         <div className="max-width mx-auto">
           <div className="container flex h-14 items-center">
             <MainNav />

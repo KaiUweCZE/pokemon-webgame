@@ -133,3 +133,28 @@ body {
     opacity: 0;
   }
 }
+
+.blur-on {
+  animation: blur-on 0.5s ease-in-out;
+}
+
+.no-nav {
+}
+
+body:has(.no-nav) {
+  .header {
+    display: none;
+  }
+  .footer {
+    display: none;
+  }
+}
+
+@keyframes blur-on {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

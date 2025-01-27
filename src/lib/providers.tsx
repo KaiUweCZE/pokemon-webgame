@@ -3,6 +3,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { SessionProvider } from "next-auth/react";
+import { ChapterGuard } from "@/components/providers/chapter-guard";
 
 // Create a client
 export const queryClient = new QueryClient({
@@ -33,7 +34,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       }}
     >
       <SessionProvider refetchInterval={60 * 5} refetchOnWindowFocus={true}>
-        {children}
+        <ChapterGuard>{children}</ChapterGuard>
       </SessionProvider>
     </PersistQueryClientProvider>
   );
