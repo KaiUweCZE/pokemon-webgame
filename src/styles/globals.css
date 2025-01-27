@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --check: hsl(279, 24%, 89%);
     /* #3C0366 in HSL: hue: 271, saturation: 94%, lightness: 20% */
     /* Base colors for background and text */
     --background: 0 0% 100%; /* Pure white */
@@ -15,9 +16,14 @@
     --content: 40, 33%, 91%;
     --content-secondary: 39, 15%, 82%;
 
+    /*Element colors*/
+    --element: #7a84ba;
+
     /* Colors for card components */
-    --card: 0 0% 100%; /* White card background */
-    --card-foreground: 222.2 84% 4.9%; /* Same as base text */
+    --card: 222.2 84% 4.9%; /* Same as base text */
+    --card-light: 280, 30%, 90%;
+    --card-secondary: 39, 15%, 82%; /* Same as content */
+    --card-tertiary: 39, 15%, 82%; /* Same as content */
 
     /* Colors for popover elements (dropdowns, tooltips) */
     --popover: 0 0% 100%; /* White popover background */
@@ -124,6 +130,39 @@ body {
   max-width: 100%;
 }
 
+.intro-slide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.first-slide {
+  & > :first-child {
+    place-self: end;
+  }
+  & > :nth-child(2) {
+    place-self: end start;
+  }
+}
+.second-slide {
+  & > :first-child {
+    place-self: end;
+  }
+  & > :nth-child(2) {
+    place-self: end start;
+  }
+}
+
+.pick-character {
+  filter: brightness(50%);
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    filter: brightness(100%);
+    scale: 1.05;
+  }
+}
+
 .toast {
   translate: 0 0;
   transition: 0.3s;
@@ -155,6 +194,21 @@ body:has(.no-nav) {
     opacity: 0;
   }
   to {
+    opacity: 1;
+  }
+}
+
+.slide-left-to-right {
+  animation: slide-left-to-right 0.3s ease-in-out;
+}
+
+@keyframes slide-left-to-right {
+  from {
+    translate: -5rem 0;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
     opacity: 1;
   }
 }

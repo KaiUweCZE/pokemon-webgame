@@ -30,7 +30,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             where: { name },
           });
 
-          if (existingUser) {
+          if (existingUser && existingUser.password) {
             const valid = await bcryptjs.compare(password, existingUser.password);
             return valid ? existingUser : null;
           }
