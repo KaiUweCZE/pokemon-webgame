@@ -21,6 +21,8 @@ import scratchImg from "@/images/attacks/scratch.webp";
 import universal from "@/images/attacks/fighting.webp";
 import { Attack } from "@/types/attack";
 
+export type AttackKey = keyof typeof ATTACKS;
+
 export const ATTACKS = {
   quickAttack: {
     id: 1,
@@ -108,6 +110,15 @@ export const ATTACKS = {
     name: "razor leaf",
     type: "grass",
     damage: 4,
+    energyCost: 4,
+    recoveryTime: 3,
+    img: grassImg,
+  },
+  vineWhip: {
+    id: 11,
+    name: "vine whip",
+    type: "grass",
+    damage: 5,
     energyCost: 4,
     recoveryTime: 3,
     img: grassImg,
