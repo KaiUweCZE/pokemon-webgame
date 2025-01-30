@@ -59,7 +59,6 @@ model User {
   badges           Int[]          @default([])
   pokemons         Pokemon[]      @relation("UserPokemons")
   activePokemonIds String[]       @db.ObjectId  
-  activePokemons Pokemon[] @relation("ActivePokemons")
   completedQuests  String[]       @db.ObjectId @default([])
   location         Location       @default(SHIRE)
   visitedLocations Location[]     @default([SHIRE])
@@ -97,8 +96,7 @@ model Pokemon {
   evolutionInformed Boolean   @default(false)
   user             User?      @relation("UserPokemons", fields: [userId], references: [id])
   userId           String?    @db.ObjectId
-  activeUser   User?   @relation("ActivePokemons", fields: [activeUserId], references: [id])
-  activeUserId String? @db.ObjectId
+  isActive         Boolean    @default(false)
   messages         Message[]
   createdAt        DateTime   @default(now())
 

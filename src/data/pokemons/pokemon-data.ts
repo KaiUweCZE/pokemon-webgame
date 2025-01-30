@@ -6,6 +6,7 @@ import { pokemonsImg } from "@/images";
 import { POKEMON_ATTACK_LEVELS } from "./pokemon-attacks-list";
 import { AttackKey } from "./attacks-data";
 import { StaticImageData } from "next/image";
+import { PokemonAttacks } from "@/types/pokemon";
 
 type PokemonName = keyof typeof pokemonsImg;
 
@@ -16,7 +17,7 @@ interface PokemonData {
   imgBack: string | StaticImageData;
   icon: string | StaticImageData;
   type: string[];
-  attacks: { learnAt: number; attack: AttackKey }[];
+  attacks: PokemonAttacks;
   damage: number;
   defense: number;
   speed: number;
@@ -35,7 +36,7 @@ const getPokemonImages = (name: PokemonName) => ({
   icon: pokemonsImg[name].icon.src,
 });
 
-export const pokemonBattleData: PokemonData[] = [
+export const pokemonsData: PokemonData[] = [
   {
     id: 1,
     name: "bulbasaur",

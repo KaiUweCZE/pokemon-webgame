@@ -9,7 +9,7 @@ export function useCurrentUser() {
   return useQuery({
     queryKey: ["current-user"], // Add status to queryKey to refetch on status change
     queryFn: async () => {
-      if (status !== "unauthenticated") return null;
+      if (status === "unauthenticated") return null;
       return await getCurrentUser();
     },
     staleTime: Infinity,

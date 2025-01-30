@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+#001D34
+#2FA3F7
+*/
 @layer base {
   :root {
     --check: hsl(279, 24%, 89%);
@@ -136,6 +140,7 @@ body {
   gap: 2rem;
 }
 
+/* Slides are same, but it's easier to keep them separate for future modifications */
 .first-slide {
   & > :first-child {
     place-self: end;
@@ -144,7 +149,17 @@ body {
     place-self: end start;
   }
 }
+
 .second-slide {
+  & > :first-child {
+    place-self: end;
+  }
+  & > :nth-child(2) {
+    place-self: end start;
+  }
+}
+
+.third-slide {
   & > :first-child {
     place-self: end;
   }
@@ -161,6 +176,50 @@ body {
     filter: brightness(100%);
     scale: 1.05;
   }
+}
+
+.pick-pokemon {
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(50%) blur(2px);
+  z-index: 2;
+}
+
+.pokemon-card-intro {
+  display: grid;
+  position: relative;
+  width: 15rem;
+  gap: 1rem;
+  cursor: pointer;
+  place-items: center;
+  h3 {
+    margin-top: 1rem;
+    place-self: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  &:hover {
+    img {
+      scale: 1.05;
+      filter: brightness(100%) blur(0px);
+    }
+  }
+}
+
+.pokemon-details {
+  display: grid;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.315);
+  background-color: rgba(206, 206, 206, 0.51);
+  border: 2px solid rgba(128, 128, 128, 0.65);
+  border-radius: 0.35rem;
+  border-radius: 8% 92% 7% 93% / 99% 7% 93% 1%;
+  box-shadow: 0 0 4px gray;
+  position: absolute;
+  padding-top: 4rem;
+  top: 5rem;
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
 }
 
 .toast {

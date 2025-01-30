@@ -1,3 +1,4 @@
+import { AttackKey } from "@/data/pokemons/attacks-data";
 import { pokemonsImg } from "@/images";
 
 export type ObjectId = string;
@@ -24,6 +25,8 @@ export type PokemonType =
 
 export type StatusEffect = "poisoned" | "paralyzed" | "asleep" | "burn" | "dead";
 
+export type PokemonAttacks = { learnAt: number; attack: AttackKey }[];
+
 export interface Pokemon {
   id: ObjectId;
   name: string;
@@ -46,11 +49,33 @@ export interface Pokemon {
   createdAt: Date;
 }
 
+export interface PokemonStaticData
+  extends Omit<Pokemon, "userId" | "createAt" | "evolutionInformed"> {
+  expForKill: number;
+  evolutionLevels?: number[];
+  evolutionChain?: string[];
+  evolution?: { level: number; name: string } | null;
+}
+
+export interface PokemonLevelUpInfo {
+  baseExpToLevel: number; // base experience needed to level up
+  expGrowthRate: number; // experience growth rate
+  expForKill: number; // experience obtained for killing a pokemon at a certain level
+}
+
 export type PokemonCreate = Pick<Pokemon, "name" | "types"> &
   Partial<
     Pick<
       Pokemon,
-      "level" | "attacks" | "abilities" | "maxHp" | "maxEnergy" | "damage" | "defense" | "speed"
+      | "level"
+      | "attacks"
+      | "abilities"
+      | "maxHp"
+      | "maxEnergy"
+      | "damage"
+      | "defense"
+      | "speed"
+      | "expToNextLevel"
     >
   >;
 
