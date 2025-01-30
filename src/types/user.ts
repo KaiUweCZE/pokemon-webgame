@@ -26,13 +26,13 @@ export interface Quest {
   startDay?: number;
   endDay?: number;
   location?: Location;
-  rewards: any[]; // Možná budete chtít specifičtější typ pro rewards
+  rewards: any[];
   completed: boolean;
   userId: string;
   createdAt: Date;
   updatedAt: Date;
   objectives: Objective[];
-  progress: Record<string, any>; // Možná budete chtít specifičtější typ pro progress
+  progress: Record<string, any>;
   rewarded: boolean;
 }
 
@@ -72,7 +72,6 @@ export interface User {
   updatedAt: Date;
 }
 
-// Typy pro aktualizace - užitečné pro mutace
 export type UserUpdate = Partial<Omit<User, "id" | "createdAt" | "updatedAt">>;
 export type InventoryUpdate = Partial<Omit<InventoryItem, "id" | "userId">>;
 

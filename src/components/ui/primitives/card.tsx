@@ -2,18 +2,20 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 import React from "react";
 
-const cardVariants = cva("w-full rounded-lg", {
+const cardVariants = cva("grid rounded-md primary-shadow", {
   variants: {
     variant: {
       default: "bg-primary-background border border-primary-border",
       outline: "border-2 border-primary-border",
       dark: "bg-card-secondary border border-secondary-border",
+      darkest: "bg-primary-dark",
       light: "bg-card-light backdrop-blur-sm border border-white/20",
     },
     size: {
       sm: "p-4",
       md: "p-6 w-[30rem] max-w-9/10",
       lg: "p-8",
+      fit: "h-fit",
     },
   },
   defaultVariants: {
@@ -28,6 +30,7 @@ const headlineVariants = cva("text-lg", {
       default: "",
       outline: "",
       dark: "",
+      darkest: "",
       light: "font-semibold text-primary",
     },
   },
