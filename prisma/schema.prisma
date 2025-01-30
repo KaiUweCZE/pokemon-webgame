@@ -15,39 +15,6 @@ datasource db {
 }
 
 
-// --- ENUMS ---
-enum Location {
-  SHIRE
-  FOREST
-  CAVE
-  TOWN
-  MOUNTAIN
-}
-
-enum Sender {
-  PROF_BLOOM
-  RIVAL
-  SYSTEM
-  NPC
-}
-
-enum ObjectiveType {
-  COLLECT
-  DEFEAT
-  EXPLORE
-  CATCH
-  TALK
-}
-
-enum ItemType {
-  POKEBALL
-  POTION
-  COFFEE
-  KEY_ITEM
-  EVOLUTION_STONE
-}
-
-
 // --- MODELS ---
 model User {
   id               String         @id @default(auto()) @map("_id") @db.ObjectId
@@ -60,13 +27,13 @@ model User {
   pokemons         Pokemon[]      @relation("UserPokemons")
   activePokemonIds String[]       @db.ObjectId  
   completedQuests  String[]       @db.ObjectId @default([])
-  location         Location       @default(SHIRE)
-  visitedLocations Location[]     @default([SHIRE])
+  location         String       @default("shire")
+  visitedLocations String[]     @default(["shire"])
   chapter          Int            @default(0)
   day              Int            @default(0)
   partOfDay        Int            @default(0)
   inventory        InventoryItem[]
-  contacts         Sender[]       @default([PROF_BLOOM])
+  contacts         String[]      @default(["prof bloom"])
   dailyMessage     Int            @default(0)
   messages         Message[]
   quests           Quest[]
@@ -106,8 +73,8 @@ model Pokemon {
 
 model Message {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  from       Sender
-  type       MessageType
+  from       String
+  type       String
   text       String
   time       Int
   viewed     Boolean  @default(false)
@@ -124,10 +91,10 @@ model Quest {
   id          String      @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
-  from        Sender
+  from        String
   startDay    Int?
   endDay      Int?
-  location    Location?
+  location    String?
   rewards     Json        @default("[]")
   completed   Boolean     @default(false)
   user        User        @relation(fields: [userId], references: [id])
@@ -145,7 +112,7 @@ model Objective {
   id              String        @id @default(auto()) @map("_id") @db.ObjectId
   quest           Quest         @relation(fields: [questId], references: [id])
   questId         String        @db.ObjectId
-  type            ObjectiveType
+  type            String
   target          String
   specificReq     Json          @default("{}")
   requiredAmount  Int
@@ -159,18 +126,9 @@ model InventoryItem {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   user     User     @relation(fields: [userId], references: [id])
   userId   String   @db.ObjectId
-  itemType ItemType
+  itemType String
   quantity Int      @default(1)
   metadata Json?
 
   @@unique([userId, itemType])
-}
-
-enum MessageType {
-  EVOLUTION
-  NEW_MOVE
-  QUEST
-  SYSTEM
-  BATTLE
-  STORY
 }
