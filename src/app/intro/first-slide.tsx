@@ -1,5 +1,6 @@
 import { IntroCard } from "@/components/ui/intro/intro-card";
 import { characters } from "@/images";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const FirstSlide = ({ handleNext }: { handleNext: () => void }) => {
@@ -10,6 +11,7 @@ const FirstSlide = ({ handleNext }: { handleNext: () => void }) => {
         headline="Welcome to Pokemon!"
         size="md"
         variant="light"
+        iconRight={<ChevronRight className="h-4 w-4" color="#303030" />}
         ctaText="next"
         onCtaClick={handleNext}
       >

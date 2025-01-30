@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { updateProfileImage } from "./actions";
 import { Toast } from "@/components/ui/toast";
+import { ChevronLeft } from "lucide-react";
 
 interface SecondSlideProps {
   handleNext: () => void;
@@ -31,34 +32,50 @@ export const SecondSlide = ({ handleNext, handlePrev }: SecondSlideProps) => {
   };
 
   return (
-    <div className="intro-slide second-slide relative mx-auto w-full">
-      <Image
-        src={characters.mainChar1.src}
-        alt={characters.mainChar1.alt}
-        height={500}
-        className="pick-character"
-        onClick={() => !isLoading && handleSelectProfile("mainChar1")}
-      />
-      <Image
-        src={characters.mainChar2.src}
-        alt={characters.mainChar2.alt}
-        height={500}
-        className="pick-character"
-        onClick={() => !isLoading && handleSelectProfile("mainChar2")}
-      />
+    <div>
+      <h1 className="mb-8 place-self-center text-3xl">Choose your character!</h1>
+      <div className="intro-slide second-slide relative mx-auto w-full">
+        <Image
+          src={characters.mainChar1.src}
+          alt={characters.mainChar1.alt}
+          height={500}
+          className="pick-character"
+          onClick={() => !isLoading && handleSelectProfile("mainChar1")}
+        />
+        <Image
+          src={characters.mainChar2.src}
+          alt={characters.mainChar2.alt}
+          height={500}
+          className="pick-character"
+          onClick={() => !isLoading && handleSelectProfile("mainChar2")}
+        />
 
-      <IntroCard
-        variant="light"
-        ctaText="prev"
-        onCtaClick={handlePrev}
-        className="col-span-2 place-self-center"
-      >
-        <p>Choose one of the profiles and proceed to the Pokémon selection</p>
-      </IntroCard>
+        <Button
+          variant="basic"
+          leftIcon={<ChevronLeft className="h-4 w-4" color="#303030" />}
+          onClick={handlePrev}
+        >
+          <span>back</span>
+        </Button>
+        {/* <IntroCard
+          variant="light"
+          ctaText="back"
+          onCtaClick={handlePrev}
+          iconLeft={<ChevronLeft className="h-4 w-4" color="#303030" />}
+          className="col-span-2 place-self-center"
+        >
+          <p>Choose one of the profiles and proceed to the Pokémon selection</p>
+        </IntroCard> */}
 
-      {error && (
-        <Toast message={error} variant="error" isVisible={!!error} onClose={() => setError(null)} />
-      )}
+        {error && (
+          <Toast
+            message={error}
+            variant="error"
+            isVisible={!!error}
+            onClose={() => setError(null)}
+          />
+        )}
+      </div>
     </div>
   );
 };

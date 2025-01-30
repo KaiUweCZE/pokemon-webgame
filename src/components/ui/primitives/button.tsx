@@ -13,6 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-element hover:bg-primary",
+        basic: "bg-transparent hover:bg-transparent",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-slate-950 hover:bg-slate-950/50",
@@ -75,7 +76,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {leftIcon}
-        {isLoading ? loadingText : children}
+        {children}
         {rightIcon}
       </button>
     );

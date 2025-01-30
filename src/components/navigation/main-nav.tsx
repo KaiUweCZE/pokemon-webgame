@@ -1,34 +1,40 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/cn";
+import { useSession } from "next-auth/react";
 
 const routes = [
   {
     href: "/",
     label: "Home",
+    protected: false,
+  },
+
+  {
+    href: "/profile",
+    label: "Profile",
+    protected: true,
   },
   {
-    href: "/pokemons",
-    label: "Pokémons",
-  },
-  {
-    href: "/trainers",
-    label: "Trainers",
-  },
-  {
-    href: "/battles",
-    label: "Battles",
+    href: "/road",
+    label: "Road",
+    protected: true,
   },
 ];
 
-export function MainNav() {
+interface MainNavProps {
+  status: "authenticated" | "unauthenticated" | "loading";
+}
+
+export function MainNav({ status }: MainNavProps) {
   const pathname = usePathname();
+
+  const filterRoutes = routes.filter((route) => status === "authenticated" || !route.protected);
 
   return (
     <nav className="flex gap-6">
-      {routes.map((route) => (
+      {filterRoutes.map((route) => (
         <Link
           key={route.href}
           href={route.href}

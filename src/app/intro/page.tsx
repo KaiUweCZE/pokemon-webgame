@@ -1,59 +1,33 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { updateChapter } from "@/utils/actions/update-chapter";
+import { nextChapter } from "@/utils/actions/next-chapter";
 import { Toast } from "@/components/ui/toast";
 import { useState } from "react";
 import FirstSlide from "./first-slide";
 import SecondSlide from "./second-slide";
-
-enum IntroStep {
-  Welcome = 1,
-  ChooseCharacter = 2,
-  ChoosePokemon = 3,
-}
+import ThirdSlide from "./third-slide";
 
 export default function IntroPage() {
   const router = useRouter();
-  const [step, setStep] = useState<IntroStep>(IntroStep.Welcome);
+  const [step, setStep] = useState(1);
   const [error, setError] = useState<string | null>(null);
 
-  const handleNext = () => {
-    setStep((currentStep) => {
-      if (currentStep === IntroStep.ChoosePokemon) {
-        handleStartJourney();
-        return currentStep;
-      }
-      return currentStep + 1;
-    });
+  const handleNext = async () => {
+    setStep((prev) => prev + 1);
   };
 
   const handlePrev = () => {
-    setStep((currentStep) => {
-      return currentStep - 1;
-    });
+    setStep((prev) => prev - 1);
   };
 
-  const handleStartJourney = async () => {
-    try {
-      await updateChapter(1);
-      router.push("/");
-    } catch (err) {
-      setError("Failed to start journey. Please try again.");
-    }
-  };
-
-  const renderSlide = () => {
+  const renderStep = () => {
     switch (step) {
-      case IntroStep.Welcome:
+      case 1:
         return <FirstSlide handleNext={handleNext} />;
-      case IntroStep.ChooseCharacter:
+      case 2:
         return <SecondSlide handleNext={handleNext} handlePrev={handlePrev} />;
-      case IntroStep.ChoosePokemon:
-        return (
-          <div>
-            <h1>Choose Pokemon</h1>
-          </div>
-        );
+      case 3:
+        return <ThirdSlide handlePrev={handlePrev} />;
       default:
         return null;
     }
@@ -61,11 +35,17 @@ export default function IntroPage() {
 
   return (
     <div className="blur-on no-nav">
-      <main className="max-width mx-auto mt-36">{renderSlide()}</main>
-
-      {error && (
-        <Toast message={error} variant="error" isVisible={!!error} onClose={() => setError(null)} />
-      )}
+      <main className="max-width mx-auto mt-36">
+        {renderStep()}
+        {error && (
+          <Toast
+            variant="error"
+            message={error}
+            isVisible={!!error}
+            onClose={() => setError(null)}
+          />
+        )}
+      </main>
     </div>
   );
 }

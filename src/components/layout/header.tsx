@@ -20,13 +20,13 @@ export function Header() {
       <header className="header sticky top-0 z-50 bg-primary">
         <div className="max-width mx-auto">
           <div className="container flex h-14 items-center">
-            <MainNav />
+            <MainNav status={status} />
             <div className="ml-auto flex items-center space-x-4">
               {isAuthenticated && (
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-primary-text flex gap-1 hover:text-amber-200"
+                  className="flex gap-1 text-primary-text hover:text-amber-200"
                   onClick={() => setIsSecondaryOpen(!isSecondaryOpen)}
                 >
                   <ChevronDown
