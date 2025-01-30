@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/primitives/button";
-import { PokemonCardIntro } from "@/components/ui/intro/pokemon-card-intro";
+import { PokemonCardIntro } from "@/components/intro/pokemon-card-intro";
 import { pokemonsImg } from "@/images/index";
 import { ChevronLeft, Loader2 } from "lucide-react";
 import { addPokemon } from "@/utils/actions/add-pokemon";

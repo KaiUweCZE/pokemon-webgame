@@ -1,4 +1,4 @@
-import { IntroCard } from "@/components/ui/intro/intro-card";
+import { IntroCard } from "@/components/intro/intro-card";
 import { Button } from "@/components/ui/primitives/button";
 import { characters } from "@/images";
 import Image from "next/image";

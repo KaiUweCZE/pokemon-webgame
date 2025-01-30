@@ -1,4 +1,4 @@
-import { IntroCard } from "@/components/ui/intro/intro-card";
+import { IntroCard } from "@/components/intro/intro-card";
 import { characters } from "@/images";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
