@@ -256,6 +256,34 @@ body {
   }
 }
 
+.toast-leave {
+  animation: leave 0.3s linear;
+}
+
+@keyframes leave {
+  from {
+    translate: 0 0;
+    opacity: 1;
+  }
+  to {
+    translate: 0 10rem;
+    opacity: 0;
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  height: 2px;
+  transition: 0.3s linear;
+}
+
+.left-border {
+  position: absolute;
+  left: 0.5rem;
+  height: 80%;
+  width: 2px;
+}
+
 .blur-on {
   animation: blur-on 0.5s ease-in-out;
 }

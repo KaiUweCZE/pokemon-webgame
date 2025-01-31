@@ -1,4 +1,14 @@
+"use client";
+import { useToast } from "@/components/providers/toast-context";
+import { Button } from "@/components/ui/primitives/button";
+
 export default function Home() {
+  const { showToast } = useToast();
+
+  const handleToast = () =>
+    showToast("This is a toast Lorem ipsum dolor sit amet consectetur adipisicing ", "success", {
+      duration: 3000,
+    });
   return (
     <div className="blur-on bg-background">
       <main className="max-width mx-auto grid">
@@ -22,6 +32,7 @@ export default function Home() {
             </p>
           </article>
         </section>
+        <Button onClick={handleToast}>Toast Click</Button>
       </main>
     </div>
   );
