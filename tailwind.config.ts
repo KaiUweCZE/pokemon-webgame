@@ -5,6 +5,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/hooks/ui/use-ripple.tsx",
   ],
   theme: {
     extend: {
@@ -56,6 +57,21 @@ export default {
           DEFAULT: "var(--element)",
           light: "hsl(var(--element-light))",
         },
+      },
+      keyframes: {
+        ripple: {
+          "0%": {
+            transform: "translate(-50%, -50%) scale(0)",
+            opacity: "0.4",
+          },
+          "100%": {
+            transform: "translate(-50%, -50%) scale(1)",
+            opacity: "0",
+          },
+        },
+      },
+      animation: {
+        ripple: "ripple 0.8s ease-out",
       },
       borderRadius: {
         lg: "var(--radius)",

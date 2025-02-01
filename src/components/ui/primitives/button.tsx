@@ -1,7 +1,8 @@
 "use client";
-import * as React from "react";
+import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
+import { useRipple } from "@/hooks/ui/use-ripple";
 
 const buttonVariants = cva(
   `inline-flex items-center justify-center rounded-sm text-sm 
@@ -24,7 +25,7 @@ const buttonVariants = cva(
         default: "py-2 px-4",
         sm: "px-2 py-1 rounded-sm",
         lg: "px-8 rounded-md",
-        icon: "w-10",
+        icon: "w-fit h-fit",
       },
       isActive: {
         true: "border-slate-950 text-amber-200",
@@ -33,6 +34,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
       isActive: false,
     },
   }
@@ -49,6 +51,11 @@ export interface ButtonProps
   loadingText?: string;
   asChild?: boolean;
   active?: boolean;
+  withRipple?: boolean;
+  rippleColor?: string;
+  rippleDuration?: number;
+  rippleScale?: number;
+  buttonName?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -64,20 +71,49 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       leftIcon,
       rightIcon,
+      withRipple = false,
+      rippleColor,
+      rippleDuration,
+      rippleScale,
+      onClick,
       ...props
     },
     ref
   ) => {
+    const rippleProps = withRipple
+      ? useRipple({
+          colorClass: rippleColor,
+          duration: rippleDuration,
+          scale: rippleScale,
+          disabled: isLoading || props.disabled,
+        })
+      : null;
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (withRipple && rippleProps) {
+        rippleProps.createRipple(e);
+      }
+      if (onClick) {
+        onClick(e);
+      }
+    };
+
     return (
       <button
-        className={cn(buttonVariants({ variant, size, isActive: active, className }), "group")}
+        className={cn(
+          buttonVariants({ variant, size, isActive: active, className }),
+          withRipple ? "relative overflow-hidden" : "",
+          "group"
+        )}
         ref={ref}
         disabled={isLoading}
+        onClick={handleClick}
         {...props}
       >
         {leftIcon}
         {children}
         {rightIcon}
+        {withRipple && rippleProps && <rippleProps.RippleContainer />}
       </button>
     );
   }
