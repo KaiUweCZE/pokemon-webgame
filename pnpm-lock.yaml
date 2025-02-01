@@ -29,6 +29,9 @@ importers:
       '@tanstack/react-store':
         specifier: ^0.7.0
         version: 0.7.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tanstack/store':
+        specifier: ^0.7.0
+        version: 0.7.0
       '@types/bcrypt':
         specifier: ^5.0.2
         version: 5.0.2

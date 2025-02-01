@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { SessionProvider } from "next-auth/react";
 import { Providers } from "@/lib/providers";
 import { ToastProvider } from "@/components/providers/toast-context";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,11 +36,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SessionProvider>
           <Providers>
-            <ToastProvider>
-              <Header />
-              {children}
-              <Footer />
-            </ToastProvider>
+            <ModalProvider>
+              <ToastProvider>
+                <Header />
+                {children}
+                <Footer />
+              </ToastProvider>
+            </ModalProvider>
           </Providers>
         </SessionProvider>
       </body>

@@ -1,9 +1,11 @@
 "use client";
-
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 import { X } from "lucide-react";
+import { useEscapeKey } from "@/hooks/use-escape";
+import { useRestrictScroll } from "@/hooks/use-restrict-scroll";
+import { useClickOutside } from "@/hooks/use-click-outside";
 
 const modalVariants = cva(
   `fixed inset-0 z-50 flex items-center justify-center p-4
@@ -71,48 +73,15 @@ export function Modal({
   preventClose = false,
   className,
 }: ModalProps) {
-  // Close on escape key
-  React.useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && !preventClose) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpen, onClose, preventClose]);
-
-  // Prevent body scroll when modal is open
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  useEscapeKey(onClose, isOpen && !preventClose);
+  //useRestrictScroll(isOpen);
+  useClickOutside(contentRef, onClose, isOpen && !preventClose);
   if (!isOpen) return null;
 
   return (
-    <div
-      className={cn(modalVariants({ variant, size }))}
-      onClick={(e) => {
-        if (e.target === e.currentTarget && !preventClose) {
-          onClose();
-        }
-      }}
-    >
-      <div className={cn(modalContentVariants({ variant }), className)}>
+    <div className={cn(modalVariants({ variant, size }))}>
+      <div ref={contentRef} className={cn(modalContentVariants({ variant }), className)}>
         {showCloseButton && !preventClose && (
           <button
             onClick={onClose}
