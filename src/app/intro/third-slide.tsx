@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/primitives/button";
 import { PokemonCardIntro } from "@/components/intro/pokemon-card-intro";
 import { pokemonsImg } from "@/images/index";
-import { ChevronLeft, Loader2 } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { addPokemon } from "@/utils/actions/add-pokemon";
 import { generatePokemon } from "@/utils/pokemon-generator";
 import { useToast } from "@/components/providers/toast-context";
@@ -9,10 +9,8 @@ import { nextChapter } from "@/utils/actions/next-chapter";
 import { useMutation } from "@tanstack/react-query";
 import { Response } from "@/types/response";
 import { useRouter } from "next/navigation";
-import { getSession, useSession } from "next-auth/react";
-import { signOut } from "@/auth";
+import { useSession } from "next-auth/react";
 import { queryClient } from "@/lib/providers";
-import { getCurrentUser } from "@/utils/actions/get-current-user";
 
 interface ThirdSlideProps {
   handlePrev: () => void;

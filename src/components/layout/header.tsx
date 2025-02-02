@@ -17,8 +17,8 @@ export function Header() {
   const isAuthenticated = status === "authenticated";
 
   return (
-    <div className="relative grid">
-      <header className="header secondary-shadow sticky top-0 z-50 bg-primary">
+    <div className="sticky top-0 z-10 grid">
+      <header className="header secondary-shadow z-50 bg-primary">
         <div className="max-width mx-auto">
           <div className="container flex h-14 items-center">
             <MainNav status={status} />

@@ -1,11 +1,13 @@
 import { cn } from "@/utils/cn";
 import { Button } from "../ui/primitives/button";
 import PartsOfDay from "./parts-of-day";
-import { Calendar } from "lucide-react";
+import { Calendar, Loader2 } from "lucide-react";
 import { useModal } from "../providers/modal-provider";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { GradientBackground } from "../ui/primitives/gradient-background";
 import GradientButton from "../ui/primitives/gradient-button";
+import { useDay } from "@/hooks/use-day";
+import LoadingDots from "../ui/loading/loading-dots";
 
 interface AboutDayProps {
   isOpen: boolean;
@@ -15,19 +17,28 @@ interface AboutDayProps {
 const AboutDay = ({ isOpen, isClosing }: AboutDayProps) => {
   const { showModal, hideModal } = useModal();
   const { data: user, isLoading, error } = useCurrentUser();
+  const { nextDay, isUpdating } = useDay();
+
+  const handleNextDay = () => {
+    nextDay();
+    hideModal();
+  };
 
   const handleModal = () => {
     showModal({
       title: "Do you want to go to the next day?",
-
+      isLoading: isUpdating,
       children: (
-        <Button withRipple rippleColor="bg-slate-950">
-          <span
-            className="z-10 text-amber-100"
-            onClick={() => console.log("About user: ", user?.day, user?.partOfDay)}
-          >
-            Next Day
-          </span>
+        <Button
+          withRipple
+          rippleColor="bg-slate-950"
+          variant="basic"
+          size="icon"
+          disabled={isUpdating}
+          onClick={handleNextDay}
+          className="flex gap-2"
+        >
+          <span className="z-10 text-amber-100">Next Day</span>
         </Button>
       ),
     });

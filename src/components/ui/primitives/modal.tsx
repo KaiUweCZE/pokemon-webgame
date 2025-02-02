@@ -7,6 +7,7 @@ import { useEscapeKey } from "@/hooks/use-escape";
 import { useRestrictScroll } from "@/hooks/use-restrict-scroll";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { Button } from "./button";
+import { LoadingOverlay } from "../loading/loading-overlay";
 
 const modalVariants = cva(
   `fixed w-screen h-screen inset-0 z-50 backdrop-blur-[1px] flex items-center justify-center p-4
@@ -56,6 +57,19 @@ const modalContentVariants = cva(
   }
 );
 
+const overlayVariants = cva(``, {
+  variants: {
+    variant: {
+      default: "bg-slate-950/90",
+      danger: "bg-destructive",
+      warning: "bg-yellow-500/",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
 const iconVariants = cva(`h-4 w-4`, {
   variants: {
     variant: {
@@ -80,6 +94,7 @@ type ModalVariantProps = VariantProps<typeof modalVariants>;
 export interface ModalProps extends ModalVariantProps {
   isOpen: boolean;
   onClose: () => void;
+  isLoading?: boolean;
   title?: string;
   description?: string;
   children?: React.ReactNode;
@@ -92,6 +107,7 @@ export interface ModalProps extends ModalVariantProps {
 export function Modal({
   isOpen,
   onClose,
+  isLoading,
   title,
   description,
   children,
@@ -111,6 +127,7 @@ export function Modal({
   return (
     <div className={cn(modalVariants({ variant, size }))}>
       <div ref={contentRef} className={cn(modalContentVariants({ variant, size }), className)}>
+        {isLoading && <LoadingOverlay bgColor={overlayVariants({ variant })} />}
         {showCloseButton && !preventClose && (
           <Button
             variant="basic"

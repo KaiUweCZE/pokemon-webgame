@@ -7,6 +7,7 @@ interface ModalState {
   isOpen: boolean;
   onClose?: () => void;
   title?: string;
+  isLoading?: boolean;
   description?: string;
   children?: React.ReactNode;
   showCloseButton?: boolean;
