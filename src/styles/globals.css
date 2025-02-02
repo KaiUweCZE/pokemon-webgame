@@ -9,62 +9,49 @@
 */
 @layer base {
   :root {
-    --check: hsl(279, 24%, 89%);
     /* #3C0366 in HSL: hue: 271, saturation: 94%, lightness: 20% */
     /* Base colors for background and text */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 0, 0%, 19%; /* Almost black with blue tint */
+    --background: 255, 255, 255; /* Pure white */
+    --foreground: 48, 48, 48; /* Almost black with blue tint */
 
-    --primary-text: 48, 100%, 96%;
-    --secondary-text: 48, 97%, 89%;
+    --primary-text: 255, 251, 235;
+    --check: 255, 251, 235;
+    --secondary-text: 254, 243, 200;
 
-    --content: 40, 33%, 91%;
-    --content-secondary: 39, 15%, 82%;
+    --content: 240, 235, 224;
+    --content-secondary: 216, 211, 202;
 
     /*Element colors*/
-    --element: #7a84ba;
-
-    /* Colors for card components */
-    --card: 222.2 84% 4.9%; /* Same as base text */
-    --card-light: 280, 30%, 90%;
-    --card-secondary: 39, 15%, 82%; /* Same as content */
-    --card-tertiary: 39, 15%, 82%; /* Same as content */
-
-    /* Colors for popover elements (dropdowns, tooltips) */
-    --popover: 0 0% 100%; /* White popover background */
-    --popover-foreground: 222.2 84% 4.9%; /* Same as base text */
+    --element: 52, 31, 85;
+    --element-light: 122, 132, 186;
 
     /* Primary colors - main action elements */
-    --primary: 239, 43%, 25%; /* Deep purple (#3C0366) */
-    --primary-dark: 240, 41%, 11%;
-    --primary-foreground: 210 40% 98%; /* Light text on dark background */
+    --primary: 36, 37, 91; /* Deep purple (#3C0366) */
+    --primary-dark: 17, 17, 40;
+    --primary-foreground: 248, 250, 252; /* Light text on dark background */
 
     /* Secondary colors - less important elements */
-    --secondary: 214, 88%, 3%; /* Very light blue */
-    --secondary-foreground: 222.2 47.4% 11.2%; /* Dark text */
+    --secondary: 1, 7, 14; /* Very light blue */
+    --secondary-foreground: 15, 23, 42; /* Dark text */
 
     /* Secondary background color */
-    --secondary-background: 214, 88%, 3%;
-    --secondary-primary: #0a0a0a;
-    --secondary-primary-text: #ededed;
-    --secondary-secondary: #1a1a1a;
-
-    /* Muted colors - for less important content */
-    --muted: 210 40% 96.1%; /* Same as secondary */
-    --muted-foreground: 215.4 16.3% 46.9%; /* Medium gray */
+    --secondary-primary: 10, 10, 10;
+    --secondary-primary-text: 237, 237, 237;
+    --secondary-secondary: 26, 26, 26;
 
     /* Accent colors - for hover states etc. */
-    --accent: 210 40% 96.1%; /* Light blue */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Dark text */
+    --accent: 241, 245, 249; /* Light blue */
+    --accent-foreground: 15, 23, 42; /* Dark text */
 
     /* Destructive colors - for errors and deletion */
-    --destructive: 0 84.2% 60.2%; /* Red */
-    --destructive-foreground: 210 40% 98%; /* Light text */
+    --destructive: 239, 68, 68; /* Red */
+    --destructive-foreground: 248, 250, 252; /* Light text */
 
     /* UI element colors */
-    --border: 48, 97%, 89%; /* Light gray for borders */
-    --input: 48, 97%, 89%; /* Same as border for inputs */
-    --ring: 47, 100%, 59%; /* Dark color for focus rings */
+    --border: 254, 243, 200; /* Light gray for borders */
+    --border-secondary: 162, 127, 205;
+    --input: 254, 243, 200; /* Same as border for inputs */
+    --ring: 255, 210, 46; /* Dark color for focus rings */
 
     /* Border radius */
     --radius: 0.5rem; /* 8px rounded corners */
@@ -78,38 +65,37 @@
 
     /*transition*/
     --transition: 0.3s;
+    --transition-slow: 0.5s;
+
+    /*sizes*/
+    --small: 15rem;
+    --semi-small: 20rem;
+    --medium: 25rem;
+    --large: 35rem;
   }
 
-  .dark {
-    /* Dark mode - inverted colors */
-    --background: 222.2 84% 4.9%; /* Dark blue, almost black */
-    --foreground: 210 40% 98%; /* Very light */
+  /* Dark mode - inverted colors */
+  /* .dark {
+    
+    --background: rgb(2, 8, 23); 
+    --foreground: rgb(248, 250, 252); 
 
-    --card: 222.2 84% 4.9%; /* Same as background */
-    --card-foreground: 210 40% 98%; /* Light text */
+    --primary: rgb(53, 3, 99); 
+    --primary-foreground: rgb(248, 250, 252); 
 
-    --popover: 222.2 84% 4.9%; /* Same as background */
-    --popover-foreground: 210 40% 98%; /* Light text */
+    --secondary: rgb(30, 41, 59); 
+    --secondary-foreground: rgb(248, 250, 252); 
 
-    --primary: 271 94% 20%; /* Same deep purple */
-    --primary-foreground: 210 40% 98%; /* Light text */
+    --accent: rgb(30, 41, 59);
+    --accent-foreground: rgb(248, 250, 252); 
 
-    --secondary: 217.2 32.6% 17.5%; /* Dark gray with blue tint */
-    --secondary-foreground: 210 40% 98%; /* Light text */
+    --destructive: rgb(127, 29, 29);
+    --destructive-foreground: rgb(248, 250, 252); 
 
-    --muted: 217.2 32.6% 17.5%; /* Same as secondary */
-    --muted-foreground: 215 20.2% 65.1%; /* Medium light gray */
-
-    --accent: 217.2 32.6% 17.5%; /* Same as secondary */
-    --accent-foreground: 210 40% 98%; /* Light text */
-
-    --destructive: 0 62.8% 30.6%; /* Darker red */
-    --destructive-foreground: 210 40% 98%; /* Light text */
-
-    --border: 217.2 32.6% 17.5%; /* Dark for borders */
-    --input: 217.2 32.6% 17.5%; /* Same as border */
-    --ring: 212.7 26.8% 83.9%; /* Lighter for focus rings */
-  }
+    --border: rgb(30, 41, 59);
+    --input: rgb(30, 41, 59); 
+    --ring: rgb(203, 213, 225); 
+  }*/
 }
 
 @layer base {
@@ -271,11 +257,12 @@ body {
 /*footer*/
 
 .about-day {
-  --about-day-position: -2rem 0;
+  --about-day-start: -2rem -2rem;
+  --about-day-end: -2rem 5rem;
   display: grid;
   gap: 1rem;
   animation: go-in var(--transition) linear;
-  translate: var(--about-day-position);
+  translate: var(--about-day-start);
 
   &.deactive {
     animation: go-out var(--transition) linear;
@@ -284,22 +271,22 @@ body {
 
 @keyframes go-in {
   from {
-    translate: -2rem 5rem;
+    translate: var(--about-day-end);
     opacity: 0;
   }
   to {
-    translate: var(--about-day-position);
+    translate: var(--about-day-start);
     opacity: 1;
   }
 }
 
 @keyframes go-out {
   from {
-    translate: var(--about-day-position);
+    translate: var(--about-day-start);
     opacity: 1;
   }
   to {
-    translate: -2rem 5rem;
+    translate: var(--about-day-end);
     opacity: 0;
   }
 }
@@ -339,7 +326,11 @@ body {
 }
 
 .blur-on {
-  animation: blur-on 0.5s ease-in-out;
+  animation: blur-on var(--transition-slow) ease-in-out;
+}
+
+.blur-on-quick {
+  animation: blur-on var(--transition) ease-in-out;
 }
 
 .no-nav {
@@ -376,4 +367,13 @@ body:has(.no-nav) {
     translate: 0 0;
     opacity: 1;
   }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.75;
+  }
+}
+.custom-pulse {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

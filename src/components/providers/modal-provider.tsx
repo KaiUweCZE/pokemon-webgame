@@ -5,12 +5,16 @@ import { Modal, ModalProps } from "@/components/ui/primitives/modal";
 
 interface ModalState {
   isOpen: boolean;
+  onClose?: () => void;
   title?: string;
   description?: string;
   children?: React.ReactNode;
+  showCloseButton?: boolean;
   variant?: ModalProps["variant"];
   size?: ModalProps["size"];
   preventClose?: boolean;
+  className?: string;
+  iconWidth?: number;
 }
 
 // init state

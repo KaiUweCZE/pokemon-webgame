@@ -11,7 +11,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
   return (
     <div
       className={cn(
-        "bg-secondary-background overflow-hidden transition-all duration-300",
+        "overflow-hidden bg-secondary transition-all duration-300",
         isOpen ? "h-12" : "h-0"
       )}
     >

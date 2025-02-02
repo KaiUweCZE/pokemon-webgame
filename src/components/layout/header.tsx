@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { SecondaryHeader } from "./secondary-header";
 import { useState } from "react";
+import { GradientBackground } from "../ui/primitives/gradient-background";
 
 export function Header() {
   const { status } = useSession();
@@ -16,8 +17,8 @@ export function Header() {
   const isAuthenticated = status === "authenticated";
 
   return (
-    <div>
-      <header className="header sticky top-0 z-50 bg-primary">
+    <div className="relative grid">
+      <header className="header secondary-shadow sticky top-0 z-50 bg-primary">
         <div className="max-width mx-auto">
           <div className="container flex h-14 items-center">
             <MainNav status={status} />
@@ -58,6 +59,7 @@ export function Header() {
             </div>
           </div>
         </div>
+        <GradientBackground intensity="max" variant="dark" />
       </header>
       {isAuthenticated && <SecondaryHeader isOpen={isSecondaryOpen} />}
     </div>

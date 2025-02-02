@@ -13,7 +13,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-element hover:bg-primary",
+        primary: "hover:bg-element bg-primary",
+        light: "bg-indigo-700 hover:bg-indigo-600",
         basic: "bg-transparent hover:bg-transparent",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input hover:bg-accent hover:text-accent-foreground",
@@ -22,10 +23,14 @@ const buttonVariants = cva(
         link: " transition-all duration-200 border-b-2 border-transparent hover:border-slate-950 rounded-none px-2",
       },
       size: {
-        default: "py-2 px-4",
+        default: "w-fit py-2 px-4",
         sm: "px-2 py-1 rounded-sm",
         lg: "px-8 rounded-md",
         icon: "w-fit h-fit",
+      },
+      shadow: {
+        true: "shadow-sm shadow-amber-100/20",
+        false: "",
       },
       isActive: {
         true: "border-slate-950 text-amber-200",
@@ -33,18 +38,17 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
       size: "default",
       isActive: false,
+      shadow: false,
     },
   }
 );
 
-type ButtonVariantProps = VariantProps<typeof buttonVariants>;
+export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonVariantProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   isLoading?: boolean;

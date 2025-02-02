@@ -10,7 +10,7 @@ const ProfilePage = () => {
   if (user === null || user === undefined) redirect("/login");
 
   return (
-    <div className="p-8">
+    <div className="large-width mx-auto grid p-8">
       <AccountSection user={user} />
       <PokemonContainer pokemons={user.pokemons} />
       <pre className="mt-8 border-t border-slate-700 bg-slate-100 p-4">

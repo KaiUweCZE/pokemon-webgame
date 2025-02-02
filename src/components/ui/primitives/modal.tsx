@@ -6,10 +6,11 @@ import { X } from "lucide-react";
 import { useEscapeKey } from "@/hooks/use-escape";
 import { useRestrictScroll } from "@/hooks/use-restrict-scroll";
 import { useClickOutside } from "@/hooks/use-click-outside";
+import { Button } from "./button";
 
 const modalVariants = cva(
-  `fixed inset-0 z-50 flex items-center justify-center p-4
-   bg-black/50 animate-in fade-in-0 duration-200`,
+  `fixed w-screen h-screen inset-0 z-50 backdrop-blur-[1px] flex items-center justify-center p-4
+   bg-black/50 blur-on-quick`,
   {
     variants: {
       variant: {
@@ -18,7 +19,7 @@ const modalVariants = cva(
         warning: "",
       },
       size: {
-        default: "sm:max-w-[425px]",
+        default: "",
         sm: "sm:max-w-[384px]",
         lg: "sm:max-w-[512px]",
         full: "sm:max-w-[100vw] sm:h-[100vh]",
@@ -32,21 +33,47 @@ const modalVariants = cva(
 );
 
 const modalContentVariants = cva(
-  `relative grid w-full gap-4 rounded-lg bg-secondary-background p-6 shadow-lg duration-200
+  `relative grid gap-4 rounded-lg bg-secondary p-6 shadow-lg duration-200
    animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%]`,
   {
     variants: {
       variant: {
-        default: "border-2 border-amber-200/20",
+        default: "border border-purple-800/70",
         danger: "border-2 border-destructive/50",
         warning: "border-2 border-yellow-500/50",
+      },
+      size: {
+        default: "w-medium",
+        sm: "w-fit p-4",
+        lg: "w-large p-8",
+        full: "w-full p-4",
       },
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
     },
   }
 );
+
+const iconVariants = cva(`h-4 w-4`, {
+  variants: {
+    variant: {
+      default: "text-amber-200",
+      danger: "text-destructive",
+      warning: "text-yellow-500",
+    },
+    size: {
+      default: "2",
+      sm: "1.5",
+      lg: "2.5",
+      full: " 3",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 type ModalVariantProps = VariantProps<typeof modalVariants>;
 
@@ -59,6 +86,7 @@ export interface ModalProps extends ModalVariantProps {
   showCloseButton?: boolean;
   preventClose?: boolean;
   className?: string;
+  iconWidth?: number;
 }
 
 export function Modal({
@@ -72,6 +100,7 @@ export function Modal({
   showCloseButton = true,
   preventClose = false,
   className,
+  iconWidth = 3,
 }: ModalProps) {
   const contentRef = React.useRef<HTMLDivElement>(null);
   useEscapeKey(onClose, isOpen && !preventClose);
@@ -81,20 +110,22 @@ export function Modal({
 
   return (
     <div className={cn(modalVariants({ variant, size }))}>
-      <div ref={contentRef} className={cn(modalContentVariants({ variant }), className)}>
+      <div ref={contentRef} className={cn(modalContentVariants({ variant, size }), className)}>
         {showCloseButton && !preventClose && (
-          <button
+          <Button
+            variant="basic"
+            size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
+            className="absolute right-2 top-2 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100"
           >
-            <X className="h-4 w-4 text-primary-text" />
-          </button>
+            <X className={cn(iconVariants({ variant, size }))} strokeWidth={iconWidth} />
+          </Button>
         )}
 
         <div className="grid gap-4">
           {title && (
             <div className="flex flex-col space-y-1.5">
-              <h2 className="text-lg font-semibold text-amber-200">{title}</h2>
+              <h2 className="text-lg font-medium text-amber-100">{title}</h2>
               {description && <p className="text-sm text-primary-text">{description}</p>}
             </div>
           )}
