@@ -51,6 +51,7 @@ model Pokemon {
   level            Int        @default(1)
   attacks          String[]   @default([])
   abilities        String[]   @default([])
+  shiny            Boolean    @default(false)
   currentHp        Int        @default(10)
   maxHp            Int        @default(10)
   currentEnergy    Int        @default(5)

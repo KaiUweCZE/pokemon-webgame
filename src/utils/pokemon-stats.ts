@@ -56,3 +56,8 @@ export const applyLevelToStats = (pokemon: PokemonCreate, level: number): Pokemo
     //expToNextLevel: calculateLeveledStat(pokemon.expToNextLevel!, level, "expToNextLevel"),
   };
 };
+
+export const isPokemonShiny = () => {
+  const random = Math.random();
+  return random < 0.01;
+};

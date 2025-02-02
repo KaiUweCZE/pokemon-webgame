@@ -35,6 +35,7 @@ export const addPokemon = async (pokemonData: PokemonCreate) => {
         name: pokemonData.name,
         types: pokemonData.types,
         attacks: pokemonData.attacks ?? ["tackle"],
+        shiny: pokemonData.shiny ?? false,
         abilities: pokemonData.abilities ?? [],
         level: pokemonData.level ?? 1,
         maxHp: pokemonData.maxHp,

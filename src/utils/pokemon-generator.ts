@@ -2,7 +2,7 @@
 import { PokemonCreate, PokemonType } from "@/types/pokemon";
 import { pokemonsData } from "@/data/pokemons/pokemon-data";
 import { randomizeValue } from "./randomize-value";
-import { applyLevelToStats } from "./pokemon-stats";
+import { applyLevelToStats, isPokemonShiny } from "./pokemon-stats";
 
 interface StaticPokemonData {
   id: number;
@@ -28,6 +28,7 @@ export const generatePokemon = (pokemonName: string, level: number = 1): Pokemon
     types: baseData.type as PokemonType[],
     attacks: baseData.attacks.map((e) => e.attack),
     abilities: [],
+    shiny: isPokemonShiny(),
     maxHp: randomizeValue(baseData.hp),
     maxEnergy: randomizeValue(baseData.energy),
     damage: randomizeValue(baseData.damage),
@@ -39,21 +40,3 @@ export const generatePokemon = (pokemonName: string, level: number = 1): Pokemon
 
   return level > 1 ? applyLevelToStats(baseStats, level) : baseStats;
 };
-
-/*
-export const generateWildPokemon = (level: number, pokemonName: string): PokemonCreate => {
-  const basePokemon = generatePokemon(pokemonName);
-
-  // edit stats by level
-  const levelMultiplier = level / 1;
-  return {
-    ...basePokemon,
-    level,
-    maxHp: Math.round(basePokemon.maxHp! * levelMultiplier),
-    maxEnergy: Math.round(basePokemon.maxEnergy! * levelMultiplier),
-    damage: Math.round(basePokemon.damage! * levelMultiplier),
-    defense: Math.round(basePokemon.defense! * levelMultiplier),
-    speed: Math.round(basePokemon.speed! * levelMultiplier),
-  };
-};
-*/

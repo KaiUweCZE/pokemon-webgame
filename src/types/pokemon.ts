@@ -31,6 +31,7 @@ export interface Pokemon {
   id: ObjectId;
   name: string;
   types: PokemonType[];
+  shiny: boolean;
   level: number;
   attacks: string[];
   abilities: string[];
@@ -70,6 +71,7 @@ export type PokemonCreate = Pick<Pokemon, "name" | "types"> &
       | "level"
       | "attacks"
       | "abilities"
+      | "shiny"
       | "maxHp"
       | "maxEnergy"
       | "damage"
