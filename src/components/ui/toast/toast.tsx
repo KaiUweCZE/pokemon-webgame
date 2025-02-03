@@ -3,8 +3,9 @@ import { capitalize } from "@/utils/string";
 import ProgressBar from "../progress-bar";
 import { useState } from "react";
 import { X } from "lucide-react";
+import { GradientBackground } from "../primitives/gradient-background";
 
-export type ToastVariant = "success" | "error" | "warning";
+export type ToastVariant = "success" | "error" | "warning" | "message";
 
 const ANIMATION_DURATION = 300;
 
@@ -21,28 +22,29 @@ const variants = {
     bgColor: "bg-green-50",
     accentColor: "bg-green-600",
     lightAccentColor: "bg-green-600/50",
-    borderColor: "border-green-500",
     textColor: "text-green-800",
-    iconColor: "text-green-500",
     hoverColor: "hover:bg-green-500/20",
   },
   error: {
     bgColor: "bg-red-50",
     accentColor: "bg-red-600",
     lightAccentColor: "bg-red-600/50",
-    borderColor: "border-red-500",
     textColor: "text-red-800",
-    iconColor: "text-red-500",
     hoverColor: "hover:bg-red-500/20",
   },
   warning: {
     bgColor: "bg-yellow-50",
-    accentColor: "bg-yellow-600",
-    lightAccentColor: "bg-yellow-600/50",
-    borderColor: "border-yellow-500",
-    textColor: "text-yellow-800",
-    iconColor: "text-yellow-500",
+    accentColor: "bg-yellow-400/60",
+    lightAccentColor: "bg-yellow-200/20",
+    textColor: "text-yellow-900",
     hoverColor: "hover:bg-yellow-500/20",
+  },
+  message: {
+    bgColor: "bg-white",
+    accentColor: "bg-slate-800/70",
+    lightAccentColor: "bg-slate-400/20",
+    textColor: "text-slate-800",
+    hoverColor: "hover:bg-content-secondary",
   },
 };
 
@@ -86,7 +88,7 @@ export const Toast = ({
           <button
             onClick={handleClose}
             className={cn(
-              "absolute right-2 top-2 rounded-full p-1 transition-colors",
+              "absolute right-2 top-2 z-10 rounded-full p-1 transition-colors",
               currentVariant.hoverColor
             )}
           >
@@ -101,6 +103,7 @@ export const Toast = ({
           className={currentVariant.accentColor}
           setIsLeaving={setIsLeaving}
         />
+        <GradientBackground variant="light" intensity="medium" className="z-1" />
       </div>
     </div>
   );
