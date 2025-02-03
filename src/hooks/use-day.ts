@@ -32,7 +32,8 @@ export const useDay = () => {
     onError(error) {
       showToast(
         error instanceof Error ? error.message : "Failed to continue your journey",
-        "error"
+        "warning",
+        { headline: "It's too late" }
       );
     },
   });

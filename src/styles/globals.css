@@ -41,11 +41,11 @@
 
     /* Accent colors - for hover states etc. */
     --accent: 241, 245, 249; /* Light blue */
-    --accent-foreground: 15, 23, 42; /* Dark text */
+    --accent-secondary: 15, 23, 42; /* Dark text */
 
     /* Destructive colors - for errors and deletion */
     --destructive: 239, 68, 68; /* Red */
-    --destructive-foreground: 248, 250, 252; /* Light text */
+    --destructive-secondary: 211, 24, 24; /* Light text */
 
     /* UI element colors */
     --border: 254, 243, 200; /* Light gray for borders */
@@ -62,6 +62,11 @@
     /*shadows*/
     --dropdown-shadow-primary: 0px 0px 3px rgba(32, 32, 32, 0.75);
     --dropdown-shadow-light: 0px 0px 2px rgba(58, 58, 58, 0.336);
+
+    --shadow-primary: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    --shadow-secondary: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-light: 0 3px 6px rgba(var(--content), 0.16), 0 3px 6px rgba(104, 104, 104, 0.3);
+    --shadow-light-secondary: 0 1px 3px rgba(var(--content), 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
     /*transition*/
     --transition: 0.3s;
@@ -174,8 +179,25 @@ body {
   z-index: 10;
 }
 
+/*PROFILE STYLES*/
+
+.profile-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2fr;
+  background-color: rgba(202, 141, 141, 0.185);
+}
+
+.pokemon-container {
+  place-self: start end;
+}
+
 .profile-img {
   filter: drop-shadow(var(--dropdown-shadow-primary));
+}
+
+.profile-pokemon-img {
+  margin-inline: auto;
+  filter: drop-shadow(var(--dropdown-shadow-light));
 }
 
 .profile-info-card {
@@ -399,4 +421,26 @@ body:has(.no-nav) {
 }
 .custom-pulse {
   animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/*animation*/
+
+button.animation-link {
+  position: relative;
+  transition: var(--transition);
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: var(--transition);
+  }
 }

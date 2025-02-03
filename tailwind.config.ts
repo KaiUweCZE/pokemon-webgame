@@ -12,6 +12,14 @@ export default {
       borderWidth: {
         DEFAULT: "1px",
       },
+      boxShadow: {
+        primary: "var(--shadow-primary)",
+        secondary: "var(--shadow-secondary)",
+        "primary-light": "var(--shadow-light)",
+        "secondary-light": "var(--shadow-light-secondary)",
+        no: "0 0 0 0 rgba(0, 0, 0, 0)",
+      },
+
       colors: {
         border: {
           DEFAULT: "rgb(var(--border))",
@@ -38,11 +46,11 @@ export default {
         },
         destructive: {
           DEFAULT: "rgb(var(--destructive))",
-          foreground: "rgb(var(--destructive-foreground))",
+          secondary: "rgb(var(--destructive-secondary))",
         },
         accent: {
           DEFAULT: "rgb(var(--accent))",
-          foreground: "rgb(var(--accent-foreground))",
+          secondary: "rgb(var(--accent-secondary))",
         },
         element: {
           DEFAULT: "rgb(var(--element))",

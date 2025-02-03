@@ -2,6 +2,7 @@ import { cn } from "@/utils/cn";
 import { useState, useCallback, type CSSProperties } from "react";
 
 interface RippleProps {
+  enabled?: boolean;
   colorClass?: string;
   duration?: number;
   scale?: number;
@@ -20,13 +21,19 @@ const DEFAULT_SCALE = 4;
 const DEFAULT_COLOR = "bg-white/30";
 
 export const useRipple = ({
+  enabled = false,
   colorClass = DEFAULT_COLOR,
   duration = DEFAULT_DURATION,
   scale = DEFAULT_SCALE,
   disabled = false,
 }: Partial<RippleProps> = {}) => {
+  if (!enabled) {
+    return {
+      createRipple: () => {},
+      RippleContainer: () => null,
+    };
+  }
   const [ripples, setRipples] = useState<RippleState[]>([]);
-
   const createRipple = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       if (disabled) return;
@@ -53,6 +60,7 @@ export const useRipple = ({
       top: `${y}px`,
       width: `${size}px`,
       height: `${size}px`,
+      animation: `ripple ${duration}ms ease-out`,
     };
 
     return (

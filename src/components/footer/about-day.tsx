@@ -31,12 +31,10 @@ const AboutDay = ({ isOpen, isClosing }: AboutDayProps) => {
       children: (
         <Button
           withRipple
-          rippleColor="bg-slate-950"
-          variant="basic"
-          size="icon"
+          //size="icon"
           disabled={isUpdating}
           onClick={handleNextDay}
-          className="flex gap-2"
+          className="flex gap-2 place-self-center"
         >
           <span className="z-10 text-amber-100">Next Day</span>
         </Button>
