@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 import { useRipple } from "@/hooks/ui/use-ripple";
 
 const buttonVariants = cva(
-  `inline-flex items-center justify-center rounded-sm text-sm 
+  `inline-flex items-center justify-center rounded-sm text-sm gap-2
   font-medium transition-all duration-300 
   focus-visible:outline-none focus-visible:ring-1 
   focus-visible:ring-amber-200 focus-visible:ring-offset-1 
@@ -13,24 +13,25 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "hover:bg-element bg-primary",
-        light: "bg-indigo-700 hover:bg-indigo-600",
-        basic: "bg-transparent hover:bg-transparent",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-slate-950 hover:bg-slate-950/50",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: " transition-all duration-200 border-b-2 border-transparent hover:border-slate-950 rounded-none px-2",
+        primary: "hover:bg-element bg-primary text-amber-100 shadow-primary",
+        secondary: "bg-secondary hover:bg-slate-800 text-amber-100 shadow-primary-light",
+        light: "bg-content hover:bg-content-secondary text-slate-900 shadow-secondary",
+        basic: "bg-transparent hover:bg-transparent shadow-secondary",
+        destructive:
+          "bg-destructive hover:bg-destructive-secondary text-amber-100 shadow-secondary",
+        outline: "hover:bg-amber-100/20 border border-input text-amber-100 shadow-secondary",
+        ghost: "bg-amber-100/30 hover:bg-amber-100/80 shadow-secondary",
+        link: "animation-link shadow-secondary",
       },
       size: {
-        default: "w-fit py-2 px-4",
+        default: "w-fit py-2 px-4 ",
         sm: "px-2 py-1 rounded-sm",
         lg: "px-8 rounded-md",
         icon: "w-fit h-fit",
       },
       shadow: {
-        true: "shadow-sm shadow-amber-100/20",
-        false: "",
+        true: "",
+        false: "shadow-no",
       },
       isActive: {
         true: "border-slate-950 text-amber-200",
@@ -46,6 +47,49 @@ const buttonVariants = cva(
   }
 );
 
+const rippleConfig = {
+  primary: {
+    colorClass: "bg-amber-100/40",
+    duration: 400,
+    scale: 0.8,
+  },
+  secondary: {
+    colorClass: "bg-amber-100/80",
+    duration: 400,
+    scale: 0.8,
+  },
+  light: {
+    colorClass: "bg-slate-950/60",
+    duration: 400,
+    scale: 0.8,
+  },
+  basic: {
+    colorClass: "bg-amber-100/30",
+    duration: 1000,
+    scale: 4.5,
+  },
+  destructive: {
+    colorClass: "bg-amber-100/60",
+    duration: 800,
+    scale: 2,
+  },
+  outline: {
+    colorClass: "bg-amber-200/80",
+    duration: 500,
+    scale: 0.5,
+  },
+  ghost: {
+    colorClass: "bg-slate-900/30",
+    duration: 500,
+    scale: 1,
+  },
+  link: {
+    colorClass: "bg-slate-950/90",
+    duration: 300,
+    scale: 0.5,
+  },
+} as const;
+
 export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
@@ -56,10 +100,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   asChild?: boolean;
   active?: boolean;
   withRipple?: boolean;
-  rippleColor?: string;
-  rippleDuration?: number;
-  rippleScale?: number;
-  buttonName?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -69,6 +109,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       children,
+      shadow,
       active,
       isLoading,
       loadingText,
@@ -76,22 +117,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       withRipple = false,
-      rippleColor,
-      rippleDuration,
-      rippleScale,
       onClick,
       ...props
     },
     ref
   ) => {
-    const rippleProps = withRipple
-      ? useRipple({
-          colorClass: rippleColor,
-          duration: rippleDuration,
-          scale: rippleScale,
-          disabled: isLoading || props.disabled,
-        })
-      : null;
+    const rippleProps = useRipple({
+      enabled: withRipple,
+      ...(variant && rippleConfig[variant]),
+      disabled: isLoading || props.disabled,
+    });
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (withRipple && rippleProps) {
@@ -105,7 +140,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          buttonVariants({ variant, size, isActive: active, className }),
+          buttonVariants({ variant, size, isActive: active, className, shadow }),
           withRipple ? "relative overflow-hidden" : "",
           "group"
         )}

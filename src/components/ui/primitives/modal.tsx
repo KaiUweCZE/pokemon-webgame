@@ -18,6 +18,7 @@ const modalVariants = cva(
         default: "",
         danger: "",
         warning: "",
+        light: "",
       },
       size: {
         default: "",
@@ -34,14 +35,15 @@ const modalVariants = cva(
 );
 
 const modalContentVariants = cva(
-  `relative grid gap-4 rounded-lg bg-secondary p-6 shadow-lg duration-200
+  `relative grid gap-4 rounded-lg  p-6 shadow-lg duration-200
    animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%]`,
   {
     variants: {
       variant: {
-        default: "border border-purple-800/70",
-        danger: "border-2 border-destructive/50",
-        warning: "border-2 border-yellow-500/50",
+        default: "bg-secondary border border-purple-800/70",
+        danger: "bg-destructive border-2 border-destructive/50",
+        warning: "bg-element border-2 border-yellow-500/50",
+        light: "bg-primary border border-white/20",
       },
       size: {
         default: "w-medium",
@@ -61,6 +63,7 @@ const overlayVariants = cva(``, {
   variants: {
     variant: {
       default: "bg-slate-950/90",
+      light: "bg-red-200",
       danger: "bg-destructive",
       warning: "bg-yellow-500/",
     },
@@ -76,6 +79,7 @@ const iconVariants = cva(`h-4 w-4`, {
       default: "text-amber-200",
       danger: "text-destructive",
       warning: "text-yellow-500",
+      light: "text-white",
     },
     size: {
       default: "2",
@@ -141,10 +145,12 @@ export function Modal({
 
         <div className="grid gap-4">
           {title && (
-            <div className="flex flex-col space-y-1.5">
-              <h2 className="text-lg font-medium text-amber-100">{title}</h2>
+            <article className="grid space-y-1.5">
+              <h2 className="w-fit place-self-center text-lg font-medium text-amber-100">
+                {title}
+              </h2>
               {description && <p className="text-sm text-primary-text">{description}</p>}
-            </div>
+            </article>
           )}
           {children}
         </div>
