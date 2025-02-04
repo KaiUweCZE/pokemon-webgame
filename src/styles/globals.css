@@ -190,11 +190,16 @@ body {
 .profile-container {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 2fr;
-  background-color: rgba(202, 141, 141, 0.185);
+  grid-auto-rows: max-content;
 }
 
 .pokemon-container {
+  display: grid;
   place-self: start end;
+  overflow-y: auto;
+  position: absolute;
+  grid-auto-rows: min-content;
+  max-height: 25rem;
 }
 
 .profile-img {
@@ -209,6 +214,15 @@ body {
 .profile-info-card {
   place-self: end start;
 }
+
+.pokemon-six {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  position: absolute;
+  inset: auto auto -4rem 0;
+}
+
 /* Slides are same, but it's easier to keep them separate for future modifications */
 .first-slide {
   & > :first-child {

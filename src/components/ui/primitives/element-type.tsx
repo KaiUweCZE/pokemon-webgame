@@ -54,17 +54,19 @@ const elementVariants = cva(
 
 type ElementVariantType = VariantProps<typeof elementVariants>;
 
-interface ElementTypeProps extends ElementVariantType {}
+interface ElementTypeProps extends ElementVariantType {
+  className?: string;
+}
 
 interface PokemonTypeProps {
   type: PokemonType;
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "subtle";
 }
-const ElementType = ({ variant, rounded, size }: ElementTypeProps) => {
+const ElementType = ({ variant, rounded, size, className }: ElementTypeProps) => {
   const { src, alt } = typeImages[variant as PokemonType];
   return (
-    <div className={cn(elementVariants({ variant, rounded, size }))}>
+    <div className={cn(elementVariants({ variant, rounded, size, className }))}>
       <span>{variant}</span>
       <GradientBackground intensity="medium" variant="dark" className="z-1" />
       <Image

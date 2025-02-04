@@ -138,7 +138,7 @@ const ProfilePokemonSearch = () => {
   };
 
   return (
-    <div className="mx-auto w-full max-w-4xl bg-primary p-2">
+    <header className="sticky top-0 z-10 mx-auto h-fit w-full max-w-4xl rounded-md bg-element-light/20 p-2">
       <form onSubmit={handleSearch} className="relative">
         <div className="flex flex-col gap-4">
           {/* Search Filters */}
@@ -150,7 +150,7 @@ const ProfilePokemonSearch = () => {
                 onClick={() => setIsTypeOpen(!isTypeOpen)}
                 className="w-40 max-w-40 justify-between border border-purple-500/20 bg-slate-900/90"
               >
-                <span className="font-normal text-slate-400">
+                <span className="font-normal text-amber-100">
                   {selectedTypes.length === 0 ? (
                     "Choose types"
                   ) : (
@@ -171,7 +171,7 @@ const ProfilePokemonSearch = () => {
               </Button>
 
               {isTypeOpen && (
-                <div className="absolute top-full z-10 mt-2 w-64 overflow-hidden rounded-xl border border-purple-500/20 bg-slate-900/95 shadow-lg shadow-purple-500/10 backdrop-blur-sm transition-all duration-200">
+                <div className="absolute z-10 mt-2 w-64 overflow-hidden rounded-sm border border-purple-200/20 bg-primary-dark/95 shadow-md shadow-purple-500/10">
                   <div className="grid grid-cols-3 gap-1 p-2">
                     {pokemonTypes.map(({ name: type, color }) => (
                       <Button
@@ -182,7 +182,7 @@ const ProfilePokemonSearch = () => {
                         className={` ${
                           selectedTypes.includes(type as PokemonType)
                             ? `${color} text-white`
-                            : "text-slate-300 hover:bg-purple-900/20"
+                            : "text-amber-50 hover:bg-purple-900/20"
                         }`}
                       >
                         <span className="text-sm">{type}</span>
@@ -195,7 +195,7 @@ const ProfilePokemonSearch = () => {
 
             {/* Level Inputs */}
             <div className="flex items-center gap-2 rounded-sm border border-purple-500/20 bg-slate-900/90 px-3 py-1">
-              <span className="text-sm text-slate-400">Level:</span>
+              <span className="text-sm text-amber-100">Level:</span>
               <Input
                 type="number"
                 size="sm"
@@ -207,7 +207,7 @@ const ProfilePokemonSearch = () => {
                 min="1"
                 max="100"
               />
-              <span className="text-slate-600">-</span>
+              <span className="text-slate-200">-</span>
               <Input
                 type="number"
                 size="sm"
@@ -229,7 +229,7 @@ const ProfilePokemonSearch = () => {
                 placeholder="Search by name..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="bg-slate-900 py-1.5 text-slate-200"
+                className="bg-slate-900 py-1.5 text-amber-100"
               />
               <Button
                 type="submit"
@@ -284,7 +284,7 @@ const ProfilePokemonSearch = () => {
           )}
         </div>
       </form>
-    </div>
+    </header>
   );
 };
 

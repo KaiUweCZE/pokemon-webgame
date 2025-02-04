@@ -23,7 +23,7 @@ const BarBox = ({
       <Bar
         variant="hp"
         height="sm"
-        actualValue={30}
+        actualValue={actualHp}
         maxValue={maxHp}
         label
         lowThreshold={50}
