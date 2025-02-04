@@ -3,6 +3,7 @@ import AccountSection from "@/components/profile/account-section";
 import PokemonContainer from "@/components/profile/pokemon-container";
 import ProfilePokemonCard from "@/components/profile/profile-pokemon-card";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const ProfilePage = () => {

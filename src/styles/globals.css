@@ -138,6 +138,12 @@ html {
   background: #555;
 }
 
+.custom-scroll {
+  overflow-y: auto;
+  scrollbar-width: 6px;
+  scrollbar-color: #333 #0a0a0a;
+}
+
 body {
   color: hsl(var(--foreground));
   background: var(--background);

@@ -7,8 +7,7 @@ import { useRipple } from "@/hooks/ui/use-ripple";
 const buttonVariants = cva(
   `inline-flex items-center justify-center rounded-sm text-sm gap-2
   font-medium transition-all duration-300 
-  focus-visible:outline-none focus-visible:ring-1 
-  focus-visible:ring-amber-200 focus-visible:ring-offset-1 
+  focus:outline-none focus:ring-2 focus:ring-purple-500/30
   disabled:opacity-50 disabled:pointer-events-none`,
   {
     variants: {

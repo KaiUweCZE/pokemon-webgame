@@ -8,8 +8,8 @@ interface PokemonContainerProps {
 
 const PokemonContainer = ({ pokemons }: PokemonContainerProps) => {
   return (
-    <section className="pokemon-container grid w-fit">
-      <ProfilePokemonSearch onSearch={() => {}} />
+    <section className="pokemon-container grid w-fit bg-slate-950/80">
+      <ProfilePokemonSearch />
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {pokemons.map((pokemon) => (
           <ProfilePokemonCard key={pokemon.id} pokemon={pokemon} />

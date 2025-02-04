@@ -5,22 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
 const inputVariants = cva(
-  `flex w-full rounded-md border border-slate-950 bg-background 
-  px-3 py-2 text-sm ring-offset-amber-100 file:border-0 
-  file:bg-transparent file:text-sm file:font-medium 
-  focus-visible:outline-none 
-  focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-0 
+  `flex w-full rounded-md focus:outline-none 
+  focus:ring-2 focus:ring-purple-500/30
   disabled:cursor-not-allowed disabled:opacity-50`,
   {
     variants: {
       variant: {
-        default: "",
+        default: "bg-background border border-slate-950",
+        secondary:
+          "bg-white/5 text-slate-100 placeholder:text-slate-600 border border-purple-500/20",
         error: "border-red-500 focus-visible:ring-red-500",
         success: "border-green-500 focus-visible:ring-green-500",
       },
       size: {
-        default: "h-10",
-        sm: "h-8 px-2",
+        default: "h-10 px-3 py-2 text-sm",
+        sm: "h-fit px-2 py-0 text-sm",
         lg: "h-12 px-4",
       },
     },
