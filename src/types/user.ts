@@ -1,6 +1,5 @@
-import { ObjectId, Pokemon } from "./pokemon";
-
-export type Location = "shire" | "bridge";
+import { type LocationName } from "./location";
+import { ObjectId, type Pokemon } from "./pokemon";
 
 export type ItemType = "pokeball" | "potion" | "coffee" | "stone";
 
@@ -58,7 +57,7 @@ export interface User {
   pokemons: Pokemon[];
   activePokemonIds: string[];
   completedQuests: string[];
-  location: Location;
+  location: LocationName;
   visitedLocations: Location[];
   chapter: number;
   day: number;

@@ -223,6 +223,22 @@ body {
   inset: auto auto -4rem 0;
 }
 
+/*Location page styles*/
+
+.location-page {
+  display: grid;
+  position: relative;
+  grid-template-rows: 1fr auto;
+  height: calc(100dvh - 3.5rem);
+  overflow: hidden;
+  /* grid-auto-rows: min-content; */
+}
+
+.location-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 /* Slides are same, but it's easier to keep them separate for future modifications */
 .first-slide {
   & > :first-child {

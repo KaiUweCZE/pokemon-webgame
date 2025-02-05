@@ -2,12 +2,21 @@
 import { MainNav } from "@/components/navigation/main-nav";
 import { Button } from "@/components/ui/primitives/button";
 import { useSignOut } from "@/hooks/use-sign-out";
-import { ChevronDown, LogIn, LogOut } from "lucide-react";
+import {
+  Backpack,
+  BackpackIcon,
+  ChevronDown,
+  ChevronDownSquare,
+  LogIn,
+  LogOut,
+  PanelTopOpen,
+} from "lucide-react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { SecondaryHeader } from "./secondary-header";
 import { useState } from "react";
 import { GradientBackground } from "../ui/primitives/gradient-background";
+import { cn } from "@/utils/cn";
 
 export function Header() {
   const { status } = useSession();
@@ -25,18 +34,18 @@ export function Header() {
             <div className="ml-auto flex items-center space-x-4">
               {isAuthenticated && (
                 <Button
-                  variant="ghost"
-                  size="sm"
-                  className="flex gap-1 text-primary-text hover:text-amber-200"
+                  variant="basic"
+                  size="icon"
+                  rightIcon={
+                    <Backpack
+                      className={`h-5 w-5 text-amber-100 transition-transform group-hover:text-amber-200 ${
+                        isSecondaryOpen ? "text-amber-200" : ""
+                      }`}
+                    />
+                  }
+                  className="group p-1"
                   onClick={() => setIsSecondaryOpen(!isSecondaryOpen)}
-                >
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
-                      isSecondaryOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                  <span>Menu</span>
-                </Button>
+                ></Button>
               )}
               {isAuthenticated ? (
                 <Button

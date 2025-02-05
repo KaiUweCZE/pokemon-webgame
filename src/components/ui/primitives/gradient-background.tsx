@@ -11,6 +11,10 @@ const gradientBackgroundVariants = cva("absolute inset-0 rounded-lg from-transpa
       light: "to-purple-500/30",
       accent: " to-indigo-600/30",
       element: "to-purple-800/30",
+      mystic: "to-violet-900/40",
+      ancient: " to-amber-600/30",
+      nature: "to-emerald-900/30",
+      arcane: "from-indigo-900/20 to-purple-900/40",
     },
     direction: {
       top: "bg-gradient-to-t",
@@ -21,6 +25,9 @@ const gradientBackgroundVariants = cva("absolute inset-0 rounded-lg from-transpa
       "top-left": "bg-gradient-to-tl",
       "bottom-right": "bg-gradient-to-br",
       "bottom-left": "bg-gradient-to-bl",
+      radial:
+        "bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-from),var(--tw-gradient-to))]",
+      conic: "bg-[conic-gradient(from_0deg,var(--tw-gradient-from),var(--tw-gradient-to))]",
     },
     pattern: {
       grid: [

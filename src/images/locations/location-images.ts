@@ -1,3 +1,4 @@
+import { type LocationName } from "@/types/location";
 import barnImg from "./barn.webp";
 import bridgeImg from "./bridge.webp";
 import caveImg from "./cave.webp";
@@ -17,14 +18,15 @@ import machoPichuImg from "./macho-pichu.webp";
 import magicalForestImg from "./magical-forest.webp";
 import monastryImg from "./monastry.webp";
 import northmandicImg from "./northmandic.webp";
-import redwoodImg from "./redwood.webp";
+import redwoodImg from "./redwoods.webp";
 import safariImg from "./safari.webp";
 import shireImg from "./shire.webp";
 import southamImg from "./southam.webp";
 import swampImg from "./swamp.webp";
 import teleportImg from "./teleport.webp";
-import waterfallImg from "./waterfall.webp";
+import waterfallImg from "./waterfalls.webp";
 import yummyImg from "./yummy.webp";
+import { StaticImageData } from "next/image";
 
 export const locationImages = {
   barn: {
@@ -52,10 +54,10 @@ export const locationImages = {
     img: crossroadImg,
     alt: "Crossroad location image",
   },
-  mine: {
-    name: "Mine",
-    img: mineImg,
-    alt: "Mine location image",
+  farm: {
+    name: "Farm",
+    img: farmImg,
+    alt: "Farm location image",
   },
   futurome: {
     name: "Futurome",
@@ -66,11 +68,6 @@ export const locationImages = {
     name: "Gastly Tower",
     img: gastlyTowerImg,
     alt: "Gastly Tower location image",
-  },
-  mountain: {
-    name: "Mountain",
-    img: mountainImg,
-    alt: "Mountain location image",
   },
   icescream: {
     name: "Ice Cream Shop",
@@ -87,11 +84,6 @@ export const locationImages = {
     img: lakeImg,
     alt: "Lake location image",
   },
-  farm: {
-    name: "Farm",
-    img: farmImg,
-    alt: "Farm location image",
-  },
   lovely: {
     name: "Lovely",
     img: lovelyImg,
@@ -107,10 +99,20 @@ export const locationImages = {
     img: magicalForestImg,
     alt: "Magical Forest location image",
   },
-  monastry: {
-    name: "Monastry",
+  mine: {
+    name: "Mine",
+    img: mineImg,
+    alt: "Mine location image",
+  },
+  monastery: {
+    name: "Monastery",
     img: monastryImg,
     alt: "Monastry location image",
+  },
+  mountain: {
+    name: "Mountain",
+    img: mountainImg,
+    alt: "Mountain location image",
   },
   northmandic: {
     name: "Northmandic",
@@ -157,4 +159,4 @@ export const locationImages = {
     img: yummyImg,
     alt: "Yummy location image",
   },
-} as const;
+} satisfies Record<LocationName, { name: string; img: StaticImageData; alt: string }>;

@@ -17,8 +17,8 @@ const routes = [
     protected: true,
   },
   {
-    href: "/road",
-    label: "Road",
+    href: "/location",
+    label: "Location",
     protected: true,
   },
 ];
