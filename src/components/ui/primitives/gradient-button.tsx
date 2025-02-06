@@ -19,12 +19,13 @@ const GradientButton = ({
   direction,
   size,
   children,
+  onClick,
   ...props
 }: GradientButtonProps) => {
   const buttonProps = {
     variant: buttonVariant,
     size,
-    className: cn("relative grid overflow-hidden z-0", props.className),
+
     ...props,
   };
 
@@ -36,10 +37,18 @@ const GradientButton = ({
     direction,
   };
 
+  const handleClick: ButtonProps["onClick"] = (e) => {
+    onClick?.(e);
+  };
+
   return (
-    <Button {...buttonProps}>
-      <span className="relative z-10">{children}</span>
-      <GradientBackground {...gradientProps} />
+    <Button
+      {...buttonProps}
+      onClick={handleClick}
+      className={cn("relative overflow-hidden", props.className)}
+    >
+      <span className="relative z-20">{children}</span>
+      <GradientBackground {...gradientProps} className="z-10 rounded-none" />
     </Button>
   );
 };

@@ -279,8 +279,8 @@ body {
 
 .pick-pokemon {
   cursor: pointer;
-  transition: var(--transition);
-  filter: brightness(50%) blur(2px);
+  transition: var(--transition-slow);
+  filter: brightness(50%) blur(1px);
   z-index: 2;
 }
 
@@ -291,16 +291,12 @@ body {
   gap: 1rem;
   cursor: pointer;
   place-items: center;
-  h3 {
-    margin-top: 1rem;
-    place-self: center;
-    font-size: 1.25rem;
-    font-weight: bold;
+  p {
+    hyphens: auto;
   }
   &:hover {
     img {
-      scale: 1.05;
-      filter: brightness(100%) blur(0px);
+      filter: brightness(100%);
     }
   }
 }
@@ -308,9 +304,6 @@ body {
 .pokemon-details {
   display: grid;
   gap: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.315);
-  background-color: rgba(206, 206, 206, 0.51);
-  border: 2px solid rgba(128, 128, 128, 0.65);
   border-radius: 0.35rem;
   border-radius: 8% 92% 7% 93% / 99% 7% 93% 1%;
   box-shadow: 0 0 4px gray;
@@ -319,12 +312,14 @@ body {
   top: 5rem;
   padding-inline: 1rem;
   padding-bottom: 1rem;
+  overflow: hidden;
 }
 
 .toast {
   translate: 0 0;
   transition: var(--transition);
   opacity: 1;
+  hyphens: auto;
   @starting-style {
     translate: 0 5rem;
     opacity: 0;
@@ -414,6 +409,10 @@ body {
   animation: blur-on var(--transition) ease-in-out;
 }
 
+.slide-in {
+  animation: slide-in var(--transition) ease-in-out;
+}
+
 .no-nav {
 }
 
@@ -431,6 +430,17 @@ body:has(.no-nav) {
     opacity: 0;
   }
   to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: 0rem 5rem;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
     opacity: 1;
   }
 }

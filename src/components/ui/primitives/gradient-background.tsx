@@ -12,6 +12,7 @@ const gradientBackgroundVariants = cva("absolute inset-0 rounded-lg from-transpa
       accent: " to-indigo-600/30",
       element: "to-purple-800/30",
       mystic: "to-violet-900/40",
+      pink: "to-pink-50/80",
       ancient: " to-amber-600/30",
       nature: "to-emerald-900/30",
       arcane: "from-indigo-900/20 to-purple-900/40",

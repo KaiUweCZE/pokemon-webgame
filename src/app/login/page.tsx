@@ -1,52 +1,65 @@
 "use client";
 import { useState } from "react";
-import SignInForm from "./signin-form";
-import SignUpForm from "./signup-form";
+import SignInForm from "@/components/login/signin-form";
+import SignUpForm from "@/components/login/signup-form";
 import { Button } from "@/components/ui/primitives/button";
+import { GradientBackground } from "@/components/ui/primitives/gradient-background";
+import { LogInIcon, UserRoundPlus } from "lucide-react";
 
 export default function LoginPage() {
   const [activeTab, setActiveTab] = useState<"signin" | "signup">("signin");
+  const [isAnimating, setIsAnimating] = useState(false);
 
+  const handleTabClick = (tab: "signin" | "signup") => {
+    if (tab === activeTab) return;
+    setIsAnimating(true);
+
+    setTimeout(() => {
+      setActiveTab(tab);
+      setIsAnimating(false);
+    }, 300);
+  };
   return (
-    <div className="mx-auto mt-24 w-full max-w-md rounded-lg border-2 border-indigo-950 bg-indigo-50 p-8 shadow-lg">
-      <div
-        role="tablist"
-        aria-label="Login and signup tabs"
-        className="mx-auto mb-6 flex w-fit gap-8"
+    <main className="slide-in relative mx-auto mt-24 grid h-fit w-full max-w-md overflow-hidden rounded-sm border-2 border-purple-200/60 bg-primary/70 p-8 shadow-primary backdrop-blur-sm">
+      <Button
+        role="tab"
+        type="button"
+        variant="basic"
+        size="icon"
+        onClick={() => handleTabClick(activeTab === "signup" ? "signin" : "signup")}
+        className="absolute -right-0 -top-0 z-10 bg-slate-950/20 p-1 text-lg shadow-secondary"
+        aria-selected={activeTab === "signup"}
+        aria-controls="signup-tab"
+        id="signup"
       >
-        <Button
-          role="tab"
-          variant="link"
-          active={activeTab === "signin"}
-          onClick={() => setActiveTab("signin")}
-          className="text-lg"
-          aria-selected={activeTab === "signin"}
-          aria-controls="signin-tab"
-          id="signin"
+        <div
+          className={`transition-transform duration-300 ${isAnimating ? "scale-0" : "scale-100"}`}
         >
-          <span className={activeTab === "signin" ? "text-slate-950" : "text-slate-500"}>
-            Sign In
-          </span>
-        </Button>
-        <Button
-          role="tab"
-          variant="link"
-          active={activeTab === "signup"}
-          onClick={() => setActiveTab("signup")}
-          className="text-lg"
-          aria-selected={activeTab === "signup"}
-          aria-controls="signup-tab"
-          id="signup"
-        >
-          <span className={activeTab === "signup" ? "text-slate-950" : "text-slate-500"}>
-            Sign Up
-          </span>
-        </Button>
-      </div>
+          {activeTab === "signin" ? (
+            <UserRoundPlus className="h-4 w-4 text-primary-text" />
+          ) : (
+            <LogInIcon className="h-4 w-4 text-primary-text" />
+          )}
+        </div>
+        <div
+          className={`absolute inset-0 -z-10 rounded-sm bg-element/20 transition-all duration-500 ease-in-out ${activeTab === "signup" ? "scale-[100]" : "scale-1"}`}
+        />
+      </Button>
 
-      <div role="tabpanel" id={`${activeTab}-tab`} aria-labelledby={activeTab} className="mt-8">
+      <div
+        role="tabpanel"
+        id={`${activeTab}-tab`}
+        aria-labelledby={activeTab}
+        className="z-10 mt-8 grid gap-6"
+      >
         {activeTab === "signin" ? <SignInForm /> : <SignUpForm />}
       </div>
-    </div>
+      <GradientBackground
+        intensity="high"
+        variant="pink"
+        direction="bottom-left"
+        className="z-1 rounded-none"
+      />
+    </main>
   );
 }

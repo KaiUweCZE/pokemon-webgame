@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/primitives/button";
 import { Input } from "@/components/ui/primitives/input";
 import { useHandleForm } from "@/hooks/use-handle-form";
 import { FormMessage } from "@/components/ui/form-message";
-import { Toast } from "@/components/ui/toast";
 import { queryClient } from "@/lib/providers";
 import { getCurrentUser } from "@/utils/actions/get-current-user";
+import GradientButton from "../ui/primitives/gradient-button";
+import { useToast } from "../providers/toast-context";
 
 export default function SignInForm() {
   const router = useRouter();
+  const { showToast } = useToast();
   const { errors, isSubmitting, setErrors, startSubmission, reset, success, setSuccess } =
     useHandleForm();
 
@@ -29,8 +31,11 @@ export default function SignInForm() {
 
       if (result?.error) {
         setErrors({ general: ["Invalid username or password"] });
+        showToast("Invalid credentials", "error");
       } else {
         setSuccess(true);
+        showToast("Signed in successfully", "success");
+
         const event = new Event("visibilitychange");
         document.dispatchEvent(event);
 
@@ -53,12 +58,15 @@ export default function SignInForm() {
 
   return (
     <>
+      <h1 className="z-10 text-center text-2xl font-medium text-amber-50">Welcome Back</h1>
       <form onSubmit={handleSubmit} className="w-full space-y-4" noValidate>
         <div className="space-y-2">
           <Input
             id="username"
             type="text"
             name="name"
+            variant="primary"
+            shadow
             required
             label="Username"
             placeholder="Enter your username"
@@ -73,6 +81,8 @@ export default function SignInForm() {
             id="password"
             type="password"
             name="password"
+            variant="primary"
+            shadow
             required
             label="Password"
             placeholder="Enter your password"
@@ -82,25 +92,20 @@ export default function SignInForm() {
           />
           <FormMessage id="password-error" message={errors?.password} className="px-1" />
         </div>
-        <Button
+        <GradientButton
           type="submit"
-          variant="secondary"
+          buttonVariant="basic"
+          gradientVariant="pink"
+          intensity="low"
+          direction="radial"
           size="default"
-          className="w-full"
+          shadow
+          className="w-full bg-element hover:bg-element/60"
           disabled={isSubmitting}
         >
           <span className="text-amber-50">{isSubmitting ? "Signing in..." : "Sign In"}</span>
-        </Button>
-        <FormMessage id="form-errors" message={errors?.general} className="mt-4" />
+        </GradientButton>
       </form>
-      {success && (
-        <Toast
-          message="Login successful! Redirecting..."
-          variant="success"
-          isVisible={success}
-          onClose={() => setSuccess(false)}
-        />
-      )}
     </>
   );
 }

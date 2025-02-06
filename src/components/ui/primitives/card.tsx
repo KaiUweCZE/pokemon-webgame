@@ -5,11 +5,11 @@ import React from "react";
 const cardVariants = cva("grid rounded-md primary-shadow", {
   variants: {
     variant: {
-      default: "bg-primary-background border border-primary-border",
+      default: "bg-primary border border-primary-border",
       outline: "border-2 border-primary-border",
-      dark: "bg-card-secondary border border-secondary-border",
+      dark: "bg-element-light/60 border border-secondary-border",
       darkest: "bg-primary-dark",
-      light: "bg-card-light backdrop-blur-sm border border-white/20",
+      light: "bg-content/60 backdrop-blur-sm border border-white/20",
     },
     size: {
       sm: "p-4",

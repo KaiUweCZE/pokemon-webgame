@@ -11,6 +11,8 @@ import { Response } from "@/types/response";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { queryClient } from "@/lib/providers";
+import teddiursa from "../../../public/images/pokemons/teddiursa.webp";
+import eevee from "../../../public/images/pokemons/eevee.webp";
 
 interface ThirdSlideProps {
   handlePrev: () => void;
@@ -29,13 +31,15 @@ const STARTER_POKEMONS = [
     name: "teddiursa",
     description:
       "A cute and cuddly Pokemon that loves honey. It licks its paws because they're often covered in sweet nectar.",
-    images: pokemonsImg.teddiursa,
+    image: teddiursa,
+    alt: "Teddiursa",
   },
   {
     name: "eevee",
     description:
       "A unique Pokemon with unstable genetic makeup that enables it to evolve in various ways.",
-    images: pokemonsImg.eevee,
+    image: eevee,
+    alt: "Eevee",
   },
 ] as const;
 
@@ -95,8 +99,9 @@ const ThirdSlide = ({ handlePrev }: ThirdSlideProps) => {
             key={pokemon.name}
             name={pokemon.name}
             description={pokemon.description}
-            pokemonImages={pokemon.images}
-            isLoading={!selectPokemonMutation.isPending}
+            pokemonImg={pokemon.image}
+            alt={pokemon.alt}
+            isLoading={selectPokemonMutation.isPending}
             onSelect={() => handleSelectPokemon(pokemon.name)}
             disabled={selectPokemonMutation.isPending}
           />

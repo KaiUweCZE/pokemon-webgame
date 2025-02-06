@@ -1,14 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { signUp } from "./action";
+import { signUp } from "@/app/login/action";
 import { Button } from "@/components/ui/primitives/button";
 import { Input } from "@/components/ui/primitives/input";
 import { useHandleForm } from "@/hooks/use-handle-form";
 import { FormMessage } from "@/components/ui/form-message";
-import { Toast } from "@/components/ui/toast";
+import GradientButton from "../ui/primitives/gradient-button";
+import { useToast } from "../providers/toast-context";
 
 export default function SignUpForm() {
   const router = useRouter();
+  const { showToast } = useToast();
   const { errors, isSubmitting, setErrors, startSubmission, reset, success, setSuccess } =
     useHandleForm();
 
@@ -23,12 +25,14 @@ export default function SignUpForm() {
 
       if (result?.error) {
         setErrors(typeof result.error === "string" ? { general: [result.error] } : result.error);
-      } /*else {
-        router.push("/dashboard");
-      }*/
-      setSuccess(true);
+        showToast(result.error, "error");
+      } else {
+        setSuccess(true);
+        showToast("Account created successfully", "success");
+      }
     } catch (error) {
       setErrors({ general: ["Unexpected error"] });
+      showToast("Unexpected error", "error");
     } finally {
       reset();
     }
@@ -36,12 +40,15 @@ export default function SignUpForm() {
 
   return (
     <>
+      <h1 className="z-10 text-center text-2xl font-medium text-amber-50">Create an Account</h1>
       <form onSubmit={handleSubmit} className="w-full space-y-4" noValidate>
         <div className="space-y-2">
           <Input
             id="username"
             type="text"
             name="name"
+            variant="primary"
+            shadow
             required
             label="Username"
             placeholder="Choose a username"
@@ -56,6 +63,8 @@ export default function SignUpForm() {
             id="password"
             type="password"
             name="password"
+            variant="primary"
+            shadow
             required
             label="Password"
             placeholder="Choose a password"
@@ -65,25 +74,21 @@ export default function SignUpForm() {
           />
           <FormMessage id="password-error" message={errors?.password} className="px-1" />
         </div>
-        <Button
+
+        <GradientButton
           type="submit"
-          variant="secondary"
+          buttonVariant="basic"
+          gradientVariant="pink"
+          intensity="low"
+          direction="radial"
           size="default"
-          className="w-full"
+          shadow
+          className="w-full bg-element hover:bg-element/60"
           disabled={isSubmitting}
         >
           <span className="text-amber-50">{isSubmitting ? "Creating account..." : "Sign Up"}</span>
-        </Button>{" "}
-        <FormMessage id="form-errors" message={errors?.general} className="mt-4" />
+        </GradientButton>
       </form>
-      {success && (
-        <Toast
-          message="Account created successfully"
-          variant="success"
-          isVisible={success}
-          onClose={() => setSuccess(false)}
-        />
-      )}
     </>
   );
 }
