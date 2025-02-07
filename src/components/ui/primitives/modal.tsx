@@ -40,7 +40,7 @@ const modalContentVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-secondary border border-purple-800/70",
+        default: "bg-secondary/80 backdrop-blur-[4px] border border-purple-400/30",
         danger: "bg-destructive border-2 border-destructive/50",
         warning: "bg-element border-2 border-yellow-500/50",
         light: "bg-primary border border-white/20",
@@ -76,7 +76,7 @@ const overlayVariants = cva(``, {
 const iconVariants = cva(`h-4 w-4`, {
   variants: {
     variant: {
-      default: "text-amber-200",
+      default: "text-purple-400",
       danger: "text-destructive",
       warning: "text-yellow-500",
       light: "text-white",
@@ -146,7 +146,7 @@ export function Modal({
         <div className="grid gap-4">
           {title && (
             <article className="grid space-y-1.5">
-              <h2 className="w-fit place-self-center text-lg font-medium text-amber-100">
+              <h2 className="w-fit place-self-center text-lg font-medium text-purple-50">
                 {title}
               </h2>
               {description && <p className="text-sm text-primary-text">{description}</p>}

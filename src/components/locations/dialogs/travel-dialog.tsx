@@ -1,44 +1,63 @@
+import { useState } from "react";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Button } from "@/components/ui/primitives/button";
-import { useLocationStore } from "@/store/location-store";
 import { type LocationName } from "@/types/location";
+import { useTravel } from "@/hooks/location/useTravel";
+import { locationData } from "@/data/locations/location-data";
+import { DialogHeader } from "./dialog-header";
+import { PartsOfDayCounter } from "./parts-of-day-counter";
+import { LocationDetails } from "./location-details";
+import LocationPreview from "./location-preview";
+import { useToast } from "@/components/providers/toast-context";
+import { useLocationStore } from "@/store/location-store";
 
 export const TravelDialog = ({ neighborhood }: { neighborhood: LocationName[] }) => {
+  const [selectedLocation, setSelectedLocation] = useState<LocationName | null>(null);
   const { data: user } = useCurrentUser();
-  const { closeDialog, setActionInProgress } = useLocationStore();
+  const { travel, isLoading } = useTravel();
+  const { showToast } = useToast();
+  const { closeDialog } = useLocationStore();
 
-  const handleTravel = async (location: Location) => {
-    try {
-      setActionInProgress(true);
-      // TODO: Implementace cestování
+  const handleTravel = async (location: LocationName) => {
+    if (user && user?.partOfDay >= 2) {
+      showToast("You can't travel anymore today", "error");
+      return;
+    }
+    const success = await travel(location);
+    if (success) {
       closeDialog();
-    } catch (error) {
-      console.error("Travel failed:", error);
-    } finally {
-      setActionInProgress(false);
     }
   };
 
   return (
-    <div className="space-y-4">
-      <p className="text-amber-100">Choose your destination:</p>
-      <div>
-        {neighborhood.map((location) => (
-          <Button
-            key={location}
-            onClick={() => handleTravel(location.toLowerCase() as LocationName)}
-            variant="basic"
-            className="w-full"
-          >
-            {location}
-          </Button>
-        ))}
-      </div>
-      <div className="grid grid-cols-2 gap-3">
-        <Button key={""} onClick={() => handleTravel(location)} variant="basic" className="w-full">
-          cooco?
-        </Button>
-      </div>
+    <div className="grid gap-4">
+      <DialogHeader
+        title="Available Destinations"
+        rightContent={<PartsOfDayCounter current={user?.partOfDay || 0} />}
+        onBack={() => setSelectedLocation(null)}
+        selectedLocation={selectedLocation}
+      />
+      {selectedLocation && (
+        <LocationDetails
+          location={selectedLocation}
+          currentLocation={user?.location}
+          partOfDay={user?.partOfDay || 0}
+          isLoading={isLoading}
+          onTravel={handleTravel}
+        />
+      )}
+      {!selectedLocation && (
+        <div className="grid grid-cols-2 gap-2">
+          {neighborhood.map((location) => (
+            <LocationPreview
+              key={location}
+              location={location}
+              info={locationData[location]}
+              isCurrentLocation={location === user?.location}
+              onSelect={setSelectedLocation}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

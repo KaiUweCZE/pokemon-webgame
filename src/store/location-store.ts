@@ -7,14 +7,15 @@ export type LocationMenu = "travel" | "pokecenter" | "shop" | "explore" | "talk"
 interface LocationStore {
   activeDialogId: LocationMenu | null;
   isActionInProgress: boolean;
+  isLocationChanging: boolean;
 }
 
 const locationStore = new Store<LocationStore>({
   activeDialogId: null,
   isActionInProgress: false,
+  isLocationChanging: false,
 });
 
-// Upravené akce pro práci s dialogy
 export const openDialog = (id: LocationMenu) => {
   locationStore.setState((state) => ({
     ...state,
@@ -36,6 +37,13 @@ export const setActionInProgress = (inProgress: boolean) => {
   }));
 };
 
+export const setLocationChanging = (isChanging: boolean) => {
+  locationStore.setState((state) => ({
+    ...state,
+    isLocationChanging: isChanging,
+  }));
+};
+
 export const useLocationStore = () => {
   const state = useStore(locationStore);
 
@@ -44,5 +52,6 @@ export const useLocationStore = () => {
     openDialog,
     closeDialog,
     setActionInProgress,
+    setLocationChanging,
   };
 };

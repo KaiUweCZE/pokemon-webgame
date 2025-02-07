@@ -6,6 +6,7 @@ const cardVariants = cva("grid rounded-md primary-shadow", {
   variants: {
     variant: {
       default: "bg-primary border border-primary-border",
+      basic: "bg-transparent",
       outline: "border-2 border-primary-border",
       dark: "bg-element-light/60 border border-secondary-border",
       darkest: "bg-primary-dark",
@@ -31,6 +32,7 @@ const headlineVariants = cva("text-lg", {
       outline: "",
       dark: "",
       darkest: "",
+      basic: "",
       light: "font-semibold text-primary",
     },
   },
@@ -40,15 +42,21 @@ type CardVariantProps = VariantProps<typeof cardVariants>;
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, CardVariantProps {
   headline?: string;
+  headlineClassName?: string;
   animation?: string;
   children?: React.ReactNode;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ headline, children, className, animation, variant, size, ...props }, ref) => (
+  (
+    { headline, children, className, animation, variant, size, headlineClassName, ...props },
+    ref
+  ) => (
     <div ref={ref} className={cn(cardVariants({ variant, size, className }), animation)} {...props}>
       <article>
-        {headline && <h3 className={cn(headlineVariants({ variant }))}>{headline}</h3>}
+        {headline && (
+          <h3 className={cn(headlineVariants({ variant }), headlineClassName)}>{headline}</h3>
+        )}
         {children}
       </article>
     </div>
