@@ -6,13 +6,13 @@ type AreaNumber = 1 | 2 | 3 | 4;
 
 type LocationPokemonSet<T extends LocationName> = LocationPokemons[T][number];
 
-interface AreaConfig<T extends LocationName> {
+export interface AreaConfig<T extends LocationName> {
   pokemons: LocationPokemonSet<T>[];
   min: number;
   max: number;
 }
 
-type LocationAreasType = {
+export type LocationAreasType = {
   [Location in LocationName]: {
     [Area in AreaNumber]: AreaConfig<Location>;
   };
@@ -29,14 +29,12 @@ type MissingPokemons<T extends LocationName> = Exclude<
   UsedPokemons<T>
 >;
 
+// check all locations for missing available pokemons
 type LocationsWithMissingPokemons = {
   [Location in LocationName as MissingPokemons<Location> extends never
     ? never
     : Location]: MissingPokemons<Location>;
 };
-
-// check all locations for missing available pokemons
-type CheckMissing = LocationsWithMissingPokemons;
 
 export const locationAreas = {
   shire: {
@@ -609,6 +607,21 @@ export const locationAreas = {
     },
   },
 } satisfies LocationAreasType;
+
+type AreaType = {
+  pokemons: PokemonName[];
+  min: number;
+  max: number;
+};
+
+export type LocationAreas = {
+  1: AreaType;
+  2: AreaType;
+  3: AreaType;
+  4: AreaType;
+};
+
+//export type AreasType = typeof locationAreas;
 
 // Helper funkce pro získání pokémonů pro konkrétní oblast
 export const getAreaPokemons = (location: LocationName, area: AreaNumber): PokemonName[] => {
