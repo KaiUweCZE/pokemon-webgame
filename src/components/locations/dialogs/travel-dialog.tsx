@@ -3,10 +3,10 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { type LocationName } from "@/types/location";
 import { useTravel } from "@/hooks/location/useTravel";
 import { locationData } from "@/data/locations/location-data";
-import { DialogHeader } from "./dialog-header";
-import { PartsOfDayCounter } from "./parts-of-day-counter";
-import { LocationDetails } from "./location-details";
-import LocationPreview from "./location-preview";
+import { DialogHeader } from "./components/dialog-header";
+import { PartsOfDayCounter } from "./components/parts-of-day-counter";
+import { LocationDetails } from "./components/location-details";
+import LocationPreview from "./components/location-preview";
 import { useToast } from "@/components/providers/toast-context";
 import { useLocationStore } from "@/store/location-store";
 

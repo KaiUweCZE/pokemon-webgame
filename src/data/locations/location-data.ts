@@ -1,10 +1,25 @@
 import { LocationName } from "@/types/location";
+import { PokemonName } from "@/types/pokemon";
 import { StaticImageData } from "next/image";
+
+interface PokemonSpawn {
+  name: PokemonName;
+  levelRange: {
+    min: number;
+    max: number;
+  };
+}
+
+interface AreaSpawns {
+  pokemons: PokemonSpawn[];
+}
 
 export interface LocationData {
   name: string;
   neighborhood: LocationName[];
   description: string;
+  //  availablePokemons: PokemonName[];
+  //areas: Record<number, AreaSpawns>;
 }
 
 export const locationData = {
