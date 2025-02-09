@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xxs: "0.65rem",
+      },
       borderWidth: {
         DEFAULT: "1px",
       },
@@ -17,6 +20,7 @@ export default {
         secondary: "var(--shadow-secondary)",
         "primary-light": "var(--shadow-light)",
         "secondary-light": "var(--shadow-light-secondary)",
+        top: "var(--shadow-top)",
         no: "0 0 0 0 rgba(0, 0, 0, 0)",
       },
 

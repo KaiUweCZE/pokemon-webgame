@@ -11,6 +11,8 @@ const barVariants = cva(
         energy: "",
       },
       height: {
+        xxs: "h-1",
+        xs: "h-2 w-24",
         sm: "h-3 w-32",
         md: "h-4 w-48",
         lg: "h-6 w-full",
@@ -22,6 +24,13 @@ const barVariants = cva(
         full: "w-full",
       },
     },
+    compoundVariants: [
+      {
+        variant: "exp",
+        height: "xxs",
+        className: "rounded-none",
+      },
+    ],
     defaultVariants: {
       variant: "hp",
       height: "md",
@@ -90,6 +99,7 @@ const Bar = ({
   showValues = false,
   className,
   label,
+  labelPosition,
   animate = false,
   lowThreshold = 0,
 }: BarProps) => {
@@ -110,6 +120,7 @@ const Bar = ({
         {showValues && (
           <span
             className={cn(
+              labelVariants({ position: labelPosition }),
               "absolute inset-0 flex items-center justify-center",
               height === "sm" ? "text-[.6rem]" : height === "lg" ? "text-base" : "text-sm",
               variant === "hp" ? "text-red-50" : variant === "exp" ? "text-teal-50" : "text-white"

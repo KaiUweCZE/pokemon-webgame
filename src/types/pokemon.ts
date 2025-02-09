@@ -44,11 +44,18 @@ export interface Pokemon {
   damage: number;
   defense: number;
   speed: number;
+  statusEffects?: StatusEffect[];
   evolutionInformed: boolean;
   userId: ObjectId | null;
   isActive: boolean;
   createdAt: Date;
 }
+
+export interface BattlePokemon extends Omit<Pokemon, "createdAt" | "userId" | "evolutionInformed"> {
+  attackCooldowns?: Record<string, number>;
+}
+
+export type EnemyPokemon = Omit<BattlePokemon, "attackCooldowns">;
 
 export interface PokemonStaticData
   extends Omit<Pokemon, "userId" | "createAt" | "evolutionInformed"> {

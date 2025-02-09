@@ -1,0 +1,31 @@
+"use client";
+import { useBattleStore } from "@/store/battle-store";
+import NotStartedWindow from "./action-windows/not-started-window";
+import AttackWindow from "./action-windows/attack-window";
+import RunWindow from "./action-windows/run-window";
+
+const BattleMenuActions = () => {
+  const { battleStatus, activeMenuSection, enemyPokemon } = useBattleStore();
+
+  // Helper function to determine which component to render
+  const renderActionContent = () => {
+    // Battle not started yet
+    if (battleStatus === "not-started") {
+      return <NotStartedWindow />;
+    }
+    if (battleStatus === "in-progress" && activeMenuSection === "attacks") {
+      return <AttackWindow />;
+    }
+
+    // If user wants to leave a battle
+    if (battleStatus === "paused" && activeMenuSection === "run") {
+      return <RunWindow />;
+    }
+
+    return null;
+  };
+
+  return <div className="grid gap-4 p-4">{renderActionContent()}</div>;
+};
+
+export default BattleMenuActions;

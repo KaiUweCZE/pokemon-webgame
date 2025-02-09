@@ -67,6 +67,7 @@
     --shadow-secondary: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-light: 0 3px 6px rgba(var(--content), 0.16), 0 3px 6px rgba(104, 104, 104, 0.3);
     --shadow-light-secondary: 0 1px 3px rgba(var(--content), 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-top: 0px -4px 10px 0px rgba(0, 0, 0, 0.5);
 
     /*transition*/
     --transition: 0.3s;

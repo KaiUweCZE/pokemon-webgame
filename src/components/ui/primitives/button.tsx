@@ -27,6 +27,7 @@ const buttonVariants = cva(
         sm: "px-2 py-1 rounded-sm",
         lg: "px-8 rounded-md",
         icon: "w-fit h-fit",
+        full: "w-full h-full",
       },
       shadow: {
         true: "",
