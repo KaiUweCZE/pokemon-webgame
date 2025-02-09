@@ -19,6 +19,7 @@ const modalVariants = cva(
         danger: "",
         warning: "",
         light: "",
+        secondary: "bg-transparent",
       },
       size: {
         default: "",
@@ -44,6 +45,7 @@ const modalContentVariants = cva(
         danger: "bg-destructive border-2 border-destructive/50",
         warning: "bg-element border-2 border-yellow-500/50",
         light: "bg-primary border border-white/20",
+        secondary: "bg-primary-dark/80 border-purple-800/30 border",
       },
       size: {
         default: "w-medium",
@@ -66,6 +68,7 @@ const overlayVariants = cva(``, {
       light: "bg-red-200",
       danger: "bg-destructive",
       warning: "bg-yellow-500/",
+      secondary: "bg-red-50",
     },
   },
   defaultVariants: {
@@ -80,6 +83,7 @@ const iconVariants = cva(`h-4 w-4`, {
       danger: "text-destructive",
       warning: "text-yellow-500",
       light: "text-white",
+      secondary: "text-red-200",
     },
     size: {
       default: "2",

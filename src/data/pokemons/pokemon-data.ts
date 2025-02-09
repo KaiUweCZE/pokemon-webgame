@@ -26,8 +26,8 @@ interface PokemonData {
   expToLevel: number;
   expForKill: number;
   evolutionLevels?: number[] | null;
-  evolutionChain?: string[] | null;
-  evolution?: { level: number; name: string } | null;
+  evolutionChain?: PokemonName[] | null;
+  evolution?: { level: number; name: PokemonName } | null;
 }
 
 const getPokemonImages = (name: PokemonName) => ({
@@ -54,7 +54,7 @@ export const pokemonsData: PokemonData[] = [
     evolutionChain: ["bulbasaur", "ivysaur", "venusaur"],
     evolution: {
       level: 30,
-      name: "Ivysaur",
+      name: "ivysaur",
     },
   },
   {
@@ -71,10 +71,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 10,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Bulbasaur", "Ivysaur", "Venusaur"],
+    evolutionChain: ["bulbasaur", "ivysaur", "venusaur"],
     evolution: {
       level: 50,
-      name: "Venusaur",
+      name: "venusaur",
     },
   },
   {
@@ -91,7 +91,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 140,
     expForKill: 18,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Bulbasaur", "Ivysaur", "Venusaur"],
+    evolutionChain: ["bulbasaur", "ivysaur", "venusaur"],
     evolution: null,
   },
   {
@@ -108,10 +108,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 60,
     expForKill: 8,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Charmander", "Charmeleon", "Charizard"],
+    evolutionChain: ["charmander", "charmeleon", "charizard"],
     evolution: {
       level: 30,
-      name: "Charmeleon",
+      name: "charmeleon",
     },
   },
   {
@@ -128,10 +128,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 12,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Charmander", "Charmeleon", "Charizard"],
+    evolutionChain: ["charmander", "charmeleon", "charizard"],
     evolution: {
       level: 50,
-      name: "Charizard",
+      name: "charizard",
     },
   },
   {
@@ -148,7 +148,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 20,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Charmander", "Charmeleon", "Charizard"],
+    evolutionChain: ["charmander", "charmeleon", "charizard"],
     evolution: null,
   },
   {
@@ -165,10 +165,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 85,
     expForKill: 7,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Squirtle", "Wartortle", "Blastoise"],
+    evolutionChain: ["squirtle", "wartortle", "blastoise"],
     evolution: {
       level: 30,
-      name: "Wartortle",
+      name: "wartortle",
     },
   },
   {
@@ -185,7 +185,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 8,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Squirtle", "Wartortle", "Blastoise"],
+    evolutionChain: ["squirtle", "wartortle", "blastoise"],
     evolution: null,
   },
   {
@@ -202,7 +202,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 105,
     expForKill: 12,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Squirtle", "Wartortle", "Blastoise"],
+    evolutionChain: ["squirtle", "wartortle", "blastoise"],
     evolution: null,
   },
   {
@@ -219,7 +219,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 50,
     expForKill: 50,
     evolutionLevels: [18, 36],
-    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolutionChain: ["pidgey", "pidgeotto", "pidgeot"],
     evolution: null,
   },
   {
@@ -236,7 +236,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 100,
     evolutionLevels: [36],
-    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolutionChain: ["pidgey", "pidgeotto", "pidgeot"],
     evolution: null,
   },
   {
@@ -253,7 +253,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 150,
     evolutionLevels: [],
-    evolutionChain: ["Pidgey", "Pidgeotto", "Pidgeot"],
+    evolutionChain: ["pidgey", "pidgeotto", "pidgeot"],
     evolution: null,
   },
   {
@@ -270,7 +270,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 5,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Pikachu", "Raichu"],
+    evolutionChain: ["pikachu", "raichu"],
     evolution: null,
   },
   {
@@ -287,7 +287,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 400,
     expForKill: 241,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Pikachu", "Raichu"],
+    evolutionChain: ["pikachu", "raichu"],
     evolution: null,
   },
   {
@@ -304,10 +304,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 5,
     evolutionLevels: [30],
-    evolutionChain: ["Sandshrew", "Sandslash"],
+    evolutionChain: ["sandshrew", "sandslash"],
     evolution: {
       level: 30,
-      name: "Sandslash",
+      name: "sandslash",
     },
   },
   {
@@ -324,7 +324,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 13,
     evolutionLevels: [30],
-    evolutionChain: ["Sandshrew", "Sandslash"],
+    evolutionChain: ["sandshrew", "sandslash"],
     evolution: null,
   },
   {
@@ -341,7 +341,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 60,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolutionChain: ["nidoran", "nidorino", "nidoking"],
     evolution: null,
   },
   {
@@ -358,7 +358,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 180,
     expForKill: 120,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolutionChain: ["nidoran", "nidorino", "nidoking"],
     evolution: null,
   },
   {
@@ -375,7 +375,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 220,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Nidoran", "Nidorino", "Nidoking"],
+    evolutionChain: ["nidoran", "nidorino", "nidoking"],
     evolution: null,
   },
   {
@@ -392,7 +392,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 60,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Vulpix", "Ninetales"],
+    evolutionChain: ["vulpix", "ninetales"],
     evolution: null,
   },
   {
@@ -409,7 +409,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 170,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Vulpix", "Ninetales"],
+    evolutionChain: ["vulpix", "ninetales"],
     evolution: null,
   },
   {
@@ -426,10 +426,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 60,
     expForKill: 8,
     evolutionLevels: [22, 45],
-    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolutionChain: ["zubat", "golbat", "crobat"],
     evolution: {
       level: 22,
-      name: "Golbat",
+      name: "golbat",
     },
   },
   {
@@ -446,10 +446,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 15,
     evolutionLevels: [22, 45],
-    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolutionChain: ["zubat", "golbat", "crobat"],
     evolution: {
       level: 45,
-      name: "Crobat",
+      name: "crobat",
     },
   },
   {
@@ -500,7 +500,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 105,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Growlithe", "Arcanine"],
+    evolutionChain: ["growlithe", "arcanine"],
     evolution: null,
   },
   {
@@ -517,7 +517,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 200,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Growlithe", "Arcanine"],
+    evolutionChain: ["growlithe", "arcanine"],
     evolution: null,
   },
   {
@@ -534,10 +534,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 50,
     expForKill: 7,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Abra", "Kadabra", "Alakazam"],
+    evolutionChain: ["abra", "kadabra", "alakazam"],
     evolution: {
       level: 30,
-      name: "Kadabra",
+      name: "kadabra",
     },
   },
   {
@@ -554,10 +554,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 12,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Abra", "Kadabra", "Alakazam"],
+    evolutionChain: ["abra", "kadabra", "alakazam"],
     evolution: {
       level: 30,
-      name: "Alakazam",
+      name: "alakazam",
     },
   },
   {
@@ -574,7 +574,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 125,
     expForKill: 15,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Abra", "Kadabra", "Alakazam"],
+    evolutionChain: ["abra", "kadabra", "alakazam"],
     evolution: null,
   },
   {
@@ -591,7 +591,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 70,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolutionChain: ["machop", "machoke", "machamp"],
     evolution: null,
   },
   {
@@ -608,7 +608,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 140,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolutionChain: ["machop", "machoke", "machamp"],
     evolution: null,
   },
   {
@@ -625,7 +625,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 350,
     expForKill: 210,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Machop", "Machoke", "Machamp"],
+    evolutionChain: ["machop", "machoke", "machamp"],
     evolution: null,
   },
   {
@@ -642,7 +642,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 5,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolutionChain: ["geodude", "graveler", "golem"],
     evolution: null,
   },
   {
@@ -659,7 +659,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 200,
     expForKill: 93,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolutionChain: ["geodude", "graveler", "golem"],
     evolution: null,
   },
   {
@@ -676,7 +676,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 198,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Geodude", "Graveler", "Golem"],
+    evolutionChain: ["geodude", "graveler", "golem"],
     evolution: null,
   },
   {
@@ -693,10 +693,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 85,
     expForKill: 7,
     evolutionLevels: [30],
-    evolutionChain: ["Farfetch'd", "Sirfetch'd"],
+    evolutionChain: ["farfetchd", "sirfetchd"],
     evolution: {
       level: 30,
-      name: "Sirfetch'd",
+      name: "sirfetchd",
     },
   },
   {
@@ -713,10 +713,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 70,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Gastly", "Haunter", "Gengar"],
+    evolutionChain: ["gastly", "haunter", "gengar"],
     evolution: {
       level: 30,
-      name: "Haunter",
+      name: "haunter",
     },
   },
   {
@@ -733,10 +733,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 12,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Gastly", "Haunter", "Gengar"],
+    evolutionChain: ["gastly", "haunter", "gengar"],
     evolution: {
       level: 30,
-      name: "Gengar",
+      name: "gengar",
     },
   },
   {
@@ -753,7 +753,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 15,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Gastly", "Haunter", "Gengar"],
+    evolutionChain: ["gastly", "haunter", "gengar"],
     evolution: null,
   },
   {
@@ -787,10 +787,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 55,
     expForKill: 7,
     evolutionLevels: [30],
-    evolutionChain: ["Krabby", "Kingler"],
+    evolutionChain: ["krabby", "kingler"],
     evolution: {
       level: 30,
-      name: "Kingler",
+      name: "kingler",
     },
   },
   {
@@ -807,7 +807,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 15,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Krabby", "Kingler"],
+    evolutionChain: ["krabby", "kingler"],
     evolution: null,
   },
   {
@@ -824,10 +824,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 55,
     expForKill: 7,
     evolutionLevels: [30],
-    evolutionChain: ["Cubone", "Marowak"],
+    evolutionChain: ["cubone", "marowak"],
     evolution: {
       level: 30,
-      name: "Marowak",
+      name: "marowak",
     },
   },
   {
@@ -844,7 +844,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 12,
     evolutionLevels: [30],
-    evolutionChain: ["Cubone", "Marowak"],
+    evolutionChain: ["cubone", "marowak"],
     evolution: null,
   },
   {
@@ -895,10 +895,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 60,
     expForKill: 8,
     evolutionLevels: [30],
-    evolutionChain: ["Koffing", "Weezing"],
+    evolutionChain: ["koffing", "weezing"],
     evolution: {
       level: 30,
-      name: "Weezing",
+      name: "weezing",
     },
   },
   {
@@ -915,7 +915,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 110,
     expForKill: 14,
     evolutionLevels: [30],
-    evolutionChain: ["Koffing", "Weezing"],
+    evolutionChain: ["koffing", "weezing"],
     evolution: null,
   },
   {
@@ -932,7 +932,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 200,
     expForKill: 135,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolutionChain: ["rhyhorn", "rhydon", "rhyperior"],
     evolution: null,
   },
   {
@@ -949,7 +949,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 204,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolutionChain: ["rhyhorn", "rhydon", "rhyperior"],
     evolution: null,
   },
   {
@@ -1034,7 +1034,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 16,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Scyther", "Scizor"],
+    evolutionChain: ["scyther", "scizor"],
     evolution: null,
   },
   {
@@ -1051,7 +1051,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 10,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Smoochum", "Jynx"],
+    evolutionChain: ["smoochum", "jynx"],
     evolution: null,
   },
   {
@@ -1119,9 +1119,9 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 40,
     expForKill: 5,
     evolutionLevels: [20],
-    evolutionChain: ["Magikarp", "Gyarados"],
+    evolutionChain: ["magikarp", "gyarados"],
     evolution: {
-      name: "Gyarados",
+      name: "gyarados",
       level: 20,
     },
   },
@@ -1139,7 +1139,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 160,
     expForKill: 22,
     evolutionLevels: [20],
-    evolutionChain: ["Magikarp, Gyarados"],
+    evolutionChain: ["magikarp", "gyarados"],
     evolution: null,
   },
   {
@@ -1176,9 +1176,9 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 70,
     expForKill: 52,
     evolutionLevels: [20],
-    evolutionChain: ["Hoothoot", "Noctowl"],
+    evolutionChain: ["hoothoot", "noctowl"],
     evolution: {
-      name: "Noctowl",
+      name: "noctowl",
       level: 20,
     },
   },
@@ -1196,7 +1196,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 120,
     evolutionLevels: [],
-    evolutionChain: ["Hoothoot", "Noctowl"],
+    evolutionChain: ["hoothoot", "noctowl"],
     evolution: null,
   },
   {
@@ -1213,7 +1213,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 20,
     evolutionLevels: [22, 45],
-    evolutionChain: ["Zubat", "Golbat", "Crobat"],
+    evolutionChain: ["zubat", "golbat", "crobat"],
     evolution: null,
   },
   {
@@ -1230,9 +1230,9 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 50,
     expForKill: 30,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolutionChain: ["togepi", "togetic", "togekiss"],
     evolution: {
-      name: "Togetic",
+      name: "togetic",
       level: 30,
     },
   },
@@ -1250,9 +1250,9 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 70,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolutionChain: ["togepi", "togetic", "togekiss"],
     evolution: {
-      name: "Togekiss",
+      name: "togetic",
       level: 50,
     },
   },
@@ -1270,10 +1270,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 85,
     expForKill: 14,
     evolutionLevels: [35],
-    evolutionChain: ["Murkrow", "Honchkrow"],
+    evolutionChain: ["murkrow", "honchkrow"],
     evolution: {
       level: 35,
-      name: "Honchkrow",
+      name: "honchkrow",
     },
   },
   {
@@ -1290,7 +1290,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 6,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Snubbull", "Granbull"],
+    evolutionChain: ["snubbull", "granbull"],
   },
   {
     id: 210,
@@ -1306,7 +1306,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 8,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Snubbull", "Granbull"],
+    evolutionChain: ["snubbull", "granbull"],
     evolution: null,
   },
   {
@@ -1357,10 +1357,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 15,
     evolutionLevels: [40],
-    evolutionChain: ["Sneasel", "Weavile"],
+    evolutionChain: ["sneasel", "weavile"],
     evolution: {
       level: 40,
-      name: "Weavile",
+      name: "weavile",
     },
   },
   {
@@ -1381,10 +1381,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 50,
     expForKill: 6,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Teddiursa", "Ursaring", "Ursaluna"],
+    evolutionChain: ["teddiursa", "ursaring", "ursaluna"],
     evolution: {
       level: 30,
-      name: "Ursaring",
+      name: "ursaring",
     },
   },
   {
@@ -1401,10 +1401,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 175,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Teddiursa", "Ursaring", "Ursaluna"],
+    evolutionChain: ["teddiursa", "ursaring", "ursaluna"],
     evolution: {
       level: 50,
-      name: "Ursaluna",
+      name: "ursaluna",
     },
   },
   {
@@ -1421,7 +1421,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 60,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolutionChain: ["swinub", "piloswine", "mamoswine"],
     evolution: null,
   },
   {
@@ -1438,7 +1438,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 140,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolutionChain: ["swinub", "piloswine", "mamoswine"],
     evolution: null,
   },
   {
@@ -1455,10 +1455,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 75,
     expForKill: 12,
     evolutionLevels: [24],
-    evolutionChain: ["Houndour", "Houndoom"],
+    evolutionChain: ["houndour", "houndoom"],
     evolution: {
       level: 24,
-      name: "Houndoom",
+      name: "houndoom",
     },
   },
   {
@@ -1475,7 +1475,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 110,
     expForKill: 18,
     evolutionLevels: [24],
-    evolutionChain: ["Houndour", "Houndoom"],
+    evolutionChain: ["houndour", "houndoom"],
     evolution: null,
   },
   {
@@ -1509,7 +1509,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 75,
     expForKill: 6,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Smoochum", "Jynx"],
+    evolutionChain: ["smoochum", "jynx"],
     evolution: null,
   },
   {
@@ -1543,10 +1543,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 70,
     expForKill: 10,
     evolutionLevels: [30, 55],
-    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolutionChain: ["larvitar", "pupitar", "tyranitar"],
     evolution: {
       level: 30,
-      name: "Pupitar",
+      name: "pupitar",
     },
   },
   {
@@ -1563,10 +1563,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 15,
     evolutionLevels: [55],
-    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolutionChain: ["larvitar", "pupitar", "tyranitar"],
     evolution: {
       level: 55,
-      name: "Tyranitar",
+      name: "tyranitar",
     },
   },
   {
@@ -1583,7 +1583,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 25,
     evolutionLevels: [],
-    evolutionChain: ["Larvitar", "Pupitar", "Tyranitar"],
+    evolutionChain: ["larvitar", "pupitar", "tyranitar"],
     evolution: null,
   },
   {
@@ -1600,10 +1600,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 50,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolutionChain: ["seedot", "nuzleaf", "shiftry"],
     evolution: {
       level: 30,
-      name: "Nuzleaf",
+      name: "nuzleaf",
     },
   },
   {
@@ -1620,10 +1620,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 150,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolutionChain: ["seedot", "nuzleaf", "shiftry"],
     evolution: {
       level: 50,
-      name: "Shiftry",
+      name: "shiftry",
     },
   },
   {
@@ -1640,7 +1640,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 150,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Seedot", "Nuzleaf", "Shiftry"],
+    evolutionChain: ["seedot", "nuzleaf", "shiftry"],
     evolution: null,
   },
   {
@@ -1657,7 +1657,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 70,
     expForKill: 5,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolutionChain: ["ralts", "kirlia", "gallade"],
     evolution: null,
   },
   {
@@ -1674,7 +1674,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 85,
     expForKill: 7,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolutionChain: ["ralts", "kirlia", "gallade"],
     evolution: null,
   },
   {
@@ -1708,7 +1708,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 60,
     expForKill: 60,
     evolutionLevels: [37, 55],
-    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolutionChain: ["duskull", "dusclops", "dusknoir"],
     evolution: null,
   },
   {
@@ -1725,7 +1725,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 90,
     evolutionLevels: [37, 55],
-    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolutionChain: ["duskull", "dusclops", "dusknoir"],
     evolution: null,
   },
   {
@@ -1742,10 +1742,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 12,
     evolutionLevels: [20, 45],
-    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolutionChain: ["beldum", "metang", "metagross"],
     evolution: {
       level: 20,
-      name: "Metang",
+      name: "metang",
     },
   },
   {
@@ -1762,10 +1762,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 110,
     expForKill: 18,
     evolutionLevels: [45],
-    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolutionChain: ["beldum", "metang", "metagross"],
     evolution: {
       level: 45,
-      name: "Metagross",
+      name: "metagross",
     },
   },
   {
@@ -1782,7 +1782,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 25,
     evolutionLevels: [],
-    evolutionChain: ["Beldum", "Metang", "Metagross"],
+    evolutionChain: ["beldum", "metang", "metagross"],
     evolution: null,
   },
   {
@@ -1799,10 +1799,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 6,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Turtwig", "Grotle", "Torterra"],
+    evolutionChain: ["turtwig", "grotle", "torterra"],
     evolution: {
       level: 15,
-      name: "Grotle",
+      name: "grotle",
     },
   },
   {
@@ -1819,10 +1819,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 95,
     expForKill: 8,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Turtwig", "Grotle", "Torterra"],
+    evolutionChain: ["turtwig", "grotle", "torterra"],
     evolution: {
       level: 50,
-      name: "Tortera",
+      name: "torterra",
     },
   },
   {
@@ -1839,7 +1839,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 110,
     expForKill: 12,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Turtwig", "Grotle", "Torterra"],
+    evolutionChain: ["turtwig", "grotle", "torterra"],
     evolution: null,
   },
   {
@@ -1907,10 +1907,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 80,
     expForKill: 12,
     evolutionLevels: [30],
-    evolutionChain: ["Shieldon", "Bastiodon"],
+    evolutionChain: ["shieldon", "bastiodon"],
     evolution: {
       level: 30,
-      name: "Bastiodon",
+      name: "bastiodon",
     },
   },
   {
@@ -1927,7 +1927,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 18,
     evolutionLevels: [],
-    evolutionChain: ["Shieldon", "Bastiodon"],
+    evolutionChain: ["shieldon", "bastiodon"],
     evolution: null,
   },
   {
@@ -1944,7 +1944,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 120,
     expForKill: 20,
     evolutionLevels: [],
-    evolutionChain: ["Murkrow", "Honchkrow"],
+    evolutionChain: ["murkrow", "honchkrow"],
     evolution: null,
   },
   {
@@ -1961,7 +1961,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 90,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Snover", "Abomasnow"],
+    evolutionChain: ["snover", "abomasnow"],
     evolution: null,
   },
   {
@@ -1978,7 +1978,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 270,
     expForKill: 200,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Snover", "Abomasnow"],
+    evolutionChain: ["snover", "abomasnow"],
     evolution: null,
   },
   {
@@ -1995,7 +1995,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 130,
     expForKill: 22,
     evolutionLevels: [],
-    evolutionChain: ["Sneasel", "Weavile"],
+    evolutionChain: ["sneasel", "weavile"],
     evolution: null,
   },
   {
@@ -2012,7 +2012,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 400,
     expForKill: 241,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Rhyhorn", "Rhydon", "Rhyperior"],
+    evolutionChain: ["rhyhorn", "rhydon", "rhyperior"],
     evolution: null,
   },
   {
@@ -2046,7 +2046,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 220,
     expForKill: 180,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Togepi", "Togetic", "Togekiss"],
+    evolutionChain: ["togepi", "togetic", "togekiss"],
     evolution: null,
   },
   {
@@ -2063,7 +2063,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 400,
     expForKill: 230,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Swinub", "Piloswine", "Mamoswine"],
+    evolutionChain: ["swinub", "piloswine", "mamoswine"],
     evolution: null,
   },
   {
@@ -2080,7 +2080,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Ralts", "Kirlia", "Gallade"],
+    evolutionChain: ["ralts", "kirlia", "gallade"],
     evolution: null,
   },
   {
@@ -2097,7 +2097,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 120,
     evolutionLevels: [55],
-    evolutionChain: ["Duskull", "Dusclops", "Dusknoir"],
+    evolutionChain: ["duskull", "dusclops", "dusknoir"],
     evolution: null,
   },
   {
@@ -2148,10 +2148,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 60,
     evolutionLevels: [30],
-    evolutionChain: ["Joltik", "Galvantula"],
+    evolutionChain: ["joltik", "galvantula"],
     evolution: {
       level: 3,
-      name: "Galvantula",
+      name: "galvantula",
     },
   },
   {
@@ -2168,11 +2168,11 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 250,
     expForKill: 150,
     evolutionLevels: [30],
-    evolutionChain: ["Joltik", "Galvantula"],
+    evolutionChain: ["joltik", "galvantula"],
     // for testing will be removed
     evolution: {
       level: 3,
-      name: "Joltik",
+      name: "joltik",
     },
   },
   {
@@ -2189,7 +2189,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 100,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Cubchoo", "Beartic"],
+    evolutionChain: ["cubchoo", "beartic"],
     evolution: null,
   },
   {
@@ -2206,7 +2206,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 350,
     expForKill: 210,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Cubchoo", "Beartic"],
+    evolutionChain: ["cubchoo", "beartic"],
     evolution: null,
   },
   {
@@ -2223,7 +2223,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 90,
     expForKill: 7,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Pawniard", "Bisharp"],
+    evolutionChain: ["pawniard", "bisharp"],
     evolution: null,
   },
   {
@@ -2240,7 +2240,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 95,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Pawniard", "Bisharp"],
+    evolutionChain: ["pawniard", "bisharp"],
     evolution: null,
   },
   {
@@ -2308,10 +2308,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 98,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Honedge", "Doublade", "Aegislash"],
+    evolutionChain: ["honedge", "doublade", "aegislash"],
     evolution: {
       level: 30,
-      name: "Doublade",
+      name: "doublade",
     },
   },
   {
@@ -2328,10 +2328,10 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 98,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Honedge", "Doublade", "Aegislash"],
+    evolutionChain: ["honedge", "doublade", "aegislash"],
     evolution: {
       level: 50,
-      name: "Aegislash",
+      name: "aegislash",
     },
   },
   {
@@ -2348,7 +2348,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 10,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Honedge", "Doublade", "Aegislash"],
+    evolutionChain: ["honedge", "doublade", "aegislash"],
     evolution: null,
   },
   {
@@ -2365,7 +2365,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 50,
     expForKill: 50,
     evolutionLevels: [17, 34],
-    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolutionChain: ["rowlet", "dartrix", "decidueye"],
     evolution: null,
   },
   {
@@ -2382,7 +2382,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 62,
     evolutionLevels: [17, 34],
-    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolutionChain: ["rowlet", "dartrix", "decidueye"],
     evolution: null,
   },
   {
@@ -2399,7 +2399,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 300,
     expForKill: 240,
     evolutionLevels: [34],
-    evolutionChain: ["Rowlet", "Dartrix", "Decidueye"],
+    evolutionChain: ["rowlet", "dartrix", "decidueye"],
     evolution: null,
   },
   {
@@ -2467,7 +2467,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 95,
     expForKill: 9,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Farfetch'd", "Sirfetch'd"],
+    evolutionChain: ["farfetchd", "sirfetchd"],
     evolution: null,
   },
   {
@@ -2484,7 +2484,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 400,
     expForKill: 273,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Teddiursa", "Ursaring", "Ursaluna"],
+    evolutionChain: ["teddiursa", "ursaring", "ursaluna"],
     evolution: null,
   },
   {
@@ -2501,7 +2501,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 100,
     expForKill: 60,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolutionChain: ["tinkatink", "tinkatuff", "tinkaton"],
     evolution: null,
   },
   {
@@ -2518,7 +2518,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 150,
     expForKill: 90,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolutionChain: ["tinkatink", "tinkatuff", "tinkaton"],
     evolution: null,
   },
   {
@@ -2535,7 +2535,7 @@ export const pokemonsData: PokemonData[] = [
     expToLevel: 200,
     expForKill: 140,
     evolutionLevels: [30, 50],
-    evolutionChain: ["Tinkatink", "Tinkatuff", "Tinkaton"],
+    evolutionChain: ["tinkatink", "tinkatuff", "tinkaton"],
     evolution: null,
   },
   {

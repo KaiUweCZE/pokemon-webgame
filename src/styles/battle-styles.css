@@ -1,0 +1,57 @@
+/*BATTLE STYLES*/
+
+.battle-window {
+  display: grid;
+  grid-template-rows: minmax(0, 5fr) minmax(0, 2fr);
+  height: clamp(20rem, 50%, 50rem);
+  aspect-ratio: 12/8;
+  overflow: hidden;
+}
+
+.battle-container {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.enemy-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.enemy-stats {
+  grid-column: 1;
+  display: grid;
+  overflow: hidden;
+}
+
+.enemy-image {
+  grid-column: 3;
+  display: grid;
+  overflow: hidden;
+}
+
+.player-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.player-stats {
+  grid-column: 1;
+  display: grid;
+  overflow: hidden;
+}
+
+.player-image {
+  grid-column: 3;
+  display: grid;
+  overflow: hidden;
+}
+
+.battle-menu {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  overflow: hidden;
+}

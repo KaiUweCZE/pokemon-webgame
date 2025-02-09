@@ -7,12 +7,27 @@ import { locationData } from "@/data/locations/location-data";
 import { Button } from "@/components/ui/primitives/button";
 import Image from "next/image";
 import { pokemonsImg } from "@/images";
-import { PokemonName } from "@/types/pokemon";
+import { PokemonName, PokemonStaticData, PokemonType } from "@/types/pokemon";
+import { useModal } from "@/components/providers/modal-provider";
+import { pokemonsData } from "@/data/pokemons/pokemon-data";
+import ElementType from "@/components/ui/primitives/element-type";
+import PokemonModalContent from "./components/pokemon-modal-content";
 
 const ExploreDialog = () => {
   const { data: user } = useCurrentUser();
+  const { showModal, hideModal } = useModal();
   const location = user?.location.toLowerCase() as LocationName;
   const areas = locationData[location].areas;
+
+  const handleModal = (pokemonName: PokemonName) => {
+    const pokemon = pokemonsData.find((p) => p.name === pokemonName);
+    if (pokemon) {
+      showModal({
+        variant: "secondary",
+        children: <PokemonModalContent pokemon={pokemon} />,
+      });
+    }
+  };
 
   // Funkce pro získání obrázku pokémona
   const getPokemonIcon = (pokemonName: PokemonName) => {
@@ -41,11 +56,12 @@ const ExploreDialog = () => {
         {/* Seznam pokémonů v oblasti */}
         <div className="grid gap-2">
           <h4 className="text-sm font-medium text-secondary-text">Available Pokémon:</h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-4 gap-2">
             {areas[1].pokemons.map((pokemon) => (
               <div
                 key={pokemon}
-                className="flex items-center gap-2 rounded-lg border border-element/20 bg-primary/10 p-2"
+                className="flex items-center gap-2 rounded-sm bg-amber-50/5 p-2"
+                onClick={() => handleModal(pokemon)}
               >
                 <Image
                   src={getPokemonIcon(pokemon)}
