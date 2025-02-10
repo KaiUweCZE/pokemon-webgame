@@ -7,17 +7,21 @@ import { locationData } from "@/data/locations/location-data";
 import { Button } from "@/components/ui/primitives/button";
 import Image from "next/image";
 import { pokemonsImg } from "@/images";
-import { PokemonName, PokemonStaticData, PokemonType } from "@/types/pokemon";
+import { EnemyPokemon, PokemonName, PokemonStaticData, PokemonType } from "@/types/pokemon";
 import { useModal } from "@/components/providers/modal-provider";
 import { pokemonsData } from "@/data/pokemons/pokemon-data";
 import ElementType from "@/components/ui/primitives/element-type";
 import PokemonModalContent from "./components/pokemon-modal-content";
+import { useRouter } from "next/navigation";
+import { useBattleStore } from "@/store/battle-store";
 
 const ExploreDialog = () => {
   const { data: user } = useCurrentUser();
   const { showModal, hideModal } = useModal();
   const location = user?.location.toLowerCase() as LocationName;
   const areas = locationData[location].areas;
+  const router = useRouter();
+  const { initBattle, setUserPokemon, setEnemyPokemon } = useBattleStore();
 
   const handleModal = (pokemonName: PokemonName) => {
     const pokemon = pokemonsData.find((p) => p.name === pokemonName);
@@ -29,22 +33,53 @@ const ExploreDialog = () => {
     }
   };
 
-  // Funkce pro získání obrázku pokémona
+  // get pokemon image
   const getPokemonIcon = (pokemonName: PokemonName) => {
     return pokemonsImg[pokemonName]?.default.src || "";
   };
 
-  // Funkce pro průzkum oblasti - zatím jen základní
+  // handle explore area
   const handleExplore = () => {
-    // Tady půjde logika pro průzkum
-    console.log("Exploring area 1");
+    if (!user?.location || !user?.pokemons[0]) return;
+
+    const userPokemon = user.pokemons[0];
+    const location = user.location as LocationName;
+
+    // init battle
+    initBattle(location);
+    setUserPokemon(userPokemon);
+
+    // create wild pokemon
+    const wildPokemon: EnemyPokemon = {
+      name: "pikachu",
+      types: ["electric"],
+      level: 10,
+      attacks: ["tackle", "thundershock"],
+      shiny: false,
+      abilities: ["static"],
+      currentHp: 40,
+      maxHp: 100,
+      currentEnergy: 40,
+      maxEnergy: 100,
+      damage: 10,
+      defense: 8,
+      speed: 15,
+      statusEffects: [],
+      image: pokemonsImg["pikachu"],
+    };
+
+    /*console.log("wild pokemon: ", wildPokemon);
+    console.log("user pokemon: ", userPokemon);*/
+    setEnemyPokemon(wildPokemon);
+
+    router.push("/battle?from=explore");
   };
 
   return (
     <div className="grid gap-4">
       <DialogHeader title="Explore Area" />
 
-      {/* Sekce s informacemi o oblasti */}
+      {/* About area*/}
       <div className="grid gap-4 rounded-lg border border-element/20 bg-primary/5 p-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-medium text-primary-text">Area 1</h3>
@@ -53,7 +88,7 @@ const ExploreDialog = () => {
           </span>
         </div>
 
-        {/* Seznam pokémonů v oblasti */}
+        {/* Available Pokémon */}
         <div className="grid gap-2">
           <h4 className="text-sm font-medium text-secondary-text">Available Pokémon:</h4>
           <div className="grid grid-cols-4 gap-2">
@@ -75,8 +110,6 @@ const ExploreDialog = () => {
             ))}
           </div>
         </div>
-
-        {/* Tlačítko pro průzkum */}
         <Button onClick={handleExplore} className="w-full" variant="outline">
           Explore Area
         </Button>

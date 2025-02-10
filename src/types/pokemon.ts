@@ -1,8 +1,18 @@
 import { AttackKey } from "@/data/pokemons/attacks-data";
 import { pokemonsImg } from "@/images";
+import { StaticImageData } from "next/image";
+import { PokemonImages } from "./image";
 
 export type ObjectId = string;
 export type PokemonName = keyof typeof pokemonsImg;
+export interface PokemonImage {
+  defaultSrc: StaticImageData | string;
+  defaultAlt: string;
+  backSrc: StaticImageData | string;
+  backAlt: string;
+  iconSrc: StaticImageData | string;
+  iconAlt: string;
+}
 export type PokemonType =
   | "normal"
   | "fighting"
@@ -29,7 +39,7 @@ export type PokemonAttacks = { learnAt: number; attack: AttackKey }[];
 
 export interface Pokemon {
   id: ObjectId;
-  name: string;
+  name: PokemonName;
   types: PokemonType[];
   shiny: boolean;
   level: number;
@@ -53,9 +63,13 @@ export interface Pokemon {
 
 export interface BattlePokemon extends Omit<Pokemon, "createdAt" | "userId" | "evolutionInformed"> {
   attackCooldowns?: Record<string, number>;
+  image: PokemonImages;
 }
 
-export type EnemyPokemon = Omit<BattlePokemon, "attackCooldowns">;
+export type EnemyPokemon = Omit<
+  BattlePokemon,
+  "attackCooldowns" | "expToNextLevel" | "isActive" | "id" | "currentExp"
+>;
 
 export interface PokemonStaticData
   extends Omit<Pokemon, "userId" | "createAt" | "evolutionInformed"> {

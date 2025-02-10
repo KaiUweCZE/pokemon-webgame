@@ -43,7 +43,7 @@ const modalContentVariants = cva(
       variant: {
         default: "bg-secondary/80 backdrop-blur-[4px] border border-purple-400/30",
         danger: "bg-destructive border-2 border-destructive/50",
-        warning: "bg-element border-2 border-yellow-500/50",
+        warning: "bg-amber-200/80 border-2 border-slate-800/20",
         light: "bg-primary border border-white/20",
         secondary: "bg-primary-dark/80 border-purple-800/30 border",
       },
@@ -67,7 +67,7 @@ const overlayVariants = cva(``, {
       default: "bg-slate-950/90",
       light: "bg-red-200",
       danger: "bg-destructive",
-      warning: "bg-yellow-500/",
+      warning: "bg-slate-800/80",
       secondary: "bg-red-50",
     },
   },
@@ -81,7 +81,7 @@ const iconVariants = cva(`h-4 w-4`, {
     variant: {
       default: "text-purple-400",
       danger: "text-destructive",
-      warning: "text-yellow-500",
+      warning: "text-slate-800/80",
       light: "text-white",
       secondary: "text-red-200",
     },
@@ -90,6 +90,21 @@ const iconVariants = cva(`h-4 w-4`, {
       sm: "1.5",
       lg: "2.5",
       full: " 3",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+const textVariants = cva(`text-sm`, {
+  variants: {
+    variant: {
+      default: "text-purple-50",
+      danger: "text-destructive",
+      warning: "text-slate-800/80",
+      light: "text-white",
+      secondary: "text-red-200",
     },
   },
   defaultVariants: {
@@ -150,10 +165,15 @@ export function Modal({
         <div className="grid gap-4">
           {title && (
             <article className="grid space-y-1.5">
-              <h2 className="w-fit place-self-center text-lg font-medium text-purple-50">
+              <h2
+                className={cn(
+                  textVariants({ variant }),
+                  "w-fit place-self-center text-lg font-medium"
+                )}
+              >
                 {title}
               </h2>
-              {description && <p className="text-sm text-primary-text">{description}</p>}
+              {description && <p className={cn(textVariants({ variant }))}>{description}</p>}
             </article>
           )}
           {children}

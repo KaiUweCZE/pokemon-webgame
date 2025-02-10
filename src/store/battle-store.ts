@@ -3,6 +3,7 @@ import { Store } from "@tanstack/store";
 import { useStore } from "@tanstack/react-store";
 import { BattlePokemon, EnemyPokemon, Pokemon } from "@/types/pokemon";
 import { toBattlePokemon } from "@/utils/toBattlePokemon";
+import { LocationName } from "@/types/location";
 
 // battle menu states
 export type BattleMenuSection = "main" | "attacks" | "switch" | "bag" | "run";
@@ -31,6 +32,12 @@ interface BattleStore {
   userPokemon: BattlePokemon | null;
   userPokemonSix: Pokemon[];
 
+  // check user acces to /battle
+  battleInit: {
+    isValid: boolean;
+    location: LocationName | null;
+  };
+
   // Controller of the attack animation and cooldown
   isUserAttacking: boolean;
   isEnemyAttacking: boolean;
@@ -44,11 +51,38 @@ const battleStore = new Store<BattleStore>({
   enemyPokemon: null,
   userPokemon: null,
   userPokemonSix: [],
-
+  battleInit: {
+    isValid: false,
+    location: null,
+  },
   isUserAttacking: false,
   isEnemyAttacking: false,
   isAnimationPlaying: false,
 });
+
+export const initBattle = (location: LocationName) => {
+  battleStore.setState((state) => {
+    const newState = {
+      ...state,
+      battleInit: {
+        isValid: true,
+        location,
+      },
+    };
+    return newState;
+  });
+};
+
+export const resetBattle = () => {
+  battleStore.setState((state) => ({
+    ...state,
+    battleInit: {
+      isValid: false,
+      location: null,
+    },
+    battleStatus: "not-started",
+  }));
+};
 
 // Actions for switching menu sections
 export const setMenuSection = (section: BattleMenuSection) => {
@@ -123,5 +157,8 @@ export const useBattleStore = () => {
     setEnemyPokemon,
     setUserPokemon,
     setUserPokemonSix,
+    initBattle,
+    resetBattle,
+    battleStore,
   };
 };

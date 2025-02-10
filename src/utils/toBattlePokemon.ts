@@ -1,4 +1,6 @@
-import { BattlePokemon, Pokemon } from "@/types/pokemon";
+import { pokemonsImg } from "@/images";
+import { PokemonImages } from "@/types/image";
+import { BattlePokemon, Pokemon, PokemonImage, PokemonName } from "@/types/pokemon";
 
 export const toBattlePokemon = (pokemon: Pokemon): BattlePokemon => {
   const { createdAt, userId, evolutionInformed, ...battleProperties } = pokemon;
@@ -12,5 +14,6 @@ export const toBattlePokemon = (pokemon: Pokemon): BattlePokemon => {
       }),
       {}
     ),
+    image: pokemonsImg[pokemon.name as PokemonName] as PokemonImages,
   };
 };

@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
-import { PokemonName } from "@/types/pokemon";
+import { BattlePokemon, PokemonName } from "@/types/pokemon";
 
 export type UserPokemon = {
   pokemonName: PokemonName;
@@ -19,21 +19,21 @@ interface UserBoxProps {
   userPokemon: UserPokemon;
 }
 
-const UserBox = ({ userPokemon }: UserBoxProps) => {
+const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
   return (
     <div className="user-box">
       <div className="user-image-box">
         <Image
           className="user-pokemon-image"
-          src={userPokemon.image.src}
-          alt={userPokemon.image.alt}
+          src={userPokemon.image.back.src}
+          alt={userPokemon.image.back.alt}
           width={140}
           height={140}
         />
       </div>
       <div className="user-stats-box">
         <BattlePokemonStats
-          pokemonName={userPokemon.pokemonName}
+          pokemonName={userPokemon.name}
           pokemonLevel={userPokemon.level}
           maxHp={userPokemon.maxHp}
           currentHp={userPokemon.currentHp}

@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
-import { PokemonName } from "@/types/pokemon";
+import { type EnemyPokemon, type PokemonName } from "@/types/pokemon";
 import battlefieldImg from "@/images/fields/field2.webp";
 
 export interface Enemy {
@@ -14,22 +14,22 @@ export interface Enemy {
   currentHp: number;
 }
 
-const EnemyBox = ({ enemy }: { enemy: Enemy }) => {
+const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
   return (
     <div className="enemy-box">
       <div className="enemy-stats-box">
         <BattlePokemonStats
-          pokemonName={enemy.name}
-          pokemonLevel={enemy.level}
-          maxHp={enemy.maxHp}
-          currentHp={enemy.currentHp}
+          pokemonName={enemyPokemon.name}
+          pokemonLevel={enemyPokemon.level}
+          maxHp={enemyPokemon.maxHp}
+          currentHp={enemyPokemon.currentHp}
         />
       </div>
       <div className="enemy-image-box">
         <Image
           className="enemy-image"
-          src={enemy.image.src}
-          alt={enemy.image.alt}
+          src={enemyPokemon.image?.default.src}
+          alt={enemyPokemon.image?.default.alt}
           width={120}
           height={120}
         />

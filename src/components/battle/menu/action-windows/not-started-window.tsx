@@ -7,7 +7,7 @@ const NotStartedWindow = () => {
   if (!enemyPokemon) return null;
 
   return (
-    <p className="text-amber-100">
+    <p className="not-started text-amber-100">
       {enemyType === "wild"
         ? `Oh man! A wild ${capitalize(enemyPokemon.name)} appeared!`
         : `Trainer wants to battle with ${capitalize(enemyPokemon.name)}!`}

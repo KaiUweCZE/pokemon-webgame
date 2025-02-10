@@ -1,15 +1,17 @@
-import EnemyBox, { Enemy } from "./enemy-box";
-import UserBox, { UserPokemon } from "./user-box";
+import { useBattleStore } from "@/store/battle-store";
+import EnemyBox from "./enemy-box";
+import UserBox from "./user-box";
+import { type BattlePokemon, type EnemyPokemon } from "@/types/pokemon";
 
 interface BattleContainerProps {
-  enemy: Enemy;
-  userPokemon: UserPokemon;
+  enemyPokemon: EnemyPokemon;
+  userPokemon: BattlePokemon;
 }
 
-const BattleContainer = ({ enemy, userPokemon }: BattleContainerProps) => {
+const BattleContainer = ({ enemyPokemon, userPokemon }: BattleContainerProps) => {
   return (
     <section className="battle-container">
-      <EnemyBox enemy={enemy} />
+      <EnemyBox enemyPokemon={enemyPokemon} />
       <UserBox userPokemon={userPokemon} />
     </section>
   );
