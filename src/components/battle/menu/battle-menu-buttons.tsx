@@ -1,12 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/primitives/button";
-import { useBattleStore } from "@/store/battle-store";
+import { useBattleStore } from "@/store/battle/battle-store";
+import BattleBag from "./battle-bag";
+import BattleSwitch from "./battle-switch";
+import { setBattleStatus, setMenuSection } from "@/store/battle/actions/battle-state";
 
 const BattleMenuButtons = () => {
-  const { setMenuSection, setBattleStatus, battleStatus } = useBattleStore();
+  const { activeMenuSection } = useBattleStore();
   const handleAttackClick = () => {
     setBattleStatus("in-progress");
-
     setMenuSection("attacks");
   };
 
@@ -15,20 +17,62 @@ const BattleMenuButtons = () => {
     setBattleStatus("paused");
   };
 
+  const handleBagClick = () => {
+    if (activeMenuSection === "bag") {
+      setMenuSection("main");
+      return;
+    }
+    setMenuSection("bag");
+  };
+
+  const handleSwitchClick = () => {
+    if (activeMenuSection === "switch") {
+      setMenuSection("main");
+      return;
+    }
+    setMenuSection("switch");
+  };
+
   return (
-    <div className="battle-menu-buttons">
-      <Button size="full" withRipple onClick={handleAttackClick} className="rounded-none">
+    <div className="battle-menu-buttons relative">
+      <Button
+        size="full"
+        variant="light"
+        withRipple
+        onClick={handleAttackClick}
+        className="rounded-none shadow-inset"
+      >
         Attack
       </Button>
-      <Button size="full" withRipple className="rounded-none">
+      <Button
+        size="full"
+        variant="light"
+        withRipple
+        onClick={handleSwitchClick}
+        className="rounded-none shadow-inset"
+      >
         Switch
       </Button>
-      <Button size="full" withRipple className="rounded-none">
+      <Button
+        size="full"
+        variant="light"
+        withRipple
+        onClick={handleBagClick}
+        className="rounded-none shadow-inset"
+      >
         Bag
       </Button>
-      <Button size="full" withRipple onClick={handleRunClick} className="rounded-none">
+      <Button
+        size="full"
+        variant="light"
+        withRipple
+        onClick={handleRunClick}
+        className="rounded-none shadow-inset"
+      >
         Run
       </Button>
+      <BattleBag isOpen={activeMenuSection === "bag"} setIsOpen={handleBagClick} />
+      <BattleSwitch isOpen={activeMenuSection === "switch"} setIsOpen={handleSwitchClick} />
     </div>
   );
 };

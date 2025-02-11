@@ -1,0 +1,24 @@
+import Expander from "@/components/ui/primitives/expander";
+import { X } from "lucide-react";
+
+interface BattleBagProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+const BattleBag = ({ isOpen, setIsOpen }: BattleBagProps) => {
+  return (
+    <div className="absolute bottom-0 w-full">
+      <Expander isOpen={isOpen}>
+        <div className="h-64 rounded-t-sm border-2 border-b-0 border-slate-800/20 bg-content/90 p-2 backdrop-blur-sm">
+          <X
+            className="absolute right-0 top-0 h-4 w-4 cursor-pointer bg-content-secondary"
+            onClick={() => setIsOpen(false)}
+          />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </Expander>
+    </div>
+  );
+};
+export default BattleBag;

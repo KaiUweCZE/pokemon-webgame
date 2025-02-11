@@ -7,13 +7,25 @@ import { locationData } from "@/data/locations/location-data";
 import { Button } from "@/components/ui/primitives/button";
 import Image from "next/image";
 import { pokemonsImg } from "@/images";
-import { EnemyPokemon, PokemonName, PokemonStaticData, PokemonType } from "@/types/pokemon";
+import {
+  EnemyPokemon,
+  Pokemon,
+  PokemonName,
+  PokemonStaticData,
+  PokemonType,
+} from "@/types/pokemon";
 import { useModal } from "@/components/providers/modal-provider";
 import { pokemonsData } from "@/data/pokemons/pokemon-data";
 import ElementType from "@/components/ui/primitives/element-type";
 import PokemonModalContent from "./components/pokemon-modal-content";
 import { useRouter } from "next/navigation";
-import { useBattleStore } from "@/store/battle-store";
+import { useBattleStore } from "@/store/battle/battle-store";
+import { initBattle } from "@/store/battle/actions/battle-state";
+import {
+  setEnemyPokemon,
+  setUserPokemon,
+  setUserPokemonSix,
+} from "@/store/battle/actions/battle-pokemon-actions";
 
 const ExploreDialog = () => {
   const { data: user } = useCurrentUser();
@@ -21,7 +33,7 @@ const ExploreDialog = () => {
   const location = user?.location.toLowerCase() as LocationName;
   const areas = locationData[location].areas;
   const router = useRouter();
-  const { initBattle, setUserPokemon, setEnemyPokemon } = useBattleStore();
+  //const { initBattle, setUserPokemon, setEnemyPokemon } = useBattleStore();
 
   const handleModal = (pokemonName: PokemonName) => {
     const pokemon = pokemonsData.find((p) => p.name === pokemonName);
@@ -43,11 +55,13 @@ const ExploreDialog = () => {
     if (!user?.location || !user?.pokemons[0]) return;
 
     const userPokemon = user.pokemons[0];
+    const userPokemons = user.pokemons.filter((pokemon) => pokemon.isActive && pokemon);
     const location = user.location as LocationName;
 
     // init battle
     initBattle(location);
     setUserPokemon(userPokemon);
+    setUserPokemonSix(userPokemons);
 
     // create wild pokemon
     const wildPokemon: EnemyPokemon = {
@@ -68,8 +82,6 @@ const ExploreDialog = () => {
       image: pokemonsImg["pikachu"],
     };
 
-    /*console.log("wild pokemon: ", wildPokemon);
-    console.log("user pokemon: ", userPokemon);*/
     setEnemyPokemon(wildPokemon);
 
     router.push("/battle?from=explore");

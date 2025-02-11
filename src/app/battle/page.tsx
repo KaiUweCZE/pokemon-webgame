@@ -2,22 +2,15 @@
 import BattleContainer from "@/components/battle/container/battle-container";
 import BattleMenu from "@/components/battle/menu/battle-menu";
 import { useModal } from "@/components/providers/modal-provider";
-import { useCurrentUser } from "@/hooks/use-current-user";
-import { pokemonsImg } from "@/images";
-import { useBattleStore } from "@/store/battle-store";
+import { useBattleStore } from "@/store/battle/battle-store";
 import "@/styles/battle-styles.css";
-import { PokemonName } from "@/types/pokemon";
-import { toBattlePokemon } from "@/utils/toBattlePokemon";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const BattlePage = () => {
   const router = useRouter();
-  const { data: user } = useCurrentUser();
   const { userPokemon, enemyPokemon, battleInit } = useBattleStore();
   const { showModal } = useModal();
-  const enemyImage = pokemonsImg["pikachu"].default;
-  const userPokemonImg = pokemonsImg["charizard"].back;
 
   useEffect(() => {
     // redirect invalid access

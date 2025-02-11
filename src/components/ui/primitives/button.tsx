@@ -37,7 +37,18 @@ const buttonVariants = cva(
         true: "border-slate-950 text-amber-200",
         false: "",
       },
+      border: {
+        true: "",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        variant: "light",
+        border: true,
+        className: "border border-slate-800/20",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
       size: "default",
@@ -107,6 +118,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       variant,
+      border,
       size,
       children,
       shadow,
@@ -140,7 +152,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          buttonVariants({ variant, size, isActive: active, className, shadow }),
+          buttonVariants({ variant, size, isActive: active, border, className, shadow }),
           withRipple ? "relative overflow-hidden" : "",
           "group"
         )}

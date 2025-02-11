@@ -1,11 +1,11 @@
 "use client";
-import { useBattleStore } from "@/store/battle-store";
+import { useBattleStore } from "@/store/battle/battle-store";
 import NotStartedWindow from "./action-windows/not-started-window";
 import AttackWindow from "./action-windows/attack-window";
 import RunWindow from "./action-windows/run-window";
 
 const BattleMenuActions = () => {
-  const { battleStatus, activeMenuSection, enemyPokemon } = useBattleStore();
+  const { battleStatus, activeMenuSection } = useBattleStore();
 
   // Helper function to determine which component to render
   const renderActionContent = () => {
@@ -27,7 +27,7 @@ const BattleMenuActions = () => {
     return null;
   };
 
-  return <div className="grid gap-4 p-4">{renderActionContent()}</div>;
+  return <div className="grid max-h-full gap-4 px-2">{renderActionContent()}</div>;
 };
 
 export default BattleMenuActions;

@@ -1,4 +1,4 @@
-import { useBattleStore } from "@/store/battle-store";
+import { useBattleStore } from "@/store/battle/battle-store";
 import EnemyBox from "./enemy-box";
 import UserBox from "./user-box";
 import { type BattlePokemon, type EnemyPokemon } from "@/types/pokemon";

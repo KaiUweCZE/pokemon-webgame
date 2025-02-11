@@ -1,9 +1,7 @@
-"use client";
+import BattleBag from "@/components/battle/menu/battle-bag";
 import { Button } from "@/components/ui/primitives/button";
-import { useDay } from "@/hooks/use-day";
 
 export default function Home() {
-  const { spentPartOfDay } = useDay();
   return (
     <div className="blur-on bg-background">
       <main className="max-width mx-auto grid">
@@ -32,7 +30,7 @@ export default function Home() {
             <h2>Buttons</h2>
           </article>
           <div className="grid grid-cols-8 gap-4 bg-teal-800 px-8 py-4">
-            <Button variant="primary" withRipple onClick={() => spentPartOfDay()}>
+            <Button variant="primary" withRipple>
               Button
             </Button>
             <Button variant="secondary" withRipple>
