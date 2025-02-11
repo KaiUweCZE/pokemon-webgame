@@ -68,6 +68,8 @@
     --shadow-light: 0 3px 6px rgba(var(--content), 0.16), 0 3px 6px rgba(104, 104, 104, 0.3);
     --shadow-light-secondary: 0 1px 3px rgba(var(--content), 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-top: 0px -4px 10px 0px rgba(0, 0, 0, 0.5);
+    --shadow-left: -12px 0px 8px -13px rgba(0, 0, 0, 0.12);
+    --shadow-inset: 0px 0px 2px 0px rgba(10, 37, 64, 0.35) inset;
 
     /*transition*/
     --transition: 0.3s;
@@ -552,4 +554,30 @@ button.animation-link {
     background-color: black;
     transition: var(--transition);
   }
+}
+
+/*expander component*/
+.expander {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition);
+  &.up {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &.open {
+    grid-template-rows: 1fr;
+    .expander-content {
+      visibility: visible;
+    }
+  }
+}
+
+.expander-content {
+  min-height: 0;
+  visibility: hidden;
+  transition: visibility var(--transition);
 }

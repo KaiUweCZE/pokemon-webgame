@@ -21,6 +21,8 @@ export default {
         "primary-light": "var(--shadow-light)",
         "secondary-light": "var(--shadow-light-secondary)",
         top: "var(--shadow-top)",
+        left: "var(--shadow-left)",
+        inset: "var(--shadow-inset)",
         no: "0 0 0 0 rgba(0, 0, 0, 0)",
       },
 
