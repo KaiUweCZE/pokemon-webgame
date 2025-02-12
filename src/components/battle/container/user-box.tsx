@@ -1,6 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
 import { BattlePokemon, PokemonName } from "@/types/pokemon";
+import ilustrationImg from "@/images/attacks/thunder.webp";
+import AttackAnimation from "../attack-animation";
+import { setEnemyAttackAnimation } from "@/store/battle/actions/battle-animations";
 
 export type UserPokemon = {
   pokemonName: PokemonName;
@@ -15,20 +18,21 @@ export type UserPokemon = {
   currentExp: number;
 };
 
-interface UserBoxProps {
-  userPokemon: UserPokemon;
-}
-
 const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
   return (
     <div className="user-box">
-      <div className="user-image-box">
+      <div className="user-image-box relative">
         <Image
           className="user-pokemon-image"
           src={userPokemon.image.back.src}
           alt={userPokemon.image.back.alt}
           width={140}
           height={140}
+        />
+        <AttackAnimation
+          image={ilustrationImg}
+          className="translate-x-16"
+          setAnimation={setEnemyAttackAnimation}
         />
       </div>
       <div className="user-stats-box">
@@ -38,10 +42,10 @@ const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
           maxHp={userPokemon.maxHp}
           currentHp={userPokemon.currentHp}
           userStats={{
-            maxEnergy: 100,
-            currentEnergy: 40,
-            expToNextLevel: 100,
-            currentExp: 40,
+            maxEnergy: userPokemon.maxEnergy,
+            currentEnergy: userPokemon.currentEnergy,
+            expToNextLevel: userPokemon.expToNextLevel,
+            currentExp: userPokemon.currentExp,
           }}
         />
       </div>

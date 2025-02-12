@@ -1,24 +1,36 @@
 import { useBattleStore } from "@/store/battle/battle-store";
 import { Button } from "@/components/ui/primitives/button";
+import { AttackKey, ATTACKS } from "@/data/pokemons/attacks-data";
+import { type Attack } from "@/types/attack";
+import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
+import { useRef } from "react";
+import Cooldown, { CooldownHandle } from "../../cooldown";
 
 const AttackWindow = () => {
-  const { userPokemon } = useBattleStore();
+  const { userPokemon, isCooldown } = useBattleStore();
+  const cooldownRef = useRef<CooldownHandle>(null);
+  const pokemonAttacks = userPokemon?.attacks.map((attackName) => ATTACKS[attackName as AttackKey]);
+  if (!userPokemon || !pokemonAttacks) return null;
 
-  if (!userPokemon) return null;
+  const handleAttackClick = (attack: Attack) => {
+    console.log(`${userPokemon.name} used ${attack.name}`);
+    setUserAttackAnimation(attack.img);
+    cooldownRef.current?.startCooldown(attack.recoveryTime);
+  };
 
   return (
-    <section className="grid gap-0.5">
+    <section className="relative grid gap-0.5">
       <div className="grid w-full grid-cols-2 gap-0.5">
-        {userPokemon.attacks.slice(0, 4).map((attack) => (
+        {pokemonAttacks.map((attack) => (
           <Button
             size="full"
             variant="light"
             border={true}
-            key={attack}
-            // disabled={userPokemon?.attackCooldowns?.[attack] > 0}
-            onClick={() => {}}
+            key={attack.name}
+            disabled={isCooldown}
+            onClick={() => handleAttackClick(attack)}
           >
-            {attack}
+            {attack.name}
           </Button>
         ))}
       </div>
@@ -28,6 +40,7 @@ const AttackWindow = () => {
           size="full"
           variant="light"
           border={true}
+          disabled={isCooldown}
           onClick={() => {
             // Logika pro rest
           }}
@@ -39,6 +52,7 @@ const AttackWindow = () => {
           size="full"
           variant="light"
           border={true}
+          disabled={isCooldown}
           onClick={() => {
             // Logika pro avoid
           }}
@@ -46,6 +60,7 @@ const AttackWindow = () => {
           avoid
         </Button>
       </div>
+      <Cooldown ref={cooldownRef} pokemonSpeed={userPokemon.speed} />
     </section>
   );
 };

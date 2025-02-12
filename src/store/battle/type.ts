@@ -51,4 +51,5 @@ export interface BattleStore {
     isAnimationPlaying: boolean;
   };
   init: BattleInitState;
+  isCooldown: boolean;
 }

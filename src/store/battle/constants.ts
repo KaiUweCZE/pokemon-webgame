@@ -32,5 +32,6 @@ export const BATTLE_DEFAULTS = {
       isValid: false,
       location: null,
     },
+    isCooldown: false,
   },
 };

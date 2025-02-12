@@ -20,5 +20,6 @@ export const useBattleStore = () => {
     enemyType: state.battle.enemyType,
     battleStatus: state.battle.status,
     activeMenuSection: state.battle.activeMenuSection,
+    isCooldown: state.isCooldown,
   };
 };

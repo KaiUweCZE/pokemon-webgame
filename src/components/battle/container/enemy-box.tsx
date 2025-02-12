@@ -2,6 +2,10 @@ import Image, { StaticImageData } from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
 import { type EnemyPokemon, type PokemonName } from "@/types/pokemon";
 import battlefieldImg from "@/images/fields/field2.webp";
+import ilustrationImg from "@/images/attacks/thunder.webp";
+import AttackAnimation from "../attack-animation";
+import { useBattleStore } from "@/store/battle/battle-store";
+import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
 
 export interface Enemy {
   name: PokemonName;
@@ -15,6 +19,8 @@ export interface Enemy {
 }
 
 const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
+  const { animations } = useBattleStore();
+  const userAnimation = animations.user;
   return (
     <div className="enemy-box">
       <div className="enemy-stats-box">
@@ -40,6 +46,9 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
           width={200}
           height={200}
         />
+        {userAnimation && (
+          <AttackAnimation image={userAnimation.img} setAnimation={setUserAttackAnimation} />
+        )}
       </div>
     </div>
   );
