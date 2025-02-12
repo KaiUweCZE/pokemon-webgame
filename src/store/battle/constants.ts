@@ -12,6 +12,7 @@ export const BATTLE_DEFAULTS = {
       enemyPokemon: null,
       userPokemon: null,
       userPokemonSix: [] as Pokemon[],
+      userPokemonAttack: null,
     },
     animations: {
       isUserAttacking: false,

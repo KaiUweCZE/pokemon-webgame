@@ -14,6 +14,8 @@ export const useBattleStore = () => {
     ...state,
     battleStore,
     userPokemon: state.pokemons.userPokemon,
+    currentAttack: state.pokemons.userPokemonAttack,
+    userPokemonSix: state.pokemons.userPokemonSix,
     enemyPokemon: state.pokemons.enemyPokemon,
     battle: state.battle,
     battleInit: state.init,

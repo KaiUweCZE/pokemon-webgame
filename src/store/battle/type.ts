@@ -1,6 +1,7 @@
 import { type BattlePokemon, type EnemyPokemon, type Pokemon } from "@/types/pokemon";
 import { type LocationName } from "@/types/location";
 import { type StaticImageData } from "next/image";
+import { Attack } from "@/types/attack";
 
 export type BattleMenuSection = "main" | "attacks" | "switch" | "bag" | "run";
 
@@ -38,6 +39,7 @@ export interface BattlePokemonState {
   enemyPokemon: EnemyPokemon | null;
   userPokemon: BattlePokemon | null;
   userPokemonSix: Pokemon[];
+  userPokemonAttack: Attack | null;
 }
 
 export interface BattleStore {

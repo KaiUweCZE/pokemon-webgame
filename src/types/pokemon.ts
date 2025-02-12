@@ -66,6 +66,9 @@ export interface BattlePokemon extends Omit<Pokemon, "createdAt" | "userId" | "e
   image: PokemonImages;
 }
 
+export interface PokemonUpdateData
+  extends Omit<Pokemon, "id" | "createdAt" | "userId" | "evolutionInformed"> {}
+
 export type EnemyPokemon = Omit<
   BattlePokemon,
   "attackCooldowns" | "expToNextLevel" | "isActive" | "id" | "currentExp"
