@@ -27,7 +27,6 @@ const BattlePage = () => {
   }, [battleInit.isValid, router]);
 
   if (!battleInit.isValid || !userPokemon || !enemyPokemon) {
-    console.log("Olala: ", battleInit.isValid);
     console.log("User pokemon: ", userPokemon);
     console.log("Enemy pokemon: ", enemyPokemon);
     return null;

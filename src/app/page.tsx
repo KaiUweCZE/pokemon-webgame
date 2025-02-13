@@ -1,7 +1,17 @@
 import BattleBag from "@/components/battle/menu/battle-bag";
 import { Button } from "@/components/ui/primitives/button";
+import { calculateExpGain, calculateExpToNextLevel } from "@/utils/pokemon-exp";
 
 export default function Home() {
+  console.log("Level 5 needs kills:", calculateExpToNextLevel("charmander", 5)); // Mělo by být ~2
+  console.log("Level 11 needs kills:", calculateExpToNextLevel("charmander", 11)); // Mělo by být ~3.2
+  console.log("Level 19 needs kills:", calculateExpToNextLevel("charmander", 19)); // Mělo by být ~4.6
+  console.log("Level 28 needs kills:", calculateExpToNextLevel("charmander", 28)); // Mělo by být ~6.2
+  console.log("Level 40 needs kills:", calculateExpToNextLevel("charmander", 40)); // Mělo by být ~10*
+  console.log("Level 50 needs kills:", calculateExpToNextLevel("charmander", 50)); // Mělo by být ~15*/
+
+  console.log("Level 5 gain exp:", calculateExpGain("sandslash", 5, "charmander", 5));
+
   return (
     <div className="blur-on bg-background">
       <main className="max-width mx-auto grid">

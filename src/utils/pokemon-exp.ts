@@ -1,22 +1,55 @@
 import { pokemonsData } from "@/data/pokemons/pokemon-data";
-import { PokemonLevelUpInfo } from "@/types/pokemon";
+import { PokemonLevelUpInfo, PokemonName } from "@/types/pokemon";
+import { calculateTypeAdvantage } from "./calculate-type-advantage";
 
-// constant for growing difficulty
-const EXP_SCALING_FACTOR = 1.1;
+const BASE_SCALING = 0.15;
 
-export const calculateExpToNextLevel = (pokemonName: string, currentLevel: number): number => {
-  const baseData = pokemonsData.find((p) => p.name === pokemonName);
+export const calculateNeededKills = (level: number): number => {
+  const baseKills = 2;
+  const levelScaling = Math.pow(1 + BASE_SCALING, level - 5);
+  return Math.max(baseKills, baseKills * levelScaling);
+};
+
+export const calculateExpToNextLevel = (pokemonName: PokemonName, currentLevel: number): number => {
+  const baseData = pokemonsData.find((p) => (p.name as PokemonName) === pokemonName);
   if (!baseData) {
     throw new Error(`Pokemon ${pokemonName} not found`);
   }
 
-  // base exp + progress for each level
-  const baseExp = baseData.expToLevel;
-  return Math.round(baseExp * Math.pow(EXP_SCALING_FACTOR, currentLevel - 1));
+  const neededExp = baseData.expToLevel + currentLevel * 1.25;
+
+  return neededExp;
+};
+
+// exp for killing a specific pokemon
+export const calculateExpGain = (
+  winnerName: PokemonName,
+  winnerLevel: number,
+  loserName: PokemonName,
+  loserLevel: number
+): number => {
+  const loserData = pokemonsData.find((p) => p.name === loserName);
+  const winnerData = pokemonsData.find((p) => p.name === winnerName);
+  if (!loserData || !winnerData) {
+    throw new Error(`Pokemon ${loserName} not found`);
+  }
+
+  let expGain = loserData.expForKill;
+  const levelDifference = loserLevel - winnerLevel;
+  const typeBonus = calculateTypeAdvantage(winnerData.type, loserData.type);
+
+  // Bonus/penalize for level difference
+  if (levelDifference > 0) {
+    expGain *= 1 + levelDifference * 0.3 + typeBonus;
+  } else if (levelDifference < 0) {
+    expGain *= Math.max(0.1, 1 + (levelDifference * 0.1) / typeBonus);
+  }
+
+  return expGain;
 };
 
 // Get info about level up for a specific pokemon
-export const getPokemonLevelInfo = (pokemonName: string): PokemonLevelUpInfo => {
+/*export const getPokemonLevelInfo = (pokemonName: string): PokemonLevelUpInfo => {
   const baseData = pokemonsData.find((p) => p.name === pokemonName);
   if (!baseData) {
     throw new Error(`Pokemon ${pokemonName} not found`);
@@ -28,30 +61,4 @@ export const getPokemonLevelInfo = (pokemonName: string): PokemonLevelUpInfo => 
     expForKill: baseData.expForKill,
   };
 };
-
-// exp for killing a specific pokemon
-export const calculateExpGain = (
-  winnerLevel: number,
-  loserName: string,
-  loserLevel: number
-): number => {
-  const baseData = pokemonsData.find((p) => p.name === loserName);
-  if (!baseData) {
-    throw new Error(`Pokemon ${loserName} not found`);
-  }
-
-  // base exp for killing
-  let expGain = baseData.expForKill;
-
-  // bonus based on level difference
-  const levelDifference = loserLevel - winnerLevel;
-  if (levelDifference > 0) {
-    // increase exp if loser has higher level
-    expGain *= 1 + levelDifference * 0.1;
-  } else if (levelDifference < 0) {
-    // decrease exp if loser has lower level
-    expGain *= Math.max(0.1, 1 + levelDifference * 0.1);
-  }
-
-  return Math.round(expGain);
-};
+*/

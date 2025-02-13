@@ -84,6 +84,8 @@ const ExploreDialog = () => {
 
     setEnemyPokemon(wildPokemon);
 
+    console.log("wildPokemon", wildPokemon);
+
     router.push("/battle?from=explore");
   };
 

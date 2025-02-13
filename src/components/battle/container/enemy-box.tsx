@@ -6,6 +6,7 @@ import ilustrationImg from "@/images/attacks/thunder.webp";
 import AttackAnimation from "../attack-animation";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
+import { cn } from "@/utils/cn";
 
 export interface Enemy {
   name: PokemonName;
@@ -19,11 +20,11 @@ export interface Enemy {
 }
 
 const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
-  const { animations } = useBattleStore();
+  const { animations, battleStatus } = useBattleStore();
   const userAnimation = animations.user;
   return (
     <div className="enemy-box">
-      <div className="enemy-stats-box">
+      <div className={cn("enemy-stats-box", battleStatus === "user-victory" && "enemy-done")}>
         <BattlePokemonStats
           pokemonName={enemyPokemon.name}
           pokemonLevel={enemyPokemon.level}
@@ -33,7 +34,7 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
       </div>
       <div className="enemy-image-box">
         <Image
-          className="enemy-image"
+          className={cn("enemy-image", battleStatus === "user-victory" && "enemy-done")}
           src={enemyPokemon.image?.default.src}
           alt={enemyPokemon.image?.default.alt}
           width={120}

@@ -108,9 +108,13 @@
   grid-column: 1;
   display: grid;
   overflow: hidden;
+  transition: var(--transition);
   .battle-pokemon-stats {
     place-self: center end;
     translate: 0 -2rem;
+  }
+  &.enemy-done {
+    translate: -15rem;
   }
 }
 
@@ -125,6 +129,11 @@
   place-self: center;
   z-index: 1;
   filter: drop-shadow(4px 3px 1px rgba(54, 54, 54, 0.6));
+  transition: var(--transition);
+  &.enemy-done {
+    filter: brightness(30%);
+    translate: 15rem;
+  }
 }
 
 .enemy-field {

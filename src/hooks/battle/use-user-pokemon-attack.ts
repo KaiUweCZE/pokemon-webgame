@@ -1,12 +1,13 @@
 import {
-  setEnemyPokemon,
-  setUserPokemonInBattle,
+  updateEnemyPokemon,
+  updateUserPokemonClient,
 } from "@/store/battle/actions/battle-pokemon-actions";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { calculateDamage } from "@/utils/battle/damage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { BattlePokemon } from "@/types/pokemon";
 import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
+import { setBattleStatus } from "@/store/battle/actions/battle-state";
 
 export const useUserPokemonAttack = () => {
   const queryClient = useQueryClient();
@@ -27,11 +28,16 @@ export const useUserPokemonAttack = () => {
         currentEnergy: newUserPokemonEnergy,
       };
 
-      setEnemyPokemon({
+      updateEnemyPokemon({
         ...enemyPokemon,
         currentHp: newEnemyHp,
       });
-      setUserPokemonInBattle(updatedUserPokemon);
+
+      if (newEnemyHp === 0) {
+        setBattleStatus("user-victory");
+      }
+
+      updateUserPokemonClient(updatedUserPokemon);
 
       const { attackCooldowns, id, image, ...updateData } = updatedUserPokemon;
 
