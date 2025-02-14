@@ -33,6 +33,8 @@ export const BATTLE_DEFAULTS = {
       isValid: false,
       location: null,
     },
+    newLevel: false,
+    gainedExp: 0,
     isCooldown: false,
   },
 };

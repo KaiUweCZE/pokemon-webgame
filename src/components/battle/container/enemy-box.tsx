@@ -1,30 +1,18 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
-import { type EnemyPokemon, type PokemonName } from "@/types/pokemon";
+import { type EnemyPokemon } from "@/types/pokemon";
 import battlefieldImg from "@/images/fields/field2.webp";
-import ilustrationImg from "@/images/attacks/thunder.webp";
 import AttackAnimation from "../attack-animation";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
 import { cn } from "@/utils/cn";
-
-export interface Enemy {
-  name: PokemonName;
-  image: {
-    src: string | StaticImageData;
-    alt: string;
-  };
-  level: number;
-  maxHp: number;
-  currentHp: number;
-}
 
 const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
   const { animations, battleStatus } = useBattleStore();
   const userAnimation = animations.user;
   return (
     <div className="enemy-box">
-      <div className={cn("enemy-stats-box", battleStatus === "user-victory" && "enemy-done")}>
+      <div className={cn("enemy-stats-box", enemyPokemon.currentHp === 0 && "enemy-done")}>
         <BattlePokemonStats
           pokemonName={enemyPokemon.name}
           pokemonLevel={enemyPokemon.level}
@@ -34,7 +22,7 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
       </div>
       <div className="enemy-image-box">
         <Image
-          className={cn("enemy-image", battleStatus === "user-victory" && "enemy-done")}
+          className={cn("enemy-image", enemyPokemon.currentHp === 0 && "enemy-done")}
           src={enemyPokemon.image?.default.src}
           alt={enemyPokemon.image?.default.alt}
           width={120}

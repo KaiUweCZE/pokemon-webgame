@@ -37,7 +37,7 @@ export async function getCurrentUser() {
         messages: true,
         quests: true,
         createdAt: true,
-        updatedAt: true
+        updatedAt: true,
       },
     });
 

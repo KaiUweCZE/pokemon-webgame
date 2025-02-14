@@ -4,6 +4,7 @@ import { useBattleStore } from "@/store/battle/battle-store";
 import BattleBag from "./battle-bag";
 import BattleSwitch from "./battle-switch";
 import { setBattleStatus, setMenuSection } from "@/store/battle/actions/battle-state";
+import NewLevelInfo from "./new-level-info";
 
 const BattleMenuButtons = () => {
   const { activeMenuSection } = useBattleStore();
@@ -73,6 +74,7 @@ const BattleMenuButtons = () => {
       </Button>
       <BattleBag isOpen={activeMenuSection === "bag"} setIsOpen={handleBagClick} />
       <BattleSwitch isOpen={activeMenuSection === "switch"} setIsOpen={handleSwitchClick} />
+      <NewLevelInfo />
     </div>
   );
 };

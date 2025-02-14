@@ -53,5 +53,7 @@ export interface BattleStore {
     isAnimationPlaying: boolean;
   };
   init: BattleInitState;
+  newLevel: boolean;
+  gainedExp: number;
   isCooldown: boolean;
 }

@@ -45,3 +45,17 @@ export const resetBattle = () => {
     },
   }));
 };
+
+export const setGainedExp = (exp: number) => {
+  battleStore.setState((state) => ({
+    ...state,
+    gainedExp: exp,
+  }));
+};
+
+export const setNewLevel = (isNewLevel: boolean) => {
+  battleStore.setState((state) => ({
+    ...state,
+    newLevel: isNewLevel,
+  }));
+};

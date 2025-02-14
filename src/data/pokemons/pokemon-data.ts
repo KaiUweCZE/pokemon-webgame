@@ -4,7 +4,6 @@ steel: steelix, magnemite, skarmory, scizor
 */
 import { pokemonsImg } from "@/images";
 import { POKEMON_ATTACK_LEVELS } from "./pokemon-attacks-list";
-import { AttackKey } from "./attacks-data";
 import { StaticImageData } from "next/image";
 import { PokemonAttacks, PokemonType } from "@/types/pokemon";
 
