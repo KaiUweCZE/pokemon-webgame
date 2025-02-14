@@ -2,7 +2,7 @@
 import BattleContainer from "@/components/battle/container/battle-container";
 import BattleMenu from "@/components/battle/menu/battle-menu";
 import { useModal } from "@/components/providers/modal-provider";
-import { useBattleStore } from "@/store/battle/battle-store";
+import { useBattleState, useBattleStore } from "@/store/battle/battle-store";
 import "@/styles/battle-styles.css";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -11,6 +11,7 @@ const BattlePage = () => {
   const router = useRouter();
   const { userPokemon, enemyPokemon, battleInit } = useBattleStore();
   const { showModal } = useModal();
+  useBattleState();
 
   useEffect(() => {
     // redirect invalid access
@@ -27,7 +28,6 @@ const BattlePage = () => {
   }, [battleInit.isValid, router]);
 
   if (!battleInit.isValid || !userPokemon || !enemyPokemon) {
-    console.log("Olala: ", battleInit.isValid);
     console.log("User pokemon: ", userPokemon);
     console.log("Enemy pokemon: ", enemyPokemon);
     return null;

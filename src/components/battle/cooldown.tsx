@@ -14,11 +14,14 @@ interface CooldownProps {
 const Cooldown = forwardRef<CooldownHandle, CooldownProps>(({ pokemonSpeed, onComplete }, ref) => {
   const [cooldownTime, setCooldownTime] = useState(0);
 
+  useEffect(() => {
+    setBattleCooldown(cooldownTime > 0);
+  }, [cooldownTime]);
+
   useImperativeHandle(ref, () => ({
     startCooldown: (recoveryTime: number) => {
       const duration = calculateCooldown(recoveryTime, pokemonSpeed);
       setCooldownTime(duration);
-      setBattleCooldown(true);
     },
   }));
 
@@ -28,7 +31,6 @@ const Cooldown = forwardRef<CooldownHandle, CooldownProps>(({ pokemonSpeed, onCo
         setCooldownTime((prev) => {
           const newTime = Math.max(0, Number((prev - 0.1).toFixed(1)));
           if (newTime === 0) {
-            setBattleCooldown(false);
             onComplete?.();
           }
           return newTime;

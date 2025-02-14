@@ -12,7 +12,7 @@ export const setUserPokemon = (pokemon: Pokemon) => {
   }));
 };
 
-export const setUserPokemonInBattle = (update: Partial<BattlePokemon>) => {
+export const updateUserPokemonClient = (update: Partial<BattlePokemon>) => {
   battleStore.setState((state) => {
     if (!state.pokemons.userPokemon) return state;
 
@@ -29,10 +29,25 @@ export const setUserPokemonInBattle = (update: Partial<BattlePokemon>) => {
   });
 };
 
-export const setEnemyPokemon = (enemyPokemon: Partial<EnemyPokemon>) => {
+export const updateEnemyPokemon = (update: Partial<EnemyPokemon>) => {
   battleStore.setState((state) => {
     if (!state.pokemons.enemyPokemon) return state;
 
+    return {
+      ...state,
+      pokemons: {
+        ...state.pokemons,
+        enemyPokemon: {
+          ...state.pokemons.enemyPokemon,
+          ...update,
+        },
+      },
+    };
+  });
+};
+
+export const setEnemyPokemon = (enemyPokemon: EnemyPokemon) => {
+  battleStore.setState((state) => {
     return {
       ...state,
       pokemons: {

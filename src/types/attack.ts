@@ -48,64 +48,64 @@ export const TYPE_EFFECTIVENESS: Record<
     strong: ["fire", "ground", "rock"],
     weak: ["water", "grass", "dragon"],
   },
+  electric: {
+    strong: ["water", "flying"],
+    weak: ["electric", "grass", "dragon", "ground"],
+  },
   grass: {
     strong: ["water", "ground", "rock"],
     weak: ["fire", "grass", "poison", "flying", "bug", "dragon", "steel"],
   },
-  electric: {
-    strong: ["water", "flying"],
-    weak: ["electric", "grass", "dragon"],
-  },
   ice: {
-    strong: ["fire", "water", "ground"],
-    weak: ["ice", "fighting", "dragon"],
+    strong: ["grass", "ground", "flying", "dragon"],
+    weak: ["fire", "water", "ice", "steel"],
   },
   fighting: {
-    strong: ["normal", "ice", "rock", "steel"],
-    weak: ["fighting", "poison", "flying", "psychic", "bug", "dragon"],
+    strong: ["normal", "ice", "rock", "dark", "steel"],
+    weak: ["poison", "flying", "psychic", "bug", "fairy"],
   },
   poison: {
     strong: ["grass", "fairy"],
-    weak: ["poison", "ground", "rock", "ghost"],
+    weak: ["poison", "ground", "rock", "ghost", "steel"],
   },
   ground: {
-    strong: ["electric", "poison", "rock", "steel"],
-    weak: ["fire", "ice", "dragon"],
+    strong: ["fire", "electric", "poison", "rock", "steel"],
+    weak: ["grass", "bug", "flying"],
   },
   flying: {
-    strong: ["fighting", "bug", "grass"],
-    weak: ["electric", "ice", "rock", "steel"],
+    strong: ["grass", "fighting", "bug"],
+    weak: ["electric", "rock", "steel"],
   },
   psychic: {
     strong: ["fighting", "poison"],
-    weak: ["psychic", "bug", "dragon"],
+    weak: ["psychic", "steel", "dark"],
   },
   bug: {
     strong: ["grass", "psychic", "dark"],
-    weak: ["fire", "fighting", "poison", "ghost", "dragon"],
+    weak: ["fire", "fighting", "poison", "flying", "ghost", "steel", "fairy"],
   },
   rock: {
     strong: ["fire", "ice", "flying", "bug"],
     weak: ["fighting", "ground", "steel"],
   },
   ghost: {
-    strong: ["poison", "psychic"],
-    weak: ["ghost", "dark"],
+    strong: ["psychic", "ghost"],
+    weak: ["dark", "normal"],
   },
   dragon: {
     strong: ["dragon"],
-    weak: ["fire", "water", "ice"],
+    weak: ["steel", "fairy"],
   },
   dark: {
     strong: ["psychic", "ghost"],
-    weak: ["dark", "fairy"],
-  },
-  fairy: {
-    strong: ["fighting", "dragon"],
-    weak: ["fire", "water", "steel"],
+    weak: ["fighting", "dark", "fairy"],
   },
   steel: {
-    strong: ["ice", "rock"],
-    weak: ["fire", "water", "electric"],
+    strong: ["ice", "rock", "fairy"],
+    weak: ["fire", "water", "electric", "steel"],
+  },
+  fairy: {
+    strong: ["fighting", "dragon", "dark"],
+    weak: ["fire", "poison", "steel"],
   },
 };

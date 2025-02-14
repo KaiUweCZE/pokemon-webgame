@@ -1,4 +1,3 @@
-import BattleBag from "@/components/battle/menu/battle-bag";
 import { Button } from "@/components/ui/primitives/button";
 
 export default function Home() {

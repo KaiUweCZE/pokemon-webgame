@@ -1,5 +1,5 @@
 import { useToast } from "@/components/providers/toast-context";
-import { setUserPokemonInBattle } from "@/store/battle/actions/battle-pokemon-actions";
+import { updateUserPokemonClient } from "@/store/battle/actions/battle-pokemon-actions";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -15,7 +15,7 @@ export const useHandleRest = () => {
 
       const newEnergy = Math.min(userPokemon.maxEnergy, userPokemon.currentEnergy + 6);
 
-      setUserPokemonInBattle({
+      updateUserPokemonClient({
         ...userPokemon,
         currentEnergy: newEnergy,
       });
