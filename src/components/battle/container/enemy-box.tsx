@@ -6,10 +6,12 @@ import AttackAnimation from "../attack-animation";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
 import { cn } from "@/utils/cn";
+import Pokeball from "../pokeball";
 
 const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
   const { animations, battleStatus } = useBattleStore();
   const userAnimation = animations.user;
+  const pokeballViewed = battleStatus === "catching" || battleStatus === "pokemon-caught";
   return (
     <div className="enemy-box">
       <div className={cn("enemy-stats-box", enemyPokemon.currentHp === 0 && "enemy-done")}>
@@ -21,13 +23,15 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
         />
       </div>
       <div className="enemy-image-box">
-        <Image
-          className={cn("enemy-image", enemyPokemon.currentHp === 0 && "enemy-done")}
-          src={enemyPokemon.image?.default.src}
-          alt={enemyPokemon.image?.default.alt}
-          width={120}
-          height={120}
-        />
+        {!pokeballViewed && (
+          <Image
+            className={cn("enemy-image", enemyPokemon.currentHp === 0 && "enemy-done")}
+            src={enemyPokemon.image?.default.src}
+            alt={enemyPokemon.image?.default.alt}
+            width={120}
+            height={120}
+          />
+        )}
         <Image
           className="enemy-field"
           src={battlefieldImg}
@@ -38,6 +42,7 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
         {userAnimation && (
           <AttackAnimation image={userAnimation.img} setAnimation={setUserAttackAnimation} />
         )}
+        {pokeballViewed && <Pokeball animation={cn(pokeballViewed && "catching")} />}
       </div>
     </div>
   );

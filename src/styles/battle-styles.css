@@ -100,6 +100,7 @@
 
 .enemy-box {
   display: grid;
+  position: relative;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
 }
@@ -224,3 +225,114 @@
   grid-template-columns: 2fr 1fr;
   align-items: center;
 }
+
+.pokeball {
+  display: grid;
+  position: absolute;
+  bottom: -4rem;
+  width: 12rem;
+  height: 12rem;
+  background: radial-gradient(
+      white 16px,
+      black 17px 18px,
+      white 19px 24px,
+      black 25px 32px,
+      transparent 33px
+    ),
+    linear-gradient(to bottom, red 0 80px, black 81px 97px, white 97px 100%);
+  border: 8px solid black;
+  box-shadow: inset -16px -8px 0 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition);
+  scale: 0.15;
+  z-index: 2;
+  animation:
+    fall 0.5s ease-in-out 1s forwards,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s 3,
+    catch 0.5s ease-out 5.25s forwards;
+  &.catching {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  20% {
+    transform: translateX(-10px) rotate(-20deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(20deg);
+  }
+  50% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  60% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-500%);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes catch {
+  to {
+    filter: saturate(0.8) brightness(0.8);
+  }
+}
+
+/*
+.pokeball {
+  --resize-constant: 0.15;
+  display: grid;
+  position: absolute;
+  inset: auto 55% 1rem 45%;
+  width: calc(12rem * var(--resize-constant));
+  height: calc(12rem * var(--resize-constant));
+  background: radial-gradient(
+      white calc(16px * var(--resize-constant)),
+      black calc(17px * var(--resize-constant)) calc(18px * var(--resize-constant)),
+      white calc(19px * var(--resize-constant)) calc(24px * var(--resize-constant)),
+      black calc(25px * var(--resize-constant)) calc(32px * var(--resize-constant)),
+      transparent calc(33px * var(--resize-constant))
+    ),
+    linear-gradient(
+      to bottom,
+      red 0 calc(80px * var(--resize-constant)),
+      black calc(81px * var(--resize-constant)) calc(97px * var(--resize-constant)),
+      white calc(97px * var(--resize-constant)) 100%
+    );
+  border: calc(8px * var(--resize-constant)) solid black;
+  box-shadow: inset calc(-16px * var(--resize-constant)) calc(-8px * var(--resize-constant)) 0 0
+    rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 2;
+  animation:
+    fall 0.5s ease-in-out 1s forwards,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s 3,
+    catch 0.5s ease-out 5.25s forwards;
+  &.catching {
+    opacity: 1;
+  }
+}*/

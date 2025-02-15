@@ -4,6 +4,7 @@ import NotStartedWindow from "./action-windows/not-started-window";
 import AttackWindow from "./action-windows/attack-window";
 import RunWindow from "./action-windows/run-window";
 import UserPokemonWinWindow from "./action-windows/user-pokemon-win-window";
+import CaughtPokemonWindow from "./action-windows/caught-pokemon-window";
 
 const BattleMenuActions = () => {
   const { battleStatus, activeMenuSection } = useBattleStore();
@@ -23,6 +24,10 @@ const BattleMenuActions = () => {
 
     if (battleStatus === "user-victory") {
       return <UserPokemonWinWindow />;
+    }
+
+    if (battleStatus === "pokemon-caught") {
+      return <CaughtPokemonWindow />;
     }
 
     // If user wants to leave a battle

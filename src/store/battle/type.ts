@@ -12,6 +12,7 @@ export type BattleStatus =
   | "attacking"
   | "switching"
   | "catching"
+  | "pokemon-caught"
   | "paused"
   | "user-victory"
   | "enemy-victory";

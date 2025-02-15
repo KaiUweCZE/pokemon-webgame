@@ -10,7 +10,6 @@ import hourglassIcon from "@/images/icons/hourglass.webp";
 import mapIcon from "@/images/icons/mapIcon.webp";
 import mapIcon1 from "@/images/icons/mapIcon1.webp";
 import phoneIcon from "@/images/icons/phoneIcon.webp";
-import pokeballIcon from "@/images/icons/pokeball.webp";
 import pokedexIcon from "@/images/icons/pokedex.webp";
 import pokedex1Icon from "@/images/icons/pokedex1.webp";
 import rightIcon from "@/images/icons/right.webp";
@@ -75,11 +74,6 @@ export const icons = {
   phone: {
     src: phoneIcon,
     alt: "Phone icon",
-    size: 24,
-  },
-  pokeball: {
-    src: pokeballIcon,
-    alt: "Pokeball icon",
     size: 24,
   },
   pokedex: {

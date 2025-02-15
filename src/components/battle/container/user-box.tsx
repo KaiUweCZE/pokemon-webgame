@@ -29,11 +29,11 @@ const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
           width={140}
           height={140}
         />
-        <AttackAnimation
+        {/* <AttackAnimation
           image={ilustrationImg}
           className="translate-x-16"
           setAnimation={setEnemyAttackAnimation}
-        />
+        /> */}
       </div>
       <div className="user-stats-box">
         <BattlePokemonStats

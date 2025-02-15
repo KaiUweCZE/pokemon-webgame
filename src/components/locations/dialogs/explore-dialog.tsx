@@ -20,7 +20,7 @@ import ElementType from "@/components/ui/primitives/element-type";
 import PokemonModalContent from "./components/pokemon-modal-content";
 import { useRouter } from "next/navigation";
 import { useBattleStore } from "@/store/battle/battle-store";
-import { initBattle } from "@/store/battle/actions/battle-state";
+import { initBattle, setBattleStatus } from "@/store/battle/actions/battle-state";
 import {
   setEnemyPokemon,
   setUserPokemon,
@@ -83,6 +83,7 @@ const ExploreDialog = () => {
     };
 
     setEnemyPokemon(wildPokemon);
+    setBattleStatus("not-started");
 
     console.log("wildPokemon", wildPokemon);
 
