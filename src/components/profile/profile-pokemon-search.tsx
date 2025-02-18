@@ -138,7 +138,7 @@ const ProfilePokemonSearch = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 mx-auto h-fit w-full max-w-4xl rounded-md bg-element-light/20 p-2">
+    <header className="search-header sticky top-0 z-10 mx-auto h-fit w-full max-w-4xl rounded-md rounded-t-none bg-element-light/20 p-2">
       <form onSubmit={handleSearch} className="relative">
         <div className="flex flex-col gap-4">
           {/* Search Filters */}
