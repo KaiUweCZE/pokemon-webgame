@@ -22,5 +22,5 @@ export const calculateTypeAdvantage = (
   if (totalAdvantage > 0) return 2; // as advantage
   if (totalAdvantage <= -2) return -3; // Double disadvantage
   if (totalAdvantage < 0) return -2; // disadvantage
-  return 0; // neutral
+  return 1; // neutral
 };

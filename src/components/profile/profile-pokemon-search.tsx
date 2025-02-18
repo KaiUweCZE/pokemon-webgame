@@ -1,118 +1,33 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Search, ChevronDown, X } from "lucide-react";
-import { PokemonType } from "@/types/pokemon";
+import { type Pokemon, type PokemonType } from "@/types/pokemon";
 import { Input } from "../ui/primitives/input";
 import { Button } from "../ui/primitives/button";
 import { typeImages } from "@/images/pokemon-types2/type-images";
 import ElementType from "../ui/primitives/element-type";
+import { setFilteredPokemons } from "@/store/profile-store";
+import { useFilterPokemons } from "@/hooks/use-filter-pokemons";
+import { PokemonTypesWithColor } from "./types";
 
-const ProfilePokemonSearch = () => {
+interface FilteredPokemons {
+  pokemons: Pokemon[] | null;
+}
+
+const ProfilePokemonSearch = ({ pokemons }: { pokemons: Pokemon[] }) => {
   const [isTypeOpen, setIsTypeOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState<PokemonType[]>([]);
-  const [minLevel, setMinLevel] = useState("");
-  const [maxLevel, setMaxLevel] = useState("");
-  const [name, setName] = useState("");
-
-  const pokemonTypes = [
-    {
-      name: "Normal",
-      color: "bg-slate-400",
-      //image: { src: typeImages.normal.src, alt: typeImages.normal.alt },
-    },
-    {
-      name: "Fire",
-      color: "bg-red-500",
-      //image: { src: typeImages.fire.src, alt: typeImages.fire.alt },
-    },
-    {
-      name: "Water",
-      color: "bg-blue-500",
-      //image: { src: typeImages.water.src, alt: typeImages.water.alt },
-    },
-    {
-      name: "Electric",
-      color: "bg-yellow-400",
-      //image: { src: typeImages.electric.src, alt: typeImages.electric.alt },
-    },
-    {
-      name: "Grass",
-      color: "bg-green-500",
-      // image: { src: typeImages.grass.src, alt: typeImages.grass.alt },
-    },
-    {
-      name: "Ice",
-      color: "bg-cyan-300",
-      // image: { src: typeImages.ice.src, alt: typeImages.ice.alt },
-    },
-    {
-      name: "Fighting",
-      color: "bg-red-700",
-      // image: { src: typeImages.fighting.src, alt: typeImages.fighting.alt },
-    },
-    {
-      name: "Poison",
-      color: "bg-purple-500",
-      //image: { src: typeImages.poison.src, alt: typeImages.poison.alt },
-    },
-    {
-      name: "Ground",
-      color: "bg-yellow-600",
-      //image: { src: typeImages.ground.src, alt: typeImages.ground.alt },
-    },
-    {
-      name: "Flying",
-      color: "bg-indigo-300",
-      //  image: { src: typeImages.flying.src, alt: typeImages.flying.alt },
-    },
-    {
-      name: "Psychic",
-      color: "bg-pink-500",
-      // image: { src: typeImages.psychic.src, alt: typeImages.psychic.alt },
-    },
-    {
-      name: "Bug",
-      color: "bg-lime-500",
-      // image: { src: typeImages.bug.src, alt: typeImages.bug.alt },
-    },
-    {
-      name: "Rock",
-      color: "bg-yellow-800",
-      // image: { src: typeImages.rock.src, alt: typeImages.rock.alt },
-    },
-    {
-      name: "Ghost",
-      color: "bg-purple-700",
-      // image: { src: typeImages.ghost.src, alt: typeImages.ghost.alt },
-    },
-    {
-      name: "Dragon",
-      color: "bg-indigo-600",
-      // image: { src: typeImages.dragon.src, alt: typeImages.dragon.alt },
-    },
-    {
-      name: "Dark",
-      color: "bg-slate-800",
-      //  image: { src: typeImages.dark.src, alt: typeImages.dark.alt },
-    },
-    {
-      name: "Steel",
-      color: "bg-slate-500",
-      //  image: { src: typeImages.steel.src, alt: typeImages.steel.alt },
-    },
-    {
-      name: "Fairy",
-      color: "bg-pink-300",
-      // image: { src: typeImages.fairy.src, alt: typeImages.fairy.alt },
-    },
-  ];
-
-  const handleTypeSelect = (type: PokemonType) => {
-    if (selectedTypes.includes(type)) {
-      setSelectedTypes(selectedTypes.filter((t) => t !== type));
-    } else if (selectedTypes.length < 2) {
-      setSelectedTypes([...selectedTypes, type]);
-    }
-  };
+  const {
+    selectedTypes,
+    minLevel,
+    setMinLevel,
+    maxLevel,
+    setMaxLevel,
+    name,
+    handleTypeSelect,
+    handleLevelChange,
+    setName,
+    clearFilters,
+    hasActiveFilters,
+  } = useFilterPokemons(pokemons);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,20 +36,6 @@ const ProfilePokemonSearch = () => {
       levels: { min: minLevel, max: maxLevel },
       name,
     });
-  };
-
-  const handleLevelChange = (
-    value: string,
-    setter: React.Dispatch<React.SetStateAction<string>>,
-    otherValue: string,
-    isMin: boolean
-  ) => {
-    const numValue = parseInt(value);
-    if (value === "" || (numValue >= 1 && numValue <= 100)) {
-      if (isMin && maxLevel && numValue > parseInt(maxLevel)) return;
-      if (!isMin && minLevel && numValue < parseInt(minLevel)) return;
-      setter(value);
-    }
   };
 
   return (
@@ -173,7 +74,7 @@ const ProfilePokemonSearch = () => {
               {isTypeOpen && (
                 <div className="absolute z-10 mt-2 w-64 overflow-hidden rounded-sm border border-purple-200/20 bg-primary-dark/95 shadow-md shadow-purple-500/10">
                   <div className="grid grid-cols-3 gap-1 p-2">
-                    {pokemonTypes.map(({ name: type, color }) => (
+                    {PokemonTypesWithColor.map(({ name: type, color }) => (
                       <Button
                         key={type}
                         type="button"
@@ -289,3 +190,6 @@ const ProfilePokemonSearch = () => {
 };
 
 export default ProfilePokemonSearch;
+function p(value: Pokemon, index: number, array: Pokemon[]): value is Pokemon {
+  throw new Error("Function not implemented.");
+}

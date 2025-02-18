@@ -45,20 +45,5 @@ export const calculateExpGain = (
     expGain *= Math.max(0.1, 1 + (levelDifference * 0.1) / typeBonus);
   }
 
-  return expGain;
+  return 1;
 };
-
-// Get info about level up for a specific pokemon
-/*export const getPokemonLevelInfo = (pokemonName: string): PokemonLevelUpInfo => {
-  const baseData = pokemonsData.find((p) => p.name === pokemonName);
-  if (!baseData) {
-    throw new Error(`Pokemon ${pokemonName} not found`);
-  }
-
-  return {
-    baseExpToLevel: baseData.expToLevel,
-    expGrowthRate: EXP_SCALING_FACTOR,
-    expForKill: baseData.expForKill,
-  };
-};
-*/

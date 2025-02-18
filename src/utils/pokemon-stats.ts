@@ -119,6 +119,24 @@ export const calculateNewStats = (
   );
 };
 
+export const getNewStats = (oldLevel: number, newLevel: number, baseStats: PokemonCreate) => {
+  if (!baseStats) return null;
+
+  const oldStats = applyLevelToStats(baseStats, oldLevel);
+  const newStats = applyLevelToStats(baseStats, newLevel);
+
+  console.log("Old stats: ", oldStats);
+  console.log("New stats: ", newStats);
+  const updatedStats = {
+    maxHp: newStats.maxHp,
+    maxEnergy: newStats.maxEnergy,
+    damage: newStats.damage,
+    defense: newStats.defense,
+    speed: newStats.speed,
+  };
+  return updatedStats;
+};
+
 export const convertToPokemonCreate = (data: (typeof pokemonsData)[0]): PokemonCreate => {
   return {
     name: data.name,
@@ -130,4 +148,26 @@ export const convertToPokemonCreate = (data: (typeof pokemonsData)[0]): PokemonC
     speed: data.speed,
     expToNextLevel: data.expToLevel,
   };
+};
+
+export const calculatePokemonRating = (pokemon: PokemonCreate, level: number) => {
+  const baseStats = pokemonsData.find((p) => p.name === pokemon.name);
+
+  if (!baseStats) return;
+
+  const convertedStats = convertToPokemonCreate(baseStats);
+
+  const stats = applyLevelToStats(convertedStats, level);
+  const realStats = applyLevelToStats(pokemon, level);
+
+  console.log("Stats for specific level: ", stats);
+  const rates = {
+    hpRate: roundNumber(pokemon.maxHp! / stats.maxHp!, 2),
+    energyRate: roundNumber(pokemon.maxEnergy! / stats.maxEnergy!, 2),
+    damageRate: roundNumber(pokemon.damage! / stats.damage!, 2),
+    defenseRate: roundNumber(pokemon.defense! / stats.defense!, 2),
+    speedRate: roundNumber(pokemon.speed! / stats.speed!, 2),
+  };
+
+  console.log("Real stats: ", rates);
 };

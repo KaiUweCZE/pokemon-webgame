@@ -36,7 +36,6 @@ export const usePokemonDragAndDrop = (initialActiveIds: string[], userPokemons: 
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
-      showToast("Pokemon order updated", "success");
     },
     onError: (error) => {
       showToast(error instanceof Error ? error.message : "Failed to update Pokemon order", "error");

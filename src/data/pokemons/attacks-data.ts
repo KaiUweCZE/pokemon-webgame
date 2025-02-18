@@ -46,8 +46,9 @@ export const ATTACKS = {
     id: 3,
     name: "slam",
     type: "normal",
-    damage: 7,
-    energyCost: 5,
+    // dmg: 7, energy 5
+    damage: 70,
+    energyCost: 1,
     recoveryTime: 4,
     img: normalImg,
   },

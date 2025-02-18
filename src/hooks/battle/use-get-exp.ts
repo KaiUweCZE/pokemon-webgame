@@ -5,6 +5,7 @@ import { useBattleStore } from "@/store/battle/battle-store";
 import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
 import { roundNumber } from "@/utils/helper/round-number";
 import { calculateExpGain, calculateExpToNextLevel } from "@/utils/pokemon-exp";
+import { getNewStats } from "@/utils/pokemon-stats";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useGetExp = () => {
@@ -22,32 +23,36 @@ const useGetExp = () => {
         enemyPokemon.name,
         enemyPokemon.level
       );
-
-      console.log("Gained exp:", gainedExp, roundNumber(gainedExp, 2));
-
       setGainedExp(roundNumber(gainedExp, 2));
 
+      // check if the user has leveled up or will be add only exp
       const expToNextLevel = calculateExpToNextLevel(userPokemon.name, userPokemon.level);
       const totalExp = userPokemon.currentExp + gainedExp;
 
       let newLevel = userPokemon.level;
       let remainingExp = totalExp;
 
-      if (totalExp >= expToNextLevel) {
+      // level up
+      const hasLevelUp = totalExp >= expToNextLevel;
+      let newStats = null;
+
+      if (hasLevelUp) {
         setNewLevel(true);
         newLevel = userPokemon.level + 1;
         remainingExp -= expToNextLevel;
+        // if level up => calculate new battle stats(maxHp, maxEnergy, dmg, defense, speed)
+        newStats = getNewStats(userPokemon.level, newLevel, userPokemon);
       }
 
-      updateUserPokemonClient({
+      const updates = {
         currentExp: remainingExp,
         level: newLevel,
-      });
+        ...(newStats || {}),
+      };
 
-      const result = await updateUserPokemon(userPokemon.id, {
-        currentExp: remainingExp,
-        level: newLevel,
-      });
+      updateUserPokemonClient(updates);
+
+      const result = await updateUserPokemon(userPokemon.id, updates);
 
       return result;
     },
@@ -60,7 +65,11 @@ const useGetExp = () => {
   });
 
   return {
-    getExp: () => getExp.mutate(),
+    getExp: () => {
+      if (!getExp.isPending) {
+        getExp.mutate();
+      }
+    },
     isLoading: getExp.isPending,
     error: getExp.error,
   };

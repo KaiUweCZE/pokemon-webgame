@@ -3,7 +3,7 @@ import Image from "next/image";
 import { characters } from "@/images";
 import { Card } from "../ui/primitives/card";
 import ProfileInfoLabel from "./profile-info-label";
-import PokemonSix from "./pokemon-six";
+import PokemonTeam from "./pokemon-team";
 
 interface AccountSectionProps {
   user: User;
@@ -22,14 +22,14 @@ const AccountSection = ({ user }: AccountSectionProps) => {
   );
 
   return (
-    <section className="relative grid w-fit grid-cols-2">
+    <section className="relative grid w-fit grid-cols-2 gap-2">
       <Image className="profile-img" src={imageSrc.src} alt={imageSrc.alt} width={200} />
       <div className="profile-info-card primary-shadow grid h-fit min-w-64 rounded-md border border-purple-300 bg-primary-dark/85 p-4">
         {baseInformation.map((info) => (
           <ProfileInfoLabel key={info.label} label={info.label} data={info.data} />
         ))}
       </div>
-      <PokemonSix />
+      <PokemonTeam />
     </section>
   );
 };

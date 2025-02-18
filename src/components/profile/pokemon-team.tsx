@@ -59,7 +59,7 @@ const PokemonSlot = ({
   );
 };
 
-const PokemonSix = () => {
+const PokemonTeam = () => {
   const { data: user } = useCurrentUser();
   const { activePokemon, draggedIndex, handleDragStart, handleDragOver, handleDrop } =
     usePokemonDragAndDrop(user?.activePokemonIds ?? [], user?.pokemons ?? []);
@@ -87,4 +87,4 @@ const PokemonSix = () => {
   );
 };
 
-export default PokemonSix;
+export default PokemonTeam;

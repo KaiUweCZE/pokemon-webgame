@@ -203,6 +203,7 @@ body {
   position: absolute;
   grid-auto-rows: min-content;
   max-height: 25rem;
+  scrollbar-gutter: stable;
 }
 
 .search-header {
@@ -229,6 +230,7 @@ body {
 }
 
 .profile-info-card {
+  width: fit-content;
   place-self: end start;
 }
 

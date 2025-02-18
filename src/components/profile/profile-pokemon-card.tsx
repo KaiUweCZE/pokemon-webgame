@@ -11,6 +11,7 @@ interface ProfilePokemonCardProps {
 }
 const ProfilePokemonCard = ({ pokemon }: ProfilePokemonCardProps) => {
   const pokemonImg = pokemonsImg[pokemon.name as PokemonName].default;
+
   return (
     <div className="relative grid h-fit w-full rounded-sm bg-element-light/20 p-4 shadow-primary">
       <Image

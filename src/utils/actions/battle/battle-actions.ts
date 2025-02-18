@@ -9,6 +9,7 @@ export const updateUserPokemon = async (
 ) => {
   const session = await auth();
 
+  console.log("obatined data: ", updateData);
   if (!session?.user?.name || !pokemonId) {
     throw new Error("User or pokemon not found");
   }

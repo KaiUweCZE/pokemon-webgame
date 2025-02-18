@@ -1,12 +1,30 @@
 "use client";
 import { useToast } from "@/components/providers/toast-context";
 import { Button } from "@/components/ui/primitives/button";
+import { PokemonName, PokemonType } from "@/types/pokemon";
+import { calculateExpGain } from "@/utils/pokemon-exp";
+import { calculatePokemonRating } from "@/utils/pokemon-stats";
 
 export default function Home() {
   const { showToast } = useToast();
 
   const handleToast = () => {
     showToast("This is a toast", "success");
+  };
+
+  const eevee = {
+    name: "eevee" as PokemonName,
+    types: ["normal"] as PokemonType[],
+    level: 15,
+    maxHp: 126,
+    maxEnergy: 18,
+    damage: 28,
+    defense: 25,
+    speed: 21,
+  };
+
+  const handleButtonToast = () => {
+    calculatePokemonRating(eevee, 15);
   };
   return (
     <div className="blur-on bg-background">
@@ -34,6 +52,8 @@ export default function Home() {
         <div>
           <Button onClick={handleToast}>Toast</Button>
         </div>
+
+        <Button onClick={handleButtonToast}>Check pokemon rates</Button>
       </main>
     </div>
   );
