@@ -5,28 +5,34 @@ interface ProgressBarProps {
   duration: number;
   primaryColor: string;
   secondaryColor?: string;
-  onComplete?: () => void;
+  onClose?: () => void;
   className?: string;
   setIsLeaving?: (isLeaving: boolean) => void;
+  isHovering?: boolean;
+  setIsHovering?: (isHovering: boolean) => void;
 }
 
 const TRANSITON_DURATION = 300;
 
 const ProgressBar = ({
   duration,
-  onComplete,
+  onClose,
   className,
   primaryColor,
   secondaryColor,
   setIsLeaving,
+  isHovering,
+  setIsHovering,
 }: ProgressBarProps) => {
   const startTimeRef = useRef<number>(0);
+  //const pausedAtRef = useRef<number>(0);
   const frameRef = useRef<number | null>(null);
   const isUnmountedRef = useRef(false);
   const [progress, setProgress] = useState(100);
 
   const animate = (timestamp: number) => {
     if (isUnmountedRef.current) return;
+    if (isHovering) return;
 
     if (!startTimeRef.current) {
       startTimeRef.current = timestamp;
@@ -35,20 +41,18 @@ const ProgressBar = ({
     const elapsed = timestamp - startTimeRef.current;
     const remaining = Math.max(0, duration - elapsed);
     const currentProgress = (remaining / duration) * 100;
-
     setProgress(currentProgress);
-
     if (currentProgress > 0) {
       frameRef.current = requestAnimationFrame(animate);
     } else {
       setIsLeaving?.(true);
-      onComplete?.();
+      onClose?.();
+      setIsHovering?.(false);
     }
   };
 
   useEffect(() => {
     isUnmountedRef.current = false;
-    startTimeRef.current = 0;
     frameRef.current = requestAnimationFrame(animate);
 
     return () => {
@@ -57,7 +61,7 @@ const ProgressBar = ({
         cancelAnimationFrame(frameRef.current);
       }
     };
-  }, [duration, onComplete]);
+  }, [duration, onClose, isHovering]);
 
   return (
     <div className={`progress-bar absolute bottom-0 h-1 w-full ${secondaryColor} ${className}`}>

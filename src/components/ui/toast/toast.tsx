@@ -57,6 +57,7 @@ export const Toast = ({
   duration = 3000,
 }: ToastProps) => {
   const [isLeaving, setIsLeaving] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const currentVariant = variants[variant];
 
   if (!isVisible && !isLeaving) return null;
@@ -66,12 +67,15 @@ export const Toast = ({
   }
 
   const handleClose = () => {
-    setIsLeaving(true);
     onClose();
   };
 
   return (
-    <div className={cn("toast fixed bottom-4 left-4 z-50", isLeaving && "toast-leave")}>
+    <div
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      className={cn("toast fixed bottom-4 left-4 z-50", isLeaving && "toast-leave")}
+    >
       <div className="relative flex w-64 overflow-hidden rounded-sm shadow-lg">
         {/* left border */}
         <div className={cn("absolute left-0 top-0 h-full w-1", currentVariant.accentColor)} />
@@ -97,13 +101,19 @@ export const Toast = ({
         </div>
         <ProgressBar
           duration={duration}
-          onComplete={onClose}
+          onClose={onClose}
           primaryColor={currentVariant.accentColor}
           secondaryColor={currentVariant.lightAccentColor}
           className={currentVariant.accentColor}
           setIsLeaving={setIsLeaving}
+          isHovering={isHovering}
+          setIsHovering={setIsHovering}
         />
-        <GradientBackground variant="light" intensity="medium" className="z-1" />
+        <GradientBackground
+          variant="light"
+          intensity="medium"
+          className="z-1 cursor-pointer hover:bg-primary/10"
+        />
       </div>
     </div>
   );

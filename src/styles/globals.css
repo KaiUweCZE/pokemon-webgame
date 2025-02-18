@@ -205,6 +205,20 @@ body {
   max-height: 25rem;
 }
 
+.search-header {
+  animation: bg-fill linear both;
+  animation-timeline: scroll();
+  animation-range: 0vh 5rem;
+}
+
+@keyframes bg-fill {
+  to {
+    background: rgba(var(--element-light));
+    background: rgb(66, 68, 95);
+    background: rgb(var(--primary-dark));
+  }
+}
+
 .profile-img {
   filter: drop-shadow(var(--dropdown-shadow-primary));
 }
