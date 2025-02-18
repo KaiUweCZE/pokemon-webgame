@@ -7,11 +7,14 @@ import { useBattleStore } from "@/store/battle/battle-store";
 import { setUserAttackAnimation } from "@/store/battle/actions/battle-animations";
 import { cn } from "@/utils/cn";
 import Pokeball from "../pokeball";
+import { useEnemyAttack } from "@/hooks/battle/use-enemy-attack";
 
 const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
   const { animations, battleStatus } = useBattleStore();
-  const userAnimation = animations.user;
+  const userAttackAnimation = animations.user;
   const pokeballViewed = battleStatus === "catching" || battleStatus === "pokemon-caught";
+
+  useEnemyAttack();
   return (
     <div className="enemy-box">
       <div className={cn("enemy-stats-box", enemyPokemon.currentHp === 0 && "enemy-done")}>
@@ -39,8 +42,8 @@ const EnemyBox = ({ enemyPokemon }: { enemyPokemon: EnemyPokemon }) => {
           width={200}
           height={200}
         />
-        {userAnimation && (
-          <AttackAnimation image={userAnimation.img} setAnimation={setUserAttackAnimation} />
+        {userAttackAnimation && (
+          <AttackAnimation image={userAttackAnimation.img} setAnimation={setUserAttackAnimation} />
         )}
         {pokeballViewed && <Pokeball animation={cn(pokeballViewed && "catching")} />}
       </div>

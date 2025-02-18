@@ -5,18 +5,25 @@ import { useBattleStore } from "@/store/battle/battle-store";
 import { calculateNewStats, convertToPokemonCreate } from "@/utils/pokemon-stats";
 import { capitalize } from "@/utils/string";
 import { ArrowRight, X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const NewLevelInfo = () => {
+  const [isHover, setIsHover] = useState(false);
   const { newLevel, userPokemon } = useBattleStore();
+
+  /* Need to be tested*/
   useEffect(() => {
     if (newLevel) {
       const timer = setTimeout(() => {
-        setNewLevel(false);
+        if (!isHover) {
+          setNewLevel(false);
+        }
       }, 5000);
       return () => clearTimeout(timer);
+    } else if (isHover) {
+      setNewLevel(true);
     }
-  }, [newLevel]);
+  }, [newLevel, isHover]);
 
   if (!userPokemon || !newLevel) return null;
 
@@ -28,9 +35,13 @@ const NewLevelInfo = () => {
 
   if (!statChanges) return null;
   return (
-    <div className="absolute bottom-0 w-full">
+    <div
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      className="absolute bottom-0 w-full"
+    >
       <Expander isOpen={newLevel}>
-        <div className="grid h-auto gap-4 rounded-t-sm border-2 border-b-0 border-slate-800/20 bg-content/90 p-4 backdrop-blur-sm">
+        <div className="grid h-auto gap-4 rounded-t-sm border-2 border-b-0 border-slate-800/20 bg-content/90 p-4 backdrop-blur-sm hover:bg-content-secondary">
           {/* Level Up Announcement */}
           <X
             className="absolute right-0 top-0 h-4 w-4 cursor-pointer bg-content-secondary"

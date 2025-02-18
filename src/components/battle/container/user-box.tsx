@@ -1,9 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import BattlePokemonStats from "../battle-pokemon-stats";
 import { BattlePokemon, PokemonName } from "@/types/pokemon";
-import ilustrationImg from "@/images/attacks/thunder.webp";
 import AttackAnimation from "../attack-animation";
 import { setEnemyAttackAnimation } from "@/store/battle/actions/battle-animations";
+import { useBattleStore } from "@/store/battle/battle-store";
 
 export type UserPokemon = {
   pokemonName: PokemonName;
@@ -19,6 +19,8 @@ export type UserPokemon = {
 };
 
 const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
+  const { animations, battleStatus } = useBattleStore();
+  const enemyAttackAnimation = animations.enemy;
   return (
     <div className="user-box">
       <div className="user-image-box relative">
@@ -29,11 +31,13 @@ const UserBox = ({ userPokemon }: { userPokemon: BattlePokemon }) => {
           width={140}
           height={140}
         />
-        {/* <AttackAnimation
-          image={ilustrationImg}
-          className="translate-x-16"
-          setAnimation={setEnemyAttackAnimation}
-        /> */}
+        {enemyAttackAnimation && (
+          <AttackAnimation
+            image={enemyAttackAnimation.img}
+            className="translate-x-16"
+            setAnimation={setEnemyAttackAnimation}
+          />
+        )}
       </div>
       <div className="user-stats-box">
         <BattlePokemonStats

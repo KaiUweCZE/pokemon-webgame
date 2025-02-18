@@ -32,6 +32,7 @@ export const useBattleStore = () => {
     currentAttack: state.pokemons.userPokemonAttack,
     userPokemonSix: state.pokemons.userPokemonSix,
     enemyPokemon: state.pokemons.enemyPokemon,
+    enemyAttack: state.pokemons.enemyAttack,
     battle: state.battle,
     battleInit: state.init,
     enemyType: state.battle.enemyType,

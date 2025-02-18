@@ -15,7 +15,7 @@ export function useCurrentUser() {
       if (!data) return null;
       return data as User;
     },
-    staleTime: 1000 * 60 * 5, // 5 minut - můžeme upravit podle potřeby
+    staleTime: 1000 * 60 * 5, // 5 min
     gcTime: 1000 * 60 * 60 * 24,
     refetchOnWindowFocus: false,
     enabled: status === "authenticated",

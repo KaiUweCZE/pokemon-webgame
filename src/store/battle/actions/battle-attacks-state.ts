@@ -17,3 +17,13 @@ export const setUserPokemonAttack = (attack: Attack) => {
     },
   }));
 };
+
+export const setEnemyAttack = (attack: Attack) => {
+  battleStore.setState((state) => ({
+    ...state,
+    pokemons: {
+      ...state.pokemons,
+      enemyAttack: attack,
+    },
+  }));
+};

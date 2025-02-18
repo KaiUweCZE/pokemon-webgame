@@ -24,7 +24,7 @@ export interface Quest {
   from: Sender;
   startDay?: number;
   endDay?: number;
-  location?: Location;
+  location?: LocationName;
   rewards: any[];
   completed: boolean;
   userId: string;
@@ -58,7 +58,7 @@ export interface User {
   activePokemonIds: string[];
   completedQuests: string[];
   location: LocationName;
-  visitedLocations: Location[];
+  visitedLocations: LocationName[];
   chapter: number;
   day: number;
   partOfDay: number;

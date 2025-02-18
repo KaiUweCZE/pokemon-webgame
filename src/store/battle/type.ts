@@ -41,6 +41,7 @@ export interface BattlePokemonState {
   userPokemon: BattlePokemon | null;
   userPokemonSix: Pokemon[];
   userPokemonAttack: Attack | null;
+  enemyAttack: Attack | null;
 }
 
 export interface BattleStore {
@@ -51,7 +52,6 @@ export interface BattleStore {
     enemy: BattleAnimationState;
     isUserAttacking: boolean;
     isEnemyAttacking: boolean;
-    isAnimationPlaying: boolean;
   };
   init: BattleInitState;
   newLevel: boolean;

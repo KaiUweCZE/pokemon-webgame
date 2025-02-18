@@ -54,10 +54,11 @@ const ExploreDialog = () => {
   const handleExplore = () => {
     if (!user?.location || !user?.pokemons[0]) return;
 
-    const userPokemon = user.pokemons[0];
+    const userPokemon = user.pokemons.find((pokemon) => pokemon.id === user.activePokemonIds[0]);
     const userPokemons = user.pokemons.filter((pokemon) => pokemon.isActive && pokemon);
     const location = user.location as LocationName;
 
+    if (!userPokemon) return;
     // init battle
     initBattle(location);
     setUserPokemon(userPokemon);
@@ -68,7 +69,7 @@ const ExploreDialog = () => {
       name: "pikachu",
       types: ["electric"],
       level: 10,
-      attacks: ["tackle", "thundershock"],
+      attacks: ["tackle", "thunder shock"],
       shiny: false,
       abilities: ["static"],
       currentHp: 40,

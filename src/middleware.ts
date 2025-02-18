@@ -12,6 +12,10 @@ export default auth((req) => {
   const isProtectedRoute = protectedRoutes.some((route) => pathname.startsWith(route));
   const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
 
+  if (session?.user && isAuthRoute) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   if (!session?.user && isProtectedRoute) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
@@ -25,10 +29,6 @@ export default auth((req) => {
 
   if (user?.chapter !== 0 && pathname === "/intro") {
     return NextResponse.redirect(new URL("/profile", req.url));
-  }
-
-  if (session?.user && isAuthRoute) {
-    return NextResponse.redirect(new URL("/", req.url));
   }
 
   return NextResponse.next();

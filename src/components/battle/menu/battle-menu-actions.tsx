@@ -11,8 +11,6 @@ const BattleMenuActions = () => {
 
   // Helper function to determine which component to render
   const renderActionContent = () => {
-    console.log("Rendering action content with status:", battleStatus, activeMenuSection);
-
     // Battle not started yet
     if (battleStatus === "not-started") {
       return <NotStartedWindow />;

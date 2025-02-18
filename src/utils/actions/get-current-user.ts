@@ -4,16 +4,13 @@ import { auth } from "@/auth";
 import { prisma } from "../../../prisma";
 
 export async function getCurrentUser() {
-  const session = await auth();
-
-  console.log("getCurrentUser - session:", session);
-
-  if (!session?.user?.name) {
-    console.log("getCurrentUser - no user in session");
-    return null;
-  }
-
   try {
+    const session = await auth();
+
+    if (!session?.user?.name) {
+      return null;
+    }
+
     const user = await prisma.user.findUnique({
       where: { name: session.user.name },
       select: {
@@ -41,16 +38,21 @@ export async function getCurrentUser() {
       },
     });
 
-    console.log("getCurrentUser - found user:", user);
-    if (user) {
-      await prisma.$disconnect();
-    } else {
-      await prisma.$disconnect();
-      throw new Error("User not found");
+    if (!user) {
+      return null;
     }
+
+    /*const transformedUser = {
+      ...user,
+      location: user.location as LocationName,
+      visitedLocations: user.visitedLocations as LocationName[],
+    } satisfies User;*/
+
     return user;
   } catch (error) {
     console.error("Error fetching user:", error);
     return null;
+  } finally {
+    await prisma.$disconnect();
   }
 }
