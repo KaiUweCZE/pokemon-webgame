@@ -188,6 +188,14 @@ body {
   z-index: 10;
 }
 
+/*Main Header*/
+.secondary-header {
+  display: grid;
+  position: absolute;
+  transition: var(--transition);
+  top: 100%;
+}
+
 /*PROFILE STYLES*/
 
 .profile-container {
