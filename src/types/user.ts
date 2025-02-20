@@ -1,7 +1,6 @@
+import { ItemType } from "./item";
 import { type LocationName } from "./location";
 import { ObjectId, type Pokemon } from "./pokemon";
-
-export type ItemType = "pokeball" | "potion" | "coffee" | "stone";
 
 export type Sender = "prof. Bloom" | "Haku" | "Jack";
 

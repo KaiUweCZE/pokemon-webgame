@@ -16,7 +16,7 @@ export const DialogHeader = ({
   selectedLocation,
 }: DialogHeaderProps) => {
   return (
-    <div className="flex items-center justify-between">
+    <header className="flex items-center justify-between">
       <div className="flex items-center gap-2">
         {selectedLocation && onBack && (
           <Button
@@ -32,6 +32,6 @@ export const DialogHeader = ({
         {!selectedLocation && <p className="text-lg font-medium text-amber-100">{title}</p>}
       </div>
       {rightContent}
-    </div>
+    </header>
   );
 };

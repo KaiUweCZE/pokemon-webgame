@@ -1,0 +1,15 @@
+.secondary-header {
+  display: grid;
+  position: absolute;
+  transition: var(--transition);
+  top: 100%;
+}
+
+.secondary-header-item {
+  display: grid;
+  width: 30rem;
+  height: 20rem;
+  background-color: orange;
+  opacity: 1;
+  z-index: 10000;
+}
