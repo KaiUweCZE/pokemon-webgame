@@ -1,4 +1,4 @@
-import { ItemType } from "./item";
+import { InventoryItem, ItemCategory } from "./item";
 import { type LocationName } from "./location";
 import { ObjectId, type Pokemon } from "./pokemon";
 
@@ -8,13 +8,13 @@ export type MessageType = "evolution" | "new-move" | "quest" | "system" | "battl
 
 export type ObjectiveType = "collect" | "defeat" | "explore" | "catch" | "talk";
 
-export interface InventoryItem {
+/*export interface InventoryItem {
   id: string;
   userId: string;
-  itemType: ItemType;
+  itemType: ItemCategory;
   quantity: number;
   metadata?: Record<string, any>;
-}
+}*/
 
 export interface Quest {
   id: string;
@@ -45,7 +45,6 @@ export interface Objective {
   completed: boolean;
 }
 
-// Hlavní User interface
 export interface User {
   id: string;
   name: string;

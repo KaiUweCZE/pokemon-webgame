@@ -27,7 +27,7 @@ export const useGetItem = () => {
   });
 
   return {
-    getItem: getItemMutation,
+    getItem: getItemMutation.mutate,
     isLoading: getItemMutation.isPending,
   };
 };

@@ -1,15 +1,76 @@
 .secondary-header {
-  display: grid;
+  opacity: 0;
+  display: none;
   position: absolute;
-  transition: var(--transition);
+  height: 0;
+  transition:
+    opacity var(--transition),
+    display var(--transition),
+    height var(--transition),
+    overlay var(--transition);
+  transition-behavior: allow-discrete;
   top: 100%;
+  &.open {
+    opacity: 1;
+    display: grid;
+    height: 2rem;
+    @starting-style {
+      opacity: 0;
+      height: 0;
+    }
+  }
 }
 
 .secondary-header-item {
-  display: grid;
+  opacity: 0;
+  display: none;
+  position: absolute;
+  inset: 110% 0 auto auto;
+  transition:
+    opacity var(--transition),
+    display var(--transition),
+    overlay var(--transition);
+  transition-behavior: allow-discrete;
   width: 30rem;
   height: 20rem;
-  background-color: orange;
-  opacity: 1;
-  z-index: 10000;
+  &.open {
+    opacity: 1;
+    display: grid;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
+
+/*SPECIFIC INVENTORY STYLES*/
+
+.inventory {
+  display: grid;
+  grid-template:
+    "header header" min-content
+    "inventory-categories inventory-items" 1fr / 1fr 3fr;
+}
+
+.inventory header {
+  grid-area: header;
+  display: grid;
+  height: fit-content;
+}
+
+.inventory-categories {
+  grid-area: inventory-categories;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 2rem);
+}
+
+.inventory-items {
+  grid-area: inventory-items;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }

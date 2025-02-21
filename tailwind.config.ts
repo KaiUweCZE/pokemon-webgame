@@ -42,12 +42,13 @@ export default {
         primary: {
           DEFAULT: "rgba(var(--primary))",
           dark: "rgba(var(--primary-dark))",
+          accent: "rgba(var(--primary-accent))",
           foreground: "rgba(var(--primary-foreground))",
           text: "rgba(var(--primary-text))",
         },
         secondary: {
           DEFAULT: "rgba(var(--secondary))",
-          foreground: "rgba(var(--secondary-foreground))",
+
           text: "rgba(var(--secondary-text))",
         },
         destructive: {
