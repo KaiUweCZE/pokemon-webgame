@@ -1,16 +1,5 @@
 import { itemImages } from "@/images/items";
-import { type ItemName } from "@/types/item";
-import { type StaticImageData } from "next/image";
-
-interface ItemData {
-  name: ItemName;
-  description: string;
-  category: string;
-  img: {
-    src: StaticImageData;
-    alt: string;
-  };
-}
+import { Item, type ItemName } from "@/types/item";
 
 export const itemData = {
   coins: {
@@ -18,77 +7,103 @@ export const itemData = {
     description: "Coins can be found in the coins bag in some locations.",
     category: "key",
     img: itemImages["coins"],
+    stackable: true,
+    price: 0,
   },
   pokeball: {
     name: "pokeball",
     description: "Used to catch Pokémon",
     category: "pokeball",
     img: itemImages["pokeball"],
+    stackable: true,
+    price: 20,
   },
   "great ball": {
     name: "great ball",
     description: "Used to catch Pokémon",
     category: "pokeball",
     img: itemImages["great ball"],
+    stackable: true,
+    price: 50,
   },
   potion: {
     name: "potion",
     description: "Heals a single Pokemon.",
     category: "consumable",
     img: itemImages["potion"],
+    stackable: true,
+    price: 20,
   },
   "super potion": {
     name: "super potion",
     description: "Heals a single Pokemon.",
     category: "consumable",
     img: itemImages["super potion"],
+    stackable: true,
+    price: 50,
   },
   "energy drink": {
     name: "energy drink",
     description: "Heals a single Pokemon.",
     category: "consumable",
     img: itemImages["energy drink"],
+    stackable: true,
+    price: 10,
   },
   antidote: {
     name: "antidote",
     description: "Cures poisoned Pokemon.",
     category: "consumable",
     img: itemImages["antidote"],
+    stackable: true,
+    price: 10,
   },
   paraheal: {
     name: "paraheal",
     description: "Cures paralyzed Pokemon.",
     category: "consumable",
     img: itemImages["paraheal"],
+    stackable: true,
+    price: 10,
   },
   coffee: {
     name: "coffee",
     description: "Heals a single Pokemon.",
     category: "consumable",
     img: itemImages["coffee"],
+    stackable: true,
+    price: 40,
   },
   "electric stone": {
     name: "electric stone",
     description: "Used to evolve Pokemon.",
     category: "consumable",
     img: itemImages["electric stone"],
+    stackable: true,
+    price: 50,
   },
   "fire stone": {
     name: "fire stone",
     description: "Used to evolve Pokemon.",
     category: "consumable",
     img: itemImages["fire stone"],
+    stackable: true,
+    price: 50,
   },
   "grass stone": {
     name: "grass stone",
     description: "Used to evolve Pokemon.",
     category: "consumable",
     img: itemImages["grass stone"],
+    stackable: true,
+    price: 50,
   },
   "ice stone": {
     name: "ice stone",
     description: "Used to evolve Pokemon.",
     category: "consumable",
     img: itemImages["ice stone"],
+    stackable: true,
+    price: 50,
   },
-} satisfies Record<ItemName, ItemData>;
+} satisfies Record<ItemName, Item>;

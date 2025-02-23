@@ -2,15 +2,7 @@
 import { MainNav } from "@/components/navigation/main-nav";
 import { Button } from "@/components/ui/primitives/button";
 import { useSignOut } from "@/hooks/use-sign-out";
-import {
-  Backpack,
-  BackpackIcon,
-  ChevronDown,
-  ChevronDownSquare,
-  LogIn,
-  LogOut,
-  PanelTopOpen,
-} from "lucide-react";
+import { LogIn, LogOut, MinusCircle, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { SecondaryHeader } from "./secondary-header";
@@ -37,11 +29,15 @@ export function Header() {
                   variant="basic"
                   size="icon"
                   rightIcon={
-                    <Backpack
-                      className={`h-5 w-5 text-amber-100 transition-transform group-hover:text-amber-200 ${
-                        isSecondaryOpen ? "text-amber-200" : ""
-                      }`}
-                    />
+                    isSecondaryOpen ? (
+                      <MinusCircle
+                        className={`h-5 w-5 text-amber-200 transition-transform group-hover:text-amber-200`}
+                      />
+                    ) : (
+                      <PlusCircle
+                        className={`h-5 w-5 text-amber-200 transition-transform group-hover:text-amber-200`}
+                      />
+                    )
                   }
                   className="group p-1"
                   onClick={() => setIsSecondaryOpen(!isSecondaryOpen)}

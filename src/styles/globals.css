@@ -28,7 +28,8 @@
     /* Primary colors - main action elements */
     --primary: 36, 37, 91; /* Deep purple (#3C0366) */
     --primary-dark: 17, 17, 40;
-    --primary-accent: 10, 34, 79;
+    --primary-accent: 2, 74, 112;
+    --primary-accent-dark: 5, 47, 74;
     --primary-foreground: 248, 250, 252; /* Light text on dark background */
 
     /* Secondary colors - less important elements */
@@ -68,7 +69,10 @@
     --shadow-light: 0 3px 6px rgba(var(--content), 0.16), 0 3px 6px rgba(104, 104, 104, 0.3);
     --shadow-light-secondary: 0 1px 3px rgba(var(--content), 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     --shadow-top: 0px -4px 10px 0px rgba(0, 0, 0, 0.5);
+    --shadow-only-top: 0px -11px 20px -20px rgba(0, 0, 0, 0.45);
     --shadow-left: -12px 0px 8px -13px rgba(0, 0, 0, 0.12);
+    --shadow-right: 8px 0px 20px -20px rgba(0, 0, 0, 0.45);
+    --shadow-bottom: 0px 11px 20px -20px rgba(0, 0, 0, 0.45);
     --shadow-inset: 0px 0px 2px 0px rgba(10, 37, 64, 0.35) inset;
 
     /*transition*/
@@ -113,6 +117,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }
 
 /*@media (prefers-color-scheme: dark) {
@@ -148,6 +156,7 @@ html {
 }
 
 body {
+  box-sizing: border-box;
   color: hsl(var(--foreground));
   background: var(--background);
   font-family: var(--font-fredoka), system-ui, sans-serif;
@@ -259,6 +268,27 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.location-dialog {
+  max-height: 25rem;
+  overflow-y: auto;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  animation: scroll-dialog linear both;
+  animation-timeline: scroll();
+  animation-range: 0vh 1vh;
+}
+
+@keyframes scroll-dialog {
+  to {
+    background-color: rgba(var(--primary-dark), 0.95);
+    box-shadow: var(--shadow-bottom);
+  }
 }
 /* Slides are same, but it's easier to keep them separate for future modifications */
 .first-slide {

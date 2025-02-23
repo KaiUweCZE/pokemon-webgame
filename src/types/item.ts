@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { PokemonType } from "./pokemon";
 
 export type ItemCategory = "consumable" | "evolution" | "pokeball" | "key";
@@ -48,14 +49,27 @@ export function isValidItemName(item: string): item is ItemName {
   return VALID_ITEMS.includes(item as ItemName);
 }
 
-export interface Item {
+export interface Item<T extends BaseItemMetadata = BaseItemMetadata> {
   name: ItemName;
   description: string;
+  category: string;
+  stackable: boolean;
+  img: {
+    src: StaticImageData | string;
+    alt: string;
+  };
   price: number;
   effect?: string;
-  maxQuantity?: number;
-  stackable: boolean;
-  icon: string;
+  quantity?: number;
+  metadata?: ItemMetadata<T>;
+}
+
+export interface InventoryItem<T extends BaseItemMetadata = BaseItemMetadata> {
+  id: string;
+  userId: string;
+  name: ItemName;
+  quantity: number;
+  metadata?: ItemMetadata<T>;
 }
 
 export interface PotionMetadata {
@@ -80,11 +94,3 @@ interface QuestItemMetadata extends BaseItemMetadata {
 }
 
 export type ItemMetadata<T extends BaseItemMetadata = BaseItemMetadata> = T;
-
-export interface InventoryItem<T extends BaseItemMetadata = BaseItemMetadata> {
-  id: string;
-  userId: string;
-  name: ItemName;
-  quantity: number;
-  metadata?: ItemMetadata<T>;
-}

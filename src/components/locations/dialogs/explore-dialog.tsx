@@ -92,7 +92,7 @@ const ExploreDialog = () => {
   };
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-4 p-4">
       <DialogHeader title="Explore Area" />
 
       {/* About area*/}

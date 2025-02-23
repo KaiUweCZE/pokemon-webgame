@@ -17,6 +17,7 @@ const cardVariants = cva("grid rounded-md primary-shadow", {
       md: "p-6 w-[30rem] max-w-9/10",
       lg: "p-8",
       fit: "h-fit",
+      full: "w-full",
     },
   },
   defaultVariants: {

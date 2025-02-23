@@ -29,7 +29,7 @@ export const TravelDialog = ({ neighborhood }: { neighborhood: LocationName[] })
   };
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-4 p-4">
       <DialogHeader
         title="Available Destinations"
         rightContent={<PartsOfDayCounter current={user?.partOfDay || 0} />}

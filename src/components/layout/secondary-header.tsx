@@ -6,6 +6,7 @@ import { useState } from "react";
 import Inventory from "../header-modals/inventory/inventory";
 import { Button } from "../ui/primitives/button";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { transformToStaticItem } from "@/utils/items/transform-to-static-item";
 
 interface SecondaryHeaderProps {
   isOpen: boolean;
@@ -17,7 +18,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
   const [openSection, setOpenSection] = useState<Section>(null);
   const { data: user } = useCurrentUser();
 
-  const userInventory = user?.inventory;
+  const userInventory = user?.inventory && transformToStaticItem(user.inventory);
 
   const handleSectionOpen = (section: Section) => {
     console.log(section);
@@ -28,7 +29,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
   return (
     <div
       className={cn(
-        "secondary-header w-full bg-secondary/60 shadow-secondary backdrop-blur-sm hover:bg-secondary",
+        "secondary-header w-full bg-secondary/80 shadow-secondary backdrop-blur-sm",
         isOpen && "open"
       )}
     >
@@ -62,6 +63,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
         {userInventory && (
           <Inventory
             isOpen={!!userInventory && openSection === "inventory"}
+            setIsOpen={() => setOpenSection(null)}
             userInventory={userInventory}
           />
         )}
