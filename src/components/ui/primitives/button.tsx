@@ -20,6 +20,7 @@ const buttonVariants = cva(
           "bg-destructive hover:bg-destructive-secondary text-amber-100 shadow-secondary",
         outline: "hover:bg-amber-100/20 border border-input text-amber-100 shadow-secondary",
         ghost: "bg-amber-100/30 hover:bg-amber-100/80 shadow-secondary",
+        accent: "bg-element-light hover:bg-element shadow-secondary border-amber-100/20 border",
         link: "animation-link shadow-secondary",
       },
       size: {
@@ -97,6 +98,11 @@ const rippleConfig = {
   link: {
     colorClass: "bg-slate-950/90",
     duration: 300,
+    scale: 0.5,
+  },
+  accent: {
+    colorClass: "bg-amber-200/80",
+    duration: 500,
     scale: 0.5,
   },
 } as const;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { type LocationName } from "@/types/location";
-import { useTravel } from "@/hooks/location/useTravel";
+import { useTravel } from "@/hooks/location/use-travel";
 import { locationData } from "@/data/locations/location-data";
 import { DialogHeader } from "./components/dialog-header";
 import { PartsOfDayCounter } from "./components/parts-of-day-counter";
