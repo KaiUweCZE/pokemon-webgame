@@ -7,7 +7,7 @@ import { setBattleStatus } from "@/store/battle/actions/battle-state";
 import { calculateCooldown } from "@/utils/battle/cooldown";
 import { getRandomAttack } from "@/utils/battle/random-attack";
 import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { setEnemyAttack } from "@/store/battle/actions/battle-attacks-state";
 import { setEnemyAttackAnimation } from "@/store/battle/actions/battle-animations";
 

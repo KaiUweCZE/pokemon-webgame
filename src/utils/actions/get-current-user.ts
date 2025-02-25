@@ -32,7 +32,9 @@ export async function getCurrentUser() {
         contacts: true,
         dailyMessage: true,
         messages: true,
-        quests: true,
+        quests: {
+          include: { objectives: true },
+        },
         createdAt: true,
         updatedAt: true,
       },

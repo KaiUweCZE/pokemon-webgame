@@ -4,7 +4,7 @@ import { pokemonsImg } from "@/images/index";
 import { ChevronLeft } from "lucide-react";
 import { addPokemon } from "@/utils/actions/add-pokemon";
 import { generatePokemon } from "@/utils/pokemon-generator";
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { nextChapter } from "@/utils/actions/next-chapter";
 import { useMutation } from "@tanstack/react-query";
 import { Response } from "@/types/response";

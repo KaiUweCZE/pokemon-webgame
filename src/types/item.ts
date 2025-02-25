@@ -83,7 +83,7 @@ export interface StoneMetadata {
 }
 
 interface BaseItemMetadata {
-  acquiredAt: Date;
+  acquiredAt?: Date;
   lastUsed?: Date;
 }
 

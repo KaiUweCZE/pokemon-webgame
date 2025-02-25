@@ -8,7 +8,7 @@ import { FormMessage } from "@/components/ui/form-message";
 import { queryClient } from "@/lib/providers";
 import { getCurrentUser } from "@/utils/actions/get-current-user";
 import GradientButton from "../ui/primitives/gradient-button";
-import { useToast } from "../providers/toast-context";
+import { useToast } from "../providers/toast-provider";
 
 export default function SignInForm() {
   const router = useRouter();

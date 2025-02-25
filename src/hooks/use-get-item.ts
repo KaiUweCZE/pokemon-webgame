@@ -1,4 +1,4 @@
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { Item, ItemName } from "@/types/item";
 import { getItem } from "@/utils/items/item-actions";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -19,7 +19,7 @@ export const useGetItem = () => {
       console.log("Items were updated:", updatedItem);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["items"] });
+      queryClient.invalidateQueries({ queryKey: ["current-user"] });
     },
     onError(error) {
       showToast(error instanceof Error ? error.message : "Failed to get item", "error");

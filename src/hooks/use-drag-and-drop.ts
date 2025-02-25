@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { Pokemon } from "@/types/pokemon";
 import { pokemonsImg } from "@/images";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { pokemonSwap } from "@/utils/actions/pokemon-swap";
 
 interface ActivePokemon {

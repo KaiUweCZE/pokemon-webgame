@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/primitives/button";
 import { Input } from "@/components/ui/primitives/input";
+import { useTransfer } from "@/hooks/location/use-transfer";
 import { useDebounce } from "@/hooks/use-debounce";
-import { Item } from "@/types/item";
+import { Item, ItemName } from "@/types/item";
 import { roundNumber } from "@/utils/helper/round-number";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 interface ShopModalProps {
@@ -16,6 +18,8 @@ const ShopModal = ({ state, price, userItem, money }: ShopModalProps) => {
   const [amount, setAmount] = useState(1);
   const [inputValue, setInputValue] = useState("1");
   const debouncedAmount = useDebounce(inputValue, 500);
+  const { transfer, isLoading } = useTransfer();
+  const { data: session } = useSession();
 
   // prettier-ignore
   const maxAmount =
@@ -50,6 +54,11 @@ const ShopModal = ({ state, price, userItem, money }: ShopModalProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Submitting:", { state, amount });
+    transfer({
+      state,
+      item: { name: userItem?.name as ItemName, quantity: amount, totalPrice: price * amount },
+      userId: session?.user.id ?? "",
+    });
   };
 
   return (

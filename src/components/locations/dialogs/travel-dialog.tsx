@@ -7,7 +7,7 @@ import { DialogHeader } from "./components/dialog-header";
 import { PartsOfDayCounter } from "./components/parts-of-day-counter";
 import { LocationDetails } from "./components/location-details";
 import LocationPreview from "./components/location-preview";
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { useLocationStore } from "@/store/location-store";
 
 export const TravelDialog = ({ neighborhood }: { neighborhood: LocationName[] }) => {

@@ -12,7 +12,9 @@ export function useCurrentUser() {
     queryFn: async () => {
       if (status === "unauthenticated") return null;
       const data = await getCurrentUser();
+
       if (!data) return null;
+
       return data as User;
     },
     staleTime: 1000 * 60 * 5, // 5 min

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { nextDay, spentPartOfDay } from "@/utils/actions/day-actions";
 import { useCurrentUser } from "./use-current-user";
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 
 export const useDay = () => {
   const queryClient = useQueryClient();

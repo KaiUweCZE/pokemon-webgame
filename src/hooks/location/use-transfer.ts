@@ -1,4 +1,4 @@
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { ItemName } from "@/types/item";
 import { transferItem } from "@/utils/items/item-actions";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -29,7 +29,8 @@ export const useTransfer = () => {
       console.log("Items were updated:", result);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["items"] });
+      queryClient.invalidateQueries({ queryKey: ["current-user"] });
+      showToast("Items were updated!", "success");
     },
     onError: (error) => {
       showToast(error instanceof Error ? error.message : "Failed to transfer", "error");

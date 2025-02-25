@@ -1,15 +1,12 @@
 "use client";
 import ColorPalette from "@/components/helpers/color-palette";
-import { useToast } from "@/components/providers/toast-context";
 import { Button } from "@/components/ui/primitives/button";
 import { Input } from "@/components/ui/primitives/input";
-import { PokemonName, PokemonType } from "@/types/pokemon";
 import { isValidItemName, ItemName } from "@/types/item";
-import { calculateExpGain } from "@/utils/pokemon-exp";
-import { calculatePokemonRating } from "@/utils/pokemon-stats";
 import { useState } from "react";
 import { useGetItem } from "@/hooks/use-get-item";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { useToast } from "@/components/providers/toast-provider";
 
 export default function Home() {
   const { showToast } = useToast();
@@ -20,21 +17,6 @@ export default function Home() {
 
   const handleToast = () => {
     showToast("This is a toast", "success");
-  };
-
-  const eevee = {
-    name: "eevee" as PokemonName,
-    types: ["normal"] as PokemonType[],
-    level: 15,
-    maxHp: 126,
-    maxEnergy: 18,
-    damage: 28,
-    defense: 25,
-    speed: 21,
-  };
-
-  const handleButtonToast = () => {
-    calculatePokemonRating(eevee, 15);
   };
 
   const handleGetItems = (e: React.FormEvent) => {
@@ -94,7 +76,6 @@ export default function Home() {
 
           <Button onClick={handleToast}>Toast</Button>
           <Button onClick={() => console.log(user)}>Check User</Button>
-          <Button onClick={handleButtonToast}>Check pokemon rates</Button>
         </div>
 
         <ColorPalette />
@@ -104,6 +85,20 @@ export default function Home() {
 }
 
 {
+  // const eevee = {
+  //   name: "eevee" as PokemonName,
+  //   types: ["normal"] as PokemonType[],
+  //   level: 15,
+  //   maxHp: 126,
+  //   maxEnergy: 18,
+  //   damage: 28,
+  //   defense: 25,
+  //   speed: 21,
+  // };
+  // const handleButtonToast = () => {
+  //   calculatePokemonRating(eevee, 15);
+  // };
+  //<Button onClick={handleButtonToast}>Check pokemon rates</Button>
   /* <section className="bg-content p-4">
           <article>
             <h2>Buttons</h2>

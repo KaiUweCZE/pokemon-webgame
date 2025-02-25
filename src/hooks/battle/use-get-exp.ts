@@ -1,4 +1,4 @@
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { updateUserPokemonClient } from "@/store/battle/actions/battle-pokemon-actions";
 import { setGainedExp, setNewLevel } from "@/store/battle/actions/battle-state";
 import { useBattleStore } from "@/store/battle/battle-store";

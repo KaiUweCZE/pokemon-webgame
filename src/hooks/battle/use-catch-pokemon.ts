@@ -1,4 +1,4 @@
-import { useToast } from "@/components/providers/toast-context";
+import { useToast } from "@/components/providers/toast-provider";
 import { setBattleStatus } from "@/store/battle/actions/battle-state";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { BattleStatus } from "@/store/battle/type";

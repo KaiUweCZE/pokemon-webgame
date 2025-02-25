@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/primitives/input";
 import { useHandleForm } from "@/hooks/use-handle-form";
 import { FormMessage } from "@/components/ui/form-message";
 import GradientButton from "../ui/primitives/gradient-button";
-import { useToast } from "../providers/toast-context";
+import { useToast } from "../providers/toast-provider";
 
 export default function SignUpForm() {
   const router = useRouter();
