@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import { useState, useCallback, type CSSProperties } from "react";
+import { useState, useCallback, type CSSProperties, useRef } from "react";
 
 interface RippleProps {
   enabled?: boolean;
@@ -16,6 +16,7 @@ interface RippleState {
   y: number;
   size: number;
 }
+
 const DEFAULT_DURATION = 800;
 const DEFAULT_SCALE = 4;
 const DEFAULT_COLOR = "bg-white/30";
@@ -33,23 +34,28 @@ export const useRipple = ({
       RippleContainer: () => null,
     };
   }
+
   const [ripples, setRipples] = useState<RippleState[]>([]);
+
   const createRipple = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       if (disabled) return;
 
       const element = event.currentTarget;
+
       const rect = element.getBoundingClientRect();
 
       const size = Math.max(element.clientWidth, element.clientHeight);
       const finalSize = scale * size;
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
+      const rippleId = Date.now();
 
-      setRipples((prev) => [...prev, { id: Date.now(), x, y, size: finalSize }]);
+      setRipples((prev) => [...prev, { id: rippleId, x, y, size: finalSize }]);
     },
-    [scale, disabled]
+    [scale, disabled, duration]
   );
+
   const removeRipple = useCallback((id: number) => {
     setRipples((prev) => prev.filter((r) => r.id !== id));
   }, []);
@@ -78,12 +84,15 @@ export const useRipple = ({
     );
   };
 
-  const RippleContainer = () => (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {ripples.map((ripple) => (
-        <RippleEffect key={ripple.id} {...ripple} />
-      ))}
-    </div>
+  const RippleContainer = useCallback(
+    () => (
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {ripples.map((ripple) => (
+          <RippleEffect key={ripple.id} {...ripple} />
+        ))}
+      </div>
+    ),
+    [ripples]
   );
 
   return {
