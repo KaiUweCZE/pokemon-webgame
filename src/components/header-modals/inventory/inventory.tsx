@@ -16,7 +16,9 @@ interface InventoryProps {
 const Inventory = ({ isOpen, setIsOpen, userInventory }: InventoryProps) => {
   const { items } = useInventoryStore();
   const inventoryRef = useRef<HTMLDivElement>(null);
-  useClickOutside(inventoryRef, () => setIsOpen(null));
+  useClickOutside(inventoryRef, () => {
+    setTimeout(() => setIsOpen(null), 0);
+  });
 
   useEffect(() => {
     setItems(userInventory);

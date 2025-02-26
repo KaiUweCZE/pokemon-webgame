@@ -74,7 +74,7 @@ export const Toast = ({
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className={cn("toast fixed bottom-4 left-4 z-50", isLeaving && "toast-leave")}
+      className={cn("toast fixed bottom-4 left-4", isLeaving && "toast-leave")}
     >
       <div className="relative flex w-64 overflow-hidden rounded-sm shadow-lg">
         {/* left border */}

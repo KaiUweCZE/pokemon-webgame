@@ -40,6 +40,7 @@ const LocationMenu = () => {
                 className="group w-full flex-col gap-0"
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   openDialog(id);
                 }}
               >

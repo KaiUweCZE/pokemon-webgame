@@ -284,6 +284,11 @@ body {
   animation-range: 0vh 1vh;
 }
 
+.location-pokecenter-section {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
 @keyframes scroll-dialog {
   to {
     background-color: rgba(var(--primary-dark), 0.95);
@@ -298,6 +303,10 @@ body {
   & > :nth-child(2) {
     place-self: end start;
   }
+}
+
+.drop {
+  filter: drop-shadow(0 0 0 1rem rgba(0, 0, 0, 1));
 }
 
 .second-slide {
@@ -371,6 +380,7 @@ body {
   transition: var(--transition);
   opacity: 1;
   hyphens: auto;
+  z-index: 51;
   @starting-style {
     translate: 0 5rem;
     opacity: 0;
@@ -382,6 +392,38 @@ body {
 }
 
 /*Loader*/
+
+.heart-loading svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  scale: 0.5;
+}
+
+.heart-loading svg polyline#back {
+  fill: none;
+  stroke: #ff4d5033;
+}
+
+.heart-loading svg polyline#front {
+  fill: none;
+  stroke: #ff4d4f;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .loader {
   width: 0;
   height: 4.8px;

@@ -12,14 +12,15 @@ const barVariants = cva(
       },
       height: {
         xxs: "h-1",
-        xs: "h-2 w-24",
-        sm: "h-3 w-32",
-        md: "h-4 w-48",
+        xs: "h-2",
+        sm: "h-3",
+        md: "h-4",
         lg: "h-6 w-full",
       },
       width: {
-        sm: "",
-        md: "",
+        xs: "w-24",
+        sm: "w-32",
+        md: "w-48",
         lg: "",
         full: "w-full",
       },
@@ -61,8 +62,8 @@ const labelVariants = cva("absolute flex items-center transition-opacity duratio
   variants: {
     position: {
       inside: "inset-0 justify-center",
-      left: "left-0 -ml-14", // Pro label vlevo od baru
-      right: "right-0 -mr-14", // Pro label vpravo od baru
+      left: "left-0 -ml-14",
+      right: "right-0 -mr-14",
     },
     size: {
       sm: "text-xs",
@@ -122,7 +123,13 @@ const Bar = ({
             className={cn(
               labelVariants({ position: labelPosition }),
               "absolute inset-0 flex items-center justify-center",
-              height === "sm" ? "text-[.6rem]" : height === "lg" ? "text-base" : "text-sm",
+              height === "sm"
+                ? "text-[.6rem]"
+                : height === "lg"
+                  ? "text-base"
+                  : height === "xs"
+                    ? "text-[.5rem]"
+                    : "text-sm",
               variant === "hp" ? "text-red-50" : variant === "exp" ? "text-teal-50" : "text-white"
             )}
           >

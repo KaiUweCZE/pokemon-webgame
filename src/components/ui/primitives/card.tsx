@@ -46,6 +46,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, CardVar
   headlineClassName?: string;
   animation?: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(

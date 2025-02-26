@@ -111,7 +111,7 @@ const ExploreDialog = () => {
             {areas[1].pokemons.map((pokemon) => (
               <div
                 key={pokemon}
-                className="flex items-center gap-2 rounded-sm bg-amber-50/5 p-2"
+                className="flex cursor-pointer items-center gap-2 rounded-sm bg-amber-50/5 p-2 hover:bg-amber-100/20"
                 onClick={() => handleModal(pokemon)}
               >
                 <Image

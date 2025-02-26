@@ -48,6 +48,7 @@ export const addPokemon = async (pokemonData: PokemonCreate) => {
         currentExp: 0,
         expToNextLevel: pokemonData.expToNextLevel ?? 100,
         userId: session.user.id,
+        // it is not necessary to have this field, but it is useful for the UI
         isActive: canAdd,
         createdAt: new Date(),
       },

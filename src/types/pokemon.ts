@@ -57,6 +57,7 @@ export interface Pokemon {
   statusEffects?: StatusEffect[];
   evolutionInformed: boolean;
   userId: ObjectId | null;
+  // it is not necessary to have this field, but it is useful for the UI
   isActive: boolean;
   createdAt: Date;
 }

@@ -1,11 +1,12 @@
 import Dialog from "./components/dialog";
 import { useLocationStore } from "@/store/location-store";
 import { TravelDialog } from "./travel-dialog";
-import { PokecenterDialog } from "./pokecenter-dialog";
+
 import { LocationData } from "@/data/locations/location-data";
 import ExploreDialog from "./explore-dialog";
 import ShopDialog from "./shop-dialog";
 import TalkDialog from "./talk-dialog";
+import PokecenterDialog from "./pokecenter-dialog";
 
 const LocationDialogs = ({ location }: { location: LocationData }) => {
   const { activeDialogId, closeDialog, locationData } = useLocationStore();
