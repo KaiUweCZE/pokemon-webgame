@@ -22,7 +22,7 @@ const InventoryCategories = ({ coins }: { coins: number }) => {
     }
   };
   return (
-    <section className="inventory-categories z-10 rounded-bl-sm border-r border-primary-accent-dark bg-primary-dark/20 shadow-right">
+    <section className="inventory-categories bg-inventory-accent/40 border-inventory-accent/80 z-10 rounded-bl-sm border-r shadow-right">
       <div className="grid">
         {Object.keys(categories).map((category) => (
           <Button
@@ -30,8 +30,9 @@ const InventoryCategories = ({ coins }: { coins: number }) => {
             variant="basic"
             size="full"
             className={cn(
-              "rounded-none text-amber-100 hover:bg-primary-accent-dark",
-              activeCategory === category && "bg-primary-accent-dark text-amber-200"
+              "hover:bg-inventory-accent/30 rounded-none text-amber-100",
+              activeCategory === category &&
+                "bg-inventory-accent/30 hover:bg-inventory-accent/0 text-amber-200"
             )}
             onClick={() => handleCategoryClick(category as ItemCategory)}
           >
@@ -39,7 +40,7 @@ const InventoryCategories = ({ coins }: { coins: number }) => {
           </Button>
         ))}
       </div>
-      <div className="flex w-full justify-between place-self-end bg-primary-dark/20 p-2 text-amber-100">
+      <div className="bg-inventory-accent/30 flex w-full justify-between place-self-end p-2 text-amber-200">
         <span>coins:</span>
         <span>{coins}</span>
       </div>

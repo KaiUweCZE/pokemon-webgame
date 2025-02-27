@@ -28,10 +28,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
 
   return (
     <div
-      className={cn(
-        "secondary-header w-full bg-secondary/80 shadow-secondary backdrop-blur-sm",
-        isOpen && "open"
-      )}
+      className={cn("secondary-header w-full bg-secondary/90 shadow-secondary", isOpen && "open")}
     >
       <div className="large-width relative mx-auto grid">
         <div className="container flex items-center justify-end gap-6">
@@ -49,7 +46,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
           >
             <ShoppingBag
               className={cn("h-4 w-4", openSection === "inventory" && "text-amber-200")}
-              onClick={() => handleSectionOpen("inventory")}
+              onMouseDown={() => handleSectionOpen("inventory")}
             />
           </Button>
           <Button
@@ -67,7 +64,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
             userInventory={userInventory}
           />
         )}
-      </div>
+      </div>{" "}
     </div>
   );
 }

@@ -3,9 +3,9 @@ import InventoryItemCell from "./inventory-item-cell";
 import { useInventoryStore } from "@/store/inventory-store";
 
 const GRID_SIZE = {
-  COLS: 7,
-  ROWS: 5,
-  TOTAL_CELLS: 35,
+  COLS: 6,
+  ROWS: 4,
+  TOTAL_CELLS: 24,
 };
 
 const InventoryItems = () => {
@@ -16,7 +16,7 @@ const InventoryItems = () => {
   }));
 
   return (
-    <section className="inventory-items border-primary-accent-dark rounded-br-sm border-t bg-primary-accent">
+    <section className="inventory-items bg-inventory-accent/20 border-inventory-accent/80 rounded-br-sm border-t">
       <div className="item-list gap-2 p-2">
         {cells.map(({ id, item }) => (
           <InventoryItemCell key={id} item={item} />

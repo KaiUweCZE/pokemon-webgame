@@ -67,6 +67,11 @@ export default {
           DEFAULT: "rgba(var(--element))",
           light: "rgba(var(--element-light))",
         },
+        inventory: {
+          DEFAULT: "rgba(var(--inventory))",
+          accent: "rgba(var(--inventory-accent))",
+          light: "rgba(var(--inventory-light))",
+        },
       },
       width: {
         small: "var(--small)",

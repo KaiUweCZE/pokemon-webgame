@@ -54,6 +54,11 @@
     --input: 254, 243, 200; /* Same as border for inputs */
     --ring: 255, 210, 46; /* Dark color for focus rings */
 
+    /* Inventory */
+    --inventory: var(--primary);
+    --inventory-accent: var(--primary-dark);
+    --inventory-light: var(--element-light);
+
     /* Border radius */
     --radius: 0.5rem; /* 8px rounded corners */
 

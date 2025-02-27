@@ -15,10 +15,10 @@ const InventoryItemCell = ({ item }: InventoryItemCellProps) => {
   const itemDetails = item && isValidItemName(item.name) ? itemData[item.name] : null;
 
   return (
-    <div className="flex aspect-square items-center justify-center rounded-sm border border-amber-900/20 bg-amber-950/20">
+    <div className="bg-inventory-light/30 border-inventory-accent/80 relative flex aspect-square items-center justify-center rounded-sm border">
       {itemDetails && item && (
         <div
-          className="relative"
+          className="relative grid h-full w-full place-items-center"
           onMouseEnter={() => setItemDescription(itemDetails?.description)}
           /* onMouseLeave={() => setItemDescription("")}*/
         >
@@ -27,7 +27,7 @@ const InventoryItemCell = ({ item }: InventoryItemCellProps) => {
           )}
 
           {item.quantity && (
-            <span className="absolute -bottom-1 -right-1 rounded-sm bg-amber-950/80 px-1 text-xs text-amber-100">
+            <span className="bg-inventory-accent/50 absolute -bottom-0 -right-0 rounded-sm px-1 text-xs text-amber-100">
               {item.quantity}
             </span>
           )}
