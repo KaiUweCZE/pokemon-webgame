@@ -1,9 +1,9 @@
 import React from "react";
 import rightArrow from "@/images/icons/right.webp";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface PokemonImage {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
 }
 

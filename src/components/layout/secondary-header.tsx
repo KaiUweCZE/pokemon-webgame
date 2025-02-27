@@ -7,16 +7,20 @@ import Inventory from "../header-modals/inventory/inventory";
 import { Button } from "../ui/primitives/button";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { transformToStaticItem } from "@/utils/items/transform-to-static-item";
+import Pokedex from "../header-modals/pokedex/pokedex";
+import { icons } from "@/images/icons/icons";
+import Image from "next/image";
 
 interface SecondaryHeaderProps {
   isOpen: boolean;
 }
 
-type Section = "settings" | "inventory" | "phone" | null;
+type Section = "settings" | "inventory" | "pokedex" | null;
 
 export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
   const [openSection, setOpenSection] = useState<Section>(null);
   const { data: user } = useCurrentUser();
+  const pokedexIcon = icons["pokedex1"];
 
   const userInventory = user?.inventory && transformToStaticItem(user.inventory);
 
@@ -54,7 +58,15 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
             variant="basic"
             className="text-primary-text transition-colors hover:text-amber-200"
           >
-            <Phone className="h-4 w-4" onClick={() => handleSectionOpen("phone")} />
+            <Image
+              src={pokedexIcon.src}
+              alt={pokedexIcon.alt}
+              className={cn(
+                "grayscale-lg h-5 w-5 transition-all hover:scale-110",
+                openSection === "pokedex" && "grayscale-0"
+              )}
+              onMouseDown={() => handleSectionOpen("pokedex")}
+            />
           </Button>
         </div>
         {userInventory && (
@@ -64,6 +76,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
             userInventory={userInventory}
           />
         )}
+        {<Pokedex isOpen={openSection === "pokedex"} setIsOpen={() => setOpenSection(null)} />}
       </div>{" "}
     </div>
   );

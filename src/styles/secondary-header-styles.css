@@ -104,11 +104,94 @@
 .inventory-scrollbar {
   &::-webkit-scrollbar {
     width: 0.25rem;
+    height: 0.25rem;
     z-index: 100;
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: rgba(var(--content));
+  }
+}
+
+/*POKEDEX*/
+.pokedex {
+  display: grid;
+  height: 25rem;
+  width: 30rem;
+  container-type: scroll-state;
+  position: sticky;
+  top: 0;
+  .pokedex-list {
+    @container scroll-state (stuck: bottom) {
+      background-color: red;
+    }
+  }
+}
+
+.pokedex-pokemon {
+  display: grid;
+}
+
+.pokedex-pokemon-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.pokdex-header {
+}
+
+.pokedex-pokemon-location {
+  grid-row: 2;
+  grid-column: span 2;
+  overflow-x: auto;
+}
+
+.pokedex-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  overflow-y: auto;
+}
+
+.pokedex-list {
+  display: grid;
+  overflow-y: auto;
+  overflow-x: hidden;
+  ul {
+    animation: end-of-scroll linear both;
+    animation-timeline: scroll();
+    animation-range: 80% 100%;
+  }
+}
+/*
+.pokedex-list {
+  display: grid;
+  overflow-y: auto;
+  overflow-x: hidden;
+  container-type: scroll-state;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--content));
+    transition: background-color 0.3s ease;
+  }
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+    background-color: transparent;
+  }
+
+  @container not scroll-state(scrollable: bottom) {
+    &::-webkit-scrollbar-thumb {
+      background-color: #fee685;
+      transition: background-color 0.3s ease;
+    }
+    &::-webkit-scrollbar {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+*/
+@keyframes end-of-scroll {
+  to {
+    background: rgba(var(--inventory-accent), 0.05);
   }
 }

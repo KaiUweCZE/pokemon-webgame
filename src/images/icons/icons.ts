@@ -12,6 +12,7 @@ import mapIcon1 from "@/images/icons/mapIcon1.webp";
 import phoneIcon from "@/images/icons/phoneIcon.webp";
 import pokedexIcon from "@/images/icons/pokedex.webp";
 import pokedex1Icon from "@/images/icons/pokedex1.webp";
+import pokedex from "@/images/icons/pokedex-icon.webp";
 import rightIcon from "@/images/icons/right.webp";
 import starIcon from "@/images/icons/star.webp";
 
@@ -94,6 +95,11 @@ export const icons = {
   star: {
     src: starIcon,
     alt: "Star icon",
+    size: 24,
+  },
+  "pokedex-icon": {
+    src: pokedex,
+    alt: "Pokedex icon alternative",
     size: 24,
   },
 } as const;

@@ -37,7 +37,7 @@ const PokemonModalContent: React.FC<PokemonModalContentProps> = ({ pokemon }) =>
         <div className="grid gap-2">
           <h3 className="text-xl font-medium capitalize text-primary-text">{pokemon.name}</h3>
           <div className="flex items-center gap-2">
-            {pokemon.type.map((type) => (
+            {pokemon.types.map((type) => (
               <ElementType key={type} variant={type as PokemonType} />
             ))}
           </div>

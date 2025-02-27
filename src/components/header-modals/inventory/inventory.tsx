@@ -10,14 +10,15 @@ import { GradientBackground } from "@/components/ui/primitives/gradient-backgrou
 
 interface InventoryProps {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<null>>;
+  setIsOpen: () => void;
   userInventory: Item[];
+  refProp?: React.RefObject<HTMLDivElement | null>;
 }
 
-const Inventory = ({ isOpen, setIsOpen, userInventory }: InventoryProps) => {
+const Inventory = ({ isOpen, setIsOpen, userInventory, refProp }: InventoryProps) => {
   const { items } = useInventoryStore();
   const inventoryRef = useRef<HTMLDivElement>(null);
-  useClickOutside(inventoryRef, () => setIsOpen(null));
+  useClickOutside(inventoryRef, setIsOpen, isOpen);
 
   useEffect(() => {
     setItems(userInventory);

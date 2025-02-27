@@ -89,6 +89,11 @@
     --semi-small: 20rem;
     --medium: 25rem;
     --large: 35rem;
+
+    /*grayscales*/
+    --grayscale-sm: grayscale(20%);
+    --grayscale-md: grayscale(50%);
+    --grayscale-lg: grayscale(80%);
   }
 
   /* Dark mode - inverted colors */
@@ -200,6 +205,23 @@ body {
 
 .max-z {
   z-index: 10;
+}
+
+/*grayscale*/
+.grayscale-sm {
+  filter: grayscale(25%);
+}
+.grayscale-md {
+  filter: grayscale(50%);
+}
+.grayscale-lg {
+  filter: grayscale(75%);
+}
+.grayscale-0 {
+  filter: grayscale(0%);
+}
+.grayscale {
+  filter: grayscale(100%);
 }
 
 /*Main Header*/

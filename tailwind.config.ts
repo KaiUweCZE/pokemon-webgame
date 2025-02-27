@@ -73,6 +73,7 @@ export default {
           light: "rgba(var(--inventory-light))",
         },
       },
+
       width: {
         small: "var(--small)",
         semi: "var(--semi-small)",
