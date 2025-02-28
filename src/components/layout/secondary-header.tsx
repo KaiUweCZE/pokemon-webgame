@@ -21,6 +21,7 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
   const [openSection, setOpenSection] = useState<Section>(null);
   const { data: user } = useCurrentUser();
   const pokedexIcon = icons["pokedex1"];
+  const bagIcon = icons["bag"];
 
   const userInventory = user?.inventory && transformToStaticItem(user.inventory);
 
@@ -48,8 +49,13 @@ export function SecondaryHeader({ isOpen }: SecondaryHeaderProps) {
             variant="basic"
             className="text-primary-text transition-colors hover:text-amber-200"
           >
-            <ShoppingBag
-              className={cn("h-4 w-4", openSection === "inventory" && "text-amber-200")}
+            <Image
+              src={bagIcon.src}
+              alt={bagIcon.alt}
+              className={cn(
+                "grayscale-lg h-5 w-5 transition-all hover:scale-110",
+                openSection === "inventory" && "grayscale-0"
+              )}
               onMouseDown={() => handleSectionOpen("inventory")}
             />
           </Button>

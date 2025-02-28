@@ -46,6 +46,13 @@ export const setCurrentPokemon = (pokemon: PokedexPokemon) => {
   }));
 };
 
+export const setFilteredPokemons = (pokemons: PokedexPokemon[]) => {
+  pokedexStore.setState((state) => ({
+    ...state,
+    filteredPokemons: pokemons,
+  }));
+};
+
 export const usePokedexStore = () => {
   const state = useStore(pokedexStore);
 

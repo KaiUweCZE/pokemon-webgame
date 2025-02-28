@@ -62,7 +62,7 @@
   width: 30rem;
 }
 
-.inventory header {
+.inventory-header {
   grid-area: header;
   display: grid;
   height: fit-content;
@@ -122,6 +122,7 @@
   container-type: scroll-state;
   position: sticky;
   top: 0;
+  scrollbar-gutter: stable;
   .pokedex-list {
     @container scroll-state (stuck: bottom) {
       background-color: red;
@@ -138,7 +139,10 @@
   grid-template-columns: auto 1fr;
 }
 
-.pokdex-header {
+.pokedex-header {
+  display: grid;
+  grid-template-columns: max-content 1fr 1fr;
+  place-items: center;
 }
 
 .pokedex-pokemon-location {
@@ -157,7 +161,8 @@
   display: grid;
   overflow-y: auto;
   overflow-x: hidden;
-  ul {
+  scrollbar-gutter: stable;
+  div {
     animation: end-of-scroll linear both;
     animation-timeline: scroll();
     animation-range: 80% 100%;

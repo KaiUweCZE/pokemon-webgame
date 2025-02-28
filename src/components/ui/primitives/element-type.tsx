@@ -56,6 +56,7 @@ type ElementVariantType = VariantProps<typeof elementVariants>;
 
 interface ElementTypeProps extends ElementVariantType {
   className?: string;
+  onClick?: () => void;
 }
 
 interface PokemonTypeProps {
@@ -63,10 +64,10 @@ interface PokemonTypeProps {
   size?: "sm" | "md" | "lg";
   variant?: "solid" | "outline" | "subtle";
 }
-const ElementType = ({ variant, rounded, size, className }: ElementTypeProps) => {
+const ElementType = ({ variant, rounded, size, className, onClick }: ElementTypeProps) => {
   const { src, alt } = typeImages[variant as PokemonType];
   return (
-    <div className={cn(elementVariants({ variant, rounded, size, className }))}>
+    <div className={cn(elementVariants({ variant, rounded, size, className }))} onClick={onClick}>
       <span>{variant}</span>
       <GradientBackground intensity="medium" variant="dark" className="z-1" />
       <Image

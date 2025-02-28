@@ -2,9 +2,10 @@
 import { Store } from "@tanstack/store";
 import { useStore } from "@tanstack/react-store";
 import { Pokemon } from "@/types/pokemon";
+import { FilteredPokemon } from "@/hooks/use-filter-pokemons";
 
 interface ProfileStore {
-  filteredPokemons: Pokemon[] | null;
+  filteredPokemons: FilteredPokemon[] | null;
 }
 
 interface FilteredOptions {
@@ -20,7 +21,7 @@ export const profileStore = new Store<ProfileStore>({
   filteredPokemons: null,
 });
 
-export const setFilteredPokemons = (pokemons: Pokemon[]) => {
+export const setFilteredPokemons = (pokemons: FilteredPokemon[]) => {
   profileStore.setState((state) => ({
     filteredPokemons: pokemons,
   }));

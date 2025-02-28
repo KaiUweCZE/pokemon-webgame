@@ -1,112 +1,127 @@
 import { setFilteredPokemons } from "@/store/profile-store";
-import { Pokemon, PokemonType } from "@/types/pokemon";
-import { useCallback, useEffect, useState } from "react";
+import { Pokemon, PokemonName, PokemonType } from "@/types/pokemon";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "./use-debounce";
 
-export const useFilterPokemons = (pokemons: Pokemon[]) => {
-  const [selectedTypes, setSelectedTypes] = useState<PokemonType[]>([]);
-  const [minLevel, setMinLevel] = useState("");
-  const [maxLevel, setMaxLevel] = useState("");
-  const [name, setName] = useState("");
+export type FilteredPokemon = {
+  name: PokemonName;
+  types: PokemonType[];
+  level?: number;
+};
 
-  const debouncedMinLevel = useDebounce(minLevel, 500);
-  const debouncedMaxLevel = useDebounce(maxLevel, 500);
+export type FilterablePokemon = {
+  name: PokemonName;
+  types: PokemonType[];
+  level?: number;
+};
 
-  const hasActiveFilters = selectedTypes.length > 0 || minLevel || maxLevel || name;
+export interface PokemonFilters {
+  types: PokemonType[];
+  minLevel: string;
+  maxLevel: string;
+  name: string;
+}
+
+export const useFilterPokemons = <T extends FilterablePokemon>(pokemons: T[]) => {
+  const [filters, setFilters] = useState<PokemonFilters>({
+    types: [],
+    minLevel: "",
+    maxLevel: "",
+    name: "",
+  });
+
+  const debouncedMinLevel = useDebounce(filters.minLevel, 500);
+  const debouncedMaxLevel = useDebounce(filters.maxLevel, 500);
+
+  const hasActiveFilters = filters.types.length > 0 || filters.minLevel || filters.maxLevel;
 
   const handleTypeSelect = (type: PokemonType) => {
-    if (selectedTypes.includes(type)) {
-      setSelectedTypes(selectedTypes.filter((t) => t !== type));
-    } else if (selectedTypes.length < 2) {
-      setSelectedTypes([...selectedTypes, type]);
-    }
+    setFilters((prev) => {
+      if (prev.types.includes(type)) {
+        return {
+          ...prev,
+          types: prev.types.filter((t) => t !== type),
+        };
+      } else if (prev.types.length < 2) {
+        return {
+          ...prev,
+          types: [...prev.types, type],
+        };
+      }
+      return prev;
+    });
   };
 
-  const handleLevelChange = (
-    value: string,
-    setter: React.Dispatch<React.SetStateAction<string>>,
-    otherValue: string,
-    isMin: boolean
-  ) => {
+  const handleLevelChange = (value: string, type: "minLevel" | "maxLevel") => {
     if (value === "" || /^\d{0,3}$/.test(value)) {
-      // Then just set the value - the debounce hook will handle the delay
-      setter(value);
+      setFilters((prev) => ({
+        ...prev,
+        [type]: value,
+      }));
     }
   };
 
-  const filterPokemons = useCallback(
-    (pokemons: Pokemon[]) => {
-      return pokemons.filter((pokemon) => {
-        // Type filtering
-        const typeMatch =
-          selectedTypes.length === 0 || pokemon.types.some((type) => selectedTypes.includes(type));
-
-        // Level filtering
-        const minLevelNum = parseInt(minLevel) || 1;
-        const maxLevelNum = parseInt(maxLevel) || 100;
-        const levelMatch = pokemon.level >= minLevelNum && pokemon.level <= maxLevelNum;
-
-        // Name filtering
-        const nameMatch = !name || pokemon.name.toLowerCase().includes(name.toLowerCase());
-
-        return typeMatch && levelMatch && nameMatch;
-      });
-    },
-    [selectedTypes, minLevel, maxLevel, name]
-  );
-
-  const handleSetLevelRange = (type: "min" | "max", value: string) => {
-    if (type === "min") {
-      setMinLevel(value);
-    } else if (type === "max") {
-      setMaxLevel(value);
-    }
+  const handleNameChange = (value: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      name: value,
+    }));
   };
 
-  useEffect(() => {
-    const filteredResults = filterPokemons(pokemons);
-    setFilteredPokemons(filteredResults);
-  }, [filterPokemons]);
+  // Filter pokemons
+  const filteredPokemons = useMemo(() => {
+    return pokemons.filter((pokemon) => {
+      // If it has no level, it is considered compliant (for compatibility)
+      if (!pokemon.level && (filters.minLevel || filters.maxLevel)) return true;
 
-  /* debounce for situations where is minLevel set
-    for example: minLevel = 10
-    so without debounce we can not set max level for ex 25,
-    because utils restrict first number (2)
-  */
+      // Filtering by type - must contain at least one of the selected types
+      const typeMatch =
+        filters.types.length === 0 || pokemon.types.some((type) => filters.types.includes(type));
+
+      // Filterin by level
+      const minLevelNum = parseInt(filters.minLevel) || 1;
+      const maxLevelNum = parseInt(filters.maxLevel) || 100;
+      const levelMatch =
+        !pokemon.level || (pokemon.level >= minLevelNum && pokemon.level <= maxLevelNum);
+
+      // Filtering by name
+      const nameMatch =
+        !filters.name || pokemon.name.toLowerCase().includes(filters.name.toLowerCase());
+
+      return typeMatch && levelMatch && nameMatch;
+    });
+  }, [pokemons, filters]);
+
   useEffect(() => {
-    // Now we can validate the debounced values
+    if (!debouncedMinLevel || !debouncedMaxLevel) return;
+
     const minNum = parseInt(debouncedMinLevel);
     const maxNum = parseInt(debouncedMaxLevel);
 
-    // If the validation fails, we can reset the values
-    if (debouncedMinLevel && maxLevel && minNum > parseInt(maxLevel)) {
-      setMinLevel(maxLevel);
-    }
-    if (debouncedMaxLevel && minLevel && maxNum < parseInt(minLevel)) {
-      setMaxLevel(minLevel);
+    if (minNum > maxNum) {
+      setFilters((prev) => ({
+        ...prev,
+        minLevel: debouncedMaxLevel,
+      }));
     }
   }, [debouncedMinLevel, debouncedMaxLevel]);
 
   const clearFilters = useCallback(() => {
-    setSelectedTypes([]);
-    setMinLevel("");
-    setMaxLevel("");
-    setName("");
+    setFilters({
+      types: [],
+      minLevel: "",
+      maxLevel: "",
+      name: "",
+    });
   }, []);
 
   return {
-    selectedTypes,
-    setSelectedTypes,
-    minLevel,
-    setMinLevel,
-    maxLevel,
-    setMaxLevel,
-    name,
-    setName,
+    filters,
+    filteredPokemons,
     handleTypeSelect,
     handleLevelChange,
+    handleNameChange,
     clearFilters,
     hasActiveFilters,
-    handleSetLevelRange,
   };
 };

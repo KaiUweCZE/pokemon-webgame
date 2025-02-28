@@ -10,7 +10,7 @@ const PokemonPokedexCard = () => {
   if (!currentPokemon) return null;
   const pokemonImg = pokemonsImg[currentPokemon.name];
   return (
-    <Card variant="basic" size="sm" className="m-2 h-fit rounded-sm bg-inventory-accent/60">
+    <Card variant="basic" size="sm" className="h-fit rounded-sm bg-inventory-accent/60">
       <div className="pokedex-pokemon-card gap-3">
         <Image src={pokemonImg.default.src} alt={pokemonImg.default.alt} width={100} height={100} />
         <article className="grid gap-2">
