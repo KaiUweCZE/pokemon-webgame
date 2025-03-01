@@ -45,7 +45,7 @@ const AboutDay = ({ isOpen, isClosing }: AboutDayProps) => {
   return (
     <div
       className={cn(
-        "about-day primary-shadow absolute mb-2 w-semi rounded-md border-2 border-border-secondary bg-secondary p-4",
+        "about-day primary-shadow absolute mb-2 w-semi rounded-md border border-accent/60 bg-primary-dark/80 p-4 backdrop-blur-md",
         isOpen ? "visible opacity-100" : "invisible opacity-0",
         isClosing && "deactive"
       )}
@@ -58,7 +58,11 @@ const AboutDay = ({ isOpen, isClosing }: AboutDayProps) => {
         <PartsOfDay currentPartOfDay={user?.partOfDay ?? 0} />
       </div>
       <div className="flex flex-col items-center gap-2">
-        <GradientButton onClick={handleModal} gradientVariant="accent">
+        <GradientButton
+          onClick={handleModal}
+          gradientVariant="accent"
+          className="border border-accent/30 bg-accent/20"
+        >
           <span className="text-amber-100">Next Day</span>
         </GradientButton>
       </div>

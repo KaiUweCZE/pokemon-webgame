@@ -36,7 +36,7 @@ export const calculateExpGain = (
 
   let expGain = loserData.expForKill;
   const levelDifference = loserLevel - winnerLevel;
-  const typeBonus = calculateTypeAdvantage(winnerData.type, loserData.type);
+  const typeBonus = calculateTypeAdvantage(winnerData.types, loserData.types);
 
   // Bonus/penalize for level difference
   if (levelDifference > 0) {

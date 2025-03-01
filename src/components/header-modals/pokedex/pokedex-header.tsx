@@ -27,7 +27,7 @@ const PokedexHeader = ({ onClose }: { onClose?: () => void }) => {
   };
 
   return (
-    <header className="pokedex-header items-center gap-2 bg-inventory-accent/80 p-3">
+    <header className="pokedex-header h-16 items-center gap-2 bg-inventory-accent/80 p-3">
       <h2 className="text-lg font-medium text-amber-200">Pokédex</h2>
 
       <TypeFilter
@@ -36,7 +36,7 @@ const PokedexHeader = ({ onClose }: { onClose?: () => void }) => {
         setIsTypeOpen={setIsTypeOpen}
         handleTypeSelect={handleTypeSelect}
         className="flex h-full w-full items-center justify-between bg-transparent text-amber-200 hover:bg-inventory-light/30"
-        wrapperClassName=" w-40 h-full border bg-inventory-light/30 border-inventory-light place-self-end rounded-sm"
+        wrapperClassName=" w-40  h-full border bg-inventory-light/30 border-inventory-light place-self-end rounded-sm"
       />
 
       <div className="relative grid">

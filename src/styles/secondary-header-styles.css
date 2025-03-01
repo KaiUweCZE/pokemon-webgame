@@ -117,17 +117,10 @@
 /*POKEDEX*/
 .pokedex {
   display: grid;
+  grid-template-rows: min-content 1fr;
   height: 25rem;
   width: 30rem;
-  container-type: scroll-state;
-  position: sticky;
-  top: 0;
   scrollbar-gutter: stable;
-  .pokedex-list {
-    @container scroll-state (stuck: bottom) {
-      background-color: red;
-    }
-  }
 }
 
 .pokedex-pokemon {
@@ -155,6 +148,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   overflow-y: auto;
+  height: 100%;
 }
 
 .pokedex-list {

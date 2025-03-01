@@ -28,12 +28,13 @@
     /* Primary colors - main action elements */
     --primary: 36, 37, 91; /* Deep purple (#3C0366) */
     --primary-dark: 17, 17, 40;
-    --primary-accent: 2, 74, 112;
+    --primary-accent: 162, 127, 205;
+    /* --primary-accent: 2, 74, 112; */
     --primary-accent-dark: 5, 47, 74;
     --primary-foreground: 248, 250, 252; /* Light text on dark background */
 
     /* Secondary colors - less important elements */
-    --secondary: 1, 7, 14; /* Very light blue */
+    --secondary: 1, 7, 14;
 
     /* Secondary background color */
     --secondary-primary: 10, 10, 10;
@@ -41,8 +42,7 @@
     --secondary-secondary: 26, 26, 26;
 
     /* Accent colors - for hover states etc. */
-    --accent: 241, 245, 249; /* Light blue */
-    --accent-secondary: 15, 23, 42; /* Dark text */
+    --accent: 162, 127, 205; /* Light blue */
 
     /* Destructive colors - for errors and deletion */
     --destructive: 239, 68, 68; /* Red */

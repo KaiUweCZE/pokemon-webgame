@@ -140,7 +140,7 @@ export const getNewStats = (oldLevel: number, newLevel: number, baseStats: Pokem
 export const convertToPokemonCreate = (data: (typeof pokemonsData)[0]): PokemonCreate => {
   return {
     name: data.name,
-    types: data.type,
+    types: data.types,
     maxHp: data.hp,
     maxEnergy: data.energy,
     damage: data.damage,

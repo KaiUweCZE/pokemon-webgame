@@ -608,7 +608,7 @@ export const locationAreas = {
   },
 } satisfies LocationAreasType;
 
-type AreaType = {
+export type AreaType = {
   pokemons: PokemonName[];
   min: number;
   max: number;

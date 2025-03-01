@@ -14,7 +14,7 @@ interface ItemBasicInfoProps {
 const ItemBasicInfo = ({ itemName, price, img }: ItemBasicInfoProps) => {
   return (
     <div className="flex items-center gap-3">
-      <div className="rounded-full bg-primary-accent/20 p-2">
+      <div className="rounded-full p-2">
         <Image src={img.src} alt={img.alt} width={20} height={20} className="object-contain" />
       </div>
       <div>

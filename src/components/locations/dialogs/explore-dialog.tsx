@@ -7,33 +7,26 @@ import { locationData } from "@/data/locations/location-data";
 import { Button } from "@/components/ui/primitives/button";
 import Image from "next/image";
 import { pokemonsImg } from "@/images";
-import {
-  EnemyPokemon,
-  Pokemon,
-  PokemonName,
-  PokemonStaticData,
-  PokemonType,
-} from "@/types/pokemon";
+import { PokemonName } from "@/types/pokemon";
 import { useModal } from "@/components/providers/modal-provider";
 import { pokemonsData } from "@/data/pokemons/pokemon-data";
-import ElementType from "@/components/ui/primitives/element-type";
 import PokemonModalContent from "./components/pokemon-modal-content";
 import { useRouter } from "next/navigation";
-import { useBattleStore } from "@/store/battle/battle-store";
 import { initBattle, setBattleStatus } from "@/store/battle/actions/battle-state";
 import {
   setEnemyPokemon,
   setUserPokemon,
   setUserPokemonSix,
 } from "@/store/battle/actions/battle-pokemon-actions";
+import { generateWildPokemon } from "@/utils/pokemon-generator";
 
 const ExploreDialog = () => {
   const { data: user } = useCurrentUser();
-  const { showModal, hideModal } = useModal();
+  const { showModal } = useModal();
   const location = user?.location.toLowerCase() as LocationName;
   const areas = locationData[location].areas;
   const router = useRouter();
-  //const { initBattle, setUserPokemon, setEnemyPokemon } = useBattleStore();
+  const firstArea = areas[1];
 
   const handleModal = (pokemonName: PokemonName) => {
     const pokemon = pokemonsData.find((p) => p.name === pokemonName);
@@ -58,35 +51,18 @@ const ExploreDialog = () => {
     const userPokemons = user.pokemons.filter((pokemon) => pokemon.isActive && pokemon);
     const location = user.location as LocationName;
 
+    // prepare random pokemon
+    const enemyPokemon = generateWildPokemon(firstArea);
     if (!userPokemon) return;
     // init battle
     initBattle(location);
     setUserPokemon(userPokemon);
     setUserPokemonSix(userPokemons);
 
-    // create wild pokemon
-    const wildPokemon: EnemyPokemon = {
-      name: "pikachu",
-      types: ["electric"],
-      level: 10,
-      attacks: ["tackle", "thunder shock"],
-      shiny: false,
-      abilities: ["static"],
-      currentHp: 40,
-      maxHp: 100,
-      currentEnergy: 40,
-      maxEnergy: 100,
-      damage: 10,
-      defense: 8,
-      speed: 15,
-      statusEffects: [],
-      image: pokemonsImg["pikachu"],
-    };
-
-    setEnemyPokemon(wildPokemon);
+    setEnemyPokemon(enemyPokemon);
     setBattleStatus("not-started");
 
-    console.log("wildPokemon", wildPokemon);
+    console.log("wildPokemon", enemyPokemon);
 
     router.push("/battle?from=explore");
   };
