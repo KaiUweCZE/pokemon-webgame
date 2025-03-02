@@ -10,22 +10,6 @@ export const itemCategories = {
   key: "Key",
 } satisfies Record<ItemCategory, string>;
 
-/*export type ItemName =
-  | "pokeball"
-  | "great ball"
-  | "potion"
-  | "super potion"
-  | "energy drink"
-  | "antidote"
-  | "paraheal"
-  | "coffee"
-  | "electric-stone"
-  | "fire stone"
-  | "grass stone"
-  | "ice stone"
-  | "normal stone"
-  | "coins";*/
-
 export const VALID_ITEMS = [
   "pokeball",
   "great ball",
@@ -49,6 +33,8 @@ export function isValidItemName(item: string): item is ItemName {
   return VALID_ITEMS.includes(item as ItemName);
 }
 
+export type BattleUsage = "catch" | "heal" | "status" | "energy";
+
 export interface Item<T extends BaseItemMetadata = BaseItemMetadata> {
   name: ItemName;
   description: string;
@@ -59,6 +45,8 @@ export interface Item<T extends BaseItemMetadata = BaseItemMetadata> {
     alt: string;
   };
   price: number;
+  //řádek pod přichází změna
+  battleUsage?: BattleUsage;
   effect?: string;
   quantity?: number;
   metadata?: ItemMetadata<T>;

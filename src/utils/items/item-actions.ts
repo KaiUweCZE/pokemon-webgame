@@ -144,3 +144,42 @@ export const transferItem = async (
     throw error instanceof Error ? error : new Error("Unknown error transferring item");
   }
 };
+
+type UpdateInventoryItemType = {
+  itemName: ItemName;
+  quantity?: number;
+};
+
+export const updateInventoryItem = async ({ itemName, quantity = 1 }: UpdateInventoryItemType) => {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.id) {
+      throw new Error("Not authenticated");
+    }
+
+    const item = await prisma.inventoryItem.findFirst({
+      where: { name: itemName, userId: session.user.id },
+    });
+
+    if (!item) {
+      throw new Error(`Item '${itemName}' not found`);
+    }
+
+    if (item.quantity < quantity) {
+      throw new Error(`Not enough ${itemName} items (have ${item.quantity}, need ${quantity})`);
+    }
+
+    const updatedItem = await prisma.inventoryItem.update({
+      where: { id: item.id },
+      data: {
+        quantity: {
+          increment: -quantity,
+        },
+      },
+    });
+    return updatedItem;
+  } catch (error) {
+    throw error instanceof Error ? error : new Error("Unknown error updating item");
+  }
+};

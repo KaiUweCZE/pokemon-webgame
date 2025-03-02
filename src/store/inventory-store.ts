@@ -58,5 +58,8 @@ export const useInventoryStore = () => {
     visibleItems: state.visibleItems,
     hasItems: state.items !== null && state.items.length > 0,
     getItemByName: (name: ItemName) => state.items?.find((item) => item.name === name) ?? null,
+    getBattleItems: () => state.items?.filter((item) => item.battleUsage),
+    getCatchItems: () => state.items?.filter((item) => item.battleUsage === "catch"),
+    getHealItems: () => state.items?.filter((item) => item.battleUsage === "heal"),
   };
 };

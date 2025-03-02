@@ -159,6 +159,31 @@
   gap: 0;
 }
 
+.battle-bag {
+  display: grid;
+  grid-template-rows: min-content auto;
+}
+
+.battle-bag-items {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.battle-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(var(--battle-border), 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--battle-border), 0.5);
+  }
+}
+
 .bar-box {
   display: grid;
   grid-template-columns: min-content 1fr;

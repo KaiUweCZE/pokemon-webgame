@@ -17,6 +17,7 @@ export const itemData = {
     img: itemImages["pokeball"],
     stackable: true,
     price: 20,
+    battleUsage: "catch",
   },
   "great ball": {
     name: "great ball",
@@ -25,6 +26,7 @@ export const itemData = {
     img: itemImages["great ball"],
     stackable: true,
     price: 50,
+    battleUsage: "catch",
   },
   potion: {
     name: "potion",
@@ -33,6 +35,7 @@ export const itemData = {
     img: itemImages["potion"],
     stackable: true,
     price: 20,
+    battleUsage: "heal",
   },
   "super potion": {
     name: "super potion",
@@ -41,6 +44,7 @@ export const itemData = {
     img: itemImages["super potion"],
     stackable: true,
     price: 50,
+    battleUsage: "heal",
   },
   "energy drink": {
     name: "energy drink",
@@ -49,6 +53,7 @@ export const itemData = {
     img: itemImages["energy drink"],
     stackable: true,
     price: 10,
+    battleUsage: "energy",
   },
   antidote: {
     name: "antidote",
@@ -57,6 +62,7 @@ export const itemData = {
     img: itemImages["antidote"],
     stackable: true,
     price: 10,
+    battleUsage: "status",
   },
   paraheal: {
     name: "paraheal",
@@ -65,6 +71,7 @@ export const itemData = {
     img: itemImages["paraheal"],
     stackable: true,
     price: 10,
+    battleUsage: "status",
   },
   coffee: {
     name: "coffee",

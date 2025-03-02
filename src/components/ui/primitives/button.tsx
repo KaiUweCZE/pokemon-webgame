@@ -23,7 +23,7 @@ const buttonVariants = cva(
         accent: "bg-element-light hover:bg-element shadow-secondary border-amber-100/20 border",
         link: "animation-link shadow-secondary",
         battle:
-          "hover:bg-battle-rare/40 border bg-battle-rare/20 border-battle-border/40 text-battle-text shadow-secondary",
+          "hover:bg-battle-rare/50 border bg-battle-rare/20 border-battle-border/40 text-battle-text shadow-secondary",
       },
       size: {
         default: "w-fit py-2 px-4 ",

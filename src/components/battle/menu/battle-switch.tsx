@@ -2,6 +2,7 @@ import { Bar } from "@/components/ui/primitives/bar";
 import { Button } from "@/components/ui/primitives/button";
 import Expander from "@/components/ui/primitives/expander";
 import { pokemonsImg } from "@/images";
+import { setUserPokemon } from "@/store/battle/actions/battle-pokemon-actions";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { Pokemon } from "@/types/pokemon";
 import { cn } from "@/utils/cn";
@@ -20,14 +21,14 @@ const BattleSwitch = ({ isOpen, setIsOpen }: BattleSwitchProps) => {
   });
 
   const handlePokemonSwitch = (pokemon: Pokemon) => {
-    // Implementovat logiku přepnutí Pokémona
+    setUserPokemon(pokemon);
     setIsOpen(false);
   };
 
   return (
-    <section className="absolute bottom-0 z-50 w-full">
+    <section className="absolute bottom-0 w-full">
       <Expander isOpen={isOpen} className="h-full">
-        <div className="bg-[#f0e1b1]/9 relative rounded-t-md border-2 border-b-0 border-battle-text/30 bg-battle-accent/60 shadow-lg backdrop-blur-md">
+        <div className="relative rounded-t-md border-2 border-b-0 border-battle-text/30 bg-battle-accent/60 shadow-lg backdrop-blur-md">
           {/* header of switch component */}
           <header className="flex items-center justify-between border-b border-battle-accent/20 p-3">
             <h4 className="font-medium text-battle-text">Switch Pokémon</h4>
@@ -57,7 +58,7 @@ const BattleSwitch = ({ isOpen, setIsOpen }: BattleSwitchProps) => {
                       ? "cursor-default bg-battle-accent/20"
                       : isFainted
                         ? "cursor-not-allowed bg-red-600/30 opacity-80"
-                        : "hover:bg-battle-rare/30 cursor-pointer"
+                        : "cursor-pointer hover:bg-battle-rare/30"
                   )}
                 >
                   <Image
