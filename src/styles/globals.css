@@ -59,6 +59,15 @@
     --inventory-accent: var(--primary-dark);
     --inventory-light: var(--element-light);
 
+    /*Backgrounds for battle components*/
+    --battle-primary: 255, 248, 225;
+    --battle-secondary: 245, 238, 215;
+    --battle-accent: 254, 243, 198;
+    --battle-rare: 255, 224, 130;
+    --battle-accent-dark: 210, 180, 140;
+    --battle-border: 188, 158, 108;
+    --battle-text: 51, 51, 51;
+
     /* Border radius */
     --radius: 0.5rem; /* 8px rounded corners */
 

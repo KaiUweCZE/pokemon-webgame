@@ -10,26 +10,26 @@ const RunWindow = () => {
         <div className="flex gap-2">
           <Button
             size="full"
-            variant="light"
+            variant="battle"
             border={true}
             onClick={() => {
               setBattleStatus("enemy-victory");
               setMenuSection("main");
             }}
           >
-            Yes
+            <span className="text-battle-text">Yes</span>
           </Button>
 
           <Button
             size="full"
-            variant="light"
+            variant="battle"
             border={true}
             onClick={() => {
               setBattleStatus("in-progress");
               setMenuSection("main");
             }}
           >
-            No
+            <span className="text-battle-text">No</span>
           </Button>
         </div>
       </div>

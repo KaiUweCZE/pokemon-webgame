@@ -39,7 +39,7 @@ const AttackWindow = () => {
         {pokemonAttacks.map((attack) => (
           <Button
             size="full"
-            variant="light"
+            variant="battle"
             border={true}
             key={attack.name}
             disabled={isCooldown}
@@ -55,7 +55,7 @@ const AttackWindow = () => {
         {/* Rest a Avoid buttony */}
         <Button
           size="full"
-          variant="light"
+          variant="battle"
           border={true}
           disabled={isCooldown}
           onClick={handleRestClick}
@@ -65,7 +65,7 @@ const AttackWindow = () => {
 
         <Button
           size="full"
-          variant="light"
+          variant="battle"
           border={true}
           disabled={isCooldown}
           onClick={() => {

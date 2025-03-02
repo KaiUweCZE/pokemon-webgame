@@ -64,7 +64,7 @@ const ExploreDialog = () => {
 
     console.log("wildPokemon", enemyPokemon);
 
-    router.push("/battle?from=explore");
+    router.push("/battle");
   };
 
   return (

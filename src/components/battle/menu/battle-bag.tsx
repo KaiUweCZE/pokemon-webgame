@@ -29,13 +29,13 @@ const BattleBag = ({ isOpen, setIsOpen }: BattleBagProps) => {
   };
   return (
     <div className="absolute bottom-0 w-full">
-      <Expander isOpen={isOpen}>
-        <div className="h-64 rounded-t-sm border-2 border-b-0 border-slate-800/20 bg-content/90 p-2 backdrop-blur-sm">
+      <Expander isOpen={isOpen} className="h-full">
+        <div className="bg-battle/90 border-battle-border/20 h-64 rounded-t-sm border-2 border-b-0 p-2 backdrop-blur-sm">
           <X
-            className="absolute right-0 top-0 h-4 w-4 cursor-pointer bg-content-secondary"
+            className="bg-battle-secondary absolute right-0 top-0 h-4 w-4 cursor-pointer"
             onClick={() => setIsOpen(false)}
           />
-          <div className="grid h-full w-full items-start gap-2 bg-slate-950/5 p-2">
+          <div className="bg-battle-accent-dark/5 grid h-full w-full items-start gap-2 p-2">
             <div className="bag-item flex w-full items-center justify-between">
               <div className="flex items-center gap-2">
                 <Image

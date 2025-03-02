@@ -38,7 +38,7 @@ const BattleMenuButtons = () => {
     <div className="battle-menu-buttons relative">
       <Button
         size="full"
-        variant="light"
+        variant="battle"
         withRipple
         onClick={handleAttackClick}
         className="rounded-none shadow-inset"
@@ -47,7 +47,7 @@ const BattleMenuButtons = () => {
       </Button>
       <Button
         size="full"
-        variant="light"
+        variant="battle"
         withRipple
         onClick={handleSwitchClick}
         className="rounded-none shadow-inset"
@@ -56,7 +56,7 @@ const BattleMenuButtons = () => {
       </Button>
       <Button
         size="full"
-        variant="light"
+        variant="battle"
         withRipple
         onClick={handleBagClick}
         className="rounded-none shadow-inset"
@@ -65,7 +65,7 @@ const BattleMenuButtons = () => {
       </Button>
       <Button
         size="full"
-        variant="light"
+        variant="battle"
         withRipple
         onClick={handleRunClick}
         className="rounded-none shadow-inset"

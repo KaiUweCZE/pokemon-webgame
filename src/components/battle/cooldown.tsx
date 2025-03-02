@@ -44,8 +44,8 @@ const Cooldown = forwardRef<CooldownHandle, CooldownProps>(({ pokemonSpeed, onCo
   if (cooldownTime === 0) return null;
 
   return (
-    <div className="absolute grid h-full w-full place-items-center bg-primary/70">
-      <span className="text-lg font-semibold text-white">{cooldownTime}s</span>
+    <div className="bg-battle-rare/30 absolute grid h-full w-full place-items-center">
+      <span className="text-lg font-semibold text-battle-text">{cooldownTime}s</span>
     </div>
   );
 });

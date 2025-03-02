@@ -22,6 +22,8 @@ const buttonVariants = cva(
         ghost: "bg-amber-100/30 hover:bg-amber-100/80 shadow-secondary",
         accent: "bg-element-light hover:bg-element shadow-secondary border-amber-100/20 border",
         link: "animation-link shadow-secondary",
+        battle:
+          "hover:bg-battle-rare/40 border bg-battle-rare/20 border-battle-border/40 text-battle-text shadow-secondary",
       },
       size: {
         default: "w-fit py-2 px-4 ",
@@ -104,6 +106,11 @@ const rippleConfig = {
     colorClass: "bg-amber-200/80",
     duration: 500,
     scale: 0.5,
+  },
+  battle: {
+    colorClass: "bg-slate-950/50",
+    duration: 500,
+    scale: 1,
   },
 } as const;
 

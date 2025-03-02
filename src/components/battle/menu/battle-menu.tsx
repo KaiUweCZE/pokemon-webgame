@@ -4,7 +4,7 @@ import { GradientBackground } from "@/components/ui/primitives/gradient-backgrou
 
 const BattleMenu = () => {
   return (
-    <section className="battle-menu z-10 border-2 border-content-secondary bg-content shadow-top">
+    <section className="battle-menu z-10 border-2 border-battle-secondary bg-battle shadow-top">
       <BattleMenuActions />
       <BattleMenuButtons />
       <GradientBackground variant="dark" intensity="low" direction="bottom-left" />

@@ -38,13 +38,13 @@ const NewLevelInfo = () => {
     <div
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className="absolute bottom-0 w-full"
+      className="absolute bottom-0 w-full text-battle-text"
     >
       <Expander isOpen={newLevel}>
-        <div className="grid h-auto gap-4 rounded-t-sm border-2 border-b-0 border-slate-800/20 bg-content/90 p-4 backdrop-blur-sm hover:bg-content-secondary">
+        <div className="grid h-auto gap-4 rounded-t-sm border-2 border-b-0 border-battle-border/40 bg-battle/90 p-4 backdrop-blur-sm hover:bg-battle-secondary">
           {/* Level Up Announcement */}
           <X
-            className="absolute right-0 top-0 h-4 w-4 cursor-pointer bg-content-secondary"
+            className="absolute right-0 top-0 h-4 w-4 cursor-pointer bg-battle-secondary"
             onClick={() => setNewLevel(false)}
           />
           <div>

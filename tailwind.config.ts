@@ -72,6 +72,15 @@ export default {
           accent: "rgba(var(--inventory-accent))",
           light: "rgba(var(--inventory-light))",
         },
+        battle: {
+          DEFAULT: "rgba(var(--battle-primary))",
+          secondary: "rgba(var(--battle-secondary))",
+          accent: "rgba(var(--battle-accent))",
+          "accent-dark": "rgba(var(--battle-accent-dark))",
+          border: "rgba(var(--battle-border))",
+          text: "rgba(var(--battle-text))",
+          rare: "rgba(var(--battle-rare))",
+        },
       },
 
       width: {

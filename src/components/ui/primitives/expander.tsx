@@ -11,7 +11,7 @@ interface ExpanderProps {
 
 const Expander = ({ children, isOpen, onClick, onClose, className, direction }: ExpanderProps) => {
   return (
-    <div className={cn("expander", isOpen && "open")}>
+    <div className={cn("expander", isOpen && "open", className)}>
       <div className="expander-content">{children}</div>
     </div>
   );

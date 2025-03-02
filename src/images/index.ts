@@ -1,12 +1,13 @@
 export * from "./characters";
 //export * from "./pokemons";
 import { PokemonImages } from "@/types/image";
+import { PokemonName } from "@/types/pokemon";
 import { getPokemonAssets } from "@/utils/get-pokemon-assets";
 // export * from "./items";
 // export * from "./badges";
 // atd...
 
-export const getImagePath = (path: string) => `/images${path}`;
+export const getImagePath = (path: PokemonName) => `/images${path}`;
 
 export const pokemonsImg = {
   abomasnow: getPokemonAssets("abomasnow"),

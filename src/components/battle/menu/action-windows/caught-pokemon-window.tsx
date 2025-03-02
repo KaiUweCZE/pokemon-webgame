@@ -15,11 +15,11 @@ const CaughtPokemonWindow = () => {
           <p>Do you want to continue?</p>
         </article>
         <div className="flex w-full gap-2">
-          <Button size="full" variant="light" border={true} onClick={() => {}}>
+          <Button size="full" variant="battle" border={true} onClick={() => {}}>
             Yes
           </Button>
 
-          <Button size="full" variant="light" border={true} onClick={() => {}}>
+          <Button size="full" variant="battle" border={true} onClick={() => {}}>
             No
           </Button>
         </div>

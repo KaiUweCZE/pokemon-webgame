@@ -28,7 +28,7 @@ const BattlePokemonStats = ({
   return (
     <div
       className={cn(
-        "battle-pokemon-stats border-2 border-slate-800 bg-amber-100 px-3 py-2 pb-1 shadow-secondary",
+        "battle-pokemon-stats border border-battle-border bg-battle-accent px-3 py-2 pb-1 shadow-secondary",
         userStats && "border-b-1 pb-2"
       )}
     >

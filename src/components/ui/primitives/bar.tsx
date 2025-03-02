@@ -43,8 +43,8 @@ const barVariants = cva(
 const innerBarVariants = cva("h-full transition-all duration-300 rounded-full relative", {
   variants: {
     variant: {
-      hp: "bg-destructive",
-      energy: "bg-teal-600",
+      hp: "bg-emarald-600",
+      energy: "bg-sky-500",
       exp: "bg-amber-500",
     },
     animate: {
@@ -102,18 +102,32 @@ const Bar = ({
   label,
   labelPosition,
   animate = false,
-  lowThreshold = 0,
+  lowThreshold = 50,
 }: BarProps) => {
   const percentage = (actualValue / maxValue) * 100;
-
   const isLow = percentage <= lowThreshold;
+  const isCritical = percentage <= lowThreshold / 2;
+
+  const getColorClass = () => {
+    if (variant !== "hp") return innerBarVariants({ variant, animate });
+
+    if (isCritical) return "bg-red-500";
+    if (isLow) return "bg-yellow-500";
+    return "bg-emerald-600";
+  };
 
   const labelText = variant === "hp" ? "hp" : variant === "exp" ? "exp" : "eng";
+
   return (
     <div className={cn("relative", className)}>
       <div className={cn(barVariants({ variant, height, width }))}>
         <div
-          className={cn(innerBarVariants({ variant, animate }))}
+          className={cn(
+            //innerBarVariants({ variant, animate }),
+            "relative h-full rounded-full transition-all duration-500",
+            getColorClass(),
+            isCritical && !animate && "animate-pulse"
+          )}
           style={{ width: `${percentage}%` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0" />
