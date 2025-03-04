@@ -32,6 +32,8 @@ export const BATTLE_DEFAULTS = {
     init: {
       isValid: false,
       location: null,
+      currentArea: 1,
+      areaChangesCounter: 0,
     },
     newLevel: false,
     gainedExp: 0,

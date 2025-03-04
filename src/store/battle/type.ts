@@ -28,6 +28,8 @@ export interface BattleAnimationState {
 export interface BattleInitState {
   isValid: boolean;
   location: LocationName | null;
+  currentArea: number;
+  areaChangesCounter: number;
 }
 
 export interface BattleState {

@@ -28,6 +28,8 @@ export const initBattle = (location: LocationName) => {
     init: {
       isValid: true,
       location,
+      currentArea: 1,
+      areaChangesCounter: 0,
     },
   }));
 };
@@ -38,6 +40,8 @@ export const resetBattle = () => {
     init: {
       isValid: false,
       location: null,
+      currentArea: 1,
+      areaChangesCounter: 0,
     },
     battle: {
       ...state.battle,

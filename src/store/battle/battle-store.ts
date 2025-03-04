@@ -5,6 +5,8 @@ import { BATTLE_DEFAULTS } from "./constants";
 import { BattleStore } from "./type";
 import useGetExp from "@/hooks/battle/use-get-exp";
 import { useEffect } from "react";
+import { locationData } from "@/data/locations/location-data";
+import { AreaNumber } from "@/types/location";
 
 export const battleStore = new Store<BattleStore>(BATTLE_DEFAULTS.INITIAL_STATE);
 
@@ -13,8 +15,6 @@ export const useBattleState = () => {
   const { getExp } = useGetExp();
 
   useEffect(() => {
-    console.log("Effect is done!!!!");
-
     if (state.battle.status === "user-victory") {
       getExp();
     }
@@ -33,6 +33,7 @@ export const useBattleStore = () => {
     userPokemonSix: state.pokemons.userPokemonSix,
     enemyPokemon: state.pokemons.enemyPokemon,
     enemyAttack: state.pokemons.enemyAttack,
+    battleLocation: state.init.location,
     battle: state.battle,
     battleInit: state.init,
     enemyType: state.battle.enemyType,
@@ -41,5 +42,8 @@ export const useBattleStore = () => {
     isCooldown: state.isCooldown,
     newLevel: state.newLevel,
     gainedExp: state.gainedExp,
+    locationAreas: state.init.location && locationData[state.init.location].areas,
+    currentArea: state.init.currentArea as AreaNumber,
+    areaChangesCounter: state.init.areaChangesCounter,
   };
 };
