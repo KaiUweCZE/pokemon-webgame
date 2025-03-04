@@ -8,6 +8,9 @@ export const getRandomAttack = (availableAttacks: string[]): Attack | null => {
   // Find the attack object by its name
   const attack = Object.values(ATTACKS).find((attack) => attack.name === randomAttackName);
 
-  console.log("Random attack from getRandomAttack:", attack);
+  console.log({
+    "attacks array ": availableAttacks,
+    "current attack": randomAttackName,
+  });
   return attack || null;
 };

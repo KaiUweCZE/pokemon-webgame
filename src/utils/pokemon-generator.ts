@@ -40,7 +40,8 @@ export const generatePokemon = (pokemonName: string, level: number = 1): Pokemon
   const baseStats: PokemonCreate = {
     name: baseData.name,
     types: baseData.types as PokemonType[],
-    attacks: baseData.attacks.map((e) => e.attack),
+    // get attacks array filtering by level
+    attacks: baseData.attacks.filter((e) => level >= e.learnAt).map((e) => e.attack),
     abilities: [],
     shiny: isPokemonShiny(),
     maxHp: randomizeValue(baseData.hp),

@@ -24,7 +24,7 @@ import { Attack } from "@/types/attack";
 export type AttackKey = keyof typeof ATTACKS;
 
 export const ATTACKS = {
-  quickAttack: {
+  "quick attack": {
     id: 1,
     name: "quick attack",
     type: "normal",
@@ -70,7 +70,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: fireImg,
   },
-  fireBlast: {
+  "fire blast": {
     id: 6,
     name: "fire blast",
     type: "fire",
@@ -79,7 +79,7 @@ export const ATTACKS = {
     recoveryTime: 6,
     img: fireImg,
   },
-  waterGun: {
+  "water gun": {
     id: 7,
     name: "water gun",
     type: "water",
@@ -88,7 +88,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: waterImg,
   },
-  bubbleBeam: {
+  "bubble beam": {
     id: 8,
     name: "bubble beam",
     type: "water",
@@ -97,7 +97,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: waterImg,
   },
-  hydroPump: {
+  "hydro pump": {
     id: 9,
     name: "hydro pump",
     type: "water",
@@ -106,7 +106,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: waterImg,
   },
-  razorLeaf: {
+  "razor leaf": {
     id: 10,
     name: "razor leaf",
     type: "grass",
@@ -115,7 +115,7 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: grassImg,
   },
-  vineWhip: {
+  "vine whip": {
     id: 11,
     name: "vine whip",
     type: "grass",
@@ -124,7 +124,7 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: grassImg,
   },
-  solarBeam: {
+  "solar beam": {
     id: 12,
     name: "solar beam",
     type: "grass",
@@ -133,7 +133,7 @@ export const ATTACKS = {
     recoveryTime: 8,
     img: grassImg,
   },
-  thunderShock: {
+  "thunder shock": {
     id: 13,
     name: "thunder shock",
     type: "electric",
@@ -205,7 +205,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: biteImg,
   },
-  fireSpin: {
+  "fire spin": {
     id: 21,
     name: "fire spin",
     type: "fire",
@@ -214,7 +214,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: fireImg,
   },
-  iceBeam: {
+  "ice beam": {
     id: 16,
     name: "ice beam",
     type: "ice",
@@ -232,7 +232,7 @@ export const ATTACKS = {
     recoveryTime: 7,
     img: iceImg,
   },
-  auroraBeam: {
+  "aurora beam": {
     id: 18,
     name: "aurora beam",
     type: "ice",
@@ -241,7 +241,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: iceImg,
   },
-  karateChop: {
+  "karate chop": {
     id: 19,
     name: "karate chop",
     type: "fighting",
@@ -250,16 +250,16 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: fightingImg,
   },
-  muchPunch: {
+  "mach punch": {
     id: 20,
-    name: "much punch",
+    name: "mach punch",
     type: "fighting",
     damage: 5,
     energyCost: 4,
     recoveryTime: 2,
     img: fightingImg,
   },
-  highJumpKick: {
+  "high jump kick": {
     id: 21,
     name: "high jump kick",
     type: "fighting",
@@ -268,7 +268,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: fightingImg,
   },
-  poisonSting: {
+  "poison sting": {
     id: 22,
     name: "poison sting",
     type: "poison",
@@ -277,7 +277,7 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: poisonImg,
   },
-  sludgeBomb: {
+  "sludge bomb": {
     id: 23,
     name: "sludge bomb",
     type: "poison",
@@ -313,7 +313,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: groundImg,
   },
-  sandAttack: {
+  "sand attack": {
     id: 27,
     name: "sand attack",
     type: "ground",
@@ -331,7 +331,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: flyingImg,
   },
-  wingAttack: {
+  "wing attack": {
     id: 29,
     name: "wing attack",
     type: "flying",
@@ -340,7 +340,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: flyingImg,
   },
-  braveBird: {
+  "brave bird": {
     id: 30,
     name: "brave bird",
     type: "flying",
@@ -349,7 +349,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: flyingImg,
   },
-  leechLife: {
+  "leech life": {
     id: 34,
     name: "leech life",
     type: "bug",
@@ -358,7 +358,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: bugImg,
   },
-  pinMissile: {
+  "pin missile": {
     id: 35,
     name: "pin missile",
     type: "bug",
@@ -367,7 +367,7 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: bugImg,
   },
-  xScissor: {
+  "x-scissor": {
     id: 36,
     name: "x-scissor",
     type: "bug",
@@ -376,7 +376,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: bugImg,
   },
-  rockThrow: {
+  "rock throw": {
     id: 37,
     name: "rock throw",
     type: "rock",
@@ -385,7 +385,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: rockImg,
   },
-  rockSlide: {
+  "rock slide": {
     id: 38,
     name: "rock slide",
     type: "rock",
@@ -394,7 +394,7 @@ export const ATTACKS = {
     recoveryTime: 6,
     img: rockImg,
   },
-  stoneEdge: {
+  "stone edge": {
     id: 39,
     name: "stone edge",
     type: "rock",
@@ -412,7 +412,7 @@ export const ATTACKS = {
     recoveryTime: 3,
     img: ghostImg,
   },
-  shadowBall: {
+  "shadow ball": {
     id: 41,
     name: "shadow ball",
     type: "ghost",
@@ -421,7 +421,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: ghostImg,
   },
-  nightShade: {
+  "night shade": {
     id: 42,
     name: "night shade",
     type: "ghost",
@@ -430,7 +430,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: ghostImg,
   },
-  dragonRage: {
+  "dragon rage": {
     id: 43,
     name: "dragon rage",
     type: "dragon",
@@ -439,7 +439,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: dragonImg,
   },
-  dragonClaw: {
+  "dragon claw": {
     id: 44,
     name: "dragon claw",
     type: "dragon",
@@ -448,7 +448,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: dragonImg,
   },
-  dracoMeteor: {
+  "draco meteor": {
     id: 45,
     name: "draco meteor",
     type: "dragon",
@@ -458,7 +458,7 @@ export const ATTACKS = {
     img: dragonImg,
   },
 
-  darkPulse: {
+  "dark pulse": {
     id: 48,
     name: "dark pulse",
     type: "dark",
@@ -467,7 +467,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: darkImg,
   },
-  metalClaw: {
+  "metal claw": {
     id: 49,
     name: "metal claw",
     type: "steel",
@@ -476,7 +476,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: steelImg,
   },
-  ironTail: {
+  "iron tail": {
     id: 50,
     name: "iron tail",
     type: "steel",
@@ -485,7 +485,7 @@ export const ATTACKS = {
     recoveryTime: 4,
     img: steelImg,
   },
-  flashCannon: {
+  "flash cannon": {
     id: 51,
     name: "flash cannon",
     type: "steel",
@@ -494,7 +494,7 @@ export const ATTACKS = {
     recoveryTime: 5,
     img: steelImg,
   },
-  fairyWind: {
+  "fairy wind": {
     id: 52,
     name: "fairy wind",
     type: "fairy",
@@ -512,7 +512,7 @@ export const ATTACKS = {
     recoveryTime: 6,
     img: fairyImg,
   },
-  dazzlingGleam: {
+  "dazzling gleam": {
     id: 54,
     name: "dazzling gleam",
     type: "fairy",
@@ -529,5 +529,77 @@ export const ATTACKS = {
     energyCost: 1,
     recoveryTime: 3,
     img: scratchImg,
+  },
+  spark: {
+    id: 56,
+    name: "spark",
+    type: "electric",
+    damage: 4,
+    energyCost: 2,
+    recoveryTime: 3,
+    img: electricImg,
+  },
+  "iron head": {
+    id: 57,
+    name: "iron head",
+    type: "steel",
+    damage: 6,
+    energyCost: 4,
+    recoveryTime: 4,
+    img: steelImg,
+  },
+  "bug buzz": {
+    id: 58,
+    name: "bug buzz",
+    type: "bug",
+    damage: 6,
+    energyCost: 4,
+    recoveryTime: 4,
+    img: bugImg,
+  },
+  "low kick": {
+    id: 59,
+    name: "low kick",
+    type: "fighting",
+    damage: 6,
+    energyCost: 4,
+    recoveryTime: 4,
+    img: normalImg,
+  },
+  "brick break": {
+    id: 60,
+    name: "brick break",
+    type: "fighting",
+    damage: 6,
+    energyCost: 4,
+    recoveryTime: 4,
+    img: normalImg,
+  },
+  "close combat": {
+    id: 61,
+    name: "close combat",
+    type: "fighting",
+    damage: 6,
+    energyCost: 4,
+    recoveryTime: 4,
+    img: normalImg,
+  },
+  "hyper beam": {
+    id: 62,
+    name: "hyper beam",
+    type: "normal",
+    damage: 10,
+    energyCost: 10,
+    recoveryTime: 10,
+    img: normalImg,
+  },
+  "horn attack": {
+    id: 63,
+    name: "horn attack",
+    type: "normal",
+    damage: 6,
+    energyCost: 5,
+    recoveryTime: 5,
+    img: normalImg,
   },
 } satisfies Record<string, Attack>;
