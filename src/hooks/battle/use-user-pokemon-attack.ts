@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { BattlePokemon } from "@/types/pokemon";
 import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
 import { setBattleStatus } from "@/store/battle/actions/battle-state";
+import { battleLogger } from "@/utils/loggers/battle-logger";
 
 export const useUserPokemonAttack = () => {
   const queryClient = useQueryClient();
@@ -48,7 +49,7 @@ export const useUserPokemonAttack = () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
     },
     onError: (error) => {
-      console.log(error);
+      battleLogger.error("User attack failed", error);
     },
   });
 

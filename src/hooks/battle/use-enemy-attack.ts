@@ -10,6 +10,7 @@ import { updateUserPokemon } from "@/utils/actions/battle/battle-actions";
 import { useToast } from "@/components/providers/toast-provider";
 import { setEnemyAttack } from "@/store/battle/actions/battle-attacks-state";
 import { setEnemyAttackAnimation } from "@/store/battle/actions/battle-animations";
+import { battleLogger } from "@/utils/loggers/battle-logger";
 
 export const useEnemyAttack = () => {
   const queryClient = useQueryClient();
@@ -25,8 +26,6 @@ export const useEnemyAttack = () => {
 
       // Randomly select an attack from enemy's available attacks
       const randomAttack = getRandomAttack(enemyPokemon.attacks);
-      /*console.log("Random attack:", enemyPokemon.attacks);
-      console.log("Selected attack:", randomAttack?.name);*/
 
       if (!randomAttack || !randomAttack?.img) {
         return null;
@@ -34,22 +33,24 @@ export const useEnemyAttack = () => {
 
       setEnemyAttack(randomAttack);
       setEnemyAttackAnimation(randomAttack.img);
-      console.log("Attack animation set with:", randomAttack.img);
-      console.log("enemy attack value is: ", enemyAttack);
 
       // Calculate damage and update user Pokemon's HP
       const { finalDamage } = calculateDamage(enemyPokemon, userPokemon, randomAttack);
-      console.log("Damage calculation:", {
-        rawDamage: finalDamage,
-        currentUserHP: userPokemon.currentHp,
-      });
 
       /* 
       Set to 1 for testing  
       origin: userPokemon.currentHp - finalDamage
       */
       const newUserPokemonHp = Math.max(0, userPokemon.currentHp - 1);
-      console.log("New user Pokemon HP:", newUserPokemonHp);
+
+      battleLogger.attack({
+        attacker: enemyPokemon.name,
+        defender: userPokemon.name,
+        attackName: randomAttack.name,
+        damage: finalDamage,
+        defenderHpBefore: userPokemon.currentHp,
+        defenderHpAfter: newUserPokemonHp,
+      });
 
       /* update user pokemon on client side*/
       updateUserPokemonClient({
@@ -77,7 +78,7 @@ export const useEnemyAttack = () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
     },
     onError: (error) => {
-      console.error("Enemy attack error:", error);
+      battleLogger.error("Enemy attack failed", error);
       showToast(error instanceof Error ? error.message : "Failed to attack", "error", {
         headline: "Attack failed",
       });
@@ -91,10 +92,11 @@ export const useEnemyAttack = () => {
       const recoveryTime = enemyAttack?.recoveryTime ?? 10;
       const cooldown = calculateCooldown(recoveryTime * 1000, enemyPokemon?.speed || 0);
 
-      console.log("Performing attack...", {
-        cooldown: cooldown,
-        enemySpeed: enemyPokemon?.speed,
-        recoveryTime: recoveryTime,
+      // Log metrics
+      battleLogger.metrics({
+        cooldown,
+        recoveryTime,
+        speed: enemyPokemon?.speed || 0,
       });
 
       performAttackMutation.mutate();
