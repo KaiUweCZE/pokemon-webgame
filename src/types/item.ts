@@ -45,7 +45,6 @@ export interface Item<T extends BaseItemMetadata = BaseItemMetadata> {
     alt: string;
   };
   price: number;
-  //řádek pod přichází změna
   battleUsage?: BattleUsage;
   effect?: string;
   quantity?: number;

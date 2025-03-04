@@ -26,7 +26,6 @@ export const showToast = (
   variant: ToastVariant,
   options?: { headline?: string | null; duration?: number }
 ) => {
-  console.log("Toast obtained: ", message, variant, options);
   toastStore.setState((state) => ({
     ...state,
     message,
@@ -56,8 +55,6 @@ export const useToast = () => {
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const { hideToast, toast } = useToast();
-
-  console.log("Toast state in provider:", toast);
 
   return (
     <>
