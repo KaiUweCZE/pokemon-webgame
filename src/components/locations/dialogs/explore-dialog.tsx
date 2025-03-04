@@ -1,5 +1,4 @@
 // explore-dialog.tsx
-import { useState } from "react";
 import { DialogHeader } from "./components/dialog-header";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { type LocationName } from "@/types/location";
@@ -19,6 +18,7 @@ import {
   setUserPokemonSix,
 } from "@/store/battle/actions/battle-pokemon-actions";
 import { generateWildPokemon } from "@/utils/pokemon-generator";
+import { useDay } from "@/hooks/use-day";
 
 const ExploreDialog = () => {
   const { data: user } = useCurrentUser();
@@ -27,6 +27,7 @@ const ExploreDialog = () => {
   const areas = locationData[location].areas;
   const router = useRouter();
   const firstArea = areas[1];
+  const { spentPartOfDay, isUpdating } = useDay();
 
   const handleModal = (pokemonName: PokemonName) => {
     const pokemon = pokemonsData.find((p) => p.name === pokemonName);
@@ -47,6 +48,14 @@ const ExploreDialog = () => {
   const handleExplore = () => {
     if (!user?.location || !user?.pokemons[0]) return;
 
+    if (user.partOfDay === 2) {
+      showModal({
+        variant: "secondary",
+        title: "It's late enough, wait till the next day",
+      });
+      return;
+    }
+
     const userPokemon = user.pokemons.find((pokemon) => pokemon.id === user.activePokemonIds[0]);
     const userPokemons = user.pokemons.filter((pokemon) => pokemon.isActive && pokemon);
     const location = user.location as LocationName;
@@ -62,7 +71,8 @@ const ExploreDialog = () => {
     setEnemyPokemon(enemyPokemon);
     setBattleStatus("not-started");
 
-    console.log("wildPokemon", enemyPokemon);
+    // spent part of day
+    spentPartOfDay();
 
     router.push("/battle");
   };

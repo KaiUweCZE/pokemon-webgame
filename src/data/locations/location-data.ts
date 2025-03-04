@@ -26,7 +26,7 @@ export interface LocationData {
   description: string;
   availablePokemons: PokemonName[];
   areas: LocationAreas;
-  LocationActions: LocationActions[];
+  locationActions: LocationActions[];
   shopItems?: ShopItems;
   //areas: Record<number, AreaSpawns>;
 }
@@ -46,7 +46,7 @@ export const locationData = {
      a place of hope and a place of hope.`,
     availablePokemons: locationPokemons["shire"],
     areas: locationAreas["shire"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   farm: {
@@ -55,7 +55,7 @@ export const locationData = {
     description: `This Farm is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["farm"],
     areas: locationAreas["farm"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   mountain: {
     name: "Mountains",
@@ -63,7 +63,7 @@ export const locationData = {
     description: `The Mountains are a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["mountain"],
     areas: locationAreas["mountain"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   cave: {
     name: "Cave",
@@ -71,7 +71,7 @@ export const locationData = {
     description: `The Cave is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["cave"],
     areas: locationAreas["cave"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   bridge: {
     name: "Bridge",
@@ -79,7 +79,7 @@ export const locationData = {
     description: `The Bridge is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["bridge"],
     areas: locationAreas["bridge"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   lovely: {
     name: "Lovely",
@@ -87,7 +87,7 @@ export const locationData = {
     description: `The Lovely is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["lovely"],
     areas: locationAreas["lovely"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   barn: {
@@ -96,7 +96,7 @@ export const locationData = {
     description: `The Barn is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["barn"],
     areas: locationAreas["barn"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   lake: {
     name: "Lake",
@@ -104,7 +104,7 @@ export const locationData = {
     description: `The Lake is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["lake"],
     areas: locationAreas["lake"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   mine: {
     name: "Deep Mine",
@@ -112,7 +112,7 @@ export const locationData = {
     description: `The Mine is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["mine"],
     areas: locationAreas["mine"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   gastlyTower: {
     name: "Gastly Tower",
@@ -120,7 +120,7 @@ export const locationData = {
     description: `The Gastly Tower is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["gastlyTower"],
     areas: locationAreas["gastlyTower"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   magicalForest: {
     name: "Magical Forest",
@@ -128,7 +128,7 @@ export const locationData = {
     description: `The Magical Forest is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["magicalForest"],
     areas: locationAreas["magicalForest"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   icescream: {
     name: "Ice Scream",
@@ -136,7 +136,7 @@ export const locationData = {
     description: `The Ice Scream is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["icescream"],
     areas: locationAreas["icescream"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   waterfall: {
@@ -145,7 +145,7 @@ export const locationData = {
     description: `The Waterfall is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["waterfall"],
     areas: locationAreas["waterfall"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   monastery: {
     name: "Monastery",
@@ -153,7 +153,7 @@ export const locationData = {
     description: `The Monastery is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["monastery"],
     areas: locationAreas["monastery"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   northmandic: {
@@ -162,7 +162,7 @@ export const locationData = {
     description: `The Northmandic is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["northmandic"],
     areas: locationAreas["northmandic"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   teleport: {
@@ -171,7 +171,7 @@ export const locationData = {
     description: `The Teleport is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["teleport"],
     areas: locationAreas["teleport"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   castle: {
@@ -180,7 +180,7 @@ export const locationData = {
     description: `The Chatot Castle is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["castle"],
     areas: locationAreas["castle"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   jungle: {
@@ -189,7 +189,7 @@ export const locationData = {
     description: `The Jungle is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["jungle"],
     areas: locationAreas["jungle"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   machoPichu: {
     name: "Macho Pichu",
@@ -197,7 +197,7 @@ export const locationData = {
     description: `The Macho Pichu is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["machoPichu"],
     areas: locationAreas["machoPichu"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   redwood: {
@@ -206,7 +206,7 @@ export const locationData = {
     description: `The Redwoods is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["redwood"],
     areas: locationAreas["redwood"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   yummy: {
     name: "Yummy Desert",
@@ -214,7 +214,7 @@ export const locationData = {
     description: `The Yummy Desert is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["yummy"],
     areas: locationAreas["yummy"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   safari: {
@@ -223,7 +223,7 @@ export const locationData = {
     description: `The Safari is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["safari"],
     areas: locationAreas["safari"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   swamp: {
@@ -232,7 +232,7 @@ export const locationData = {
     description: `The Swamp is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["swamp"],
     areas: locationAreas["swamp"],
-    LocationActions: basicActions,
+    locationActions: basicActions,
   },
   futurome: {
     name: "Futurome",
@@ -240,7 +240,7 @@ export const locationData = {
     description: `The Futurome is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["futurome"],
     areas: locationAreas["futurome"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
   southam: {
@@ -249,7 +249,7 @@ export const locationData = {
     description: `The Southam is a place of wonder and adventure. It is a land of hope`,
     availablePokemons: locationPokemons["southam"],
     areas: locationAreas["southam"],
-    LocationActions: basicActions.concat(townActions),
+    locationActions: basicActions.concat(townActions),
     shopItems: basicItemList,
   },
 } satisfies Record<LocationName, LocationData>;

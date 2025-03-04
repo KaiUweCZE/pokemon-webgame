@@ -26,3 +26,5 @@ export type LocationName =
   | "yummy";
 
 export type LocationAction = "pokecenter" | "shop" | "explore" | "talk" | "travel";
+
+export type AreaNumber = 1 | 2 | 3 | 4;

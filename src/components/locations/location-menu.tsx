@@ -10,30 +10,31 @@ import { GradientBackground } from "../ui/primitives/gradient-background";
 import { Button } from "../ui/primitives/button";
 import { cn } from "@/utils/cn";
 import { type LocationMenu, useLocationStore } from "@/store/location-store";
+import { capitalize } from "@/utils/string";
+import React from "react";
+import { Icon } from "../ui/primitives/icon";
 
-type MenuItem = {
-  id: LocationMenu;
-  icon: LucideIcon;
-  label: string;
+const MENU_ITEMS = {
+  travel: { icon: MapIcon, label: "Travel" },
+  pokecenter: { icon: SquareActivity, label: "Pokecenter" },
+  shop: { icon: StoreIcon, label: "Shop" },
+  explore: { icon: SearchIcon, label: "Explore Area" },
+  talk: { icon: MessageCircleIcon, label: "Talk" },
 };
 
-const MENU_ITEMS: MenuItem[] = [
-  { id: "travel", icon: MapIcon, label: "Travel" },
-  { id: "pokecenter", icon: SquareActivity, label: "Pokecenter" },
-  { id: "shop", icon: StoreIcon, label: "Shop" },
-  { id: "explore", icon: SearchIcon, label: "Explore Area" },
-  { id: "talk", icon: MessageCircleIcon, label: "Talk" },
-];
-
 const LocationMenu = () => {
-  const { openDialog, activeDialogId } = useLocationStore();
+  const { openDialog, activeDialogId, locationData } = useLocationStore();
+
+  if (!locationData) return null;
+
+  const menuItems = locationData.locationActions.map((item) => item);
 
   return (
     <nav className="location-menu fixed bottom-14 left-0 right-0 mx-auto max-w-2xl">
       <div className="mx-4 overflow-hidden rounded-2xl border border-amber-300/50 bg-primary/20 p-4 shadow-purple-500 backdrop-blur">
         <ul className="grid grid-cols-5 gap-2">
-          {MENU_ITEMS.map(({ id, icon: Icon, label }) => (
-            <li key={id} className="z-1 group">
+          {menuItems.map((item) => (
+            <li key={item} className="z-1 group">
               <Button
                 variant="basic"
                 withRipple
@@ -41,26 +42,27 @@ const LocationMenu = () => {
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  openDialog(id);
+                  openDialog(item);
                 }}
               >
                 <span className="p-3">
-                  <Icon
-                    className={cn(
-                      "h-6 w-6 text-amber-100 transition-all",
-                      "group-hover:scale-125 group-hover:text-amber-200",
-                      "group-focus:scale-125 group-focus:text-amber-200",
-                      activeDialogId === id && "scale-125 text-amber-200"
-                    )}
-                  />
+                  {MENU_ITEMS[item] && (
+                    <Icon
+                      icon={MENU_ITEMS[item].icon}
+                      size="lg"
+                      interactive
+                      isActive={activeDialogId === item}
+                      activeClass="text-amber-200 scale-125"
+                    />
+                  )}
                 </span>
                 <span
                   className={cn(
                     "text-xs font-medium text-amber-100 group-hover:text-amber-200 group-focus:text-amber-200",
-                    activeDialogId === id && "text-amber-200"
+                    activeDialogId === item && "text-amber-200"
                   )}
                 >
-                  {label}
+                  {capitalize(item)}
                 </span>
               </Button>
             </li>

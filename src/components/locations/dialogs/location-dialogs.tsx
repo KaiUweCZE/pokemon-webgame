@@ -12,7 +12,7 @@ const LocationDialogs = ({ location }: { location: LocationData }) => {
   const { activeDialogId, closeDialog, locationData } = useLocationStore();
 
   if (!activeDialogId || !locationData) return null;
-  const locationActions = locationData.LocationActions;
+  const locationActions = locationData.locationActions;
   const neighborhood = locationData.neighborhood;
   const itemNames = locationData.shopItems;
 
