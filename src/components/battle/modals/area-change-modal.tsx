@@ -20,7 +20,9 @@ const AreaChangeModal = ({ isLate, onContinue, areaOffset }: AreaChangeModalProp
         <p className="text-center text-amber-100">
           It's too late to continue exploring. Wait until the next day.
         </p>
-        <Button variant="outline">Return to map</Button>
+        <Button variant="outline" onClick={() => hideModal()}>
+          <span>Close</span>
+        </Button>
       </div>
     );
   }
@@ -50,7 +52,7 @@ const AreaChangeModal = ({ isLate, onContinue, areaOffset }: AreaChangeModalProp
           Continue and advance time
         </Button>
         <Button variant="outline" onClick={() => hideModal()}>
-          Return to map
+          Close
         </Button>
       </div>
     </div>

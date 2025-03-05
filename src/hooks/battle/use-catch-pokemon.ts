@@ -2,8 +2,9 @@ import { useToast } from "@/components/providers/toast-provider";
 import { setBattleStatus } from "@/store/battle/actions/battle-state";
 import { useBattleStore } from "@/store/battle/battle-store";
 import { BattleStatus } from "@/store/battle/type";
+import { Item } from "@/types/item";
 import { addPokemon } from "@/utils/actions/add-pokemon";
-import { calculateCatchRate, handleCatchPokemon } from "@/utils/catch-pokemon";
+import { calculateCatchRate, handleCatchPokemon, PokeballType } from "@/utils/catch-pokemon";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useCatchPokemon = () => {
@@ -15,12 +16,12 @@ export const useCatchPokemon = () => {
   };
 
   const catchPokemonMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (pokeball: PokeballType) => {
       if (!enemyPokemon || battleStatus === "catching") return null;
       setBattleStatus("catching");
 
       const hpRemaining = (enemyPokemon.currentHp / enemyPokemon.maxHp) * 100;
-      const catchRate = calculateCatchRate(hpRemaining);
+      const catchRate = calculateCatchRate(hpRemaining, pokeball);
 
       const resultOfCatch = handleCatchPokemon(catchRate);
 
@@ -44,7 +45,7 @@ export const useCatchPokemon = () => {
   });
 
   return {
-    catchPokemon: () => catchPokemonMutation.mutate(),
+    catchPokemon: (pokeball: PokeballType) => catchPokemonMutation.mutate(pokeball),
     isLoading: catchPokemonMutation.isPending,
     error: catchPokemonMutation.error,
   };

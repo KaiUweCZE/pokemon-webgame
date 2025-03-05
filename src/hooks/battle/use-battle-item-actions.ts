@@ -6,6 +6,7 @@ import { setItems, useInventoryStore } from "@/store/inventory-store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateInventoryItem } from "@/utils/items/item-actions";
 import { useBattleStore } from "@/store/battle/battle-store";
+import { isPokeballType, PokeballType } from "@/utils/catch-pokemon";
 
 export const useBattleItemActions = () => {
   const { battleStatus } = useBattleStore();
@@ -49,7 +50,9 @@ export const useBattleItemActions = () => {
     try {
       switch (item.battleUsage) {
         case "catch":
-          catchPokemon();
+          if (isPokeballType(item.name)) {
+            catchPokemon(item.name);
+          }
           break;
         case "heal":
           healPokemon(item);
