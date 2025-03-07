@@ -20,7 +20,10 @@ export const useBattleItemActions = () => {
     mutationFn: async (item: Item) => {
       if (!item.battleUsage) return null;
 
-      return await updateInventoryItem({ itemName: item.name });
+      const result = await updateInventoryItem({ itemName: item.name });
+      console.log("Item was updated:", result);
+
+      return result;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
@@ -52,10 +55,12 @@ export const useBattleItemActions = () => {
         case "catch":
           if (isPokeballType(item.name)) {
             catchPokemon(item.name);
+            actionSuccessful = true;
           }
           break;
         case "heal":
           healPokemon(item);
+          actionSuccessful = true;
           break;
         default:
           showToast(`Item ${item.name} cannot be used in battle`, "error");

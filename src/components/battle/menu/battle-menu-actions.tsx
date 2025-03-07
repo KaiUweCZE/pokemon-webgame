@@ -11,28 +11,21 @@ const BattleMenuActions = () => {
 
   // Helper function to determine which component to render
   const renderActionContent = () => {
-    // Battle not started yet
-    if (battleStatus === "not-started") {
-      return <NotStartedWindow />;
+    switch (battleStatus) {
+      case "not-started":
+        return <NotStartedWindow />;
+      case "in-progress":
+        if (activeMenuSection === "attacks") return <AttackWindow />;
+        break;
+      case "user-victory":
+      case "pokemon-caught":
+        return <UserPokemonWinWindow />;
+      case "paused":
+        if (activeMenuSection === "run") return <RunWindow />;
+        break;
+      default:
+        return null;
     }
-
-    if (battleStatus === "in-progress" && activeMenuSection === "attacks") {
-      return <AttackWindow />;
-    }
-
-    if (battleStatus === "user-victory") {
-      return <UserPokemonWinWindow />;
-    }
-
-    if (battleStatus === "pokemon-caught") {
-      return <CaughtPokemonWindow />;
-    }
-
-    // If user wants to leave a battle
-    if (battleStatus === "paused" && activeMenuSection === "run") {
-      return <RunWindow />;
-    }
-
     return null;
   };
 

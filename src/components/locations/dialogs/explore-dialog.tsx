@@ -66,7 +66,9 @@ const ExploreDialog = () => {
     // init battle
     initBattle(location);
     setUserPokemon(userPokemon);
-    setUserPokemonSix(userPokemons);
+    if (!userPokemons.length) {
+      setUserPokemonSix(userPokemons);
+    }
 
     setEnemyPokemon(enemyPokemon);
     setBattleStatus("not-started");

@@ -1,25 +1,18 @@
-import {
-  MapIcon,
-  SearchIcon,
-  MessageCircleIcon,
-  SquareActivity,
-  StoreIcon,
-  type LucideIcon,
-} from "lucide-react";
 import { GradientBackground } from "../ui/primitives/gradient-background";
 import { Button } from "../ui/primitives/button";
 import { cn } from "@/utils/cn";
 import { type LocationMenu, useLocationStore } from "@/store/location-store";
 import { capitalize } from "@/utils/string";
 import React from "react";
-import { Icon } from "../ui/primitives/icon";
+import Image from "next/image";
+import { icons } from "@/images/icons/icons";
 
 const MENU_ITEMS = {
-  travel: { icon: MapIcon, label: "Travel" },
-  pokecenter: { icon: SquareActivity, label: "Pokecenter" },
-  shop: { icon: StoreIcon, label: "Shop" },
-  explore: { icon: SearchIcon, label: "Explore Area" },
-  talk: { icon: MessageCircleIcon, label: "Talk" },
+  travel: { icon: icons.travel.src, label: "Travel" },
+  pokecenter: { icon: icons.pokecenter.src, label: "Pokecenter" },
+  shop: { icon: icons.shop.src, label: "Shop" },
+  explore: { icon: icons.explore.src, label: "Explore Area" },
+  talk: { icon: icons.talk.src, label: "Talk" },
 };
 
 const LocationMenu = () => {
@@ -47,12 +40,14 @@ const LocationMenu = () => {
               >
                 <span className="p-3">
                   {MENU_ITEMS[item] && (
-                    <Icon
-                      icon={MENU_ITEMS[item].icon}
-                      size="lg"
-                      interactive
-                      isActive={activeDialogId === item}
-                      activeClass="text-amber-200 scale-125"
+                    <Image
+                      className={cn(
+                        "opacity-60 transition-all",
+                        activeDialogId === item && "scale-110 opacity-100"
+                      )}
+                      src={MENU_ITEMS[item].icon}
+                      alt={MENU_ITEMS[item].label}
+                      width={32}
                     />
                   )}
                 </span>

@@ -15,6 +15,11 @@ import pokedex1Icon from "@/images/icons/pokedex1.webp";
 import pokedex from "@/images/icons/pokedex-icon.webp";
 import rightIcon from "@/images/icons/right.webp";
 import starIcon from "@/images/icons/star.webp";
+import pokecenterIcon from "@/images/icons/pokecenter.webp";
+import talkIcon from "@/images/icons/talk.webp";
+import shopIcon from "@/images/icons/shop.webp";
+import exploreIcon from "@/images/icons/explore.webp";
+import travelIcon from "@/images/icons/travel2.webp";
 
 export const icons = {
   alert: {
@@ -100,6 +105,31 @@ export const icons = {
   "pokedex-icon": {
     src: pokedex,
     alt: "Pokedex icon alternative",
+    size: 24,
+  },
+  pokecenter: {
+    src: pokecenterIcon,
+    alt: "Pokecenter icon",
+    size: 24,
+  },
+  talk: {
+    src: talkIcon,
+    alt: "Talk icon",
+    size: 24,
+  },
+  shop: {
+    src: shopIcon,
+    alt: "Shop icon",
+    size: 24,
+  },
+  explore: {
+    src: exploreIcon,
+    alt: "Explore icon",
+    size: 24,
+  },
+  travel: {
+    src: travelIcon,
+    alt: "Travel icon",
     size: 24,
   },
 } as const;

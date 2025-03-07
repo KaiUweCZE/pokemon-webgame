@@ -7,7 +7,7 @@ import { setBattleStatus, setMenuSection } from "@/store/battle/actions/battle-s
 import NewLevelInfo from "./new-level-info";
 
 const BattleMenuButtons = () => {
-  const { activeMenuSection } = useBattleStore();
+  const { activeMenuSection, battleStatus } = useBattleStore();
   const handleAttackClick = () => {
     setBattleStatus("in-progress");
     setMenuSection("attacks");
@@ -34,6 +34,20 @@ const BattleMenuButtons = () => {
     setMenuSection("switch");
   };
 
+  const isMenuDisabled = () => {
+    let isDisabled = false;
+    switch (battleStatus) {
+      case "pokemon-caught":
+      case "user-victory":
+      case "catching":
+        isDisabled = true;
+        break;
+      default:
+        break;
+    }
+    return isDisabled;
+  };
+
   return (
     <div className="battle-menu-buttons relative">
       <Button
@@ -41,6 +55,7 @@ const BattleMenuButtons = () => {
         variant="battle"
         withRipple
         onClick={handleAttackClick}
+        disabled={isMenuDisabled()}
         className="rounded-none shadow-inset"
       >
         Attack
@@ -50,6 +65,7 @@ const BattleMenuButtons = () => {
         variant="battle"
         withRipple
         onClick={handleSwitchClick}
+        disabled={isMenuDisabled()}
         className="rounded-none shadow-inset"
       >
         Switch
@@ -59,6 +75,7 @@ const BattleMenuButtons = () => {
         variant="battle"
         withRipple
         onClick={handleBagClick}
+        disabled={isMenuDisabled()}
         className="rounded-none shadow-inset"
       >
         Bag
@@ -68,6 +85,7 @@ const BattleMenuButtons = () => {
         variant="battle"
         withRipple
         onClick={handleRunClick}
+        disabled={isMenuDisabled()}
         className="rounded-none shadow-inset"
       >
         Run
