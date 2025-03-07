@@ -1,0 +1,33 @@
+.pokemon-team {
+  display: grid;
+  height: 3rem;
+  width: 15rem;
+  grid-template-columns: repeat(6, 1fr);
+  position: relative;
+}
+
+/* UX helper */
+.pokemon-team-hint {
+  position: absolute;
+  inset: auto auto -2rem auto;
+  opacity: 1;
+  transition: opacity var(--transition);
+  white-space: nowrap;
+  place-self: center;
+}
+
+.pokemon-team:hover .pokemon-team-hint {
+  opacity: 0;
+  transition-delay: 200ms;
+}
+
+/**/
+
+.pokemon-slot-detail {
+  display: grid;
+  position: absolute;
+  inset: auto auto -5.25rem auto;
+  transition: var(--transition);
+  visibility: hidden;
+  opacity: 0;
+}

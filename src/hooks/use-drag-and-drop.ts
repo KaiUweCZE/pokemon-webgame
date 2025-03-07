@@ -1,44 +1,34 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Pokemon } from "@/types/pokemon";
 import { pokemonsImg } from "@/images";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/components/providers/toast-provider";
 import { pokemonSwap } from "@/utils/actions/pokemon-swap";
+import { useBattleStore } from "@/store/battle/battle-store";
+import { setUserPokemonSix } from "@/store/battle/actions/battle-pokemon-actions";
 
 interface ActivePokemon {
   pokemon: Pokemon;
   image: (typeof pokemonsImg)[keyof typeof pokemonsImg];
 }
 
-export const usePokemonDragAndDrop = (initialActiveIds: string[], userPokemons: Pokemon[]) => {
+export const usePokemonDragAndDrop = () => {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [activePokemon, setActivePokemon] = useState<(ActivePokemon | null)[]>(() => {
-    return initialActiveIds.map((id) => {
-      const pokemon = userPokemons.find((p) => p.id === id);
-      if (!pokemon) return null;
-      return {
-        pokemon,
-        image: pokemonsImg[pokemon.name as keyof typeof pokemonsImg],
-      };
-    });
-  });
-
   const queryClient = useQueryClient();
+  const { userPokemonSix } = useBattleStore();
   const { showToast } = useToast();
 
   const updateMutation = useMutation({
-    mutationFn: async (newActivePokemon: (ActivePokemon | null)[]) => {
-      const newActiveIds = newActivePokemon
-        .filter((item): item is ActivePokemon => item !== null)
-        .map((item) => item.pokemon.id);
-
+    mutationFn: async (newPokemonTeam: Pokemon[]) => {
+      const newActiveIds = newPokemonTeam.map((pokemon) => pokemon.id);
       return await pokemonSwap(newActiveIds);
+    },
+    onError: (error) => {
+      queryClient.invalidateQueries({ queryKey: ["current-user"] });
+      showToast(error instanceof Error ? error.message : "Failed to update Pokemon order", "error");
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });
-    },
-    onError: (error) => {
-      showToast(error instanceof Error ? error.message : "Failed to update Pokemon order", "error");
     },
   });
 
@@ -58,25 +48,22 @@ export const usePokemonDragAndDrop = (initialActiveIds: string[], userPokemons: 
 
       if (draggedIndex === null) return;
 
-      setActivePokemon((prevPokemon) => {
-        const newPokemon = [...prevPokemon];
-        const draggedPokemon = newPokemon[draggedIndex];
+      const newTeam = [...userPokemonSix];
+      const draggedPokemon = newTeam[draggedIndex];
 
-        newPokemon.splice(draggedIndex, 1);
-        newPokemon.splice(dropIndex, 0, draggedPokemon);
+      newTeam.splice(draggedIndex, 1);
+      newTeam.splice(dropIndex, 0, draggedPokemon);
 
-        updateMutation.mutate(newPokemon);
+      setUserPokemonSix(newTeam);
 
-        return newPokemon;
-      });
+      updateMutation.mutate(newTeam);
 
       setDraggedIndex(null);
     },
-    [draggedIndex, updateMutation]
+    [draggedIndex, updateMutation, userPokemonSix]
   );
 
   return {
-    activePokemon,
     draggedIndex,
     handleDragStart,
     handleDragOver,
