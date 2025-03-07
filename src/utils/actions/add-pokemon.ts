@@ -71,3 +71,54 @@ export const addPokemon = async (pokemonData: PokemonCreate) => {
     throw error instanceof Error ? error : new Error("Failed to add Pokémon");
   }
 };
+
+export const addPokemonToTeam = async (pokemonId: string) => {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.name) {
+      throw new Error("Not authenticated");
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { name: session.user.name },
+      select: {
+        activePokemonIds: true,
+      },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const canAdd = canAddToTeam(user.activePokemonIds.length);
+
+    if (!canAdd) {
+      throw new Error("Team is full");
+    }
+
+    const updatedData = await prisma.$transaction([
+      prisma.pokemon.update({
+        where: { id: pokemonId },
+        data: {
+          isActive: true,
+        },
+      }),
+      prisma.user.update({
+        where: { id: session.user.id },
+        data: {
+          activePokemonIds: {
+            push: pokemonId,
+          },
+        },
+      }),
+    ]);
+
+    console.log("updated data: ", updatedData);
+
+    return { success: true, data: updatedData };
+  } catch (error) {
+    console.error("Failed to add pokemon to team:", error);
+    throw error instanceof Error ? error : new Error("Failed to add pokemon to team");
+  }
+};
