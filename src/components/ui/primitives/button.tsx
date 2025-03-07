@@ -18,6 +18,7 @@ const buttonVariants = cva(
         basic: "bg-transparent hover:bg-transparent shadow-secondary",
         destructive:
           "bg-destructive hover:bg-destructive-secondary text-amber-100 shadow-secondary",
+        success: "bg-emerald-500 hover:bg-emerald-600 text-amber-100 shadow-secondary",
         outline: "hover:bg-amber-100/20 border border-input text-amber-100 shadow-secondary",
         ghost: "bg-amber-100/30 hover:bg-amber-100/80 shadow-secondary",
         accent: "bg-element-light hover:bg-element shadow-secondary border-amber-100/20 border",
@@ -86,6 +87,11 @@ const rippleConfig = {
     colorClass: "bg-amber-100/60",
     duration: 800,
     scale: 2,
+  },
+  success: {
+    colorClass: "bg-amber-100/40",
+    duration: 400,
+    scale: 0.8,
   },
   outline: {
     colorClass: "bg-amber-200/80",

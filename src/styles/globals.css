@@ -94,6 +94,7 @@
     --transition-slow: 0.5s;
 
     /*sizes*/
+    --xs: 10rem;
     --small: 15rem;
     --semi-small: 20rem;
     --medium: 25rem;
@@ -706,4 +707,11 @@ button.animation-link {
   min-height: 0;
   visibility: hidden;
   transition: visibility var(--transition);
+}
+
+/*Lottie settings*/
+
+.lottie-checker-container {
+  position: absolute;
+  inset: -1rem -1rem auto auto;
 }

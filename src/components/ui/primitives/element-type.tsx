@@ -39,6 +39,7 @@ const elementVariants = cva(
         false: "",
       },
       size: {
+        xxs: "text-[0.65rem]",
         xs: "w-12 text-xs",
         sm: "w-16 px-1 text-sm font-normal",
         md: "w-16 py-2 px-4 text-md",

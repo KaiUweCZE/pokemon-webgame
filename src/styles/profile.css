@@ -31,3 +31,161 @@
   visibility: hidden;
   opacity: 0;
 }
+
+.profile-card-active {
+  position: relative;
+  /*background-color: rgba(162, 127, 205, 0.3);*/
+  animation: check-pulse 0.7s ease-out;
+}
+
+/* Badge animace */
+@keyframes badge-scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.profile-card-active .badge-check {
+  animation: badge-scale 0.5s ease-out 0.3s forwards;
+  opacity: 0;
+  transform: scale(0);
+}
+
+@keyframes check-pulse {
+  0% {
+    outline-color: rgba(251, 191, 36, 0);
+    outline-width: 0px;
+    outline-offset: -10px;
+  }
+  40% {
+    outline-color: rgba(251, 191, 36, 0.8);
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+  70% {
+    outline-color: rgba(251, 191, 36, 0.4);
+    outline-width: 1px;
+    outline-offset: 0px;
+  }
+  100% {
+    outline-color: rgba(251, 191, 36, 0.8);
+    outline-width: 1px;
+    outline-offset: 0px;
+  }
+}
+
+/* V globals.css nebo v samostatném souboru */
+.profile-card-active {
+  position: relative;
+}
+
+/* Pseudo-elementy pro každou hranu */
+.profile-card-active::before,
+.profile-card-active::after,
+.profile-card-active > .border-top,
+.profile-card-active > .border-bottom {
+  content: "";
+  position: absolute;
+  border-radius: 0.5rem;
+  background-color: rgba(114, 255, 201, 0.25); /* Amber barva */
+  z-index: 1;
+}
+
+/* Horní a spodní hrana - horizontální */
+.profile-card-active::before,
+.profile-card-active > .border-bottom {
+  height: 2px;
+  width: 0; /* Začíná s nulovou šířkou */
+  right: 0; /* Začíná vpravo */
+}
+
+/* Levá a pravá hrana - vertikální */
+.profile-card-active::after,
+.profile-card-active > .border-top {
+  width: 2px;
+  height: 0; /* Začíná s nulovou výškou */
+}
+
+/* Horní hrana */
+.profile-card-active::before {
+  top: 0;
+  animation: draw-top 0.3s ease-out forwards;
+}
+
+/* Pravá hrana */
+.profile-card-active > .border-top {
+  right: 0;
+  top: 0;
+  animation: draw-right 0.3s ease-out 0.9s forwards; /* Začíná po dokončení spodní hrany */
+}
+
+/* Spodní hrana */
+.profile-card-active > .border-bottom {
+  bottom: 0;
+  left: 0; /* Začíná vlevo */
+  animation: draw-bottom 0.3s ease-out 0.6s forwards; /* Začíná po dokončení levé hrany */
+}
+
+/* Levá hrana */
+.profile-card-active::after {
+  left: 0;
+  top: 0;
+  animation: draw-left 0.3s ease-out 0.3s forwards; /* Začíná po dokončení horní hrany */
+}
+
+/* Animace pro horní hranu - zprava doleva */
+@keyframes draw-top {
+  0% {
+    width: 0;
+    right: 0;
+  }
+  100% {
+    width: 100%;
+    right: 0;
+  }
+}
+
+/* Animace pro levou hranu - shora dolů */
+@keyframes draw-left {
+  0% {
+    height: 0;
+    top: 0;
+  }
+  100% {
+    height: 100%;
+    top: 0;
+  }
+}
+
+/* Animace pro spodní hranu - zleva doprava */
+@keyframes draw-bottom {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* Animace pro pravou hranu - zdola nahoru */
+@keyframes draw-right {
+  0% {
+    height: 0;
+    top: 100%;
+  }
+  100% {
+    height: 100%;
+    top: 0;
+  }
+}

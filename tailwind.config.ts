@@ -84,6 +84,7 @@ export default {
       },
 
       width: {
+        xs: "var(--xs)",
         small: "var(--small)",
         semi: "var(--semi-small)",
         medium: "var(--medium)",
