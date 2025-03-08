@@ -26,7 +26,7 @@
 .pokemon-slot-detail {
   display: grid;
   position: absolute;
-  inset: auto auto -5.25rem auto;
+  inset: auto auto -7rem auto;
   transition: var(--transition);
   visibility: hidden;
   opacity: 0;
@@ -83,12 +83,59 @@
   }
 }
 
-/* V globals.css nebo v samostatném souboru */
+@property --edge-width {
+  syntax: "<length> | <percentage>";
+  inherits: false;
+  initial-value: 2px;
+}
+
+@property --edge-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(114, 255, 201, 0.25);
+}
+
+@property --edge-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0.5rem;
+}
+
+@property --animation-duration {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 0.3s;
+}
+
+@property --animation-timing {
+  syntax: "*";
+  inherits: false;
+  initial-value: ease-out;
+}
+
+@property --delay-first {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 0.3s;
+}
+
+@property --delay-second {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 0.6s;
+}
+
+@property --delay-third {
+  syntax: "<time>";
+  inherits: false;
+  initial-value: 0.9s;
+}
+
 .profile-card-active {
   position: relative;
 }
 
-/* Pseudo-elementy pro každou hranu */
+/* pseudo elements for each edge*/
 .profile-card-active::before,
 .profile-card-active::after,
 .profile-card-active > .border-top,
@@ -96,53 +143,56 @@
   content: "";
   position: absolute;
   border-radius: 0.5rem;
-  background-color: rgba(114, 255, 201, 0.25); /* Amber barva */
+  background-color: rgba(114, 255, 201, 0.75);
+
   z-index: 1;
 }
 
-/* Horní a spodní hrana - horizontální */
+/* horizontal edges */
 .profile-card-active::before,
 .profile-card-active > .border-bottom {
-  height: 2px;
-  width: 0; /* Začíná s nulovou šířkou */
-  right: 0; /* Začíná vpravo */
+  height: var(--edge-width);
+  width: 0;
+  right: 0;
 }
 
-/* Levá a pravá hrana - vertikální */
+/* vertical edges */
 .profile-card-active::after,
 .profile-card-active > .border-top {
-  width: 2px;
-  height: 0; /* Začíná s nulovou výškou */
+  width: var(--edge-width);
+  height: 0;
 }
 
-/* Horní hrana */
+/* top edge */
 .profile-card-active::before {
   top: 0;
-  animation: draw-top 0.3s ease-out forwards;
+  animation: draw-top var(--animation-duration) var(--animation-timing) forwards;
 }
 
-/* Pravá hrana */
+/* right edge */
 .profile-card-active > .border-top {
   right: 0;
   top: 0;
-  animation: draw-right 0.3s ease-out 0.9s forwards; /* Začíná po dokončení spodní hrany */
+  animation: draw-right var(--animation-duration) var(--animation-timing) var(--delay-third)
+    forwards;
 }
 
-/* Spodní hrana */
+/* bottom edge */
 .profile-card-active > .border-bottom {
   bottom: 0;
-  left: 0; /* Začíná vlevo */
-  animation: draw-bottom 0.3s ease-out 0.6s forwards; /* Začíná po dokončení levé hrany */
+  left: 0;
+  animation: draw-bottom var(--animation-duration) var(--animation-timing) var(--delay-second)
+    forwards;
 }
 
-/* Levá hrana */
+/* left edge */
 .profile-card-active::after {
   left: 0;
   top: 0;
-  animation: draw-left 0.3s ease-out 0.3s forwards; /* Začíná po dokončení horní hrany */
+  animation: draw-left var(--animation-duration) var(--animation-timing) var(--delay-first) forwards;
 }
 
-/* Animace pro horní hranu - zprava doleva */
+/* from right to left */
 @keyframes draw-top {
   0% {
     width: 0;
@@ -154,7 +204,7 @@
   }
 }
 
-/* Animace pro levou hranu - shora dolů */
+/* from top to bot */
 @keyframes draw-left {
   0% {
     height: 0;
@@ -166,7 +216,7 @@
   }
 }
 
-/* Animace pro spodní hranu - zleva doprava */
+/* from left to right */
 @keyframes draw-bottom {
   0% {
     width: 0;
@@ -178,7 +228,7 @@
   }
 }
 
-/* Animace pro pravou hranu - zdola nahoru */
+/*  from bot to top */
 @keyframes draw-right {
   0% {
     height: 0;

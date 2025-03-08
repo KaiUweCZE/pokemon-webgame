@@ -28,9 +28,9 @@ const PokemonTeamSlot = ({
   if (!pokemon || !image) {
     return (
       <div
-        className="h-8 w-8 rounded-sm bg-element-light/10"
-        onDragOver={onDragOver}
-        onDrop={(e) => onDrop(e, index)}
+        className="rounded-sm bg-element-light/60"
+        /*onDragOver={onDragOver}
+        onDrop={(e) => onDrop(e, index)}*/
       ></div>
     );
   }
@@ -41,7 +41,7 @@ const PokemonTeamSlot = ({
     <div className="group relative">
       <div
         className={cn(
-          "cursor-move rounded-sm bg-element-light/20 transition-all duration-200 hover:bg-element-light/30",
+          `cursor-move rounded-sm bg-element-light/60 transition-all duration-200 hover:bg-element-light/30`,
           isDragging && "opacity-50"
         )}
         draggable
@@ -94,8 +94,8 @@ const PokemonTeamSlot = ({
               e.stopPropagation();
               onRemove(pokemon.id);
             }}
-            className="mt-2 w-full rounded-sm bg-red-500/20 px-1 py-0.5 text-xxs text-red-200
-                      transition-colors hover:bg-red-500/40"
+            className="mt-2 w-full rounded-sm bg-red-500 px-1 py-0.5 text-xxs text-red-200
+                      transition-colors hover:bg-red-600"
           >
             Remove
           </button>
