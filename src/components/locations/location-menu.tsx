@@ -23,9 +23,9 @@ const LocationMenu = () => {
   const menuItems = locationData.locationActions.map((item) => item);
 
   return (
-    <nav className="location-menu fixed bottom-14 left-0 right-0 mx-auto max-w-2xl">
-      <div className="mx-4 overflow-hidden rounded-2xl border border-amber-300/50 bg-primary/20 p-4 shadow-purple-500 backdrop-blur">
-        <ul className="grid grid-cols-5 gap-2">
+    <nav className="location-menu fixed bottom-14 left-0 right-0 mx-auto w-fit max-w-2xl">
+      <div className="mx-4 overflow-hidden rounded-2xl border border-amber-300/50 bg-primary/20 p-2 shadow-purple-500 backdrop-blur-sm">
+        <ul className="grid w-fit grid-flow-col gap-2">
           {menuItems.map((item) => (
             <li key={item} className="z-1 group">
               <Button
@@ -42,8 +42,8 @@ const LocationMenu = () => {
                   {MENU_ITEMS[item] && (
                     <Image
                       className={cn(
-                        "opacity-60 transition-all",
-                        activeDialogId === item && "scale-110 opacity-100"
+                        "location-icon transition-all",
+                        activeDialogId === item && "icon-active scale-110"
                       )}
                       src={MENU_ITEMS[item].icon}
                       alt={MENU_ITEMS[item].label}

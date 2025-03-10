@@ -16,10 +16,10 @@ import pokedex from "@/images/icons/pokedex-icon.webp";
 import rightIcon from "@/images/icons/right.webp";
 import starIcon from "@/images/icons/star.webp";
 import pokecenterIcon from "@/images/icons/pokecenter.webp";
-import talkIcon from "@/images/icons/talk.webp";
-import shopIcon from "@/images/icons/shop.webp";
-import exploreIcon from "@/images/icons/explore.webp";
-import travelIcon from "@/images/icons/travel2.webp";
+import talkIcon from "@/images/icons/talk2.webp";
+import shopIcon from "@/images/icons/shop2.webp";
+import exploreIcon from "@/images/icons/explore2.webp";
+import travelIcon from "@/images/icons/travel.webp";
 
 export const icons = {
   alert: {

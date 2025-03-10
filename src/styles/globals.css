@@ -213,6 +213,22 @@ body {
   box-shadow: 0px 13px 22px -19px rgba(0, 0, 0, 0.45);
 }
 
+.place-self-end-center {
+  place-self: end center;
+}
+
+.place-self-center-end {
+  place-self: center end;
+}
+
+.place-self-start-end {
+  place-self: start end;
+}
+
+.place-self-center-start {
+  place-self: center start;
+}
+
 .max-z {
   z-index: 10;
 }
@@ -298,7 +314,10 @@ body {
   grid-template-rows: 1fr auto;
   height: calc(100dvh - 3.5rem);
   overflow: hidden;
-  /* grid-auto-rows: min-content; */
+}
+
+.location-menu {
+  display: grid;
 }
 
 .location-image {
@@ -310,6 +329,10 @@ body {
 .location-dialog {
   max-height: 25rem;
   overflow-y: auto;
+}
+
+.night-filter {
+  filter: grayscale(29%) sepia(36%) brightness(51%) hue-rotate(140deg);
 }
 
 .sticky-header {
@@ -324,6 +347,32 @@ body {
 .location-pokecenter-section {
   display: grid;
   grid-template-columns: auto 1fr;
+}
+
+.location-icon {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(11%) saturate(917%) hue-rotate(338deg)
+    brightness(105%) contrast(105%);
+
+  &.icon-active {
+    filter: brightness(0) saturate(100%) invert(81%) sepia(49%) saturate(371%) hue-rotate(355deg)
+      brightness(104%) contrast(99%);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
 }
 
 @keyframes scroll-dialog {

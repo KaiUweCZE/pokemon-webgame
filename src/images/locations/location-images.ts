@@ -1,7 +1,7 @@
 import { type LocationName } from "@/types/location";
 import barnImg from "./barn.webp";
 import bridgeImg from "./bridge.webp";
-import caveImg from "./cave.webp";
+import caveImg from "./cave2.webp";
 import castleImg from "./chatotcastle.webp";
 import crossroadImg from "./crossroad.webp";
 import crossroad2Img from "./crossroad2.webp";
@@ -20,7 +20,7 @@ import monastryImg from "./monastry.webp";
 import northmandicImg from "./northmandic.webp";
 import redwoodImg from "./redwoods.webp";
 import safariImg from "./safari.webp";
-import shireImg from "./shire.webp";
+import shireImg from "./shire2.webp";
 import southamImg from "./southam.webp";
 import swampImg from "./swamp.webp";
 import teleportImg from "./teleport.webp";
@@ -49,11 +49,11 @@ export const locationImages = {
     img: castleImg,
     alt: "Castle location image",
   },
-  crossroad: {
-    name: "Crossroad",
-    img: crossroadImg,
-    alt: "Crossroad location image",
-  },
+  // crossroad: {
+  //   name: "Crossroad",
+  //   img: crossroadImg,
+  //   alt: "Crossroad location image",
+  // },
   farm: {
     name: "Farm",
     img: farmImg,
