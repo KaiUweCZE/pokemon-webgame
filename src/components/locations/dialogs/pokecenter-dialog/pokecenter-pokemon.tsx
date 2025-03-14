@@ -3,7 +3,6 @@ import { pokemonsImg } from "@/images";
 import { Pokemon } from "@/types/pokemon";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-// Ikony z Lucide
 import { Skull, AlertTriangle, Heart, Bandage, HeartCrack } from "lucide-react";
 
 const PokecenterPokemon = ({
@@ -14,7 +13,6 @@ const PokecenterPokemon = ({
   isHealed?: boolean;
 }) => {
   const getPokemonHealthStatus = (pokemon: Pokemon) => {
-    // Pokud je pokémon vyléčený, vrátíme "healthy"
     if (isHealed) return "healthy";
 
     const healthPercentage = (pokemon.currentHp / pokemon.maxHp) * 100;
@@ -26,7 +24,7 @@ const PokecenterPokemon = ({
 
   const healthStatus = getPokemonHealthStatus(pokemon);
 
-  // Získání ikony a barvy podle stavu zdraví
+  // get icon and color
   const getStatusIcon = () => {
     switch (healthStatus) {
       case "fainted":
@@ -47,7 +45,6 @@ const PokecenterPokemon = ({
     }
   };
 
-  // Získání barvy okraje podle stavu zdraví
   const getStatusBox = () => {
     switch (healthStatus) {
       case "fainted":

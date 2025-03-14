@@ -11,31 +11,34 @@ import { useRemoveFromTeam } from "@/hooks/profile/use-remove-from-team";
 import { Loader2Icon } from "lucide-react";
 import LottieChecker from "../lotties/lottie-checker";
 import { useEffect, useRef, useState } from "react";
+import { useBattleStore } from "@/store/battle/battle-store";
 
 interface ProfilePokemonCardProps {
   pokemon: Pokemon;
 }
 const ProfilePokemonCard = ({ pokemon }: ProfilePokemonCardProps) => {
   const pokemonImg = pokemonsImg[pokemon.name as PokemonName].default;
+  const { userPokemonSix } = useBattleStore();
   const { addToTeam, isAdding } = useAddToTeam();
   const { removePokemon, isRemoving } = useRemoveFromTeam();
 
+  const isActive = userPokemonSix.some((p) => p.id === pokemon.id);
+
   return (
     <div className="relative">
-      {" "}
-      {pokemon.isActive && (
+      {isActive && (
         <div className="lottie-checker-container z-10">
-          <LottieChecker isActive={pokemon.isActive} className="h-10 w-10" />
+          <LottieChecker isActive={isActive} className="h-10 w-10" />
         </div>
       )}
       <div
         className={cn(
           "grid h-fit w-full overflow-hidden rounded-sm bg-[#554A70] p-4 shadow-primary",
-          pokemon.isActive &&
+          isActive &&
             "profile-card-active outline-1 outline-offset-0 outline-emerald-600 before:bg-emerald-600 after:bg-emerald-600"
         )}
       >
-        {pokemon.isActive && (
+        {isActive && (
           <>
             <div className="border-top absolute bg-emerald-600"></div>
             <div className="border-bottom absolute bg-emerald-600"></div>

@@ -11,7 +11,7 @@ interface PokemonContainerProps {
 const PokemonContainer = ({ pokemons }: PokemonContainerProps) => {
   const { filteredPokemons } = useProfileStore();
 
-  const userPokemons = pokemons.filter((pokemon) =>
+  const allPokemons = pokemons.filter((pokemon) =>
     filteredPokemons?.some(
       (filteredPokemon) =>
         filteredPokemon.name === pokemon.name && pokemon.level === filteredPokemon.level
@@ -22,7 +22,7 @@ const PokemonContainer = ({ pokemons }: PokemonContainerProps) => {
     <section className="pokemon-container primary-shadow h-full rounded-sm border-2 border-purple-300 bg-primary-dark/85">
       <ProfilePokemonSearch pokemons={pokemons} />
       <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
-        {userPokemons.map((pokemon) => (
+        {allPokemons.map((pokemon) => (
           <ProfilePokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
