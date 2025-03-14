@@ -12,7 +12,7 @@ import { cn } from "@/utils/cn";
 const PokecenterDialog = () => {
   const { data: user } = useCurrentUser();
   const [isHealed, setIsHealed] = useState(false);
-  const { healSix, status, isLoading: isHealing } = useHealSix();
+  const { healSix, status, isLoading: isHealing, canHeal } = useHealSix();
   const { showToast } = useToast();
 
   const pokecenterText = () => {
@@ -92,7 +92,7 @@ const PokecenterDialog = () => {
             allFullHealth && "bg-emerald-600 text-amber-50",
             bgByStatus()
           )}
-          disabled={isHealing || allFullHealth}
+          disabled={!canHeal || isHealing || allFullHealth}
           leftIcon={isHealing ? <HeartBeat className="absolute left-1/3" /> : ""}
           onClick={handleHealPokemons}
         >

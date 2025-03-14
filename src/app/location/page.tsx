@@ -9,7 +9,7 @@ import { locationImages } from "@/images/locations/location-images";
 import { setLocationData, useLocationStore } from "@/store/location-store";
 import { LocationName } from "@/types/location";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 const LocationPage = () => {
   const { data: user } = useCurrentUser();
@@ -28,30 +28,8 @@ const LocationPage = () => {
 
   const showLoading = isLocationChanging || (isActionInProgress && isImageLoading);
 
-  const timeStyles = useMemo(() => {
-    switch (partOfDay) {
-      case 0:
-        return {
-          filter: "morning-filter",
-          overlay: "bg-gradient-to-b from-blue-100/10 via-transparent to-amber-50/5",
-        };
-      case 1:
-        return {
-          filter: "evening-filter",
-          overlay: "bg-gradient-to-b from-transparent via-transparent to-white/5",
-        };
-      case 2:
-        return {
-          filter: "night-filter",
-          overlay: "bg-gradient-to-b from-orange-900/10 via-transparent to-indigo-900/20",
-        };
-      default:
-        return {
-          filter: "",
-          overlay: "bg-transparent",
-        };
-    }
-  }, [partOfDay]);
+  const timeStyles = partOfDay === 0 ? "" : partOfDay === 1 ? "evening-filter" : "night-filter";
+
   return (
     <div className="location-page blur-on large-width relative mx-auto grid">
       <div className="relative grid overflow-hidden shadow-primary transition-all duration-500">
@@ -59,7 +37,7 @@ const LocationPage = () => {
           src={currentLocation.img}
           alt={currentLocation.alt}
           placeholder="blur"
-          className={`location-image transition-opacity duration-700 ${timeStyles.filter} ${isImageLoading ? "opacity-70" : "opacity-100"}`}
+          className={`location-image time-filter transition-opacity duration-700 ${timeStyles} ${isImageLoading ? "opacity-70" : "opacity-100"}`}
           onLoadingComplete={() => {
             setIsImageLoading(false);
             setLocationChanging(false);

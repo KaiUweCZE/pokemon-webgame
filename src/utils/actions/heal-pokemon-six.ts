@@ -9,6 +9,21 @@ export const healSix = async () => {
       throw new Error("Unauthorized");
     }
 
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: {
+        partOfDay: true,
+      },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    if (user.partOfDay >= 2) {
+      throw new Error("No more activities available today. Wait for tomorrow.");
+    }
+
     const activePokemons = await prisma.pokemon.findMany({
       where: {
         userId: session.user.id,
@@ -21,20 +36,38 @@ export const healSix = async () => {
       },
     });
 
-    const updatedPokemons = activePokemons.map((pokemon) =>
-      prisma.pokemon.update({
-        where: { id: pokemon.id },
+    await prisma.$transaction(async (tx) => {
+      // Heal all active pokemon
+      for (const pokemon of activePokemons) {
+        await tx.pokemon.update({
+          where: { id: pokemon.id },
+          data: {
+            currentHp: pokemon.maxHp,
+            currentEnergy: pokemon.maxEnergy,
+            statusEffects: [],
+          },
+        });
+      }
+
+      // Update user's partOfDay
+      await tx.user.update({
+        where: { id: session.user.id },
         data: {
-          currentHp: pokemon.maxHp,
-          currentEnergy: pokemon.maxEnergy,
-          statusEffects: [],
+          partOfDay: user.partOfDay + 1,
         },
-      })
-    );
+      });
+    });
 
-    await Promise.all(updatedPokemons);
+    const updatedUser = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { partOfDay: true },
+    });
 
-    return { success: true, healedCount: activePokemons.length };
+    return {
+      success: true,
+      healedCount: activePokemons.length,
+      partOfDay: updatedUser?.partOfDay || user.partOfDay + 1,
+    };
   } catch (error) {
     console.error("Error healing pokemon:", error);
     throw new Error("Failed to heal pokemon");
