@@ -43,7 +43,7 @@ const barVariants = cva(
 const innerBarVariants = cva("h-full transition-all duration-300 rounded-full relative", {
   variants: {
     variant: {
-      hp: "bg-emarald-600",
+      hp: "bg-emerald-600",
       energy: "bg-sky-500",
       exp: "bg-amber-500",
     },
@@ -96,7 +96,7 @@ const Bar = ({
   maxValue,
   variant,
   height,
-  width,
+  width = "full",
   showValues = false,
   className,
   label,
@@ -147,7 +147,7 @@ const Bar = ({
               variant === "hp" ? "text-red-50" : variant === "exp" ? "text-teal-50" : "text-white"
             )}
           >
-            {`${label && labelText}: ${actualValue}/${maxValue}`}
+            {`${label ? `${labelText}: ` : ""} ${actualValue}/${maxValue}`}
           </span>
         )}
       </div>

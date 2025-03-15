@@ -54,7 +54,7 @@ const PokemonTeam = () => {
           />
         );
       })}
-      <div className="pokemon-team-hint rounded-sm bg-primary-dark/85 p-1 px-2 text-xs text-amber-100/70 shadow-secondary">
+      <div className="pokemon-team-hint rounded-sm bg-primary-dark/80 p-1 px-2 text-xs text-amber-100/70 shadow-secondary">
         Drag to reorder • Hover for details
       </div>
     </div>

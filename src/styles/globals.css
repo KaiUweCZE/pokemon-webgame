@@ -233,6 +233,12 @@ body {
   z-index: 10;
 }
 
+/* special layouts*/
+
+.grid-stat-bar {
+  grid-template-columns: 2rem 1fr;
+}
+
 /*grayscale*/
 .grayscale-sm {
   filter: grayscale(25%);

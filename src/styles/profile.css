@@ -1,7 +1,8 @@
 .pokemon-team {
   display: grid;
-  height: 3rem;
-  width: 15rem;
+  grid-column: span 2;
+  height: fit-content;
+  width: fit-content;
   grid-template-columns: repeat(6, 1fr);
   position: relative;
 }
@@ -26,10 +27,14 @@
 .pokemon-slot-detail {
   display: grid;
   position: absolute;
-  inset: auto auto -7rem auto;
+  top: 4rem;
   transition: var(--transition);
   visibility: hidden;
   opacity: 0;
+}
+.ttt {
+  visibility: visible;
+  opacity: 1;
 }
 
 .profile-card-active {
