@@ -57,7 +57,14 @@ export default function Home() {
             </p>
           </article>
         </section>
-        <div>
+      </main>
+    </div>
+  );
+}
+
+/*
+
+ <div>
           <form className="m-4" onSubmit={(e) => handleGetItems(e)}>
             <Input
               variant="secondary"
@@ -77,81 +84,6 @@ export default function Home() {
           <Button onClick={handleToast}>Toast</Button>
           <Button onClick={() => console.log(user)}>Check User</Button>
         </div>
-
+        
         <ColorPalette />
-      </main>
-    </div>
-  );
-}
-
-{
-  // const eevee = {
-  //   name: "eevee" as PokemonName,
-  //   types: ["normal"] as PokemonType[],
-  //   level: 15,
-  //   maxHp: 126,
-  //   maxEnergy: 18,
-  //   damage: 28,
-  //   defense: 25,
-  //   speed: 21,
-  // };
-  // const handleButtonToast = () => {
-  //   calculatePokemonRating(eevee, 15);
-  // };
-  //<Button onClick={handleButtonToast}>Check pokemon rates</Button>
-  /* <section className="bg-content p-4">
-          <article>
-            <h2>Buttons</h2>
-          </article>
-          <div className="grid grid-cols-8 gap-4 bg-teal-800 px-8 py-4">
-            <Button variant="primary" withRipple>
-              Button
-            </Button>
-            <Button variant="secondary" withRipple>
-              Button
-            </Button>
-            <Button variant="light" withRipple>
-              Button
-            </Button>
-            <Button variant="basic" withRipple>
-              Button
-            </Button>
-            <Button variant="destructive" withRipple>
-              Button
-            </Button>
-            <Button variant="outline" withRipple>
-              Button
-            </Button>
-            <Button variant="ghost" withRipple>
-              Button
-            </Button>
-            <Button variant="link" withRipple>
-              Button
-            </Button>
-            <Button variant="primary" shadow>
-              Button
-            </Button>
-            <Button variant="secondary" shadow>
-              Button
-            </Button>
-            <Button variant="light" shadow>
-              Button
-            </Button>
-            <Button variant="basic" shadow>
-              Button
-            </Button>
-            <Button variant="destructive" shadow>
-              Button
-            </Button>
-            <Button variant="outline" shadow>
-              Button
-            </Button>
-            <Button variant="ghost" shadow>
-              Button
-            </Button>
-            <Button variant="link" shadow>
-              Button
-            </Button>
-          </div>
-        </section> */
-}
+*/
